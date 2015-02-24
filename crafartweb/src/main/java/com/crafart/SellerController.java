@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.crafart.service.ManageSellerService;
 import com.crafart.service.businessobjects.SellerBO;
-import com.crafart.service.exception.UserServiceException;
+import com.crafart.service.exception.CrafartServiceException;
 
 /**
  * Hello world!
@@ -28,11 +28,19 @@ public class SellerController {
 	@Autowired
 	private ManageSellerService manageSellerServiceImpl;
 	
+	/**
+	 * controller method responsible to add new seller details, it takes seller details {@link SellerBO} from the user.
+	 * Error during the adding process result in throwing crafart service exception {@link CrafartServiceException}
+	 * @param sellerBO
+	 * @param httpServletRequest
+	 * @param httpServletResponse
+	 * @return {@link ModelAndView}
+	 */
 	@RequestMapping(value = {"/addSeller"}, method = RequestMethod.POST)
 	public ModelAndView addSeller(@ModelAttribute("sellerBO")SellerBO sellerBO, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)  {
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
-		} catch (UserServiceException uExp) {
+		} catch (CrafartServiceException uExp) {
 			log.info("Error while adding seller",uExp );
 		}
 		return null;
