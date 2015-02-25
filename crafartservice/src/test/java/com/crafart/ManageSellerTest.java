@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.service.ManageSellerService;
 import com.crafart.service.businessobjects.SellerBO;
-import com.crafart.service.exception.UserServiceException;
+import com.crafart.service.exception.CrafartServiceException;
 
 @ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -44,7 +44,7 @@ public class ManageSellerTest {
 
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
-		} catch (UserServiceException uExp) {
+		} catch (CrafartServiceException uExp) {
 			uExp.printStackTrace();
 			Assert.fail();
 		}
