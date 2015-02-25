@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.SellerDO;
-import com.crafart.exception.UserDataException;
+import com.crafart.exception.CrafartDataException;
 
 /**
  * @author Karthi
@@ -27,7 +27,7 @@ public class SellerDAOImpl extends CommonDAOImpl implements SellerDAO {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addSeller(SellerDO sellerDO)throws UserDataException {
+	public void addSeller(SellerDO sellerDO)throws CrafartDataException {
 		JdbcTemplate jdbcTemplate = this.getJdbctemplate();
 		long sellerId = jdbcTemplate.queryForObject(USER_KEY, Long.class);
 		sellerDO.setSellerId(sellerId);
@@ -37,7 +37,7 @@ public class SellerDAOImpl extends CommonDAOImpl implements SellerDAO {
 				log.info("Seller registration failed");
 			}
 		} catch (DataAccessException dataAccessException) {
-			throw new UserDataException("Seller registration failed", dataAccessException);
+			throw new CrafartDataException("Seller registration failed", dataAccessException);
 		}
 	}
 
