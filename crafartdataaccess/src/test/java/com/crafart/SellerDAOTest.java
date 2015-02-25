@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.SellerDAO;
 import com.crafart.dataobjects.SellerDO;
-import com.crafart.exception.UserDataException;
+import com.crafart.exception.CrafartDataException;
 
 /**
  * Unit test for simple App.
@@ -60,7 +60,7 @@ public class SellerDAOTest {
 		try {
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.setSellerId(sellerDO.getSellerId());
-		} catch (UserDataException uExp) {
+		} catch (CrafartDataException uExp) {
 			uExp.printStackTrace();
 		}
 		return sellerDO;
