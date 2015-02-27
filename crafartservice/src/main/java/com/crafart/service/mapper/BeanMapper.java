@@ -16,7 +16,7 @@ import com.crafart.service.businessobjects.SellerBO;
  * @version 1.0
  * 
  */
-@Component("beanMapper")
+@Component("beanMapper") 
 public class BeanMapper {
 
 	private static final Logger log = Logger.getLogger(BeanMapper.class);
