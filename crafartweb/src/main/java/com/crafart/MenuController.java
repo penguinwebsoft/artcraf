@@ -17,32 +17,37 @@ import org.springframework.web.servlet.ModelAndView;
 public class MenuController {
 
 	@RequestMapping("/dashboard")
-	public ModelAndView showHomePage(HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView showHomePage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("dashboard");
 	}
-	
+
 	@RequestMapping("/myAccount")
-	public ModelAndView showMyAccount(HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView showMyAccount(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("myAccount");
 	}
-	
+
 	@RequestMapping("/bankDetails")
-	public ModelAndView showbankDetails(HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView showbankDetails(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("bankDetails");
 	}
 
 	@RequestMapping("/shipping")
-	public ModelAndView showshipping(HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView showshipping(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("shipping");
 	}
-	
+
 	@RequestMapping("/taxInformation")
-	public ModelAndView taxInformation(HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView showtaxInformation(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("taxInformation");
+	}
+
+	@RequestMapping("/product")
+	public ModelAndView showProduct(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("product");
+	}
+	
+	@RequestMapping("/addProduct")
+	public ModelAndView showAddProduct(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addProduct");
 	}
 }
