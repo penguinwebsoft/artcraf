@@ -2664,14 +2664,24 @@ font-weight: bolder;
   background-color: #fff;
 }
 
-.btn-success,
-.btn-danger{
+.nonActiveMenuBgColor {
+  color: #fff !important;
+  background-color:#333 !important;
+}
+
+center .btn-success,
+center .btn-danger{
 	font-size:18px !important;
 }
 .alert_success {
   color: #fff !important;
   background-color:#333 !important;
   border-color: #d6e9c6;
+}
+
+a {
+    color: #428bca;
+    text-decoration: none !important;
 }
 
 .form_control_width{
