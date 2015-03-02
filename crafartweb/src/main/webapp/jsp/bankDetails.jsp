@@ -1,8 +1,26 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
+
+<script type="text/javascript">
+	setPage("bankDetailsMenuId");
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var msg = "SAVED SUCCESSFULLY";
+	 $("#alertSuccessId").hide();
+	
+	 $("#SaveBtnId").click(function() {
+		 $("#alertSuccessId").show();
+		 $("#alertSuccessId").text(msg);
+	 });
+	 
+});
+	
+</script>
 
   <div class="inner">
     <div class="row">
@@ -10,9 +28,9 @@
         <h1 style="color:#333; font-size:30px;"> Bank Details </h1>
       </div>
       <div class="col-lg-9" style="padding-top:20px;">
-        <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> UPDATED SUCCESSFULLY </div>
-        <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> SELLER APPROVED:YES </div>
-        <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> COMMISSION: 10% </div>
+        <div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> UPDATED SUCCESSFULLY </div>
+        <div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom:5px; color:#FF704D; font-size:17px;"> SELLER APPROVED:YES </div>
+        <div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom:5px; color:#FF704D; font-size:17px;"> COMMISSION: 10% </div>
       </div>
     </div>
     <hr />
@@ -83,10 +101,10 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label  for="" class="control-label col-lg-4">MICR</label>
+                    <label  for="" class="control-label col-lg-4">MICR-No</label>
                     <div class="col-lg-8">
-                      <input type="number" id="micr" name="micr" class="form-control" 
-                                	placeholder="MICR" />
+                      <input type="number" id="micrNo" name="micrNo" class="form-control" 
+                                	placeholder="MICR No" />
                     </div>
                   </div>
                   <div class="form-group">
@@ -107,7 +125,7 @@
               </div><br>
               <div class="row">
                 <center>
-	                <a class="btn btn-success" href="#">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
+	                <a id="SaveBtnId" class="btn btn-success" href="#">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
 	                <a class="btn btn-danger" href="#">CANCEL</a>
                 </center>
               </div>
