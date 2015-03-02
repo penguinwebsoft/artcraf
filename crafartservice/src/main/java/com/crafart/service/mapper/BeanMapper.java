@@ -6,9 +6,7 @@ package com.crafart.service.mapper;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
-import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.SellerBO;
 
 /**
