@@ -13,7 +13,6 @@
 
 	<definition name="dashboard" extends="base.definition">
 		<put-attribute name="title" value="Crafart Seller Dashboard" />
-		<put-attribute name="menu" value="/jsp/menu.jsp" />
 		<put-attribute name="body" value="/jsp/dashboard.jsp" />
 	</definition>
 
@@ -35,6 +34,16 @@
 	<definition name="taxInformation" extends="base.definition">
 		<put-attribute name="title" value="Crafart Tax Information" />
 		<put-attribute name="body" value="/jsp/taxInformation.jsp" />
+	</definition> 
+	
+	<definition name="product" extends="base.definition">
+		<put-attribute name="title" value="Crafart product" />
+		<put-attribute name="body" value="/jsp/product.jsp" />
+	</definition>
+	
+	<definition name="addProduct" extends="base.definition">
+		<put-attribute name="title" value="Crafart product" />
+		<put-attribute name="body" value="/jsp/addProduct.jsp" />
 	</definition>
 
 </tiles-definitions>
