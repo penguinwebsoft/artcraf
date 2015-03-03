@@ -30,6 +30,38 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+<!-- *************Save button************ -->
+	$(document).ready(function() {
+		$("#SaveBtnId").click(function() {
+			var seller = {};
+			seller.firstName = $("#firstName").val();
+			seller.gender = $("#gender").val();
+			seller.companyName = $("#companyName").val();
+			seller.tinNo = $("#tinNo").val();
+			seller.lastName = $("#lastName").val();
+			seller.dateOfBirth = $("#dateOfBirth").val();
+			seller.epchNo = $("#epchNo").val();
+			alert(JSON.stringify(seller));
+			$.ajax({
+				url : "../seller/addSeller", 
+				type : "post",
+				data : JSON.stringify(seller),
+				contentType : "Application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("success");
+					alert(data);
+				},
+				error : function(error) {
+					alert("failed");
+					alert(error);
+				}
+			});
+		});
+
+	});
+	</script>
 <!--PAGE CONTENT -->
 
 <div class="inner">
@@ -109,7 +141,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">EPCH-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="EpchNo" name="EpchNo"
+										<input type="number" id="epchNo" name="epchNo"
 											class="form-control" placeholder="EPCH No" />
 									</div>
 								</div>
@@ -189,7 +221,7 @@
 						<div class="row">
 							<center>
 								<a class="btn btn-success" id="SaveBtnId">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
-								<a class="btn btn-danger" href="#">CANCEL</a>
+								<a class="btn btn-danger" id="canelbtn" href="#">CANCEL</a>
 							</center>
 						</div>
 
