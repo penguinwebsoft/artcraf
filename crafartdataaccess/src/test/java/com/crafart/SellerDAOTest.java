@@ -63,6 +63,8 @@ public class SellerDAOTest {
 		SellerDO sellerDO = new SellerDO();
 		sellerDO.setFirstName("xxxx");
 		sellerDO.setLastName("yyyy");
+		sellerDO.setGender(1);
+		sellerDO.setDateOfBirth("00/00/0000");
 		sellerDO.setTin_no(1);
 		sellerDO.setCompanyName("penguin");
 		sellerDO.setCompanyLogo("pen");
