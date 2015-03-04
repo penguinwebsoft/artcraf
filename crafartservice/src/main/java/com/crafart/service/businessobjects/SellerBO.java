@@ -23,6 +23,10 @@ public class SellerBO implements Serializable {
 
 	private String lastName;
 
+	private int gender;
+
+	private String dateOfBirth;
+
 	private int tin_no;
 
 	private String companyName;
@@ -137,8 +141,20 @@ public class SellerBO implements Serializable {
 		this.approved = approved;
 	}
 
-	
+	public int getGender() {
+		return gender;
+	}
 
-	
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
 }

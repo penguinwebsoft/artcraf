@@ -26,24 +26,34 @@
 	<link href="${context}/resources/css/layout2.css" rel="stylesheet" />
 	<link href="${context}/resources/plugins/flot/examples/examples.css" rel="stylesheet" />
 	<link rel="stylesheet" href="${context}/resources/plugins/timeline/timeline.css" />
+	<link href="${context}/resources/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="${context}/resources/plugins/datepicker/css/datepicker.css" />
 			     
 	<link rel="stylesheet" href="${context}/resources/plugins/validationengine/css/validationEngine.jquery.css" />
 	   
 	<!--START SCRIPTS --> 
-	<script src="${context}/resources/plugins/jquery-2.0.3.min.js"></script> 
+
+	<script src="${context}/resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
+	<script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
+	<script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
+	<script src="${context}/resources/javascript/menuHighlight/jquery.datetimepicker.min.js"></script>
+	<link rel="stylesheet"
+	href="${context}/resources/javascript/jquery-ui-1.10.3/themes/base/jquery-ui.css" type="text/css">
+    <link rel="stylesheet"
+	href="${context}/resources/javascript/jquery-ui-1.10.3/themes/base/jquery.ui.accordion.css"
+	type="text/css">
 	<script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script> 
 	<script src="${context}/resources/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script> 
 	
-	<script src="${context}/resources/plugins/flot/jquery.flot.js"></script> 
+	 <script src="${context}/resources/plugins/flot/jquery.flot.js"></script> 
 	<script src="${context}/resources/plugins/flot/jquery.flot.resize.js"></script> 
 	<script src="${context}/resources/plugins/flot/jquery.flot.time.js"></script> 
 	<script src="${context}/resources/plugins/flot/jquery.flot.stack.js"></script> 
-	<script src="${context}/resources/javascript/for_index.js"></script> 
-	
 	<script  src="${context}/resources/plugins/flot/jquery.flot.categories.js"></script> 
 	<script src="${context}/resources/plugins/dataTables/jquery.dataTables.js"></script> 
 	<script src="${context}/resources/plugins/dataTables/dataTables.bootstrap.js"></script>	
-	
+	<script src="${context}/resources/plugins/datepicker/js/bootstrap-datepicker.js"></script>
 	<script src="${context}/resources/plugins/validationengine/js/jquery.validationEngine.js"></script> 
 	<script src="${context}/resources/plugins/validationengine/js/languages/jquery.validationEngine-en.js"></script> 
 	<script src="${context}/resources/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script> 
@@ -51,13 +61,6 @@
 
 	<!-- END SCRIPTS --> 
 
-
-	<script type="text/javascript">
-	$(function () { 
-		formValidation(); 
-	   	$("ul#sampleTabs li.active");
-	});
-	</script>
 </head>
 
 <!-- END HEAD -->

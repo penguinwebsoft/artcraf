@@ -14,7 +14,7 @@ import com.crafart.service.businessobjects.SellerBO;
  * @version 1.0
  * 
  */
-@Component("beanMapper")
+@Component("beanMapper") 
 public class BeanMapper {
 
 	private static final Logger log = Logger.getLogger(BeanMapper.class);
@@ -32,12 +32,14 @@ public class BeanMapper {
 		sellerDO.setStatus(sellerBO.getStatus());
 		sellerDO.setTin_no(sellerDO.getStatus());
 		sellerDO.setVat_no(sellerBO.getVat_no());
+		sellerDO.setGender(sellerBO.getGender());
+		sellerDO.setDateOfBirth(sellerBO.getDateOfBirth());
 		log.info("bean mapping for sellerBO to sellerDO");
 		return sellerDO;
 
 	}
-	
-	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO){
+
+	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO) {
 		sellerBO.setApproved(sellerDO.getApproved());
 		sellerBO.setCommission(sellerDO.getCommission());
 		sellerBO.setCompanyLogo(sellerDO.getCompanyLogo());
@@ -50,8 +52,11 @@ public class BeanMapper {
 		sellerBO.setStatus(sellerDO.getStatus());
 		sellerBO.setTin_no(sellerDO.getTin_no());
 		sellerBO.setVat_no(sellerDO.getVat_no());
+		sellerBO.setGender(sellerDO.getGender());
+		sellerBO.setDateOfBirth(sellerDO.getDateOfBirth());
 		log.info("bean mapping for sellerDO to sellerBO");
 		return sellerBO;
-		
+
 	}
-}
+
+	}

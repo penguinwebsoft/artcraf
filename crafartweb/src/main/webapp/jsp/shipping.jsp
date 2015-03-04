@@ -3,15 +3,33 @@
 <%@ page isELIgnored="false"%>
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
+<script type="text/javascript">
+	setPage("shippingMenuId");
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var msg = "SAVED SUCCESSFULLY";
+	 $("#alertSuccessId").hide();
+	
+	 $("#SaveBtnId").click(function() {
+		 $("#alertSuccessId").show();
+		 $("#alertSuccessId").text(msg);
+	 });
+	 
+});
+
+</script>
  <div class="inner">
  <div class="row">
       <div class="col-lg-3">
         <h1 style="color:#333; font-size:30px;"></h1>
       </div>
       <div class="col-lg-9" style="padding-top:20px;">
-        <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> UPDATED SUCCESSFULLY </div>
-        <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> SELLER APPROVED:YES </div>
-        <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> COMMISSION: 10% </div>
+        <div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> UPDATED SUCCESSFULLY </div>
+        <div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom:5px; color:#FF704D; font-size:17px;"> SELLER APPROVED:YES </div>
+        <div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom:5px; color:#FF704D; font-size:17px;"> COMMISSION: 10% </div>
       </div>
     </div>
     
@@ -37,7 +55,7 @@
               <div class="row">
               	<div class="col-lg-12">
                     <center>
-                    <a class="btn btn-success" href="#">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
+                    <a id="SaveBtnId" class="btn btn-success" href="#">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
                     <a class="btn btn-danger" href="#">CANCEL</a>
                     </center>
                 </div>

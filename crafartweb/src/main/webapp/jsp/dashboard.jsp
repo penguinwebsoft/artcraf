@@ -1,9 +1,17 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
+<script type="text/javascript">
+$(function () {
+	 $("#alertSuccessId").hide();
+});
+</script>
+
+<script type="text/javascript">
+	setPage("dashboardMenuId");
+</script>
 
 <div class="inner" style="min-height: 700px;">
       <div class="row">
@@ -11,23 +19,23 @@
           <h1 style="color:#333; font-size:30px;"> Seller Dashboard </h1>
         </div>
         <div class="col-lg-9" style="padding-top:20px;">
-          <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> UPDATED SUCCESSFULLY </div>
-          <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> SELLER APPROVED:YES </div>
-          <div class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> COMMISSION: 10% </div>
+          <div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> UPDATED SUCCESSFULLY </div>
+          <div class=" col-lg-4 alert alert_success pull-right " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> SELLER APPROVED:YES </div>
+          <div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom:5px; color:#FF704D; font-size:17px;"> COMMISSION: 10% </div>
         </div>
       </div>
       <hr />
       <!--BLOCK SECTION -->
       
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-6"> <a href="#">
-          <div class="tile" style="background-color:#FF5C33;">
+        <div class="col-lg-3 col-md-3 col-sm-6"> 
+          <div class="tile" style="background-color:#FF5C33;"><a href="#" >
             <div class="tile_heading"> Total Orders </div>
             <div class="tile_body"> <i class="icon-shopping-cart"></i>
               <h2 class="pull-right">50</h2>
             </div>
-          </div>
-          </a> </div>
+           </a> </div>
+         </div>
         <div class="col-lg-3 col-md-3 col-sm-6"> <a href="#">
           <div class="tile" style="background-color:#0099FF;">
             <div class="tile_heading"> Total Sales </div>
