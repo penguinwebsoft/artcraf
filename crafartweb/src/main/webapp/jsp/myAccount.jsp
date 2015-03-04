@@ -10,10 +10,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var msg = "SAVED SUCCESSFULLY";
-		$("#alertSuccessId").hide();
 
 		$("#SaveBtnId").click(function() {
-			$("#alertSuccessId").show();
 			$("#alertSuccessId").text(msg);
 		});
 
@@ -30,17 +28,49 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+<!-- *************Save button************ -->
+	$(document).ready(function() {
+		$("#SaveBtnId").click(function() {
+			var seller = {};
+			seller.firstName = $("#firstName").val();
+			seller.gender = $("#gender").val();
+			seller.companyName = $("#companyName").val();
+			seller.tinNo = $("#tinNo").val();
+			seller.lastName = $("#lastName").val();
+			seller.dateOfBirth = $("#dateOfBirth").val();
+			seller.epchNo = $("#epchNo").val();
+			alert(JSON.stringify(seller));
+			$.ajax({
+				url : "../seller/addSeller", 
+				type : "post",
+				data : JSON.stringify(seller),
+				contentType : "Application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("success");
+					alert(data);
+				},
+				error : function(error) {
+					alert("failed");
+					alert(error);
+				}
+			});
+		});
+
+	});
+	</script>
 <!--PAGE CONTENT -->
 
 <div class="inner">
 	<div class="row">
 		<div class="col-lg-3">
-			<h1 style="color: #333; font-size: 30px;">My Account</h1>
+			<h1 style="color: #333; font-size: 25px; margin-top:20px;">&nbsp;My Account</h1>
 		</div>
-		<div class="col-lg-9" style="padding-top: 20px;">
+		<div class="col-lg-9 text-center" style="padding-top: 20px;">
 			<div id="alertSuccessId" class=" col-lg-4 alert alert_success "
 				style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">
-				UPDATED SUCCESSFULLY</div>
+				ACTIVE</div>
 			<div class=" col-lg-4 alert alert_success pull-right"
 				style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">
 				SELLER APPROVED:YES</div>
@@ -109,7 +139,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">EPCH-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="EpchNo" name="EpchNo"
+										<input type="number" id="epchNo" name="epchNo"
 											class="form-control" placeholder="EPCH No" />
 									</div>
 								</div>
@@ -127,8 +157,8 @@
 									<label for="" class="control-label col-lg-4">Date-Of-Birth</label>
 									<div class="col-lg-8">
 
-										<input type="text" class="form-control" value="10/09/90"
-											data-date-format="mm/dd/yy" id="dp2"">
+										<input type="text" class="form-control" placeholder="10/09/1990" value=""
+											data-date-format="mm/dd/yyyy" id="dp2"">
 
 										<!-- <input type="text" class="span2 form_control_width"
 													value="10/09/90" data-date-format="mm/dd/yy" id="dp2"
@@ -189,7 +219,7 @@
 						<div class="row">
 							<center>
 								<a class="btn btn-success" id="SaveBtnId">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
-								<a class="btn btn-danger" href="#">CANCEL</a>
+								<a class="btn btn-danger" id="canelbtn" href="#">CANCEL</a>
 							</center>
 						</div>
 
