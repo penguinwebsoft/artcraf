@@ -5,32 +5,36 @@ package com.crafart.dataobjects;
 
 /**
  * @author karthi
- *
+ * 
  */
 public class SellerDO {
-	
+
 	private long sellerId;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
+	private int gender;
+
+	private String dateOfBirth;
+
 	private int tin_no;
-	
+
 	private String companyName;
-	
+
 	private String companyLogo;
-	
+
 	private String epch_no;
-	
+
 	private String vat_no;
-	
+
 	private String cst_no;
-	
+
 	private String commission;
-	
+
 	private int status;
-	
+
 	private int approved;
 
 	public long getSellerId() {
@@ -129,8 +133,20 @@ public class SellerDO {
 		this.approved = approved;
 	}
 
-	
-	
-	
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
 }

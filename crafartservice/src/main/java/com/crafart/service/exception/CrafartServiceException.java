@@ -13,7 +13,11 @@ public class CrafartServiceException extends Exception{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7082264604097600338L;
+	private static final long serialVersionUID = -6070120246127584816L;
+
+	/**
+	 * 
+	 */
 	
 	public CrafartServiceException(String message, Throwable throwable) {
 		super(message, throwable);
