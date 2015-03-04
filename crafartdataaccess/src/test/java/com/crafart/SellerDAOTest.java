@@ -34,7 +34,21 @@ public class SellerDAOTest {
 	@Rollback(true)
 	public void testAddSeller() {
 		try {
+			SellerDO sellerDO = addSellerDO();
+			Assert.assertNotNull(sellerDO.getSellerId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+
+	}
+
+	@Test
+	@Rollback(false)
+	public void testSaveSeller() {
+		try {
 			SellerDO sellerDO = getSellerDO();
+			sellerDAOImpl.saveSeller(sellerDO);
 			log.info("Seller id is" + sellerDO.getSellerId());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,13 +57,12 @@ public class SellerDAOTest {
 
 	}
 
+	
 	@Transactional(propagation = Propagation.REQUIRED)
-	private SellerDO getSellerDO() {
+	private SellerDO addSellerDO() {
 		SellerDO sellerDO = new SellerDO();
 		sellerDO.setFirstName("xxxx");
 		sellerDO.setLastName("yyyy");
-		sellerDO.setGender(1);
-		sellerDO.setDateOfBirth("00/00/0000");
 		sellerDO.setTin_no(1);
 		sellerDO.setCompanyName("penguin");
 		sellerDO.setCompanyLogo("pen");
@@ -67,5 +80,21 @@ public class SellerDAOTest {
 		}
 		return sellerDO;
 
+	}
+	
+	private SellerDO getSellerDO(){
+		SellerDO sellerDO = new SellerDO();
+		sellerDO.setFirstName("xxxx");
+		sellerDO.setLastName("yyyy");
+		sellerDO.setTin_no(1);
+		sellerDO.setCompanyName("penguin");
+		sellerDO.setCompanyLogo("pen");
+		sellerDO.setEpch_no("123");
+		sellerDO.setVat_no("123456a");
+		sellerDO.setCst_no("000");
+		sellerDO.setCommission("aaaa");
+		sellerDO.setStatus(1);
+		sellerDO.setApproved(1);
+		return sellerDO;
 	}
 }
