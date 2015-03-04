@@ -43,7 +43,7 @@ public class SellerDAOTest {
 
 	}
 
-	@Test
+/*	@Test
 	@Rollback(false)
 	public void testSaveSeller() {
 		try {
@@ -55,7 +55,7 @@ public class SellerDAOTest {
 			Assert.fail();
 		}
 
-	}
+	}*/
 
 	
 	@Transactional(propagation = Propagation.REQUIRED)
