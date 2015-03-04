@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.crafart.data.SellerDAO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.exception.CrafartDataException;
-import com.crafart.service.ManageSellerService;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
@@ -25,7 +24,9 @@ import com.crafart.service.mapper.BeanMapper;
 @Service("manageSellerServiceImpl")
 public class ManageSellerServiceImpl implements ManageSellerService {
 
-	private static final Logger log = Logger.getLogger(ManageSellerServiceImpl.class);
+	@SuppressWarnings("unused")
+	private static final Logger log = Logger
+			.getLogger(ManageSellerServiceImpl.class);
 
 	@Autowired
 	private BeanMapper beanMapper;
@@ -38,7 +39,8 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	public void addSeller(SellerBO sellerBO) throws CrafartServiceException {
 
 		try {
-			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
+			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO,
+					new SellerDO());
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerBO.setSellerId(sellerDO.getSellerId());
 		} catch (CrafartDataException uExp) {
