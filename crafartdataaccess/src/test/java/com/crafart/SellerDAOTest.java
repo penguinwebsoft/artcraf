@@ -44,7 +44,7 @@ public class SellerDAOTest {
 	}
 
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public void testSaveSeller() {
 		try {
 			SellerDO sellerDO = getSellerDO();

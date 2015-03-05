@@ -27,17 +27,17 @@ public class SellerBO implements Serializable {
 
 	private String dateOfBirth;
 
-	private int tin_no;
+	private int tinNo;
 
 	private String companyName;
 
 	private String companyLogo;
 
-	private String epch_no;
+	private String epchNo;
 
-	private String vat_no;
+	private String vatNo;
 
-	private String cst_no;
+	private String cstNo;
 
 	private String commission;
 
@@ -69,12 +69,12 @@ public class SellerBO implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public int getTin_no() {
-		return tin_no;
+	public int getTinNo() {
+		return tinNo;
 	}
 
-	public void setTin_no(int tin_no) {
-		this.tin_no = tin_no;
+	public void setTinNo(int tin_no) {
+		this.tinNo = tin_no;
 	}
 
 	public String getCompanyName() {
@@ -93,28 +93,28 @@ public class SellerBO implements Serializable {
 		this.companyLogo = companyLogo;
 	}
 
-	public String getEpch_no() {
-		return epch_no;
+	public String getEpchNo() {
+		return epchNo;
 	}
 
-	public void setEpch_no(String epch_no) {
-		this.epch_no = epch_no;
+	public void setEpchNo(String epch_no) {
+		this.epchNo = epch_no;
 	}
 
-	public String getVat_no() {
-		return vat_no;
+	public String getVatNo() {
+		return vatNo;
 	}
 
-	public void setVat_no(String vat_no) {
-		this.vat_no = vat_no;
+	public void setVatNo(String vat_no) {
+		this.vatNo = vat_no;
 	}
 
-	public String getCst_no() {
-		return cst_no;
+	public String getCstNo() {
+		return cstNo;
 	}
 
-	public void setCst_no(String cst_no) {
-		this.cst_no = cst_no;
+	public void setCstNo(String cst_no) {
+		this.cstNo = cst_no;
 	}
 
 	public String getCommission() {

@@ -32,22 +32,28 @@ public class SellerDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "seller_Id")
-	@SequenceGenerator(name = "seller_seq", sequenceName = "seller_seq")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seller_seq")
+	@SequenceGenerator(name = "seq_seller", sequenceName = "seq_seller")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_seller")
 	private long sellerId;
 
+	@Column(name="first_Name")
 	private String firstName;
 
+	@Column(name="last_Name")
 	private String lastName;
 
+	@Column(name="gender")
 	private int gender;
 
+	@Column(name="dob")
 	private String dateOfBirth;
 
 	private int tin_no;
 
+	@Column(name="company_Name")
 	private String companyName;
 
+	@Column(name="company_Logo")
 	private String companyLogo;
 
 	private String epch_no;

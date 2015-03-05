@@ -18,6 +18,9 @@ function setActiveMenu(arr, crtPage) {
 	for ( var i = 0; i < arr.length; i++) {
 		if (extractPageName(arr[i].id) == crtPage) {
 				arr[i].parentNode.className = "active";
+				if(arr[i].parentNode.parentNode.className == "collapse"){
+					arr[i].parentNode.parentNode.className="in";
+				}
 		} else {
 			arr[i].parentNode.className = "nonActiveMenuBgColor";
 		}
