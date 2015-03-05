@@ -42,7 +42,7 @@
 			seller.epchNo = $("#epchNo").val();
 			alert(JSON.stringify(seller));
 			$.ajax({
-				url : "../seller/addSeller", 
+				url : "../seller/addSeller",
 				type : "post",
 				data : JSON.stringify(seller),
 				contentType : "Application/json",
@@ -59,40 +59,31 @@
 		});
 
 	});
-	</script>
-<!--PAGE CONTENT -->
+</script>
 
 <div class="inner">
 	<div class="row">
 		<div class="col-lg-3">
-			<h1 style="color: #333; font-size: 25px; margin-top:20px;">&nbsp;My Account</h1>
+			<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;My Account</h1>
 		</div>
 		<div class="col-lg-9 text-center" style="padding-top: 20px;">
-			<div id="alertSuccessId" class=" col-lg-4 alert alert_success "
-				style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">
-				ACTIVE</div>
-			<div class=" col-lg-4 alert alert_success pull-right"
-				style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">
-				SELLER APPROVED:YES</div>
-			<div class=" col-lg-4 alert alert_success pull-right"
-				style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">
-				COMMISSION: 10%</div>
+			<div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">ACTIVE</div>
+			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
+			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
 		</div>
 	</div>
 	<hr />
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="box">
-				<div id="collapseOne" class="accordion-body collapse in body"
-					style="padding-top: 40px; padding-bottom: 30px;">
+				<div id="collapseOne" class="accordion-body collapse in body" style="padding-top: 40px; padding-bottom: 30px;">
 					<form class="form-horizontal" action="#" id="block-validate">
 						<div class="row">
 							<div class="col-lg-5" style="margin-left: 50px;">
 								<div class="form-group">
 									<label for="firstName" class="control-label col-lg-4">First-Name</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" id="firstName"
-											placeholder="First Name">
+										<input type="text" class="form-control" id="firstName" placeholder="First Name">
 									</div>
 								</div>
 								<div class="form-group">
@@ -105,33 +96,28 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="" class="control-label col-lg-4">
-										Company-Name</label>
+									<label for="" class="control-label col-lg-4"> Company-Name</label>
 									<div class="col-lg-8">
-										<input type="text" id="companyName" name="companyName"
-											class="form-control" placeholder="Company Name" />
+										<input type="text" id="companyName" name="companyName" class="form-control" placeholder="Company Name" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Street-Address</label>
 									<div class="col-lg-8">
-										<input type="text" id="streetAddress" name="streetAddress"
-											class="form-control" placeholder="Street Address" />
+										<input type="text" id="streetAddress" name="streetAddress" class="form-control" placeholder="Street Address" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">City</label>
 									<div class="col-lg-8">
-										<input type="text" id="city" name="city" class="form-control"
-											placeholder="City" />
+										<input type="text" id="city" name="city" class="form-control" placeholder="City" />
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Phone-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="phoneNo" name="phoneNo"
-											class="form-control" placeholder="Phone No" />
+										<input type="number" id="phoneNo" name="phoneNo" class="form-control" placeholder="Phone No" />
 									</div>
 								</div>
 
@@ -139,8 +125,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">EPCH-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="epchNo" name="epchNo"
-											class="form-control" placeholder="EPCH No" />
+										<input type="number" id="epchNo" name="epchNo" class="form-control" placeholder="EPCH No" />
 									</div>
 								</div>
 							</div>
@@ -148,8 +133,7 @@
 								<div class="form-group">
 									<label for="lastName" class="control-label col-lg-4">Last-Name</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" id="lastName"
-											placeholder="Last Name">
+										<input type="text" class="form-control" id="lastName" placeholder="Last Name">
 									</div>
 								</div>
 
@@ -157,8 +141,7 @@
 									<label for="" class="control-label col-lg-4">Date-Of-Birth</label>
 									<div class="col-lg-8">
 
-										<input type="text" class="form-control" placeholder="10/09/1990" value=""
-											data-date-format="mm/dd/yyyy" id="dp2"">
+										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2"">
 
 										<!-- <input type="text" class="span2 form_control_width"
 													value="10/09/90" data-date-format="mm/dd/yy" id="dp2"
@@ -173,30 +156,26 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Company-Logo</label>
 									<div class="col-lg-8">
-										<input type="file" id="companyLogo" name="companyLogo"
-											placeholder="Company Logo" />
+										<input type="file" id="companyLogo" name="companyLogo" placeholder="Company Logo" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">States</label>
 									<div class="col-lg-8">
-										<input type="text" id="states" name="states"
-											class="form-control" placeholder="States" />
+										<input type="text" id="states" name="states" class="form-control" placeholder="States" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Pin-Code</label>
 									<div class="col-lg-8">
-										<input type="number" id="pinCode" name="pinCode"
-											class="form-control" placeholder="Pin Code" />
+										<input type="number" id="pinCode" name="pinCode" class="form-control" placeholder="Pin Code" />
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Store-Name</label>
 									<div class="col-lg-8">
-										<input type="text" id="storeName" name="storeName"
-											class="form-control" placeholder="Store Name" />
+										<input type="text" id="storeName" name="storeName" class="form-control" placeholder="Store Name" />
 									</div>
 								</div>
 							</div>
@@ -207,8 +186,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-2">Store-Descripton</label>
 									<div class="col-lg-10">
-										<textarea id="storeDescripton" name="storeDescripton"
-											class="form-control" placeholder="Store Descripton" rows="5"></textarea>
+										<textarea id="storeDescripton" name="storeDescripton" class="form-control" placeholder="Store Descripton" rows="5"></textarea>
 									</div>
 								</div>
 							</div>
@@ -218,11 +196,9 @@
 
 						<div class="row">
 							<center>
-								<a class="btn btn-success" id="SaveBtnId">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
-								<a class="btn btn-danger" id="canelbtn" href="#">CANCEL</a>
+								<a class="btn btn-success" id="SaveBtnId">&nbsp;&nbsp;SAVE&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-danger" id="canelbtn" href="#">CANCEL</a>
 							</center>
 						</div>
-
 					</form>
 				</div>
 			</div>
@@ -230,7 +206,6 @@
 	</div>
 </div>
 
-<!--END PAGE CONTENT -->
 
 
 
