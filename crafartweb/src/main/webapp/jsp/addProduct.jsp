@@ -4,6 +4,24 @@
 <%@ page isELIgnored="false"%>
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
+<style>
+      ul.wysihtml5-toolbar > li {
+          position: relative;
+      }
+ </style>
+     
+<script type="text/javascript">
+    $(function () {
+    	formInit(); 
+    });
+</script>
+
+<script type="text/javascript">
+     $(function () { 
+     	formWysiwyg(); 
+     });
+</script>
+
 <script type="text/javascript">
 	
 var shipping_row = 0;
@@ -11,6 +29,35 @@ var attribute_row = 0;
 var discount_row = 0;
 var image_row = 0;
 var special_row = 0;
+
+
+$(document).ready(function(){
+	
+	   $("#dateOfBirthId").datepicker({
+			viewMode : 'years',
+			format : 'dd/mm/yyyy',
+			
+	   });
+
+	   $('#dateOfBirthId').on('changeDate', function(ev) {
+			//close when viewMode='0' (days)
+			if (ev.viewMode === 'days') {
+				$('#dateOfBirthId').datepicker('hide');
+			}
+		});
+	    
+	$("#ProductTaxId").on('change', function (e) {
+	    var valueSelected = this.value;
+	    if(valueSelected == 0){
+	    	$("#taxVatId").hide();
+			$("#taxCstId").hide();
+	    }else {
+	    	$("#taxVatId").show();
+			$("#taxCstId").show();
+	    }
+	});
+	
+});
 
 function addSpecial() {
 	html  = '<tr id="special-row' + special_row + '">'; 
@@ -134,7 +181,7 @@ function addShipping() {
 	
 function addImage() {
 	html  = '<tr id="image-row' + image_row + '">';
-	html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="http://www.teraxpress.com/image/cache/no_image-100x100.png" alt="" title="" data-placeholder="http://www.teraxpress.com/image/cache/no_image-100x100.png" /><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
+	html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="Sort Order" class="form-control" /></td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i></button></td>';
 	html += '</tr>';
@@ -143,17 +190,13 @@ function addImage() {
 	
 	image_row++;
 }
-	$(document).ready(function(){
-		
-	});
-	
 	
 </script>
 
 <div class="inner">
 	<div class="row">
 		<div class="col-lg-3">
-			<h1 style="color: #333; font-size: 30px;">Product</h1>
+			<h1 style="color: #333; font-size: 25px; margin-top:20px;">&nbsp; Add Product</h1>
 		</div>
 
 		<div class="pull-right" style="padding: 25px;">
@@ -170,16 +213,13 @@ function addImage() {
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-list"></i> Product List
+					<i class="icon-th-list"></i> &nbsp; Product Fields
 				</h3>
 			</div>
 			<div class="panel-body">
 				<br>
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">Basic Tabs</div>
-							<div class="panel-body">
 								<form id="form-product" class="form-horizontal"
 									enctype="multipart/form-data" method="post" action="#">
 									<ul class="nav nav-tabs nav_tabs_bottom_border"
@@ -187,6 +227,7 @@ function addImage() {
 										<li class="active"><a data-toggle="tab"
 											href="#tab-general">General</a></li>
 										<li><a data-toggle="tab" href="#tab-data">Values</a></li>
+										<li><a data-toggle="tab" href="#tab-SEO">SEO</a></li>
 										<li><a data-toggle="tab" href="#tab-shipping">Shipping</a>
 										</li>
 										<li><a data-toggle="tab" href="#tab-attribute">Attribute</a>
@@ -194,8 +235,8 @@ function addImage() {
 										<li><a data-toggle="tab" href="#tab-image">Image</a></li>
 										<li><a data-toggle="tab" href="#tab-discount">Discount</a>
 										</li>
-										<li><a data-toggle="tab" href="#tab-special">Special
-												Price</a></li>
+										<li><a data-toggle="tab" href="#tab-special">Special Price</a></li>
+										<li><a data-toggle="tab" href="#tab-Tax"> Tax </a></li>
 									</ul>
 
 									<div class="tab-content" style="border: 0px; padding: 0px;">
@@ -281,43 +322,6 @@ function addImage() {
 															</form>
 														</div>
 													</div>
-												</div>
-											</div>
-											<div class="form-group required">
-												<label class="col-sm-2 control-label"
-													for="input-meta-title1">Meta Tag Title</label>
-												<div class="col-sm-10">
-													<input type="text"
-														name="product_description[1][meta_title]" value=""
-														placeholder="Meta Tag Title" id="input-meta-title1"
-														class="form-control" />
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-2 control-label"
-													for="input-meta-description1">Meta Tag Description</label>
-												<div class="col-sm-10">
-													<textarea name="product_description[1][meta_description]"
-														rows="5" placeholder="Meta Tag Description"
-														id="input-meta-description1" class="form-control"></textarea>
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-2 control-label"
-													for="input-meta-keyword1">Meta Tag Keywords</label>
-												<div class="col-sm-10">
-													<textarea name="product_description[1][meta_keyword]"
-														rows="5" placeholder="Meta Tag Keywords"
-														id="input-meta-keyword1" class="form-control"></textarea>
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-2 control-label" for="input-tag1"><span
-													data-toggle="tooltip" title="comma separated">SEO
-														Keyword</span></label>
-												<div class="col-sm-10">
-													<input type="text" name="SEO Keyword" value=""
-														placeholder="SEO Keyword" id="" class="form-control" />
 												</div>
 											</div>
 										</div>
@@ -424,13 +428,10 @@ function addImage() {
 												<label class="col-sm-2 control-label"
 													for="input-date-available">Date Available</label>
 												<div class="col-sm-3">
-													<input id="dateOfBirth" class="span2 form_control_width"
-														type="text"
-														style="padding-left: 5px; float: left; margin-right: 8px;"
-														size="16" value="12-02-2012" readonly> <span
-														class="add-on"> <i class="icon-calendar"
-														style="font-size: 20px;"></i>
-													</span>
+												
+												<input type="text" class="form-control" placeholder="10/09/1990" value=""
+											data-date-format="mm/dd/yy" id="dateOfBirthId"">
+											
 												</div>
 											</div>
 											<div class="form-group">
@@ -499,6 +500,48 @@ function addImage() {
 												</div>
 											</div>
 										</div>
+
+										<div class="tab-pane fade" id="tab-SEO">
+											
+											<div class="form-group required">
+												<label class="col-sm-2 control-label"
+													for="input-meta-title1">Meta Tag Title</label>
+												<div class="col-sm-10">
+													<input type="text"
+														name="product_description[1][meta_title]" value=""
+														placeholder="Meta Tag Title" id="input-meta-title1"
+														class="form-control" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label"
+													for="input-meta-description1">Meta Tag Description</label>
+												<div class="col-sm-10">
+													<textarea name="product_description[1][meta_description]"
+														rows="5" placeholder="Meta Tag Description"
+														id="input-meta-description1" class="form-control"></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label"
+													for="input-meta-keyword1">Meta Tag Keywords</label>
+												<div class="col-sm-10">
+													<textarea name="product_description[1][meta_keyword]"
+														rows="5" placeholder="Meta Tag Keywords"
+														id="input-meta-keyword1" class="form-control"></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-tag1"><span
+													data-toggle="tooltip" title="comma separated">SEO
+														Keyword</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="SEO Keyword" value=""
+														placeholder="SEO Keyword" id="" class="form-control" />
+												</div>
+											</div>
+										</div>
+
 
 
 										<div class="tab-pane" id="tab-shipping">
@@ -640,11 +683,35 @@ function addImage() {
 												</table>
 											</div>
 										</div>
-									</div>
+										
+										<div class="tab-pane fade" id="tab-Tax">
+											<div class="form-group">
+												<label class="col-sm-3 control-label" for="ProductTaxId">Product Tax Details</label>
+											<div class="col-sm-3">
+													<select name="ProductTax" id="ProductTaxId"
+														class="form-control">
+														<option id="ProductTaxableGoodsId" value="1" selected="selected">Taxable Goods</option>
+														<option id="ProductNonTaxableGoodsId" value="0">Non Taxable Goods</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group required" id="taxVatId">
+												<label class="col-sm-3 control-label" for="VatId">VAT</label>
+												<div class="col-sm-3">
+													<input type="text" name="vatId" value=""
+														placeholder="VAT %" id="vatId" class="form-control" />
+												</div>
+											</div>
+											<div class="form-group required" id="taxCstId">
+												<label class="col-sm-3 control-label" for="cstId">CST</label>
+												<div class="col-sm-3">
+													<input type="text" name="cstId" value=""
+														placeholder="CST %" id="cstId" class="form-control" />
+												</div>
+											</div>
+									  </div>
+								</div>
 								</form>
-							</div>
-						</div>
-					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-6 text-left"></div>
@@ -653,6 +720,7 @@ function addImage() {
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 
