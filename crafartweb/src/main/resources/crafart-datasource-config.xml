@@ -19,6 +19,14 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<bean id="dataSourceOpenShift"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://127.0.0.1:5433/crafart" />
+		<property name="username" value="adminjtztnbw" />
+		<property name="password" value="WfWfBMb6PjTM" />
+	</bean>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
