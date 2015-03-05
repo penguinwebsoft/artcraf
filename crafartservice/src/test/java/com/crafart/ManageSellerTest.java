@@ -36,13 +36,13 @@ public class ManageSellerTest {
 		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("qqq");
 		sellerBO.setCompanyName("penguin");
-		sellerBO.setCst_no("4444");
-		sellerBO.setEpch_no("121212");
+		sellerBO.setCstNo("4444");
+		sellerBO.setEpchNo("121212");
 		sellerBO.setFirstName("zzz");
 		sellerBO.setLastName("rrr");
 		sellerBO.setStatus(2);
-		sellerBO.setTin_no(2);
-		sellerBO.setVat_no("asd123");
+		sellerBO.setTinNo(2);
+		sellerBO.setVatNo("asd123");
 
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
