@@ -4,12 +4,6 @@
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
 <script type="text/javascript">
-$(function () {
-	 $("#alertSuccessId").hide();
-});
-</script>
-
-<script type="text/javascript">
 	setPage("dashboardMenuId");
 </script>
 
@@ -18,8 +12,8 @@ $(function () {
         <div class="col-lg-3">
           <h1 style="color:#333; font-size:30px;"> Seller Dashboard </h1>
         </div>
-        <div class="col-lg-9" style="padding-top:20px;">
-          <div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> UPDATED SUCCESSFULLY </div>
+        <div class="col-lg-9 text-center" style="padding-top:20px;">
+          <div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> ACTIVE </div>
           <div class=" col-lg-4 alert alert_success pull-right " style="margin-bottom:5px; color:#FF704D; font-size:17px;"> SELLER APPROVED:YES </div>
           <div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom:5px; color:#FF704D; font-size:17px;"> COMMISSION: 10% </div>
         </div>
