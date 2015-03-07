@@ -32,28 +32,26 @@
 <!-- *************Save button************ -->
 	$(document).ready(function() {
 		$("#SaveBtnId").click(function() {
-			var seller = {};
-			seller.firstName = $("#firstName").val();
-			seller.gender = $("#gender").val();
-			seller.companyName = $("#companyName").val();
-			seller.tinNo = $("#tinNo").val();
-			seller.lastName = $("#lastName").val();
-			seller.dateOfBirth = $("#dateOfBirth").val();
-			seller.epchNo = $("#epchNo").val();
-			alert(JSON.stringify(seller));
+			var sellerBO = {};
+			sellerBO.firstName = $("#firstName").val();
+			sellerBO.gender = $("#gender").val();
+			sellerBO.companyName = $("#companyName").val();
+			sellerBO.tinNo = $("#tinNo").val();
+			sellerBO.lastName = $("#lastName").val();
+			sellerBO.dateOfBirth = $("#dateOfBirth").val();
+			sellerBO.epchNo = $("#epchNo").val();
+			var postData = JSON.stringify(sellerBO);
 			$.ajax({
 				url : "../seller/addSeller",
 				type : "post",
-				data : JSON.stringify(seller),
-				contentType : "Application/json",
+				data : postData,
+				contentType : "application/json",
 				dataType : "json",
 				success : function(data) {
-					alert("success");
-					alert(data);
+					alert("Saved Successfully");
 				},
 				error : function(error) {
-					alert("failed");
-					alert(error);
+					alert("Details failed to save");
 				}
 			});
 		});
