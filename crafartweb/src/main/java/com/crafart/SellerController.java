@@ -47,14 +47,12 @@ public class SellerController {
 	public @ResponseBody
 	ModelMap addSeller(@RequestBody SellerBO sellerBO, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
 		ModelMap modelMap = new ModelMap();
-		
 		try {
 			log.info("controller");
-
-			log.info("name " + sellerBO.getCompanyName());
+			log.info("Company_Name " + sellerBO.getCompanyName());
 			manageSellerServiceImpl.addSeller(sellerBO);
 
-			log.info("added");
+			log.info("added successfully");
 		} catch (Exception uExp) {
 			log.info("Error while adding seller", uExp);
 		}
