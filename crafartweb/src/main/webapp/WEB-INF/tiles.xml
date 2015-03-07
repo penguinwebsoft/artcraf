@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="/jsp/layout.jsp">
+		<put-attribute name="title" value="Crafart" />
+		<put-attribute name="header" value="/jsp/header.jsp" />
+		<put-attribute name="menu" value="/jsp/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/jsp/footer.jsp" />
+	</definition>
+
+	<definition name="dashboard" extends="base.definition">
+		<put-attribute name="title" value="Crafart Seller Dashboard" />
+		<put-attribute name="body" value="/jsp/dashboard.jsp" />
+	</definition>
+
+	<definition name="myAccount" extends="base.definition">
+		<put-attribute name="title" value="Crafart My Accounts" />
+		<put-attribute name="body" value="/jsp/myAccount.jsp" />
+	</definition>
+
+	<definition name="bankDetails" extends="base.definition">
+		<put-attribute name="title" value="Crafart Bank Details" />
+				<put-attribute name="body" value="/jsp/bankDetails.jsp" />
+	</definition>
+
+	<definition name="shipping" extends="base.definition"> 
+		<put-attribute name="title" value="Crafart shipping And Return Policy" />
+		<put-attribute name="body" value="/jsp/shipping.jsp" />
+	</definition>
+
+	<definition name="taxInformation" extends="base.definition">
+		<put-attribute name="title" value="Crafart Tax Information" />
+		<put-attribute name="body" value="/jsp/taxInformation.jsp" />
+	</definition> 
+	
+	<definition name="product" extends="base.definition">
+		<put-attribute name="title" value="Crafart product" />
+		<put-attribute name="body" value="/jsp/product.jsp" />
+	</definition>
+	
+	<definition name="addProduct" extends="base.definition">
+		<put-attribute name="title" value="Crafart product" />
+		<put-attribute name="body" value="/jsp/addProduct.jsp" />
+	</definition>
+
+</tiles-definitions>

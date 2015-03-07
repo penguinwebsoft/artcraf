@@ -11,12 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.SellerDAO;
 import com.crafart.dataobjects.SellerDO;
-import com.crafart.exception.UserDataException;
-import com.crafart.service.ManageSellerService;
+import com.crafart.exception.CrafartDataException;
 import com.crafart.service.businessobjects.SellerBO;
-import com.crafart.service.exception.UserServiceException;
+import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
 
+/**
+ * @author Karthi
+ * @version 1.0
+ * 
+ */
 /**
  * @author Karthi
  * @version 1.0
@@ -25,8 +29,8 @@ import com.crafart.service.mapper.BeanMapper;
 @Service("manageSellerServiceImpl")
 public class ManageSellerServiceImpl implements ManageSellerService {
 
-	private static final Logger log = Logger
-			.getLogger(ManageSellerServiceImpl.class);
+	@SuppressWarnings("unused")
+	private static final Logger log = Logger.getLogger(ManageSellerServiceImpl.class);
 
 	@Autowired
 	private BeanMapper beanMapper;
@@ -36,15 +40,14 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addSeller(SellerBO sellerBO) throws UserServiceException {
+	public void addSeller(SellerBO sellerBO) throws CrafartServiceException {
 
 		try {
-			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO,
-					new SellerDO());
+			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerBO.setSellerId(sellerDO.getSellerId());
-		} catch (UserDataException uExp) {
-			throw new UserServiceException("add new seller failed", uExp);
+		} catch (CrafartDataException uExp) {
+			throw new CrafartServiceException("Adding new seller failed whose sellerid is ", uExp);
 		}
 	}
 

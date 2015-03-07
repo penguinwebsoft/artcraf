@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.SellerDAO;
 import com.crafart.dataobjects.SellerDO;
-import com.crafart.exception.UserDataException;
 
 /**
  * Unit test for simple App.
@@ -35,6 +34,7 @@ public class SellerDAOTest {
 	public void testAddSeller() {
 		try {
 			SellerDO sellerDO = getSellerDO();
+			sellerDAOImpl.addSeller(sellerDO);
 			log.info("Seller id is" + sellerDO.getSellerId());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,6 +49,8 @@ public class SellerDAOTest {
 		sellerDO.setFirstName("xxxx");
 		sellerDO.setLastName("yyyy");
 		sellerDO.setTin_no(1);
+		sellerDO.setGender("male");
+		sellerDO.setDateOfBirth("00/00/0000");
 		sellerDO.setCompanyName("penguin");
 		sellerDO.setCompanyLogo("pen");
 		sellerDO.setEpch_no("123");
@@ -57,13 +59,6 @@ public class SellerDAOTest {
 		sellerDO.setCommission("aaaa");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
-		try {
-			sellerDAOImpl.addSeller(sellerDO);
-			sellerDO.setSellerId(sellerDO.getSellerId());
-		} catch (UserDataException uExp) {
-			uExp.printStackTrace();
-		}
 		return sellerDO;
-
 	}
 }

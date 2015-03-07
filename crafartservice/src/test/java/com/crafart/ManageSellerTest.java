@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.service.ManageSellerService;
 import com.crafart.service.businessobjects.SellerBO;
-import com.crafart.service.exception.UserServiceException;
+import com.crafart.service.exception.CrafartServiceException;
 
 @ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,21 +30,24 @@ public class ManageSellerTest {
 	public void testAddSeller() {
 
 		SellerBO sellerBO = new SellerBO();
+		sellerBO.setDateOfBirth("00/00/0000");
+		sellerBO.setGender("male");
+		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
 		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("qqq");
 		sellerBO.setCompanyName("penguin");
-		sellerBO.setCst_no("4444");
-		sellerBO.setEpch_no("121212");
+		sellerBO.setCstNo("4444");
+		sellerBO.setEpchNo("121212");
 		sellerBO.setFirstName("zzz");
 		sellerBO.setLastName("rrr");
 		sellerBO.setStatus(2);
-		sellerBO.setTin_no(2);
-		sellerBO.setVat_no("asd123");
+		sellerBO.setTinNo(2);
+		sellerBO.setVatNo("asd123");
 
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
-		} catch (UserServiceException uExp) {
+		} catch (CrafartServiceException uExp) {
 			uExp.printStackTrace();
 			Assert.fail();
 		}
