@@ -42,6 +42,8 @@ public class SellerControllerTest {
 
 		SellerBO sellerBO = new SellerBO();
 		sellerBO.setApproved(1);
+		sellerBO.setGender("male");
+		sellerBO.setDateOfBirth("00/00/000");
 		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("qqq");
 		sellerBO.setCompanyName("penguin");
