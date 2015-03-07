@@ -31,7 +31,8 @@ public class ManageSellerTest {
 
 		SellerBO sellerBO = new SellerBO();
 		sellerBO.setDateOfBirth("00/00/0000");
-		sellerBO.setGender(1);
+		sellerBO.setGender("male");
+		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
 		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("qqq");

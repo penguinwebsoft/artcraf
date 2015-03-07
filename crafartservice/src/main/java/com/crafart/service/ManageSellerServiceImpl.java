@@ -21,12 +21,16 @@ import com.crafart.service.mapper.BeanMapper;
  * @version 1.0
  * 
  */
+/**
+ * @author Karthi
+ * @version 1.0
+ * 
+ */
 @Service("manageSellerServiceImpl")
 public class ManageSellerServiceImpl implements ManageSellerService {
 
 	@SuppressWarnings("unused")
-	private static final Logger log = Logger
-			.getLogger(ManageSellerServiceImpl.class);
+	private static final Logger log = Logger.getLogger(ManageSellerServiceImpl.class);
 
 	@Autowired
 	private BeanMapper beanMapper;
@@ -39,12 +43,11 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	public void addSeller(SellerBO sellerBO) throws CrafartServiceException {
 
 		try {
-			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO,
-					new SellerDO());
+			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerBO.setSellerId(sellerDO.getSellerId());
 		} catch (CrafartDataException uExp) {
-			throw new CrafartServiceException("add new seller failed", uExp);
+			throw new CrafartServiceException("Adding new seller failed whose sellerid is ", uExp);
 		}
 	}
 
