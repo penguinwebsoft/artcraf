@@ -32,28 +32,26 @@
 <!-- *************Save button************ -->
 	$(document).ready(function() {
 		$("#SaveBtnId").click(function() {
-			var seller = {};
-			seller.firstName = $("#firstName").val();
-			seller.gender = $("#gender").val();
-			seller.companyName = $("#companyName").val();
-			seller.tinNo = $("#tinNo").val();
-			seller.lastName = $("#lastName").val();
-			seller.dateOfBirth = $("#dateOfBirth").val();
-			seller.epchNo = $("#epchNo").val();
-			alert(JSON.stringify(seller));
+			var sellerBO = {};
+			sellerBO.firstName = $("#firstName").val();
+			sellerBO.gender = $("#gender").val();
+			sellerBO.companyName = $("#companyName").val();
+			sellerBO.tinNo = $("#tinNo").val();
+			sellerBO.lastName = $("#lastName").val();
+			sellerBO.dateOfBirth = $("#dp2").val();
+			sellerBO.epchNo = $("#epchNo").val();
+			var postData = JSON.stringify(sellerBO);
 			$.ajax({
 				url : "../seller/addSeller",
 				type : "post",
-				data : JSON.stringify(seller),
-				contentType : "Application/json",
+				data : postData,
+				contentType : "application/json",
 				dataType : "json",
 				success : function(data) {
-					alert("success");
-					alert(data);
+					alert("Saved Successfully");
 				},
 				error : function(error) {
-					alert("failed");
-					alert(error);
+					alert("Details failed to save");
 				}
 			});
 		});
@@ -141,7 +139,7 @@
 									<label for="" class="control-label col-lg-4">Date-Of-Birth</label>
 									<div class="col-lg-8">
 
-										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2"">
+										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2">
 
 										<!-- <input type="text" class="span2 form_control_width"
 													value="10/09/90" data-date-format="mm/dd/yy" id="dp2"
