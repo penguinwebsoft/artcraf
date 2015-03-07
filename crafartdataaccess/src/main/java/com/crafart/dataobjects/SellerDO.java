@@ -36,24 +36,24 @@ public class SellerDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_seller")
 	private long sellerId;
 
-	@Column(name="first_Name")
+	@Column(name = "first_Name")
 	private String firstName;
 
-	@Column(name="last_Name")
+	@Column(name = "last_Name")
 	private String lastName;
 
-	@Column(name="gender")
-	private int gender;
+	@Column(name = "gender")
+	private String gender;
 
-	@Column(name="dob")
+	@Column(name = "dob")
 	private String dateOfBirth;
 
 	private int tin_no;
 
-	@Column(name="company_Name")
+	@Column(name = "company_Name")
 	private String companyName;
 
-	@Column(name="company_Logo")
+	@Column(name = "company_Logo")
 	private String companyLogo;
 
 	private String epch_no;
@@ -164,20 +164,20 @@ public class SellerDO implements Serializable, Cloneable {
 		this.approved = approved;
 	}
 
-	public int getGender() {
-		return gender;
-	}
-
-	public void setGender(int gender) {
-		this.gender = gender;
-	}
-
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 }
