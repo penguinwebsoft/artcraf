@@ -43,7 +43,7 @@ public class SellerDO implements Serializable, Cloneable {
 	private String lastName;
 
 	@Column(name = "gender")
-	private String gender;
+	private int gender;
 
 	@Column(name = "dob")
 	private String dateOfBirth;
@@ -172,12 +172,13 @@ public class SellerDO implements Serializable, Cloneable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
+
 
 }

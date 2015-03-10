@@ -4,10 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,21 +41,18 @@ public class SellerController {
 	 * @param httpServletResponse
 	 * @return {@link ModelAndView}
 	 */
-	@RequestMapping(value = { "/addSeller" }, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = { "/addSeller" }, method = RequestMethod.POST)
 	public @ResponseBody
-	ModelMap addSeller(@RequestBody SellerBO sellerBO, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
+	ModelMap addSeller(@RequestBody SellerBO sellerBO, HttpServletRequest httpServletRequest) {
 		ModelMap modelMap = new ModelMap();
 		try {
 			log.info("controller");
-			log.info("Company_Name " + sellerBO.getCompanyName());
 			manageSellerServiceImpl.addSeller(sellerBO);
-
 			log.info("added successfully");
 		} catch (Exception uExp) {
-			log.info("Error while adding seller", uExp);
+			log.error("Error while adding seller", uExp);
 		}
 		return modelMap;
 
 	}
-
 }

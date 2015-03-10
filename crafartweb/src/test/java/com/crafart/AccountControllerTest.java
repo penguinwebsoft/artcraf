@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.crafart;
 
 import org.junit.Assert;
@@ -12,8 +15,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.AccountBO;
 
+/**
+ * @author Karthi
+ * @version 1.0
+ *
+ */
 /**
  * Unit test for simple App.
  */
@@ -22,36 +30,32 @@ import com.crafart.service.businessobjects.SellerBO;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class SellerControllerTest {
+public class AccountControllerTest {
 
 	@Autowired
-	private SellerController sellerController;
+	public AccountController accountController;
 
 	@Test
 	@Rollback(true)
-	public void testAddSeller() {
-
-		SellerBO sellerBO = new SellerBO();
-		sellerBO.setApproved(1);
-		sellerBO.setGender(1);
-		sellerBO.setDateOfBirth("11/02/0000");
-		sellerBO.setCommission("www");
-		sellerBO.setCompanyLogo("qqq");
-		sellerBO.setCompanyName("penguin");
-		sellerBO.setCstNo("4444");
-		sellerBO.setEpchNo("121212");
-		sellerBO.setFirstName("lll");
-		sellerBO.setLastName("mmm");
-		sellerBO.setStatus(2);
-		sellerBO.setTinNo(2);
-		sellerBO.setVatNo("asd123");
-
+	public void testAddBankDetail() {
+		AccountBO accountBO = getaccountdetail();
 		try {
-			sellerController.addSeller(sellerBO, new MockHttpServletRequest());
-		} catch (Exception exp) {
-			exp.printStackTrace();
+			accountController.addBankAccountDetail(accountBO, new MockHttpServletRequest());
+		} catch (Exception e) {
+			e.printStackTrace();
 			Assert.fail();
 		}
+	}
 
+	private AccountBO getaccountdetail() {
+		AccountBO accountBO = new AccountBO();
+		accountBO.setAccountName("wewe");
+		accountBO.setAccountNumber("000011100");
+		accountBO.setBankName("xxx");
+		accountBO.setBranchName("yyy");
+		accountBO.setIfscCode("101010aaa0");
+		accountBO.setMicrCode("111000aaa111");
+		accountBO.setType("qq");
+		return accountBO;
 	}
 }

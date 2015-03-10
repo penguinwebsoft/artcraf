@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.crafart;
 
 import org.apache.log4j.Logger;
@@ -13,8 +16,16 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.SellerDAO;
+import com.crafart.data.StoreDAO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.StoreDO;
+import com.crafart.exception.CrafartDataException;
 
+/**
+ * @author Karthi
+ * @version 1.0
+ *
+ */
 /**
  * Unit test for simple App.
  */
@@ -22,28 +33,40 @@ import com.crafart.dataobjects.SellerDO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-public class SellerDAOTest {
+public class StoreDAOTest {
 
-	private static final Logger log = Logger.getLogger(SellerDAOTest.class);
+	private static final Logger log = Logger.getLogger(StoreDAOTest.class);
+
+	@Autowired
+	private StoreDAO storeDAOImpl;
 
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
-	/**
-	 * test case for addSeller method
-	 */
 	@Test
 	@Rollback(true)
-	public void testAddSeller() {
+	public void testStoreDetail() {
+
+		StoreDO storeDO = getStoreDO();
 		try {
-			SellerDO sellerDO = getSellerDO();
-			sellerDAOImpl.addSeller(sellerDO);
-			log.info("Seller id is" + sellerDO.getSellerId());
-		} catch (Exception e) {
-			e.printStackTrace();
+			storeDAOImpl.addStoreDetail(storeDO);
+			log.info("store_id " + storeDO.getStoreId());
+		} catch (CrafartDataException crafartDataException) {
+			crafartDataException.printStackTrace();
 			Assert.fail();
 		}
+	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
+	private StoreDO getStoreDO() {
+		SellerDO sellerDO = getSellerDO();
+		StoreDO storeDO = new StoreDO();
+		storeDO.setName("zzz");
+		storeDO.setStore_Description("aaaa mmmmm nnnn jjjj lll");
+		storeDO.setStore_Return("llll kkkkk jjjj iii oo hhhhh yyyy");
+		storeDO.setSellerId(sellerDO.getSellerId());
+		storeDO.setStoreUrl("www.oooo.ooo");
+		return storeDO;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -53,7 +76,7 @@ public class SellerDAOTest {
 		sellerDO.setLastName("yyyy");
 		sellerDO.setTin_no(1);
 		sellerDO.setGender(1);
-		sellerDO.setDateOfBirth("00/00/0000");
+		sellerDO.setDateOfBirth("00/00/0012");
 		sellerDO.setCompanyName("penguin");
 		sellerDO.setCompanyLogo("pen");
 		sellerDO.setEpch_no("123");
@@ -62,6 +85,14 @@ public class SellerDAOTest {
 		sellerDO.setCommission("aaaa");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
+		try {
+			sellerDAOImpl.addSeller(sellerDO);
+			sellerDO.setSellerId(sellerDO.getSellerId());
+		} catch (CrafartDataException uExp) {
+			uExp.printStackTrace();
+		}
 		return sellerDO;
+
 	}
+
 }

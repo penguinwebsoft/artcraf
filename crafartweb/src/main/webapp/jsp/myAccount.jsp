@@ -29,7 +29,13 @@
 	});
 </script>
 <script type="text/javascript">
-<!-- *************Save button************ -->
+	/* 
+	 * *************Save button************ 
+	 *taking values by val() and storing it in sellerBO, then changing that to json and passing to controller by 
+	 *ajax
+	 *
+	 */
+
 	$(document).ready(function() {
 		$("#SaveBtnId").click(function() {
 			var sellerBO = {};
@@ -38,7 +44,7 @@
 			sellerBO.companyName = $("#companyName").val();
 			sellerBO.tinNo = $("#tinNo").val();
 			sellerBO.lastName = $("#lastName").val();
-			sellerBO.dateOfBirth = $("#dateOfBirth").val();
+			sellerBO.dateOfBirth = $("#dp2").val();
 			sellerBO.epchNo = $("#epchNo").val();
 			var postData = JSON.stringify(sellerBO);
 			$.ajax({
@@ -88,8 +94,8 @@
 									<label for="" class="control-label col-lg-4">Gender</label>
 									<div class="col-lg-8">
 										<select class="form-control" id="gender" placeholder="Gender">
-											<option>Male</option>
-											<option>Female</option>
+											<option value="1">Male</option>
+											<option value="2">Female</option>
 										</select>
 									</div>
 								</div>
@@ -139,7 +145,7 @@
 									<label for="" class="control-label col-lg-4">Date-Of-Birth</label>
 									<div class="col-lg-8">
 
-										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2"">
+										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2">
 
 										<!-- <input type="text" class="span2 form_control_width"
 													value="10/09/90" data-date-format="mm/dd/yy" id="dp2"

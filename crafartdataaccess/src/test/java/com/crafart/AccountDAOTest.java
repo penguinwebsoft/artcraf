@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.crafart;
 
 import org.apache.log4j.Logger;
@@ -12,56 +15,55 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.SellerDAO;
-import com.crafart.dataobjects.SellerDO;
+import com.crafart.data.AccountDAO;
+import com.crafart.dataobjects.AccountDO;
+import com.crafart.exception.CrafartDataException;
 
 /**
- * Unit test for simple App.
+ * @author Karthi
+ * 
  */
 @ContextConfiguration("classpath:crafartdatasource-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-public class SellerDAOTest {
+public class AccountDAOTest {
 
 	private static final Logger log = Logger.getLogger(SellerDAOTest.class);
 
 	@Autowired
-	private SellerDAO sellerDAOImpl;
+	private AccountDAO accountDAOImpl;
 
 	/**
-	 * test case for addSeller method
+	 * test case for addBankAccountDetail method using {@link AccountDAO} object
+	 * here, calling the method addBankAccountDetail by passing
+	 * {@link AccountDO} object
 	 */
 	@Test
 	@Rollback(true)
-	public void testAddSeller() {
+	public void testAddAccount() {
+		AccountDO accountDO = addAccount();
 		try {
-			SellerDO sellerDO = getSellerDO();
-			sellerDAOImpl.addSeller(sellerDO);
-			log.info("Seller id is" + sellerDO.getSellerId());
-		} catch (Exception e) {
+			accountDAOImpl.addBankAccountDetail(accountDO);
+			log.info("account_id " + accountDO.getAccountId());
+		} catch (CrafartDataException e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
-
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private SellerDO getSellerDO() {
-		SellerDO sellerDO = new SellerDO();
-		sellerDO.setFirstName("xxxx");
-		sellerDO.setLastName("yyyy");
-		sellerDO.setTin_no(1);
-		sellerDO.setGender(1);
-		sellerDO.setDateOfBirth("00/00/0000");
-		sellerDO.setCompanyName("penguin");
-		sellerDO.setCompanyLogo("pen");
-		sellerDO.setEpch_no("123");
-		sellerDO.setVat_no("123456a");
-		sellerDO.setCst_no("000");
-		sellerDO.setCommission("aaaa");
-		sellerDO.setStatus(1);
-		sellerDO.setApproved(1);
-		return sellerDO;
+	private AccountDO addAccount() {
+		AccountDO accountDO = new AccountDO();
+		accountDO.setAccountName("asas");
+		accountDO.setAccountNumber("as010101");
+		accountDO.setBankName("qqqq");
+		accountDO.setBranchName("wwww");
+		accountDO.setIfscCode("xxx000xxx0");
+		accountDO.setMicrCode("0000qqqq0q");
+		accountDO.setType("zz");
+		return accountDO;
+
 	}
+
 }
