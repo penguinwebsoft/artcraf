@@ -29,7 +29,13 @@
 	});
 </script>
 <script type="text/javascript">
-<!-- *************Save button************ -->
+	/* 
+	 * *************Save button************ 
+	 *taking values by val() and storing it in sellerBO, then changing that to json and passing to controller by 
+	 *ajax
+	 *
+	 */
+
 	$(document).ready(function() {
 		$("#SaveBtnId").click(function() {
 			var sellerBO = {};
@@ -88,8 +94,8 @@
 									<label for="" class="control-label col-lg-4">Gender</label>
 									<div class="col-lg-8">
 										<select class="form-control" id="gender" placeholder="Gender">
-											<option>Male</option>
-											<option>Female</option>
+											<option value="1">Male</option>
+											<option value="2">Female</option>
 										</select>
 									</div>
 								</div>
