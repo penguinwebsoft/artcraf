@@ -38,6 +38,10 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
+	/**
+	 * mapping is done from BO to DO by mappSellerBOToDO method after mapping BO
+	 * to DO we are calling dataaccess addSeller method using sellerDO
+	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addSeller(SellerBO sellerBO) throws CrafartServiceException {
