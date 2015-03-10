@@ -18,7 +18,7 @@ import com.crafart.exception.CrafartDataException;
  * 
  */
 @Repository("sellerDAOImpl")
-public class SellerDAOImpl extends CommonDAOImpl implements SellerDAO {
+public class SellerDAOImpl implements SellerDAO {
 
 	private SessionFactory sessionFactory;
 
