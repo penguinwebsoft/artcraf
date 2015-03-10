@@ -29,6 +29,9 @@ public class SellerDAOTest {
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
+	/**
+	 * test case for addSeller method
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddSeller() {
@@ -49,7 +52,7 @@ public class SellerDAOTest {
 		sellerDO.setFirstName("xxxx");
 		sellerDO.setLastName("yyyy");
 		sellerDO.setTin_no(1);
-		sellerDO.setGender("male");
+		sellerDO.setGender(1);
 		sellerDO.setDateOfBirth("00/00/0000");
 		sellerDO.setCompanyName("penguin");
 		sellerDO.setCompanyLogo("pen");
