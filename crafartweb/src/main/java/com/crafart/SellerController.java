@@ -1,6 +1,7 @@
 package com.crafart;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,16 +46,13 @@ public class SellerController {
 	 */
 	@RequestMapping(value = { "/addSeller" }, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody
-	ModelMap addSeller(@RequestBody SellerBO sellerBO, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
+	ModelMap addSeller(@RequestBody SellerBO sellerBO, BindingResult bindingResult, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
 		try {
-			log.info("controller");
-			log.info("Company_Name " + sellerBO.getCompanyName());
 			manageSellerServiceImpl.addSeller(sellerBO);
-
-			log.info("added successfully");
-		} catch (Exception uExp) {
-			log.info("Error while adding seller", uExp);
+			session.setAttribute("seller", sellerBO);
+		} catch (CrafartServiceException serExp) {
+			log.error("Error while adding seller", serExp);
 		}
 		return modelMap;
 
