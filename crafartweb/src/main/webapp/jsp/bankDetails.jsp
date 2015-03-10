@@ -17,6 +17,41 @@
 
 	});
 </script>
+<script type="text/javascript">
+	/* 
+	 * *************Save button************ 
+	 *taking values by val() and storing it in sellerBO, then changing that to json and passing to controller by 
+	 *ajax
+	 *
+	 */
+
+	$(document).ready(function() {
+		$("#SaveBtnId").click(function() {
+			var accountBO = {};
+			accountBO.bankName = $("#bankName").val();
+			accountBO.type = $("#accountType").val();
+			accountBO.accountName = $("#accountName").val();
+			accountBO.accountNumber = $("#accountNo").val();
+			accountBO.ifscCode = $("#IfscCode").val();
+			accountBO.micrCode = $("#micrNo").val();
+			var postData = JSON.stringify(accountBO);
+			$.ajax({
+				url : "../account/addAccount",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("Saved Successfully");
+				},
+				error : function(error) {
+					alert("Details failed to save");
+				}
+			});
+		});
+
+	});
+</script>
 
 <div class="inner">
 	<div class="row">

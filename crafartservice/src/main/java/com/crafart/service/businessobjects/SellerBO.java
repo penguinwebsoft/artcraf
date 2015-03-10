@@ -23,7 +23,7 @@ public class SellerBO implements Serializable {
 
 	private String lastName;
 
-	private String gender;
+	private int gender;
 
 	private String dateOfBirth;
 
@@ -149,11 +149,11 @@ public class SellerBO implements Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 

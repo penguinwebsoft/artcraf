@@ -1,14 +1,11 @@
 package com.crafart;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,18 +41,18 @@ public class SellerController {
 	 * @param httpServletResponse
 	 * @return {@link ModelAndView}
 	 */
-	@RequestMapping(value = { "/addSeller" }, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = { "/addSeller" }, method = RequestMethod.POST)
 	public @ResponseBody
-	ModelMap addSeller(@RequestBody SellerBO sellerBO, BindingResult bindingResult, HttpSession session) {
+	ModelMap addSeller(@RequestBody SellerBO sellerBO, HttpServletRequest httpServletRequest) {
 		ModelMap modelMap = new ModelMap();
 		try {
+			log.info("controller");
 			manageSellerServiceImpl.addSeller(sellerBO);
-			session.setAttribute("seller", sellerBO);
-		} catch (CrafartServiceException serExp) {
-			log.error("Error while adding seller", serExp);
+			log.info("added successfully");
+		} catch (Exception uExp) {
+			log.error("Error while adding seller", uExp);
 		}
 		return modelMap;
 
 	}
-
 }
