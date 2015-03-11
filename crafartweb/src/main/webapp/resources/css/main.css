@@ -2711,4 +2711,27 @@ a {
    
    vertical-align:middle !important;  
 }
+
+.panel-body address {
+    margin-bottom: 0px !important;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+#header {
+    background: none repeat scroll 0 0 #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    margin: 0;
+    min-height: 0;
+    padding: 0;
+}
+
+.navbar-static-top {
+    border-radius: 0;
+}
+
 /* END Pricing Table */
