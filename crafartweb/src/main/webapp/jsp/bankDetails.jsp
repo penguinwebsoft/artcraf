@@ -60,8 +60,8 @@
 		</div>
 		<div class="col-lg-9 text-center" style="padding-top: 20px;">
 			<div id="alertSuccessId" class=" col-lg-4 alert alert_success" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">ACTIVE</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
 		</div>
 	</div>
 	<hr />
@@ -87,7 +87,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">IFSC-Code</label>
 									<div class="col-lg-8">
-										<input type="number" id="IfscCode" name="IfscCode" class="form-control" placeholder="IFSC Code" />
+										<input type="text" id="IfscCode" name="IfscCode" class="form-control" placeholder="IFSC Code" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -122,13 +122,13 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Account-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="accountNo" name="accountNo" class="form-control" placeholder="Account Code" />
+										<input type="text" id="accountNo" name="accountNo" class="form-control" placeholder="Account Code" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">MICR-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="micrNo" name="micrNo" class="form-control" placeholder="MICR No" />
+										<input type="text" id="micrNo" name="micrNo" class="form-control" placeholder="MICR No" />
 									</div>
 								</div>
 								<div class="form-group">
