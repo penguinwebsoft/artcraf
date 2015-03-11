@@ -23,10 +23,10 @@
 
 	<definition name="bankDetails" extends="base.definition">
 		<put-attribute name="title" value="Crafart Bank Details" />
-		<put-attribute name="body" value="/jsp/bankDetails.jsp" />
+				<put-attribute name="body" value="/jsp/bankDetails.jsp" />
 	</definition>
 
-	<definition name="shipping" extends="base.definition">
+	<definition name="shipping" extends="base.definition"> 
 		<put-attribute name="title" value="Crafart shipping And Return Policy" />
 		<put-attribute name="body" value="/jsp/shipping.jsp" />
 	</definition>
@@ -34,16 +34,41 @@
 	<definition name="taxInformation" extends="base.definition">
 		<put-attribute name="title" value="Crafart Tax Information" />
 		<put-attribute name="body" value="/jsp/taxInformation.jsp" />
-	</definition>
-
+	</definition> 
+	
 	<definition name="product" extends="base.definition">
 		<put-attribute name="title" value="Crafart product" />
 		<put-attribute name="body" value="/jsp/product.jsp" />
 	</definition>
-
+	
 	<definition name="addProduct" extends="base.definition">
-		<put-attribute name="title" value="Crafart product" />
+		<put-attribute name="title" value="Crafart Add Product" />
 		<put-attribute name="body" value="/jsp/addProduct.jsp" />
+	</definition>
+	
+	<definition name="orders" extends="base.definition">
+		<put-attribute name="title" value="Crafart Orders" />
+		<put-attribute name="body" value="/jsp/orders.jsp" />
+	</definition>
+	
+	<definition name="orderDetails" extends="base.definition">
+		<put-attribute name="title" value="Crafart Order Details" />
+		<put-attribute name="body" value="/jsp/orderDetails.jsp" />
+	</definition>
+	
+	<definition name="transactions" extends="base.definition">
+		<put-attribute name="title" value="Crafart Transactions" />
+		<put-attribute name="body" value="/jsp/transactions.jsp" />
+	</definition>
+	
+	<definition name="reportView" extends="base.definition">
+		<put-attribute name="title" value="Crafart Report View" />
+		<put-attribute name="body" value="/jsp/reportView.jsp" />
+	</definition>
+	
+	<definition name="reportPurchase" extends="base.definition">
+		<put-attribute name="title" value="Crafart Report Purchase" />
+		<put-attribute name="body" value="/jsp/reportPurchase.jsp" />
 	</definition>
 
 </tiles-definitions>
