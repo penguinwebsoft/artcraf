@@ -60,7 +60,7 @@
 									<div class="form-group">
 										<label for="input-username">Username</label>
 										<div class="input-group">
-											<span class="input-group-addon"><i class="icon-user"></i></span> <input type="text" name="username" value="" placeholder="Username" id="input-username" class="form-control" />
+											<span class="input-group-addon" style="padding-bottom: 15px;"><i class="icon-user"></i></span> <input type="text" name="username" value="" placeholder="Username" id="input-username" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -95,7 +95,7 @@
 									<div class="form-group">
 										<label for="input-email">E-Mail Address</label>
 										<div class="input-group">
-											<span class="input-group-addon"><i class="icon-envelope-alt"></i></span> <input type="email" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" />
+											<span class="input-group-addon" style="padding-bottom: 15px;"><i class="icon-envelope-alt"></i></span> <input type="email" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" />
 										</div>
 									</div>
 
