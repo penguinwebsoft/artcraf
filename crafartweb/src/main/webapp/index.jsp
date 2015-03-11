@@ -1,1 +1,1 @@
-<jsp:forward page="menu/dashboard"></jsp:forward>
+<jsp:forward page="menu/login"></jsp:forward>
