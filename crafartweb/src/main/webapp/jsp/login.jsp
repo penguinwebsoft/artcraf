@@ -29,7 +29,7 @@
 <script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
 <script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
 <script src="${context}/resources/javascript/validationInit.js"></script>
-<script src="${context}/resources/javaScript/login.js"></script>
+<script src="${context}/resources/javascript/login.js"></script>
 <script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="${context}/resources/plugins/validationengine/js/jquery.validationEngine.js"></script>
 <script src="${context}/resources/plugins/validationengine/js/languages/jquery.validationEngine-en.js"></script>
