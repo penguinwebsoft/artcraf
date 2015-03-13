@@ -42,9 +42,9 @@ public class SellerDAOImpl implements SellerDAO {
 	public void addSeller(SellerDO sellerDO) throws CrafartDataException {
 		try {
 			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
+			session.beginTransaction();
 			session.save(sellerDO);
-			tx.commit();
+			session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding new seller details", hExp);
