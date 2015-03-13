@@ -43,7 +43,7 @@ public class SellerDAOImpl implements SellerDAO {
 		try {
 			Session session = this.sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
-			session.persist(sellerDO);
+			session.save(sellerDO);
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {
