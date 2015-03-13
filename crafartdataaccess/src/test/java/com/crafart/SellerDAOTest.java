@@ -1,5 +1,8 @@
 package com.crafart;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +16,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.SellerDAO;
+import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.StoreDO;
 
 /**
  * Unit test for simple App.
@@ -49,8 +54,8 @@ public class SellerDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	private SellerDO getSellerDO() {
 		SellerDO sellerDO = new SellerDO();
-		sellerDO.setFirstName("xxxx");
-		sellerDO.setLastName("yyyy");
+		sellerDO.setFirstName("craf");
+		sellerDO.setLastName("art");
 		sellerDO.setTin_no(1);
 		sellerDO.setGender(1);
 		sellerDO.setDateOfBirth("00/00/0000");
@@ -62,6 +67,36 @@ public class SellerDAOTest {
 		sellerDO.setCommission("aaaa");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
+		sellerDO.setStoreDO(getStoreDOs(sellerDO));
+		Set<SellerDO> dos = new HashSet<>();
+		dos.add(sellerDO);
+		sellerDO.setAddressDOs(getAddressDOs(dos));
 		return sellerDO;
 	}
+
+	private Set<AddressDO> getAddressDOs(Set<SellerDO> dos) {
+		AddressDO addressDO = new AddressDO();
+		addressDO.setCityId(1);
+		addressDO.setPinCode("001100");
+		addressDO.setSellerDOs(dos);
+		addressDO.setStateId(2);
+		addressDO.setStreet("qwertyuiop");
+		Set<AddressDO> addressDOs = new HashSet<>();
+		addressDOs.add(addressDO);
+		return addressDOs;
+	}
+
+	private StoreDO getStoreDOs(SellerDO sellerDO) {
+		StoreDO storeDO = new StoreDO();
+		storeDO.setName("store craf");
+		storeDO.setStoreDescription("penguin store");
+		storeDO.setStoreReturn("test desc");
+		storeDO.setStoreUrl("acx");
+		storeDO.setSellerDO(sellerDO);
+		/*
+		 * List<StoreDO> storeDOs = new ArrayList<>(); storeDOs.add(storeDO);
+		 */
+		return storeDO;
+	}
+
 }
