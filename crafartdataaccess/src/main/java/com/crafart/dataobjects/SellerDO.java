@@ -4,12 +4,19 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,13 +38,28 @@ public class SellerDO implements Serializable, Cloneable {
 	private static final long serialVersionUID = 2950842206999695829L;
 
 	@Id
-	@Column(name = "seller_Id")
+	@Column(name = "seller_id")
 	@SequenceGenerator(name = "seq_seller", sequenceName = "seq_seller")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_seller")
 	private long sellerId;
 
+	@OneToOne(mappedBy = "sellerDO", cascade = CascadeType.ALL)
+	private StoreDO storeDO;
+
 	@Column(name = "first_Name")
 	private String firstName;
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "SELLER_ADDRESS", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS_ID") })
+	private Set<AddressDO> addressDOs = new HashSet<AddressDO>();
+
+	public Set<AddressDO> getAddressDOs() {
+		return addressDOs;
+	}
+
+	public void setAddressDOs(Set<AddressDO> addressDOs) {
+		this.addressDOs = addressDOs;
+	}
 
 	@Column(name = "last_Name")
 	private String lastName;
@@ -180,5 +202,13 @@ public class SellerDO implements Serializable, Cloneable {
 		this.gender = gender;
 	}
 
+	public StoreDO getStoreDO() {
+		return storeDO;
+	}
+
+	public void setStoreDO(StoreDO storeDO) {
+		this.storeDO = storeDO;
+
+	}
 
 }
