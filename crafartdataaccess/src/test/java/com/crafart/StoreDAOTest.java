@@ -62,9 +62,9 @@ public class StoreDAOTest {
 		SellerDO sellerDO = getSellerDO();
 		StoreDO storeDO = new StoreDO();
 		storeDO.setName("zzz");
-		storeDO.setStore_Description("aaaa mmmmm nnnn jjjj lll");
-		storeDO.setStore_Return("llll kkkkk jjjj iii oo hhhhh yyyy");
-		storeDO.setSellerId(sellerDO.getSellerId());
+		storeDO.setStoreDescription("aaaa mmmmm nnnn jjjj lll");
+		storeDO.setStoreReturn("llll kkkkk jjjj iii oo hhhhh yyyy");
+		storeDO.setSellerDO(sellerDO);
 		storeDO.setStoreUrl("www.oooo.ooo");
 		return storeDO;
 	}

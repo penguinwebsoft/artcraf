@@ -18,7 +18,7 @@
 <div class="inner">
 	<div class="row">
 		<div class="col-lg-3">
-			<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Product</h1>
+			<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; My Product</h1>
 		</div>
 		<div class="pull-right" style="padding: 25px;">
 			<a class="btn btn-primary" title="" data-toggle="tooltip" href="${baseURL}/menu/addProduct.html" data-original-title="Add New"> &nbsp;&nbsp;&nbsp;ADD&nbsp;&nbsp;&nbsp; </a> <a

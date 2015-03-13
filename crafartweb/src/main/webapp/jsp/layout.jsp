@@ -55,6 +55,7 @@
 <script src="${context}/resources/plugins/bootstrap-wysihtml5-hack.js"></script>
 <script src="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.min.js"></script>
 
+
 <%-- <script src="${context}/resources/plugins/flot/jquery.flot.js"></script> 
 <script src="${context}/resources/plugins/flot/jquery.flot.resize.js"></script> 
 <script src="${context}/resources/plugins/flot/jquery.flot.time.js"></script> 

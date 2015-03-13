@@ -72,8 +72,8 @@
 		</div>
 		<div class="col-lg-9 text-center" style="padding-top: 20px;">
 			<div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">ACTIVE</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
 		</div>
 	</div>
 	<hr />
@@ -121,7 +121,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Phone-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="phoneNo" name="phoneNo" class="form-control" placeholder="Phone No" />
+										<input type="text" id="phoneNo" name="phoneNo" class="form-control" placeholder="Phone No" />
 									</div>
 								</div>
 
@@ -129,7 +129,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">EPCH-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="epchNo" name="epchNo" class="form-control" placeholder="EPCH No" />
+										<input type="text" id="epchNo" name="epchNo" class="form-control" placeholder="EPCH No" />
 									</div>
 								</div>
 							</div>
@@ -147,13 +147,6 @@
 
 										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2">
 
-										<!-- <input type="text" class="span2 form_control_width"
-													value="10/09/90" data-date-format="mm/dd/yy" id="dp2"
-													style="padding-left: 5px; float: left; margin-right: 8px;">
-		
-												<span class="add-on"> <a oncl class="icon-calendar"
-													style="font-size: 20px;"></i> </a>
-												</span> -->
 									</div>
 								</div>
 
@@ -172,7 +165,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Pin-Code</label>
 									<div class="col-lg-8">
-										<input type="number" id="pinCode" name="pinCode" class="form-control" placeholder="Pin Code" />
+										<input type="text" id="pinCode" name="pinCode" class="form-control" placeholder="Pin Code" />
 									</div>
 								</div>
 

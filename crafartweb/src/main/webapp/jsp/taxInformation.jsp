@@ -26,8 +26,8 @@
 		</div>
 		<div class="col-lg-9 text-center" style="padding-top: 20px;">
 			<div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">ACTIVE</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
 		</div>
 	</div>
 	<hr />
@@ -41,7 +41,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">VAT/TIN-NO</label>
 									<div class="col-lg-8">
-										<input type="number" id="VatNo" name="VatNo" class="form-control" placeholder="VAT/TIN NO" />
+										<input type="text" id="VatNo" name="VatNo" class="form-control" placeholder="VAT/TIN NO" />
 									</div>
 								</div>
 								<div class="form-group">

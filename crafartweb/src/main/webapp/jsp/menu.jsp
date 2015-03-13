@@ -31,4 +31,25 @@
 		</ul></li>
 	<li class="panel"><a id="MyProductMenuId" href="${baseURL}/menu/product"> <i class="icon-signin"> </i> My Products
 	</a></li>
+
+	<li class="panel" id="salesMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-navs"> <i class="icon-tasks"> </i> Sales <span
+			class="pull-right"> <i class="icon-angle-left"></i>
+		</span> &nbsp;
+	</a>
+		<ul class="collapse" id="component-navs">
+			<li><a id="MyOrdersMenuId" href="${baseURL}/menu/orders"> <i class="icon-angle-right"></i> Orders
+			</a></li>
+			<li><a id="transactionsMenuId" href="${baseURL}/menu/transactions"> <i class="icon-angle-right"></i> Transactions
+			</a></li>
+		</ul></li>
+	<li class="panel" id="reportMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-report-navs"> <i class="icon-tasks"> </i> Reports <span
+			class="pull-right"> <i class="icon-angle-left"></i>
+		</span> &nbsp;
+	</a>
+		<ul class="collapse" id="component-report-navs">
+			<li><a id="viewedMenuId" href="${baseURL}/menu/reportView"> <i class="icon-angle-right"></i> Viewed
+			</a></li>
+			<li><a id="purchaseMenuId" href="${baseURL}/menu/reportPurchase"> <i class="icon-angle-right"></i> Purchased
+			</a></li>
+		</ul></li>
 </ul>

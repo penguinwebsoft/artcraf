@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -37,8 +39,17 @@ public class StoreDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_store")
 	private long storeId;
 
-	@Column(name = "seller_id")
-	private long sellerId;
+	@ManyToOne
+	@JoinColumn(name = "seller_id", nullable=false)
+	private SellerDO sellerDO;
+
+	public SellerDO getSellerDO() {
+		return sellerDO;
+	}
+
+	public void setSellerDO(SellerDO sellerDO) {
+		this.sellerDO = sellerDO;
+	}
 
 	@Column(name = "name")
 	private String name;
@@ -47,10 +58,10 @@ public class StoreDO implements Serializable, Cloneable {
 	private String storeUrl;
 
 	@Column(name = "store_description")
-	private String store_Description;
+	private String storeDescription;
 
 	@Column(name = "return")
-	private String store_Return;
+	private String storeReturn;
 
 	public long getStoreId() {
 		return storeId;
@@ -58,14 +69,6 @@ public class StoreDO implements Serializable, Cloneable {
 
 	public void setStoreId(long storeId) {
 		this.storeId = storeId;
-	}
-
-	public long getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(long sellerId) {
-		this.sellerId = sellerId;
 	}
 
 	public String getName() {
@@ -84,20 +87,20 @@ public class StoreDO implements Serializable, Cloneable {
 		this.storeUrl = storeUrl;
 	}
 
-	public String getStore_Description() {
-		return store_Description;
+	public String getStoreDescription() {
+		return storeDescription;
 	}
 
-	public void setStore_Description(String store_Description) {
-		this.store_Description = store_Description;
+	public void setStoreDescription(String store_Description) {
+		this.storeDescription = store_Description;
 	}
 
-	public String getStore_Return() {
-		return store_Return;
+	public String getStoreReturn() {
+		return storeReturn;
 	}
 
-	public void setStore_Return(String store_Return) {
-		this.store_Return = store_Return;
+	public void setStoreReturn(String store_Return) {
+		this.storeReturn = store_Return;
 	}
 
 }

@@ -45,9 +45,39 @@ public class MenuController {
 	public ModelAndView showProduct(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("product");
 	}
-	
+
 	@RequestMapping("/addProduct")
 	public ModelAndView showAddProduct(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("addProduct");
+	}
+
+	@RequestMapping("/orders")
+	public ModelAndView showOrders(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("orders");
+	}
+
+	@RequestMapping("/orderDetails")
+	public ModelAndView showorderDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("orderDetails");
+	}
+
+	@RequestMapping("/transactions")
+	public ModelAndView showTransactions(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("transactions");
+	}
+
+	@RequestMapping("/reportView")
+	public ModelAndView showReportView(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("reportView");
+	}
+
+	@RequestMapping("/reportPurchase")
+	public ModelAndView showReportPurchase(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("reportPurchase");
+	}
+
+	@RequestMapping("/login")
+	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("login");
 	}
 }
