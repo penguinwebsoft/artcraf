@@ -10,8 +10,28 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var msg = "SAVED SUCCESSFULLY";
+		
 
 		$("#SaveBtnId").click(function() {
+			var sellerBO = {};
+			var storeBO = {};
+			storeBO.storeReturn = $("#Shipping").val();
+			sellerBO.storeBO = storeBO;
+			var postData = JSON.stringify(sellerBO);
+			$.ajax({
+				url : "../seller/updateStore",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("Saved Successfully");
+				},
+				error : function(error) {
+					alert(error);
+					alert("Details failed to save");
+				}
+			});
 			$("#alertSuccessId").text(msg);
 		});
 
