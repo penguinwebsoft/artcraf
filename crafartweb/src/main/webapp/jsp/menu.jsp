@@ -3,11 +3,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
-<script type="text/javascript">
-		$(document).ready(function() {
-		alert($("#sellerId").val());
-	});
-</script>
+
 <input type="hidden" id="sellerId" value="${sellerprofile.sellerId}" />
 <div class="media user-media well-small" style="margin-top: 1px;">
 	<a class="user-link" href="#"> <img class="media-object img-thumbnail user-img" alt="User Picture" src="${context}/resources/img/user.gif">
