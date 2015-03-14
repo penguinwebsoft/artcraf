@@ -51,4 +51,18 @@ public class SellerDAOImpl implements SellerDAO {
 
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateSeller(SellerDO sellerDO) throws CrafartDataException {
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			session.update(sellerDO);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("Erroe while updating table", hExp);
+		}
+	}
+
 }
