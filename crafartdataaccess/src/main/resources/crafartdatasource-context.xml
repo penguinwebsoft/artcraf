@@ -24,6 +24,7 @@
 				<value>com.crafart.dataobjects.AccountDO</value>
 				<value>com.crafart.dataobjects.ProductDO</value>
 				<value>com.crafart.dataobjects.StoreDO</value>
+				<value>com.crafart.dataobjects.AddressDO</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
