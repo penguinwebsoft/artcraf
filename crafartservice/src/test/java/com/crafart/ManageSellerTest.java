@@ -12,7 +12,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.service.ManageSellerService;
+import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 @ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
@@ -39,11 +41,13 @@ public class ManageSellerTest {
 		sellerBO.setCompanyName("penguin");
 		sellerBO.setCstNo("4444");
 		sellerBO.setEpchNo("121212");
-		sellerBO.setFirstName("zzz");
-		sellerBO.setLastName("rrr");
+		sellerBO.setFirstName("from service");
+		sellerBO.setLastName("service");
 		sellerBO.setStatus(2);
 		sellerBO.setTinNo(2);
 		sellerBO.setVatNo("asd123");
+		sellerBO.setStoreBO(getStoreBO(sellerBO));
+		sellerBO.setAddressBO(getAddressBO(sellerBO));
 
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
@@ -51,6 +55,27 @@ public class ManageSellerTest {
 			uExp.printStackTrace();
 			Assert.fail();
 		}
+
+	}
+
+	private AddressBO getAddressBO(SellerBO sellerBO) {
+		AddressBO addressBO = new AddressBO();
+		addressBO.setCityId(0);
+		addressBO.setPinCode("service now");
+		addressBO.setStateId(0);
+		addressBO.setStreet("testing now");
+		addressBO.setSellerBO(sellerBO);
+		return addressBO;
+	}
+
+	private StoreBO getStoreBO(SellerBO sellerBO) {
+		StoreBO storeBO = new StoreBO();
+		storeBO.setName("from service");
+		storeBO.setSellerBO(sellerBO);
+		storeBO.setStoreDescription(" from service");
+		storeBO.setStoreReturn("serv");
+		storeBO.setStoreUrl("www.wwww.com");
+		return storeBO;
 
 	}
 
