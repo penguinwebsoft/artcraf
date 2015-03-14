@@ -3,8 +3,8 @@
  */
 package com.crafart.service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	 * to DO we are calling dataaccess addSeller method using sellerDO
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void addSeller(SellerBO sellerBO) throws CrafartServiceException {
 
 		try {
@@ -63,14 +63,41 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 			// List<StoreDO> storeDOLst = new ArrayList<>();
 			// sellerDO.setStoreDOs(storeDOs);
 			sellerDO.setStoreDO(storeDO);
-			Set<AddressDO> addressDOs = new HashSet<>();
+			List<AddressDO> addressDOs = new ArrayList<>();
 			addressDOs.add(addressDO);
 			sellerDO.setAddressDOs(addressDOs);
 			sellerDAOImpl.addSeller(sellerDO);
+			sellerBO.getStoreBO().setStoreId(sellerDO.getStoreDO().getStoreId());
+			//assuming the seller having one address, hence getting first element from the address list
+			sellerBO.getAddressBO().setAddressId(sellerDO.getAddressDOs().get(0).getAddressId());
 			sellerBO.setSellerId(sellerDO.getSellerId());
 		} catch (CrafartDataException uExp) {
 			throw new CrafartServiceException("Adding new seller failed whose sellerid is ", uExp);
 		}
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateSeller(SellerBO sellerBO) throws CrafartServiceException {
+
+		try {
+
+			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
+			AddressDO addressDO = beanMapper.mapAddressBOToDO(sellerBO.getAddressBO(), new AddressDO(), sellerDO);
+			StoreDO storeDO = beanMapper.mapStoreBOToDO(sellerBO.getStoreBO(), new StoreDO(), sellerDO);
+			// List<StoreDO> storeDOLst = new ArrayList<>();
+			// sellerDO.setStoreDOs(storeDOs);
+			sellerDO.setStoreDO(storeDO);
+			List<AddressDO> addressDOs = new ArrayList<>();
+			addressDOs.add(addressDO);
+			sellerDO.setAddressDOs(addressDOs);
+			sellerDAOImpl.updateSeller(sellerDO);
+			sellerBO.setSellerId(sellerDO.getSellerId());
+		} catch (CrafartDataException uExp) {
+			throw new CrafartServiceException("updating new seller failed from service is ", uExp);
+		}
+	}
 }
