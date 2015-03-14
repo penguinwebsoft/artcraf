@@ -57,7 +57,6 @@
 			sellerBO.storeBO = storeBO;
 			sellerBO.addressBO = addressBO;
 			var postData = JSON.stringify(sellerBO);
-			alert(postData);
 			$.ajax({
 				url : "../seller/addSeller",
 				type : "post",
