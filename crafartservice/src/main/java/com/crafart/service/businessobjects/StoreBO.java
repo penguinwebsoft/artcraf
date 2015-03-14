@@ -19,15 +19,15 @@ public class StoreBO implements Serializable {
 
 	private long storeId;
 
-	private long sellerId;
+	private SellerBO sellerBO;
 
 	private String name;
 
 	private String storeUrl;
 
-	private String store_Description;
+	private String storeDescription;
 
-	private String store_Return;
+	private String storeReturn;
 
 	public long getStoreId() {
 		return storeId;
@@ -37,13 +37,11 @@ public class StoreBO implements Serializable {
 		this.storeId = storeId;
 	}
 
-	public long getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(long sellerId) {
-		this.sellerId = sellerId;
-	}
+	/*
+	 * public long getSellerId() { return sellerId; }
+	 * 
+	 * public void setSellerId(long sellerId) { this.sellerId = sellerId; }
+	 */
 
 	public String getName() {
 		return name;
@@ -61,20 +59,28 @@ public class StoreBO implements Serializable {
 		this.storeUrl = storeUrl;
 	}
 
-	public String getStore_Description() {
-		return store_Description;
+	public SellerBO getSellerBO() {
+		return sellerBO;
 	}
 
-	public void setStore_Description(String store_Description) {
-		this.store_Description = store_Description;
+	public String getStoreDescription() {
+		return storeDescription;
 	}
 
-	public String getStore_Return() {
-		return store_Return;
+	public void setStoreDescription(String storeDescription) {
+		this.storeDescription = storeDescription;
 	}
 
-	public void setStore_Return(String store_Return) {
-		this.store_Return = store_Return;
+	public String getStoreReturn() {
+		return storeReturn;
+	}
+
+	public void setStoreReturn(String storeReturn) {
+		this.storeReturn = storeReturn;
+	}
+
+	public void setSellerBO(SellerBO sellerBO) {
+		this.sellerBO = sellerBO;
 	}
 
 }
