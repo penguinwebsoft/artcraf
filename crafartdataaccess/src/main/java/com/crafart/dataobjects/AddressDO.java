@@ -31,7 +31,7 @@ public class AddressDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "address_id")
-	@SequenceGenerator(name = "seq_address", sequenceName = "seq_address", allocationSize=1)
+	@SequenceGenerator(name = "seq_address", sequenceName = "seq_address", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
 	private long addressId;
 
