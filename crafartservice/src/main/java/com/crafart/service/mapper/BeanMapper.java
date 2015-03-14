@@ -3,8 +3,8 @@
  */
 package com.crafart.service.mapper;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -186,7 +186,7 @@ public class BeanMapper {
 	
 	public AddressDO mapAddressBOToDO(AddressBO addressBO, AddressDO addressDO, SellerDO  sellerDO) {
 		addressDO.setCityId(addressBO.getCityId());
-		Set<SellerDO> sellerDOs = new HashSet<>();
+		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
 		addressDO.setSellerDOs(sellerDOs);
 		addressDO.setPinCode(addressBO.getPinCode());
