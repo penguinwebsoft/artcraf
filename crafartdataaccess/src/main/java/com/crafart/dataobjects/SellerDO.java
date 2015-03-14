@@ -53,14 +53,6 @@ public class SellerDO implements Serializable, Cloneable {
 	@JoinTable(name = "SELLER_ADDRESS", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS_ID") })
 	private Set<AddressDO> addressDOs = new HashSet<AddressDO>();
 
-	public Set<AddressDO> getAddressDOs() {
-		return addressDOs;
-	}
-
-	public void setAddressDOs(Set<AddressDO> addressDOs) {
-		this.addressDOs = addressDOs;
-	}
-
 	@Column(name = "last_Name")
 	private String lastName;
 
@@ -211,4 +203,11 @@ public class SellerDO implements Serializable, Cloneable {
 
 	}
 
+	public Set<AddressDO> getAddressDOs() {
+		return addressDOs;
+	}
+
+	public void setAddressDOs(Set<AddressDO> addressDOs) {
+		this.addressDOs = addressDOs;
+	}
 }
