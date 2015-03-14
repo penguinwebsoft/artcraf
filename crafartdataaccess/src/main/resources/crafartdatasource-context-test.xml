@@ -34,7 +34,7 @@
 				<value>com.crafart.dataobjects.ProductDO</value>
 				<value>com.crafart.dataobjects.StoreDO</value>
 				<value>com.crafart.dataobjects.AddressDO</value>
-				<value>com.crafart.dataobjects.SellerAddressDO</value>
+				<!-- <value>com.crafart.dataobjects.SellerAddressDO</value> -->
 			</list>
 		</property>
 		<property name="hibernateProperties">
