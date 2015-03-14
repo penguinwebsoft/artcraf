@@ -37,8 +37,10 @@
 	 */
 
 	$(document).ready(function() {
-		$("#SaveBtnId").click(function() {
+			$("#SaveBtnId").click(function() {
 			var sellerBO = {};
+			var storeBO = {};
+			var addressBO = {};
 			sellerBO.firstName = $("#firstName").val();
 			sellerBO.gender = $("#gender").val();
 			sellerBO.companyName = $("#companyName").val();
@@ -46,7 +48,16 @@
 			sellerBO.lastName = $("#lastName").val();
 			sellerBO.dateOfBirth = $("#dp2").val();
 			sellerBO.epchNo = $("#epchNo").val();
+			storeBO.name = $("#storeName").val();
+			addressBO.street = $("#streetAddress").val();
+			addressBO.stateId = $("#states").val();
+			addressBO.cityId = $("#city").val();
+			addressBO.pinCode = $("#pinCode").val();
+			storeBO.storeDescription = $("#storeDescripton").val();
+			sellerBO.storeBO = storeBO;
+			sellerBO.addressBO = addressBO;
 			var postData = JSON.stringify(sellerBO);
+			alert(postData);
 			$.ajax({
 				url : "../seller/addSeller",
 				type : "post",
@@ -57,6 +68,7 @@
 					alert("Saved Successfully");
 				},
 				error : function(error) {
+					alert(error);
 					alert("Details failed to save");
 				}
 			});
