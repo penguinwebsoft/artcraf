@@ -16,4 +16,6 @@ public interface ManageSellerService {
 
 	public void addSeller(SellerBO sellerBO) throws CrafartServiceException;
 
+	public void updateSeller(SellerBO sellerBO) throws CrafartServiceException;
+
 }
