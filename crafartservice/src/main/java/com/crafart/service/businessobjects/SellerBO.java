@@ -19,6 +19,10 @@ public class SellerBO implements Serializable {
 
 	private long sellerId;
 
+	private StoreBO storeBO;
+	
+	private AddressBO addressBO;
+
 	private String firstName;
 
 	private String lastName;
@@ -155,6 +159,22 @@ public class SellerBO implements Serializable {
 
 	public void setGender(int gender) {
 		this.gender = gender;
+	}
+
+	public StoreBO getStoreBO() {
+		return storeBO;
+	}
+
+	public void setStoreBO(StoreBO storeBO) {
+		this.storeBO = storeBO;
+	}
+
+	public AddressBO getAddressBO() {
+		return addressBO;
+	}
+
+	public void setAddressBO(AddressBO addressBO) {
+		this.addressBO = addressBO;
 	}
 
 }
