@@ -13,6 +13,24 @@
 		var msg = "SAVED SUCCESSFULLY";
 
 		$("#SaveBtnId").click(function() {
+			var sellerBO = {};
+			sellerBO.vatNo = $("#VatNo").val();
+			sellerBO.cstNo = $("#cstNo").val();
+			var postData = JSON.stringify(sellerBO);
+			$.ajax({
+				url : "../seller/updatetax",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("Saved Successfully");
+				},
+				error : function(error) {
+					alert(error);
+					alert("Details failed to save");
+				}
+			});
 			$("#alertSuccessId").text(msg);
 		});
 
