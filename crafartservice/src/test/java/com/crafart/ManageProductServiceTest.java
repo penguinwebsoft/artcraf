@@ -4,6 +4,7 @@
 package com.crafart;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class ManageProductServiceTest {
 	private ManageSellerService manageSellerServiceImpl;
 	
 	@Test
+	@Ignore
 	@Rollback(true)
 	public void testManageProductService(){
 		

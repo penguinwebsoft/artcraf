@@ -3,14 +3,19 @@
  */
 package com.crafart.service.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.crafart.dataobjects.AccountDO;
+import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.service.businessobjects.AccountBO;
+import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -62,6 +67,7 @@ public class BeanMapper {
 		sellerBO.setVatNo(sellerDO.getVat_no());
 		sellerBO.setGender(sellerDO.getGender());
 		sellerBO.setDateOfBirth(sellerDO.getDateOfBirth());
+		sellerBO.setAddressBO((AddressBO) sellerDO.getAddressDOs());
 		log.info("bean mapping for sellerDO to sellerBO");
 		return sellerBO;
 
@@ -155,18 +161,39 @@ public class BeanMapper {
 		accountBO.setType(accountDO.getType());
 		log.info("Bean mapping from DO to BO");
 		return accountBO;
-
 	}
+	
+	/*public List<StoreDO> mapStoreBOsToDOs(List<StoreBO> storeBOs){
+		List<StoreDO> storeDOs = new ArrayList<>();
+		for(StoreBO storeBO : storeBOs){
+			StoreDO storeDO = mapStoreBOToDO(storeBO, new StoreDO());
+			storeDOs.add(storeDO);
+		}
+		return storeDOs;
+	}*/
 
-	public StoreDO mapStoreBOToDO(StoreBO storeBO, StoreDO storeDO) {
+	public StoreDO mapStoreBOToDO(StoreBO storeBO, StoreDO storeDO, SellerDO sellerDO) {
 		storeDO.setName(storeBO.getName());
-		storeDO.setSellerId(storeBO.getSellerId());
-		storeDO.setStore_Description(storeBO.getStore_Description());
-		storeDO.setStore_Return(storeBO.getStore_Return());
+		storeDO.setSellerDO(sellerDO);
+		storeDO.setStoreDescription(storeBO.getStoreDescription());
+		storeDO.setStoreReturn(storeBO.getStoreReturn());
 		storeDO.setStoreId(storeBO.getStoreId());
 		storeDO.setStoreUrl(storeBO.getStoreUrl());
 		log.info("Bean mapping from BO to DO");
 		return storeDO;
 
+	}
+	
+	public AddressDO mapAddressBOToDO(AddressBO addressBO, AddressDO addressDO, SellerDO  sellerDO) {
+		addressDO.setCityId(addressBO.getCityId());
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
+		addressDO.setSellerDOs(sellerDOs);
+		addressDO.setPinCode(addressBO.getPinCode());
+		addressDO.setStateId(addressBO.getStateId());
+		addressDO.setStreet(addressBO.getStreet());
+		log.info("Bean mapping from BO to DO");
+		return addressDO;
+		
 	}
 }

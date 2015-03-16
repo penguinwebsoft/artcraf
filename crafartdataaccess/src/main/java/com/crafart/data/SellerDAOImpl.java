@@ -3,7 +3,6 @@ package com.crafart.data;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -50,6 +49,20 @@ public class SellerDAOImpl implements SellerDAO {
 			throw new CrafartDataException("DB Error while adding new seller details", hExp);
 		}
 
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateSeller(SellerDO sellerDO) throws CrafartDataException {
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			session.update(sellerDO);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("Erroe while updating table", hExp);
+		}
 	}
 
 }

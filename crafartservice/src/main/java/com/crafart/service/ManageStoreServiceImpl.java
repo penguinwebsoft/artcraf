@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.StoreDAO;
+import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.service.businessobjects.StoreBO;
@@ -40,12 +41,12 @@ public class ManageStoreServiceImpl implements ManageStoreService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addStoreDetail(StoreBO storeBO) throws CrafartServiceException {
 
-		StoreDO storeDO = beanMapper.mapStoreBOToDO(storeBO, new StoreDO());
+		StoreDO storeDO = beanMapper.mapStoreBOToDO(storeBO, new StoreDO(), new SellerDO());
 		try {
 			storeDAOImpl.addStoreDetail(storeDO);
-			storeBO.setSellerId(storeDO.getSellerId());
+			storeBO.setStoreId(storeDO.getStoreId());
 		} catch (CrafartDataException crafartDataException) {
-			log.error("Exception while adding store detail, storeId id " + storeBO.getSellerId());
+			log.error("Exception while adding store detail, storeId id " + storeBO.getStoreId());
 			crafartDataException.printStackTrace();
 		}
 	}

@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.stereotype.Component;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,6 +14,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.StoreBO;
 
 /**
  * Unit test for simple App.
@@ -40,18 +42,30 @@ public class SellerControllerTest {
 		sellerBO.setCompanyName("penguin");
 		sellerBO.setCstNo("4444");
 		sellerBO.setEpchNo("121212");
-		sellerBO.setFirstName("lll");
-		sellerBO.setLastName("mmm");
+		sellerBO.setFirstName("controller");
+		sellerBO.setLastName("from");
 		sellerBO.setStatus(2);
 		sellerBO.setTinNo(2);
 		sellerBO.setVatNo("asd123");
+		sellerBO.setStoreBO(getStoreBO(sellerBO));
 
 		try {
-			sellerController.addSeller(sellerBO, new MockHttpServletRequest());
+			sellerController.addSeller(sellerBO, null, null, new MockHttpServletRequest(), new MockHttpSession());
 		} catch (Exception exp) {
 			exp.printStackTrace();
 			Assert.fail();
 		}
 
+	}
+	
+	private StoreBO getStoreBO(SellerBO sellerBO){
+		StoreBO storeBO = new StoreBO();
+		storeBO.setName("from controller");
+		storeBO.setSellerBO(sellerBO);
+		storeBO.setStoreDescription(" from controller");
+		storeBO.setStoreReturn("cont");
+		storeBO.setStoreUrl("www.wwww.com");
+		return storeBO;
+		
 	}
 }

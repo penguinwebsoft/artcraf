@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.stereotype.Component;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -36,21 +38,22 @@ public class ProductControllerTest {
 
 	@Autowired
 	private ProductController productController;
-	
+
 	@Autowired
 	private SellerController sellerController;
+
 	@Test
 	@Rollback(true)
-	public void testAddProduct(){
+	public void testAddProduct() {
 		ProductBO productBO = getProductBO();
-		try{
-		productController.addProduct(productBO);
-		}catch (Exception e){
+		try {
+			productController.addProduct(productBO);
+		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private ProductBO getProductBO() {
 		SellerBO sellerBO = getSellerBO();
@@ -83,7 +86,6 @@ public class ProductControllerTest {
 		return productBO;
 	}
 
-
 	@Transactional(propagation = Propagation.REQUIRED)
 	private SellerBO getSellerBO() {
 		SellerBO sellerBO = new SellerBO();
@@ -100,14 +102,14 @@ public class ProductControllerTest {
 		sellerBO.setCommission("aaaa");
 		sellerBO.setStatus(1);
 		sellerBO.setApproved(1);
-		
-			try {
-				sellerController.addSeller(sellerBO, null);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return sellerBO;
-			
+
+		try {
+			sellerController.addSeller(sellerBO, null, null, new MockHttpServletRequest(), new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sellerBO;
+
 	}
 
 }

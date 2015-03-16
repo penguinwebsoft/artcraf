@@ -20,7 +20,7 @@ import com.crafart.exception.CrafartDataException;
 
 /**
  * @author Karthi
- *
+ * 
  */
 @ContextConfiguration("classpath:crafartdatasource-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,13 +30,13 @@ public class AddressDAOTest {
 
 	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger(SellerDAOTest.class);
-	
+
 	@Autowired
 	private AddressDAO addressDAOImpl;
-	
+
 	@Test
 	@Rollback(true)
-	public void testAddAddress(){
+	public void testAddAddress() {
 		AddressDO addressDO = getAddress();
 		try {
 			addressDAOImpl.addAddress(addressDO);

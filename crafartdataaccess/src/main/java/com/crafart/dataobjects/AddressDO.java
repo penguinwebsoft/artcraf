@@ -4,8 +4,8 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,20 +31,12 @@ public class AddressDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "address_id")
-	@SequenceGenerator(name = "seq_address", sequenceName = "seq_address", allocationSize=1)
+	@SequenceGenerator(name = "seq_address", sequenceName = "seq_address", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
 	private long addressId;
 
 	@ManyToMany(mappedBy = "addressDOs")
-	private Set<SellerDO> sellerDOs = new HashSet<>();
-
-	public Set<SellerDO> getSellerDOs() {
-		return sellerDOs;
-	}
-
-	public void setSellerDOs(Set<SellerDO> sellerDOs) {
-		this.sellerDOs = sellerDOs;
-	}
+	private List<SellerDO> sellerDOs = new ArrayList<>();
 
 	@Column(name = "street")
 	private String street;
@@ -57,6 +49,14 @@ public class AddressDO implements Serializable, Cloneable {
 
 	@Column(name = "pin_code")
 	private String pinCode;
+
+	public List<SellerDO> getSellerDOs() {
+		return sellerDOs;
+	}
+
+	public void setSellerDOs(List<SellerDO> sellerDOs) {
+		this.sellerDOs = sellerDOs;
+	}
 
 	public long getAddressId() {
 		return addressId;

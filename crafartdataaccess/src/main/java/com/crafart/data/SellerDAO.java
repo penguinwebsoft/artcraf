@@ -9,5 +9,7 @@ import com.crafart.exception.CrafartDataException;
 public interface SellerDAO {
 
 	public void addSeller(SellerDO sellerDO) throws CrafartDataException;
+	
+	public void updateSeller(SellerDO sellerDO) throws CrafartDataException;
 
 }
