@@ -1,7 +1,7 @@
 package com.crafart;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -51,6 +51,22 @@ public class SellerDAOTest {
 
 	}
 
+	@Test
+	@Rollback(true)
+	public void testUpdateSeller(){
+		try{
+			SellerDO sellerDO = getSellerDO();
+			sellerDAOImpl.addSeller(sellerDO);
+			sellerDO.getStoreDO().setName("update from dao");
+			sellerDO.getStoreDO().setStoreReturn("update from dao");
+			sellerDO.setVat_no("12");
+			sellerDO.setCst_no("13");
+			sellerDAOImpl.updateSeller(sellerDO);
+		}catch (Exception exception){
+			exception.printStackTrace();
+			Assert.fail();
+		}
+	}
 	@Transactional(propagation = Propagation.REQUIRED)
 	private SellerDO getSellerDO() {
 		SellerDO sellerDO = new SellerDO();
@@ -68,20 +84,20 @@ public class SellerDAOTest {
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 		sellerDO.setStoreDO(getStoreDOs(sellerDO));
-		Set<SellerDO> dos = new HashSet<>();
-		dos.add(sellerDO);
-		sellerDO.setAddressDOs(getAddressDOs(dos));
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
+		sellerDO.setAddressDOs(getAddressDOs(sellerDOs));
 		return sellerDO;
 	}
 
-	private Set<AddressDO> getAddressDOs(Set<SellerDO> dos) {
+	private List<AddressDO> getAddressDOs(List<SellerDO> sellerDOs) {
 		AddressDO addressDO = new AddressDO();
 		addressDO.setCityId(1);
 		addressDO.setPinCode("001100");
-		addressDO.setSellerDOs(dos);
+		addressDO.setSellerDOs(sellerDOs);
 		addressDO.setStateId(2);
 		addressDO.setStreet("qwertyuiop");
-		Set<AddressDO> addressDOs = new HashSet<>();
+		List<AddressDO> addressDOs = new ArrayList<>();
 		addressDOs.add(addressDO);
 		return addressDOs;
 	}
