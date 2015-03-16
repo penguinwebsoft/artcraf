@@ -4,8 +4,8 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,15 +51,7 @@ public class SellerDO implements Serializable, Cloneable {
 
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "SELLER_ADDRESS", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS_ID") })
-	private Set<AddressDO> addressDOs = new HashSet<AddressDO>();
-
-	public Set<AddressDO> getAddressDOs() {
-		return addressDOs;
-	}
-
-	public void setAddressDOs(Set<AddressDO> addressDOs) {
-		this.addressDOs = addressDOs;
-	}
+	private List<AddressDO> addressDOs = new ArrayList<>();
 
 	@Column(name = "last_Name")
 	private String lastName;
@@ -211,4 +203,11 @@ public class SellerDO implements Serializable, Cloneable {
 
 	}
 
+	public List<AddressDO> getAddressDOs() {
+		return addressDOs;
+	}
+
+	public void setAddressDOs(List<AddressDO> addressDOs) {
+		this.addressDOs = addressDOs;
+	}
 }
