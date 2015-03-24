@@ -31,7 +31,7 @@ public class AccountDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "account_Id")
-	@SequenceGenerator(name = "seq_account", sequenceName = "seq_account")
+	@SequenceGenerator(name = "seq_account", sequenceName = "seq_account", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_account")
 	private long accountId;
 
