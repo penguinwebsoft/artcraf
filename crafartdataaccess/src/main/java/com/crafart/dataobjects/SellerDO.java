@@ -39,7 +39,7 @@ public class SellerDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "seller_id")
-	@SequenceGenerator(name = "seq_seller", sequenceName = "seq_seller")
+	@SequenceGenerator(name = "seq_seller", sequenceName = "seq_seller", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_seller")
 	private long sellerId;
 
@@ -70,10 +70,13 @@ public class SellerDO implements Serializable, Cloneable {
 	@Column(name = "company_Logo")
 	private String companyLogo;
 
+	@Column(name ="epch_no")
 	private String epch_no;
 
+	@Column(name ="vat_no")
 	private String vat_no;
 
+	@Column(name = "cst_no")
 	private String cst_no;
 
 	private String commission;
