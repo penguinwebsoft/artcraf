@@ -45,7 +45,6 @@ public class StoreDAOImpl implements StoreDAO {
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while adding new store details", hExp);
 		}
 
