@@ -34,7 +34,7 @@ public class ManageAddressServiceImpl implements ManageAddressService {
 			addressDAOImpl.addAddress(addressDO);
 			addressBO.setAddressId(addressDO.getAddressId());
 		} catch (CrafartDataException crafartDataException) {
-			crafartDataException.printStackTrace();
+			throw new CrafartServiceException("Error while adding address"+addressBO.getAddressId());
 		}
 	}
 

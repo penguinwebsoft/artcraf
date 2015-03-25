@@ -64,8 +64,9 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 		CategoryDO categoryDO = beanMapper.mapCategoryBOToDO(categoryBO, new CategoryDO());
 		try {
 			categoryDAOImpl.addCategory(categoryDO);
+			categoryBO.setCategoryId(categoryDO.getCategoryId());
 		} catch (CrafartDataException e) {
-			log.error("Error while adding category");
+			throw new CrafartServiceException("Error while adding category" + categoryBO.getCategoryId());
 		}
 	}
 

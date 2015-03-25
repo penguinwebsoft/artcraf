@@ -45,8 +45,7 @@ public class ManageAccountServiceImpl implements ManageAccountService {
 			accountDAOImpl.addBankAccountDetail(accountDO);
 			accountBO.setAccountId(accountDO.getAccountId());
 		} catch (CrafartDataException crafartDataException) {
-			log.error("Exception while adding AccountId " + accountBO.getAccountId());
-			crafartDataException.printStackTrace();
+			throw new CrafartServiceException("Exception while adding AccountId" + accountBO.getAccountId());
 		}
 	}
 
