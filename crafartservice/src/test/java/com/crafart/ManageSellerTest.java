@@ -12,7 +12,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.service.ManageSellerService;
+import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 @ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
@@ -29,22 +31,7 @@ public class ManageSellerTest {
 	@Rollback(true)
 	public void testAddSeller() {
 
-		SellerBO sellerBO = new SellerBO();
-		sellerBO.setDateOfBirth("00/00/0000");
-		sellerBO.setGender("male");
-		sellerBO.setDateOfBirth("00/00/0000");
-		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
-		sellerBO.setCompanyLogo("qqq");
-		sellerBO.setCompanyName("penguin");
-		sellerBO.setCstNo("4444");
-		sellerBO.setEpchNo("121212");
-		sellerBO.setFirstName("zzz");
-		sellerBO.setLastName("rrr");
-		sellerBO.setStatus(2);
-		sellerBO.setTinNo(2);
-		sellerBO.setVatNo("asd123");
-
+		SellerBO sellerBO = getSellerBO();
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
 		} catch (CrafartServiceException uExp) {
@@ -53,5 +40,64 @@ public class ManageSellerTest {
 		}
 
 	}
+	
+	@Test
+	@Rollback(true)
+	public void updateSeller(){
+		SellerBO sellerBO = getSellerBO();
+		try {
+			manageSellerServiceImpl.addSeller(sellerBO);
+			sellerBO.getStoreBO().setStoreReturn("its from service update query");
+			sellerBO.getStoreBO().setStoreDescription("from service update query");
+			sellerBO.setVatNo("serv12");
+			sellerBO.setCstNo("servcs12");
+			manageSellerServiceImpl.updateSeller(sellerBO);
+		} catch (CrafartServiceException e) {
+			e.printStackTrace();
+		}
+	}
 
+	private AddressBO getAddressBO(SellerBO sellerBO) {
+		AddressBO addressBO = new AddressBO();
+		addressBO.setCityId(0);
+		addressBO.setPinCode("service now");
+		addressBO.setStateId(0);
+		addressBO.setStreet("testing now");
+		addressBO.setSellerBO(sellerBO);
+		return addressBO;
+	}
+
+	private StoreBO getStoreBO(SellerBO sellerBO) {
+		StoreBO storeBO = new StoreBO();
+		storeBO.setName("from service add");
+		storeBO.setSellerBO(sellerBO);
+		storeBO.setStoreDescription(" from service add");
+		storeBO.setStoreReturn("serv");
+		storeBO.setStoreUrl("www.wwww.com");
+		return storeBO;
+
+	}
+
+	private SellerBO getSellerBO() {
+
+		SellerBO sellerBO = new SellerBO();
+		sellerBO.setDateOfBirth("00/00/0000");
+		sellerBO.setGender(1);
+		sellerBO.setDateOfBirth("00/00/0000");
+		sellerBO.setApproved(1);
+		sellerBO.setCommission("www");
+		sellerBO.setCompanyLogo("qqq");
+		sellerBO.setCompanyName("penguin");
+		sellerBO.setCstNo("4444");
+		sellerBO.setEpchNo("121212");
+		sellerBO.setFirstName("from service");
+		sellerBO.setLastName("service");
+		sellerBO.setStatus(2);
+		sellerBO.setTinNo(2);
+		sellerBO.setVatNo("asd123");
+		sellerBO.setStoreBO(getStoreBO(sellerBO));
+		sellerBO.setAddressBO(getAddressBO(sellerBO));
+		return sellerBO;
+
+	}
 }

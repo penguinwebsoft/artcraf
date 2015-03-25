@@ -4,12 +4,19 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,19 +38,26 @@ public class SellerDO implements Serializable, Cloneable {
 	private static final long serialVersionUID = 2950842206999695829L;
 
 	@Id
-	@Column(name = "seller_Id")
-	@SequenceGenerator(name = "seq_seller", sequenceName = "seq_seller")
+	@Column(name = "seller_id")
+	@SequenceGenerator(name = "seq_seller", sequenceName = "seq_seller", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_seller")
 	private long sellerId;
 
+	@OneToOne(mappedBy = "sellerDO", cascade = CascadeType.ALL)
+	private StoreDO storeDO;
+
 	@Column(name = "first_Name")
 	private String firstName;
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "SELLER_ADDRESS", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS_ID") })
+	private List<AddressDO> addressDOs = new ArrayList<>();
 
 	@Column(name = "last_Name")
 	private String lastName;
 
 	@Column(name = "gender")
-	private String gender;
+	private int gender;
 
 	@Column(name = "dob")
 	private String dateOfBirth;
@@ -56,10 +70,13 @@ public class SellerDO implements Serializable, Cloneable {
 	@Column(name = "company_Logo")
 	private String companyLogo;
 
+	@Column(name ="epch_no")
 	private String epch_no;
 
+	@Column(name ="vat_no")
 	private String vat_no;
 
+	@Column(name = "cst_no")
 	private String cst_no;
 
 	private String commission;
@@ -172,12 +189,28 @@ public class SellerDO implements Serializable, Cloneable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 
+	public StoreDO getStoreDO() {
+		return storeDO;
+	}
+
+	public void setStoreDO(StoreDO storeDO) {
+		this.storeDO = storeDO;
+
+	}
+
+	public List<AddressDO> getAddressDOs() {
+		return addressDOs;
+	}
+
+	public void setAddressDOs(List<AddressDO> addressDOs) {
+		this.addressDOs = addressDOs;
+	}
 }

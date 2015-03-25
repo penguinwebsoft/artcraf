@@ -142,7 +142,10 @@ ul.wysihtml5-toolbar>li {
 
 	function addAttribute() {
 		html = '<tr id="attribute-row' + attribute_row + '">';
-		html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute[' + attribute_row + '][name]" value="" placeholder="Attribute" class="form-control" /><input type="hidden" name="product_attribute[' + attribute_row + '][attribute_id]" value="" /></td>';
+		html += ' <td class="text-left" style="width: 20%;"><select name="product_attribute[' + attribute_row + '][attribute_type_id]" class="form-control">';
+		html += '    <option value="1">USB 2.0</option>';
+		html += '    <option value="1">USB 3.0</option>';
+		html += '  </select></td>';
 		html += '  <td class="text-left">';
 		html += '<div class="input-group"><span class="input-group-addon"></span><textarea name="product_attribute[' + attribute_row + '][product_attribute_description][1][text]" rows="5" placeholder="Text" class="form-control"></textarea></div>';
 		html += '  </td>';
@@ -280,28 +283,11 @@ ul.wysihtml5-toolbar>li {
 										<label class="col-sm-2 control-label" for="input-description1">Description</label>
 										<div class="col-lg-10">
 											<div class="box">
-												<header>
-													<div class="icons">
-														<i class="icon-th-large"></i>
-													</div>
-													<h5>WYSIWYG Editor</h5>
-													<ul class="nav pull-right">
-														<li>
-															<div class="btn-group">
-																<a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse" href="#cleditorDiv"> <i class="icon-minus"></i>
-																</a>
-																<button class="btn btn-xs btn-danger close-box">
-																	<i class="icon-remove"></i>
-																</button>
-															</div>
-														</li>
-													</ul>
-												</header>
 												<div id="cleditorDiv" class="body collapse in">
 													<form>
 														<textarea id="cleditor" class="form-control"></textarea>
 														<div class="form-actions no-margin-bottom" id="cleditorForm">
-															<br /> <input type="submit" value="Submit" class="btn btn-primary" />
+															<br />
 														</div>
 													</form>
 												</div>
@@ -309,7 +295,6 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 								</div>
-
 
 								<!-- Start tab-data-->
 								<div class="tab-pane fade" id="tab-data">
@@ -605,15 +590,15 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 									<div class="form-group required" id="taxVatId">
-										<label class="col-sm-3 control-label" for="VatId">VAT</label>
+										<label class="col-sm-3 control-label" for="VatId">VAT Rate (%)</label>
 										<div class="col-sm-3">
-											<input type="text" name="vatId" value="" placeholder="VAT %" id="vatId" class="form-control" />
+											<input type="text" name="vatId" value="" placeholder="VAT Rate (%)" id="vatId" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group required" id="taxCstId">
-										<label class="col-sm-3 control-label" for="cstId">CST</label>
+										<label class="col-sm-3 control-label" for="cstId">CST Rate (%)</label>
 										<div class="col-sm-3">
-											<input type="text" name="cstId" value="" placeholder="CST %" id="cstId" class="form-control" />
+											<input type="text" name="cstId" value="" placeholder="CST Rate (%)" id="cstId" class="form-control" />
 										</div>
 									</div>
 								</div>

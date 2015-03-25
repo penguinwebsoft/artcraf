@@ -10,8 +10,28 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var msg = "SAVED SUCCESSFULLY";
+		
 
 		$("#SaveBtnId").click(function() {
+			var sellerBO = {};
+			var storeBO = {};
+			storeBO.storeReturn = $("#Shipping").val();
+			sellerBO.storeBO = storeBO;
+			var postData = JSON.stringify(sellerBO);
+			$.ajax({
+				url : "../seller/updateStore",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("Saved Successfully");
+				},
+				error : function(error) {
+					alert(error);
+					alert("Details failed to save");
+				}
+			});
 			$("#alertSuccessId").text(msg);
 		});
 
@@ -25,8 +45,8 @@
 		</div>
 		<div class="col-lg-9 text-center" style="padding-top: 20px;">
 			<div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">ACTIVE</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
+			<div class=" col-lg-4 alert alert_success" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
+			<div class=" col-lg-4 alert alert_success" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
 		</div>
 	</div>
 

@@ -1,5 +1,8 @@
 package com.crafart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +16,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.SellerDAO;
+import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.StoreDO;
 
 /**
  * Unit test for simple App.
@@ -29,6 +34,9 @@ public class SellerDAOTest {
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
+	/**
+	 * test case for addSeller method
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddSeller() {
@@ -43,13 +51,29 @@ public class SellerDAOTest {
 
 	}
 
+	@Test
+	@Rollback(true)
+	public void testUpdateSeller(){
+		try{
+			SellerDO sellerDO = getSellerDO();
+			sellerDAOImpl.addSeller(sellerDO);
+			sellerDO.getStoreDO().setName("update from dao");
+			sellerDO.getStoreDO().setStoreReturn("update from dao");
+			sellerDO.setVat_no("12");
+			sellerDO.setCst_no("13");
+			sellerDAOImpl.updateSeller(sellerDO);
+		}catch (Exception exception){
+			exception.printStackTrace();
+			Assert.fail();
+		}
+	}
 	@Transactional(propagation = Propagation.REQUIRED)
 	private SellerDO getSellerDO() {
 		SellerDO sellerDO = new SellerDO();
-		sellerDO.setFirstName("xxxx");
-		sellerDO.setLastName("yyyy");
+		sellerDO.setFirstName("craf");
+		sellerDO.setLastName("art");
 		sellerDO.setTin_no(1);
-		sellerDO.setGender("male");
+		sellerDO.setGender(1);
 		sellerDO.setDateOfBirth("00/00/0000");
 		sellerDO.setCompanyName("penguin");
 		sellerDO.setCompanyLogo("pen");
@@ -59,6 +83,36 @@ public class SellerDAOTest {
 		sellerDO.setCommission("aaaa");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
+		sellerDO.setStoreDO(getStoreDOs(sellerDO));
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
+		sellerDO.setAddressDOs(getAddressDOs(sellerDOs));
 		return sellerDO;
 	}
+
+	private List<AddressDO> getAddressDOs(List<SellerDO> sellerDOs) {
+		AddressDO addressDO = new AddressDO();
+		addressDO.setCityId(1);
+		addressDO.setPinCode("001100");
+		addressDO.setSellerDOs(sellerDOs);
+		addressDO.setStateId(2);
+		addressDO.setStreet("qwertyuiop");
+		List<AddressDO> addressDOs = new ArrayList<>();
+		addressDOs.add(addressDO);
+		return addressDOs;
+	}
+
+	private StoreDO getStoreDOs(SellerDO sellerDO) {
+		StoreDO storeDO = new StoreDO();
+		storeDO.setName("store craf");
+		storeDO.setStoreDescription("penguin store");
+		storeDO.setStoreReturn("test desc");
+		storeDO.setStoreUrl("acx");
+		storeDO.setSellerDO(sellerDO);
+		/*
+		 * List<StoreDO> storeDOs = new ArrayList<>(); storeDOs.add(storeDO);
+		 */
+		return storeDO;
+	}
+
 }

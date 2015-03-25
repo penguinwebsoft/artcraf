@@ -13,6 +13,24 @@
 		var msg = "SAVED SUCCESSFULLY";
 
 		$("#SaveBtnId").click(function() {
+			var sellerBO = {};
+			sellerBO.vatNo = $("#VatNo").val();
+			sellerBO.cstNo = $("#cstNo").val();
+			var postData = JSON.stringify(sellerBO);
+			$.ajax({
+				url : "../seller/updatetax",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("Saved Successfully");
+				},
+				error : function(error) {
+					alert(error);
+					alert("Details failed to save");
+				}
+			});
 			$("#alertSuccessId").text(msg);
 		});
 
@@ -26,8 +44,8 @@
 		</div>
 		<div class="col-lg-9 text-center" style="padding-top: 20px;">
 			<div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">ACTIVE</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
 		</div>
 	</div>
 	<hr />
@@ -41,7 +59,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">VAT/TIN-NO</label>
 									<div class="col-lg-8">
-										<input type="number" id="VatNo" name="VatNo" class="form-control" placeholder="VAT/TIN NO" />
+										<input type="text" id="VatNo" name="VatNo" class="form-control" placeholder="VAT/TIN NO" />
 									</div>
 								</div>
 								<div class="form-group">

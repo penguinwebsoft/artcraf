@@ -29,10 +29,18 @@
 	});
 </script>
 <script type="text/javascript">
-<!-- *************Save button************ -->
+	/* 
+	 * *************Save button************ 
+	 *taking values by val() and storing it in sellerBO, then changing that to json and passing to controller by 
+	 *ajax
+	 *
+	 */
+
 	$(document).ready(function() {
-		$("#SaveBtnId").click(function() {
+			$("#SaveBtnId").click(function() {
 			var sellerBO = {};
+			var storeBO = {};
+			var addressBO = {};
 			sellerBO.firstName = $("#firstName").val();
 			sellerBO.gender = $("#gender").val();
 			sellerBO.companyName = $("#companyName").val();
@@ -40,6 +48,14 @@
 			sellerBO.lastName = $("#lastName").val();
 			sellerBO.dateOfBirth = $("#dp2").val();
 			sellerBO.epchNo = $("#epchNo").val();
+			storeBO.name = $("#storeName").val();
+			addressBO.street = $("#streetAddress").val();
+			addressBO.stateId = $("#states").val();
+			addressBO.cityId = $("#city").val();
+			addressBO.pinCode = $("#pinCode").val();
+			storeBO.storeDescription = $("#storeDescripton").val();
+			sellerBO.storeBO = storeBO;
+			sellerBO.addressBO = addressBO;
 			var postData = JSON.stringify(sellerBO);
 			$.ajax({
 				url : "../seller/addSeller",
@@ -51,6 +67,7 @@
 					alert("Saved Successfully");
 				},
 				error : function(error) {
+					alert(error);
 					alert("Details failed to save");
 				}
 			});
@@ -66,8 +83,8 @@
 		</div>
 		<div class="col-lg-9 text-center" style="padding-top: 20px;">
 			<div id="alertSuccessId" class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">ACTIVE</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
-			<div class=" col-lg-4 alert alert_success pull-right" style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">SELLER APPROVED:YES</div>
+			<div class=" col-lg-4 alert alert_success " style="margin-bottom: 5px; color: #FF704D; font-size: 17px;">COMMISSION: 10%</div>
 		</div>
 	</div>
 	<hr />
@@ -88,8 +105,8 @@
 									<label for="" class="control-label col-lg-4">Gender</label>
 									<div class="col-lg-8">
 										<select class="form-control" id="gender" placeholder="Gender">
-											<option>Male</option>
-											<option>Female</option>
+											<option value="1">Male</option>
+											<option value="2">Female</option>
 										</select>
 									</div>
 								</div>
@@ -115,7 +132,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Phone-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="phoneNo" name="phoneNo" class="form-control" placeholder="Phone No" />
+										<input type="text" id="phoneNo" name="phoneNo" class="form-control" placeholder="Phone No" />
 									</div>
 								</div>
 
@@ -123,7 +140,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">EPCH-No</label>
 									<div class="col-lg-8">
-										<input type="number" id="epchNo" name="epchNo" class="form-control" placeholder="EPCH No" />
+										<input type="text" id="epchNo" name="epchNo" class="form-control" placeholder="EPCH No" />
 									</div>
 								</div>
 							</div>
@@ -141,13 +158,6 @@
 
 										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2">
 
-										<!-- <input type="text" class="span2 form_control_width"
-													value="10/09/90" data-date-format="mm/dd/yy" id="dp2"
-													style="padding-left: 5px; float: left; margin-right: 8px;">
-		
-												<span class="add-on"> <a oncl class="icon-calendar"
-													style="font-size: 20px;"></i> </a>
-												</span> -->
 									</div>
 								</div>
 
@@ -166,7 +176,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Pin-Code</label>
 									<div class="col-lg-8">
-										<input type="number" id="pinCode" name="pinCode" class="form-control" placeholder="Pin Code" />
+										<input type="text" id="pinCode" name="pinCode" class="form-control" placeholder="Pin Code" />
 									</div>
 								</div>
 
