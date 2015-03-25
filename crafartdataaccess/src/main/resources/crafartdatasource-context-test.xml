@@ -34,6 +34,13 @@
 				<value>com.crafart.dataobjects.ProductDO</value>
 				<value>com.crafart.dataobjects.StoreDO</value>
 				<value>com.crafart.dataobjects.AddressDO</value>
+				<value>com.crafart.dataobjects.WeightClassDO</value>
+				<value>com.crafart.dataobjects.LengthClassDO</value>
+				<value>com.crafart.dataobjects.CategoryDO</value>
+				<value>com.crafart.dataobjects.CourierDO</value>
+				<value>com.crafart.dataobjects.GeoZoneDO</value>
+				<value>com.crafart.dataobjects.TaxClassDO</value>
+				<value>com.crafart.dataobjects.ProductDescriptionDO</value>
 				<!-- <value>com.crafart.dataobjects.SellerAddressDO</value> -->
 			</list>
 		</property>
