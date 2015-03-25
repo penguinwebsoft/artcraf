@@ -90,6 +90,7 @@ public class SellerDAOTest {
 		return sellerDO;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	private List<AddressDO> getAddressDOs(List<SellerDO> sellerDOs) {
 		AddressDO addressDO = new AddressDO();
 		addressDO.setCityId(1);
@@ -102,6 +103,7 @@ public class SellerDAOTest {
 		return addressDOs;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	private StoreDO getStoreDOs(SellerDO sellerDO) {
 		StoreDO storeDO = new StoreDO();
 		storeDO.setName("store craf");
