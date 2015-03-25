@@ -4,7 +4,6 @@
 package com.crafart.service.businessobjects;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author Karthi
@@ -46,7 +45,7 @@ public class ProductBO implements Serializable {
 
 	private long taxClassId;
 
-	private Date dateAvailable;
+	private String dateAvailable;
 
 	private String weight;
 
@@ -55,10 +54,6 @@ public class ProductBO implements Serializable {
 	private double length;
 
 	private double width;
-
-	private long weightClassId;
-
-	private long lengthClassId;
 
 	private double subtract;
 
@@ -69,6 +64,28 @@ public class ProductBO implements Serializable {
 	private int status;
 
 	private int viewed;
+
+	private WeightClassBO weightClassBO;
+
+	private LengthClassBO lengthClassBO;
+
+	private ProductDescriptionBO productDescriptionBO;
+
+	public WeightClassBO getWeightClassBO() {
+		return weightClassBO;
+	}
+
+	public void setWeightClassBO(WeightClassBO weightClassBO) {
+		this.weightClassBO = weightClassBO;
+	}
+
+	public LengthClassBO getLengthClassBO() {
+		return lengthClassBO;
+	}
+
+	public void setLengthClassBO(LengthClassBO lengthClassBO) {
+		this.lengthClassBO = lengthClassBO;
+	}
 
 	public long getProductId() {
 		return productId;
@@ -182,14 +199,6 @@ public class ProductBO implements Serializable {
 		this.taxClassId = taxClassId;
 	}
 
-	public Date getDateAvailable() {
-		return dateAvailable;
-	}
-
-	public void setDateAvailable(Date dateAvailable) {
-		this.dateAvailable = dateAvailable;
-	}
-
 	public String getWeight() {
 		return weight;
 	}
@@ -220,22 +229,6 @@ public class ProductBO implements Serializable {
 
 	public void setWidth(double width) {
 		this.width = width;
-	}
-
-	public long getWeightClassId() {
-		return weightClassId;
-	}
-
-	public void setWeightClassId(long weightClassId) {
-		this.weightClassId = weightClassId;
-	}
-
-	public long getLengthClassId() {
-		return lengthClassId;
-	}
-
-	public void setLengthClassId(long lengthClassId) {
-		this.lengthClassId = lengthClassId;
 	}
 
 	public double getSubtract() {
@@ -276,6 +269,22 @@ public class ProductBO implements Serializable {
 
 	public void setViewed(int viewed) {
 		this.viewed = viewed;
+	}
+
+	public String getDateAvailable() {
+		return dateAvailable;
+	}
+
+	public void setDateAvailable(String dateAvailable) {
+		this.dateAvailable = dateAvailable;
+	}
+
+	public ProductDescriptionBO getProductDescriptionBO() {
+		return productDescriptionBO;
+	}
+
+	public void setProductDescriptionBO(ProductDescriptionBO productDescriptionBO) {
+		this.productDescriptionBO = productDescriptionBO;
 	}
 
 }
