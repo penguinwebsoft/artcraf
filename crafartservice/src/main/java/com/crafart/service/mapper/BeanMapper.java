@@ -6,19 +6,32 @@ package com.crafart.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.crafart.dataobjects.AccountDO;
 import com.crafart.dataobjects.AddressDO;
+import com.crafart.dataobjects.CategoryDO;
+import com.crafart.dataobjects.CourierDO;
+import com.crafart.dataobjects.GeoZoneDO;
+import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductDO;
+import com.crafart.dataobjects.ProductDescriptionDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
+import com.crafart.dataobjects.TaxClassDO;
+import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CategoryBO;
+import com.crafart.service.businessobjects.CourierBO;
+import com.crafart.service.businessobjects.GeoZoneBO;
+import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductBO;
+import com.crafart.service.businessobjects.ProductDescriptionBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
+import com.crafart.service.businessobjects.TaxClassBO;
+import com.crafart.service.businessobjects.WeightClassBO;
 
 /**
  * mapping from BO to DO and vice versa
@@ -29,8 +42,6 @@ import com.crafart.service.businessobjects.StoreBO;
  */
 @Component("beanMapper")
 public class BeanMapper {
-
-	private static final Logger log = Logger.getLogger(BeanMapper.class);
 
 	public SellerDO mapSellerBOToDO(SellerBO sellerBO, SellerDO sellerDO) {
 		sellerDO.setApproved(sellerBO.getApproved());
@@ -47,7 +58,6 @@ public class BeanMapper {
 		sellerDO.setVat_no(sellerBO.getVatNo());
 		sellerDO.setGender(sellerBO.getGender());
 		sellerDO.setDateOfBirth(sellerBO.getDateOfBirth());
-		log.info("bean mapping for sellerBO to sellerDO");
 		return sellerDO;
 
 	}
@@ -68,18 +78,18 @@ public class BeanMapper {
 		sellerBO.setGender(sellerDO.getGender());
 		sellerBO.setDateOfBirth(sellerDO.getDateOfBirth());
 		sellerBO.setAddressBO((AddressBO) sellerDO.getAddressDOs());
-		log.info("bean mapping for sellerDO to sellerBO");
 		return sellerBO;
 
 	}
 
-	public ProductDO mapProductBOToDO(ProductBO productBO, ProductDO productDO) {
+	public ProductDO mapProductBOToDO(ProductBO productBO, ProductDO productDO, WeightClassDO weightClassDO, LengthClassDO lengthClassDO) {
 		productDO.setCategoryId(productBO.getCategoryId());
+		productDO.setDateAvailable(productBO.getDateAvailable());
 		productDO.setDateAvailable(productBO.getDateAvailable());
 		productDO.setHeight(productBO.getHeight());
 		productDO.setImage(productBO.getImage());
 		productDO.setLength(productBO.getHeight());
-		productDO.setLengthClassId(productBO.getLengthClassId());
+		productDO.setLengthClassDO(lengthClassDO);
 		productDO.setLocation(productBO.getLocation());
 		productDO.setMinimum(productBO.getMinimum());
 		productDO.setModel(productBO.getModel());
@@ -98,9 +108,8 @@ public class BeanMapper {
 		productDO.setUpc(productBO.getUpc());
 		productDO.setViewed(productBO.getViewed());
 		productDO.setWeight(productBO.getWeight());
-		productDO.setWeightClassId(productBO.getWeightClassId());
+		productDO.setWeightClassDO(weightClassDO);
 		productDO.setWidth(productBO.getWidth());
-		log.info("Bean mapping from BO to DO");
 		return productDO;
 	}
 
@@ -110,7 +119,7 @@ public class BeanMapper {
 		productBO.setHeight(productDO.getHeight());
 		productBO.setImage(productDO.getImage());
 		productBO.setLength(productDO.getLength());
-		productBO.setLengthClassId(productDO.getLengthClassId());
+		productBO.setLengthClassBO(null);
 		productBO.setLocation(productDO.getLocation());
 		productBO.setMinimum(productDO.getMinimum());
 		productBO.setModel(productDO.getModel());
@@ -129,9 +138,8 @@ public class BeanMapper {
 		productBO.setUpc(productDO.getUpc());
 		productBO.setViewed(productDO.getViewed());
 		productBO.setWeight(productDO.getWeight());
-		productBO.setWeightClassId(productDO.getWeightClassId());
+		productBO.setWeightClassBO(null);
 		productBO.setWidth(productDO.getWidth());
-		log.info("Bean mapping from DO to BO");
 		return productBO;
 
 	}
@@ -145,7 +153,6 @@ public class BeanMapper {
 		accountDO.setIfscCode(accountBO.getIfscCode());
 		accountDO.setMicrCode(accountBO.getMicrCode());
 		accountDO.setType(accountBO.getType());
-		log.info("Bean Mapping from BO to DO");
 		return accountDO;
 
 	}
@@ -159,18 +166,15 @@ public class BeanMapper {
 		accountBO.setBranchName(accountDO.getBranchName());
 		accountBO.setMicrCode(accountDO.getMicrCode());
 		accountBO.setType(accountDO.getType());
-		log.info("Bean mapping from DO to BO");
 		return accountBO;
 	}
-	
-	/*public List<StoreDO> mapStoreBOsToDOs(List<StoreBO> storeBOs){
-		List<StoreDO> storeDOs = new ArrayList<>();
-		for(StoreBO storeBO : storeBOs){
-			StoreDO storeDO = mapStoreBOToDO(storeBO, new StoreDO());
-			storeDOs.add(storeDO);
-		}
-		return storeDOs;
-	}*/
+
+	/*
+	 * public List<StoreDO> mapStoreBOsToDOs(List<StoreBO> storeBOs){
+	 * List<StoreDO> storeDOs = new ArrayList<>(); for(StoreBO storeBO :
+	 * storeBOs){ StoreDO storeDO = mapStoreBOToDO(storeBO, new StoreDO());
+	 * storeDOs.add(storeDO); } return storeDOs; }
+	 */
 
 	public StoreDO mapStoreBOToDO(StoreBO storeBO, StoreDO storeDO, SellerDO sellerDO) {
 		storeDO.setName(storeBO.getName());
@@ -179,12 +183,11 @@ public class BeanMapper {
 		storeDO.setStoreReturn(storeBO.getStoreReturn());
 		storeDO.setStoreId(storeBO.getStoreId());
 		storeDO.setStoreUrl(storeBO.getStoreUrl());
-		log.info("Bean mapping from BO to DO");
 		return storeDO;
 
 	}
-	
-	public AddressDO mapAddressBOToDO(AddressBO addressBO, AddressDO addressDO, SellerDO  sellerDO) {
+
+	public AddressDO mapAddressBOToDO(AddressBO addressBO, AddressDO addressDO, SellerDO sellerDO) {
 		addressDO.setCityId(addressBO.getCityId());
 		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
@@ -192,8 +195,111 @@ public class BeanMapper {
 		addressDO.setPinCode(addressBO.getPinCode());
 		addressDO.setStateId(addressBO.getStateId());
 		addressDO.setStreet(addressBO.getStreet());
-		log.info("Bean mapping from BO to DO");
 		return addressDO;
-		
+
+	}
+
+	public WeightClassDO mapWeightClassBOToDO(WeightClassBO weightClassBO, WeightClassDO weightClassDO) {
+		weightClassDO.setUnit(weightClassBO.getUnit());
+		weightClassDO.setTitle(weightClassBO.getTitle());
+		weightClassDO.setValue(weightClassBO.getValue());
+		weightClassDO.setWeightClassId(weightClassBO.getWeightClassId());
+		return weightClassDO;
+
+	}
+
+	public LengthClassDO mapLengthClassBOToDO(LengthClassBO lengthClassBO, LengthClassDO lengthClassDO) {
+		lengthClassDO.setLengthClassId(lengthClassBO.getLengthClassId());
+		lengthClassDO.setTitle(lengthClassBO.getTitle());
+		lengthClassDO.setUnit(lengthClassBO.getUnit());
+		lengthClassDO.setValue(lengthClassBO.getValue());
+		return lengthClassDO;
+
+	}
+
+	public CategoryDO mapCategoryBOToDO(CategoryBO categoryBO, CategoryDO categoryDO) {
+		categoryDO.setCategoryColumn(categoryBO.getCategoryColumn());
+		categoryDO.setCategoryId(categoryBO.getCategoryId());
+		categoryDO.setImageLocation(categoryBO.getImageLocation());
+		categoryDO.setParentId(categoryBO.getParentId());
+		categoryDO.setSortOrder(categoryBO.getSortOrder());
+		categoryDO.setStatus(categoryBO.getStatus());
+		return categoryDO;
+
+	}
+
+	public CategoryBO mapCategoryDOToBO(CategoryDO categoryDO, CategoryBO categoryBO) {
+		categoryBO.setCategoryColumn(categoryDO.getCategoryColumn());
+		categoryBO.setCategoryId(categoryDO.getCategoryId());
+		categoryBO.setImageLocation(categoryDO.getImageLocation());
+		categoryBO.setParentId(categoryDO.getParentId());
+		categoryBO.setSortOrder(categoryDO.getSortOrder());
+		categoryBO.setStatus(categoryDO.getStatus());
+		return categoryBO;
+
+	}
+
+	public GeoZoneDO mapGeoZoneBOToDO(GeoZoneBO geoZoneBO, GeoZoneDO geoZoneDO) {
+		geoZoneDO.setDescription(geoZoneBO.getDescription());
+		geoZoneDO.setGeoZoneId(geoZoneBO.getGeoZoneId());
+		geoZoneDO.setName(geoZoneBO.getName());
+		return geoZoneDO;
+
+	}
+
+	public GeoZoneBO mapGeoZoneDOToBO(GeoZoneDO geoZoneDO, GeoZoneBO geoZoneBO) {
+		geoZoneBO.setDescription(geoZoneDO.getDescription());
+		geoZoneBO.setGeoZoneId(geoZoneDO.getGeoZoneId());
+		geoZoneBO.setName(geoZoneDO.getName());
+		return geoZoneBO;
+
+	}
+
+	public CourierDO mapCourierBOToDO(CourierBO courierBO, CourierDO courierDO) {
+		courierDO.setCourierId(courierBO.getCourierId());
+		courierDO.setImage(courierBO.getImage());
+		courierDO.setName(courierBO.getName());
+		courierDO.setProductLimit(courierBO.getProductLimit());
+		courierDO.setSortOrder(courierBO.getSortOrder());
+		return courierDO;
+
+	}
+
+	public CourierBO mapCourierDOToBO(CourierDO courierDO, CourierBO courierBO) {
+		courierBO.setCourierId(courierDO.getCourierId());
+		courierBO.setImage(courierDO.getImage());
+		courierBO.setName(courierDO.getName());
+		courierBO.setProductLimit(courierDO.getProductLimit());
+		courierBO.setSortOrder(courierDO.getSortOrder());
+		return courierBO;
+
+	}
+
+	public TaxClassDO mapTaxClassBOToDO(TaxClassBO taxClassBO, TaxClassDO taxClassDO) {
+		taxClassDO.setDescription(taxClassBO.getDescription());
+		taxClassDO.setTaxClassId(taxClassBO.getTaxClassId());
+		taxClassDO.setTitle(taxClassBO.getTitle());
+		return taxClassDO;
+
+	}
+
+	public TaxClassBO mapTaxClassDOToBO(TaxClassDO taxClassDO, TaxClassBO taxClassBO) {
+		taxClassBO.setDescription(taxClassDO.getDescription());
+		taxClassBO.setTaxClassId(taxClassDO.getTaxClassId());
+		taxClassBO.setTitle(taxClassDO.getTitle());
+		return taxClassBO;
+
+	}
+
+	public ProductDescriptionDO mapProductDescriptionBOToDO(ProductDescriptionBO productDescriptionBO, ProductDescriptionDO productDescriptionDO, ProductDO productDO) {
+		productDescriptionDO.setMetaDescription(productDescriptionBO.getMetaDescription());
+		productDescriptionDO.setProductDO(productDO);
+		productDescriptionDO.setMetaKeyword(productDescriptionBO.getMetaKeyword());
+		productDescriptionDO.setDescription(productDescriptionBO.getDescription());
+		productDescriptionDO.setProductDescriptionId(productDescriptionBO.getProductDescriptionId());
+		productDescriptionDO.setName(productDescriptionBO.getName());
+		productDescriptionDO.setTag(productDescriptionBO.getTag());
+		return productDescriptionDO;
+
 	}
 }
