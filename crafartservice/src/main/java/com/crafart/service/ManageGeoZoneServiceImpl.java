@@ -15,6 +15,7 @@ import com.crafart.data.GeoZoneDAO;
 import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.service.businessobjects.GeoZoneBO;
+import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
 
 /**
@@ -36,12 +37,12 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addGeoZoneDetail(GeoZoneBO geoZoneBO) throws CrafartDataException {
+	public void addGeoZoneDetail(GeoZoneBO geoZoneBO) throws CrafartServiceException {
 		GeoZoneDO geoZoneDO = beanMapper.mapGeoZoneBOToDO(geoZoneBO, new GeoZoneDO());
 		try {
 			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
 		} catch (CrafartDataException e) {
-			e.printStackTrace();
+			throw new CrafartServiceException("Error while adding geo zone", e);
 		}
 	}
 
@@ -51,7 +52,7 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartDataException {
+	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartServiceException {
 		List<GeoZoneBO> geoZoneBOs = new ArrayList<>();
 		try {
 			List<GeoZoneDO> geoZoneDOs = geoZoneDAOImpl.getGeoZoneDetail();
@@ -60,7 +61,7 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 				geoZoneBOs.add(geoZoneBO);
 			}
 		} catch (CrafartDataException e) {
-			e.printStackTrace();
+			throw new CrafartServiceException("Error while retriveing from DB", e);
 		}
 		return geoZoneBOs;
 	}
