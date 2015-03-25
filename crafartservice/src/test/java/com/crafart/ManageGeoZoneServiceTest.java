@@ -16,9 +16,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.exception.CrafartDataException;
 import com.crafart.service.ManageGeoZoneService;
 import com.crafart.service.businessobjects.GeoZoneBO;
+import com.crafart.service.exception.CrafartServiceException;
 
 /**
  * @author Karthi
@@ -40,7 +40,7 @@ public class ManageGeoZoneServiceTest {
 		GeoZoneBO geoZoneBO = getGeoZone();
 		try {
 			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
-		} catch (CrafartDataException e) {
+		} catch (CrafartServiceException e) {
 			Assert.fail();
 			e.printStackTrace();
 		}
@@ -59,9 +59,9 @@ public class ManageGeoZoneServiceTest {
 		GeoZoneBO geoZoneBO = getGeoZone();
 		try {
 			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
-		} catch (CrafartDataException e) {
+		} catch (CrafartServiceException e1) {
 			Assert.fail();
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 		try {
 			List<GeoZoneBO> geoZoneBOs = manageGeoZoneServiceImpl.getGeoZoneDetail();
@@ -69,7 +69,8 @@ public class ManageGeoZoneServiceTest {
 			 * for (GeoZoneBO geoZoneBO2 : geoZoneBOs) {
 			 * System.out.print("\n"+geoZoneBO2.getGeoZoneId()); }
 			 */
-		} catch (CrafartDataException e) {
+		} catch (CrafartServiceException e) {
+			Assert.fail();
 			e.printStackTrace();
 		}
 	}
