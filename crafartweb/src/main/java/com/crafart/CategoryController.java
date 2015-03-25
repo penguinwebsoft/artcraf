@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,6 +28,8 @@ import com.crafart.service.exception.CrafartServiceException;
 @RequestMapping("category")
 public class CategoryController {
 
+	private static final Logger log = Logger.getLogger(CategoryController.class);
+
 	@Autowired
 	private ManageCategoryService manageCategoryServiceImpl;
 
@@ -38,8 +41,8 @@ public class CategoryController {
 		try {
 			categoryBOs = manageCategoryServiceImpl.getCategory();
 			modelMap.addAttribute("categoryBOs", categoryBOs);
-		} catch (CrafartServiceException e) {
-			e.printStackTrace();
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application-error in retrieving category details from db", crafartServiceException);
 		}
 		return modelMap;
 
