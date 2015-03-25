@@ -44,7 +44,7 @@ public class ProductController {
 			productBO.setTaxClassId(taxClassBO.getTaxClassId());
 			manageProductServiceImpl.addProduct(productBO);
 		} catch (CrafartServiceException serviceException) {
-			log.error("Error while adding product for product_id " + productBO.getProductId(), serviceException);
+			log.error("Application-error while adding product for product_id " + productBO.getProductId(), serviceException);
 		}
 		return productBO.getProductId();
 	}

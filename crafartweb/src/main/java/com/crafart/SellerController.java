@@ -55,41 +55,41 @@ public class SellerController {
 			manageSellerServiceImpl.addSeller(sellerBO);
 			session.setAttribute("sellerprofile", sellerBO);
 			log.info("added successfully");
-		} catch (Exception uExp) {
-			log.error("Error while adding seller", uExp);
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application-Error while adding seller", crafartServiceException);
 		}
 		return modelMap;
 
 	}
 
-	@RequestMapping(value ={"/updateStore"}, method = RequestMethod.POST)
+	@RequestMapping(value = { "/updateStore" }, method = RequestMethod.POST)
 	public @ResponseBody
-	ModelMap updateStore(@RequestBody SellerBO sellerBO, HttpSession session){
+	ModelMap updateStore(@RequestBody SellerBO sellerBO, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
-		try{
+		try {
 			SellerBO sellerBO2 = (SellerBO) session.getAttribute("sellerprofile");
 			sellerBO2.getStoreBO().setStoreReturn(sellerBO.getStoreBO().getStoreReturn());
 			manageSellerServiceImpl.updateSeller(sellerBO2);
-		}catch (Exception exception){
-			exception.printStackTrace();
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application-error while updating store", crafartServiceException);
 		}
 		return modelMap;
-		
+
 	}
-	
-	@RequestMapping(value ={"/updatetax"}, method = RequestMethod.POST)
+
+	@RequestMapping(value = { "/updatetax" }, method = RequestMethod.POST)
 	public @ResponseBody
-	ModelMap updateSellerTax(@RequestBody SellerBO sellerBO, HttpSession session){
+	ModelMap updateSellerTax(@RequestBody SellerBO sellerBO, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
-		try{
+		try {
 			SellerBO sellerBO2 = (SellerBO) session.getAttribute("sellerprofile");
 			sellerBO2.setVatNo(sellerBO.getVatNo());
 			sellerBO2.setCstNo(sellerBO.getCstNo());
 			manageSellerServiceImpl.updateSeller(sellerBO2);
-		}catch (Exception exception){
-			exception.printStackTrace();
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application-error while updating sellertax", crafartServiceException);
 		}
 		return modelMap;
-		
+
 	}
 }

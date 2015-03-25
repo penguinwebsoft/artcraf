@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,6 +30,8 @@ import com.crafart.service.exception.CrafartServiceException;
 @RequestMapping("taxClass")
 public class TaxClassController {
 
+	private static final Logger log = Logger.getLogger(TaxClassController.class);
+
 	@Autowired
 	private ManageTaxClassService manageTaxClassServiceImpl;
 
@@ -41,8 +44,8 @@ public class TaxClassController {
 			taxClassBOs = manageTaxClassServiceImpl.getTaxClassDetail();
 			session.setAttribute("taxClass", taxClassBOs.get(0));
 			modelMap.addAttribute("taxClassBOs", taxClassBOs);
-		} catch (CrafartServiceException e) {
-			e.printStackTrace();
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application-error while adding taxdetails", crafartServiceException);
 		}
 		return modelMap;
 
