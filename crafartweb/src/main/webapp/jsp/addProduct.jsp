@@ -203,6 +203,111 @@ ul.wysihtml5-toolbar>li {
 	}
 </script>
 
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						var currentSelectedListId = "";
+						var postData = null;
+
+						$.ajax({
+							url : "../category/getCategory",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								var categoryBOs = data.categoryBOs;
+								$.each(categoryBOs, function(key, value) {
+									$("#productCategory").append(
+											'<option value='+value.categoryId+'>'
+													+ value.imageLocation
+													+ '</option>');
+								});
+							}
+
+						});
+					/* 	$.ajax({
+							url : "../geoZone/getGeoZone",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data){
+								var geoZoneBOs = data.geoZoneBOs;
+								$.each(geoZoneBOs, function(key, value) {
+									
+								});
+							}
+						}); */
+						$.ajax({
+							url : "../taxClass/getTaxClass",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								alert("tax class");
+							}
+
+						});
+
+						$("#saveButton")
+								.click(
+										function() {
+											if (currentSelectedListId = "tabData") {
+												var productBO = {};
+												var weightClassBO = {};
+												var lengthClassBO = {};
+												var productDescriptionBO = {};
+												productBO.model = $("#input-model").val();
+												productBO.categoryId = $("#productCategory").val();
+												productBO.status = $("#input-status").val();
+												productBO.price = $("#input-price").val();
+												productBO.sku = $("#input-sku").val();
+												productBO.quantity = $("#input-quantity").val();
+												productBO.stockStatusId = $("#input-stock-status").val();
+												productBO.quantity = $("#input-quantity").val();
+												productBO.minimum = $("#input-minimum").val();
+												productBO.dateAvailable = $("#dateOfBirthId").val();
+												productBO.length = $("#input-length").val();
+												productBO.width = $("#input-width").val();
+												productBO.height = $("#input-height").val();
+												productBO.weight = $("#input-weight").val();
+												productBO.sortOrder = $("#input-sort-order").val();
+												weightClassBO.title = $("#input-weight-class").val();
+												weightClassBO.value = $("#input-weight").val();
+												lengthClassBO.title = $("#input-length-class").val();
+												lengthClassBO.value = $("#input-length").val();
+												productDescriptionBO.name = $("#productName").val();
+												//productDescriptionBO.description = $("#description").val();
+												productDescriptionBO.tag = $("#tagTitle").val();
+												productDescriptionBO.metaDescription = $("#metaDescription").val();
+												productDescriptionBO.metaKeyword = $("#metaTagAndSEOKeyword").val();
+												productBO.weightClassBO = weightClassBO;
+												productBO.lengthClassBO = lengthClassBO;
+												productBO.productDescriptionBO = productDescriptionBO;
+												postData = JSON.stringify(productBO);
+												alert(postData);
+											}
+											$.ajax({
+														url : "../product/addProduct",
+														type : "post",
+														data : postData,
+														contentType : "application/json",
+														dataType : "json",
+														success : function(data) {
+															alert("Saved Successfully");
+														},
+														error : function(error) {
+															alert("Details failed to save");
+														}
+													});
+										});
+						
+						$("#productFieldsTabs li").click(function() {
+							currentSelectedListId = $(this).attr('id');
+						});
+					});
+</script>
+
 <div class="inner">
 	<div class="row">
 		<div class="col-lg-3">
@@ -210,8 +315,8 @@ ul.wysihtml5-toolbar>li {
 		</div>
 
 		<div class="pull-right" style="padding: 25px;">
-			<a class="btn btn-primary" title="" data-toggle="tooltip" href="addProduct.html" data-original-title="Add New"> &nbsp;&nbsp;&nbsp;SAVE&nbsp;&nbsp;&nbsp; </a> <a class="btn btn-danger"
-				style="font-size: 14px !important" title="" title="" data-toggle="tooltip" type="button" data-original-title="Delete"> CANCEL </a>
+			<a class="btn btn-primary" title="" data-toggle="tooltip" data-original-title="Add New" id="saveButton"> &nbsp;&nbsp;&nbsp;SAVE&nbsp;&nbsp;&nbsp; </a> <a
+				class="btn btn-danger" style="font-size: 14px !important" title="" title="" data-toggle="tooltip" type="button" data-original-title="Delete"> CANCEL </a>
 		</div>
 	</div>
 	<hr />
@@ -227,16 +332,16 @@ ul.wysihtml5-toolbar>li {
 				<div class="row">
 					<div class="col-lg-12">
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
-							<ul class="nav nav-tabs nav_tabs_bottom_border" style="margin-bottom: 40px;">
-								<li class="active"><a data-toggle="tab" href="#tab-general">General</a></li>
-								<li><a data-toggle="tab" href="#tab-data">Values</a></li>
-								<li><a data-toggle="tab" href="#tab-SEO">SEO</a></li>
-								<li><a data-toggle="tab" href="#tab-shipping">Shipping</a></li>
-								<li><a data-toggle="tab" href="#tab-attribute">Attribute</a></li>
-								<li><a data-toggle="tab" href="#tab-image">Image</a></li>
-								<li><a data-toggle="tab" href="#tab-discount">Discount</a></li>
-								<li><a data-toggle="tab" href="#tab-special">Special Price</a></li>
-								<li><a data-toggle="tab" href="#tab-Tax"> Tax </a></li>
+							<ul class="nav nav-tabs nav_tabs_bottom_border" style="margin-bottom: 40px" id="productFieldsTabs">
+								<li class="active" id="tabGeneral"><a data-toggle="tab" href="#tab-general">General</a></li>
+								<li id="tabData"><a data-toggle="tab" href="#tab-data">Values</a></li>
+								<li id="tabSEO"><a data-toggle="tab" href="#tab-SEO">SEO</a></li>
+								<li id="tabShipping"><a data-toggle="tab" href="#tab-shipping">Shipping</a></li>
+								<li id="tabAttribute"><a data-toggle="tab" href="#tab-attribute">Attribute</a></li>
+								<li id="tabImage"><a data-toggle="tab" href="#tab-image">Image</a></li>
+								<li id="tabDiscount"><a data-toggle="tab" href="#tab-discount">Discount</a></li>
+								<li id="tabSpecial"><a data-toggle="tab" href="#tab-special">Special Price</a></li>
+								<li id="tabTax"><a data-toggle="tab" href="#tab-Tax"> Tax </a></li>
 							</ul>
 
 							<div class="tab-content" style="border: 0px; padding: 0px;">
@@ -245,12 +350,8 @@ ul.wysihtml5-toolbar>li {
 									<div class="form-group">
 										<label class="control-label col-sm-2">Product Category</label>
 										<div class="col-sm-10">
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
+											<select class="form-control" id="productCategory">
+
 											</select>
 										</div>
 									</div>
@@ -275,7 +376,7 @@ ul.wysihtml5-toolbar>li {
 									<div class="form-group required">
 										<label class="col-sm-2 control-label" for="input-name1">Product Name</label>
 										<div class="col-sm-10">
-											<input type="text" name="product_description[1][name]" value="" placeholder="Product Name" id="input-name1" class="form-control" />
+											<input type="text" name="product_description[1][name]" value="" placeholder="Product Name" id="productName" class="form-control" />
 										</div>
 									</div>
 									<br>
@@ -360,9 +461,9 @@ ul.wysihtml5-toolbar>li {
 										<label class="col-sm-2 control-label" for="input-stock-status"><span data-toggle="tooltip" title="Status shown when a product is out of stock">Out Of Stock Status</span></label>
 										<div class="col-sm-10">
 											<select name="stock_status_id" id="input-stock-status" class="form-control">
-												<option value="6">2-3 Days</option>
-												<option value="7">In Stock</option>
-												<option value="5">Out Of Stock</option>
+												<option value="1">2-3 Days</option>
+												<option value="2">In Stock</option>
+												<option value="3">Out Of Stock</option>
 											</select>
 										</div>
 									</div>
@@ -394,9 +495,9 @@ ul.wysihtml5-toolbar>li {
 										<label class="col-sm-2 control-label" for="input-length-class">Length Class</label>
 										<div class="col-sm-10">
 											<select name="length_class_id" id="input-length-class" class="form-control">
-												<option value="1" selected="selected">Centimeter</option>
-												<option value="2">Millimeter</option>
-												<option value="3">Inch</option>
+												<option value="11" selected="selected">Centimeter</option>
+												<option value="12">Millimeter</option>
+												<option value="13">Inch</option>
 											</select>
 										</div>
 									</div>
@@ -410,10 +511,10 @@ ul.wysihtml5-toolbar>li {
 										<label class="col-sm-2 control-label" for="input-weight-class">Weight Class</label>
 										<div class="col-sm-10">
 											<select name="weight_class_id" id="input-weight-class" class="form-control">
-												<option value="1" selected="selected">Kilogram</option>
-												<option value="2">Gram</option>
-												<option value="5">Pound</option>
-												<option value="6">Ounce</option>
+												<option value="11" selected="selected">Kilogram</option>
+												<option value="12">Gram</option>
+												<option value="13">Pound</option>
+												<option value="14">Ounce</option>
 											</select>
 										</div>
 									</div>
@@ -430,19 +531,19 @@ ul.wysihtml5-toolbar>li {
 									<div class="form-group required">
 										<label class="col-sm-2 control-label" for="input-meta-title1">Meta Tag Title</label>
 										<div class="col-sm-10">
-											<input type="text" name="product_description[1][meta_title]" value="" placeholder="Meta Tag Title" id="input-meta-title1" class="form-control" />
+											<input type="text" name="product_description[1][meta_title]" value="" placeholder="Meta Tag Title" id="tagTitle" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-meta-description1">Meta Tag Description</label>
 										<div class="col-sm-10">
-											<textarea name="product_description[1][meta_description]" rows="5" placeholder="Meta Tag Description" id="input-meta-description1" class="form-control"></textarea>
+											<textarea name="product_description[1][meta_description]" rows="5" placeholder="Meta Tag Description" id="metaDescription" class="form-control"></textarea>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-meta-keyword1">Meta Tag Keywords</label>
 										<div class="col-sm-10">
-											<textarea name="product_description[1][meta_keyword]" rows="5" placeholder="Meta Tag Keywords" id="input-meta-keyword1" class="form-control"></textarea>
+											<textarea name="product_description[1][meta_keyword]" rows="5" placeholder="Meta Tag Keywords" id="metaTagAndSEOKeyword" class="form-control"></textarea>
 										</div>
 									</div>
 									<div class="form-group">
