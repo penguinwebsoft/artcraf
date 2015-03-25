@@ -14,4 +14,5 @@ import com.crafart.service.exception.CrafartServiceException;
 public interface ManageProductService {
 
 	public void addProduct(ProductBO productBO) throws CrafartServiceException;
+
 }
