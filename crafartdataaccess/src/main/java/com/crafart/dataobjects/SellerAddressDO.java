@@ -21,7 +21,7 @@ public class SellerAddressDO {
 
 	@Id
 	@Column(name = "seller_address_id")
-	@SequenceGenerator(name = "seq_seller_address", sequenceName = "seq_seller_address")
+	@SequenceGenerator(name = "seq_seller_address", sequenceName = "seq_seller_address", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_seller_address")
 	private long sellerAddressId;
 

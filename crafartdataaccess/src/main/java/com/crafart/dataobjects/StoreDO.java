@@ -35,21 +35,13 @@ public class StoreDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "store_id")
-	@SequenceGenerator(name = "seq_store", sequenceName = "seq_store")
+	@SequenceGenerator(name = "seq_store", sequenceName = "seq_store", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_store")
 	private long storeId;
 
 	@ManyToOne
-	@JoinColumn(name = "seller_id", nullable=false)
+	@JoinColumn(name = "seller_id", nullable = false)
 	private SellerDO sellerDO;
-
-	public SellerDO getSellerDO() {
-		return sellerDO;
-	}
-
-	public void setSellerDO(SellerDO sellerDO) {
-		this.sellerDO = sellerDO;
-	}
 
 	@Column(name = "name")
 	private String name;
@@ -62,6 +54,14 @@ public class StoreDO implements Serializable, Cloneable {
 
 	@Column(name = "return")
 	private String storeReturn;
+
+	public SellerDO getSellerDO() {
+		return sellerDO;
+	}
+
+	public void setSellerDO(SellerDO sellerDO) {
+		this.sellerDO = sellerDO;
+	}
 
 	public long getStoreId() {
 		return storeId;

@@ -4,13 +4,14 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,7 +33,7 @@ public class ProductDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "product_Id")
-	@SequenceGenerator(name = "seq_product", sequenceName = "seq_product")
+	@SequenceGenerator(name = "seq_product", sequenceName = "seq_product", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
 	private long productId;
 
@@ -76,7 +77,7 @@ public class ProductDO implements Serializable, Cloneable {
 	private long taxClassId;
 
 	@Column(name = "date_Available")
-	private Date dateAvailable;
+	private String dateAvailable;
 
 	@Column(name = "weight")
 	private String weight;
@@ -90,11 +91,13 @@ public class ProductDO implements Serializable, Cloneable {
 	@Column(name = "width")
 	private double width;
 
-	@Column(name = "weight_Class_Id")
-	private long weightClassId;
+	@OneToOne
+	@JoinColumn(name = "weight_class_id", nullable = false)
+	private WeightClassDO weightClassDO;
 
-	@Column(name = "length_class_Id")
-	private long lengthClassId;
+	@OneToOne
+	@JoinColumn(name = "length_class_id", nullable = false)
+	private LengthClassDO lengthClassDO;
 
 	@Column(name = "subtract")
 	private double subtract;
@@ -247,22 +250,6 @@ public class ProductDO implements Serializable, Cloneable {
 		this.width = width;
 	}
 
-	public long getWeightClassId() {
-		return weightClassId;
-	}
-
-	public void setWeightClassId(long weightClassId) {
-		this.weightClassId = weightClassId;
-	}
-
-	public long getLengthClassId() {
-		return lengthClassId;
-	}
-
-	public void setLengthClassId(long lengthClassId) {
-		this.lengthClassId = lengthClassId;
-	}
-
 	public double getSubtract() {
 		return subtract;
 	}
@@ -311,11 +298,27 @@ public class ProductDO implements Serializable, Cloneable {
 		this.price = price;
 	}
 
-	public Date getDateAvailable() {
+	public WeightClassDO getWeightClassDO() {
+		return weightClassDO;
+	}
+
+	public void setWeightClassDO(WeightClassDO weightClassDO) {
+		this.weightClassDO = weightClassDO;
+	}
+
+	public LengthClassDO getLengthClassDO() {
+		return lengthClassDO;
+	}
+
+	public void setLengthClassDO(LengthClassDO lengthClassDO) {
+		this.lengthClassDO = lengthClassDO;
+	}
+
+	public String getDateAvailable() {
 		return dateAvailable;
 	}
 
-	public void setDateAvailable(Date dateAvailable) {
+	public void setDateAvailable(String dateAvailable) {
 		this.dateAvailable = dateAvailable;
 	}
 
