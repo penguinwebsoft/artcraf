@@ -3,6 +3,8 @@
  */
 package com.crafart.service;
 
+import org.springframework.stereotype.Service;
+
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -11,6 +13,7 @@ import com.crafart.service.exception.CrafartServiceException;
  * @version 1.0
  * 
  */
+@Service("ManageAccountService")
 public interface ManageAccountService {
 
 	public void addBankAccountDetail(AccountBO accountBO) throws CrafartServiceException;
