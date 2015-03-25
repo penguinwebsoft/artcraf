@@ -46,8 +46,7 @@ public class ManageStoreServiceImpl implements ManageStoreService {
 			storeDAOImpl.addStoreDetail(storeDO);
 			storeBO.setStoreId(storeDO.getStoreId());
 		} catch (CrafartDataException crafartDataException) {
-			log.error("Exception while adding store detail, storeId id " + storeBO.getStoreId());
-			crafartDataException.printStackTrace();
+			throw new CrafartServiceException("Exception while adding store detail", crafartDataException);
 		}
 	}
 

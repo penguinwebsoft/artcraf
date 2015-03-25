@@ -75,8 +75,7 @@ public class ManageProductServiceImpl implements ManageProductService {
 			productBO.getLengthClassBO().setLengthClassId(productDO.getLengthClassDO().getLengthClassId());
 			productBO.getWeightClassBO().setWeightClassId(productDO.getWeightClassDO().getWeightClassId());
 		} catch (CrafartDataException crafartDataException) {
-			log.error("Exception while adding ProductId " + productBO.getProductId());
-			crafartDataException.printStackTrace();
+			throw new CrafartServiceException("error in adding product detail to DB", crafartDataException);
 		}
 	}
 

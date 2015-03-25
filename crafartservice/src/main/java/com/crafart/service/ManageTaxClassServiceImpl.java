@@ -39,7 +39,7 @@ public class ManageTaxClassServiceImpl implements ManageTaxClassService {
 				taxClassBOs.add(taxClassBO);
 			}
 		} catch (CrafartDataException e) {
-			e.printStackTrace();
+			throw new CrafartServiceException("error while getting tax class details", e);
 		}
 		return taxClassBOs;
 	}
