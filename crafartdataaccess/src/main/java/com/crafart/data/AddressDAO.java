@@ -3,13 +3,16 @@
  */
 package com.crafart.data;
 
+import org.springframework.stereotype.Repository;
+
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.exception.CrafartDataException;
 
 /**
- * @author Deepam
+ * @author Karthi
  * 
  */
+@Repository("addressDAO")
 public interface AddressDAO {
 
 	public void addAddress(AddressDO addressDO) throws CrafartDataException;
