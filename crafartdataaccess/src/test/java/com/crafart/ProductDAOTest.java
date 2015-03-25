@@ -17,12 +17,16 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.data.LengthClassDAO;
 import com.crafart.data.ProductDAO;
 import com.crafart.data.ProductDAOImpl;
 import com.crafart.data.SellerDAO;
 import com.crafart.data.SellerDAOImpl;
+import com.crafart.data.WeightClassDAO;
+import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
 
 /**
@@ -43,6 +47,12 @@ public class ProductDAOTest {
 
 	@Autowired
 	private SellerDAO sellerDAOImpl;
+
+	@Autowired
+	private WeightClassDAO weightClassDAOImpl;
+
+	@Autowired
+	private LengthClassDAO lengthClassDAOImpl;
 
 	/**
 	 * test case for addProduct, first getting sellerId by calling
@@ -67,14 +77,14 @@ public class ProductDAOTest {
 		SellerDO sellerDO = getSellerDO();
 		ProductDO productDO = new ProductDO();
 		productDO.setCategoryId(1);
-		productDO.setDateAvailable(java.sql.Date.valueOf("2013-02-01"));
+		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");
 		productDO.setLength(63.2);
-		productDO.setLengthClassId(1);
-		productDO.setLocation("awawaw");
+		productDO.setLengthClassDO(getLengthClass());
+		productDO.setLocation("from service");
 		productDO.setMinimum(26.00);
-		productDO.setModel("zzzz");
+		productDO.setModel("service");
 		productDO.setPoints(5);
 		productDO.setPrice(12.2f);
 		productDO.setQuantity("2");
@@ -89,10 +99,39 @@ public class ProductDAOTest {
 		productDO.setUpc("asd");
 		productDO.setViewed(2);
 		productDO.setWeight("25");
-		productDO.setWeightClassId(1);
+		productDO.setWeightClassDO(getWeightClass());
 		productDO.setWidth(12.5);
-
 		return productDO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private LengthClassDO getLengthClass() {
+		LengthClassDO lengthClassDO = new LengthClassDO();
+		lengthClassDO.setTitle("from dao");
+		lengthClassDO.setUnit(15);
+		lengthClassDO.setValue(15);
+		try {
+			lengthClassDAOImpl.addLengthClass(lengthClassDO);
+		} catch (CrafartDataException e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+		return lengthClassDO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private WeightClassDO getWeightClass() {
+		WeightClassDO weightClassDO = new WeightClassDO();
+		weightClassDO.setTitle("from dao");
+		weightClassDO.setUnit(12.5);
+		weightClassDO.setValue(12.5f);
+		try {
+			weightClassDAOImpl.addWeightClass(weightClassDO);
+		} catch (CrafartDataException e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+		return weightClassDO;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
