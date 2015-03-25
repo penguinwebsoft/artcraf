@@ -30,8 +30,8 @@ public class AddressDAOImpl implements AddressDAO {
 	}
 
 	/**
-	 * creating DB connection and inserting values through persist(),after inserting 
-	 * Committing the transaction by commit()
+	 * creating DB connection and inserting values through persist(),after
+	 * inserting Committing the transaction by commit()
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -43,7 +43,6 @@ public class AddressDAOImpl implements AddressDAO {
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while adding new address details", hExp);
 		}
 

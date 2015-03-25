@@ -45,7 +45,6 @@ public class GeoZoneDAOImpl implements GeoZoneDAO {
 			session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while adding geo zone details in table", hExp);
 		}
 	}
@@ -62,7 +61,6 @@ public class GeoZoneDAOImpl implements GeoZoneDAO {
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while reteriving GeoZone details", hExp);
 		}
 		return geoZoneDOs;

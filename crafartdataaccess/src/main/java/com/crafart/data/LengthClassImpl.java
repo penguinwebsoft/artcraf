@@ -43,8 +43,8 @@ public class LengthClassImpl implements LengthClassDAO {
 			session.persist(lengthClassDO);
 			tx.commit();
 			session.close();
-		} catch (HibernateException exception) {
-			exception.printStackTrace();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("Error in adding lengthClass", hExp);
 		}
 	}
 

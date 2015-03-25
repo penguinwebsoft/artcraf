@@ -48,7 +48,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while reteriving category details", hExp);
 		}
 		return categoryDOs;
@@ -64,7 +63,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 			session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while adding category details", hExp);
 		}
 	}
