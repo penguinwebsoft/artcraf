@@ -5,8 +5,8 @@ package com.crafart.service;
 
 import java.util.List;
 
-import com.crafart.exception.CrafartDataException;
 import com.crafart.service.businessobjects.GeoZoneBO;
+import com.crafart.service.exception.CrafartServiceException;
 
 /**
  * @author Karthi
@@ -14,7 +14,7 @@ import com.crafart.service.businessobjects.GeoZoneBO;
  */
 public interface ManageGeoZoneService {
 
-	public void addGeoZoneDetail(GeoZoneBO geoZoneBO) throws CrafartDataException;
+	public void addGeoZoneDetail(GeoZoneBO geoZoneBO) throws CrafartServiceException;
 
-	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartDataException;
+	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartServiceException;
 }
