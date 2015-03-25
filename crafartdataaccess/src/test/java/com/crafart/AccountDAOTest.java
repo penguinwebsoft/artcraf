@@ -29,7 +29,7 @@ import com.crafart.exception.CrafartDataException;
 @Transactional
 public class AccountDAOTest {
 
-	private static final Logger log = Logger.getLogger(SellerDAOTest.class);
+	private static final Logger log = Logger.getLogger(AccountDAOTest.class);
 
 	@Autowired
 	private AccountDAO accountDAOImpl;
