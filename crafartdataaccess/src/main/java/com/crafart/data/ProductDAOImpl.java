@@ -10,6 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.exception.CrafartDataException;
@@ -39,6 +41,7 @@ public class ProductDAOImpl implements ProductDAO {
 	 */
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public int addProduct(ProductDO productDO) throws CrafartDataException {
 		try {
 			Session session = this.sessionFactory.openSession();
