@@ -1,6 +1,7 @@
 package com.crafart;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class SellerControllerTest {
 	private SellerController sellerController;
 
 	@Test
+	@Ignore
 	@Rollback(true)
 	public void testAddSeller() {
 
@@ -57,8 +59,8 @@ public class SellerControllerTest {
 		}
 
 	}
-	
-	private StoreBO getStoreBO(SellerBO sellerBO){
+
+	private StoreBO getStoreBO(SellerBO sellerBO) {
 		StoreBO storeBO = new StoreBO();
 		storeBO.setName("from controller");
 		storeBO.setSellerBO(sellerBO);
@@ -66,6 +68,6 @@ public class SellerControllerTest {
 		storeBO.setStoreReturn("cont");
 		storeBO.setStoreUrl("www.wwww.com");
 		return storeBO;
-		
+
 	}
 }
