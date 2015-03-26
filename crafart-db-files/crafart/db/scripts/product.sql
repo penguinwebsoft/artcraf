@@ -45,4 +45,8 @@ CREATE TABLE product
       REFERENCES weight_class (weight_class_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
+/**
+ * ALTER QUERY
+ */
 
+ alter table product alter column date_available type varchar(45) using date_available::date
