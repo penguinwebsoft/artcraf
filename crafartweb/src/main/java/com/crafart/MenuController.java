@@ -80,4 +80,9 @@ public class MenuController {
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("login");
 	}
+	
+	@RequestMapping("/home")
+	public ModelAndView showHome(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("home");
+	}
 }
