@@ -31,7 +31,7 @@ public class GeoZoneController {
 	private static final Logger log = Logger.getLogger(GeoZoneController.class);
 
 	@Autowired
-	ManageGeoZoneService manageGeoZoneServiceImpl;
+	private ManageGeoZoneService manageGeoZoneServiceImpl;
 
 	@RequestMapping(value = { "/getGeoZone" }, method = RequestMethod.POST)
 	public @ResponseBody
