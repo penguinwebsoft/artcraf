@@ -25,22 +25,41 @@
 <script>
 	$(document).ready(function() {
 
+		getImageSizes();
+		$(window).resize(function() { //Fires when window is resized
+			getImageSizes();
+		});
+
 		$('.carousel').carousel({
 			interval : 2000
 		});
-		
+
 		$('#categoryDropDownId').addClass('open');
-		$('#categoryDropDownId #dropdownMenuId').on({"click":function(e){
-		      e.stopPropagation();
-		    }
+		$('#categoryDropDownId #dropdownMenuId').on({
+			"click" : function(e) {
+				e.stopPropagation();
+			}
 		});
 
 		$('.nav-tabs > li > a').hover(function() {
 			$(this).tab('show');
 		});
-
+		
+		var position = $("#dropdownMenuId").position();
+		var width = $("#dropdownMenuId").width();
+		$("#addFrame").css("margin-top", position.top + "px");
+		$("#addFrame").css("margin-right", position.top + "px");
+		
 	});
 
+	function getImageSizes() {
+		$("#carousel-example-generic").each(function() {
+			var $height = $(this);
+			$('#addFrame').css({
+				'height' : $height.height() + 'px'
+			});
+		});
+	}
 </script>
 </head>
 
@@ -146,13 +165,10 @@
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav" style="float: inherit;">
 					<li class="col-sm-2"><a href="#"></a></li>
-					<li id="categoryDropDownId" class="dropdown col-sm-2">
-						<a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">SEE ALL CATEGORY <b class="caret"></b></a>
+					<li id="categoryDropDownId" class="dropdown col-sm-2"><a href="#" class="dropdown-toggle text-center">SEE ALL CATEGORY <b class="caret"></b></a>
 						<ul id="dropdownMenuId" class="dropdown-menu pull-right" style="min-width: 196px;">
-							<li><a href="#">Dropdown 1</a>
-							</li>
-							<li><a href="#">Dropdown Link 2</a>
-							</li>
+							<li><a href="#">Dropdown 1</a></li>
+							<li><a href="#">Dropdown Link 2</a></li>
 							<li><a href="#">Dropdown Link 3</a></li>
 							<li><a href="#">Dropdown Link 4</a></li>
 							<li><a href="#">Dropdown Link 5</a></li>
@@ -164,13 +180,14 @@
 							<li><a href="#">Dropdown Link 11</a></li>
 							<li class="divider"></li>
 							<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" id="sampleLinkId" data-toggle="dropdown">Dropdown Link 12</a>
-								<!-- <div class="col-sm-6" id="addFrame" style="background-color: #000; z-index: 0;"></div> -->
-								<ul class="dropdown-menu" style="margin-top: -310; height: 370px; z-index: 1;">
-									<li><a href="#">Dropdown Submenu 12.1</a></li>
-									<li><a href="#">Dropdown Submenu 12.2</a></li>
-									<li><a href="#">Dropdown Submenu 12.3</a></li>
-									<li><a href="#">Dropdown Submenu 12.4</a></li>
-								</ul></li>
+									<div class="" id="addFrame" style="z-index: 0;">
+									<ul class="dropdown-menu" style="margin-top: -310; height: 370px; z-index: 1; position: relative; background-color: #000;">
+										<li><a href="#">Dropdown Submenu 12.1</a></li>
+										<li><a href="#">Dropdown Submenu 12.2</a></li>
+										<li><a href="#">Dropdown Submenu 12.3</a></li>
+										<li><a href="#">Dropdown Submenu 12.4</a></li>
+									</ul>
+								</div></li>
 							<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 13</a>
 								<ul class="dropdown-menu" style="margin-top: -310; height: 370px; z-index: 1;">
 									<li><a href="#">Dropdown Submenu 13.1</a></li>
