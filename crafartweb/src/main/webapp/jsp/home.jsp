@@ -23,44 +23,23 @@
 <script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
 <script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 
-				/* getImageSizes();
-				$(window).resize(function() { //Fires when window is resized
-					getImageSizes();
-				}); */
-
-				$('.carousel').carousel({
-					interval : 2000
-				});
-				
-				$('#categoryDropDownId').addClass('open');
-				$('#categoryDropDownId #dropdownMenuId').on({"click":function(e){
-				      e.stopPropagation();
-				    }
-				});
-				
-				$('#categoryDropDownId').on('show.bs.dropdown', function() {
-					//alert("show");
-				});
-
-				$('.nav-tabs > li > a').hover(function() {
-					$(this).tab('show');
-				});
-
-			});
-
-	function getImageSizes() {
-		$("#carousel-example-generic").each(function() {
-			var $height = $(this);
-			$('#addFrame').css({
-				'height' : $height.height() + 'px'
-			});
-			alert("set height");
+		$('.carousel').carousel({
+			interval : 2000
+		});
+		
+		$('#categoryDropDownId').addClass('open');
+		$('#categoryDropDownId #dropdownMenuId').on({"click":function(e){
+		      e.stopPropagation();
+		    }
 		});
 
-	}
+		$('.nav-tabs > li > a').hover(function() {
+			$(this).tab('show');
+		});
+
+	});
 
 </script>
 </head>
@@ -171,10 +150,8 @@
 						<a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">SEE ALL CATEGORY <b class="caret"></b></a>
 						<ul id="dropdownMenuId" class="dropdown-menu pull-right" style="min-width: 196px;">
 							<li><a href="#">Dropdown 1</a>
-								
 							</li>
 							<li><a href="#">Dropdown Link 2</a>
-								
 							</li>
 							<li><a href="#">Dropdown Link 3</a></li>
 							<li><a href="#">Dropdown Link 4</a></li>
@@ -223,24 +200,6 @@
 								</ul></li>
 						</ul></li>
 
-					<li class="dropdown"><a data-toggle="dropdown" id="dLabel" href="#">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-							<li><a href="#">Some action</a></li>
-							<li><a href="#">Some other action</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-submenu"><a tabindex="-1" href="#">Hover me for more options</a>
-								<ul class="dropdown-menu">
-									<li><a tabindex="-1" href="#">Second level</a></li>
-									<li class="dropdown-submenu"><a href="#">Even More..</a>
-										<ul class="dropdown-menu">
-											<li><a href="#">3rd level</a></li>
-											<li><a href="#">3rd level</a></li>
-										</ul></li>
-									<li><a href="#">Second level</a></li>
-									<li><a href="#">Second level</a></li>
-								</ul></li>
-						</ul></li>
-
 					<li class="col-sm-1"><a href="#"></a></li>
 					<li class="col-sm-1"><a href="#"></a></li>
 					<li class="col-sm-1"><a href="#"></a></li>
@@ -267,21 +226,21 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="${context}/resources/ItemSlider/images/1.jpg" alt="...">
+						<img src="${context}/resources/img/1.jpg" alt="...">
 						<div class="carousel-caption">...</div>
 					</div>
 					<div class="item">
-						<img src="${context}/resources/ItemSlider/images/2.jpg" alt="...">
-						<div class="carousel-caption">...</div>
-					</div>
-
-					<div class="item">
-						<img src="${context}/resources/ItemSlider/images/3.jpg" alt="...">
+						<img src="${context}/resources/img/2.jpg" alt="...">
 						<div class="carousel-caption">...</div>
 					</div>
 
 					<div class="item">
-						<img src="${context}/resources/ItemSlider/images/4.jpg" alt="...">
+						<img src="${context}/resources/img/3.jpg" alt="...">
+						<div class="carousel-caption">...</div>
+					</div>
+
+					<div class="item">
+						<img src="${context}/resources/img/4.jpg" alt="...">
 						<div class="carousel-caption">...</div>
 					</div>
 					...
