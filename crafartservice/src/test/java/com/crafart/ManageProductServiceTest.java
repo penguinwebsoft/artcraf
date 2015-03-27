@@ -3,6 +3,9 @@
  */
 package com.crafart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +24,8 @@ import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
+import com.crafart.service.businessobjects.ProductDiscountBO;
+import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.WeightClassBO;
@@ -98,7 +103,43 @@ public class ManageProductServiceTest {
 		productBO.setWeightClassBO(getWeightClassBO(productBO));
 		productBO.setWidth(12.5);
 		productBO.setProductDescriptionBO(getProductDescriptionAndSeo());
+		productBO.setProductDiscountBOs(getProductDiscount());
+		productBO.setProductSpecialBOs(getProductSpecial());
 		return productBO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ProductDiscountBO> getProductDiscount() {
+		List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
+		ProductDiscountBO productDiscountBO = new ProductDiscountBO();
+		productDiscountBO.setEndDate("01/01/0101");
+		productDiscountBO.setPrice(101.2f);
+		productDiscountBO.setQuantity(23);
+		productDiscountBO.setStartDate("00/00/0202");
+		ProductDiscountBO productDiscountBO2 = new ProductDiscountBO();
+		productDiscountBO2.setEndDate("00/01/0101");
+		productDiscountBO2.setPrice(125);
+		productDiscountBO2.setQuantity(15);
+		productDiscountBO2.setStartDate("11/11/1111");
+		productDiscountBOs.add(productDiscountBO2);
+		productDiscountBOs.add(productDiscountBO);
+		return productDiscountBOs;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ProductSpecialBO> getProductSpecial() {
+		List<ProductSpecialBO> productSpecialBOs = new ArrayList<>();
+		ProductSpecialBO productSpecialBO = new ProductSpecialBO();
+		productSpecialBO.setEndDate("00/00/0000");
+		productSpecialBO.setPrice(120.25f);
+		productSpecialBO.setStartDate("00/00/0001");
+		ProductSpecialBO productSpecialBO2 = new ProductSpecialBO();
+		productSpecialBO2.setEndDate("00/00/9999");
+		productSpecialBO2.setPrice(120.25f);
+		productSpecialBO2.setStartDate("00/10/9001");
+		productSpecialBOs.add(productSpecialBO2);
+		productSpecialBOs.add(productSpecialBO);
+		return productSpecialBOs;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
