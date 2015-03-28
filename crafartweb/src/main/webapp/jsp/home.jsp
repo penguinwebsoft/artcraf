@@ -55,16 +55,16 @@
 		$("#addFrame").css("margin-top", position.top + "px");
 		$("#addFrame").css("margin-right", position.top + "px");
 
-	});
-
-	function getImageSizes() {
-		$("#carousel-example-generic").each(function() {
-			var $height = $(this);
-			$('#addFrame').css({
-				'height' : $height.height() + 'px'
+		function getImageSizes() {
+			$("#carousel-example-generic").each(function() {
+				var $height = $(this);
+				$('#addFrame').css({
+					'height' : $height.height() + 'px'
+				});
 			});
-		});
-	}
+		}
+
+	});
 </script>
 </head>
 
@@ -235,7 +235,7 @@
 							<li class="divider"></li>
 							<li class="dropdown dropdown-submenu"><a href="#"
 								class="dropdown-toggle" id="sampleLinkId">Dropdown Link 12</a> <!-- <div class="" id="addFrame" style="z-index: 0; background-color: black;"> -->
-								<div class="div-submenu-container" style="margin-top: -310px; height: 370px;color: black; border-color: black; background-image:url('resources/img/Godrej.jpg') ">
+								<div class="div-submenu-container" style="margin-top: -310px; height: 370px;width:650px; background-image:url('resources/img/Fashion.jpg'); background-repeat: no-repeat;">
 								<ul class="dropdown-menu" 	style=" z-index: 1; position: relative;">
 									<li><a href="#">Dropdown Submenu 12.1</a></li>
 									<li><a href="#">Dropdown Submenu 12.2</a></li>
@@ -244,7 +244,7 @@
 								</ul></div></li>
 							<li class="dropdown dropdown-submenu"><a href="#"
 								class="dropdown-toggle">Dropdown Link 13</a>
-								<div class="div-submenu-container" style="color: black; border-color: black;margin-top: -310px; height: 370px;">
+								<div class="div-submenu-container" style="color: black; border-color: black;margin-top: -310px; height: 370px; width:700px;">
 								<ul class="dropdown-menu"
 									style=" z-index: 1;">
 									<li><a href="#">Dropdown Submenu 13.1</a></li>
@@ -309,28 +309,23 @@
 						alt="" src="http://placehold.it/250x180"></li>
 				</ol>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="${context}/resources/img/1.jpg" alt="...">
-						<div class="carousel-caption">...</div>
-					</div>
-					<div class="item">
-						<img src="${context}/resources/img/2.jpg" alt="...">
-						<div class="carousel-caption">...</div>
-					</div>
-
-					<div class="item">
-						<img src="${context}/resources/img/3.jpg" alt="...">
-						<div class="carousel-caption">...</div>
-					</div>
-
-					<div class="item">
-						<img src="${context}/resources/img/4.jpg" alt="...">
-						<div class="carousel-caption">...</div>
-					</div>
-					...
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="${context}/resources/img/1.jpg" alt="...">
 				</div>
+				<div class="item">
+					<img src="${context}/resources/img/2.jpg" alt="...">
+				</div>
+
+				<div class="item">
+					<img src="${context}/resources/img/3.jpg" alt="...">
+				</div>
+
+				<div class="item">
+					<img src="${context}/resources/img/4.jpg" alt="...">
+				</div>
+			</div>
 
 				<!-- Controls -->
 				<a class="left carousel-control" href="#carousel-example-generic"
