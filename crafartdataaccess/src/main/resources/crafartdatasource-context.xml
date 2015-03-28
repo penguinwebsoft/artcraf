@@ -32,6 +32,8 @@
 				<value>com.crafart.dataobjects.GeoZoneDO</value>
 				<value>com.crafart.dataobjects.TaxClassDO</value>
 				<value>com.crafart.dataobjects.ProductDescriptionDO</value>
+				<value>com.crafart.dataobjects.ProductSpecialDO</value>
+				<value>com.crafart.dataobjects.ProductDiscountDO</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

@@ -16,6 +16,8 @@ import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
+import com.crafart.dataobjects.ProductDiscountDO;
+import com.crafart.dataobjects.ProductSpecialDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.dataobjects.TaxClassDO;
@@ -28,6 +30,8 @@ import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
+import com.crafart.service.businessobjects.ProductDiscountBO;
+import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.TaxClassBO;
@@ -300,6 +304,29 @@ public class BeanMapper {
 		productDescriptionDO.setName(productDescriptionBO.getName());
 		productDescriptionDO.setTag(productDescriptionBO.getTag());
 		return productDescriptionDO;
+
+	}
+
+	public ProductSpecialDO mapProductSpecialBOToDO(ProductSpecialBO productSpecialBO, ProductSpecialDO productSpecialDO, ProductDO productDO) {
+		productSpecialDO.setEndDate(productSpecialBO.getEndDate());
+		productSpecialDO.setPrice(productSpecialBO.getPrice());
+		productSpecialDO.setProductSpecialId(productSpecialBO.getProductSpecialId());
+		productSpecialDO.setStartDate(productSpecialBO.getStartDate());
+		productSpecialDO.setProductDO(productDO);
+		productSpecialDO.setSellerId(productDO.getSellerId());
+		return productSpecialDO;
+
+	}
+
+	public ProductDiscountDO mapProductDiscountBOToDO(ProductDiscountBO productDiscountBO, ProductDiscountDO productDiscountDO, ProductDO productDO) {
+		productDiscountDO.setEndDate(productDiscountBO.getEndDate());
+		productDiscountDO.setPrice(productDiscountBO.getPrice());
+		productDiscountDO.setProductDiscountId(productDiscountBO.getProductDiscountId());
+		productDiscountDO.setQuantity(productDiscountBO.getQuantity());
+		productDiscountDO.setStartDate(productDiscountBO.getStartDate());
+		productDiscountDO.setProductDO(productDO);
+		productDiscountDO.setSellerId(productDO.getSellerId());
+		return productDiscountDO;
 
 	}
 }

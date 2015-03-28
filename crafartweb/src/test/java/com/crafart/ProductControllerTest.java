@@ -3,6 +3,9 @@
  */
 package com.crafart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.junit.Assert;
@@ -23,6 +26,8 @@ import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
+import com.crafart.service.businessobjects.ProductDiscountBO;
+import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.TaxClassBO;
@@ -102,7 +107,43 @@ public class ProductControllerTest {
 		productBO.setWeightClassBO(getWeightClassBO(productBO));
 		productBO.setWidth(12.5);
 		productBO.setProductDescriptionBO(getProductDescriptionAndSeo());
+		productBO.setProductSpecialBOs(getProductSpecial());
+		productBO.setProductDiscountBOs(getProductDiscount());
 		return productBO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ProductDiscountBO> getProductDiscount() {
+		List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
+		ProductDiscountBO productDiscountBO = new ProductDiscountBO();
+		productDiscountBO.setEndDate("01/01/0505");
+		productDiscountBO.setPrice(101.2f);
+		productDiscountBO.setQuantity(23);
+		productDiscountBO.setStartDate("00/00/0202");
+		ProductDiscountBO productDiscountBO2 = new ProductDiscountBO();
+		productDiscountBO2.setEndDate("00/01/0909");
+		productDiscountBO2.setPrice(125);
+		productDiscountBO2.setQuantity(15);
+		productDiscountBO2.setStartDate("11/11/1111");
+		productDiscountBOs.add(productDiscountBO2);
+		productDiscountBOs.add(productDiscountBO);
+		return productDiscountBOs;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ProductSpecialBO> getProductSpecial() {
+		List<ProductSpecialBO> productSpecialBOs = new ArrayList<>();
+		ProductSpecialBO productSpecialBO = new ProductSpecialBO();
+		productSpecialBO.setEndDate("01/01/0000");
+		productSpecialBO.setPrice(120.25f);
+		productSpecialBO.setStartDate("01/01/0001");
+		ProductSpecialBO productSpecialBO2 = new ProductSpecialBO();
+		productSpecialBO2.setEndDate("01/01/9999");
+		productSpecialBO2.setPrice(120.25f);
+		productSpecialBO2.setStartDate("01/11/9001");
+		productSpecialBOs.add(productSpecialBO2);
+		productSpecialBOs.add(productSpecialBO);
+		return productSpecialBOs;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)

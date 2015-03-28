@@ -33,7 +33,7 @@ public class CategoryDAOTest {
 	private CategoryDAO categoryDAOImpl;
 
 	/**
-	 * this test method is to reterive details from category table 
+	 * this test method is to retrive details from category table 
 	 */
 	@Test
 	@Rollback(true)
