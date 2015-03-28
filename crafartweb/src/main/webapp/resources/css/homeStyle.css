@@ -29,11 +29,11 @@ body {
 	color: #fdb45e;
 }
 
-#top-links .dropdown-menu a {
+#top-links .div-submenu-container a {
 	text-shadow: none;
 }
 
-#top-links .dropdown-menu a:hover {
+#top-links .div-submenu-container a:hover {
 	color: #FFF;
 }
 
@@ -113,6 +113,8 @@ body {
     position: relative;
 }
 
+/********** this is for sub menu and its menu display only (for direct relationship)  ********/
+
 .dropdown-submenu>.dropdown-menu {
     top: 0;
     left: 100%;
@@ -124,6 +126,42 @@ body {
 }
 
 .dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+/********** this is for sub menu and its menu display only (end) ********/
+
+/**************************(start) sub menu container (div placed between parent and its submenu) style place between parent menu and its menu ****************************/
+/********creating relation between div and submenu (no direct relation ship between parent and its submenu)*********/
+.div-submenu-container >.dropdown-menu {
+    top: 0;
+    left: 0;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.div-submenu-container >.dropdown-menu {
+    display: block;
+}
+
+/**************************(end )sub menu container (div placed between parent and its submenu) style place between parent menu and its menu ****************************/
+
+/*****************parent menu separated from it submenu by div	***********/
+
+.dropdown-submenu>.div-submenu-container {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.div-submenu-container {
     display: block;
 }
 
@@ -149,7 +187,7 @@ body {
     float: none;
 }
 
-.dropdown-submenu.pull-left>.dropdown-menu {
+.dropdown-submenu.pull-left>.div-submenu-container {
     left: -100%;
     margin-left: 10px;
     -webkit-border-radius: 6px 0 6px 6px;
@@ -186,3 +224,37 @@ body {
     opacity: 0.7;
 }
 
+/***********************sub menu customized*************/
+
+.div-submenu-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  /*z-index: 1000;*/
+  z-index:10000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+
+
+.div-submenu-container> li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+}
