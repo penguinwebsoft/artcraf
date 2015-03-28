@@ -11,26 +11,26 @@ ul.wysihtml5-toolbar>li {
 </style>
 
 <script type="text/javascript">
-	$(function() {
-		formInit();
-	});
-</script>
-
-<script type="text/javascript">
-	$(function() {
-		formWysiwyg();
-	});
-</script>
-
-<script type="text/javascript">
 	var shipping_row = 0;
 	var attribute_row = 0;
 	var discount_row = 0;
 	var image_row = 0;
 	var special_row = 0;
+	var currentSelectedListId = "";
+	var postData = null;
+	var geoZoneBOs = {};
+	var courierBOs = {};
 
+	$(function() {
+		formInit();
+	});
+	
+	$(function() {
+		formWysiwyg();
+	});
+	
 	$(document).ready(function() {
-
+		
 		$("#dateOfBirthId").datepicker({
 			viewMode : 'years',
 			format : 'dd/mm/yyyy',
@@ -54,12 +54,135 @@ ul.wysihtml5-toolbar>li {
 				$("#taxCstId").show();
 			}
 		});
+		
+		$.ajax({
+			url : "../category/getCategory",
+			type : "post",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data) {
+				var categoryBOs = data.categoryBOs;
+				$.each(categoryBOs, function(key, value) {
+					$("#productCategory").append(
+							'<option value='+value.categoryId+'>'
+									+ value.imageLocation
+									+ '</option>');
+				});
+			}
+
+		});
+	 	$.ajax({
+			url : "../geoZone/getGeoZone",
+			type : "post",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data){
+				geoZoneBOs = data.geoZoneBOs;
+			}
+		}); 
+	 	
+		$.ajax({
+			url : "../courier/getCourier",
+			type : "post",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data){
+				courierBOs = data.courierBOs;
+			}
+		});
+	 	
+		$.ajax({
+			url : "../taxClass/getTaxClass",
+			type : "post",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data) {
+				alert("tax class");
+			}
+
+		});
+
+		$("#saveButton")
+				.click(
+						function() {
+							if (currentSelectedListId = "tabData") {
+								var productBO = {};
+								var weightClassBO = {};
+								var lengthClassBO = {};
+								var productDescriptionBO = {};
+								var productDiscountBOs = new Array();
+								var productSpecialBOs = new Array();
+								for(var i =0;i<discount_row;i++){
+									var productDiscountBO = {};
+									productDiscountBO.quantity = $("#quantity"+i).val();
+									productDiscountBO.price = $("#value"+i).val();
+									productDiscountBO.startDate = $("#dp4"+i).val();
+									productDiscountBO.endDate = $("#dp5"+i).val();
+									productDiscountBOs.push(productDiscountBO);
+								}
+								for(var i =0;i<special_row;i++){
+									var productSpecialBO = {};
+									productSpecialBO.price = $("#prices"+i).val();
+									productSpecialBO.startDate = $("#dp2"+i).val();
+									productSpecialBO.endDate = $("#dp3"+i).val(); 
+									productSpecialBOs.push(productSpecialBO);
+								}
+								productBO.model = $("#input-model").val();
+								productBO.categoryId = $("#productCategory").val();
+								productBO.status = $("#input-status").val();
+								productBO.price = $("#input-price").val();
+								productBO.sku = $("#input-sku").val();
+								productBO.quantity = $("#input-quantity").val();
+								productBO.stockStatusId = $("#input-stock-status").val();
+								productBO.quantity = $("#input-quantity").val();
+								productBO.minimum = $("#input-minimum").val();
+								productBO.dateAvailable = $("#dateOfBirthId").val();
+								productBO.length = $("#input-length").val();
+								productBO.width = $("#input-width").val();
+								productBO.height = $("#input-height").val();
+								productBO.weight = $("#input-weight").val();
+								productBO.sortOrder = $("#input-sort-order").val();
+								weightClassBO.title = $("#input-weight-class").val();
+								weightClassBO.value = $("#input-weight").val();
+								lengthClassBO.title = $("#input-length-class").val();
+								lengthClassBO.value = $("#input-length").val();
+								productDescriptionBO.name = $("#productName").val();
+								//productDescriptionBO.description = $("#description").val();
+								productDescriptionBO.tag = $("#tagTitle").val();
+								productDescriptionBO.metaDescription = $("#metaDescription").val();
+								productDescriptionBO.metaKeyword = $("#metaTagAndSEOKeyword").val();
+								productBO.weightClassBO = weightClassBO;
+								productBO.lengthClassBO = lengthClassBO;
+								productBO.productDescriptionBO = productDescriptionBO;
+								productBO.productDiscountBOs = productDiscountBOs;
+								productBO.productSpecialBOs = productSpecialBOs; 
+								postData = JSON.stringify(productBO);
+								alert(postData);
+							}
+							$.ajax({
+										url : "../product/addProduct",
+										type : "post",
+										data : postData,
+										contentType : "application/json",
+										dataType : "json",
+										success : function(data) {
+											alert("Saved Successfully");
+										},
+										error : function(error) {
+											alert("Details failed to save");
+										}
+									});
+						});
+		
+		$("#productFieldsTabs li").click(function() {
+			currentSelectedListId = $(this).attr('id');
+		});
 
 	});
 
 	function addSpecial() {
 		html = '<tr id="special-row' + special_row + '">';
-		html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="Price" class="form-control" /></td>';
+		html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="Price" class="form-control" id="prices' + special_row + '"/></td>';
 		html += '  <td class="text-left" style="width: 25%;"><div class="input-group "><input type="text" name="product_special[' + special_row + '][date_start]" value="" placeholder="Date Start" data-date-format="YYYY-MM-DD" class="form-control" id="dp2' + special_row + '"/></div></td>';
 		html += '  <td class="text-left" style="width: 25%;"><div class="input-group "><input type="text" name="product_special[' + special_row + '][date_end]" value="" placeholder="Date End" data-date-format="YYYY-MM-DD" class="form-control" id="dp3' + special_row + '"/></div></td>';
 		html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row'
@@ -102,8 +225,8 @@ ul.wysihtml5-toolbar>li {
 		html += '    <option value="1">percentage</option>';
 		html += '    <option value="1">Direct</option>';
 		html += '  </select></td>';
-		html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" placeholder="Quantity" class="form-control" /></td>';
-		html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][values]" value="" placeholder="values" class="form-control" /></td>';
+		html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" placeholder="Quantity" class="form-control" id="quantity' + discount_row + '"/></td>';
+		html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][values]" value="" placeholder="values" class="form-control" id="value' + discount_row + '"/></td>';
 		html += '  <td class="text-left" style="width: 20%;"><div class="input-group "><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" placeholder="Date Start" data-date-format="YYYY-MM-DD" class="form-control" id="dp4' + discount_row + '"/></div></td>';
 		html += '  <td class="text-left" style="width: 20%;"><div class="input-group ">   <input type="text" name="product_discount[' + discount_row + '][date_end]" value="" placeholder="Date End" data-date-format="YYYY-MM-DD" class="form-control" id="dp5' + discount_row + '"/></div></td>';
 		html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row'
@@ -163,22 +286,10 @@ ul.wysihtml5-toolbar>li {
 
 	function addShipping() {
 		html = '<tr id="shipping-row' + shipping_row + '">';
-		html += '  <td class="text-left"><select name="product_shipping[' + shipping_row + '][courier_id]" class="form-control">';
-		html += '      <option value="8">China Post Air Mail</option>';
-		html += '      <option value="1">DHL</option>';
-		html += '      <option value="2">EMS</option>';
-		html += '      <option value="3">Fedex</option>';
-		html += '      <option value="9">Hong Kong Air Mail</option>';
-		html += '      <option value="4">JNE</option>';
-		html += '      <option value="7">Normal Mail</option>';
-		html += '      <option value="5">TNT</option>';
-		html += '      <option value="6">UPS</option>';
+		html += '  <td class="text-left"><select name="product_shipping[' + shipping_row + '][courier_id]" id="productCourier'+shipping_row+'" class="form-control">';
 		html += '  </select></td>';
 		html += '  <td class="text-right"><input type="text" name="product_shipping[' + shipping_row + '][shipping_rate]" value="" placeholder="Shipping Rate" class="form-control" /></td>';
-		html += '  <td class="text-right"><select name="product_shipping[' + shipping_row + '][geo_zone_id]" class="form-control">';
-		html += '      <option value="5">Korea to UK,US,India,Korea</option>';
-		html += '      <option value="3">UK VAT Zone</option>';
-		html += '      <option value="4">US to UK,US,India,JP</option>';
+		html += '  <td class="text-right"><select name="product_shipping[' + shipping_row + '][geo_zone_id]" id="productGeoZone'+shipping_row+'" class="form-control">';
 		html += '  </select></td>';
 		html += '  <td class="text-left"><button type="button" onclick="$(\'#shipping-row'
 				+ shipping_row
@@ -186,6 +297,20 @@ ul.wysihtml5-toolbar>li {
 		html += '</tr>';
 		$('#shipping tbody').append(html);
 		shipping_row++;
+			for(var i =0;i<shipping_row;i++){
+				$.each(geoZoneBOs, function(key, value) {
+				$("#productGeoZone"+i).append(
+						'<option value='+value.geoZoneId+'>'
+								+ value.name
+								+ '</option>');
+				});
+				$.each(courierBOs, function(key, value) {
+				$("#productCourier"+i).append(
+						'<option value='+value.courierId+'>'
+						+ value.name
+						+ '</option>');
+				});
+			}
 	}
 
 	function addImage() {
@@ -201,111 +326,6 @@ ul.wysihtml5-toolbar>li {
 
 		image_row++;
 	}
-</script>
-
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						var currentSelectedListId = "";
-						var postData = null;
-
-						$.ajax({
-							url : "../category/getCategory",
-							type : "post",
-							contentType : "application/json",
-							dataType : "json",
-							success : function(data) {
-								var categoryBOs = data.categoryBOs;
-								$.each(categoryBOs, function(key, value) {
-									$("#productCategory").append(
-											'<option value='+value.categoryId+'>'
-													+ value.imageLocation
-													+ '</option>');
-								});
-							}
-
-						});
-					/* 	$.ajax({
-							url : "../geoZone/getGeoZone",
-							type : "post",
-							contentType : "application/json",
-							dataType : "json",
-							success : function(data){
-								var geoZoneBOs = data.geoZoneBOs;
-								$.each(geoZoneBOs, function(key, value) {
-									
-								});
-							}
-						}); */
-						$.ajax({
-							url : "../taxClass/getTaxClass",
-							type : "post",
-							contentType : "application/json",
-							dataType : "json",
-							success : function(data) {
-								alert("tax class");
-							}
-
-						});
-
-						$("#saveButton")
-								.click(
-										function() {
-											if (currentSelectedListId = "tabData") {
-												var productBO = {};
-												var weightClassBO = {};
-												var lengthClassBO = {};
-												var productDescriptionBO = {};
-												productBO.model = $("#input-model").val();
-												productBO.categoryId = $("#productCategory").val();
-												productBO.status = $("#input-status").val();
-												productBO.price = $("#input-price").val();
-												productBO.sku = $("#input-sku").val();
-												productBO.quantity = $("#input-quantity").val();
-												productBO.stockStatusId = $("#input-stock-status").val();
-												productBO.quantity = $("#input-quantity").val();
-												productBO.minimum = $("#input-minimum").val();
-												productBO.dateAvailable = $("#dateOfBirthId").val();
-												productBO.length = $("#input-length").val();
-												productBO.width = $("#input-width").val();
-												productBO.height = $("#input-height").val();
-												productBO.weight = $("#input-weight").val();
-												productBO.sortOrder = $("#input-sort-order").val();
-												weightClassBO.title = $("#input-weight-class").val();
-												weightClassBO.value = $("#input-weight").val();
-												lengthClassBO.title = $("#input-length-class").val();
-												lengthClassBO.value = $("#input-length").val();
-												productDescriptionBO.name = $("#productName").val();
-												//productDescriptionBO.description = $("#description").val();
-												productDescriptionBO.tag = $("#tagTitle").val();
-												productDescriptionBO.metaDescription = $("#metaDescription").val();
-												productDescriptionBO.metaKeyword = $("#metaTagAndSEOKeyword").val();
-												productBO.weightClassBO = weightClassBO;
-												productBO.lengthClassBO = lengthClassBO;
-												productBO.productDescriptionBO = productDescriptionBO;
-												postData = JSON.stringify(productBO);
-												alert(postData);
-											}
-											$.ajax({
-														url : "../product/addProduct",
-														type : "post",
-														data : postData,
-														contentType : "application/json",
-														dataType : "json",
-														success : function(data) {
-															alert("Saved Successfully");
-														},
-														error : function(error) {
-															alert("Details failed to save");
-														}
-													});
-										});
-						
-						$("#productFieldsTabs li").click(function() {
-							currentSelectedListId = $(this).attr('id');
-						});
-					});
 </script>
 
 <div class="inner">

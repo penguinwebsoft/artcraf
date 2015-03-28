@@ -16,33 +16,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.crafart.service.ManageGeoZoneService;
-import com.crafart.service.businessobjects.GeoZoneBO;
+import com.crafart.service.ManageCourierService;
+import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
  * @author Karthi
  * 
  */
-@Controller("geoZoneController")
-@RequestMapping("geoZone")
-public class GeoZoneController {
+@Controller("courierController")
+@RequestMapping("courier")
+public class CourierController {
 
-	private static final Logger log = Logger.getLogger(GeoZoneController.class);
+	private static final Logger log = Logger.getLogger(CourierController.class);
 
 	@Autowired
-	private ManageGeoZoneService manageGeoZoneServiceImpl;
+	private ManageCourierService manageCourierServiceImpl;
 
-	@RequestMapping(value = { "/getGeoZone" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/getCourier" }, method = RequestMethod.POST)
 	public @ResponseBody
-	ModelMap getGeoZone(HttpSession httpSession) {
+	ModelMap getCourierDetail(HttpSession httpSession) {
 		ModelMap modelMap = new ModelMap();
-		List<GeoZoneBO> geoZoneBOs = new ArrayList<>();
+		List<CourierBO> courierBOs = new ArrayList<>();
 		try {
-			geoZoneBOs = manageGeoZoneServiceImpl.getGeoZoneDetail();
-			modelMap.addAttribute("geoZoneBOs", geoZoneBOs);
+			courierBOs = manageCourierServiceImpl.getCourierDetail();
+			modelMap.addAttribute("courierBOs",courierBOs);
 		} catch (CrafartServiceException crafartServiceException) {
-			log.error("Application-error in retrieving details from DB", crafartServiceException);
+			log.error("Application-Error while retriving courier detail", crafartServiceException);
 		}
 		return modelMap;
 

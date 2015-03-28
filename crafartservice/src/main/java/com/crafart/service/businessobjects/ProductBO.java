@@ -4,6 +4,7 @@
 package com.crafart.service.businessobjects;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author Karthi
@@ -70,6 +71,10 @@ public class ProductBO implements Serializable {
 	private LengthClassBO lengthClassBO;
 
 	private ProductDescriptionBO productDescriptionBO;
+
+	private List<ProductSpecialBO> productSpecialBOs;
+
+	private List<ProductDiscountBO> productDiscountBOs;
 
 	public WeightClassBO getWeightClassBO() {
 		return weightClassBO;
@@ -285,6 +290,22 @@ public class ProductBO implements Serializable {
 
 	public void setProductDescriptionBO(ProductDescriptionBO productDescriptionBO) {
 		this.productDescriptionBO = productDescriptionBO;
+	}
+
+	public List<ProductSpecialBO> getProductSpecialBOs() {
+		return productSpecialBOs;
+	}
+
+	public void setProductSpecialBOs(List<ProductSpecialBO> productSpecialBOs) {
+		this.productSpecialBOs = productSpecialBOs;
+	}
+
+	public List<ProductDiscountBO> getProductDiscountBOs() {
+		return productDiscountBOs;
+	}
+
+	public void setProductDiscountBOs(List<ProductDiscountBO> productDiscountBOs) {
+		this.productDiscountBOs = productDiscountBOs;
 	}
 
 }
