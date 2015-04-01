@@ -195,8 +195,8 @@ body {
 	height: 35px;
 	width: 100px;
 	display: inline;
-	padding: 10 15 5 15;
-	border-color: none !important;
+	padding: 10 15 8 15;
+	border-color: #e4e4e4;
 }
 
 /* Indicators active image style
@@ -267,4 +267,29 @@ body {
 #carousel-example-product1, .thumbnail {
 	padding: 10px; 
 	border-radius: 0px;
+}
+
+.offer-text {
+    background-color: #18b424;
+    color: #fff;
+    margin-top: 10px;
+    padding: 14px 16px 12px;
+    position: absolute;
+}
+
+.offer-text2 {
+    background-color: #eb0429;
+    color: #fff;
+    margin-top: 10px;
+    padding: 14px 16px 12px;
+    position: absolute;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+#footers ul{
+	padding-left: 30px;
 }
