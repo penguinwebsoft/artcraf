@@ -12,7 +12,7 @@ body {
 	border-bottom: 1px solid #e2e2e2;
 	padding: 4px 0px 3px 0;
 	margin: 0 0 20px 0;
-	min-height: 40px;
+	min-height: 30px;
 }
 
 #top .container {
@@ -50,7 +50,6 @@ body {
 	margin-left: 15px;
 }
 
-
 /* logo */
 #logo {
 	margin: 0 0 10px 0;
@@ -77,26 +76,25 @@ body {
 	margin-bottom: 0;
 }
 
-
-.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-  background-color: #081d31 !important;
-  border-color: #428bca;
+.nav .open>a,.nav .open>a:hover,.nav .open>a:focus {
+	background-color: #081d31 !important;
+	border-color: #428bca;
 }
 
- .navbar-nav > li > a {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-  }
-  
- .navbar-inverse .navbar-nav > li > a {
-    color: #fff !important;
+.navbar-nav>li>a {
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
 }
 
-.navbar-inverse .navbar-nav > li > a:focus{
+.navbar-inverse .navbar-nav>li>a {
+	color: #fff !important;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus {
 	color: #FDB45E !important;
 }
 
-#nav-top{
+#nav-top {
 	color: #fff !important;
 	background-color: #996633 !important;
 	border-bottom: 1px solid #e2e2e2;
@@ -105,156 +103,168 @@ body {
 	min-height: 40px;
 }
 
-#nav-top > li > a:focus{
+#nav-top>li>a:focus {
 	color: #FDB45E !important;
 }
 
 .dropdown-submenu {
-    position: relative;
+	position: relative;
 }
 
 /********** this is for sub menu and its menu display only (for direct relationship)  ********/
-
 .dropdown-submenu>.dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -6px;
-    margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
-    border-radius: 0 6px 6px 6px;
+	top: 0;
+	left: 100%;
+	margin-top: -0px;
+	margin-left: -1px;
+	border-radius: 0px;
 }
 
 .dropdown-submenu:hover>.dropdown-menu {
-    display: block;
+	display: block;
 }
 
 /********** this is for sub menu and its menu display only (end) ********/
 
 /**************************(start) sub menu container (div placed between parent and its submenu) style place between parent menu and its menu ****************************/
 /********creating relation between div and submenu (no direct relation ship between parent and its submenu)*********/
-.div-submenu-container >.dropdown-menu {
-    top: 0;
-    left: 0;
-    margin-top: -6px;
-    margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
-    border-radius: 0 6px 6px 6px;
+.div-submenu-container>.dropdown-menu {
+	top: 0;
+	left: 0;
+	margin-top: -0px;
+	margin-left: -1px;
+	border-radius: 0px;
 }
 
-.div-submenu-container >.dropdown-menu {
-    display: block;
+.div-submenu-container>.dropdown-menu {
+	display: block;
 }
 
 /**************************(end )sub menu container (div placed between parent and its submenu) style place between parent menu and its menu ****************************/
 
 /*****************parent menu separated from it submenu by div	***********/
-
 .dropdown-submenu>.div-submenu-container {
-    top: 0;
-    left: 100%;
-    margin-top: -6px;
-    margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
-    border-radius: 0 6px 6px 6px;
+	top: 0;
+	left: 100%;
+	margin-top: -0px;
+	margin-left: -1px;
+	border-radius: 0px;
 }
 
 .dropdown-submenu:hover>.div-submenu-container {
-    display: block;
+	display: block;
 }
 
 .dropdown-submenu>a:after {
-    display: block;
-    content: " ";
-    float: right;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 5px 0 5px 5px;
-    border-left-color: #ccc;
-    margin-top: 5px;
-    margin-right: -10px;
+	display: block;
+	content: " ";
+	float: right;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 5px 0 5px 5px;
+	border-left-color: #ccc;
+	margin-top: 5px;
+	margin-right: -10px;
 }
 
 .dropdown-submenu:hover>a:after {
-    border-left-color: #fff;
+	border-left-color: #fff;
 }
 
 .dropdown-submenu.pull-left {
-    float: none;
+	float: none;
 }
 
 .dropdown-submenu.pull-left>.div-submenu-container {
-    left: -100%;
-    margin-left: 10px;
-    -webkit-border-radius: 6px 0 6px 6px;
-    -moz-border-radius: 6px 0 6px 6px;
-    border-radius: 6px 0 6px 6px;
+	left: -100%;
+	margin-left: 10px;
+	border-radius: 0px;
+}
+
+#headerDropDownId .dropdown:hover .dropdown-menu {
+	display: block !important;
 }
 
 /* carousel indicators 
 *
 */
-
 .article-slide .carousel-indicators li {
-    border: medium none;
-    border-radius: 0;
-    float: left;
-    height: 54px;
-    margin-bottom: 5px;
-    margin-left: 0;
-    margin-right: 5px !important;
-    margin-top: 0;
-    width: 100px;
-}
-/* Indicators images style */
-.article-slide .carousel-indicators img {
-    border: 2px solid #FFFFFF;
-    float: left;
-    height: 54px;
-    left: 0;
-    width: 100px;
-}
-/* Indicators active image style */
-.article-slide .carousel-indicators .active img {
-    border: 2px solid #428BCA;
-    opacity: 0.7;
+	border-radius: 0;
+	height: 35px;
+	width: 100px;
+	display: inline;
+	padding: 10 15 5 15;
+	border-color: none !important;
 }
 
-/***********************sub menu customized*************/
+/* Indicators active image style
+*
+ */
+.article-slide .carousel-indicators .active {
+	background-color: #172431;
+	border-bottom-color: red !important;
+	border-bottom-width: 4px;
+}
+
+.carousel-indicators {
+	bottom: -50px;
+	left: 35% !important;
+	margin-left: 0px !important;
+}
 
 .div-submenu-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  /*z-index: 1000;*/
-  z-index:10000;
-  display: none;
-  float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  font-size: 14px;
-  list-style: none;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  background-clip: padding-box;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	/*z-index: 1000;*/
+	z-index: 10000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	list-style: none;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	background-clip: padding-box;
 }
 
+.div-submenu-container>li>a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.428571429;
+	color: #333333;
+	white-space: nowrap;
+}
 
-.div-submenu-container> li > a {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.428571429;
-  color: #333333;
-  white-space: nowrap;
+#searchcategory { /* Dropdown within searchbar */
+	width: 100px;
+	color: #333;
+}
+
+.carousel-control.left,.carousel-control.right {
+	background-image: none;
+	
+}
+
+#carousel-example-product1, .col-sm-2 {
+	padding: 0px;
+}
+
+#Product1_description, .col-md-4{
+	padding-right: 0;
+}
+ 
+#carousel-example-product1, .thumbnail {
+	padding: 10px; 
+	border-radius: 0px;
 }
