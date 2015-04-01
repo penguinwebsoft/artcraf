@@ -2734,4 +2734,13 @@ a {
     border-radius: 0;
 }
 
+.no_margin {
+	margin: 0px;
+}
+
+ .font_Size_12{
+ 	font-size: 12px !important;
+ }
+
+
 /* END Pricing Table */
