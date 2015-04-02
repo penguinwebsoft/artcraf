@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.AddressDAO;
-import com.crafart.data.SellerDAO;
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.AddressDAO;
+import com.crafart.inter.data.SellerDAO;
+import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;

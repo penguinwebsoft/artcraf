@@ -12,9 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.CategoryDAO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CategoryDAO;
+import com.crafart.inter.service.ManageCategoryService;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;

@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.AccountDAO;
 import com.crafart.dataobjects.AccountDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.AccountDAO;
+import com.crafart.inter.service.ManageAccountService;
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;

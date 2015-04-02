@@ -9,9 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.crafart.data.TaxClassDAO;
 import com.crafart.dataobjects.TaxClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.TaxClassDAO;
+import com.crafart.inter.service.ManageTaxClassService;
 import com.crafart.service.businessobjects.TaxClassBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
