@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.GeoZoneDAO;
 
 /**
  * @author Karthi
