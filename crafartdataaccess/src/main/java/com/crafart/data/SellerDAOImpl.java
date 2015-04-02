@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.SellerDAO;
 
 /**
  * @author Karthi

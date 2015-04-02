@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.TaxClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.TaxClassDAO;
 
 /**
  * @author Deepam
