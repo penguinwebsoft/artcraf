@@ -53,8 +53,8 @@ public class SellerControllerTest {
 
 		try {
 			sellerController.addSeller(sellerBO, null, null, new MockHttpServletRequest(), new MockHttpSession());
-		} catch (Exception exp) {
-			exp.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 			Assert.fail();
 		}
 
