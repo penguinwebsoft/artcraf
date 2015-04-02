@@ -35,6 +35,9 @@ public class CategoryDO implements Serializable, Cloneable {
 	@Column(name = "image_location")
 	private String imageLocation;
 
+	@Column(name = "category_name")
+	private String categoryName;
+
 	@Column(name = "category_column")
 	private long categoryColumn;
 
@@ -93,6 +96,14 @@ public class CategoryDO implements Serializable, Cloneable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 }
