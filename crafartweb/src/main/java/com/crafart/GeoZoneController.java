@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.crafart.service.ManageGeoZoneService;
+import com.crafart.inter.service.ManageGeoZoneService;
 import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.exception.CrafartServiceException;
 
