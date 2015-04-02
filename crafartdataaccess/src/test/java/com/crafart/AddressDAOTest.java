@@ -15,9 +15,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.AddressDAO;
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.AddressDAO;
 
 /**
  * @author Karthi
@@ -41,8 +41,8 @@ public class AddressDAOTest {
 		AddressDO addressDO = getAddress();
 		try {
 			addressDAOImpl.addAddress(addressDO);
-		} catch (CrafartDataException crafartDataException) {
-			crafartDataException.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}

@@ -3,8 +3,6 @@
  */
 package com.crafart;
 
-import java.text.ParseException;
-
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,17 +15,17 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.LengthClassDAO;
-import com.crafart.data.ProductDAO;
 import com.crafart.data.ProductDAOImpl;
-import com.crafart.data.SellerDAO;
 import com.crafart.data.SellerDAOImpl;
-import com.crafart.data.WeightClassDAO;
 import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.LengthClassDAO;
+import com.crafart.inter.data.ProductDAO;
+import com.crafart.inter.data.SellerDAO;
+import com.crafart.inter.data.WeightClassDAO;
 
 /**
  * @author Karthi
@@ -66,14 +64,14 @@ public class ProductDAOTest {
 			ProductDO productDO = getProduct();
 			productDAOImpl.addProduct(productDO);
 			log.info("product id " + productDO.getProductId());
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private ProductDO getProduct() throws ParseException {
+	private ProductDO getProduct() {
 		SellerDO sellerDO = getSellerDO();
 		ProductDO productDO = new ProductDO();
 		productDO.setCategoryId(1);
@@ -95,7 +93,6 @@ public class ProductDAOTest {
 		productDO.setStatus(1);
 		productDO.setStockStatusId("20");
 		productDO.setSubtract(20.0001);
-		productDO.setTaxClassId(1);
 		productDO.setUpc("asd");
 		productDO.setViewed(2);
 		productDO.setWeight("25");
@@ -112,8 +109,8 @@ public class ProductDAOTest {
 		lengthClassDO.setValue(15);
 		try {
 			lengthClassDAOImpl.addLengthClass(lengthClassDO);
-		} catch (CrafartDataException e) {
-			e.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 		return lengthClassDO;
@@ -127,8 +124,8 @@ public class ProductDAOTest {
 		weightClassDO.setValue(12.5f);
 		try {
 			weightClassDAOImpl.addWeightClass(weightClassDO);
-		} catch (CrafartDataException e) {
-			e.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 		return weightClassDO;
@@ -153,8 +150,8 @@ public class ProductDAOTest {
 		try {
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.setSellerId(sellerDO.getSellerId());
-		} catch (CrafartDataException uExp) {
-			uExp.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 		}
 		return sellerDO;
 

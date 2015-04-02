@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.TaxClassDAO;
 import com.crafart.dataobjects.TaxClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.TaxClassDAO;
 
 /**
  * @author Karthi
@@ -41,13 +41,11 @@ public class TaxClassDAOTest {
 	 * (CrafartDataException e) { e.printStackTrace(); Assert.fail(); } }
 	 */
 
-	private TaxClassDO getTaxClass() {
-		TaxClassDO taxClassDO = new TaxClassDO();
-		taxClassDO.setDescription("VAT %");
-		taxClassDO.setTitle("VAT");
-		return taxClassDO;
-	}
-
+	/*
+	 * private TaxClassDO getTaxClass() { TaxClassDO taxClassDO = new
+	 * TaxClassDO(); taxClassDO.setDescription("VAT %");
+	 * taxClassDO.setTitle("VAT"); return taxClassDO; }
+	 */
 	@Test
 	@Rollback(true)
 	public void testGetTaxClassDetail() {
@@ -56,8 +54,8 @@ public class TaxClassDAOTest {
 			for (TaxClassDO taxClassDO : taxClassDOs) {
 				System.out.print("\n" + taxClassDO.getTaxClassId());
 			}
-		} catch (CrafartDataException e) {
-			e.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
