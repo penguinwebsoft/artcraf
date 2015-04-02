@@ -18,16 +18,20 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.ManageProductService;
-import com.crafart.service.ManageSellerService;
+import com.crafart.inter.service.ManageProductService;
+import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.LengthClassBO;
+import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
 import com.crafart.service.businessobjects.ProductDiscountBO;
+import com.crafart.service.businessobjects.ProductShippingBO;
 import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
+import com.crafart.service.businessobjects.TaxRateBO;
+import com.crafart.service.businessobjects.TaxRuleBO;
 import com.crafart.service.businessobjects.WeightClassBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -56,8 +60,8 @@ public class ManageProductServiceTest {
 		ProductBO productBO = getProductBO();
 		try {
 			manageProductServiceImpl.addProduct(productBO);
-		} catch (CrafartServiceException crafartServiceException) {
-			crafartServiceException.printStackTrace();
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
 		}
 	}
@@ -96,7 +100,6 @@ public class ManageProductServiceTest {
 		productBO.setStatus(1);
 		productBO.setStockStatusId("20");
 		productBO.setSubtract(20.0001);
-		productBO.setTaxClassId(1);
 		productBO.setUpc("asd");
 		productBO.setViewed(2);
 		productBO.setWeight("25");
@@ -105,7 +108,76 @@ public class ManageProductServiceTest {
 		productBO.setProductDescriptionBO(getProductDescriptionAndSeo());
 		productBO.setProductDiscountBOs(getProductDiscount());
 		productBO.setProductSpecialBOs(getProductSpecial());
+		productBO.setProductShippingBOs(getProductShipping());
+		productBO.setProductAttributeBOs(getProductAttribute());
+		productBO.setTaxRateBO(getTaxRate());
 		return productBO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<TaxRuleBO> getTaxRule() {
+		List<TaxRuleBO> taxRuleBOs = new ArrayList<>();
+		TaxRuleBO taxRuleBO = new TaxRuleBO();
+		taxRuleBO.setValue("5%");
+		taxRuleBO.setPriority(1);
+		taxRuleBO.setTaxClassId(1);
+		taxRuleBO.setBased("service");
+		TaxRuleBO taxRuleBO2 = new TaxRuleBO();
+		taxRuleBO2.setBased("service");
+		taxRuleBO2.setPriority(2);
+		taxRuleBO2.setTaxClassId(2);
+		taxRuleBO2.setValue("4%");
+		TaxRuleBO taxRuleBO3 = new TaxRuleBO();
+		taxRuleBO3.setBased("service");
+		taxRuleBO3.setPriority(2);
+		taxRuleBO3.setTaxClassId(3);
+		taxRuleBO3.setValue("2%");
+		taxRuleBOs.add(taxRuleBO);
+		taxRuleBOs.add(taxRuleBO2);
+		taxRuleBOs.add(taxRuleBO3);
+		return taxRuleBOs;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private TaxRateBO getTaxRate() {
+		TaxRateBO taxRateBO = new TaxRateBO();
+		taxRateBO.setName("pppp");
+		taxRateBO.setRate(36);
+		taxRateBO.setType("opop");
+		taxRateBO.setTaxRuleBOs(getTaxRule());
+		return taxRateBO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ProductAttributeBO> getProductAttribute() {
+		List<ProductAttributeBO> productAttributeBOs = new ArrayList<>();
+		ProductAttributeBO productAttributeBO = new ProductAttributeBO();
+		productAttributeBO.setAttributeGroupId(221);
+		productAttributeBO.setSortOrder(1);
+		productAttributeBO.setText("yellow");
+		ProductAttributeBO productAttributeBO2 = new ProductAttributeBO();
+		productAttributeBO2.setAttributeGroupId(221);
+		productAttributeBO2.setSortOrder(2);
+		productAttributeBO2.setText("green");
+		productAttributeBOs.add(productAttributeBO2);
+		productAttributeBOs.add(productAttributeBO);
+		return productAttributeBOs;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ProductShippingBO> getProductShipping() {
+		List<ProductShippingBO> productShippingBOs = new ArrayList<>();
+		ProductShippingBO productShippingBO = new ProductShippingBO();
+		productShippingBO.setCourierId(41);
+		productShippingBO.setGeoZoneId(50);
+		productShippingBO.setShippingRate(125);
+		ProductShippingBO productShippingBO2 = new ProductShippingBO();
+		productShippingBO2.setCourierId(41);
+		productShippingBO2.setGeoZoneId(50);
+		productShippingBO2.setShippingRate(154);
+		productShippingBOs.add(productShippingBO2);
+		productShippingBOs.add(productShippingBO);
+		return productShippingBOs;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -182,8 +254,9 @@ public class ManageProductServiceTest {
 
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
-		} catch (CrafartServiceException e) {
-			e.printStackTrace();
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
 		}
 		return sellerBO;
 

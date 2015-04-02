@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.ManageAccountService;
+import com.crafart.inter.service.ManageAccountService;
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -40,8 +40,8 @@ public class ManageAccountServiceTest {
 		AccountBO accountBO = getAccountDaetail();
 		try {
 			manageAccountServiceImpl.addBankAccountDetail(accountBO);
-		} catch (CrafartServiceException crafartServiceException) {
-			crafartServiceException.printStackTrace();
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
 		}
 	}

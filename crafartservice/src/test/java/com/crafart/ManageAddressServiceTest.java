@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.ManageAddressService;
+import com.crafart.inter.service.ManageAddressService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -36,8 +36,8 @@ public class ManageAddressServiceTest {
 		AddressBO addressBO = getAddress();
 		try {
 			manageAddressServiceImpl.addAddress(addressBO);
-		} catch (CrafartServiceException e) {
-			e.printStackTrace();
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
 		}
 	}

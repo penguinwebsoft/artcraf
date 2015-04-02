@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.ManageTaxClassService;
+import com.crafart.inter.service.ManageTaxClassService;
 import com.crafart.service.businessobjects.TaxClassBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -36,12 +36,13 @@ public class ManageTaxClassTest {
 	@Rollback(true)
 	public void testGetTaxClassDetail() {
 		try {
+			@SuppressWarnings("unused")
 			List<TaxClassBO> taxClassBOs = manageTaxClassServiceImpl.getTaxClassDetail();
-			for (TaxClassBO taxClassBO : taxClassBOs) {
+			/*for (TaxClassBO taxClassBO : taxClassBOs) {
 				System.out.print("\n" + taxClassBO.getTaxClassId());
-			}
-		} catch (CrafartServiceException e) {
-			e.printStackTrace();
+			}*/
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
 		}
 	}

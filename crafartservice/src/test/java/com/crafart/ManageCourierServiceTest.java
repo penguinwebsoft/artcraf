@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.ManageCourierService;
+import com.crafart.inter.service.ManageCourierService;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -40,9 +40,9 @@ public class ManageCourierServiceTest {
 		CourierBO courierBO = getCourier();
 		try {
 			manageCourierServiceImpl.addCourierDetail(courierBO);
-		} catch (CrafartServiceException e) {
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 	}
 
@@ -52,19 +52,20 @@ public class ManageCourierServiceTest {
 		CourierBO courierBO = getCourier();
 		try {
 			manageCourierServiceImpl.addCourierDetail(courierBO);
-		} catch (CrafartServiceException crafartServiceException) {
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
-			crafartServiceException.printStackTrace();
 		}
 		try {
+			@SuppressWarnings("unused")
 			List<CourierBO> courierBOs = manageCourierServiceImpl.getCourierDetail();
 			/*
 			 * for (CourierBO courierBO2 : courierBOs) {
 			 * System.out.print("\n"+courierBO2.getCourierId()); }
 			 */
-		} catch (CrafartServiceException crafartServiceException) {
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
-			crafartServiceException.printStackTrace();
 		}
 	}
 

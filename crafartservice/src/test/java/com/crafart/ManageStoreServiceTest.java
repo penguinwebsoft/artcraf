@@ -16,8 +16,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.ManageSellerService;
-import com.crafart.service.ManageStoreService;
+import com.crafart.inter.service.ManageSellerService;
+import com.crafart.inter.service.ManageStoreService;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
@@ -48,9 +48,9 @@ public class ManageStoreServiceTest {
 		StoreBO storeBO = getStoreBO();
 		try {
 			manageStoreServiceImpl.addStoreDetail(storeBO);
-		} catch (CrafartServiceException crafartServiceException) {
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
-			crafartServiceException.printStackTrace();
 		}
 	}
 
@@ -82,12 +82,6 @@ public class ManageStoreServiceTest {
 		sellerBO.setCommission("aaaa");
 		sellerBO.setStatus(1);
 		sellerBO.setApproved(1);
-
-		/*try {
-			manageSellerServiceImpl.addSeller(sellerBO);
-		} catch (CrafartServiceException e) {
-			e.printStackTrace();
-		}*/
 		return sellerBO;
 
 	}
