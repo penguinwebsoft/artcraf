@@ -73,9 +73,6 @@ public class ProductDO implements Serializable, Cloneable {
 	@Column(name = "points")
 	private int points;
 
-	@Column(name = "tax_Class_Id")
-	private long taxClassId;
-
 	@Column(name = "date_Available")
 	private String dateAvailable;
 
@@ -208,14 +205,6 @@ public class ProductDO implements Serializable, Cloneable {
 
 	public void setPoints(int points) {
 		this.points = points;
-	}
-
-	public long getTaxClassId() {
-		return taxClassId;
-	}
-
-	public void setTaxClassId(long taxClassId) {
-		this.taxClassId = taxClassId;
 	}
 
 	public String getWeight() {
