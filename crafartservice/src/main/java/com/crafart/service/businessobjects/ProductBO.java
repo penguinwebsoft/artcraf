@@ -44,8 +44,6 @@ public class ProductBO implements Serializable {
 
 	private int points;
 
-	private long taxClassId;
-
 	private String dateAvailable;
 
 	private String weight;
@@ -75,6 +73,12 @@ public class ProductBO implements Serializable {
 	private List<ProductSpecialBO> productSpecialBOs;
 
 	private List<ProductDiscountBO> productDiscountBOs;
+
+	private List<ProductShippingBO> productShippingBOs;
+
+	private List<ProductAttributeBO> productAttributeBOs;
+
+	private TaxRateBO taxRateBO;
 
 	public WeightClassBO getWeightClassBO() {
 		return weightClassBO;
@@ -196,14 +200,6 @@ public class ProductBO implements Serializable {
 		this.points = points;
 	}
 
-	public long getTaxClassId() {
-		return taxClassId;
-	}
-
-	public void setTaxClassId(long taxClassId) {
-		this.taxClassId = taxClassId;
-	}
-
 	public String getWeight() {
 		return weight;
 	}
@@ -306,6 +302,30 @@ public class ProductBO implements Serializable {
 
 	public void setProductDiscountBOs(List<ProductDiscountBO> productDiscountBOs) {
 		this.productDiscountBOs = productDiscountBOs;
+	}
+
+	public List<ProductShippingBO> getProductShippingBOs() {
+		return productShippingBOs;
+	}
+
+	public void setProductShippingBOs(List<ProductShippingBO> productShippingBOs) {
+		this.productShippingBOs = productShippingBOs;
+	}
+
+	public List<ProductAttributeBO> getProductAttributeBOs() {
+		return productAttributeBOs;
+	}
+
+	public void setProductAttributeBOs(List<ProductAttributeBO> productAttributeBOs) {
+		this.productAttributeBOs = productAttributeBOs;
+	}
+
+	public TaxRateBO getTaxRateBO() {
+		return taxRateBO;
+	}
+
+	public void setTaxRateBO(TaxRateBO taxRateBO) {
+		this.taxRateBO = taxRateBO;
 	}
 
 }
