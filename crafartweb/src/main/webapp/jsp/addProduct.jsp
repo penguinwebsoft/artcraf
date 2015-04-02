@@ -20,6 +20,7 @@ ul.wysihtml5-toolbar>li {
 	var postData = null;
 	var geoZoneBOs = {};
 	var courierBOs = {};
+	var attributeGroupDescBOs = {};
 
 	$(function() {
 		formInit();
@@ -49,9 +50,11 @@ ul.wysihtml5-toolbar>li {
 			if (valueSelected == 0) {
 				$("#taxVatId").hide();
 				$("#taxCstId").hide();
+				$("#taxGstId").hide();
 			} else {
 				$("#taxVatId").show();
 				$("#taxCstId").show();
+				$("#taxGstId").show();
 			}
 		});
 		
@@ -65,7 +68,7 @@ ul.wysihtml5-toolbar>li {
 				$.each(categoryBOs, function(key, value) {
 					$("#productCategory").append(
 							'<option value='+value.categoryId+'>'
-									+ value.imageLocation
+									+ value.categoryName
 									+ '</option>');
 				});
 			}
@@ -90,6 +93,16 @@ ul.wysihtml5-toolbar>li {
 				courierBOs = data.courierBOs;
 			}
 		});
+		
+		$.ajax({
+			url : "../attributegroupdesc/getAttributeGroupDesc",
+			type : "post",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data) {
+				attributeGroupDescBOs = data.attributeGroupDescBOs;
+			}
+		});
 	 	
 		$.ajax({
 			url : "../taxClass/getTaxClass",
@@ -97,7 +110,6 @@ ul.wysihtml5-toolbar>li {
 			contentType : "application/json",
 			dataType : "json",
 			success : function(data) {
-				alert("tax class");
 			}
 
 		});
@@ -109,9 +121,25 @@ ul.wysihtml5-toolbar>li {
 								var productBO = {};
 								var weightClassBO = {};
 								var lengthClassBO = {};
+								var taxRateBO = {};
 								var productDescriptionBO = {};
 								var productDiscountBOs = new Array();
 								var productSpecialBOs = new Array();
+								var productShippingBOs = new Array();
+								var productAttributeBOs = new Array();
+								var taxRuleBOs = new Array();
+								var taxRuleBO = {};
+								taxRuleBO.value = $("#vatId").val();
+								taxRuleBO.value = $("#cstId").val();
+								taxRuleBO.value = $("#gstId").val();
+								taxRuleBOs.push(taxRuleBO);
+								taxRateBO.taxRuleBOs = taxRuleBOs;
+								for(var i =0;i<attribute_row;i++){
+									var productAttributeBO = {};
+									productAttributeBO.attributeGroupId = $("#productAttribute"+i).val();
+									productAttributeBO.text = $("#AttributeText"+i).val();
+									productAttributeBOs.push(productAttributeBO);
+								} 
 								for(var i =0;i<discount_row;i++){
 									var productDiscountBO = {};
 									productDiscountBO.quantity = $("#quantity"+i).val();
@@ -119,6 +147,13 @@ ul.wysihtml5-toolbar>li {
 									productDiscountBO.startDate = $("#dp4"+i).val();
 									productDiscountBO.endDate = $("#dp5"+i).val();
 									productDiscountBOs.push(productDiscountBO);
+								}
+								for(var i=0;i<shipping_row;i++){
+									var productShippingBO = {};
+									productShippingBO.courierId = $("#productCourier"+i).val();
+									productShippingBO.geoZoneId = $("#productGeoZone"+i).val();
+									productShippingBO.shippingRate = $("#productShippingRate"+i).val();
+									productShippingBOs.push(productShippingBO);
 								}
 								for(var i =0;i<special_row;i++){
 									var productSpecialBO = {};
@@ -156,6 +191,9 @@ ul.wysihtml5-toolbar>li {
 								productBO.productDescriptionBO = productDescriptionBO;
 								productBO.productDiscountBOs = productDiscountBOs;
 								productBO.productSpecialBOs = productSpecialBOs; 
+								productBO.productShippingBOs = productShippingBOs;
+								productBO.productAttributeBOs = productAttributeBOs;
+								productBO.taxRateBO = taxRateBO;
 								postData = JSON.stringify(productBO);
 								alert(postData);
 							}
@@ -265,12 +303,10 @@ ul.wysihtml5-toolbar>li {
 
 	function addAttribute() {
 		html = '<tr id="attribute-row' + attribute_row + '">';
-		html += ' <td class="text-left" style="width: 20%;"><select name="product_attribute[' + attribute_row + '][attribute_type_id]" class="form-control">';
-		html += '    <option value="1">USB 2.0</option>';
-		html += '    <option value="1">USB 3.0</option>';
+		html += ' <td class="text-left" style="width: 20%;"><select name="product_attribute[' + attribute_row + '][attribute_type_id]" id="productAttribute'+attribute_row+'" class="form-control">';
 		html += '  </select></td>';
 		html += '  <td class="text-left">';
-		html += '<div class="input-group"><span class="input-group-addon"></span><textarea name="product_attribute[' + attribute_row + '][product_attribute_description][1][text]" rows="5" placeholder="Text" class="form-control"></textarea></div>';
+		html += '<div class="input-group"><span class="input-group-addon"></span><textarea name="product_attribute[' + attribute_row + '][product_attribute_description][1][text]" rows="5" placeholder="Text" id="AttributeText'+attribute_row+'" class="form-control"></textarea></div>';
 		html += '  </td>';
 		html += '  <td class="text-left"><button type="button" onclick="$(\'#attribute-row'
 				+ attribute_row
@@ -278,17 +314,21 @@ ul.wysihtml5-toolbar>li {
 		html += '</tr>';
 
 		$('#attribute tbody').append(html);
-
-		attributeautocomplete(attribute_row);
-
-		attribute_row++;
+		
+			$.each(attributeGroupDescBOs, function(key, value) {
+			$("#productAttribute"+attribute_row).append(
+					'<option value='+value.atrributeGroupDescId+'>'
+							+ value.attributeGroupName
+							+ '</option>');
+		});
+			attribute_row++;
 	}
 
 	function addShipping() {
 		html = '<tr id="shipping-row' + shipping_row + '">';
 		html += '  <td class="text-left"><select name="product_shipping[' + shipping_row + '][courier_id]" id="productCourier'+shipping_row+'" class="form-control">';
 		html += '  </select></td>';
-		html += '  <td class="text-right"><input type="text" name="product_shipping[' + shipping_row + '][shipping_rate]" value="" placeholder="Shipping Rate" class="form-control" /></td>';
+		html += '  <td class="text-right"><input type="text" name="product_shipping[' + shipping_row + '][shipping_rate]" value="" placeholder="Shipping Rate" class="form-control" id="productShippingRate'+shipping_row+'" /></td>';
 		html += '  <td class="text-right"><select name="product_shipping[' + shipping_row + '][geo_zone_id]" id="productGeoZone'+shipping_row+'" class="form-control">';
 		html += '  </select></td>';
 		html += '  <td class="text-left"><button type="button" onclick="$(\'#shipping-row'
@@ -296,21 +336,20 @@ ul.wysihtml5-toolbar>li {
 				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i></button></td>';
 		html += '</tr>';
 		$('#shipping tbody').append(html);
-		shipping_row++;
-			for(var i =0;i<shipping_row;i++){
+		
 				$.each(geoZoneBOs, function(key, value) {
-				$("#productGeoZone"+i).append(
+				$("#productGeoZone"+shipping_row).append(
 						'<option value='+value.geoZoneId+'>'
 								+ value.name
 								+ '</option>');
 				});
 				$.each(courierBOs, function(key, value) {
-				$("#productCourier"+i).append(
+				$("#productCourier"+shipping_row).append(
 						'<option value='+value.courierId+'>'
 						+ value.name
 						+ '</option>');
 				});
-			}
+				shipping_row++;
 	}
 
 	function addImage() {
@@ -452,9 +491,9 @@ ul.wysihtml5-toolbar>li {
 									</div>
 
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-location">Location</label>
+										<label class="col-sm-2 control-label" for="input-location">State</label>
 										<div class="col-sm-10">
-											<input type="text" name="location" value="" placeholder="Location" id="input-location" class="form-control" />
+											<input type="text" name="location" value="" placeholder="Enter State" id="input-location" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -720,6 +759,12 @@ ul.wysihtml5-toolbar>li {
 										<label class="col-sm-3 control-label" for="cstId">CST Rate (%)</label>
 										<div class="col-sm-3">
 											<input type="text" name="cstId" value="" placeholder="CST Rate (%)" id="cstId" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group required" id="taxGstId">
+										<label class="col-sm-3 control-label" for="gstId">GST Rate (%)</label>
+										<div class="col-sm-3">
+											<input type="text" name="gstId" value="" placeholder="GST Rate (%)" id="gstId" class="form-control" />
 										</div>
 									</div>
 								</div>
