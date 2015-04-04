@@ -72,7 +72,7 @@
 </script>
 </head>
 
-<body style="background-image: url(${context}/resources/img/background_img1.jpg);">
+<body style="background-image: url(${context}/resources/img/background_img.jpg);">
 	<div class="row">
 		<nav id="top">
 			<div class="container">
