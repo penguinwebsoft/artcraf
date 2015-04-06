@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.CourierDAO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CourierDAO;
+import com.crafart.inter.service.ManageCourierService;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;

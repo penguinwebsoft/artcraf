@@ -10,31 +10,41 @@ import org.springframework.stereotype.Component;
 
 import com.crafart.dataobjects.AccountDO;
 import com.crafart.dataobjects.AddressDO;
+import com.crafart.dataobjects.AttributeGroupDescDO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.dataobjects.LengthClassDO;
+import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
 import com.crafart.dataobjects.ProductDiscountDO;
+import com.crafart.dataobjects.ProductShippingDO;
 import com.crafart.dataobjects.ProductSpecialDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.dataobjects.TaxClassDO;
+import com.crafart.dataobjects.TaxRateDO;
+import com.crafart.dataobjects.TaxRuleDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.AttributeGroupDescBO;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.businessobjects.LengthClassBO;
+import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
 import com.crafart.service.businessobjects.ProductDiscountBO;
+import com.crafart.service.businessobjects.ProductShippingBO;
 import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.TaxClassBO;
+import com.crafart.service.businessobjects.TaxRateBO;
+import com.crafart.service.businessobjects.TaxRuleBO;
 import com.crafart.service.businessobjects.WeightClassBO;
 
 /**
@@ -108,7 +118,6 @@ public class BeanMapper {
 		productDO.setStatus(productBO.getStatus());
 		productDO.setStockStatusId(productBO.getStockStatusId());
 		productDO.setSubtract(productBO.getSubtract());
-		productDO.setTaxClassId(productBO.getTaxClassId());
 		productDO.setUpc(productBO.getUpc());
 		productDO.setViewed(productBO.getViewed());
 		productDO.setWeight(productBO.getWeight());
@@ -138,7 +147,6 @@ public class BeanMapper {
 		productBO.setStatus(productDO.getStatus());
 		productBO.setStockStatusId(productDO.getStockStatusId());
 		productBO.setSubtract(productDO.getSubtract());
-		productBO.setTaxClassId(productDO.getTaxClassId());
 		productBO.setUpc(productDO.getUpc());
 		productBO.setViewed(productDO.getViewed());
 		productBO.setWeight(productDO.getWeight());
@@ -227,6 +235,7 @@ public class BeanMapper {
 		categoryDO.setImageLocation(categoryBO.getImageLocation());
 		categoryDO.setParentId(categoryBO.getParentId());
 		categoryDO.setSortOrder(categoryBO.getSortOrder());
+		categoryDO.setCategoryName(categoryBO.getCategoryName());
 		categoryDO.setStatus(categoryBO.getStatus());
 		return categoryDO;
 
@@ -239,7 +248,34 @@ public class BeanMapper {
 		categoryBO.setParentId(categoryDO.getParentId());
 		categoryBO.setSortOrder(categoryDO.getSortOrder());
 		categoryBO.setStatus(categoryDO.getStatus());
+		categoryBO.setCategoryName(categoryDO.getCategoryName());
 		return categoryBO;
+
+	}
+
+	public AttributeGroupDescDO mapAttributeGroupDescBOToDO(AttributeGroupDescBO attributeGroupDescBO, AttributeGroupDescDO attributeGroupDescDO) {
+		attributeGroupDescDO.setAtrributeGroupDescId(attributeGroupDescBO.getAtrributeGroupDescId());
+		attributeGroupDescDO.setAttributeGroupName(attributeGroupDescBO.getAttributeGroupName());
+		attributeGroupDescDO.setSortOrder(attributeGroupDescBO.getSortOrder());
+		return attributeGroupDescDO;
+
+	}
+
+	public AttributeGroupDescBO mapAttributeGroupDescDOToBO(AttributeGroupDescDO attributeGroupDescDO, AttributeGroupDescBO attributeGroupDescBO) {
+		attributeGroupDescBO.setAtrributeGroupDescId(attributeGroupDescDO.getAtrributeGroupDescId());
+		attributeGroupDescBO.setAttributeGroupName(attributeGroupDescDO.getAttributeGroupName());
+		attributeGroupDescBO.setSortOrder(attributeGroupDescDO.getSortOrder());
+		return attributeGroupDescBO;
+
+	}
+
+	public ProductAttributeDO mapProductAttributeBOToDO(ProductAttributeBO productAttributeBO, ProductAttributeDO productAttributeDO, ProductDO productDO) {
+		productAttributeDO.setAttributeGroupId(productAttributeBO.getAttributeGroupId());
+		productAttributeDO.setAttributeId(productAttributeBO.getAttributeId());
+		productAttributeDO.setProductDO(productDO);
+		productAttributeDO.setSortOrder(productAttributeBO.getSortOrder());
+		productAttributeDO.setText(productAttributeBO.getText());
+		return productAttributeDO;
 
 	}
 
@@ -327,6 +363,38 @@ public class BeanMapper {
 		productDiscountDO.setProductDO(productDO);
 		productDiscountDO.setSellerId(productDO.getSellerId());
 		return productDiscountDO;
+
+	}
+
+	public ProductShippingDO mapPoductShippingBOToDO(ProductShippingBO productShippingBO, ProductShippingDO productShippingDO, ProductDO productDO) {
+		productShippingDO.setCourierId(productShippingBO.getCourierId());
+		productShippingDO.setGeoZoneId(productShippingBO.getGeoZoneId());
+		productShippingDO.setProductDO(productDO);
+		productShippingDO.setShippingRate(productShippingBO.getShippingRate());
+		productShippingDO.setProductShippingId(productShippingBO.getProductShippingId());
+		return productShippingDO;
+
+	}
+
+	public TaxRateDO mapTaxRateBOToDO(TaxRateBO taxRateBO, TaxRateDO taxRateDO, ProductDO productDO) {
+		taxRateDO.setName(taxRateBO.getName());
+		taxRateDO.setProductDO(productDO);
+		taxRateDO.setRate(taxRateBO.getRate());
+		taxRateDO.setSellerId(productDO.getSellerId());
+		taxRateDO.setTaxRateId(taxRateBO.getSellerId());
+		taxRateDO.setType(taxRateBO.getType());
+		return taxRateDO;
+
+	}
+
+	public TaxRuleDO mapTaxRuleBOToDO(TaxRuleBO taxRuleBO, TaxRuleDO taxRuleDO, TaxRateDO taxRateDO) {
+		taxRuleDO.setBased(taxRuleBO.getBased());
+		taxRuleDO.setPriority(taxRuleBO.getPriority());
+		taxRuleDO.setTaxClassId(taxRuleBO.getTaxClassId());
+		taxRuleDO.setTaxRuleId(taxRuleBO.getTaxRuleId());
+		taxRuleDO.setValue(taxRuleBO.getValue());
+		taxRuleDO.setTaxRateDO(taxRateDO);
+		return taxRuleDO;
 
 	}
 }

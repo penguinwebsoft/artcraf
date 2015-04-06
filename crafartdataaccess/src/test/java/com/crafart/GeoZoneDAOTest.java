@@ -12,9 +12,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.GeoZoneDAO;
 import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.GeoZoneDAO;
 
 /**
  * 
@@ -36,9 +36,9 @@ public class GeoZoneDAOTest {
 		GeoZoneDO geoZoneDO = getGeoZone();
 		try {
 			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
-		} catch (CrafartDataException e) {
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 	}
 
@@ -55,19 +55,20 @@ public class GeoZoneDAOTest {
 		GeoZoneDO geoZoneDO = getGeoZone();
 		try {
 			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
-		} catch (CrafartDataException e) {
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 		try {
+			@SuppressWarnings("unused")
 			List<GeoZoneDO> geoZoneDOs = geoZoneDAOImpl.getGeoZoneDetail();
 			/*
 			 * for (GeoZoneDO geoZoneDO2 : geoZoneDOs) {
 			 * System.out.print("\n"+geoZoneDO2.getGeoZoneId()); }
 			 */
-		} catch (CrafartDataException e) {
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 	}
 }

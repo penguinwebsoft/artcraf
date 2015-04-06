@@ -17,9 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CategoryDAO;
 
 /**
- * @author Deepam
+ * @author Karthi
  * 
  */
 @Repository("categoryDAOImpl")
@@ -44,7 +45,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		try {
 			Session session = this.sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
-			categoryDOs = session.createQuery("from CategoryDO").list();
+			categoryDOs = session.createQuery("from CategoryDO where parent_id=0").list();
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {

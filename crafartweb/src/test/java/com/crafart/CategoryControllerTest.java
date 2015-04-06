@@ -33,6 +33,6 @@ public class CategoryControllerTest {
 	@Rollback(true)
 	public void testGetCourierDetail() {
 		ModelMap modelMap = categoryController.getCategory(new MockHttpSession());
-		System.out.print(modelMap.isEmpty());
+		// System.out.print(modelMap.isEmpty());
 	}
 }

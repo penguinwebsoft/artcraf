@@ -15,11 +15,11 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.SellerDAO;
-import com.crafart.data.StoreDAO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.SellerDAO;
+import com.crafart.inter.data.StoreDAO;
 
 /**
  * @author Karthi
@@ -51,8 +51,8 @@ public class StoreDAOTest {
 		try {
 			storeDAOImpl.addStoreDetail(storeDO);
 			log.info("store_id " + storeDO.getStoreId());
-		} catch (CrafartDataException crafartDataException) {
-			crafartDataException.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
@@ -88,8 +88,8 @@ public class StoreDAOTest {
 		try {
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.setSellerId(sellerDO.getSellerId());
-		} catch (CrafartDataException uExp) {
-			uExp.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 		}
 		return sellerDO;
 

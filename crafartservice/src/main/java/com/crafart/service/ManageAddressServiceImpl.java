@@ -6,9 +6,10 @@ package com.crafart.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.crafart.data.AddressDAO;
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.AddressDAO;
+import com.crafart.inter.service.ManageAddressService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;

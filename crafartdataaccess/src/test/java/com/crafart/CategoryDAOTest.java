@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.CategoryDAO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CategoryDAO;
 
 /**
  * @author karthi
@@ -40,16 +40,17 @@ public class CategoryDAOTest {
 	public void testGetCategory() {
 		try {
 			testaddcategory();
-			List<CategoryDO> categoryDO = categoryDAOImpl.getCategory();
+			@SuppressWarnings("unused")
+			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategory();
 			/**
 			 * it will print the categoryId to system console
 			 */
-			/*for (CategoryDO categoryDO2 : categoryDO) {
+			/*for (CategoryDO categoryDO2 : categoryDOs) {
 				System.out.print("\n" + categoryDO2.getCategoryId());
 			}*/
-		} catch (CrafartDataException e) {
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 	}
 
@@ -59,14 +60,15 @@ public class CategoryDAOTest {
 		try {
 			CategoryDO categoryDO = new CategoryDO();
 			categoryDO.setCategoryColumn(3);
-			categoryDO.setImageLocation("jkl");
+			categoryDO.setImageLocation("");
 			categoryDO.setParentId(2);
 			categoryDO.setSortOrder(2);
 			categoryDO.setStatus(2);
+			categoryDO.setCategoryName("gold");
 			categoryDAOImpl.addCategory(categoryDO);
-		} catch (CrafartDataException e) {
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 	}
 }

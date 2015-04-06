@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.StoreDAO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.StoreDAO;
+import com.crafart.inter.service.ManageStoreService;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;

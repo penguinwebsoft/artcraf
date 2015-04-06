@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.AddressDAO;
 
 /**
  * @author Karthi

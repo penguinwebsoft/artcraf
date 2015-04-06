@@ -15,10 +15,11 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.SellerDAO;
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
+import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.SellerDAO;
 
 /**
  * Unit test for simple App.
@@ -44,8 +45,8 @@ public class SellerDAOTest {
 			SellerDO sellerDO = getSellerDO();
 			sellerDAOImpl.addSeller(sellerDO);
 			log.info("Seller id is" + sellerDO.getSellerId());
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 
@@ -53,8 +54,8 @@ public class SellerDAOTest {
 
 	@Test
 	@Rollback(true)
-	public void testUpdateSeller(){
-		try{
+	public void testUpdateSeller() {
+		try {
 			SellerDO sellerDO = getSellerDO();
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.getStoreDO().setName("update from dao");
@@ -62,11 +63,12 @@ public class SellerDAOTest {
 			sellerDO.setVat_no("12");
 			sellerDO.setCst_no("13");
 			sellerDAOImpl.updateSeller(sellerDO);
-		}catch (Exception exception){
-			exception.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private SellerDO getSellerDO() {
 		SellerDO sellerDO = new SellerDO();

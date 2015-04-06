@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.ManageSellerService;
+import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -34,16 +34,16 @@ public class ManageSellerTest {
 		SellerBO sellerBO = getSellerBO();
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
-		} catch (CrafartServiceException uExp) {
-			uExp.printStackTrace();
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
 		}
 
 	}
-	
+
 	@Test
 	@Rollback(true)
-	public void updateSeller(){
+	public void updateSeller() {
 		SellerBO sellerBO = getSellerBO();
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
@@ -52,8 +52,9 @@ public class ManageSellerTest {
 			sellerBO.setVatNo("serv12");
 			sellerBO.setCstNo("servcs12");
 			manageSellerServiceImpl.updateSeller(sellerBO);
-		} catch (CrafartServiceException e) {
-			e.printStackTrace();
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
 		}
 	}
 

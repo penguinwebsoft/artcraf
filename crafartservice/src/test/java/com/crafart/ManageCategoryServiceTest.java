@@ -16,8 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.CategoryDAO;
-import com.crafart.service.ManageCategoryService;
+import com.crafart.inter.data.CategoryDAO;
+import com.crafart.inter.service.ManageCategoryService;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -44,7 +44,8 @@ public class ManageCategoryServiceTest {
 		try {
 			testaddCategoryBO();
 			List<CategoryBO> categoryBOs = manageCategoryServiceImpl.getCategory();
-			for (CategoryBO categoryBO : categoryBOs) {
+			for (@SuppressWarnings("unused")
+			CategoryBO categoryBO : categoryBOs) {
 				// System.out.print("\n" + categoryBO.getCategoryId());
 			}
 		} catch (CrafartServiceException e) {
@@ -58,15 +59,16 @@ public class ManageCategoryServiceTest {
 	public void testaddCategoryBO() {
 		CategoryBO categoryBO = new CategoryBO();
 		categoryBO.setCategoryColumn(32);
-		categoryBO.setImageLocation("qwerty");
+		categoryBO.setImageLocation("");
+		categoryBO.setCategoryName("bag");
 		categoryBO.setParentId(25);
 		categoryBO.setSortOrder(12);
 		categoryBO.setStatus(2);
 		try {
 			manageCategoryServiceImpl.addCategory(categoryBO);
-		} catch (CrafartServiceException e) {
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 
 	}

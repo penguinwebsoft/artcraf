@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.crafart.service.ManageCourierService;
+import com.crafart.inter.service.ManageCourierService;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.exception.CrafartServiceException;
 

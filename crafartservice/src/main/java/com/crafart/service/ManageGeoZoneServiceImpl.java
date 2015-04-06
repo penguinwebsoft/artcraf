@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.GeoZoneDAO;
 import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.GeoZoneDAO;
+import com.crafart.inter.service.ManageGeoZoneService;
 import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;

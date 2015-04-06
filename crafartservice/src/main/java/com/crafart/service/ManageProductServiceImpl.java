@@ -11,24 +11,37 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.LengthClassDAO;
-import com.crafart.data.ProductDAO;
-import com.crafart.data.ProductDescriptionDAO;
-import com.crafart.data.ProductDiscountDAO;
-import com.crafart.data.ProductSpecialDAO;
-import com.crafart.data.WeightClassDAO;
 import com.crafart.dataobjects.LengthClassDO;
+import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
 import com.crafart.dataobjects.ProductDiscountDO;
+import com.crafart.dataobjects.ProductShippingDO;
 import com.crafart.dataobjects.ProductSpecialDO;
+import com.crafart.dataobjects.TaxRateDO;
+import com.crafart.dataobjects.TaxRuleDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.LengthClassDAO;
+import com.crafart.inter.data.ProductAttributeDAO;
+import com.crafart.inter.data.ProductDAO;
+import com.crafart.inter.data.ProductDescriptionDAO;
+import com.crafart.inter.data.ProductDiscountDAO;
+import com.crafart.inter.data.ProductShippingDAO;
+import com.crafart.inter.data.ProductSpecialDAO;
+import com.crafart.inter.data.TaxRateDAO;
+import com.crafart.inter.data.TaxRuleDAO;
+import com.crafart.inter.data.WeightClassDAO;
+import com.crafart.inter.service.ManageProductService;
 import com.crafart.service.businessobjects.LengthClassBO;
+import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
 import com.crafart.service.businessobjects.ProductDiscountBO;
+import com.crafart.service.businessobjects.ProductShippingBO;
 import com.crafart.service.businessobjects.ProductSpecialBO;
+import com.crafart.service.businessobjects.TaxRateBO;
+import com.crafart.service.businessobjects.TaxRuleBO;
 import com.crafart.service.businessobjects.WeightClassBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
@@ -62,9 +75,21 @@ public class ManageProductServiceImpl implements ManageProductService {
 	@Autowired
 	private ProductDiscountDAO productDiscountDAOImpl;
 
+	@Autowired
+	private ProductShippingDAO productShippingDAOImpl;
+
+	@Autowired
+	private ProductAttributeDAO productAttributeDAOImpl;
+
+	@Autowired
+	private TaxRateDAO taxRateDAOImpl;
+
+	@Autowired
+	private TaxRuleDAO taxRuleDAOImpl;
+
 	/**
 	 * mapping is done by mapProductBOToDO by this we are mapping BO objects to
-	 * DO then calling dataaccess addProduct method by productDO object
+	 * DO then calling data access addProduct method by productDO object
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -98,6 +123,39 @@ public class ManageProductServiceImpl implements ManageProductService {
 			ProductDiscountDO productDiscountDO = beanMapper.mapProductDiscountBOToDO(productDiscountBO2, new ProductDiscountDO(), productDO);
 			productDiscountDOs.add(productDiscountDO);
 		}
+		/**
+		 * getting list of ProductShipping objects from productBO and mapping is
+		 * done using beanMapper
+		 */
+		List<ProductShippingBO> productShippingBOs = productBO.getProductShippingBOs();
+		List<ProductShippingDO> productShippingDOs = new ArrayList<>();
+		for (ProductShippingBO productShippingBO : productShippingBOs) {
+			ProductShippingDO productShippingDO = beanMapper.mapPoductShippingBOToDO(productShippingBO, new ProductShippingDO(), productDO);
+			productShippingDOs.add(productShippingDO);
+		}
+		/**
+		 * getting list of ProductAttribute objects from productBO and mapping
+		 * is done using beanMapper
+		 */
+		List<ProductAttributeBO> productAttributeBOs = productBO.getProductAttributeBOs();
+		List<ProductAttributeDO> productAttributeDOs = new ArrayList<>();
+		for (ProductAttributeBO productAttributeBO : productAttributeBOs) {
+			ProductAttributeDO productAttributeDO = beanMapper.mapProductAttributeBOToDO(productAttributeBO, new ProductAttributeDO(), productDO);
+			productAttributeDOs.add(productAttributeDO);
+		}
+		/**
+		 * getting TaxRate object from productBO and mapping is done using
+		 * beanMapper
+		 */
+		TaxRateBO taxRateBO = productBO.getTaxRateBO();
+		TaxRateDO taxRateDO = beanMapper.mapTaxRateBOToDO(taxRateBO, new TaxRateDO(), productDO);
+
+		List<TaxRuleBO> taxRuleBOs = taxRateBO.getTaxRuleBOs();
+		List<TaxRuleDO> taxRuleDOs = new ArrayList<>();
+		for (TaxRuleBO taxRuleBO : taxRuleBOs) {
+			TaxRuleDO taxRuleDO = beanMapper.mapTaxRuleBOToDO(taxRuleBO, new TaxRuleDO(), taxRateDO);
+			taxRuleDOs.add(taxRuleDO);
+		}
 
 		try {
 			weightClassDAOImpl.addWeightClass(weightClassDO);
@@ -106,6 +164,11 @@ public class ManageProductServiceImpl implements ManageProductService {
 			productDescriptionDAOImpl.addDescription(productDescriptionDO);
 			productSpecialDAOImpl.addProductSpecial(productSpecialDOs);
 			productDiscountDAOImpl.addProductDiscount(productDiscountDOs);
+			productShippingDAOImpl.addProductShipping(productShippingDOs);
+			productAttributeDAOImpl.addProductAttribute(productAttributeDOs);
+			taxRateDAOImpl.addTaxRate(taxRateDO);
+			taxRuleDAOImpl.addTaxRule(taxRuleDOs);
+
 			productBO.setProductId(productDO.getProductId());
 			productBO.getLengthClassBO().setLengthClassId(productDO.getLengthClassDO().getLengthClassId());
 			productBO.getWeightClassBO().setWeightClassId(productDO.getWeightClassDO().getWeightClassId());

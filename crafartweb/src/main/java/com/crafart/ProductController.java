@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.crafart.service.ManageProductService;
+import com.crafart.inter.service.ManageProductService;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.SellerBO;
-import com.crafart.service.businessobjects.TaxClassBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
@@ -39,9 +38,7 @@ public class ProductController {
 		try {
 			log.info("*******product controller******");
 			SellerBO sellerBO = (SellerBO) httpSession.getAttribute("sellerprofile");
-			TaxClassBO taxClassBO = (TaxClassBO) httpSession.getAttribute("taxClass");
 			productBO.setSellerId(sellerBO.getSellerId());
-			productBO.setTaxClassId(taxClassBO.getTaxClassId());
 			manageProductServiceImpl.addProduct(productBO);
 		} catch (CrafartServiceException serviceException) {
 			log.error("Application-error while adding product for product_id " + productBO.getProductId(), serviceException);

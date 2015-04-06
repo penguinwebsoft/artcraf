@@ -43,6 +43,11 @@
 				<value>com.crafart.dataobjects.ProductDescriptionDO</value>
 				<value>com.crafart.dataobjects.ProductSpecialDO</value>
 				<value>com.crafart.dataobjects.ProductDiscountDO</value>
+				<value>com.crafart.dataobjects.ProductShippingDO</value>
+				<value>com.crafart.dataobjects.ProductAttributeDO</value>
+				<value>com.crafart.dataobjects.AttributeGroupDescDO</value>
+				<value>com.crafart.dataobjects.TaxRateDO</value>
+				<value>com.crafart.dataobjects.TaxRuleDO</value>
 				<!-- <value>com.crafart.dataobjects.SellerAddressDO</value> -->
 			</list>
 		</property>

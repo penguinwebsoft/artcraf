@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CourierDAO;
 
 /**
  * @author Karthi

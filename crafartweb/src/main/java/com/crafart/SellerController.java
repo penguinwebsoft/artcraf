@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.crafart.service.ManageSellerService;
+import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;

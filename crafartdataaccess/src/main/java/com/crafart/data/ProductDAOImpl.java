@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.ProductDAO;
 
 /**
  * @author Karthi

@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.CourierDAO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CourierDAO;
 
 /**
  * @author Karthi
@@ -32,16 +32,16 @@ public class CourierDAOTest {
 
 	@Autowired
 	private CourierDAO courierDAOImpl;
-	
+
 	@Test
 	@Rollback(true)
-	public void testAddCourierDetail(){
+	public void testAddCourierDetail() {
 		CourierDO courierDO = getCourier();
 		try {
 			courierDAOImpl.addCourierDetail(courierDO);
-		} catch (CrafartDataException e) {
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 	}
 
@@ -53,28 +53,30 @@ public class CourierDAOTest {
 		courierDO.setSortOrder(1);
 		return courierDO;
 	}
-	
-	@Test 
+
+	@Test
 	@Rollback(true)
-	public void testGetCourierDetail(){
+	public void testGetCourierDetail() {
 		CourierDO courierDO = getCourier();
 		try {
 			courierDAOImpl.addCourierDetail(courierDO);
-		} catch (CrafartDataException e) {
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 		try {
-		List<CourierDO> courierDOs = courierDAOImpl.getCourierDetail();
-		/**
-		 * it will print the courierId to system console
-		 */
-		/*for(CourierDO courierDO2 : courierDOs){
-			System.out.print("\n"+courierDO2.getCourierId());
-		}*/
-		} catch (CrafartDataException e) {
+			@SuppressWarnings("unused")
+			List<CourierDO> courierDOs = courierDAOImpl.getCourierDetail();
+			/**
+			 * it will print the courierId to system console
+			 */
+			/*
+			 * for(CourierDO courierDO2 : courierDOs){
+			 * System.out.print("\n"+courierDO2.getCourierId()); }
+			 */
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
-			e.printStackTrace();
 		}
 	}
 }

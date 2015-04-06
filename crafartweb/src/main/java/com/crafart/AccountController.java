@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.crafart.service.ManageAccountService;
+import com.crafart.inter.service.ManageAccountService;
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.exception.CrafartServiceException;
 
