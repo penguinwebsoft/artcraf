@@ -13,7 +13,7 @@
 <title>Crafart Home page</title>
 
 <link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css"/>
 <link rel="stylesheet" href="${context}/resources/css/main.css" />
 <link rel="stylesheet" href="${context}/resources/css/homeStyle.css" />
 
@@ -22,54 +22,7 @@
 <script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
 <script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
 <script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script>
-	$(document).ready(
-			function() {
-
-				getImageSizes();
-				$(window).resize(function() { //Fires when window is resized
-					getImageSizes();
-				});
-
-				$('#carousel-example-product1').carousel({
-					interval : 10000
-				});
-
-				$('#categoryDropDownId').addClass('open');
-				$('#categoryDropDownId #dropdownMenuId').on({
-					"click" : function(e) {
-						e.stopPropagation();
-					}
-				});
-
-				$('.nav-tabs > li > a').hover(function() {
-					$(this).tab('show');
-				});
-
-				var position = $("#dropdownMenuId").position();
-				var width = $("#dropdownMenuId").width();
-				$("#addFrame").css("margin-top", position.top + "px");
-				$("#addFrame").css("margin-right", position.top + "px");
-
-				$("#searchdropdown li a").click(
-						function() {
-							$("#searchcategory").html(
-									$(this).text()
-											+ ' <span class="caret"></span>');
-							$("#searchcategory").val($(this).text());
-						});
-
-			});
-
-	function getImageSizes() {
-		$("#carousel-example-generic").each(function() {
-			var $height = $(this);
-			$('#addFrame').css({
-				'height' : $height.height() + 'px'
-			});
-		});
-	}
-</script>
+<script src=""></script>
 </head>
 
 <body style="background-image: url(${context}/resources/img/background_img.jpg);">
@@ -89,7 +42,7 @@
 
 						<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
 
-						<li><a href="#" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
+						<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
 						</a></li>
 
 						<li><a href="#" title="Login In"> <i class="icon-signin pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Login</span>
@@ -741,7 +694,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 
 
