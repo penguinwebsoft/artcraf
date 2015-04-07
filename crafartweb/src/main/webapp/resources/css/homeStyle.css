@@ -332,3 +332,12 @@ color: #fff !important;
 	
     margin-bottom: -10px;
 }
+
+#CustomerRegistrationId  .control-label {
+	text-align: left;
+	margin-bottom: 10px;	
+  }
+  
+#CustomerRegistrationId .form-group {
+    margin-bottom: 5px;
+}
