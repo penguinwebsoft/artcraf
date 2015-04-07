@@ -152,11 +152,11 @@ public class ManageProductServiceTest {
 	private List<ProductAttributeBO> getProductAttribute() {
 		List<ProductAttributeBO> productAttributeBOs = new ArrayList<>();
 		ProductAttributeBO productAttributeBO = new ProductAttributeBO();
-		productAttributeBO.setAttributeGroupId(221);
+		productAttributeBO.setAttributeGroupId(21);
 		productAttributeBO.setSortOrder(1);
 		productAttributeBO.setText("yellow");
 		ProductAttributeBO productAttributeBO2 = new ProductAttributeBO();
-		productAttributeBO2.setAttributeGroupId(221);
+		productAttributeBO2.setAttributeGroupId(21);
 		productAttributeBO2.setSortOrder(2);
 		productAttributeBO2.setText("green");
 		productAttributeBOs.add(productAttributeBO2);
