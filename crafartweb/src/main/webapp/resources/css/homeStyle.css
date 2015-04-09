@@ -341,3 +341,7 @@ color: #fff !important;
 #CustomerRegistrationId .form-group {
     margin-bottom: 5px;
 }
+
+.verticalLine {
+    border-right: 2px dotted #332619;
+}
