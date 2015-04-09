@@ -13,7 +13,7 @@
 <title>Crafart Home page</title>
 
 <link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css"/>
+<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css" />
 <link rel="stylesheet" href="${context}/resources/css/main.css" />
 <link rel="stylesheet" href="${context}/resources/css/homeStyle.css" />
 
@@ -22,7 +22,54 @@
 <script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
 <script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
 <script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src=""></script>
+<script>
+	$(document).ready(
+			function() {
+
+				getImageSizes();
+				$(window).resize(function() { //Fires when window is resized
+					getImageSizes();
+				});
+
+				$('#carousel-example-product1').carousel({
+					interval : 10000
+				});
+
+				$('#categoryDropDownId').addClass('open');
+				$('#categoryDropDownId #dropdownMenuId').on({
+					"click" : function(e) {
+						e.stopPropagation();
+					}
+				});
+
+				$('.nav-tabs > li > a').hover(function() {
+					$(this).tab('show');
+				});
+
+				var position = $("#dropdownMenuId").position();
+				var width = $("#dropdownMenuId").width();
+				$("#addFrame").css("margin-top", position.top + "px");
+				$("#addFrame").css("margin-right", position.top + "px");
+
+				$("#searchdropdown li a").click(
+						function() {
+							$("#searchcategory").html(
+									$(this).text()
+											+ ' <span class="caret"></span>');
+							$("#searchcategory").val($(this).text());
+						});
+
+			});
+
+	function getImageSizes() {
+		$("#carousel-example-generic").each(function() {
+			var $height = $(this);
+			$('#addFrame').css({
+				'height' : $height.height() + 'px'
+			});
+		});
+	}
+</script>
 </head>
 
 <body style="background-image: url(${context}/resources/img/background_img.jpg);">
@@ -42,7 +89,7 @@
 
 						<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
 
-						<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
+						<li><a href="#" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
 						</a></li>
 
 						<li><a href="#" title="Login In"> <i class="icon-signin pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Login</span>
@@ -404,288 +451,458 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="row" style="padding: 15 2 1 15;">
-					<div class="panel panel-default" style="border-radius: 0px; border: 0px; background-color: transparent;">
-						<div class="panel-body" style="padding: 2px;">
-							<div class="col-md-12" style="padding: 15 2 1 15;">
-								<div style="margin-bottom: 5px;">
-									<ol class="breadcrumb" style="margin-bottom: 0px; border-radius: 0px; background-color: #332619;">
-										<li class="active">HOME AND LIVING</li>
-									</ol>
-								</div>
-								<!-- /.div -->
 
 								<div class="row">
-									<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
+									<ul class="nav nav-tabs nav_tabs_bottom_border" style="margin-bottom: 0px; background-color: pink" id="productFieldsTabs">
+										<li class="active" id="tabGeneral"><a data-toggle="tab" href="#Best-seller">Best Seller</a></li>
+										<li id="tabData"><a data-toggle="tab" href="#Best-sold-Product">Best sold Product</a></li>
+									</ul>
 
-										<div class="carousel-inner" role="listbox">
-											<div class="col-sm-12 item active">
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="" />
+									<div class="tab-content" style="border: 0px; padding: 0px;">
+										<div class="tab-pane fade in active" id="Best-seller">
+											<div class="row">
+												<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
+													<div class="carousel-inner" role="listbox">
+														<div class="col-sm-12 item active">
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product2/baking-dishes.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product2/canister.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product2/tea-bags.jpg" alt="" />
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12 item">
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product1/lamp1.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product1/lamp2.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product1/lamp3.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product1/lamp4.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product1/lamp5.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/product1/lamp6.jpg" alt="" />
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/baking-dishes.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/canister.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/tea-bags.jpg" alt="" />
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-12 item">
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp1.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp2.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp3.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp4.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp5.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp6.jpg" alt="" />
-													</div>
+
+													<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+														class="sr-only">Previous</span>
+													</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
+														class="sr-only">Next</span>
+													</a>
+
 												</div>
 											</div>
 										</div>
 
-										<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
-											class="sr-only">Previous</span>
-										</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
-											class="sr-only">Next</span>
-										</a>
+										<div class="tab-pane fade" id="Best-sold-Product">
+											<div class="row">
+												<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
+													<div class="carousel-inner" role="listbox">
+														<div class="col-sm-12 item active">
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/dining-chair.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/dressing-tables.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/end-table.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/kids-wall-shelves.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/panama-chest-drawer.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/study-tables.jpg" alt="" />
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12 item">
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/dressing-tables.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/kids-wall-shelves.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/study-tables.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/dining-chair.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/end-table.jpg" alt="" />
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div class="thumbnail product-box">
+																	<img src="${context}/resources/img/solidwood/panama-chest-drawer.jpg" alt="" />
+																</div>
+															</div>
+														</div>
+													</div>
 
+													<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+														class="sr-only">Previous</span>
+													</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
+														class="sr-only">Next</span>
+													</a>
+
+												</div>
+											</div>
+
+										</div>
 									</div>
 								</div>
+							</div>
+						</div>
 
-								<!-- /.row -->
-								<div class="row" id="Product1_description">
-									<div class="col-md-3 text-center col-sm-3" style="padding-left: 8px;">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
-											<div class="caption">
-												<h3>
-													<a href="#">coffee tea sets</a>
-												</h3>
+
+						<div class="row" style="padding: 15 2 1 15;">
+							<div class="panel panel-default" style="border-radius: 0px; border: 0px; background-color: transparent;">
+								<div class="panel-body" style="padding: 2px;">
+									<div class="col-md-12" style="padding: 15 2 1 15;">
+										<div style="margin-bottom: 5px;">
+											<ol class="breadcrumb" style="margin-bottom: 0px; border-radius: 0px; background-color: #332619;">
+												<li class="active">HOME AND LIVING</li>
+											</ol>
+										</div>
+										<!-- /.div -->
+
+										<div class="row">
+											<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
+
+												<div class="carousel-inner" role="listbox">
+													<div class="col-sm-12 item active">
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/baking-dishes.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/canister.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/tea-bags.jpg" alt="" />
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12 item">
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp1.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp2.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp3.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp4.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp5.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp6.jpg" alt="" />
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+													class="sr-only">Previous</span>
+												</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
+													class="sr-only">Next</span>
+												</a>
+
 											</div>
 										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-md-3 text-center col-sm-3">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
-											<div class="caption">
-												<h3>
-													<a href="#">Dinner sets</a>
-												</h3>
-											</div>
-										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-md-3 text-center col-sm-3">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 
-											<div class="caption">
-												<h3>
-													<a href="#">coffee tea sets</a>
-												</h3>
+										<!-- /.row -->
+										<div class="row" id="Product1_description">
+											<div class="col-md-3 text-center col-sm-3" style="padding-left: 8px;">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+													<div class="caption">
+														<h3>
+															<a href="#">coffee tea sets</a>
+														</h3>
+													</div>
+												</div>
 											</div>
-										</div>
-									</div>
+											<!-- /.col -->
+											<div class="col-md-3 text-center col-sm-3">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+													<div class="caption">
+														<h3>
+															<a href="#">Dinner sets</a>
+														</h3>
+													</div>
+												</div>
+											</div>
+											<!-- /.col -->
+											<div class="col-md-3 text-center col-sm-3">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 
-									<div class="col-md-3 text-center col-sm-3" style="padding-right: 8px;">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
-											<div class="caption">
-												<h3>
-													<a href="#">Dinner sets</a>
-												</h3>
+													<div class="caption">
+														<h3>
+															<a href="#">coffee tea sets</a>
+														</h3>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-3 text-center col-sm-3" style="padding-right: 8px;">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+													<div class="caption">
+														<h3>
+															<a href="#">Dinner sets</a>
+														</h3>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
 
 
-				<div class="row" style="padding: 15 2 15 15;">
-					<div class="panel panel-default" style="border-radius: 0px; border: 0px; background-color: transparent;">
-						<div class="panel-body" style="padding: 2px;">
-							<div class="col-md-12" style="padding: 1 1 1 15;">
-								<div style="margin-bottom: 5px;">
-									<ol class="breadcrumb" style="margin-bottom: 0px; border-radius: 0px; background-color: #332619;">
-										<li class="active">HOME AND LIVING</li>
-									</ol>
-								</div>
-								<!-- /.div -->
+						<div class="row" style="padding: 15 2 15 15;">
+							<div class="panel panel-default" style="border-radius: 0px; border: 0px; background-color: transparent;">
+								<div class="panel-body" style="padding: 2px;">
+									<div class="col-md-12" style="padding: 1 1 1 15;">
+										<div style="margin-bottom: 5px;">
+											<ol class="breadcrumb" style="margin-bottom: 0px; border-radius: 0px; background-color: #332619;">
+												<li class="active">HOME AND LIVING</li>
+											</ol>
+										</div>
+										<!-- /.div -->
 
-								<div class="row">
-									<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
+										<div class="row">
+											<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
 
-										<div class="carousel-inner" role="listbox">
-											<div class="col-sm-12 item active">
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="" />
+												<div class="carousel-inner" role="listbox">
+													<div class="col-sm-12 item active">
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/baking-dishes.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/canister.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product2/tea-bags.jpg" alt="" />
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12 item">
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp1.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp2.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp3.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp4.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp5.jpg" alt="" />
+															</div>
+														</div>
+														<div class="col-sm-2">
+															<div class="thumbnail product-box">
+																<img src="${context}/resources/img/product1/lamp6.jpg" alt="" />
+															</div>
+														</div>
 													</div>
 												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/baking-dishes.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/canister.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product2/tea-bags.jpg" alt="" />
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-12 item">
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp1.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp2.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp3.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp4.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp5.jpg" alt="" />
-													</div>
-												</div>
-												<div class="col-sm-2">
-													<div class="thumbnail product-box">
-														<img src="${context}/resources/img/product1/lamp6.jpg" alt="" />
-													</div>
-												</div>
+
+												<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+													class="sr-only">Previous</span>
+												</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
+													class="sr-only">Next</span>
+												</a>
+
 											</div>
 										</div>
 
-										<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
-											class="sr-only">Previous</span>
-										</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
-											class="sr-only">Next</span>
-										</a>
-
-									</div>
-								</div>
-
-								<!-- /.row -->
-								<div class="row" id="Product1_description">
-									<div class="col-md-3 text-center col-sm-3" style="padding-left: 8px;">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
-											<div class="caption">
-												<h3>
-													<a href="#">coffee tea sets</a>
-												</h3>
+										<!-- /.row -->
+										<div class="row" id="Product1_description">
+											<div class="col-md-3 text-center col-sm-3" style="padding-left: 8px;">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+													<div class="caption">
+														<h3>
+															<a href="#">coffee tea sets</a>
+														</h3>
+													</div>
+												</div>
 											</div>
-										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-md-3 text-center col-sm-3">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
-											<div class="caption">
-												<h3>
-													<a href="#">Dinner sets</a>
-												</h3>
+											<!-- /.col -->
+											<div class="col-md-3 text-center col-sm-3">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+													<div class="caption">
+														<h3>
+															<a href="#">Dinner sets</a>
+														</h3>
+													</div>
+												</div>
 											</div>
-										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-md-3 text-center col-sm-3">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+											<!-- /.col -->
+											<div class="col-md-3 text-center col-sm-3">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 
-											<div class="caption">
-												<h3>
-													<a href="#">coffee tea sets</a>
-												</h3>
+													<div class="caption">
+														<h3>
+															<a href="#">coffee tea sets</a>
+														</h3>
+													</div>
+												</div>
 											</div>
-										</div>
-									</div>
 
-									<div class="col-md-3 text-center col-sm-3" style="padding-right: 8px;">
-										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
-											<div class="caption">
-												<h3>
-													<a href="#">Dinner sets</a>
-												</h3>
+											<div class="col-md-3 text-center col-sm-3" style="padding-right: 8px;">
+												<div class="thumbnail product-box">
+													<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+													<div class="caption">
+														<h3>
+															<a href="#">Dinner sets</a>
+														</h3>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -695,8 +912,6 @@
 					</div>
 				</div>
 			</div>
-
-
 
 			<div class="col-sm-3 text-center" id="advertishmentId">
 				<div class=" col-md-12 col-sm-6 col-xs-6">
@@ -764,9 +979,7 @@
 						<img src="${context}/resources/img/advertisement/add_4.png" alt="" />
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 
@@ -780,9 +993,9 @@
 						<span>CRAFART</span>
 					</h4>
 					<ul class="footer-links">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Contact Us</a></li>
+						<li><a href="#"><u>Home</u></a></li>
+						<li><a href="#"><u>About Us</u></a></li>
+						<li><a href="#"><u>Contact Us</u></a></li>
 						<li><a href="#">Careers</a></li>
 					</ul>
 				</div>
@@ -825,13 +1038,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class=" col-md-12 col-sm-6 col-xs-6">
-				<img src="${context}/resources/img/footer_sprite.jpg" alt="" />
-			</div>
-		</div>
 
-		<div class="col-md-12 footer-box">
+
+		<div class="col-md-12 col-sm-offset-1 fontSize11px">
 			<div class="row small-box ">
 				<strong>Mobiles :</strong> <a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> | <a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> |<a href="#">samsung</a>
 				| <a href="#">Sony</a> | <a href="#">Microx</a> |<a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> |<a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> |
@@ -856,11 +1065,17 @@
 			</div>
 		</div>
 
-		<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
+		<div class="container-fluid fontSize11px" >
 			<div class="row">
 				<p>Launched in February 2010, Snapdeal.com is India's largest e-commerce marketplace. Snapdeal provides a platform for vendors across the country to connect with millions of customers. Our
 					online shopping platform has the widest assortment of products from thousands of national, international and regional brands across diverse categories like Mobiles, Laptops, Cameras, Appliances,
 					Women's Apparel, Men's Apparel, Watches, Home & Kitchen, Automotive and Health. Grab your favorite products at best prices and save the one thing that matters most to you - "Your Money".</p>
+			</div>
+		</div>
+		<div class="container colortransparent">
+			<div class=" col-md-12 col-sm-6 col-xs-6">
+				<img src="${context}/resources/img/footer_sprite.jpg" alt="" />
+
 			</div>
 		</div>
 
