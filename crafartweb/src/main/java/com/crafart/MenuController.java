@@ -85,4 +85,9 @@ public class MenuController {
 	public ModelAndView showHome(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("home");
 	}
+	
+	@RequestMapping("/registration")
+	public ModelAndView showRegistration(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("registration");
+	}
 }

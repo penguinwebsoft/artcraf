@@ -74,13 +74,13 @@ public class ProductAttributeDAOTest {
 		List<ProductAttributeDO> productAttributeDOs = new ArrayList<>();
 		ProductAttributeDO productAttributeDO = new ProductAttributeDO();
 		ProductDO productDO = getProduct();
-		productAttributeDO.setAttributeGroupId(221);
+		productAttributeDO.setAttributeGroupId(21);
 		productAttributeDO.setText("black");
 		productAttributeDO.setSortOrder(1);
 		productAttributeDO.setProductDO(productDO);
 		ProductAttributeDO productAttributeDO2 = new ProductAttributeDO();
 		productAttributeDO2.setText("brown");
-		productAttributeDO2.setAttributeGroupId(221);
+		productAttributeDO2.setAttributeGroupId(21);
 		productAttributeDO2.setSortOrder(2);
 		productAttributeDO2.setProductDO(productDO);
 		productAttributeDOs.add(productAttributeDO2);
