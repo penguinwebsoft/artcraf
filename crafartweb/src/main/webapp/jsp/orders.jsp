@@ -5,7 +5,14 @@
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
-<script>
+<script type="text/javascript">
+
+	var crafartOrderBOs = {};
+	var customerBO = {};
+
+	setPage("MyOrdersMenuId");
+	
+	
 	$(document).ready(function() {
 		$('#dataTables-example').dataTable();
 
@@ -32,11 +39,53 @@
 				$('#dp3').datepicker('hide');
 			}
 		});
+		
+		$.ajax({
+			url : "../crafartorder/getOrder",
+			type : "post",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data){
+				crafartOrderBOs = data.crafartOrderBOs;
+				displayOrders();
+			}
+		});
+		
+	 	$(document).on(	'click','a.orderEdit', function(){
+			var orderId = this.id;
+			alert(orderId);
+			$.ajax({
+				url : "../crafartorder/showOrder",
+				type : "post",
+				data : "orderId=" + orderId,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					alert("success");
+				}
+		}); 
+	 	});
+		
+		function displayOrders(){
+		 $.each(crafartOrderBOs, function(key, value) {
+			 var crafartOrderBO = value;
+			 var customerName = crafartOrderBO.customerBO.firstName;
+				html = '<tr>';
+				html += '<td class="text-center"><input type="checkbox" name="selected[]" value="39" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>';
+				html += '<td class="text-right">'+crafartOrderBO.orderId+'</td>';
+				html += '<td class="text-left">'+customerName+'</td>';
+				html += '<td class="text-left">Shipped</td>';
+				html += '<td class="text-right">'+value.total+'</td>';
+				html += '<td class="text-left">26/02/2015</td>';
+				html += '<td class="text-left">02/03/2015</td>';
+				html += '<td class="text-right"><a data-toggle="tooltip" title="View" class="btn btn-primary orderEdit" id='+crafartOrderBO.orderId+'> <i class="icon-pencil icon-white" ></i>Edit';
+				html += '</a></td>';
+				html += '</tr>';
+				$('#dataTables-example tbody').append(html);
+			}); 
+		}
+		
 	});
-</script>
-
-<script type="text/javascript">
-	setPage("MyOrdersMenuId");
 </script>
 
 <div class="inner">
@@ -147,117 +196,7 @@
 							</thead>
 							<tbody>
 
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="39" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>
-									<td class="text-right">39</td>
-									<td class="text-left">123 123</td>
-									<td class="text-left">Shipped</td>
-									<td class="text-right">$321.00</td>
-									<td class="text-left">26/02/2015</td>
-									<td class="text-left">02/03/2015</td>
-									<td class="text-right"><a href="${baseURL}/menu/orderDetails.html" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit
-									</a></td>
-								</tr>
-
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="37" /> <input type="hidden" name="shipping_code[]" value="" /></td>
-									<td class="text-right">37</td>
-									<td class="text-left">fdvasvsd casdfasdf</td>
-									<td class="text-left">Complete</td>
-									<td class="text-right">$110.00</td>
-									<td class="text-left">19/02/2015</td>
-									<td class="text-left">19/02/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit 
-								</tr>
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="35" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>
-									<td class="text-right">35</td>
-									<td class="text-left">Max Maximus</td>
-									<td class="text-left">Shipped</td>
-									<td class="text-right">$321.00</td>
-									<td class="text-left">15/02/2015</td>
-									<td class="text-left">15/02/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit 
-								</tr>
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="27" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>
-									<td class="text-right">27</td>
-									<td class="text-left">vijay gupta</td>
-									<td class="text-left">Processed</td>
-									<td class="text-right">$100.00</td>
-									<td class="text-left">06/02/2015</td>
-									<td class="text-left">08/02/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit 
-								</tr>
-
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="25" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>
-									<td class="text-right">25</td>
-									<td class="text-left">dfgdf sdfgsdf</td>
-									<td class="text-left">Complete</td>
-									<td class="text-right">$321.00</td>
-									<td class="text-left">06/02/2015</td>
-									<td class="text-left">06/02/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit
-									</a></td>
-								</tr>
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="24" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>
-									<td class="text-right">24</td>
-									<td class="text-left">Alex Luah</td>
-									<td class="text-left">Pending</td>
-									<td class="text-right">$200.00</td>
-									<td class="text-left">02/02/2015</td>
-									<td class="text-left">02/02/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit
-									</a></td>
-								</tr>
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="20" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>
-									<td class="text-right">20</td>
-									<td class="text-left">Alex Luah</td>
-									<td class="text-left"></td>
-									<td class="text-right">$200.00</td>
-									<td class="text-left">22/01/2015</td>
-									<td class="text-left">22/01/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit
-									</a></td>
-								</tr>
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="15" /> <input type="hidden" name="shipping_code[]" value="flat.flat" /></td>
-									<td class="text-right">15</td>
-									<td class="text-left">Ahmad Afiq Salehin Ahmad Supiee</td>
-									<td class="text-left">Complete</td>
-									<td class="text-right">$100.00</td>
-									<td class="text-left">17/01/2015</td>
-									<td class="text-left">17/01/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit
-									</a></td>
-								</tr>
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="14" /> <input type="hidden" name="shipping_code[]" value="mvweight.mvweight" /></td>
-									<td class="text-right">14</td>
-									<td class="text-left">aaa aaa</td>
-									<td class="text-left"></td>
-									<td class="text-right">$100.00</td>
-									<td class="text-left">14/01/2015</td>
-									<td class="text-left">14/01/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit
-									</a></td>
-								</tr>
-								<tr>
-									<td class="text-center"><input type="checkbox" name="selected[]" value="13" /> <input type="hidden" name="shipping_code[]" value="mvdm_flat.mvdm_flat1" /></td>
-									<td class="text-right">13</td>
-									<td class="text-left">aaa aaa</td>
-									<td class="text-left"></td>
-									<td class="text-right">$110.00</td>
-									<td class="text-left">14/01/2015</td>
-									<td class="text-left">14/01/2015</td>
-									<td class="text-right"><a href="" data-toggle="tooltip" title="View" class="btn btn-primary"> <i class="icon-pencil icon-white"></i>Edit
-									</a></td>
-								</tr>
-								
-							</tbody>
+ 							</tbody>
 						</table>
 					</div>
 				</form>
