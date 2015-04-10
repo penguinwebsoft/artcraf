@@ -90,4 +90,11 @@ public class MenuController {
 	public ModelAndView showRegistration(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("registration");
 	}
+	
+	@RequestMapping("/customerLogIn")
+	public ModelAndView showCustomerLogIn(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("customerLogIn");
+	}
+	
+	
 }
