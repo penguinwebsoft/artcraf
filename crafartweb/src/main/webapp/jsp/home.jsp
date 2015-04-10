@@ -314,10 +314,10 @@
 
 		<div class="row">
 			<div class="col-sm-9">
-				<div class="row" style="padding: 15 2 1 15;">
+				<div class="row" style="padding: 1 2 1 15;">
 					<div class="panel panel-default" style="border-radius: 0px; border: 0px; background-color: transparent;">
 						<div class="panel-body" style="padding: 2px;">
-							<div class="col-md-12" style="padding: 15 2 1 15;">
+							<div class="col-md-12" style="padding: 1 2 1 15;">
 								<div style="margin-bottom: 5px;">
 									<ol class="breadcrumb" style="margin-bottom: 0px; border-radius: 0px; background-color: #332619;">
 										<li class="active">HOME AND LIVING</li>
@@ -452,13 +452,18 @@
 									</div>
 								</div>
 
-								<div class="row">
-									<ul class="nav nav-tabs nav_tabs_bottom_border" style="margin-bottom: 0px; background-color: pink" id="productFieldsTabs">
-										<li class="active" id="tabGeneral"><a data-toggle="tab" href="#Best-seller">Best Seller</a></li>
-										<li id="tabData"><a data-toggle="tab" href="#Best-sold-Product">Best sold Product</a></li>
-									</ul>
 
-									<div class="tab-content" style="border: 0px; padding: 0px;">
+
+
+
+								<div class="row" style="padding: 1 2 1 15;">
+									<div style="margin-bottom: 0px;">
+										<ul class="nav nav-tabs" style="margin-bottom: 4px;background-color:#FFFFFF;" id="productFieldsTabs">
+											<li class="active" id="Bestseller"><a href="#Best-seller">BESTSELLER</a></li>
+											<li id="Bestsoldproduct"><a href="#BestsoldProduct">BESTSOLDPRODUCT</a></li>
+										</ul>
+									</div>
+									<div class="tab-content" style="border: 0px; padding: 0px; background-color: transporent;">
 										<div class="tab-pane fade in active" id="Best-seller">
 											<div class="row">
 												<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
@@ -529,17 +534,17 @@
 														</div>
 													</div>
 
-													<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+													<a class="left carousel-control" href="#carousel-example-product1" role="presentation" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
 														class="sr-only">Previous</span>
-													</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
-														class="sr-only">Next</span>
+													</a> <a class="right carousel-control" href="#carousel-example-product1" role="presentation" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+														<span class="sr-only">Next</span>
 													</a>
 
 												</div>
 											</div>
 										</div>
 
-										<div class="tab-pane fade" id="Best-sold-Product">
+										<div class="tab-pane fade" id="BestsoldProduct">
 											<div class="row">
 												<div class="carousel slide article-slide carousel-example-product" data-ride="carousel" style="padding: 0px;">
 													<div class="carousel-inner" role="listbox">
@@ -1040,7 +1045,7 @@
 		</div>
 
 
-		<div class="col-md-12 col-sm-offset-1 fontSize11px">
+		<div class="col-md-11 col-sm-offset-1 fontSize11px">
 			<div class="row small-box ">
 				<strong>Mobiles :</strong> <a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> | <a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> |<a href="#">samsung</a>
 				| <a href="#">Sony</a> | <a href="#">Microx</a> |<a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> |<a href="#">samsung</a> | <a href="#">Sony</a> | <a href="#">Microx</a> |
@@ -1065,18 +1070,26 @@
 			</div>
 		</div>
 
-		<div class="container-fluid fontSize11px" >
-			<div class="row">
-				<p>Launched in February 2010, Snapdeal.com is India's largest e-commerce marketplace. Snapdeal provides a platform for vendors across the country to connect with millions of customers. Our
-					online shopping platform has the widest assortment of products from thousands of national, international and regional brands across diverse categories like Mobiles, Laptops, Cameras, Appliances,
-					Women's Apparel, Men's Apparel, Watches, Home & Kitchen, Automotive and Health. Grab your favorite products at best prices and save the one thing that matters most to you - "Your Money".</p>
+		<div class="container-fluid fontSize11px">
+			<div class="row col-md-11 col-sm-offset-1">
+				<p>Launched in February 2010, Snapdeal.com is India's largest e-commerce marketplace. Snapdeal provides a platform for vendors across the country to connect with millions of customers. 
+					Our online shopping platform has the widest assortment of products from thousands of national, international and regional brands across diverse categories like Mobiles, Laptops,  
+					Cameras,Appliances,Women's Apparel, Men's Apparel, Watches, Home & Kitchen, Automotive and Health. Grab your favorite products at best prices 
+					and save the one thing that matters most to you - "Your Money".</p>
 			</div>
 		</div>
 		<div class="container colortransparent">
 			<div class=" col-md-12 col-sm-6 col-xs-6">
-				<img src="${context}/resources/img/footer_sprite.jpg" alt="" />
+				<img src="${context}/resources/img/footer_sprite.jpg" alt="/>
 
 			</div>
+		</div>
+		<div class=" col-md-12 col-sm-6 col-xs-6">
+		<p>keep in touch</p>
+		</div>
+		</div>
+		</div>
+		</di
 		</div>
 
 		<div class="row text-center">
