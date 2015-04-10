@@ -14,7 +14,13 @@
 	
 	
 	$(document).ready(function() {
-		$('#dataTables-example').dataTable();
+		
+		/**************below code to disable search box inside datatable**************************/
+		$('table').dataTable({search: false});
+		
+		/***********************to enable search box, uncomment below code and comment above code*****************************/
+		/* $('#dataTables-example').dataTable(); */
+		
 
 		$("#dp2").datepicker({
 			viewMode : 'years',
