@@ -42,7 +42,6 @@ public class TaxClassController {
 		List<TaxClassBO> taxClassBOs = new ArrayList<>();
 		try {
 			taxClassBOs = manageTaxClassServiceImpl.getTaxClassDetail();
-			session.setAttribute("taxClass", taxClassBOs.get(0));
 			modelMap.addAttribute("taxClassBOs", taxClassBOs);
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application-error while adding taxdetails", crafartServiceException);
