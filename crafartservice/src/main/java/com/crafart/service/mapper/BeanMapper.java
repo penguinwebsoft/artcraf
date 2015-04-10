@@ -12,8 +12,14 @@ import com.crafart.dataobjects.AccountDO;
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.AttributeGroupDescDO;
 import com.crafart.dataobjects.CategoryDO;
+import com.crafart.dataobjects.CommissionDO;
 import com.crafart.dataobjects.CourierDO;
+import com.crafart.dataobjects.CrafartOrderDO;
+import com.crafart.dataobjects.CrafartUserDO;
+import com.crafart.dataobjects.CurrencyDO;
+import com.crafart.dataobjects.CustomerDO;
 import com.crafart.dataobjects.GeoZoneDO;
+import com.crafart.dataobjects.InvoiceDO;
 import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
@@ -31,8 +37,14 @@ import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.AttributeGroupDescBO;
 import com.crafart.service.businessobjects.CategoryBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.CourierBO;
+import com.crafart.service.businessobjects.CrafartOrderBO;
+import com.crafart.service.businessobjects.CrafartUserBO;
+import com.crafart.service.businessobjects.CurrencyBO;
+import com.crafart.service.businessobjects.CustomerBO;
 import com.crafart.service.businessobjects.GeoZoneBO;
+import com.crafart.service.businessobjects.InvoiceBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
@@ -196,6 +208,17 @@ public class BeanMapper {
 		storeDO.setStoreId(storeBO.getStoreId());
 		storeDO.setStoreUrl(storeBO.getStoreUrl());
 		return storeDO;
+
+	}
+
+	public StoreBO mapStoreDOToBO(StoreDO storeDO, StoreBO storeBO, SellerBO sellerBO) {
+		storeBO.setName(storeDO.getName());
+		storeBO.setStoreDescription(storeDO.getStoreDescription());
+		storeBO.setStoreId(storeDO.getStoreId());
+		storeBO.setStoreReturn(storeDO.getStoreReturn());
+		storeBO.setStoreUrl(storeDO.getStoreUrl());
+		storeBO.setSellerBO(sellerBO);
+		return storeBO;
 
 	}
 
@@ -387,6 +410,17 @@ public class BeanMapper {
 
 	}
 
+	public TaxRateBO mapTaxRateDOToBO(TaxRateDO taxRateDO, TaxRateBO taxRateBO, ProductBO productBO) {
+		taxRateBO.setName(taxRateDO.getName());
+		taxRateBO.setProductBO(productBO);
+		taxRateBO.setRate(taxRateDO.getRate());
+		taxRateBO.setSellerId(productBO.getSellerId());
+		taxRateBO.setTaxRateId(taxRateDO.getSellerId());
+		taxRateBO.setType(taxRateDO.getType());
+		return taxRateBO;
+
+	}
+
 	public TaxRuleDO mapTaxRuleBOToDO(TaxRuleBO taxRuleBO, TaxRuleDO taxRuleDO, TaxRateDO taxRateDO) {
 		taxRuleDO.setBased(taxRuleBO.getBased());
 		taxRuleDO.setPriority(taxRuleBO.getPriority());
@@ -395,6 +429,169 @@ public class BeanMapper {
 		taxRuleDO.setValue(taxRuleBO.getValue());
 		taxRuleDO.setTaxRateDO(taxRateDO);
 		return taxRuleDO;
+
+	}
+
+	public CommissionDO mapCommissionBOToDO(CommissionBO commissionBO, CommissionDO commissionDO) {
+		commissionDO.setCommissionId(commissionBO.getCommissionId());
+		commissionDO.setName(commissionBO.getName());
+		commissionDO.setSortOrder(commissionBO.getSortOrder());
+		commissionDO.setType(commissionBO.getType());
+		commissionDO.setValue(commissionBO.getValue());
+		return commissionDO;
+
+	}
+
+	public CommissionBO mapCommissionDOToBO(CommissionDO commissionDO, CommissionBO commissionBO) {
+		commissionBO.setCommissionId(commissionDO.getCommissionId());
+		commissionBO.setName(commissionDO.getName());
+		commissionBO.setSortOrder(commissionDO.getSortOrder());
+		commissionBO.setType(commissionDO.getType());
+		commissionBO.setValue(commissionDO.getValue());
+		return commissionBO;
+
+	}
+
+	public CurrencyDO mapCurrencyBOToDO(CurrencyBO currencyBO, CurrencyDO currencyDO) {
+		currencyDO.setCode(currencyBO.getCode());
+		currencyDO.setCurrencyId(currencyBO.getCurrencyId());
+		currencyDO.setDecimalPlace(currencyBO.getDecimalPlace());
+		currencyDO.setStatus(currencyBO.getStatus());
+		currencyDO.setSymbolLeft(currencyBO.getSymbolLeft());
+		currencyDO.setSymbolRight(currencyBO.getSymbolRight());
+		currencyDO.setTitle(currencyBO.getTitle());
+		currencyDO.setValue(currencyBO.getValue());
+		return currencyDO;
+
+	}
+
+	public CurrencyBO mapCurrencyDOToBO(CurrencyDO currencyDO, CurrencyBO currencyBO) {
+		currencyBO.setCode(currencyDO.getCode());
+		currencyBO.setCurrencyId(currencyDO.getCurrencyId());
+		currencyBO.setDecimalPlace(currencyDO.getDecimalPlace());
+		currencyBO.setStatus(currencyDO.getStatus());
+		currencyBO.setSymbolLeft(currencyDO.getSymbolLeft());
+		currencyBO.setSymbolRight(currencyDO.getSymbolRight());
+		currencyBO.setTitle(currencyDO.getTitle());
+		currencyBO.setValue(currencyDO.getValue());
+		return currencyBO;
+
+	}
+
+	public CrafartUserDO mapCrafartUserBOToDO(CrafartUserBO crafartUserBO, CrafartUserDO crafartUserDO) {
+		crafartUserDO.setFirstName(crafartUserBO.getFirstName());
+		crafartUserDO.setIp(crafartUserBO.getIp());
+		crafartUserDO.setLastName(crafartUserBO.getLastName());
+		crafartUserDO.setPassword(crafartUserBO.getPassword());
+		crafartUserDO.setSellerPermission(crafartUserBO.getSellerPermission());
+		crafartUserDO.setStatus(crafartUserBO.getStatus());
+		crafartUserDO.setUserGroupId(crafartUserBO.getUserGroupId());
+		crafartUserDO.setUserId(crafartUserBO.getUserId());
+		crafartUserDO.setUserName(crafartUserBO.getUserName());
+		return crafartUserDO;
+
+	}
+
+	public CrafartUserBO mapCrafartUserDOToBO(CrafartUserDO crafartUserDO, CrafartUserBO crafartUserBO) {
+		crafartUserBO.setFirstName(crafartUserDO.getFirstName());
+		crafartUserBO.setIp(crafartUserDO.getIp());
+		crafartUserBO.setLastName(crafartUserDO.getLastName());
+		crafartUserBO.setPassword(crafartUserDO.getPassword());
+		crafartUserBO.setSellerPermission(crafartUserDO.getSellerPermission());
+		crafartUserBO.setStatus(crafartUserDO.getStatus());
+		crafartUserBO.setUserGroupId(crafartUserDO.getUserGroupId());
+		crafartUserBO.setUserId(crafartUserDO.getUserId());
+		crafartUserBO.setUserName(crafartUserDO.getUserName());
+		return crafartUserBO;
+
+	}
+
+	public CustomerDO mapCustomerBOToDO(CustomerBO customerBO, CustomerDO customerDO) {
+		customerDO.setCustomerId(customerBO.getCustomerId());
+		customerDO.setDateOfBirth(customerBO.getDateOfBirth());
+		customerDO.setGender(customerBO.getGender());
+		customerDO.setFirstName(customerBO.getFirstName());
+		customerDO.setIp(customerBO.getIp());
+		customerDO.setLastName(customerBO.getLastName());
+		customerDO.setPassword(customerBO.getPassword());
+		customerDO.setStatus(customerBO.getStatus());
+		return customerDO;
+	}
+
+	public CustomerBO mapCustomerDOToBO(CustomerDO customerDO, CustomerBO customerBO) {
+		customerBO.setCustomerId(customerDO.getCustomerId());
+		customerBO.setDateOfBirth(customerDO.getDateOfBirth());
+		customerBO.setGender(customerDO.getGender());
+		customerBO.setFirstName(customerDO.getFirstName());
+		customerBO.setIp(customerDO.getIp());
+		customerBO.setLastName(customerDO.getLastName());
+		customerBO.setPassword(customerDO.getPassword());
+		customerBO.setStatus(customerDO.getStatus());
+		return customerBO;
+
+	}
+
+	public InvoiceDO mapInvoiceBOToDO(InvoiceBO invoiceBO, InvoiceDO invoiceDO, SellerDO sellerDO, CustomerDO customerDO) {
+		invoiceDO.setInvoiceDate(invoiceBO.getInvoiceDate());
+		invoiceDO.setInvoiceId(invoiceBO.getInvoiceId());
+		invoiceDO.setInvoiceNo(invoiceBO.getInvoiceNo());
+		invoiceDO.setInvoicePrefix(invoiceBO.getInvoicePrefix());
+		invoiceDO.setSellerDO(sellerDO);
+		invoiceDO.setCustomerDO(customerDO);
+		return invoiceDO;
+
+	}
+
+	public InvoiceBO mapInvoiceDOToBO(InvoiceDO invoiceDO, InvoiceBO invoiceBO, SellerBO sellerBO, CustomerBO customerBO) {
+		invoiceBO.setCustomerBO(customerBO);
+		invoiceBO.setInvoiceDate(invoiceDO.getInvoiceDate());
+		invoiceBO.setInvoiceId(invoiceDO.getInvoiceId());
+		invoiceBO.setInvoiceNo(invoiceDO.getInvoiceNo());
+		invoiceBO.setInvoicePrefix(invoiceDO.getInvoicePrefix());
+		invoiceBO.setSellerBO(sellerBO);
+		return invoiceBO;
+
+	}
+
+	public CrafartOrderDO mapCrafartOrderBOToDO(CrafartOrderBO crafartOrderBO, CrafartOrderDO crafartOrderDO, CommissionDO commissionDO, CourierDO courierDO, CrafartUserDO crafartUserDO,
+			CurrencyDO currencyDO, CustomerDO customerDO, InvoiceDO invoiceDO, ProductDO productDO, StoreDO storeDO, TaxRateDO taxRateDO) {
+		crafartOrderDO.setComment(crafartOrderBO.getComment());
+		crafartOrderDO.setCommissionDO(commissionDO);
+		crafartOrderDO.setCourierDO(courierDO);
+		crafartOrderDO.setCrafartUserDO(crafartUserDO);
+		crafartOrderDO.setCurrencyDO(currencyDO);
+		crafartOrderDO.setCustomerDO(customerDO);
+		crafartOrderDO.setForwardedIp(crafartOrderBO.getForwardedIp());
+		crafartOrderDO.setInvoiceDO(invoiceDO);
+		crafartOrderDO.setOrderId(crafartOrderBO.getOrderId());
+		crafartOrderDO.setOrderIp(crafartOrderBO.getOrderIp());
+		crafartOrderDO.setOrderStatusId(crafartOrderBO.getOrderStatusId());
+		crafartOrderDO.setProductDO(productDO);
+		crafartOrderDO.setStoreDO(storeDO);
+		crafartOrderDO.setTaxRateDO(taxRateDO);
+		crafartOrderDO.setTotal(crafartOrderBO.getTotal());
+		return crafartOrderDO;
+
+	}
+
+	public CrafartOrderBO mapCrafartOrderDOToBO(CrafartOrderDO crafartOrderDO, CrafartOrderBO crafartOrderBO, CommissionBO commissionBO, CourierBO courierBO, CrafartUserBO crafartUserBO,
+			CurrencyBO currencyBO, CustomerBO customerBO, InvoiceBO invoiceBO, ProductBO productBO, StoreBO storeBO, TaxRateBO taxRateBO) {
+		crafartOrderBO.setComment(crafartOrderDO.getComment());
+		crafartOrderBO.setCommissionBO(commissionBO);
+		crafartOrderBO.setCourierBO(courierBO);
+		crafartOrderBO.setCrafartUserBO(crafartUserBO);
+		crafartOrderBO.setCurrencyBO(currencyBO);
+		crafartOrderBO.setCustomerBO(customerBO);
+		crafartOrderBO.setForwardedIp(crafartOrderDO.getForwardedIp());
+		crafartOrderBO.setInvoiceBO(invoiceBO);
+		crafartOrderBO.setOrderId(crafartOrderDO.getOrderId());
+		crafartOrderBO.setOrderIp(crafartOrderDO.getOrderIp());
+		crafartOrderBO.setOrderStatusId(crafartOrderDO.getOrderStatusId());
+		crafartOrderBO.setProductBO(productBO);
+		crafartOrderBO.setStoreBO(storeBO);
+		crafartOrderBO.setTaxRateBO(taxRateBO);
+		crafartOrderBO.setTotal(crafartOrderDO.getTotal());
+		return crafartOrderBO;
 
 	}
 }
