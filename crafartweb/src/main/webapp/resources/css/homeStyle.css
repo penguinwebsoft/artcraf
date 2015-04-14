@@ -291,12 +291,12 @@ ul
 }
 
 #footers {
-background-color: #332619;
-color: #fff !important;
+	background-color: #ab8054 !important;
+	color: #fff !important;
 }
 
 #footers a {
-	color: #fff !important;
+	color: #000000!important;
 }
 
 #footers a:hover {
@@ -304,7 +304,7 @@ color: #fff !important;
 }
 
 #footers ul {
-	padding-left: 0px;
+	padding-left: 0px !important;
 }
 
 #Product1_description .col-sm-3{
@@ -345,3 +345,39 @@ color: #fff !important;
 .verticalLine {
     border-right: 2px dotted #332619;
 }
+
+
+/****************for testing purpose***********/
+
+.carousel-control {
+  width:5%;
+}
+
+
+
+#myCarousel .nav a small
+{
+    display: block;
+}
+#myCarousel .nav
+{
+    background: #666666;
+}
+.nav_tabs_bottom_border > li > a
+{
+    border-radius: 0px !important;
+    color: #ffffff;
+}
+
+
+.nav-pills>li[data-slide-to="0"].active a { 
+	background-color: #d0a462;
+ 	border-color:#d0a462;
+ }
+ 
+.nav-pills>li[data-slide-to="1"].active a { 
+	background-color: #d0a462;
+ 	border-color:#d0a462;
+ }
+
+
