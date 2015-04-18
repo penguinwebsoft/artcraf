@@ -51,10 +51,8 @@ public class SellerController {
 	ModelMap addSeller(@RequestBody SellerBO sellerBO, StoreBO storeBO, AddressBO addressBO, HttpServletRequest httpServletRequest, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
 		try {
-			log.info("controller");
 			manageSellerServiceImpl.addSeller(sellerBO);
 			session.setAttribute("sellerprofile", sellerBO);
-			log.info("added successfully");
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application-Error while adding seller", crafartServiceException);
 		}

@@ -59,6 +59,16 @@
 			}
 		});
 
+	/* 	$.ajax({
+			url : "../crafartorder/getOrderBO",
+			type : "post",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+			}
+		}); */
+
 	});
 </script>
 
