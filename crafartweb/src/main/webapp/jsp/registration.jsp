@@ -29,7 +29,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+
 		$("#dp2").datepicker({
 			viewMode : 'years',
 			format : 'yyyy/mm/dd',
@@ -45,6 +45,7 @@
 </script>
 
 <body style="width: 100%;">
+<div class="container-fluid">
 	<div class="row">
 		<nav id="top">
 			<div class="container">
@@ -152,81 +153,87 @@
 		<div class="row">
 			<div class="col-lg-5" style="margin-left: 50px;">
 				<div class="row">
-				<form class="form-horizontal" action="#" id="CustomerRegistrationId">
-					<div class="col-sm-5">
-						<div class="form-group">
-							<label for="firstName" class="control-label">First-Name</label> <input type="text" class="form-control" id="firstName" placeholder="First Name">
-						</div>
-						<div class="form-group">
-							<label for="emailId" class="control-label">e-Mail ID</label> <input type="text" class="form-control" id="emailId" placeholder="e-Mail ID">
-						</div>
+					<form class="form-horizontal" action="#" id="CustomerRegistrationId">
+						<div class="col-sm-5">
+							<div class="form-group">
+								<label for="first Name" class="control-label">First Name</label> <input type="text" class="form-control" id="first Name" placeholder="First Name">
+							</div>
+							<div class="form-group">
+								<label for="email Id" class="control-label">e-Mail ID</label> <input type="text" class="form-control" id="emailId" placeholder="e-Mail ID">
+							</div>
 
-						<div class="form-group">
-							<label for="ConfirmPasswordId" class="control-label">Confirm Password</label> <input type="password" id="ConfirmPasswordId" name="Confirm Password" class="form-control"
-								placeholder="Confirm Password" />
-						</div>
+							<div class="form-group">
+								<label for="Confirm Password Id" class="control-label">Confirm Password</label> <input type="password" id="ConfirmPasswordId" name="Confirm Password" class="form-control"
+									placeholder="Confirm Password" />
+							</div>
 
-						<div class="form-group">
-							<label for="" class="control-label">Gender</label> <select class="form-control" id="gender" placeholder="Gender">
-								<option value="1">Male</option>
-								<option value="2">Female</option>
-							</select>
-						</div>
+							<div class="form-group">
+								<label for="" class="control-label">City</label> <input type="text" id="city" name="city" class="form-control" placeholder="City" />
+							</div>
 
-						<div class="form-group">
-							<label for="" class="control-label">State</label> <input type="text" id="state" name="state" class="form-control" placeholder="State" />
-						</div>
-						
-						<div class="form-group">
-							<label for="" class="control-label">Country</label> <input type="text" id="states" name="Country" class="form-control" placeholder="Country" />
-						</div>
-						
-						<br>
+							<div class="form-group">
+								<label for="" class="control-label">State</label> <input type="text" id="state" name="state" class="form-control" placeholder="State" />
+							</div>
 
-					</div>
-					<div class="col-sm-5 col-sm-offset-2">
-						
-						<div class="form-group">
-							<label for="lastName" class="control-label">Last-Name</label> <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-						</div>
-						
-						<div class="form-group">
-							<label for="PasswordId" class="control-label">Password</label> <input type="password" id="PasswordId" name="Password" class="form-control" placeholder="Password" />
-						</div>
+							<div class="form-group">
+								<label for="" class="control-label">Country</label> <input type="text" id="states" name="Country" class="form-control" placeholder="Country" />
+							</div>
 
-						<div class="form-group">
-							<label for="" class="control-label">Date-Of-Birth</label> <input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2">
-						</div>
+							<br>
 
-						<div class="form-group">
-							<label for="" class="control-label">City</label> <input type="text" id="city" name="city" class="form-control" placeholder="City" />
-						</div>
 
-						<div class="form-group" style="margin-bottom:20px;">
-							<label for="" class="control-label">Mobile-No</label> <input type="text" id="mobileNumberId" name="mobileNumber" class="form-control" placeholder="Mobile No" />
 						</div>
-						
-						<div class="form-group">
-						By clicking Register, you agree that you have read and accepted the
-							<a href="#">Policy for sellers</a>,
-							<a  href="#">Terms & Conditions</a>,
-							<a  href="#">Privacy Policy</a>
-							and that you are at least 18 years old.
+						<div class="col-sm-5 col-sm-offset-2">
+
+							<div class="form-group">
+								<label for="Last Name" class="control-label">Last Name</label> <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+							</div>
+
+							<div class="form-group">
+								<label for="Password Id" class="control-label">Password</label> <input type="password" id="PasswordId" name="Password" class="form-control" placeholder="Password" />
+							</div>
+
+
+							<div class="form-group">
+								<label for="alternative email Id" class="control-label">Alternative e-Mail ID</label> <input type="text" class="form-control" id="alternative emailId" placeholder="alternative e-Mail ID">
+							</div>
+
+							<div class="form-group">
+								<label for="" class="control-label">Gender</label> <select class="form-control" id="gender" placeholder="Gender">
+									<option value="1">Male</option>
+									<option value="2">Female</option>
+								</select>
+							</div>
+
+
+							<div class="form-group">
+								<label for="" class="control-label">Date Of Birth</label> <input type="text" class="form-control" placeholder="1990/09/10" value="" data-date-format="mm/dd/yyyy" id="dp2">
+							</div>
+
+
+							<div class="form-group" style="margin-bottom: 20px;">
+								<label for="" class="control-label">Mobile No</label> <input type="text" id="mobileNumberId" name="mobileNumber" class="form-control" placeholder="Mobile No" />
+							</div>
 						</div>
-						<br>
-					</div>
-				</form>
+					</form>
 				</div>
+				<div class="form-group">
+					<input type="checkbox" /> By clicking Register,you agree that you have read and accepted the <a href="#">Policy for buyer</a>, <a href="#">Terms & Conditions</a>, 
+					 <a href="#">Privacy Policy</a>and that you are at least 18 years old.
+				</div>
+				<br>
+
 				<div class="row">
 					<span class="col-sm-offset-5" style="margin-left: 13.50%;"> <a class="btn btn-success" id="" style="border-radius: 0px;">Create Account</a>&nbsp;&nbsp;&nbsp;
 					</span>
 				</div>
 			</div>
-			
-			<div class="verticalLine col-sm-1" style="height: 500px; width: 2%; padding-left: 3%;"> </div>
-			
+
+			<div class="verticalLine col-sm-1" style="height: 500px; width: 2%; padding-left: 3%;"></div>
+
 			<div class="col-lg-5 col-sm-offset-1">
-			<br>
+			
+				<br>
 				<div class="row">
 					<h4>Social login</h4>
 				</div>
@@ -244,40 +251,40 @@
 					</div>
 				</div>
 				<br>
-			<div class="row">
-				<h4>Login to your account</h4>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-1">
-					<form class="form-horizontal" action="#" id="CustomerRegistrationId">
-						<div class="form-group">
-							<label for="loginId" class="control-label">Login ID</label>
-							<div class="">
-								<input type="text" class="form-control" id="loginId" placeholder="Login Name">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="userPasswordId" class="control-label">Password</label>
-							<div class="">
-								<input type="password" id="userPasswordId" name="Password" class="form-control" placeholder="Password" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-								<input type="checkbox" id="staySigninId" name="Signed In"/>
-							<label class="control-label"> Stay Signed In </label>
-						</div>
-					</form>
+				<div class="row">
+					<h4>Login to your account</h4>
 				</div>
-			</div><br>
-			<div class="row">
-				<span class="col-sm-4 col-sm-offset-1"> <a class="btn btn-success btn-flat" href="#" style="border-radius: 0px;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>
-				</span>
+
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-1">
+						<form class="form-horizontal" action="#" id="CustomerRegistrationId">
+							<div class="form-group">
+								<label for="loginId" class="control-label">Login ID</label>
+								<div class="">
+									<input type="text" class="form-control" id="loginId" placeholder="Login Name">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="userPasswordId" class="control-label">Password</label>
+								<div class="">
+									<input type="password" id="userPasswordId" name="Password" class="form-control" placeholder="Password" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<input type="checkbox" id="staySigninId" name="Signed In" /> <label class="control-label"> Stay Signed In </label>
+							</div>
+						</form>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<span class="col-sm-4 col-sm-offset-1"> <a class="btn btn-success btn-flat" href="#" style="border-radius: 0px;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>
+					</span>
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 	<br>
