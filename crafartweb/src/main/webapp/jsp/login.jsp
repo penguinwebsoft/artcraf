@@ -125,7 +125,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="Office no" class="control-label">Office No:</label><input type="text" id="Office no" name="Office no" class="form-control" />
+							<label for="Phone no" class="control-label">Phone No:</label><input type="text" id="Phone no" name="Phone no" class="form-control" />
 						</div>
 
 
@@ -158,7 +158,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="Alternative Emailid" class="control-label">Alternative Emailid:</label><input type="Alternative Emailid" id="Alternative Emailid" name="Alternative Emailid" class="form-control" />
+							<label for="Alternative Email id" class="control-label">Alternative Email id:</label><input type="Alternative Email id" id="Alternative Email id" name="Alternative Email id" class="form-control" />
 						</div>
 
 
