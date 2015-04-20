@@ -6,6 +6,12 @@ body {
 	line-height: 20px;
 }
 
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 /* top */
 #top {
 	background-color: #332619 !important;
@@ -343,7 +349,7 @@ ul
 }
 
 .verticalLine {
-    border-right: 2px dotted #332619;
+    border-right: 1px solid #332619;
 }
 
 
