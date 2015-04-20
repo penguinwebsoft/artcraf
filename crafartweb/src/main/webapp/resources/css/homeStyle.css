@@ -6,6 +6,12 @@ body {
 	line-height: 20px;
 }
 
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 /* top */
 #top {
 	background-color: #332619 !important;
@@ -19,20 +25,14 @@ body {
 	padding: 0 20px;
 }
 
-.container {
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
-	max-width: 900px;
-	overflow: hidden;
-	min-height: 0px !important;
-}
-
 #top .btn-link, #top-links li, #top-links a {
 	color: #ccc;
 	/* text-shadow: 0 1px 0 #FFF; */
 	text-decoration: none;
+}
+
+#top-links i {
+	margin-top: 3px;
 }
 
 #top .btn-link:hover, #top-links a:hover {
@@ -92,6 +92,7 @@ body {
 }
 
 .navbar-nav>li>a {
+	color: #ffffff !important;
 	padding-top: 5px !important;
 	padding-bottom: 5px !important;
 }
@@ -102,6 +103,12 @@ body {
 
 .navbar-inverse .navbar-nav>li>a:focus {
 	color: #FDB45E !important;
+}
+
+
+.navbar {
+	min-height: 30px !important;
+	padding: 0px !important;
 }
 
 #nav-top {
@@ -216,7 +223,6 @@ body {
 	background-color: #332619;
 	border-bottom-color: red !important;
 	border-bottom-width: 4px;
-	color: #ffffff;
 }
 
 .carousel-indicators {
@@ -313,7 +319,7 @@ ul {
 }
 
 #footers ul {
-	padding-left: 0px;
+	padding-left: 0px !important;
 }
 
 .fontCorsiva {
@@ -369,30 +375,36 @@ ul {
 
 #myCarousel .nav a small {
 	display: block;
+	padding: 2px;
 }
+
 
 #myCarousel .nav {
-	background: #666666;
+	background: #332619;
 }
 
-.nav_tabs_bottom_border>li>a {
-	border-radius: 0px !important;
-	color: #ffffff;
+#myCarousel .nav-pills > li > a {
+    border-radius: 0px !important;
+    color:  #ffffff !important;
 }
 
-.nav-pills>li[data-slide-to="0"].active a {
-	background-color: #d0a462;
-	border-color: #d0a462;
-}
-
-.nav-pills>li[data-slide-to="1"].active a {
-	background-color: #d0a462;
-	border-color: #d0a462;
+#myCarousel .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: #5cb85c !important;
+  border-width:0px !important;
+  color: #ffffff !important;
 }
 
 /*******************taken from main.css (for testing purpose)**************/
 .container-fluid {
 	padding: 0px;
+}
+
+.gapFix1 {
+	height: 230px;
+}
+
+.gapFix2 {
+	height: 322px;
 }
 
 .features_items {
@@ -442,7 +454,7 @@ h2.title {
 	font-family: Monotype Corsiva;
 	font-size: 16px;
 	list-style: outside none none;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	padding: 8px 15px;
 }
 
@@ -525,40 +537,40 @@ ol, ul {
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
-	-khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
-	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-khtml-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	position: relative;
 	z-index: 90; /* the stack order: displayed under ribbon rectangle */
 }
 
 /* Ribbon header */
-.rectangle, .rectangle_sm{
-  background: none repeat scroll 0 0 #de8a03;
-  float: left;
-  height: 32px;
-  left: -15px;
-  position: relative;
-  top: 0;
-  z-index: 100;
+.rectangle, .rectangle_sm {
+	background: none repeat scroll 0 0 #de8a03;
+	float: left;
+	height: 32px;
+	left: -15px;
+	position: relative;
+	top: 0;
+	z-index: 100;
 }
 
-.rectangle_sm:HOVER{
-	 background: none repeat scroll 0 0 #d08302;
+.rectangle_sm:HOVER {
+	background: none repeat scroll 0 0 #d08302;
 }
 
-.rectangle:HOVER{
-	 background: none repeat scroll 0 0 #d08302;
+.rectangle:HOVER {
+	background: none repeat scroll 0 0 #d08302;
 }
 
-.rectanle_lg_wd{
-	width: 150px;
+.rectanle_lg_wd {
+	margin-left: 20px;
+	width: 160px;
 }
-
 
 .rectangle_sm_wd {
-	width: 75px;
-	margin-left: 30px;
+	width: 95px;
+	margin-left: 60px;
 }
 
 /* Ribbon text */
@@ -578,45 +590,44 @@ ol, ul {
 
 /* Left side-fold ribbon */
 .triangle-l {
-  border-color: transparent #332619 transparent transparent;
-  border-style: solid;
-  border-width: 10px;
-  height: 0;
-  position: relative;
-  width: 0;
-  z-index: -1;
+	border-color: transparent #332619 transparent transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	position: relative;
+	width: 0;
+	z-index: -1;
 }
 
-.triangle-l-lg-wd{
-	left: -25px;
+.triangle-l-lg-wd {
+	left: -5px;
 	top: 22px;
 }
 
-.triangle-l-sm-wd{
-	left: 5px;
+.triangle-l-sm-wd {
+	left: 35px;
 	top: 22px;
 }
-
 
 /* Right side-fold ribbon */
 .triangle-r {
-  border-color: transparent transparent transparent #332619;
-  border-style: solid;
-  border-width: 10px;
-  height: 0;
-  position: relative;
-  width: 0;
-  z-index: 1;
+	border-color: transparent transparent transparent #332619;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	position: relative;
+	width: 0;
+	z-index: 1;
 }
 
-.triangle-r-lg-wd{
-	 left: 125px;
-	 top: -30px;
+.triangle-r-lg-wd {
+	left: 155px;
+	top: -30px;
 }
 
-.triangle-r-sm-wd{
-	 left: 80px;
-	 top: -30px;
+.triangle-r-sm-wd {
+	left: 130px;
+	top: -30px;
 }
 
 /* About Us - content padding */
@@ -635,3 +646,46 @@ ol, ul {
 }
 
 /********************************ribbon style***********************************/
+#searchBtn .searchPad {
+	padding: 5px 15px 5px 15px;
+}
+
+/***************************************tab arrow style**************************************/
+.arrow_box_border {
+	position: relative;
+	background: transparent;
+	border: 2px solid #5cb85c;
+	z-index: 1;
+}
+
+.arrow_box {
+	position: relative;
+	background: #5cb85c;
+	border: 2px solid #5cb85c;
+	z-index: 1;
+}
+
+.arrow_box:after, .arrow_box:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #5cb85c;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.arrow_box:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-top-color: #5cb85c;
+	border-width: 13px;
+	margin-left: -13px;
+}
