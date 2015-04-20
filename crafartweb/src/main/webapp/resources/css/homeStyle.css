@@ -358,7 +358,11 @@ ul {
 }
 
 .verticalLine {
+<<<<<<< HEAD
 	border-right: 2px dotted #332619;
+=======
+    border-right: 1px solid #332619;
+>>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git
 }
 
 /****************for testing purpose***********/
