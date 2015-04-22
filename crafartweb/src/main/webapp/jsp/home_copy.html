@@ -1,8 +1,3 @@
-<%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="context" value="${pageContext.request.contextPath}" />
-<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
 <html lang="en">
 <head>
@@ -12,107 +7,107 @@
 <meta content="" name="author" />
 <title>Crafart Home page</title>
 
-<link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css" />
-<link rel="stylesheet" href="${context}/resources/css/main.css" />
-<link rel="stylesheet" href="${context}/resources/css/homeStyle.css" />
+<link rel="stylesheet" href="../resources/plugins/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="/maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../resources/css/main.css" />
+<link rel="stylesheet" href="../resources/css/homeStyle.css" />
 
 <!--START SCRIPTS -->
-<script src="${context}/resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
-<script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
-<script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
-<script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
+<script src="../resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
+<script src="../resources/javascript/menuHighlight/highlight.js"></script>
+<script src="../resources/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script>
-$(document).ready(
-		function() {
+	$(document).ready(
+			function() {
 
-			getImageSizes();
-			$(window).resize(function() { //Fires when window is resized
 				getImageSizes();
-			});
+				$(window).resize(function() { //Fires when window is resized
+					getImageSizes();
+				});
 
-			/**********best seller and best sold products section*****************/
-			var clickEvent = false;
-			$('#myCarousel').on('click', '.nav a', function() {
-				clickEvent = true;
-				$('.nav li').removeClass('active');
-				$('.nav li').removeClass('arrow_box');
-				$(this).parent().addClass('arrow_box');
-				$(this).parent().addClass('active');
-			}).on(
-					'slid.bs.carousel',
-					function(e) {
-						if (!clickEvent) {
-							var count = $('.nav').children().length - 1;
-							var current = $('.nav li.active');
-							current.removeClass('active').next().addClass(
-									'active');
-							var id = parseInt(current.data('slide-to'));
-							if (count == id) {
-								$('.nav li').first().addClass('active');
-								$('.nav li').first().addClass('arrow_box');
+				/**********best seller and best sold products section*****************/
+				var clickEvent = false;
+				$('#myCarousel').on('click', '.nav a', function() {
+					clickEvent = true;
+					$('.nav li').removeClass('active');
+					$('.nav li').removeClass('arrow_box');
+					$(this).parent().addClass('arrow_box');
+					$(this).parent().addClass('active');
+				}).on(
+						'slid.bs.carousel',
+						function(e) {
+							if (!clickEvent) {
+								var count = $('.nav').children().length - 1;
+								var current = $('.nav li.active');
+								current.removeClass('active').next().addClass(
+										'active');
+								var id = parseInt(current.data('slide-to'));
+								if (count == id) {
+									$('.nav li').first().addClass('active');
+									$('.nav li').first().addClass('arrow_box');
 
+								}
 							}
-						}
-						clickEvent = false;
-					});
+							clickEvent = false;
+						});
 
-			/**********best seller and best sold products section*****************/
+				/**********best seller and best sold products section*****************/
 
-			$('#thumbCarousel').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel').carousel({
+					interval : 10000
+				})
 
-			$('#thumbCarousel1').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel1').carousel({
+					interval : 10000
+				})
 
-			$('#thumbCarousel2').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel2').carousel({
+					interval : 10000
+				})
 
-			$('#thumbCarousel3').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel3').carousel({
+					interval : 10000
+				})
 
-			$('#categoryDropDownId').addClass('open');
-			$('#categoryDropDownId #dropdownMenuId').on({
-				"click" : function(e) {
-					e.stopPropagation();
-				}
+				$('#categoryDropDownId').addClass('open');
+				$('#categoryDropDownId #dropdownMenuId').on({
+					"click" : function(e) {
+						e.stopPropagation();
+					}
+				});
+
+				$('.nav-tabs > li > a').hover(function() {
+					$(this).tab('show');
+				});
+
+				var position = $("#dropdownMenuId").position();
+				var width = $("#dropdownMenuId").width();
+				$("#addFrame").css("margin-top", position.top + "px");
+				$("#addFrame").css("margin-right", position.top + "px");
+
+				$("#searchdropdown li a").click(
+						function() {
+							$("#searchcategory").html(
+									$(this).text()
+											+ ' <span class="caret"></span>');
+							$("#searchcategory").val($(this).text());
+						});
+
 			});
 
-			$('.nav-tabs > li > a').hover(function() {
-				$(this).tab('show');
+	function getImageSizes() {
+		$("#carousel-example-generic").each(function() {
+			var $height = $(this);
+			$('#addFrame').css({
+				'height' : $height.height() + 'px'
 			});
-
-			var position = $("#dropdownMenuId").position();
-			var width = $("#dropdownMenuId").width();
-			$("#addFrame").css("margin-top", position.top + "px");
-			$("#addFrame").css("margin-right", position.top + "px");
-
-			$("#searchdropdown li a").click(
-					function() {
-						$("#searchcategory").html(
-								$(this).text()
-										+ ' <span class="caret"></span>');
-						$("#searchcategory").val($(this).text());
-					});
-
 		});
-
-function getImageSizes() {
-	$("#carousel-example-generic").each(function() {
-		var $height = $(this);
-		$('#addFrame').css({
-			'height' : $height.height() + 'px'
-		});
-	});
-}
+	}
 </script>
 </head>
 
-<body style="background-image: url(${context}/resources/img/background_img.jpg);">
+<body style="background-image: url(../resources/img/background_img.jpg);">
 	<div class="container-fluid padding-top">
 		<nav id="top">
 			<div class="row-fluid">
@@ -162,7 +157,7 @@ function getImageSizes() {
 		<div class="row" style="width: 95%">
 			<div class="col-sm-3">
 				<div id="logo">
-					<a href="#"> <img src="${context}/resources/img/logo2.png" title="" alt="" class="img-responsive" style="margin-top: 10px;" /></a>
+					<a href="#"> <img src="../resources/img/logo2.png" title="" alt="" class="img-responsive" style="margin-top: 10px;" /></a>
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -263,7 +258,7 @@ function getImageSizes() {
 								<li role="presentation"><a role="menuitem" href="#">Women Handicrafts</a></li>
 								<li role="presentation"><a role="menuitem" href="#">Kides Handicrafts</a></li>
 								<li role="presentation" class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sampleLinkId">Perfumes</a> <!-- <div class="" id="addFrame" style="z-index: 0; background-color: black;"> -->
-									<div class="div-submenu-container" style="margin-top: -292px; height: 337px; width: 650px; border-radius: 0px; background-image: url('${context}/resources/img/Fashion.jpg')">
+									<div class="div-submenu-container" style="margin-top: -292px; height: 337px; width: 650px; border-radius: 0px; background-image: url('../resources/img/Fashion.jpg')">
 										<ul class="dropdown-menu" style="z-index: 1; position: relative;">
 											<li><a href="#">Dropdown 12.1</a></li>
 											<li><a href="#">Dropdown 12.2</a></li>
@@ -336,25 +331,25 @@ function getImageSizes() {
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="${context}/resources/img/1.jpg" alt="..." class="img-responsive">
+						<img src="../resources/img/1.jpg" alt="..." class="img-responsive">
 					</div>
 					<div class="item">
-						<img src="${context}/resources/img/2.jpg" alt="..." class="img-responsive">
-					</div>
-
-					<div class="item">
-						<img src="${context}/resources/img/3.jpg" alt="..." class="img-responsive">
+						<img src="../resources/img/2.jpg" alt="..." class="img-responsive">
 					</div>
 
 					<div class="item">
-						<img src="${context}/resources/img/4.jpg" alt="..." class="img-responsive">
-					</div>
-					<div class="item">
-						<img src="${context}/resources/img/1.jpg" alt="..." class="img-responsive">
+						<img src="../resources/img/3.jpg" alt="..." class="img-responsive">
 					</div>
 
 					<div class="item">
-						<img src="${context}/resources/img/2.jpg" alt="..." class="img-responsive">
+						<img src="../resources/img/4.jpg" alt="..." class="img-responsive">
+					</div>
+					<div class="item">
+						<img src="../resources/img/1.jpg" alt="..." class="img-responsive">
+					</div>
+
+					<div class="item">
+						<img src="../resources/img/2.jpg" alt="..." class="img-responsive">
 					</div>
 				</div>
 
@@ -412,22 +407,22 @@ function getImageSizes() {
 								<div class="col-md-12  item active">
 									<div class="row">
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 									</div>
 								</div>
@@ -436,22 +431,22 @@ function getImageSizes() {
 								<div class="col-md-12 item">
 									<div class="row">
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<div class="col-sm-2">
-											<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
+											<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
 										</div>
 										<!--/row-->
 									</div>
@@ -473,7 +468,7 @@ function getImageSizes() {
 						<div class="row" style="padding-right: 15px">
 							<div class="col-md-3 text-center col-sm-3 padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+									<img src="../resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 									<div class="caption">
 										<h3>
 											<a href="#">coffee tea sets</a>
@@ -484,7 +479,7 @@ function getImageSizes() {
 							<!-- /.col -->
 							<div class="col-md-3 text-center col-sm-3 padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+									<img src="../resources/img/product2/description/dinner-sets.jpg" alt="" />
 									<div class="caption">
 										<h3>
 											<a href="#">Dinner sets</a>
@@ -495,7 +490,7 @@ function getImageSizes() {
 							<!-- /.col -->
 							<div class="col-md-3 text-center col-sm-3 padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+									<img src="../resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 
 									<div class="caption">
 										<h3>
@@ -507,7 +502,7 @@ function getImageSizes() {
 
 							<div class="col-md-3 text-center col-sm-3  padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+									<img src="../resources/img/product2/description/dinner-sets.jpg" alt="" />
 									<div class="caption">
 										<h3>
 											<a href="#">Dinner sets</a>
@@ -532,16 +527,16 @@ function getImageSizes() {
 									<div class="item active  col-md-12">
 										<div class="row">
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 										</div>
 									</div>
@@ -550,16 +545,16 @@ function getImageSizes() {
 									<div class="item col-md-12">
 										<div class="row">
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-3 ">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 										</div>
 									</div>
@@ -598,22 +593,22 @@ function getImageSizes() {
 									<div class="col-md-12 item active">
 										<div class="row">
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<!--/row-->
 										</div>
@@ -622,22 +617,22 @@ function getImageSizes() {
 									<div class="col-md-12 item">
 										<div class="row">
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 											<div class="col-sm-2">
-												<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
+												<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
 											</div>
 										</div>
 									</div>
@@ -658,7 +653,7 @@ function getImageSizes() {
 							<div class="row" style="padding-right: 15px">
 								<div class="col-md-3 text-center col-sm-3 padding-right">
 									<div class="thumbnail product-box">
-										<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+										<img src="../resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 										<div class="caption">
 											<h3>
 												<a href="#">coffee tea sets</a>
@@ -669,7 +664,7 @@ function getImageSizes() {
 								<!-- /.col -->
 								<div class="col-md-3 text-center col-sm-3 padding-right">
 									<div class="thumbnail product-box">
-										<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+										<img src="../resources/img/product2/description/dinner-sets.jpg" alt="" />
 										<div class="caption">
 											<h3>
 												<a href="#">Dinner sets</a>
@@ -680,7 +675,7 @@ function getImageSizes() {
 								<!-- /.col -->
 								<div class="col-md-3 text-center col-sm-3 padding-right">
 									<div class="thumbnail product-box">
-										<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+										<img src="../resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 
 										<div class="caption">
 											<h3>
@@ -692,7 +687,7 @@ function getImageSizes() {
 
 								<div class="col-md-3 text-center col-sm-3 padding-right">
 									<div class="thumbnail product-box">
-										<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+										<img src="../resources/img/product2/description/dinner-sets.jpg" alt="" />
 										<div class="caption">
 											<h3>
 												<a href="#">Dinner sets</a>
@@ -725,22 +720,22 @@ function getImageSizes() {
 										<div class="col-md-12 item active">
 											<div class="row">
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 											</div>
 											<!--/row-->
@@ -749,22 +744,22 @@ function getImageSizes() {
 										<div class="col-md-12 item">
 											<div class="row">
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 											</div>
 											<!--/row-->
@@ -785,7 +780,7 @@ function getImageSizes() {
 								<div class="row" style="padding-right: 15px">
 									<div class="col-md-3 text-center col-sm-3 padding-right">
 										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+											<img src="../resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 											<div class="caption">
 												<h3>
 													<a href="#">coffee tea sets</a>
@@ -796,7 +791,7 @@ function getImageSizes() {
 									<!-- /.col -->
 									<div class="col-md-3 text-center col-sm-3 padding-right">
 										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+											<img src="../resources/img/product2/description/dinner-sets.jpg" alt="" />
 											<div class="caption">
 												<h3>
 													<a href="#">Dinner sets</a>
@@ -807,7 +802,7 @@ function getImageSizes() {
 									<!-- /.col -->
 									<div class="col-md-3 text-center col-sm-3 padding-right">
 										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+											<img src="../resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
 
 											<div class="caption">
 												<h3>
@@ -819,7 +814,7 @@ function getImageSizes() {
 
 									<div class="col-md-3 text-center col-sm-3 padding-right">
 										<div class="thumbnail product-box">
-											<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+											<img src="../resources/img/product2/description/dinner-sets.jpg" alt="" />
 											<div class="caption">
 												<h3>
 													<a href="#">Dinner sets</a>
@@ -855,22 +850,22 @@ function getImageSizes() {
 										<div class="col-md-12 item active">
 											<div class="row">
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/aprons-potholders.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/canister.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/ceramic-mug.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<!--/row-->
 											</div>
@@ -879,22 +874,22 @@ function getImageSizes() {
 										<div class="col-md-12 item">
 											<div class="row">
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp2.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp3.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp4.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp5.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 												<div class="col-sm-2">
-													<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
+													<a href="#x" class="thumbnail"><img src="../resources/img/product1/lamp6.jpg" alt="Image" class="img-responsive"></a>
 												</div>
 											</div>
 										</div>
@@ -929,67 +924,67 @@ function getImageSizes() {
 					<div class="row margin-left-30-">
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail">
-								<img src="${context}/resources/img/advertisement/add_1.png" alt="" />
+								<img src="../resources/img/advertisement/add_1.png" alt="" />
 							</div>
 						</div>
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_2.png" alt="" />
+								<img src="../resources/img/advertisement/add_2.png" alt="" />
 							</div>
 						</div>
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_3.png" alt="" />
-							</div>
-						</div>
-
-						<div class=" col-md-12 col-sm-6 col-xs-push-12">
-							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_4.png" alt="" />
+								<img src="../resources/img/advertisement/add_3.png" alt="" />
 							</div>
 						</div>
 
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_5.png" alt="" />
-							</div>
-						</div>
-						<div class=" col-md-12 col-sm-6 col-xs-push-12">
-							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_6.png" alt="" />
-							</div>
-						</div>
-						<div class=" col-md-12 col-sm-6 col-xs-push-12">
-							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_7.png" alt="" />
+								<img src="../resources/img/advertisement/add_4.png" alt="" />
 							</div>
 						</div>
 
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_8.png" alt="" />
+								<img src="../resources/img/advertisement/add_5.png" alt="" />
+							</div>
+						</div>
+						<div class=" col-md-12 col-sm-6 col-xs-push-12">
+							<div class="thumbnail product-box">
+								<img src="../resources/img/advertisement/add_6.png" alt="" />
+							</div>
+						</div>
+						<div class=" col-md-12 col-sm-6 col-xs-push-12">
+							<div class="thumbnail product-box">
+								<img src="../resources/img/advertisement/add_7.png" alt="" />
+							</div>
+						</div>
+
+						<div class=" col-md-12 col-sm-6 col-xs-push-12">
+							<div class="thumbnail product-box">
+								<img src="../resources/img/advertisement/add_8.png" alt="" />
 							</div>
 						</div>
 
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail">
-								<img src="${context}/resources/img/advertisement/add_1.png" alt="" />
+								<img src="../resources/img/advertisement/add_1.png" alt="" />
 							</div>
 						</div>
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_2.png" alt="" />
+								<img src="../resources/img/advertisement/add_2.png" alt="" />
 							</div>
 						</div>
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_3.png" alt="" />
+								<img src="../resources/img/advertisement/add_3.png" alt="" />
 							</div>
 						</div>
 
 						<div class=" col-md-12 col-sm-6 col-xs-push-12">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/advertisement/add_4.png" alt="" />
+								<img src="../resources/img/advertisement/add_4.png" alt="" />
 							</div>
 						</div>
 					</div>
@@ -1114,7 +1109,7 @@ function getImageSizes() {
 						</div>
 						<div class="container-fluid colortransparent">
 							<div class="col-md-12 col-sm-6 col-xs-6 padding-left">
-								<img src="${context}/resources/img/footer_sprite.jpg" alt="" />
+								<img src="../resources/img/footer_sprite.jpg" alt="" />
 
 							</div>
 						</div>
@@ -1127,6 +1122,8 @@ function getImageSizes() {
 			</div>
 		</div>
 
+
 	</div>
+
 </body>
 </html>
