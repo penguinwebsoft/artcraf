@@ -36,7 +36,6 @@ public class ProductController {
 	public @ResponseBody
 	long addProduct(@RequestBody ProductBO productBO, HttpServletRequest httpServletRequest, HttpSession httpSession) {
 		try {
-			log.info("*******product controller******");
 			SellerBO sellerBO = (SellerBO) httpSession.getAttribute("sellerprofile");
 			productBO.setSellerId(sellerBO.getSellerId());
 			manageProductServiceImpl.addProduct(productBO);
