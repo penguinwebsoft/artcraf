@@ -4,6 +4,7 @@ body {
 	color: #666;
 	font-size: 12px !important;
 	line-height: 20px;
+	background-image: url(${context}/resources/img/background_img.jpg);
 }
 
 .container-fluid {
@@ -221,9 +222,15 @@ body {
  */
 .article-slide .carousel-indicators .active {
 	background-color: #332619;
-	border-bottom-color: red !important;
-	border-bottom-width: 4px;
+	color:#ffffff;
+	border-bottom: 4px solid  #DE8A03;
+	border-left:0px;
+	border-right:0px;
+	margin: 0px important;
 }
+
+
+
 
 .carousel-indicators {
 	bottom: -50px;
@@ -358,11 +365,7 @@ ul {
 }
 
 .verticalLine {
-<<<<<<< HEAD
 	border-right: 2px dotted #332619;
-=======
-    border-right: 1px solid #332619;
->>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git
 }
 
 /****************for testing purpose***********/
@@ -393,7 +396,7 @@ ul {
 }
 
 #myCarousel .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  background-color: #5cb85c !important;
+  background-color: #DE8A03 !important;
   border-width:0px !important;
   color: #ffffff !important;
 }
@@ -658,14 +661,14 @@ ol, ul {
 .arrow_box_border {
 	position: relative;
 	background: transparent;
-	border: 2px solid #5cb85c;
+	border: 2px solid #DE8A03;
 	z-index: 1;
 }
 
 .arrow_box {
 	position: relative;
-	background: #5cb85c;
-	border: 2px solid #5cb85c;
+	background: #DE8A03;
+	border: 2px solid #DE8A03;
 	z-index: 1;
 }
 
@@ -682,14 +685,14 @@ ol, ul {
 
 .arrow_box:after {
 	border-color: rgba(136, 183, 213, 0);
-	border-top-color: #5cb85c;
+	border-top-color: #DE8A03;
 	border-width: 10px;
 	margin-left: -10px;
 }
 
 .arrow_box:before {
 	border-color: rgba(194, 225, 245, 0);
-	border-top-color: #5cb85c;
+	border-top-color: #DE8A03;
 	border-width: 13px;
 	margin-left: -13px;
 }
