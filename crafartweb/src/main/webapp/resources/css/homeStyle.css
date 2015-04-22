@@ -4,6 +4,7 @@ body {
 	color: #666;
 	font-size: 12px !important;
 	line-height: 20px;
+	background: url("/crafartweb/resources/img/background_img.jpg") no-repeat fixed 0 0 / 100% auto;
 }
 
 .container-fluid {
