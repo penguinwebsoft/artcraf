@@ -20,6 +20,11 @@ public class MenuController {
 	public ModelAndView showHomePage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("dashboard");
 	}
+	
+	@RequestMapping("/thirdPartyLogin")
+	public ModelAndView showThirdPartyLogin(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("thirdPartyLogin");
+	}
 
 	@RequestMapping("/myAccount")
 	public ModelAndView showMyAccount(HttpServletRequest request, HttpServletResponse response) {
