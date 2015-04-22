@@ -3,7 +3,8 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
-
+<script src="${context}/resources/ThirdPartyLogin-script/thirdPartyLogin.js"></script>
+<script src="https://apis.google.com/js/client:plusone.js?onload=render" async defer></script>
 <html lang="en" style="width: 100%;">
 <head>
 <meta charset="UTF-8" />
@@ -25,23 +26,191 @@
 <script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
 <script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="${context}/resources/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js" async defer></script>
 </head>
 
 <script type="text/javascript">
-	$(document).ready(function() {
+    var getUserMail = null;
+	var email = "";
+	var passwordId = "";
+	var fbGetUserMail = null;
+	
+	$(document).ready(
+			function() {
+				
+				$("#facebookLogin").on("click", function() {
+					fb_login();
+				});
+				
+				fbGetUserMail = function(response) {
+					facebookUser(response);
+				};
 
-		$("#dp2").datepicker({
-			viewMode : 'years',
-			format : 'yyyy/mm/dd',
-		});
+				getUserMail = function(resp) {
+					googleUser(resp);
+				};
 
-		$('#dp2').on('changeDate', function(ev) {
-			//close when viewMode='0' (days)
-			if (ev.viewMode === 'days') {
-				$('#dp2').datepicker('hide');
-			}
+				$("#dp2").datepicker({
+					viewMode : 'years',
+					format : 'yyyy/mm/dd',
+				});
+
+				$('#dp2').on('changeDate', function(ev) {
+					//close when viewMode='0' (days)
+					if (ev.viewMode === 'days') {
+						$('#dp2').datepicker('hide');
+					}
+				});
+
+				$("#createButton").click(function() {
+					var customerBO = {};
+					var contactBOs = new Array();
+					var addressBO = {};
+					customerBO.firstName = $("#firstName").val();
+					customerBO.lastName = $("#lastName").val();
+					customerBO.password = $("#Password").val();
+					customerBO.dateOfBirth = $("#dp2").val();
+					customerBO.gender = $("#gender").val();
+					addressBO.stateId = $("#state").val();
+					addressBO.cityId = $("#city").val();
+
+					var contactBO = {};
+					contactBO.contactValue = $("#emailId").val();
+					contactBO.contactTypeId = 3;
+					contactBOs.push(contactBO);
+					
+					var contactBO1 = {};
+					contactBO1.contactValue = $("#mobileNumberId").val();
+					contactBO1.contactTypeId = 1;
+					contactBOs.push(contactBO1);
+
+					var contactBO2 = {};
+					contactBO2.contactValue = $("#alternativeEmailId").val();
+					contactBO2.contactTypeId = 4;
+					contactBOs.push(contactBO2);
+					
+					customerBO.contactBOs = contactBOs;
+					customerBO.addressBO = addressBO;
+					postData = JSON.stringify(customerBO);
+					alert(postData);
+					$.ajax({
+						url : "../customer/addcustomer",
+						type : "post",
+						data : postData,
+						contentType : "application/json",
+						dataType : "json",
+						success : function(data) {
+							if(data.result){
+								alert(data.message);
+								window.location.replace(data.redirect);
+								}
+								else
+									alert(data.message);
+						}
+					});
+				});
+
+				$("#loginButton").click(
+						function() {
+							$.ajax({
+								url : "../customer/login",
+								type : "post",
+								cache : false,
+								dataType : "json",
+								data : "userEMailId=" + $("#loginId").val()
+										+ '&userPassword='
+										+ $("#userPasswordId").val(),
+								success : function(data) {
+									alert(data.message);
+									window.location.replace("../menu/home");
+								}
+							});
+						});
+			});
+
+	/* Google Login code starts here */
+
+	function render() {
+		gapi.signin
+				.render(
+						'googleLogin',
+						{
+							'callback' : 'signinCallback',
+							'clientid' : '172925455807-juqmmm54gqarri202ip62d29r4siu8tf.apps.googleusercontent.com',
+							'cookiepolicy' : 'single_host_origin',
+							'scope' : 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me email https://www.googleapis.com/auth/plus.login'
+						});
+	}
+	function signinCallback(authResult) {
+
+		//prevent auto google login in start up
+		window.onbeforeunload = function(e) {
+			gapi.auth.signOut();
+		};
+
+		if (authResult['status']['signed_in']
+				&& authResult['status']['method'] == 'PROMPT') {
+
+			// Update the app to reflect a signed in user
+			// Hide the sign-in button now that the user is authorized, for example:
+			document.getElementById('googleLogin').setAttribute('style',
+					'display: none');
+			gapi.client.load('plus', 'v1', function() {
+				var request = gapi.client.plus.people.get({
+					'userId' : 'me'
+				});
+				request.execute(function(resp) {
+					if (resp['emails']) {
+						for (var i = 0; i < resp['emails'].length; i++) {
+							if (resp['emails'][i]['type'] == 'account') {
+								email = resp['emails'][i]['value'];
+							}
+						}
+					}
+					passwordId = resp.id;
+					getUserMail(resp);
+				});
+			});
+		} else {
+
+			// Update the app to reflect a signed out user
+			// Possible error values:
+			//   "user_signed_out" - User is signed-out
+			//   "access_denied" - User denied access to your app
+			//   "immediate_failed" - Could not automatically log in the user
+			console.log('Sign-in state: ' + authResult['error']);
+		}
+	}
+
+	/* Google Login code ends here */
+	/*  facebook login code start here  */
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : '860034670723016',
+			status : false,
+			cookie : true, // enable cookies to allow the server to access 
+			xfbml : true, // parse social plugins on this page
+			version : 'v2.3' // use version 2.2
 		});
-	});
+	};
+
+	function fb_login() {
+			FB.login(function(response) {
+					if (response.authResponse) {
+						  document.getElementById('facebookLogin').setAttribute('style',	'display: none');
+						  FB.api('/me', function(response) {
+							fbGetUserMail(response);
+						  });
+					} else {
+						console.log('User cancelled login or did not fully authorize.');
+					}
+				}, {
+					scope : 'public_profile,email',
+					return_scopes : true
+				});
+	}
+	/*  facebook login code end here  */
+
 </script>
 
 <body style="width: 100%;">
@@ -59,7 +228,7 @@
 						<li><a href="#" title="Track your Order"> <i class="icon-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your Order</span>
 						</a></li>
 
-						<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
+							<li><a href="${baseURL}/menu/showcustomerPanel"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
 
 						<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
 						</a></li>
@@ -156,14 +325,14 @@
 					<form class="form-horizontal" action="#" id="CustomerRegistrationId">
 						<div class="col-sm-5">
 							<div class="form-group">
-								<label for="first Name" class="control-label">First Name</label> <input type="text" class="form-control" id="first Name" placeholder="First Name">
+								<label for="firstName" class="control-label">First Name</label> <input type="text" class="form-control" id="firstName" placeholder="First Name">
 							</div>
 							<div class="form-group">
-								<label for="email Id" class="control-label">e-Mail ID</label> <input type="text" class="form-control" id="emailId" placeholder="e-Mail ID">
+								<label for="emailId" class="control-label">e-Mail ID</label> <input type="text" class="form-control" id="emailId" placeholder="e-Mail ID">
 							</div>
 
 							<div class="form-group">
-								<label for="Confirm Password Id" class="control-label">Confirm Password</label> <input type="password" id="ConfirmPasswordId" name="Confirm Password" class="form-control"
+								<label for="ConfirmPasswordId" class="control-label">Confirm Password</label> <input type="password" id="ConfirmPasswordId" name="Confirm Password" class="form-control"
 									placeholder="Confirm Password" />
 							</div>
 
@@ -186,16 +355,16 @@
 						<div class="col-sm-5 col-sm-offset-2">
 
 							<div class="form-group">
-								<label for="Last Name" class="control-label">Last Name</label> <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+								<label for="lastName" class="control-label">Last Name</label> <input type="text" class="form-control" id="lastName" placeholder="Last Name">
 							</div>
 
 							<div class="form-group">
-								<label for="Password Id" class="control-label">Password</label> <input type="password" id="PasswordId" name="Password" class="form-control" placeholder="Password" />
+								<label for="PasswordId" class="control-label">Password</label> <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" />
 							</div>
 
 
 							<div class="form-group">
-								<label for="alternative email Id" class="control-label">Alternative e-Mail ID</label> <input type="text" class="form-control" id="alternative emailId" placeholder="alternative e-Mail ID">
+								<label for="alternativeEmailId" class="control-label">Alternative e-Mail ID</label> <input type="text" class="form-control" id="alternativeEmailId" placeholder="Alternative e-Mail ID">
 							</div>
 
 							<div class="form-group">
@@ -212,7 +381,7 @@
 
 
 							<div class="form-group" style="margin-bottom: 20px;">
-								<label for="" class="control-label">Mobile No</label> <input type="text" id="mobileNumberId" name="mobileNumber" class="form-control" placeholder="Mobile No" />
+								<label for="" class="control-label">Mobile No</label> <input type="text" id="mobileNumber" name="mobileNumber" class="form-control" placeholder="Mobile No" />
 							</div>
 						</div>
 					</form>
@@ -224,7 +393,7 @@
 				<br>
 
 				<div class="row">
-					<span class="col-sm-offset-5" style="margin-left: 13.50%;"> <a class="btn btn-success" id="" style="border-radius: 0px;">Create Account</a>&nbsp;&nbsp;&nbsp;
+					<span class="col-sm-offset-5" style="margin-left: 13.50%;"> <a class="btn btn-success" id="createButton" style="border-radius: 0px;">Create Account</a>&nbsp;&nbsp;&nbsp;
 					</span>
 				</div>
 			</div>
@@ -238,15 +407,15 @@
 					<h4>Social login</h4>
 				</div>
 				<div class="row">
-					<div class="col-sm-5" style="margin-bottom: 15px;">
-						<a class="btn btn-block btn-social btn-google-plus" style="border-radius: 0px;"> <i class="icon-google-plus"></i> Sign in with Google
+					<div id="googleLogin"  class="col-sm-5" style="margin-bottom: 15px;">
+						<a href="#" class="btn btn-block btn-social btn-google-plus" style="border-radius: 0px;"> <i class="icon-google-plus"></i> Sign in with Google
 						</a>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-sm-5">
-						<a class="btn btn-block btn-social btn-facebook" style="border-radius: 0px;"> <i class="icon-facebook"></i> Sign in with Facebook
+					<div id="facebookLogin" class="col-sm-5">
+						<a href="#" class="btn btn-block btn-social btn-facebook" style="border-radius: 0px;"> <i class="icon-facebook"></i> Sign in with Facebook
 						</a>
 					</div>
 				</div>
@@ -280,7 +449,7 @@
 				</div>
 				<br>
 				<div class="row">
-					<span class="col-sm-4 col-sm-offset-1"> <a class="btn btn-success btn-flat" href="#" style="border-radius: 0px;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>
+					<span class="col-sm-4 col-sm-offset-1"> <a class="btn btn-success btn-flat" href="#" id="loginButton" style="border-radius: 0px;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>
 					</span>
 				</div>
 			</div>

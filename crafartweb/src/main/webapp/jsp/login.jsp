@@ -55,7 +55,7 @@
 </script>
 
 <!-- BEGIN BODY -->
-<body style="background-image: url(/crafartweb/resources/img/background_img.jpg);">
+<body>
 	<div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
 		<div class="row" style="padding-top: 10px; background-color: #332619;">
 			<div class="col-lg-5 col-lg-offset-7 pull-right">
@@ -67,8 +67,12 @@
 						<input type="text" class="form-control" id="login_Password" placeholder="Password">
 					</div>
 					<div class="form-group pull-left" style="margin-left: 5px;">
-						<a class="btn btn-success btn-flat" href="#" style="border-radius: 0px;">Login</a>
-					</div>
+						<button style="background-color:green;width:65;height:65;margin-top:5px">Login</button>
+							</div>
+							<div class="form-group pull-left">
+                            <span class="pull-left" style="background-color:green;margin-left:420px;margin-bottom:0px">forgotpassword?</span>
+											
+							</div>
 				</div>
 			</div>
 		</div>
@@ -78,7 +82,8 @@
 			<div style="margin-top: 1%;" class="row" class="col-lg-12">
 				<div class="col-md-6" id="loginContent">
 					<div id="checkListMainBox" style="margin-left: 15%">
-						<div id="checkBox1" style="margin-top: 10%">
+						<span><h3>Facilities offered to sale products</h3></span>
+						<div id="checkBox1" style="margin-top: 5%">
 							<span><i class="icon-check icon-2x checkListColor"></i></span> <span>Multiple product images upload facility for each product</span>
 						</div>
 						<div id="checkBox2" style="margin-top: 5%">
@@ -210,7 +215,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-2 col-md-offset-7">
-					<div id="loginButtonBox" style="margin-left: 15%; margin-top: 7%">
+					<div id="loginButtonBox" style="margin-left: 75%; margin-top: 7%">
 						<a class="btn btn-success" id="loginButton" style="border-radius: 0px;">Create Account</a>&nbsp;&nbsp;&nbsp;
 					</div>
 				</div>

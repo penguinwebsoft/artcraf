@@ -34,7 +34,7 @@
 			<div class="panel-body">
 				<div class="well">
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-sm-3">
 							<div class="form-group">
 								<label class="control-label" for="input-date-start">Date Start</label>
 								<div class="input-group ">
@@ -48,7 +48,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 							<div class="form-group">
 								<label class="control-label" for="input-status">Order Status</label> <select name="filter_order_status_id" id="input-status" class="form-control">
 									<option value="0">All Statuses</option>
@@ -70,6 +70,17 @@
 							</div>
 							<button type="button" id="button-filter" class="btn btn-primary pull-right">
 								<i class="fa fa-search"></i> Filter
+							</button>
+						</div>
+						<div class="col-sm-3">
+						<div class="form-group" style="margin-left: 10%; margin-top: 9%">
+						<select name="exportToExcel" id="export" class="form-control">
+						<option value="0">Export To Excel</option>
+						<option value="1">Export To CSV</option>
+						</select>
+						</div>
+						<button type="button" id="button-filter" class="btn btn-primary pull-right">
+								<i class="fa fa-search"></i> Export
 							</button>
 						</div>
 					</div>

@@ -5,9 +5,6 @@
 
 <script type="text/javascript">
 	setPage("myAccountMenuId");
-</script>
-
-<script type="text/javascript">
 	$(document).ready(function() {
 		var msg = "SAVED SUCCESSFULLY";
 
@@ -37,7 +34,7 @@
 	 */
 
 	$(document).ready(function() {
-			$("#SaveBtnId").click(function() {
+		$("#SaveBtnId").click(function() {
 			var sellerBO = {};
 			var storeBO = {};
 			var addressBO = {};

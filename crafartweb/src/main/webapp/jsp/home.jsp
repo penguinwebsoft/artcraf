@@ -23,96 +23,105 @@
 <script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
 <script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script>
-$(document).ready(
-		function() {
+	$(document).ready(
+			function() {
 
-			getImageSizes();
-			$(window).resize(function() { //Fires when window is resized
 				getImageSizes();
-			});
+				$(window).resize(function() { //Fires when window is resized
+					getImageSizes();
+				});
 
-			/**********best seller and best sold products section*****************/
-			var clickEvent = false;
-			$('#myCarousel').on('click', '.nav a', function() {
-				clickEvent = true;
-				$('.nav li').removeClass('active');
-				$('.nav li').removeClass('arrow_box');
-				$(this).parent().addClass('arrow_box');
-				$(this).parent().addClass('active');
-			}).on(
-					'slid.bs.carousel',
-					function(e) {
-						if (!clickEvent) {
-							var count = $('.nav').children().length - 1;
-							var current = $('.nav li.active');
-							current.removeClass('active').next().addClass(
-									'active');
-							var id = parseInt(current.data('slide-to'));
-							if (count == id) {
-								$('.nav li').first().addClass('active');
-								$('.nav li').first().addClass('arrow_box');
+				/********************Adding body background image on load of document******************/
+				
+				var imageURL = "url("+$('#bgImage').val()+"/resources/img/background_img.jpg) no-repeat fixed 0 0 / 100% auto";
 
+				$('body').css('background', imageURL);
+
+				/********************Adding body background image on load of document******************/
+
+				/**********best seller and best sold products section*****************/
+				var clickEvent = false;
+				$('#myCarousel').on('click', '.nav a', function() {
+					clickEvent = true;
+					$('.nav li').removeClass('active');
+					$('.nav li').removeClass('arrow_box');
+					$(this).parent().addClass('arrow_box');
+					$(this).parent().addClass('active');
+				}).on(
+						'slid.bs.carousel',
+						function(e) {
+							if (!clickEvent) {
+								var count = $('.nav').children().length - 1;
+								var current = $('.nav li.active');
+								current.removeClass('active').next().addClass(
+										'active');
+								var id = parseInt(current.data('slide-to'));
+								if (count == id) {
+									$('.nav li').first().addClass('active');
+									$('.nav li').first().addClass('arrow_box');
+
+								}
 							}
-						}
-						clickEvent = false;
-					});
+							clickEvent = false;
+						});
 
-			/**********best seller and best sold products section*****************/
+				/**********best seller and best sold products section*****************/
 
-			$('#thumbCarousel').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel').carousel({
+					interval : 10000
+				})
 
-			$('#thumbCarousel1').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel1').carousel({
+					interval : 10000
+				})
 
-			$('#thumbCarousel2').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel2').carousel({
+					interval : 10000
+				})
 
-			$('#thumbCarousel3').carousel({
-				interval : 10000
-			})
+				$('#thumbCarousel3').carousel({
+					interval : 10000
+				})
 
-			$('#categoryDropDownId').addClass('open');
-			$('#categoryDropDownId #dropdownMenuId').on({
-				"click" : function(e) {
-					e.stopPropagation();
-				}
+				$('#categoryDropDownId').addClass('open');
+				$('#categoryDropDownId #dropdownMenuId').on({
+					"click" : function(e) {
+						e.stopPropagation();
+					}
+				});
+
+				$('.nav-tabs > li > a').hover(function() {
+					$(this).tab('show');
+				});
+
+				var position = $("#dropdownMenuId").position();
+				var width = $("#dropdownMenuId").width();
+				$("#addFrame").css("margin-top", position.top + "px");
+				$("#addFrame").css("margin-right", position.top + "px");
+
+				$("#searchdropdown li a").click(
+						function() {
+							$("#searchcategory").html(
+									$(this).text()
+											+ ' <span class="caret"></span>');
+							$("#searchcategory").val($(this).text());
+						});
+
 			});
 
-			$('.nav-tabs > li > a').hover(function() {
-				$(this).tab('show');
+	function getImageSizes() {
+		$("#carousel-example-generic").each(function() {
+			var $height = $(this);
+			$('#addFrame').css({
+				'height' : $height.height() + 'px'
 			});
-
-			var position = $("#dropdownMenuId").position();
-			var width = $("#dropdownMenuId").width();
-			$("#addFrame").css("margin-top", position.top + "px");
-			$("#addFrame").css("margin-right", position.top + "px");
-
-			$("#searchdropdown li a").click(
-					function() {
-						$("#searchcategory").html(
-								$(this).text()
-										+ ' <span class="caret"></span>');
-						$("#searchcategory").val($(this).text());
-					});
-
 		});
-
-function getImageSizes() {
-	$("#carousel-example-generic").each(function() {
-		var $height = $(this);
-		$('#addFrame').css({
-			'height' : $height.height() + 'px'
-		});
-	});
-}
+	}
 </script>
 </head>
 
-<body style="background-image: url(${context}/resources/img/background_img.jpg);">
+<body>
+	<input type="hidden" id="bgImage" value="${context}" />
 	<div class="container-fluid padding-top">
 		<nav id="top">
 			<div class="row-fluid">
@@ -162,7 +171,7 @@ function getImageSizes() {
 		<div class="row" style="width: 95%">
 			<div class="col-sm-3">
 				<div id="logo">
-					<a href="#"> <img src="${context}/resources/img/logo2.png" title="" alt="" class="img-responsive" style="margin-top: 10px;" /></a>
+					<a href="#"> <img src="${context}/resources/img/logo.png" title="" alt="" class="img-responsive" style="margin-top: 0px; margin-left: 20px" /></a>
 				</div>
 			</div>
 			<div class="col-sm-6">
