@@ -21,7 +21,7 @@ import com.crafart.inter.data.TaxRuleDAO;
  * @author Karthi
  * 
  */
-@Repository("TaxRuleDAOImpl")
+@Repository("taxRuleDAOImpl")
 public class TaxRuleDAOImpl implements TaxRuleDAO {
 
 	private SessionFactory sessionFactory;
