@@ -51,7 +51,7 @@
 											$("#customermainBox").remove();
 											$("#mainBox")
 													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='first Name' class='control-label'>First Name :</label><input type='text' style='width:45%;margin-right:15%' text-align:'left' class='form-control pull-right' id='first Name' /></div><div class='form-group'><label for='last Name' class='control-label' style='margin-left:15%;'>Last Name :</label><input type='text' style='width:38%;margin-right:13%' class='form-control pull-right' id='last Name' /></div><div class='form-group' style='margin-left:15%;'><label for='dateofBirth' class='control-label'>Date Of Birth :</label><input type='text' style='width:45%;margin-right:15%' class='form-control pull-right' id='dateofBirth' /></div><div class='form-group' style='margin-left:15%;'><label for='mobile Number' class='control-label'>mobile Number :</label><input type='text' style='width:45%;margin-right:15%' class='form-control pull-right' id='mobile Number' /></div><div class='form-group' style='margin-left:15%;'><label for='gender' class='control-label'>Gender :</label><select type='text' id='gender' style='width:45%;margin-right:15%' name='Gender' class='form-control pull-right'><option value='1'>Male</option><option value='2'>Female</option></select></div><div class='form-group' style='margin-left:15%;'><label for='address' class='control-label'>Address :</label><input type='text' style='width:45%;margin-right:15%' class='form-control pull-right' id='address' /></div><div class='form-group' style='margin-left:15%;'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
+															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='firstname' class='control-label'>First Name :</label><input type='text' style='width:50%;' class='form-control pull-right' id='firstname'/></div><div class='form-group' style='margin-left:15%;'><label for='lastname' class='control-label'>Last Name:</label><input type='text' style='width:50%;' class='form-control pull-right' id='lastname'/></div><div class='form-group' style='margin-left:15%;'><label for='gender' class='control-label'>Gender :</label><select type='text' id='gender' style='width:50%;' name='Gender' class='form-control pull-right'><option value='1'>Male</option><option value='2'>Female</option></select></div><div class='form-group' style='margin-left:15%;'><label for='address' class='control-label'>Address :</label><input type='text' style='width:50%;' class='form-control pull-right' id='address'/></div><div class='form-group' style='margin-left:15%;'><label for='dateofbirth' class='control-label'>Date of birth :</label><input type='text' style='width:50%;' class='form-control pull-right' id='dateofbirth'/></div><div class='form-group' style='margin-left:15%;'><label for='mobileno' class='control-label'>Mobile no :</label><input type='text' style='width:50%;' class='form-control pull-right' id='mobileno'/><div class='form-group' style='margin-left:15%;'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
 										});
 
 						$("#customerAddresses")
@@ -60,7 +60,7 @@
 											$("#customermainBox").remove();
 											$("#mainBox")
 													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='streetaddress' class='control-label'>StreetAddress :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='streetaddress'/></div><div class='form-group' style='margin-left:15%;'><label for='city' class='control-label'>City :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='city'/></div><div class='form-group' style='margin-left:15%;'><label for='landMark' class='control-label'>Land Mark :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='landMark'/></div><div class='form-group' style='margin-left:15%;'><label for='state' class='control-label'>State :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='state'/></div><div class='form-group' style='margin-left:15%;'><label for='pinCode' class='control-label'>PinCode :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='pinCode'/></div><div class='form-group' style='margin-left:15%;'><label for='country' class='control-label'>Country :</label><select type='text' id='country' name='country' style='width:50%;margin-right:15%' class='form-control pull-right'><option value='1'>India</option></select></div><div class='form-group' style='margin-left:15%;'><label for='mobile no' class='control-label'>Mobile no :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='mobile no'/></div><div class='form-group' style='margin-left:15%;'><label for='landlineno' class='control-label'>landLineno :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='landLineno'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
+															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='streetaddress' class='control-label'>StreetAddress :</label><input type='text' style='width:50%;' class='form-control pull-right' id='streetaddress'/></div><div class='form-group' style='margin-left:15%;'><label for='city' class='control-label'>City :</label><input type='text' style='width:50%;' class='form-control pull-right' id='city'/></div><div class='form-group' style='margin-left:15%;'><label for='landMark' class='control-label'>Land Mark :</label><input type='text' style='width:50%;' class='form-control pull-right' id='landMark'/></div><div class='form-group' style='margin-left:15%;'><label for='state' class='control-label'>State :</label><input type='text' style='width:50%;' class='form-control pull-right' id='state'/></div><div class='form-group' style='margin-left:15%;'><label for='pinCode' class='control-label'>PinCode :</label><input type='text' style='width:50%;' class='form-control pull-right' id='pinCode'/></div><div class='form-group' style='margin-left:15%;'><label for='country' class='control-label'>Country :</label><select type='text' id='country' name='country' style='width:50%;' class='form-control pull-right'><option value='1'>India</option></select></div><div class='form-group' style='margin-left:15%;'><label for='mobile no' class='control-label'>Mobile no :</label><input type='text' style='width:50%;' class='form-control pull-right' id='mobile no'/></div><div class='form-group' style='margin-left:15%;'><label for='landlineno' class='control-label'>landLineno :</label><input type='text' style='width:50%;' class='form-control pull-right' id='landLineno'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
 
 										});
 
@@ -70,7 +70,7 @@
 											$("#customermainBox").remove();
 											$("#mainBox")
 													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='text' class='control-label'>Public Profile Name :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='text'/><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>")
+															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='text' class='control-label'>Public Profile Name :</label><input type='text' style='width:50%;' class='form-control pull-right' id='text'/><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>")
 										});
 
 						$("#CustomerUpdateEmail")
@@ -79,7 +79,7 @@
 											$("#customermainBox").remove();
 											$("#mainBox")
 													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='email' class='control-label'>EMAIL ID :</label><input type='text' style='width:50%;margin-right:15%' class='form-control pull-right' id='email'/></div><div class='form-group'><label for='password' class='control-label'>PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='password'/></div><div class='form-group'><label for='confirmPassword' class='control-label'>CONFIRM PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><label for='alternativeEmail' class='control-label'>ALTERNATIVE EMAIL :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='alternativeEmail'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div>");
+															"<div id='customermainBox' class='col-md-8'><div class='form-group'><label for='email' class='control-label'>EMAIL ID :</label><input type='text' style='width:50%;' class='form-control pull-right' id='email'/></div><div class='form-group'><label for='newemailid' class='control-label'>NEWEMAILID :</label><input type='text' style='width:50%;' class='form-control pull-right' id='newemailid'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div>");
 
 										});
 
@@ -89,7 +89,7 @@
 											$("#customermainBox").remove();
 											$("#mainBox")
 													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='presendPassword' class='control-label'>PRESENDPASSWORD :</label><input type='password' style='width:45%;margin-right:1%' class='form-control pull-right' id='presendPassword'/></div><div class='form-group' style='margin-left:15%'><label for='newPassword' class='control-label'>NEWPASSWORD :</label><input type='password' class='form-control pull-right' style='width:45%;margin-right:1%'  id='newPassword'/></div><div class='form-group' style='margin-left:15%'><label for='confirmPassword' class='control-label'>CONFIRMPASSWORD :</label><input type='password' style='width:45%;margin-right:1%' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
+															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='presendPassword' class='control-label'>PRESENDPASSWORD :</label><input type='password' style='width:50%;' class='form-control pull-right' id='presendPassword'/></div><div class='form-group' style='margin-left:15%'><label for='newPassword' class='control-label'>NEWPASSWORD :</label><input type='password' class='form-control pull-right' style='width:50%;'  id='newPassword'/></div><div class='form-group' style='margin-left:15%'><label for='confirmPassword' class='control-label'>CONFIRMPASSWORD :</label><input type='password' style='width:50%;' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
 
 										});
 
@@ -99,38 +99,43 @@
 											$("#customermainBox").remove();
 											$("#mainBox")
 													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><ul class='nav nav-tabs nav_tabs_bottom_border' style='margin-bottom: 40px'><li class='active' id='tabPostOrder'><a data-toggle='tab' href='#'>Post Order</a></li><li id='tabPastOrder'><a data-toggle='tab' href='#'>Past Order</a></li><li id='tabRecentOrder'><a data-toggle='tab' href='#'>Recent Order</a></li></ul></div></div>");
+															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><ul class='nav nav-tabs nav_tabs_bottom_border' style='margin-bottom: 40px'><li id='tabPastOrder' class='active'><a data-toggle='tab' href='#'>Past Order</a></li><li id='tabReSendOrder'><a data-toggle='tab' href='#'>Recent Order</a></li></ul></div></div>");
 
 										});
-						$("#tabPostOrder")
-								.click(
+						$(document)
+								.on(
+										'click',
+										'#tabReSendOrder',
 										function() {
-											$("#customermainBox").remove();
-											$("#mainBox")
+											$("#customermainBox").remove(); 
+											$("#customerTabContent")
 													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='email' class='control-label'>EMAIL ID :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='email'/></div><div class='form-group'><label for='password' class='control-label'>PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='password'/></div><div class='form-group'><label for='confirmPassword' class='control-label'>CONFIRM PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><label for='alternativeEmail' class='control-label'>ALTERNATIVE EMAIL :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='alternativeEmail'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div>");
-
+															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='presendPassword' class='control-label'>PRESENDPASSWORD :</label><input type='password' style='width:50%;' class='form-control pull-right' id='presendPassword'/></div><div class='form-group' style='margin-left:15%'><label for='newPassword' class='control-label'>NEWPASSWORD :</label><input type='password' class='form-control pull-right' style='width:50%;'  id='newPassword'/></div><div class='form-group' style='margin-left:15%'><label for='confirmPassword' class='control-label'>CONFIRMPASSWORD :</label><input type='password' style='width:50%;' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
 										});
 
-						$("#tabPastOrder")
-								.click(
-										function() {
-											$("#customermainBox").remove();
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='email' class='control-label'>EMAIL ID :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='email'/></div><div class='form-group'><label for='password' class='control-label'>PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='password'/></div><div class='form-group'><label for='confirmPassword' class='control-label'>CONFIRM PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><label for='alternativeEmail' class='control-label'>ALTERNATIVE EMAIL :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='alternativeEmail'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div>");
+						$(document)
+						.on(
+								'click',
+								'#tabPastOrder',
+								function() {
+									$("#customermainBox").remove();
+									$("#customerTabContent")
+											.append(
+													"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='presendPassword' class='control-label'>PRESENDPASSWORD :</label><input type='password' style='width:50%;' class='form-control pull-right' id='presendPassword'/></div><div class='form-group' style='margin-left:15%'><label for='newPassword' class='control-label'>NEWPASSWORD :</label><input type='password' class='form-control pull-right' style='width:50%;'  id='newPassword'/></div><div class='form-group' style='margin-left:15%'><label for='confirmPassword' class='control-label'>CONFIRMPASSWORD :</label><input type='password' style='width:50%;' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div></div>");
 
-										});
+								});
+						
+						
+						$("#customerReviewAndRatting")
+						.click(
+								function() {
+									$("#customermainBox").remove();
+									$("#mainBox")
+											.append(
+													"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><ul class='nav nav-tabs nav_tabs_bottom_border' style='margin-bottom: 40px'><li id='tabProductReview' class='active'><a data-toggle='tab' href='#'>PRODUCT REVIEW</a></li><li id='tabSellerReview'><a data-toggle='tab' href='#'>SELLER REVIEW</a></li></ul></div></div>");
 
-						$("#tabRecentOrder")
-								.click(
-										function() {
-											$("#customermainBox").remove();
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox' class='col-md-8'><div class='form-group' style='margin-left:15%;'><label for='email' class='control-label'>EMAIL ID :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='email'/></div><div class='form-group'><label for='password' class='control-label'>PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='password'/></div><div class='form-group'><label for='confirmPassword' class='control-label'>CONFIRM PASSWORD :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group'><label for='alternativeEmail' class='control-label'>ALTERNATIVE EMAIL :</label><input type='text' style='width:42%;margin-right:15%' class='form-control pull-right' id='alternativeEmail'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>SaveChanges</button></div>");
+								});
 
-										});
 
 					});
 </script>
@@ -142,7 +147,7 @@
 
 		<div class="row" style="margin-top: 1%">
 			<div class="col-md-9">
-				<div class="col-md-3" style="margin-left: -3%">
+				<div class="col-md-4" style="margin-left: -3%">
 					<!-- Nav tabs -->
 					<div class="nav-side-menu">
 						<div class="brand">CustomerPanel</div>
@@ -156,6 +161,7 @@
 									<li id="customerProfileSetting"><a href="#">Profile setting</a></li>
 									<li id="CustomerUpdateEmail"><a href="#">Update Email</a></li>
 									<li id="CustomerChangePassword"><a href="#">Change Password</a></li>
+									
 								</ul>
 
 
@@ -163,9 +169,10 @@
 								<ul class="sub-menu collapse" id="order">
 									<li><a id="customerMyOrder" href="#">My Order</a></li>
 								</ul>
-								<li data-toggle="collapse" data-target="#reviewAndReporting" class="collapsed"><a href="#"><i class="fa fa-car fa-lg"></i> Review And Reporting <span class="arrow"></span></a></li>
-								<ul class="sub-menu collapse" id="reviewAndReporting">
-									<li>Review</li>
+								<li data-toggle="collapse" data-target="#reviewAndRatting" class="collapsed"><a href="#"><i class="fa fa-car fa-lg"></i> Review And Ratting <span class="arrow"></span></a></li>
+								<ul class="sub-menu collapse" id="reviewAndRatting">
+									<li><a id="customerReviewAndRatting" href="#">Review</a></li> 
+									
 								</ul>
 
 								<li data-toggle="collapse" data-target="#service" class="collapsed"><a href="#"><i class="fa fa-car fa-lg"></i> Service <span class="arrow"></span></a></li>
@@ -179,6 +186,7 @@
 				</div>
 				<div class="col-md-8" id="mainBox">
 					<div id='customermainBox'></div>
+					<div id='customerTabContent'></div>
 				</div>
 			</div>
 		</div>
