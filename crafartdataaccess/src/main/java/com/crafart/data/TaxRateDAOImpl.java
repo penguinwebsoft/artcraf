@@ -19,7 +19,7 @@ import com.crafart.inter.data.TaxRateDAO;
  * @author Karthi
  * 
  */
-@Repository("TaxRateDAOImpl")
+@Repository("taxRateDAOImpl")
 public class TaxRateDAOImpl implements TaxRateDAO {
 
 	private SessionFactory sessionFactory;

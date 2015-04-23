@@ -20,7 +20,7 @@ import com.crafart.inter.data.WeightClassDAO;
  * @author Karthi
  * 
  */
-@Repository("WeightClassImpl")
+@Repository("weightClassImpl")
 public class WeightClassDAOImpl implements WeightClassDAO {
 
 	private SessionFactory sessionFactory;
