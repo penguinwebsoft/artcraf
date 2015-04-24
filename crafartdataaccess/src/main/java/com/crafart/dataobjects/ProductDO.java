@@ -92,10 +92,6 @@ public class ProductDO implements Serializable, Cloneable {
 	@JoinColumn(name = "weight_class_id", nullable = false)
 	private WeightClassDO weightClassDO;
 
-	@OneToOne
-	@JoinColumn(name = "length_class_id", nullable = false)
-	private LengthClassDO lengthClassDO;
-
 	@Column(name = "subtract")
 	private double subtract;
 
@@ -293,14 +289,6 @@ public class ProductDO implements Serializable, Cloneable {
 
 	public void setWeightClassDO(WeightClassDO weightClassDO) {
 		this.weightClassDO = weightClassDO;
-	}
-
-	public LengthClassDO getLengthClassDO() {
-		return lengthClassDO;
-	}
-
-	public void setLengthClassDO(LengthClassDO lengthClassDO) {
-		this.lengthClassDO = lengthClassDO;
 	}
 
 	public String getDateAvailable() {
