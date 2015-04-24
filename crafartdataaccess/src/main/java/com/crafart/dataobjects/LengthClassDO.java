@@ -15,31 +15,28 @@ import javax.persistence.Table;
 
 /**
  * @author Deepam
- *
+ * 
  */
 @Entity
 @Table(name = "LENGTH_CLASS")
-public class LengthClassDO implements Serializable,Cloneable {
+public class LengthClassDO implements Serializable, Cloneable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3843184233068803901L;
-	
+
 	@Id
 	@Column(name = "length_class_id")
 	@SequenceGenerator(name = "seq_lengthclass", sequenceName = "seq_lengthclass", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_lengthclass")
-	private  long lengthClassId;
-	
-	@Column(name = "value")
-	private float value;
-	
+	private long lengthClassId;
+
 	@Column(name = "title")
 	private String title;
-	
-	@Column(name = "unit")
-	private double unit;
+
+	@Column(name = "is_active")
+	private int isActive;
 
 	public long getLengthClassId() {
 		return lengthClassId;
@@ -47,14 +44,6 @@ public class LengthClassDO implements Serializable,Cloneable {
 
 	public void setLengthClassId(long lengthClassId) {
 		this.lengthClassId = lengthClassId;
-	}
-
-	public float getValue() {
-		return value;
-	}
-
-	public void setValue(float value) {
-		this.value = value;
 	}
 
 	public String getTitle() {
@@ -65,12 +54,12 @@ public class LengthClassDO implements Serializable,Cloneable {
 		this.title = title;
 	}
 
-	public double getUnit() {
-		return unit;
+	public int getIsActive() {
+		return isActive;
 	}
 
-	public void setUnit(double unit) {
-		this.unit = unit;
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
 	}
 
 }
