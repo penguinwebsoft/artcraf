@@ -45,6 +45,9 @@
 				<value>com.crafart.dataobjects.InvoiceDO</value>
 				<value>com.crafart.dataobjects.CrafartUserDO</value>
 				<value>com.crafart.dataobjects.CrafartOrderDO</value>
+				<value>com.crafart.dataobjects.ContactDO</value>
+				<value>com.crafart.dataobjects.CustomerContactDO</value>
+				<value>com.crafart.dataobjects.ContactTypeDO</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
