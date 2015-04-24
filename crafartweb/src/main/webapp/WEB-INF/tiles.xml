@@ -71,4 +71,9 @@
 		<put-attribute name="body" value="/jsp/reportPurchase.jsp" />
 	</definition>
 
+	<!-- <definition name="thirdPartyLogin" extends="base.definition">
+		<put-attribute name="title" value="Crafart Third Party Login" />
+		<put-attribute name="body" value="/jsp/thirdPartyLogin.jsp" />
+	</definition> -->
+
 </tiles-definitions>
