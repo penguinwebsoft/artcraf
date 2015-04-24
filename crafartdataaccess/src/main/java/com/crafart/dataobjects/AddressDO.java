@@ -38,6 +38,9 @@ public class AddressDO implements Serializable, Cloneable {
 	@ManyToMany(mappedBy = "addressDOs")
 	private List<SellerDO> sellerDOs = new ArrayList<>();
 
+	@ManyToMany(mappedBy = "contactDOs")
+	private List<CustomerDO> customerDOs = new ArrayList<>();
+
 	@Column(name = "street")
 	private String street;
 
@@ -97,4 +100,13 @@ public class AddressDO implements Serializable, Cloneable {
 	public void setPinCode(String pinCode) {
 		this.pinCode = pinCode;
 	}
+
+	public List<CustomerDO> getCustomerDOs() {
+		return customerDOs;
+	}
+
+	public void setCustomerDOs(List<CustomerDO> customerDOs) {
+		this.customerDOs = customerDOs;
+	}
+
 }
