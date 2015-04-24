@@ -18,11 +18,9 @@ public class LengthClassBO implements Serializable {
 
 	private long lengthClassId;
 
-	private float value;
-
-	private double unit;
-
 	private String title;
+
+	private int isActive;
 
 	public long getLengthClassId() {
 		return lengthClassId;
@@ -32,28 +30,20 @@ public class LengthClassBO implements Serializable {
 		this.lengthClassId = lengthClassId;
 	}
 
-	public float getValue() {
-		return value;
-	}
-
-	public void setValue(float value) {
-		this.value = value;
-	}
-
-	public double getUnit() {
-		return unit;
-	}
-
-	public void setUnit(double unit) {
-		this.unit = unit;
-	}
-
 	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public int getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
 	}
 
 }
