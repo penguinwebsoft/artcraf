@@ -95,4 +95,16 @@ public class StoreDAOTest {
 
 	}
 
+	@Test
+	@Rollback(true)
+	public void testCheckStoreUrl() {
+		try {
+			StoreDO storeDO = storeDAOImpl.checkStoreUrl("sam");
+			System.out.print(storeDO.getSellerDO().getSellerId());
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
 }
