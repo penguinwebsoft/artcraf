@@ -85,7 +85,6 @@ public class TaxRateDAOTest {
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");
 		productDO.setLength(63.2);
-		productDO.setLengthClassDO(getLengthClass());
 		productDO.setLocation("from service");
 		productDO.setMinimum(26.00);
 		productDO.setModel("service");
@@ -116,8 +115,7 @@ public class TaxRateDAOTest {
 	private LengthClassDO getLengthClass() {
 		LengthClassDO lengthClassDO = new LengthClassDO();
 		lengthClassDO.setTitle("from dao");
-		lengthClassDO.setUnit(15);
-		lengthClassDO.setValue(15);
+		lengthClassDO.setIsActive(1);
 		try {
 			lengthClassDAOImpl.addLengthClass(lengthClassDO);
 		} catch (CrafartDataException cdExp) {
