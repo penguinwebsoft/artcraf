@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
+import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
@@ -83,13 +84,41 @@ public class SellerDAOTest {
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
 		sellerDO.setCommission("aaaa");
+		sellerDO.setPassword("jbskla");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 		sellerDO.setStoreDO(getStoreDOs(sellerDO));
 		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
 		sellerDO.setAddressDOs(getAddressDOs(sellerDOs));
+		sellerDO.setContactDOs(getContactDOs(sellerDOs));
 		return sellerDO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ContactDO> getContactDOs(List<SellerDO> sellerDOs) {
+		List<ContactDO> contactDOs = new ArrayList<>();
+		ContactDO contactDO = new ContactDO();
+		contactDO.setContactTypeId(1);
+		contactDO.setContactValue("9999900000");
+		contactDO.setSellerDOs(sellerDOs);
+		ContactDO contactDO2 = new ContactDO();
+		contactDO2.setContactTypeId(2);
+		contactDO2.setContactValue("044-505000");
+		contactDO2.setSellerDOs(sellerDOs);
+		ContactDO contactDO3 = new ContactDO();
+		contactDO3.setContactTypeId(3);
+		contactDO3.setContactValue("seller@iii.com");
+		contactDO3.setSellerDOs(sellerDOs);
+		ContactDO contactDO4 = new ContactDO();
+		contactDO4.setContactTypeId(3);
+		contactDO4.setContactValue("seller@iii.com");
+		contactDO4.setSellerDOs(sellerDOs);
+		contactDOs.add(contactDO);
+		contactDOs.add(contactDO2);
+		contactDOs.add(contactDO3);
+		contactDOs.add(contactDO4);
+		return contactDOs;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
