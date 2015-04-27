@@ -1,24 +1,22 @@
+/**
+ * 
+ */
 package com.crafart.inter.service;
 
 import org.springframework.stereotype.Service;
 
 import com.crafart.service.businessobjects.ContactBO;
-import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.CustomerBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
  * @author Karthi
- * @version 1.0
  * 
  */
+@Service("ManageCustomerService")
+public interface ManageCustomerService {
 
-@Service("manageSellerService")
-public interface ManageSellerService {
-
-	public void addSeller(SellerBO sellerBO) throws CrafartServiceException;
-
-	public void updateSeller(SellerBO sellerBO) throws CrafartServiceException;
+	public void addCustomerDetail(CustomerBO customerBO) throws CrafartServiceException;
 
 	public ContactBO findByEmailId(String eMailId) throws CrafartServiceException;
-
 }

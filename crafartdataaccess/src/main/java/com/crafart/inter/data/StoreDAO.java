@@ -17,4 +17,6 @@ import com.crafart.exception.CrafartDataException;
 public interface StoreDAO {
 
 	public void addStoreDetail(StoreDO storeDO) throws CrafartDataException;
+
+	public StoreDO checkStoreUrl(String storeUrl) throws CrafartDataException;
 }

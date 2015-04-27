@@ -15,4 +15,5 @@ public interface ManageStoreService {
 
 	public void addStoreDetail(StoreBO storeBO) throws CrafartServiceException;
 
+	public StoreBO checkStoreUrl(String storeUrl) throws CrafartServiceException;
 }

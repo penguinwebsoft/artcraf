@@ -13,6 +13,7 @@ import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.AttributeGroupDescDO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.CrafartOrderDO;
 import com.crafart.dataobjects.CrafartUserDO;
@@ -38,6 +39,7 @@ import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.AttributeGroupDescBO;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CrafartOrderBO;
 import com.crafart.service.businessobjects.CrafartUserBO;
@@ -83,6 +85,7 @@ public class BeanMapper {
 		sellerDO.setTin_no(sellerDO.getStatus());
 		sellerDO.setVat_no(sellerBO.getVatNo());
 		sellerDO.setGender(sellerBO.getGender());
+		sellerDO.setPassword(sellerBO.getPassword());
 		sellerDO.setDateOfBirth(sellerBO.getDateOfBirth());
 		return sellerDO;
 
@@ -103,19 +106,18 @@ public class BeanMapper {
 		sellerBO.setVatNo(sellerDO.getVat_no());
 		sellerBO.setGender(sellerDO.getGender());
 		sellerBO.setDateOfBirth(sellerDO.getDateOfBirth());
-		sellerBO.setAddressBO((AddressBO) sellerDO.getAddressDOs());
+		sellerBO.setPassword(sellerDO.getPassword());
 		return sellerBO;
 
 	}
 
-	public ProductDO mapProductBOToDO(ProductBO productBO, ProductDO productDO, WeightClassDO weightClassDO, LengthClassDO lengthClassDO) {
+	public ProductDO mapProductBOToDO(ProductBO productBO, ProductDO productDO, WeightClassDO weightClassDO) {
 		productDO.setCategoryId(productBO.getCategoryId());
 		productDO.setDateAvailable(productBO.getDateAvailable());
 		productDO.setDateAvailable(productBO.getDateAvailable());
 		productDO.setHeight(productBO.getHeight());
 		productDO.setImage(productBO.getImage());
 		productDO.setLength(productBO.getHeight());
-		productDO.setLengthClassDO(lengthClassDO);
 		productDO.setLocation(productBO.getLocation());
 		productDO.setMinimum(productBO.getMinimum());
 		productDO.setModel(productBO.getModel());
@@ -144,7 +146,6 @@ public class BeanMapper {
 		productBO.setHeight(productDO.getHeight());
 		productBO.setImage(productDO.getImage());
 		productBO.setLength(productDO.getLength());
-		productBO.setLengthClassBO(null);
 		productBO.setLocation(productDO.getLocation());
 		productBO.setMinimum(productDO.getMinimum());
 		productBO.setModel(productDO.getModel());
@@ -222,7 +223,7 @@ public class BeanMapper {
 
 	}
 
-	public AddressDO mapAddressBOToDO(AddressBO addressBO, AddressDO addressDO, SellerDO sellerDO) {
+	public AddressDO mapAddressBOToDO(AddressBO addressBO, AddressDO addressDO, SellerDO sellerDO, CustomerDO customerDO) {
 		addressDO.setCityId(addressBO.getCityId());
 		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
@@ -230,6 +231,9 @@ public class BeanMapper {
 		addressDO.setPinCode(addressBO.getPinCode());
 		addressDO.setStateId(addressBO.getStateId());
 		addressDO.setStreet(addressBO.getStreet());
+		List<CustomerDO> customerDOs = new ArrayList<>();
+		customerDOs.add(customerDO);
+		addressDO.setCustomerDOs(customerDOs);
 		return addressDO;
 
 	}
@@ -246,8 +250,7 @@ public class BeanMapper {
 	public LengthClassDO mapLengthClassBOToDO(LengthClassBO lengthClassBO, LengthClassDO lengthClassDO) {
 		lengthClassDO.setLengthClassId(lengthClassBO.getLengthClassId());
 		lengthClassDO.setTitle(lengthClassBO.getTitle());
-		lengthClassDO.setUnit(lengthClassBO.getUnit());
-		lengthClassDO.setValue(lengthClassBO.getValue());
+		lengthClassDO.setIsActive(lengthClassBO.getIsActive());
 		return lengthClassDO;
 
 	}
@@ -592,6 +595,30 @@ public class BeanMapper {
 		crafartOrderBO.setTaxRateBO(taxRateBO);
 		crafartOrderBO.setTotal(crafartOrderDO.getTotal());
 		return crafartOrderBO;
+
+	}
+
+	public ContactDO mapContactBOToDO(ContactBO contactBO, ContactDO contactDO, CustomerDO customerDO, SellerDO sellerDO) {
+		List<CustomerDO> customerDOs = new ArrayList<>();
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
+		customerDOs.add(customerDO);
+		contactDO.setContactId(contactBO.getContactId());
+		contactDO.setContactTypeId(contactBO.getContactTypeId());
+		contactDO.setContactValue(contactBO.getContactValue());
+		contactDO.setCustomerDOs(customerDOs);
+		contactDO.setSellerDOs(sellerDOs);
+		return contactDO;
+
+	}
+
+	public ContactBO mapContactDOToBO(ContactDO contactDO, ContactBO contactBO, CustomerBO customerBO, SellerBO sellerBO) {
+		contactBO.setContactId(contactDO.getContactId());
+		contactBO.setContactTypeId(contactDO.getContactTypeId());
+		contactBO.setContactValue(contactDO.getContactValue());
+		contactBO.setCustomerBO(customerBO);
+		contactBO.setSellerBO(sellerBO);
+		return contactBO;
 
 	}
 }

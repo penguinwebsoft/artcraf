@@ -4,12 +4,18 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -52,6 +58,30 @@ public class CustomerDO implements Serializable, Cloneable {
 
 	@Column(name = "status")
 	private int status;
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "CUSTOMER_CONTACT", joinColumns = { @JoinColumn(name = "CUSTOMER_ID") }, inverseJoinColumns = { @JoinColumn(name = "CONTACT_ID") })
+	private List<ContactDO> contactDOs = new ArrayList<>();
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "CUSTOMER_ADDRESS", joinColumns = { @JoinColumn(name = "CUSTOMER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS_ID") })
+	private List<AddressDO> addressDOs = new ArrayList<>();
+
+	public List<AddressDO> getAddressDOs() {
+		return addressDOs;
+	}
+
+	public void setAddressDOs(List<AddressDO> addressDOs) {
+		this.addressDOs = addressDOs;
+	}
+
+	public List<ContactDO> getContactDOs() {
+		return contactDOs;
+	}
+
+	public void setContactDOs(List<ContactDO> contactDOs) {
+		this.contactDOs = contactDOs;
+	}
 
 	public long getCustomerId() {
 		return customerId;

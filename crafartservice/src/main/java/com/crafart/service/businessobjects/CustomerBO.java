@@ -4,6 +4,7 @@
 package com.crafart.service.businessobjects;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author Karthi
@@ -31,6 +32,18 @@ public class CustomerBO implements Serializable {
 	private String ip;
 
 	private int status;
+
+	private List<ContactBO> contactBOs;
+
+	private AddressBO addressBO;
+
+	public AddressBO getAddressBO() {
+		return addressBO;
+	}
+
+	public void setAddressBO(AddressBO addressBO) {
+		this.addressBO = addressBO;
+	}
 
 	public long getCustomerId() {
 		return customerId;
@@ -94,5 +107,13 @@ public class CustomerBO implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public List<ContactBO> getContactBOs() {
+		return contactBOs;
+	}
+
+	public void setContactBOs(List<ContactBO> contactBOs) {
+		this.contactBOs = contactBOs;
 	}
 }

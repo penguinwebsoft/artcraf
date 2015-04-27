@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.crafart.service;
+package com.crafart.seller.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.StoreDAO;
 import com.crafart.inter.service.ManageStoreService;
+import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
@@ -49,6 +50,19 @@ public class ManageStoreServiceImpl implements ManageStoreService {
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("Exception while adding store detail", crafartDataException);
 		}
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public StoreBO checkStoreUrl(String storeUrl) throws CrafartServiceException {
+		StoreBO storeBO = new StoreBO();
+		try {
+			StoreDO storeDO = storeDAOImpl.checkStoreUrl(storeUrl);
+			storeBO = beanMapper.mapStoreDOToBO(storeDO, new StoreBO(), beanMapper.mapSellerDOToBO(storeDO.getSellerDO(), new SellerBO()));
+		} catch (CrafartDataException crafartDataException) {
+			throw new CrafartServiceException("Exception while getting store url", crafartDataException);
+		}
+		return storeBO;
 	}
 
 }
