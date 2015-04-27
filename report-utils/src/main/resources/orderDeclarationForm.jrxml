@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.3.final using JasperReports Library version 6.0.3  -->
+<!-- 2015-04-27T15:20:19 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="orderDeclarationForm" pageWidth="648" pageHeight="864" columnWidth="618" leftMargin="15" rightMargin="15" topMargin="0" bottomMargin="0" uuid="9ff830f3-33e1-4168-b77d-7a0a35012133">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="Parameter1" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="QTY" class="java.lang.String"/>
+	<field name="DESC" class="java.lang.String"/>
+	<field name="FIRST_NAME" class="java.lang.String"/>
+	<field name="LAST_NAME" class="java.lang.String"/>
+	<field name="ORDER_ID" class="java.lang.String"/>
+	<field name="STREET_NAME" class="java.lang.String"/>
+	<field name="STATE" class="java.lang.String"/>
+	<field name="LANDMARK" class="java.lang.String"/>
+	<field name="PIN_CODE" class="java.lang.String"/>
+	<field name="CITY" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="202" y="19" width="220" height="21" forecolor="#8A5F04" uuid="37640c59-e376-46c3-be1f-b391387e39ac"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="18"/>
+				</textElement>
+				<text><![CDATA[crafart.com Declaration Form]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+			<staticText>
+				<reportElement x="0" y="10" width="618" height="25" uuid="79079673-4b59-49aa-9f67-f1bf87be35b7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[To whomsoever It May Concern]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="101" width="20" height="18" uuid="96373636-4339-47e2-a0f2-a1a349092e70"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[I]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="101" width="44" height="18" uuid="bb4a733d-f799-4dfb-a83d-58a120c43303"/>
+				<textFieldExpression><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="101" width="40" height="18" uuid="6f3face7-511a-4bd3-b5b7-8eaffa39ac02"/>
+				<textFieldExpression><![CDATA[$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="101" width="130" height="18" uuid="8c99aa16-5609-4a63-8ad5-3de9450b5616"/>
+				<text><![CDATA[have placed the order for]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="275" splitType="Stretch">
+			<staticText>
+				<reportElement x="21" y="17" width="59" height="13" uuid="b145b5b3-1892-4200-9e25-2ba16f1d57ce"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[QUANTITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="17" width="139" height="14" uuid="d4003081-162f-40dc-9a40-f8f064867593"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[PRODUCT DESCRIPTION]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="40" width="590" height="1" uuid="3f278a90-9caa-4b99-ac06-2c8fd59e7ac8"/>
+			</line>
+			<line>
+				<reportElement x="0" y="10" width="590" height="1" uuid="efbba721-1728-4ead-b1bd-a8e763b6045c"/>
+			</line>
+			<textField>
+				<reportElement x="21" y="50" width="59" height="30" uuid="11824a65-08e7-4035-b5b7-108dfbf76303"/>
+				<textFieldExpression><![CDATA[$F{QTY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="50" width="230" height="30" uuid="942e65be-43ce-4394-bc91-d1f453d28d79"/>
+				<textFieldExpression><![CDATA[$F{DESC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="100" width="54" height="23" uuid="100fd9c0-2e5b-494d-b35a-5ce389c4cb2c"/>
+				<text><![CDATA[Order id]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="23" y="130" width="39" height="15" uuid="832db49b-10b4-4a47-8d89-e58fa9da14f7"/>
+				<textFieldExpression><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="62" y="130" width="80" height="15" uuid="da9777f3-26c1-420f-825d-f3024db2bd62"/>
+				<textFieldExpression><![CDATA[$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="148" width="238" height="29" uuid="3595cd7a-3b48-4580-bca3-a2995a3f6f21"/>
+				<textFieldExpression><![CDATA[$F{STREET_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="180" width="158" height="26" uuid="28090ca7-ff67-4c82-951a-c7134d32989f"/>
+				<textFieldExpression><![CDATA[$F{LANDMARK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="206" width="66" height="19" uuid="f5ef33e4-c8e2-44c1-ab55-31a14f7c756f"/>
+				<textFieldExpression><![CDATA[$F{STATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="206" width="100" height="19" uuid="3ebd683d-14f1-4ba3-8c96-e49757f11232"/>
+				<textFieldExpression><![CDATA[$F{PIN_CODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="180" width="80" height="17" uuid="bd401dcd-7553-4e04-9616-0b8536a1d762"/>
+				<textFieldExpression><![CDATA[$F{CITY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="100" width="100" height="23" uuid="ffffc713-e4b7-4b73-9df1-242f7460c6e1"/>
+				<textFieldExpression><![CDATA[$F{ORDER_ID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="230" width="580" height="45" uuid="9792d0f3-76e7-4813-9e75-307b5ac31e23"/>
+				<text><![CDATA[I hearby confirm that said above goods are being purchased for my internal/ personal purpose and not for re-sale. I further understand and agree to crafart terms and condition of sale available at www.crafart.com or upon request]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="79" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

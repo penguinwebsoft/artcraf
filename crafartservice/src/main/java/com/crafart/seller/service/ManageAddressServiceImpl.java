@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.crafart.service;
+package com.crafart.seller.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +30,12 @@ public class ManageAddressServiceImpl implements ManageAddressService {
 	@Override
 	public void addAddress(AddressBO addressBO) throws CrafartServiceException {
 
-		AddressDO addressDO = beanMapper.mapAddressBOToDO(addressBO, new AddressDO(), null);
+		AddressDO addressDO = beanMapper.mapAddressBOToDO(addressBO, new AddressDO(), null, null);
 		try {
 			addressDAOImpl.addAddress(addressDO);
 			addressBO.setAddressId(addressDO.getAddressId());
-		} catch (CrafartDataException crafartDataException) {
-			throw new CrafartServiceException("Error while adding address"+addressBO.getAddressId());
+		} catch (CrafartDataException cdExp) {
+			throw new CrafartServiceException("Error while adding address" + addressBO.getAddressId());
 		}
 	}
 

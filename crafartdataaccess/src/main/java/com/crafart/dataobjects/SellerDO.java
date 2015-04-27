@@ -53,6 +53,10 @@ public class SellerDO implements Serializable, Cloneable {
 	@JoinTable(name = "SELLER_ADDRESS", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS_ID") })
 	private List<AddressDO> addressDOs = new ArrayList<>();
 
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "SELLER_CONTACT", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "CONTACT_ID") })
+	private List<ContactDO> contactDOs = new ArrayList<>();
+
 	@Column(name = "last_Name")
 	private String lastName;
 
@@ -70,10 +74,10 @@ public class SellerDO implements Serializable, Cloneable {
 	@Column(name = "company_Logo")
 	private String companyLogo;
 
-	@Column(name ="epch_no")
+	@Column(name = "epch_no")
 	private String epch_no;
 
-	@Column(name ="vat_no")
+	@Column(name = "vat_no")
 	private String vat_no;
 
 	@Column(name = "cst_no")
@@ -84,6 +88,8 @@ public class SellerDO implements Serializable, Cloneable {
 	private int status;
 
 	private int approved;
+
+	private String password;
 
 	public long getSellerId() {
 		return sellerId;
@@ -197,6 +203,14 @@ public class SellerDO implements Serializable, Cloneable {
 		this.gender = gender;
 	}
 
+	public List<ContactDO> getContactDOs() {
+		return contactDOs;
+	}
+
+	public void setContactDOs(List<ContactDO> contactDOs) {
+		this.contactDOs = contactDOs;
+	}
+
 	public StoreDO getStoreDO() {
 		return storeDO;
 	}
@@ -212,5 +226,13 @@ public class SellerDO implements Serializable, Cloneable {
 
 	public void setAddressDOs(List<AddressDO> addressDOs) {
 		this.addressDOs = addressDOs;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

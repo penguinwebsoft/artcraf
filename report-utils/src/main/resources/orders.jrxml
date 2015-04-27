@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.3.final using JasperReports Library version 6.0.3  -->
+<!-- 2015-04-27T15:36:11 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="orders" pageWidth="595" pageHeight="600" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3e03cdf9-ea1a-4b26-864f-264affe17b27">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="QTY" class="java.lang.String"/>
+	<field name="DESC" class="java.lang.String"/>
+	<field name="GROSS_AMT" class="java.lang.String"/>
+	<field name="DISCOUNT" class="java.lang.String"/>
+	<field name="NET_AMT" class="java.lang.String"/>
+	<field name="TAX_RATE" class="java.lang.String"/>
+	<field name="TAX_TYPE" class="java.lang.String"/>
+	<field name="TAX_AMOUNT" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="12" width="42" height="20" uuid="0198d2df-d6a9-420d-991c-eefdd7df743b"/>
+				<textFieldExpression><![CDATA[$F{NET_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="12" width="37" height="20" uuid="7790a192-6f2f-42f6-86fc-e2daa4e14209"/>
+				<textFieldExpression><![CDATA[$F{TAX_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" x="-19" y="12" width="29" height="18" uuid="dfc31c82-4b24-4607-82d3-4749b0c81902"/>
+				<textFieldExpression><![CDATA[$F{QTY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="12" width="40" height="20" uuid="5a372c35-bdbd-4b29-8235-1e2d0b932f33"/>
+				<textFieldExpression><![CDATA[$F{GROSS_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="12" width="50" height="20" uuid="cab5de85-d4e1-4ebe-ac0d-dab8ca642029"/>
+				<textFieldExpression><![CDATA[$F{TAX_AMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="12" width="50" height="20" uuid="4a1594a8-0149-48e8-bb74-303512839ee2"/>
+				<textFieldExpression><![CDATA[$F{DISCOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="13" width="41" height="20" uuid="0d701e05-18c9-46d8-a1d5-e905e1608269"/>
+				<textFieldExpression><![CDATA[$F{TAX_RATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="12" width="233" height="28" uuid="cf1f1af0-060d-44d6-a689-619183cd8ba6"/>
+				<textFieldExpression><![CDATA[$F{DESC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

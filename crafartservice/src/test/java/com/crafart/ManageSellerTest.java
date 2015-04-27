@@ -1,5 +1,8 @@
 package com.crafart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
@@ -87,8 +91,8 @@ public class ManageSellerTest {
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
 		sellerBO.setCommission("www");
-		sellerBO.setCompanyLogo("qqq");
-		sellerBO.setCompanyName("penguin");
+		sellerBO.setCompanyLogo("service");
+		sellerBO.setCompanyName("service");
 		sellerBO.setCstNo("4444");
 		sellerBO.setEpchNo("121212");
 		sellerBO.setFirstName("from service");
@@ -96,9 +100,43 @@ public class ManageSellerTest {
 		sellerBO.setStatus(2);
 		sellerBO.setTinNo(2);
 		sellerBO.setVatNo("asd123");
+		sellerBO.setPassword("akajsdgh");
 		sellerBO.setStoreBO(getStoreBO(sellerBO));
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
+		sellerBO.setContactBOs(getContactBOs(sellerBO));
 		return sellerBO;
 
+	}
+
+	private List<ContactBO> getContactBOs(SellerBO sellerBO) {
+		List<ContactBO> contactBOs = new ArrayList<>();
+		ContactBO contactBO = new ContactBO();
+		contactBO.setContactTypeId(1);
+		contactBO.setContactValue("0000000");
+		contactBO.setSellerBO(sellerBO);
+		ContactBO contactBO2 = new ContactBO();
+		contactBO2.setContactTypeId(2);
+		contactBO2.setContactValue("044-202020");
+		contactBO.setSellerBO(sellerBO);
+		ContactBO contactBO3 = new ContactBO();
+		contactBO3.setContactTypeId(3);
+		contactBO3.setContactValue("sellerservice@iii.com");
+		contactBO.setSellerBO(sellerBO);
+		contactBOs.add(contactBO);
+		contactBOs.add(contactBO2);
+		contactBOs.add(contactBO3);
+		return contactBOs;
+	}
+	
+	@Test
+	@Rollback(true)
+	public void testFindByEmail() {
+		try {
+			ContactBO contactBO = manageSellerServiceImpl.findByEmailId("sam@gmail.com");
+			System.out.print(contactBO.getContactId()+"\t"+ contactBO.getSellerBO().getSellerId());
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
 	}
 }

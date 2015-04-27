@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
@@ -86,7 +87,6 @@ public class ManageProductServiceTest {
 		productBO.setHeight(52);
 		productBO.setImage("a15cb5e");
 		productBO.setLength(63.2);
-		productBO.setLengthClassBO(getLengthClassBO(productBO));
 		productBO.setLocation("from service testing");
 		productBO.setMinimum(26.00);
 		productBO.setModel("service");
@@ -227,8 +227,7 @@ public class ManageProductServiceTest {
 	private LengthClassBO getLengthClassBO(ProductBO productBO) {
 		LengthClassBO lengthClassBO = new LengthClassBO();
 		lengthClassBO.setTitle("from service");
-		lengthClassBO.setUnit(152);
-		lengthClassBO.setValue(Float.valueOf("15.2"));
+		lengthClassBO.setIsActive(0);
 		return lengthClassBO;
 	}
 
@@ -249,8 +248,10 @@ public class ManageProductServiceTest {
 		sellerBO.setStatus(2);
 		sellerBO.setTinNo(2);
 		sellerBO.setVatNo("asd123");
+		sellerBO.setPassword("gjvsa");
 		sellerBO.setStoreBO(getStoreBO(sellerBO));
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
+		sellerBO.setContactBOs(getContactBOs(sellerBO));
 
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
@@ -281,6 +282,27 @@ public class ManageProductServiceTest {
 		storeBO.setStoreUrl("www.wwww.com");
 		return storeBO;
 
+	}
+	
+
+	private List<ContactBO> getContactBOs(SellerBO sellerBO) {
+		List<ContactBO> contactBOs = new ArrayList<>();
+		ContactBO contactBO = new ContactBO();
+		contactBO.setContactTypeId(1);
+		contactBO.setContactValue("0000000");
+		contactBO.setSellerBO(sellerBO);
+		ContactBO contactBO2 = new ContactBO();
+		contactBO2.setContactTypeId(2);
+		contactBO2.setContactValue("044-202020");
+		contactBO.setSellerBO(sellerBO);
+		ContactBO contactBO3 = new ContactBO();
+		contactBO3.setContactTypeId(3);
+		contactBO3.setContactValue("sellerservice@iii.com");
+		contactBO.setSellerBO(sellerBO);
+		contactBOs.add(contactBO);
+		contactBOs.add(contactBO2);
+		contactBOs.add(contactBO3);
+		return contactBOs;
 	}
 
 }

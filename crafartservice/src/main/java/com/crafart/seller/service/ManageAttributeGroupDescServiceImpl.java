@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.crafart.service;
+package com.crafart.seller.service;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -66,8 +66,6 @@ public class ProductBO implements Serializable {
 
 	private WeightClassBO weightClassBO;
 
-	private LengthClassBO lengthClassBO;
-
 	private ProductDescriptionBO productDescriptionBO;
 
 	private List<ProductSpecialBO> productSpecialBOs;
@@ -86,14 +84,6 @@ public class ProductBO implements Serializable {
 
 	public void setWeightClassBO(WeightClassBO weightClassBO) {
 		this.weightClassBO = weightClassBO;
-	}
-
-	public LengthClassBO getLengthClassBO() {
-		return lengthClassBO;
-	}
-
-	public void setLengthClassBO(LengthClassBO lengthClassBO) {
-		this.lengthClassBO = lengthClassBO;
 	}
 
 	public long getProductId() {

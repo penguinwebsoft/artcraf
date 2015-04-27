@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.crafart.service;
+package com.crafart.seller.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
@@ -33,7 +32,6 @@ import com.crafart.inter.data.TaxRateDAO;
 import com.crafart.inter.data.TaxRuleDAO;
 import com.crafart.inter.data.WeightClassDAO;
 import com.crafart.inter.service.ManageProductService;
-import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
@@ -96,13 +94,10 @@ public class ManageProductServiceImpl implements ManageProductService {
 	public void addProduct(ProductBO productBO) throws CrafartServiceException {
 		WeightClassBO weightClassBO = productBO.getWeightClassBO();
 		WeightClassDO weightClassDO = beanMapper.mapWeightClassBOToDO(weightClassBO, new WeightClassDO());
-		LengthClassBO lengthClassBO = productBO.getLengthClassBO();
-		LengthClassDO lengthClassDO = beanMapper.mapLengthClassBOToDO(lengthClassBO, new LengthClassDO());
-		ProductDO productDO = beanMapper.mapProductBOToDO(productBO, new ProductDO(), weightClassDO, lengthClassDO);
+		ProductDO productDO = beanMapper.mapProductBOToDO(productBO, new ProductDO(), weightClassDO);
 		ProductDescriptionBO productDescriptionBO = productBO.getProductDescriptionBO();
 		ProductDescriptionDO productDescriptionDO = beanMapper.mapProductDescriptionBOToDO(productDescriptionBO, new ProductDescriptionDO(), productDO);
 		productDO.setWeightClassDO(weightClassDO);
-		productDO.setLengthClassDO(lengthClassDO);
 		/**
 		 * getting list of ProductSpecail objects from productBO and mapping is
 		 * done using beanMapper
@@ -159,7 +154,6 @@ public class ManageProductServiceImpl implements ManageProductService {
 
 		try {
 			weightClassDAOImpl.addWeightClass(weightClassDO);
-			lengthClassDAOImpl.addLengthClass(lengthClassDO);
 			productDAOImpl.addProduct(productDO);
 			productDescriptionDAOImpl.addDescription(productDescriptionDO);
 			productSpecialDAOImpl.addProductSpecial(productSpecialDOs);
@@ -170,7 +164,6 @@ public class ManageProductServiceImpl implements ManageProductService {
 			taxRuleDAOImpl.addTaxRule(taxRuleDOs);
 
 			productBO.setProductId(productDO.getProductId());
-			productBO.getLengthClassBO().setLengthClassId(productDO.getLengthClassDO().getLengthClassId());
 			productBO.getWeightClassBO().setWeightClassId(productDO.getWeightClassDO().getWeightClassId());
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("error in adding product detail to DB", crafartDataException);

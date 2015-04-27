@@ -4,10 +4,12 @@
 package com.crafart.data;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,5 +51,22 @@ public class StoreDAOImpl implements StoreDAO {
 			throw new CrafartDataException("DB Error while adding new store details", hExp);
 		}
 
+	}
+
+	@Override
+	public StoreDO checkStoreUrl(String storeUrl) throws CrafartDataException {
+		StoreDO storeDO = new StoreDO();
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from StoreDO where store_url = :store_url");
+			query.setString("store_url", storeUrl);
+			storeDO = (StoreDO) query.uniqueResult();
+		} catch (EmptyResultDataAccessException hExp) {
+			return null;
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB error while finding customer id", hExp);
+		}
+		return storeDO;
 	}
 }

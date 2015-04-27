@@ -38,20 +38,150 @@
 </head>
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		$("#Dateofbirth").datepicker({
-			viewMode : 'years',
-			format : 'yyyy/mm/dd',
-		});
+						$("#dateOfBirth").datepicker({
+							viewMode : 'years',
+							format : 'yyyy/mm/dd',
+						});
 
-		$('#Dateofbirth').on('changeDate', function(ev) {
-			//close when viewMode='0' (days)
-			if (ev.viewMode === 'days') {
-				$('#Dateofbirth').datepicker('hide');
-			}
-		});
-	});
+						$('#dateOfBirth').on('changeDate', function(ev) {
+							//close when viewMode='0' (days)
+							if (ev.viewMode === 'days') {
+								$('#dateOfBirth').datepicker('hide');
+							}
+						});
+
+						$("#createAccontButton").click(
+								function() {
+									var sellerBO = {};
+									var storeBO = {};
+									var addressBO = {};
+									var contactBOs = new Array();
+									sellerBO.firstName = $("#firstName").val();
+									sellerBO.lastName = $("#lastName").val();
+									sellerBO.gender = $("#gender").val();
+									sellerBO.dateOfBirth = $("#dateOfBirth")
+											.val();
+									sellerBO.password = $("#Password").val();
+
+									var contactBO = {};
+									contactBO.contactValue = $("#emailId")
+											.val();
+									contactBO.contactTypeId = 3;
+									contactBOs.push(contactBO);
+
+									var contactBO1 = {};
+									contactBO1.contactValue = $("#mobileNo")
+											.val();
+									contactBO1.contactTypeId = 1;
+									contactBOs.push(contactBO1);
+
+									var contactBO2 = {};
+									contactBO2.contactValue = $(
+											"#alternativeEmailId").val();
+									contactBO2.contactTypeId = 4;
+									contactBOs.push(contactBO2);
+
+									var contactBO3 = {};
+									contactBO3.contactValue = $("#PhoneNo")
+											.val();
+									contactBO3.contactTypeId = 2;
+									contactBOs.push(contactBO3);
+
+									sellerBO.companyName = $("#companyName")
+											.val();
+									addressBO.street = $("#streetAddress")
+											.val();
+									addressBO.stateId = $("#state").val();
+									addressBO.cityId = $("#city").val();
+									addressBO.pinCode = $("#pincode").val();
+									storeBO.name = $("#shopName").val();
+									storeBO.storeUrl = $("#shopUrl").val();
+
+									sellerBO.storeBO = storeBO;
+									sellerBO.addressBO = addressBO;
+									sellerBO.contactBOs = contactBOs;
+									var postData = JSON.stringify(sellerBO);
+									alert(postData);
+
+									if ($("#Password").val() == $(
+											"#confirmPassword").val()) {
+										$.ajax({
+											url : "../seller/addSeller",
+											type : "post",
+											data : postData,
+											contentType : "application/json",
+											dataType : "json",
+											success : function(data) {
+												if (data.result) {
+													alert(data.message);
+												} else
+													alert(data.message);
+											}
+										});
+									} else {
+										alert("Password Mismatch");
+									}
+								});
+
+						$("#checkAvailabilityButton")
+								.click(
+										function() {
+
+											alert($("#shopUrl").val());
+											if ($("#shopUrl").val() != null
+													&& $("#shopUrl").val() != undefined) {
+												alert($("#shopUrl").val());
+												$
+														.ajax({
+															url : "../seller/checkStoreUrlAvailability",
+															type : "post",
+															data : "shopUrl="
+																	+ $(
+																			"#shopUrl")
+																			.val(),
+															dataType : "json",
+															success : function(
+																	data) {
+																if (data.result) {
+																	alert(data.message);
+																} else
+																	alert(data.message);
+															}
+														});
+											} else
+												alert("ShopUrl cannot be empty");
+										});
+
+						$("#LoginButton")
+								.click(
+										function() {
+											$
+													.ajax({
+														url : "../seller/login",
+														type : "post",
+														cache : false,
+														dataType : "json",
+														data : "userEMailId="
+																+ $(
+																		"#login_Email")
+																		.val()
+																+ '&userPassword='
+																+ $(
+																		"#login_Password")
+																		.val(),
+														success : function(data) {
+															alert(data.message);
+															window.location
+																	.replace("../menu/dashboard");
+														}
+													});
+										});
+
+					});
 </script>
 
 <!-- BEGIN BODY -->
@@ -59,21 +189,23 @@
 	<div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
 		<div class="row" style="padding-top: 10px; background-color: #332619;">
 			<div class="col-lg-5 col-lg-offset-7 pull-right">
-				<div class="col-lg-12 blue">
-					<div class="form-group pull-left">
+				<div class="col-lg-12 blue brdBlack">
+					<div class="form-group pull-left" style="margin-left: 5px;">
 						<input type="text" class="form-control" id="login_Email" placeholder="Email">
 					</div>
 					<div class="form-group pull-left" style="margin-left: 5px;">
-						<input type="text" class="form-control" id="login_Password" placeholder="Password">
+						<input type="password" class="form-control" id="login_Password" placeholder="Password">
 					</div>
 					<div class="form-group pull-left" style="margin-left: 5px;">
-						<button style="background-color:green;width:65;height:65;margin-top:5px">Login</button>
-							</div>
-							<div class="form-group pull-left">
-                            <span class="pull-left" style="background-color:green;margin-left:420px;margin-bottom:0px">forgotpassword?</span>
-											
-							</div>
+						<button id="LoginButton" class="btn btn-success btn-flat">Login</button>
+					</div>
+					<!--  <div class="form-group pull-left">
+                             <span class="pull-left" style="background-color:green;margin-left:420px;margin-bottom:0px"><a href="#" class="btn-success">forgotpassword?</a></span>
+							</div>  -->
 				</div>
+			</div>
+			<div class="col-lg-2 col-lg-offset-10">
+				<span class="pull-left" style="margin-left: 20px;"> <a href="#" class="btn-success">forgotpassword?</a></span>
 			</div>
 		</div>
 
@@ -112,42 +244,43 @@
 				<div class="col-md-3" id="registrationPart1">
 					<div id="sellerRegistration1">
 						<div class="form-group">
-							<label for="first Name" class="control-label">First Name:</label><input type="text" class="form-control" id="first Name" />
+							<label for="firstName" class="control-label">First Name:</label><input type="text" class="form-control" id="firstName" />
 						</div>
 						<div class="form-group">
-							<label for="Gender" class="control-label">Gender:</label><select type="text" id="Gender" name="Gender" class="form-control">
+							<label for="Gender" class="control-label">Gender:</label><select type="text" id="gender" name="Gender" class="form-control">
 								<option value="1">Male</option>
 								<option value="2">Female</option>
 							</select>
 						</div>
 
 						<div class="form-group">
-							<label for="Emailid" class="control-label">Email id:</label><input type="text" class="form-control" id="email Id" />
+							<label for="emailId" class="control-label">Email id:</label><input type="text" class="form-control" id="emailId" />
 						</div>
 
 						<div class="form-group">
-							<label for="Password" class="control-label">Password:</label><input type="password" id="PasswordId" name="Password" class="form-control" />
+							<label for="Password" class="control-label">Password:</label><input type="password" id="Password" name="Password" class="form-control" />
 						</div>
 
 						<div class="form-group">
-							<label for="Phone no" class="control-label">Phone No:</label><input type="text" id="Phone no" name="Phone no" class="form-control" />
+							<label for="PhoneNo" class="control-label">Phone No:</label><input type="text" id="PhoneNo" name="PhoneNo" class="form-control" />
 						</div>
 
 
 						<div class="form-group">
-							<label for="Company Name" class="control-label">Company Name:</label><input type="text" id="Company Name" name="Company Name" class="form-control" />
+							<label for="CompanyName" class="control-label">Company Name:</label><input type="text" id="companyName" name="CompanyName" class="form-control" />
 						</div>
 
 						<div class="form-group">
-							<label for="City" class="control-label">City:</label><input type="text" id="city" name="city" class="form-control" />
+							<label for="city" class="control-label">City:</label><input type="text" id="city" name="city" class="form-control" />
 						</div>
 
 						<div class="form-group">
-							<label for="State" class="control-label">State:</label><input type="text" id="state" name="state" class="form-control" />
+							<label for="state" class="control-label">State:</label><input type="text" id="state" name="state" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="ShopUrl" class="control-label">ShopUrl</label><input type="text" id="ShopUrl" name="ShopUrl" class="form-control" /><span class="lfloat" style="margin-top: 3%;"><button
-									class="btn btn-small btn-primary" type="button">CheckAvailability</button> </span> <span class="lfloat" style="margin-top: 5%; margin-left: 2%"><p style="color: blue;">http://www.crafart.com/handcrafart</p></span>
+							<label for="ShopUrl" class="control-label">ShopUrl</label><input type="text" id="shopUrl" name="ShopUrl" class="form-control" /><span class="lfloat" style="margin-top: 3%;"><button
+									class="btn btn-small btn-primary" id="checkAvailabilityButton" type="button">CheckAvailability</button> </span> <span class="lfloat" style="margin-top: 5%; margin-left: 2%"><p
+									style="color: blue;">http://www.crafart.com/handcrafart</p></span>
 						</div>
 
 					</div>
@@ -155,67 +288,75 @@
 				<div class="col-md-3" id="registrationPart2">
 					<div id="sellerRegistration2">
 						<div class="form-group">
-							<label for="Last Name" class="control-label">Last Name:</label><input type="text" class="form-control" id="Last Name">
+							<label for="LastName" class="control-label">Last Name:</label><input type="text" class="form-control" id="lastName">
 						</div>
 
 						<div class="form-group">
-							<label for="Dob" class="control-label">Date of Birth:</label><input type="text" id="Date of birth" name="Date of birth" class="form-control" data-date-format="yyyy/mm/dd" />
+							<label for="Dob" class="control-label">Date of Birth:</label><input type="text" id="dateOfBirth" name="dateOfBirth" class="form-control" data-date-format="yyyy/mm/dd" />
 						</div>
 
 						<div class="form-group">
-							<label for="Alternative Email id" class="control-label">Alternative Email id:</label><input type="Alternative Email id" id="Alternative Email id" name="Alternative Email id" class="form-control" />
-						</div>
-
-
-						<div class="form-group">
-							<label for="Confirm Password" class="control-label">Confirm Password:</label><input type="Confirm Password" id="Confirm Password" name="Confirm Password" class="form-control" />
+							<label for="alternativeEmailId" class="control-label">Alternative Email id:</label><input type="text" id="alternativeEmailId" name="alternativeEmailId" class="form-control" />
 						</div>
 
 
 						<div class="form-group">
-							<label for="Mobile no" class="control-label">Mobile no:</label><input type="" id="Mobile no" name="Mobile no" class="form-control" />
-						</div>
-
-						<div class="form-group">
-							<label for="Address" class="control-label">Address:</label><input type="text" id="Address" name="Address" class="form-control" />
+							<label for="confirmPassword" class="control-label">Confirm Password:</label><input type="password" id="confirmPassword" name="confirmPassword" class="form-control" />
 						</div>
 
 
 						<div class="form-group">
-							<label for="Pincode" class="control-label">Pincode:</label><input type="text" id="Pincode" name="Pincode" class="form-control" />
+							<label for="mobileNo" class="control-label">Mobile no:</label><input type="" id="mobileNo" name="mobileNo" class="form-control" />
 						</div>
 
 						<div class="form-group">
-							<label for="firstName" class="control-label">Country:</label><select type="text" id="country" name="Country" class="form-control">
+							<label for="streetAddress" class="control-label">Street Address:</label><input type="text" id="streetAddress" name="streetAddress" class="form-control" />
+						</div>
+
+
+						<div class="form-group">
+							<label for="pincode" class="control-label">Pincode:</label><input type="text" id="pincode" name="pincode" class="form-control" />
+						</div>
+
+						<div class="form-group">
+							<label for="country" class="control-label">Country:</label><select type="text" id="country" name="country" class="form-control">
 								<option value="1">India</option>
 								<option value="2">Kerala</option>
 								<option value="3">Delhi</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="Shop Name" class="control-label">Shop Name:</label><input type="text" id="Shop Name" name="Shop Name" class="form-control" />
+							<label for="shopName" class="control-label">Shop Name:</label><input type="text" id="shopName" name="shopName" class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-md-offset-6">
-					<span class="pull-left">Eg: If Shop Name is "handcraft", enter "handcraft" above. Your shop url will be http://www.crafart.com/handcraft</span>
-					<span class="pull-left">Note: Spaces And Special characters are not allowed.</span>
-				
+					<span class="pull-left">Eg: If Shop Name is "handcraft", enter "handcraft" above. Your shop url will be http://www.crafart.com/handcraft</span> <span class="pull-left">Note: Spaces And
+						Special characters are not allowed.</span>
+
 				</div>
 
+				<!-- <div class="row">
+					<div class="col-md-6 col-md-offset-6" id="loginContent">
+						<div style="margin-top: 2%">
+							<input type="checkbox"/> By clicking Register,you agree that you have read and accepted the <a href="#">Policy for seller</a>, <a href="#">Terms & Conditions</a>, <a href="#">Privacy
+								Policy</a>and that you are at least 18 years old.
+						</div>
+
+					</div> -->
+				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-6" id="loginContent">
 						<div style="margin-top: 2%">
-							<input type="checkbox" /> By clicking Register,you agree that you have read and accepted the <a href="#">Policy for seller</a>, <a href="#">Terms & Conditions</a>, <a href="#">Privacy
+							<input type="checkbox"/> By clicking Register,you agree that you have read and accepted the <a href="#">Policy for seller</a>, <a href="#">Terms & Conditions</a>, <a href="#">Privacy
 								Policy</a>and that you are at least 18 years old.
 						</div>
 
 					</div>
-				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-2 col-md-offset-7">
-					<div id="loginButtonBox" style="margin-left: 75%; margin-top: 7%">
+				<div class="col-md-2 col-md-offset-8">
+					<div id="createAccontButton" style="margin-top: 7%">
 						<a class="btn btn-success" id="loginButton" style="border-radius: 0px;">Create Account</a>&nbsp;&nbsp;&nbsp;
 					</div>
 				</div>
