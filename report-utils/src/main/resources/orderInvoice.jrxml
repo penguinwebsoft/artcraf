@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.3.final using JasperReports Library version 6.0.3  -->
+<!-- 2015-04-27T15:04:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="orderInvoice" pageWidth="648" pageHeight="864" columnWidth="618" leftMargin="15" rightMargin="15" topMargin="0" bottomMargin="0" uuid="9ff830f3-33e1-4168-b77d-7a0a35012133">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="customerOrderList" uuid="ede02ae5-7963-4f75-b9dc-7ca5fadf3025">
+		<field name="QTY" class="java.lang.String"/>
+		<field name="DESC" class="java.lang.String"/>
+		<field name="GROSS_AMT" class="java.lang.String"/>
+		<field name="DISCOUNT" class="java.lang.String"/>
+		<field name="NET_AMT" class="java.lang.String"/>
+		<field name="TAX_TYPE" class="java.lang.String"/>
+		<field name="TAX_RATE" class="java.lang.String"/>
+		<field name="TAX_AMOUNT" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["D:\\Workspace\\report-utils\\src\\main\\resources\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="QTY" class="java.lang.String"/>
+	<field name="DESC" class="java.lang.String"/>
+	<field name="GROSS_AMT" class="java.lang.String"/>
+	<field name="DISCOUNT" class="java.lang.String"/>
+	<field name="NET_AMT" class="java.lang.String"/>
+	<field name="TAX_TYPE" class="java.lang.String"/>
+	<field name="TAX_RATE" class="java.lang.String"/>
+	<field name="TAX_AMOUNT" class="java.lang.String"/>
+	<field name="customerOrderList" class="java.util.Collection"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="193" splitType="Stretch">
+			<staticText>
+				<reportElement x="259" y="19" width="135" height="21" forecolor="#8A5F04" uuid="37640c59-e376-46c3-be1f-b391387e39ac"/>
+				<textElement>
+					<font fontName="Times New Roman" size="18"/>
+				</textElement>
+				<text><![CDATA[www.crafart.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="50" width="196" height="21" forecolor="#000000" uuid="2bbd3225-a45a-44e3-bf76-c167730ebd37"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[Tax invoice/ Cash memorendum]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="18" width="190" height="22" uuid="1704930e-75f0-4b53-8bc1-95309062a397"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[Tax Invoice/ Cash Memorendum]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="45" width="100" height="18" uuid="a5e85098-f066-4c75-a34f-e0462efb3f86"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Sold by]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="466" y="30" width="144" height="40" uuid="01b77fb4-3701-42bf-ac92-08e0c339d809"/>
+				<c:Code128 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" moduleWidth="1.0">
+					<c:codeExpression><![CDATA["0123456789"]]></c:codeExpression>
+				</c:Code128>
+			</componentElement>
+			<staticText>
+				<reportElement x="412" y="160" width="190" height="21" uuid="6884bae0-af79-4c49-9f39-db108f48bd0e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[Invoice Number :MH-BOM1-14026748598-5987]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="70" width="270" height="123" uuid="a9a69a9e-d4bb-4771-8503-9717a8036fb6"/>
+				<text><![CDATA[Othree Systems & Solutions
+Prathamesh Complex, Building No. H, Opp. Vatika Restaurant
+Mumbai- Nasik Highway No. 3, Bhiwandi By-pass Road
+Bhiwandi - 421302
+Maharashtra, India.
+
+VAT/TIN Number: 2712061262bV
+CST Number: 27120612728C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="475" y="110" width="137" height="19" uuid="608582b7-f484-4a92-83fe-08720e1bdfde"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[Payment mode : prepaid / COT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="8" y="185" width="592" height="1" uuid="12a3daf6-4864-4464-800c-bf49b65d0498"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="473" splitType="Stretch">
+			<staticText>
+				<reportElement x="259" y="260" width="70" height="20" uuid="4e84a7da-bcb2-4d27-bb19-5998d46adb92"/>
+				<text><![CDATA[Total Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="260" width="61" height="13" uuid="7b760130-2a03-4fea-a18f-8fb7f5c0b35a"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TAX TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="260" width="76" height="20" uuid="badd9ecc-9c8b-496c-913d-487d0a442b76"/>
+				<text><![CDATA[Total Gross Amt]]></text>
+			</staticText>
+			<line>
+				<reportElement x="6" y="250" width="588" height="1" uuid="7ca9ca00-88ad-42e1-994b-88905fe3bfa1"/>
+			</line>
+			<staticText>
+				<reportElement x="521" y="260" width="70" height="13" uuid="690609df-24ae-4a44-9a48-57c4c76f10ae"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TAX AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="260" width="61" height="13" uuid="6ed55082-c4ce-4154-a5fa-5dc833d22d62"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TAX RATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="260" width="66" height="30" uuid="0ef89505-b58b-4feb-9f3b-fa1619d71395"/>
+				<text><![CDATA[Final Net Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="333" width="152" height="16" uuid="c570858c-4262-40b9-a9ea-9480b55cf82b"/>
+				<text><![CDATA[For othree systems and Solutions]]></text>
+			</staticText>
+			<line>
+				<reportElement x="7" y="330" width="588" height="1" uuid="f1749b10-c1d2-42b0-8945-79c59908043f"/>
+			</line>
+			<line>
+				<reportElement x="8" y="290" width="588" height="1" uuid="78a0305c-5ea2-4835-b7b6-2461774862d1"/>
+			</line>
+			<textField>
+				<reportElement x="328" y="300" width="72" height="20" uuid="a6667070-8355-43e3-82b7-b02b2e8319bc"/>
+				<textFieldExpression><![CDATA[$F{NET_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="301" width="86" height="20" uuid="6b94326e-b59e-44a6-abbf-ca22d87959b4"/>
+				<textFieldExpression><![CDATA[$F{GROSS_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="300" width="80" height="20" uuid="02845508-f640-4a9a-94af-f8b8eba60d90"/>
+				<textFieldExpression><![CDATA[$F{TAX_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="535" y="300" width="80" height="20" uuid="f053b9ee-286d-40c5-bd3a-97fb4e369d03"/>
+				<textFieldExpression><![CDATA[$F{TAX_AMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="300" width="80" height="20" uuid="9c0e364c-58a9-48c8-b463-e85c8a32eb1c"/>
+				<textFieldExpression><![CDATA[$F{TAX_RATE}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="7" y="160" width="587" height="18" uuid="f233ec0a-b9d6-4c79-a110-c13934848b47">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customerOrderList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR}+"orders.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="274" y="128" width="54" height="24" uuid="8e1aa3c9-37d3-4afc-b023-c5844c5eb20c"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[GROSS AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="127" width="50" height="25" uuid="e4312740-e977-4fdd-8755-b3ddb4133f5f"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[NET AMOUNT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-1" y="120" width="590" height="1" uuid="efbba721-1728-4ead-b1bd-a8e763b6045c"/>
+			</line>
+			<staticText>
+				<reportElement x="532" y="126" width="48" height="26" uuid="bb98af1e-4405-4cb5-90f3-ff6e52202409"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TAX AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="128" width="69" height="24" uuid="ff4c6393-b021-4ef0-8c08-0e9c43d4c06a"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="489" y="128" width="36" height="24" uuid="d225d76c-5163-47dc-b307-74c93b3fd0e0"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TAX TYPE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-1" y="160" width="591" height="1" uuid="2a739558-b481-47ac-95ca-cbf91e4494c9"/>
+			</line>
+			<staticText>
+				<reportElement x="7" y="129" width="31" height="23" uuid="36f2f0c3-9917-4afe-b82d-c73956bbe0ee"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="127" width="54" height="25" uuid="dab71cee-29dc-4277-a79f-19659cfcde3c"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[DISCOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="449" y="128" width="32" height="24" uuid="982e6f4c-12ba-4b45-aee2-809fc4908ef8"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TAX RATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="7" y="90" width="209" height="20" uuid="96373636-4339-47e2-a0f2-a1a349092e70"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Order Id : 403 - 7338967 - 93872190]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="20" width="230" height="61" uuid="28ed4d25-5c70-4896-9a59-5ffc0ba38d10"/>
+				<text><![CDATA[Amlan ghosh
+C/O Mr. Kalyan ghosh, Post Boral, Vill Uttar sreepur, Dist: 24 pgs(South), near Rakshit moore, Badamtala, Charaktala south 24 PARGANAS, West Bengal - 700084]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="20" width="230" height="61" uuid="595c17b2-621e-44ca-aca2-c45f9cb0ee50"/>
+				<text><![CDATA[Amlan ghosh
+C/O Mr. Kalyan ghosh, Post Boral, Vill Uttar sreepur, Dist: 24 pgs(South), near Rakshit moore, Badamtala, Charaktala south 24 PARGANAS, West Bengal - 700084]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="0" width="100" height="21" uuid="d8421f84-9352-4e71-a1bd-8b3f2d045a13"/>
+				<text><![CDATA[Shipping Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="0" width="100" height="16" uuid="e7338ae1-6be3-47da-8246-386b3b3c5472"/>
+				<text><![CDATA[Billing Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="350" width="370" height="49" uuid="214e9ac2-b5ba-4a9c-b9db-597226b60dd4"/>
+				<text><![CDATA[I/ We hereby certify that my/our registration certificate under the Maharashtra Value Added Tax Act, 2002 is in force on the date on which the sale of the goods specified in this invoice is made by me / us and that the transaction of sale covered by this tax invoice has been effected by me/ us and it shall be accounted for in the turnover of sales while filling of return and the due tax, if any, payable on the sale has been paid or shall be paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="97" width="238" height="13" uuid="ae602a5f-d5bc-42b6-ba38-73c87f675fa9"/>
+				<text><![CDATA[This is computer generated invoice]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="69" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="51" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
