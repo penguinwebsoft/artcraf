@@ -3,6 +3,7 @@ package com.crafart;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class OrderReportServiceTest {
 	@Autowired
 	private Report orderReportServiceImpl;
 
+	
+	/**
+	 * Test order invoice getting generated without any issues.
+	 * Test case fail incase of any exception during the run
+	 */
 	@Test
 	public void testGenerateReport() {
 		try {
@@ -28,21 +34,29 @@ public class OrderReportServiceTest {
 			orderDeclarationBO.setCustomerOrderList(getOrderDeclarationBOLst());
 			orderReportServiceImpl.generateReport(orderDeclarationBO);
 		} catch (ReportException rExp) {
-			rExp.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void testGenerateDeclarationReport() {
-		try {
-			orderReportServiceImpl.generateDeclrationReport(getOrderDeclarationBO());
-		} catch (ReportException rExp) {
-			rExp.printStackTrace();
+			Assert.fail();
+		} catch (Exception exp) {
+			Assert.fail();
 		}
 	}
 	
+	/**
+	 * Test order declaration form report getting generated without any issues.
+	 * Test case fail incase of any exception during the run
+	 */
+	@Test
+	public void testGenerateDeclarationReport() {
+		try {
+			orderReportServiceImpl.generateDeclarationReport(getOrderDeclarationBO());
+		} catch (ReportException rExp) {
+			Assert.fail();
+		}
+	}
+	
+	/**
+	 * {@link OrderDeclarationBO} Stub data
+	 * @return {@link OrderDeclarationBO}
+	 */
 	private OrderDeclarationBO getOrderDeclarationBO(){
 		
 		OrderDeclarationBO declarationBO = new OrderDeclarationBO();
