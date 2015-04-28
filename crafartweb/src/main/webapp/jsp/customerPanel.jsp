@@ -1,9 +1,3 @@
-<%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="context" value="${pageContext.request.contextPath}" />
-<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -13,30 +7,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-<meta content="" name="description" /> 
+<meta content="" name="description" />
 <meta content="" name="author" />
 <title>CustomerPanel</title>
 
-<link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css" />
-<link rel="stylesheet" href="${context}/resources/css/main.css" />
-<link rel="stylesheet" href="${context}/resources/css/login.css" />
-<link rel="stylesheet" href="${context}/resources/css/customizeMenuCss.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/magic/magic.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/validationengine/css/validationEngine.jquery.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/datepicker/css/datepicker.css" />
+<link rel="stylesheet" href="../resources/plugins/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="../resources/plugins/Font-Awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="../resources/css/homeStyle.css" />
+<link rel="stylesheet" href="../resources/plugins/magic/magic.css" />
+<link rel="stylesheet" href="../resources/plugins/validationengine/css/validationEngine.jquery.css" />
+<link rel="stylesheet" href="../resources/plugins/datepicker/css/datepicker.css" />
 
 <!--START SCRIPTS -->
-<script src="${context}/resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
-<script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
-<script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
-<script src="${context}/resources/javascript/validationInit.js"></script>
-<script src="${context}/resources/javascript/login.js"></script>
-<script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="${context}/resources/plugins/validationengine/js/jquery.validationEngine.js"></script>
-<script src="${context}/resources/plugins/validationengine/js/languages/jquery.validationEngine-en.js"></script>
-<script src="${context}/resources/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
-<script src="${context}/resources/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="../resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
+<script src="../resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
+<script src="../resources/javascript/menuHighlight/highlight.js"></script>
+<script src="../resources/javascript/validationInit.js"></script>
+<script src="../resources/javascript/login.js"></script>
+<script src="../resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../resources/plugins/validationengine/js/jquery.validationEngine.js"></script>
+<script src="../resources/plugins/validationengine/js/languages/jquery.validationEngine-en.js"></script>
+<script src="../resources/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
+<script src="../resources/plugins/datepicker/js/bootstrap-datepicker.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -44,6 +36,50 @@
 			.ready(
 					function() {
 
+						/**********customer care section disbale enable tab section*****************/
+						var clickEvent = false;
+
+						$("#customerCareTabs .nav a").click(function(e) {
+							e.preventDefault();
+							$(this).tab('show');
+						});
+
+						/**********customer care section disbale enable tab section*****************/
+
+						/***************need assistance tab enable*****************************************/
+
+						/* $("#tab-one li a").click(function(e) {
+							e.preventDefault();
+							$("#assistanceTab").show();
+						}); */
+						/***************need assistance tab enable*****************************************/
+
+						$(document)
+								.on(
+										'click',
+										function(e) {
+											if ($(e.target).closest(
+													'#tab-one li a').length) {
+												$("#assistanceTab").show();
+											} else if (!$(e.target).closest(
+													'#assistanceTab').length) {
+												$('#assistanceTab').hide();
+											}
+										});
+
+						/***************need assistance tab2 enable*****************************************/
+						$(document)
+								.on(
+										'click',
+										function(e) {
+											if ($(e.target).closest(
+													'#tab-two li a').length) {
+												$("#assistanceTab2").show();
+											} else if (!$(e.target).closest(
+													'#assistanceTab2').length) {
+												$('#assistanceTab2').hide();
+											}
+										});
 						$("#horizontalTabContentOrder").hide();
 						$("#horizontalTabContentSection").hide();
 						$("#horizontalTabContentCustomerCare").hide();
@@ -177,14 +213,19 @@
 							$("#horizontalTabContentOrder").hide();
 						});
 
+						/* $("#emailButton").click(function() {
+							alert();
+							
+						});
+						 */
+
 					});
 </script>
 
 <!-- BEGIN BODY -->
 <body>
 	<div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
-		<div class="row" style="padding-top: 60px; background-color: #332619;"></div>
-		<div class="row" style="margin-top: 1%">
+		<div class="row-fluid" style="margin-top: 1%">
 			<div class="col-md-9">
 				<div class="col-md-4" style="margin-left: -3%">
 					<!-- Nav tabs -->
@@ -202,20 +243,16 @@
 									<li id="CustomerChangePassword"><a href="#">Change Password</a></li>
 									<li id="CustomerDeactivateAccount"><a href="#">Deactivate Account</a></li>
 								</ul>
-
-
 								<li data-toggle="collapse" data-target="#order" class="collapsed active"><a href="#"> Order </a></li>
 								<ul class="sub-menu" id="order">
 									<li id="customerMyOrder"><a href="#">My Order</a></li>
 								</ul>
-								<li id="reviewAndRatting" data-toggle="collapse" data-target="#reviewAndRatting" class="collapsed active"><a href="#"> Review And Ratting </a></li>
-								<ul class="sub-menu">
-									<li id="customerReviewAndRatting"><a href="#">Review</a></li>
-
+								<li  data-target="#reviewAndRatting" data-toggle="collapse" class="collapsed active"><a href="#"> Review And Ratting </a></li>
+								<ul class="sub-menu" id="reviewAndRatting">
+									<li id="customerreviewAndRatting"><a href="#">Review</a></li>
 								</ul>
-
-								<li id="service" data-toggle="collapse" data-target="#service" class="collapsed active"><a href="#"> Support </a></li>
-								<ul class="sub-menu">
+								<li  data-target="#service" data-toggle="collapse"  class="collapsed active"><a href="#"> Support </a></li>
+								<ul class="sub-menu" id="service">
 									<li id="contactSeller">Contact Seller</li>
 									<li id="customerCare">Customer Care</li>
 								</ul>
@@ -245,7 +282,7 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td class="text-left"><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
+												<td class="text-left"><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
 
 											</tr>
 										</tbody>
@@ -269,7 +306,7 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td class="text-left"><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
+												<td class="text-left"><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
 											</tr>
 										</tbody>
 										<tfoot>
@@ -305,7 +342,7 @@
 												<td class="text-left">Rating Distribution</td>
 											</tr>
 											<tr>
-												<td><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
+												<td><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
 											</tr>
 										</tbody>
 										<tfoot>
@@ -313,7 +350,7 @@
 												<td class="text-left">Recently Rated</td>
 											</tr>
 											<tr>
-												<td><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
+												<td><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
 											</tr>
 										</tfoot>
 									</table>
@@ -343,47 +380,208 @@
 					</div>
 					<!-- 	Customer care Section	 -->
 					<div id="horizontalTabContentCustomerCare">
-						<ul class="nav nav-tabs nav_tabs_bottom_border" id="customerCareSection">
-							<li class="active" id="tabone"><a data-toggle="tab" href="#tab-one">Need assistance with existing order</a></li>
-							<li id="tabtwo"><a data-toggle="tab" href="#tab-two">Any other assistance</a></li>
-						</ul>
+						<div id="customerCareTabs">
+							<ul class="nav nav-tabs nav_tabs_bottom_border" id="customerCareSection">
+								<li data-target="#customerCareTabs" class="active" id="tabone"><a data-toggle="tab" href="#tab-one">Need assistance with existing order</a></li>
+								<li data-target="#customerCareTabs" id="tabtwo"><a data-toggle="tab" href="#tab-two">Any other assistance</a></li>
+							</ul>
+						</div>
+						<!--  menus section for tab 1 section starts here -->
 
-						<div class="tab-content" style="border: 0px; padding: 0px;">
-							<div class="tab-pane fade in active" id="tab-one">
+						<div class="tab-content col-md-12" style="border: 0px; padding: 0px;">
+							<div class="bubble tab-pane fade in active" id="tab-one" style="width: 100%">
+								<!-- customer care ribbone section -->
+								<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">What seems to be the issue</p>
+								<div class="triangle-l triangle-l-lg-CC-wd"></div>
+								<div class="triangle-r triangle-r-lg-CC-wd"></div>
+								<!-- customer care ribbone section -->
+
+								<div class="table-responsive">
+									<ul class="dropdown pull-left nav" role="menu">
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Order Delivery</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">I want to know my order status</a></li>
+												<li><a href="#">My order is delayed</a></li>
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">Other</a></li>
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Offer Redemption</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">e-Gift Voucher concerns</a></li>
+												<li><a href="#">I require a copy of my invoice</a></li>
+												<li><a href="#">Need assistance with your order?</a></li>
+												<li><a href="#">Other</a></li>
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Order Payment/refund</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">e-Gift Voucher concerns</a></li>
+												<li><a href="#">Need assistance with your order?</a></li>
+												<li><a href="#">Other(payment)</a></li>
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Problem With Item Received/Return</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">I want to know my order status</a></li>
+												<li><a href="#">Other</a></li>
+
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">eBooks related</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">Other</a></li>
+
+											</ul></li>
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Change Order</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">I want to cancel an item</a></li>
+												<li><a href="#">I want to cancel an item</a></li>
+
+											</ul></li>
+
+									</ul>
+								</div>
+							</div>
+
+
+							<!--  menus section for tab 2 section starts here -->
+
+							<div class="bubble tab-pane fade in" id="tab-two" style="width: 100%">
+								<!-- customer care ribbone section -->
+								<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">What seems to be the issue</p>
+								<div class="triangle-l triangle-l-lg-CC-wd"></div>
+								<div class="triangle-r triangle-r-lg-CC-wd"></div>
+								<!-- customer care ribbone section -->
 								<div class="table-responsive" style="background-color: white;">
-									<div id="customerCare">
-										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sampleLinkId">Perfumes</a> <!-- <div class="" id="addFrame" style="z-index: 0; background-color: black;"> -->
-											<div class="div-submenu-container">
-												<ul class="dropdown-menu" style="z-index: 1; position: relative;">
-													<li><a href="#">Dropdown 12.1</a></li>
-													<li><a href="#">Dropdown 12.2</a></li>
-													<li><a href="#">Dropdown 12.3</a></li>
-													<li><a href="#">Dropdown 12.4</a></li>
-												</ul>
-											</div></li>
-										<ul>
-											<li><a href="#">degree</a></li>
-											<li><a href="#">degree</a></li>
-											<li><a href="#">degree</a></li>
-											<li><a href="#">degree</a></li>
-											<li><a href="#">degree</a></li>
-										</ul>
-										<li class=""><a href="#">customer Order</a></li>
-										<ul>
-											<li><a href="#">college</a></li>
-											<li><a href="#">college</a></li>
-											<li><a href="#">college</a></li>
-											<li><a href="#">college</a></li>
-											<li><a href="#">college</a></li>
-										</ul>
+									<ul class="dropdown pull-left nav" role="menu" style="min-width: 100px;">
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Customer Account</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">I want to know my order status</a></li>
+												<li><a href="#">My order is delayed</a></li>
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">Other</a></li>
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Payment Related</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">e-Gift Voucher concerns</a></li>
+												<li><a href="#">I require a copy of my invoice</a></li>
+												<li><a href="#">Need assistance with your order?</a></li>
+												<li><a href="#">Other</a></li>
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Product Queries</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">e-Gift Voucher concerns</a></li>
+												<li><a href="#">Need assistance with your order?</a></li>
+												<li><a href="#">Other(payment)</a></li>
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Service Queries</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">I want to know my order status</a></li>
+												<li><a href="#">Other</a></li>
+
+											</ul></li>
+
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Report an error</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">Is it possible to deliver my Order on a given date/time?</a></li>
+												<li><a href="#">Other</a></li>
+
+											</ul></li>
+										<li role="presentation" class="dropdown dropdown-submenu"><a href="#" role="menuitem">Others</a>
+											<ul class="dropdown-menu" style="z-index: 1; position: absolute;">
+												<li><a href="#">I want to cancel an item</a></li>
+												<li><a href="#">I want to cancel an item</a></li>
+
+											</ul></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- customer care second section -->
+						<div id="horizontalTabContentCustomerCare1" class="form-horizontal col-md-12">
+							<div id="customerCareTabs1">
+								<!-- customer care ribbone section -->
+								<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">Select an item you need assistance with</p>
+								<div class="triangle-l triangle-l-lg-CC2S-wd"></div>
+								<div class="triangle-r triangle-r-lg-CC2S-wd"></div>
+							</div>
+							<!-- customer care ribbone section -->
+							<div class="col-md-12" id="assistanceTab" style="display: none">
+								<div class='form-group pull-right col-md-12'>
+									<span> Need assitance with your order?</span> <a class="btn btn-primary" id="loginButton" style="border-radius: 0px;">Login</a>&nbsp;&nbsp;&nbsp;
+								</div>
+								<div class='form-group pull-right col-md-12'>
+									<label for='order' class='control-label'>Order Id :</label><input type='text' style='width: 50%;' class='form-control' id='order' />
+								</div>
+								<div class='form-group pull-right col-md-12'>
+									<label for='email' class='control-label'>Email Id :</label><input type='text' style='width: 50%;' class='form-control' id='email' />
+								</div>
+								<div class='form-group pull-right col-md-12'>
+									<a class="btn btn-default" id="selectButton">SELECT</a>&nbsp;&nbsp;&nbsp;
+								</div>
+							</div>
+						</div>
+						<!-- customer care second section over -->
+
+						<!-- customer care third section -->
+						<div id="horizontalTabContentCustomerCare2" class="form-horizontal col-md-12">
+							<div id="customerCareTabs2">
+								<!-- customer care ribbone section -->
+								<div class="col-md-12" id="assistanceTab2" style="display: none">
+									<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">Get assistance</p>
+									<div class="triangle-l triangle-l-lg-CC3S-wd"></div>
+									<div class="triangle-r triangle-r-lg-CC3S-wd"></div>
+								</div>
+								<!-- customer care ribbone section -->
+								<div class='form-group pull-right col-md-12'>
+									<a class="btn btn-default" id="emailButton" data-toggle="modal" data-target="#myModal">EMAIL</a>&nbsp;&nbsp;&nbsp;
+								</div>
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title" id="myModalLabel">EMAIL US</h4>
+											</div>
+											<div class="modal-body">
+												<div class="container-fluid">
+													<div class="row">
+														<div class="col-md-12">
+															<div class='form-group pull-right col-md-12'>
+																<label for='email' class='control-label'>Email :</label><input type='text' style='width: 50%;' class='form-control' id='email' />
+															</div>
+															<div class='form-group pull-right col-md-12'>
+																<label for='message' class='control-label'>Message :</label>
+																<textarea style='width: 50%;' class='form-control' id='message'></textarea>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary">Send Email</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div> 
-
-
-					</div> 
-
+						</div>
+						<!-- customer care third section over-->
+					</div>
 				</div>
 			</div>
 		</div>
