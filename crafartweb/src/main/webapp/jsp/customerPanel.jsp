@@ -11,24 +11,24 @@
 <meta content="" name="author" />
 <title>CustomerPanel</title>
 
-<link rel="stylesheet" href="../resources/plugins/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" href="../resources/plugins/Font-Awesome/css/font-awesome.css" />
-<link rel="stylesheet" href="../resources/css/homeStyle.css" />
-<link rel="stylesheet" href="../resources/plugins/magic/magic.css" />
-<link rel="stylesheet" href="../resources/plugins/validationengine/css/validationEngine.jquery.css" />
-<link rel="stylesheet" href="../resources/plugins/datepicker/css/datepicker.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="${context}/resources/css/homeStyle.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/magic/magic.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/validationengine/css/validationEngine.jquery.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/datepicker/css/datepicker.css" />
 
 <!--START SCRIPTS -->
-<script src="../resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
-<script src="../resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
-<script src="../resources/javascript/menuHighlight/highlight.js"></script>
-<script src="../resources/javascript/validationInit.js"></script>
-<script src="../resources/javascript/login.js"></script>
-<script src="../resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../resources/plugins/validationengine/js/jquery.validationEngine.js"></script>
-<script src="../resources/plugins/validationengine/js/languages/jquery.validationEngine-en.js"></script>
-<script src="../resources/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
-<script src="../resources/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="${context}/resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
+<script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
+<script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
+<script src="${context}/resources/javascript/validationInit.js"></script>
+<script src="${context}/resources/javascript/login.js"></script>
+<script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${context}/resources/plugins/validationengine/js/jquery.validationEngine.js"></script>
+<script src="${context}/resources/plugins/validationengine/js/languages/jquery.validationEngine-en.js"></script>
+<script src="${context}/resources/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
+<script src="${context}/resources/plugins/datepicker/js/bootstrap-datepicker.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -282,7 +282,7 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td class="text-left"><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
+												<td class="text-left"><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
 
 											</tr>
 										</tbody>
@@ -306,7 +306,7 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td class="text-left"><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
+												<td class="text-left"><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
 											</tr>
 										</tbody>
 										<tfoot>
@@ -342,7 +342,7 @@
 												<td class="text-left">Rating Distribution</td>
 											</tr>
 											<tr>
-												<td><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
+												<td><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
 											</tr>
 										</tbody>
 										<tfoot>
@@ -350,7 +350,7 @@
 												<td class="text-left">Recently Rated</td>
 											</tr>
 											<tr>
-												<td><img src="../resources/img/no_image-100x100.png" alt="" title="" data-placeholder="../resources/img/no_image-100x100.png" /></td>
+												<td><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /></td>
 											</tr>
 										</tfoot>
 									</table>
