@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
 <html lang="en">
 <head>
@@ -508,16 +509,16 @@
 							</div>
 						</div>
 
-						<!-- customer care second section -->
-						<div id="horizontalTabContentCustomerCare1" class="form-horizontal col-md-12">
+					 <!-- customer care second section --> 
+<!-- 						<div id="horizontalTabContentCustomerCare1" class="form-horizontal col-md-12">
 							<div id="customerCareTabs1">
-								<!-- customer care ribbone section -->
+								customer care ribbone section
 								<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">Select an item you need assistance with</p>
 								<div class="triangle-l triangle-l-lg-CC2S-wd"></div>
 								<div class="triangle-r triangle-r-lg-CC2S-wd"></div>
 							</div>
-							<!-- customer care ribbone section -->
-							<div class="col-md-12" id="assistanceTab" style="display: none">
+							customer care ribbone section
+							 <div class="col-md-12" id="assistanceTab" style="display: none">
 								<div class='form-group pull-right col-md-12'>
 									<span> Need assitance with your order?</span> <a class="btn btn-primary" id="loginButton" style="border-radius: 0px;">Login</a>&nbsp;&nbsp;&nbsp;
 								</div>
@@ -532,18 +533,18 @@
 								</div>
 							</div>
 						</div>
-						<!-- customer care second section over -->
+						customer care second section over
 
-						<!-- customer care third section -->
-						<div id="horizontalTabContentCustomerCare2" class="form-horizontal col-md-12">
+					<!-- 	customer care third section -->
+						<!-- <div id="horizontalTabContentCustomerCare2" class="form-horizontal col-md-12">
 							<div id="customerCareTabs2">
-								<!-- customer care ribbone section -->
+								customer care ribbone section
 								<div class="col-md-12" id="assistanceTab2" style="display: none">
 									<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">Get assistance</p>
 									<div class="triangle-l triangle-l-lg-CC3S-wd"></div>
 									<div class="triangle-r triangle-r-lg-CC3S-wd"></div>
 								</div>
-								<!-- customer care ribbone section -->
+								 customer care ribbone section
 								<div class='form-group pull-right col-md-12'>
 									<a class="btn btn-default" id="emailButton" data-toggle="modal" data-target="#myModal">EMAIL</a>&nbsp;&nbsp;&nbsp;
 								</div>
@@ -579,8 +580,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- customer care third section over-->
+						</div> -->
+						<!-- customer care third section over -->
 					</div>
 				</div>
 			</div>
