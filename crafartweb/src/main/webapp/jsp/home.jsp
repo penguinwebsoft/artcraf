@@ -123,7 +123,7 @@
 <body>
 	<input type="hidden" id="bgImage" value="${context}" />
 	<div class="container-fluid padding-top">
-		<nav id="top">
+		<nav id="top"> 
 			<div class="row-fluid">
 				<div id="top-links" class="nav pull-right" style="padding-top: 0px;">
 					<ul class="list-inline no_margin">
@@ -132,10 +132,10 @@
 								class="hidden-xs hidden-sm hidden-md col-lg-12">Sell on Crafart</span>
 						</a></li>
 
-						<li><a href="#" title="Track your Order"> <i class="icon-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your Order</span>
-						</a></li>
+						<li><a href="${baseURL}/menu/productDetails" title="Track your Order"> <i class="icon-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your Order</span>
+						</a></li> 
 
-						<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
+						<li><a href="${baseURL}/menu/customerPanel"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
 
 						<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
 						</a></li>
@@ -143,7 +143,7 @@
 						<li><a href="${baseURL}/menu/customerLogIn" title="Login In"> <i class="icon-signin pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Login</span>
 						</a></li>
 
-						<li>
+		 				<li>
 							<form action="#" method="post" enctype="multipart/form-data" id="currency" class="no_margin">
 								<div class="btn-group dropdown">
 									<button class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="padding: 2px;">
