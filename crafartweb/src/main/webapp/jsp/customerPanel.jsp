@@ -4,6 +4,7 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
+
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -193,7 +194,7 @@
 
 						});
 
-						$("#customerReviewAndRatting").click(function() {
+						$("#customerreviewAndRatting").click(function() {
 							$("#horizontalTabContentCustomerCare").hide();
 							$("#customermainBox").remove();
 							$("#horizontalTabContentSection").show();
@@ -254,8 +255,8 @@
 								</ul>
 								<li data-target="#service" data-toggle="collapse" class="collapsed active"><a href="#"> Support </a></li>
 								<ul class="sub-menu" id="service">
-									<li id="contactSeller">Contact Seller</li>
-									<li id="customerCare">Customer Care</li>
+									<li id="contactSeller"><a href="#">Contact Seller</a></li>
+									<li id="customerCare"><a href="#">Customer Care</a></li>
 								</ul>
 							</ul>
 						</div>
