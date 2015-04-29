@@ -393,12 +393,9 @@
 						<div class="tab-content col-md-12" style="border: 0px; padding: 0px;">
 							<div class="bubble tab-pane fade in active" id="tab-one" style="width: 100%">
 								<!-- customer care ribbone section -->
-								<div class="rectangle col-md-12">
-									<p>What seems to be the issue</p>
-									<div class="triangle-l triangle-left-pos"></div>
-									<div class="triangle-r triangle-right-pos"></div>	
-								</div>
-
+								<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">What seems to be the issue</p>
+								<div class="triangle-l triangle-l-lg-CC-wd"></div>
+								<div class="triangle-r triangle-r-lg-CC-wd"></div>
 								<!-- customer care ribbone section -->
 
 								<div class="table-responsive">
@@ -453,14 +450,14 @@
 								</div>
 
 								<!-- customer care second section -->
-								<div id="horizontalTabContentCustomerCare1" class="form-horizontal col-md-12">
-									<div  class="rectangle col-md-12">
-										<!-- 	customer care ribbone section -->
-										<p class="col-md-12 rectangle">Select an item you need assistance with</p>
-										<div class="triangle-l triangle-left-pos"></div>
-										<div class="triangle-r triangle-right-pos"></div>
+								<!-- <div id="horizontalTabContentCustomerCare1" class="form-horizontal col-md-12">
+									<div id="customerCareTabs1">
+											customer care ribbone section
+										<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">Select an item you need assistance with</p>
+										<div class="triangle-l triangle-l-lg-CC2S-wd"></div>
+										<div class="triangle-r triangle-r-lg-CC2S-wd"></div>
 									</div>
-									<!-- customer care ribbone section -->
+									customer care ribbone section
 									<div class="col-md-12" id="assistanceTab" style="display: none">
 										<div class='form-group pull-right col-md-12'>
 											<span> Need assitance with your order?</span> <a class="btn btn-primary" id="loginButton" style="border-radius: 0px;">Login</a>&nbsp;&nbsp;&nbsp;
@@ -476,6 +473,7 @@
 										</div>
 									</div>
 								</div>
+								 -->
 								<!-- customer care second section over -->
 							</div>
 
@@ -485,8 +483,8 @@
 							<div class="bubble tab-pane fade in" id="tab-two" style="width: 100%">
 								<!-- customer care ribbone section -->
 								<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">What seems to be the issue</p>
-								<div class="triangle-l triangle-left-pos"></div>
-								<div class="triangle-r triangle-right-pos"></div>
+								<div class="triangle-l triangle-l-lg-CC-wd"></div>
+								<div class="triangle-r triangle-r-lg-CC-wd"></div>
 								<!-- customer care ribbone section -->
 								<div class="table-responsive" style="background-color: white;">
 									<ul class="dropdown pull-left nav" role="menu" style="min-width: 100px;">
@@ -544,12 +542,12 @@
 						<div id="horizontalTabContentCustomerCare2" class="form-horizontal col-md-12">
 							<div id="customerCareTabs2">
 								<!-- customer care ribbone section -->
-								<div class="col-md-12" id="assistanceTab2" style="display: none">
+								<!-- 	<div class="col-md-12" id="assistanceTab2" style="display: none">
 									<p class="rectangle col-md-12" style="position: relative; margin-left: 15px">Get assistance</p>
-									<div class="triangle-l triangle-l-lg-wd"></div>
+									<div class="triangle-l triangle-l-lg-CC3S-wd"></div>
 									<div class="triangle-r triangle-r-lg-CC3S-wd"></div>
 								</div>
-								<!--  customer care ribbone section -->
+								 customer care ribbone section
 								<div class='form-group pull-right col-md-12'>
 									<a class="btn btn-default" id="emailButton" data-toggle="modal" data-target="#myModal">EMAIL</a>&nbsp;&nbsp;&nbsp;
 								</div>
@@ -585,12 +583,12 @@
 									</div>
 								</div>
 							</div>
+						</div> -->
+								<!-- customer care third section over -->
+							</div>
 						</div>
-						<!-- customer care third section over -->
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 </body>
 </html>

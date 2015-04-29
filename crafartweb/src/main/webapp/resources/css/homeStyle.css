@@ -540,7 +540,6 @@ ol, ul {
 	clear: both;
 	margin: 0px auto;
 	width: 150px;
-	background: #fff;
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -548,7 +547,7 @@ ol, ul {
 	-khtml-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	position: relative;
-	z-index: 1; /* the stack order: displayed under ribbon rectangle */
+	z-index: 0; /* the stack order: displayed under ribbon rectangle */
 }
 
 /* Ribbon header */
@@ -559,7 +558,6 @@ ol, ul {
 	left: -15px;
 	position: relative;
 	top: 0;
-	z-index: 1;
 }
 
 .rectangle_sm:HOVER {
@@ -576,8 +574,8 @@ ol, ul {
 }
 
 .rectangle_sm_wd {
-	width: 95px;
-	margin-left: 60px;
+	width: 100px;
+	margin-left: 50px;
 }
 
 /* Ribbon text */
@@ -601,76 +599,30 @@ ol, ul {
 	border-style: solid;
 	border-width: 10px;
 	height: 0;
-	position: relative;
-	width: 0;
+	position: absolute;
 	z-index: -1;
 }
 
-.triangle-l-lg-wd {
-	left: -5px;
-	top: 22px;
+.triangle-left-pos {
+	left: -10px;
+	top: 20px;
 }
 
-.triangle-l-lg-CC-wd {
-  left: -10px;
-  top: 22px;
-}
-
-.triangle-l-lg-CC2S-wd {
-  left: -10px;
-  top: 264px;
-}
-
-.triangle-l-lg-CC3S-wd {
-  left: -10px;
-  top: 515px;
-}
-
-.triangle-l-sm-wd {
-	left: 35px;
-	top: 22px;
-}
 
 /* Right side-fold ribbon */
 .triangle-r {
 	border-color: transparent transparent transparent #332619;
 	border-style: solid;
 	border-width: 10px;
-	height: 0;
-	position: relative;
-	width: 0;
+	position: absolute;
 	z-index: -1;
 }
 
-.triangle-r-lg-wd {
-	left: 155px;
-	top: -30px;
+.triangle-right-pos {
+	right:-10px;
+	top: -10px;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git
-.triangle-r-lg-CC-wd {
-  left: 520px;
-  top: 1px;
-}
-
-.triangle-r-lg-CC2S-wd {
-  left: 490px;
-  top: 244px;
-}
-
-.triangle-r-lg-CC3S-wd {
-  left: 490px;
-  top: 495px;
-}
-
-
-.triangle-r-sm-wd {
-	left: 130px;
-	top: -30px;
-}
 
 /* About Us - content padding */
 .info {
