@@ -20,7 +20,12 @@ public class MenuController {
 	public ModelAndView showHomePage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("dashboard");
 	}
-	
+
+	@RequestMapping("/customerPanel")
+	public ModelAndView showcustomerPanel(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("customerPanel");
+	}
+
 	@RequestMapping("/thirdPartyLogin")
 	public ModelAndView showThirdPartyLogin(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("thirdPartyLogin");
@@ -56,6 +61,11 @@ public class MenuController {
 		return new ModelAndView("addProduct");
 	}
 
+	@RequestMapping("/productDetails")
+	public ModelAndView showproductDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("productDetails");
+	}
+
 	@RequestMapping("/orders")
 	public ModelAndView showOrders(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("orders");
@@ -85,21 +95,20 @@ public class MenuController {
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("login");
 	}
-	
+
 	@RequestMapping("/home")
 	public ModelAndView showHome(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("home");
 	}
-	
+
 	@RequestMapping("/registration")
 	public ModelAndView showRegistration(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("registration");
 	}
-	
+
 	@RequestMapping("/customerLogIn")
 	public ModelAndView showCustomerLogIn(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("customerLogIn");
 	}
-	
-	
+
 }
