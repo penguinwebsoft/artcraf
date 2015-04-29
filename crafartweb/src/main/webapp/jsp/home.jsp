@@ -132,10 +132,10 @@
 								class="hidden-xs hidden-sm hidden-md col-lg-12">Sell on Crafart</span>
 						</a></li>
 
-						<li><a href="#" title="Track your Order"> <i class="icon-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your Order</span>
-						</a></li>
+						<li><a href="${baseURL}/menu/productDetails" title="Track your Order"> <i class="icon-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your Order</span>
+						</a></li> 
 
-						<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
+						<li><a href="${baseURL}/menu/customerPanel"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
 
 						<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
 						</a></li>
@@ -195,45 +195,43 @@
 				</div>
 			</div>
 
+			<!-- see in your order starts here -->
 			<div id="headerDropDownId" class="col-sm-3">
-				<div id="bubble" class="row col-xs-7">
+				<div class="row col-xs-7">
 					<!-- Ribbon header -->
-					<div class="dropdown">
-						<div class="rectangle rectanle_lg_wd">
-							<h2 class="dropdown-toggle" data-toggle="dropdown">
-								See in your orders <b class="caret"></b>
-							</h2>
-							<ul class="dropdown-menu font_Size_12" role="menu" aria-labelledby="menu1" style="min-width: 150px; color: white; z-index: 1">
+					<div class="rectangle rectanle_lg_wd dropdown">
+						<h2 class="dropdown-toggle" data-toggle="dropdown">
+							See in your orders <b class="caret"></b>
+						</h2>
+						<ul class="dropdown-menu font_Size_12" role="menu" aria-labelledby="menu1" style="min-width: 150px; color: white;">
 
-								<li role="presentation" style="background-color: white;"><a class="btn btn-warning btn-flat btn-rect" href="#">sign in</a></li>
-								<li role="presentation" class="divider" style="margin-bottom: 2px;"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Account</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">order Account</a></li>
-							</ul>
-						</div>
-
+							<li role="presentation" style="background-color: white;"><a class="btn btn-warning btn-flat btn-rect" href="#">sign in</a></li>
+							<li role="presentation" class="divider" style="margin-bottom: 2px;"></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Account</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">order Account</a></li>
+						</ul>
 						<!-- Ribbon side-fold (left and right) -->
-						<div class="triangle-l triangle-l-lg-wd"></div>
-						<div class="triangle-r triangle-r-lg-wd"></div>
+						<div class="triangle-l triangle-left-pos"></div>
+						<div class="triangle-r triangle-right-pos"></div>
 					</div>
+					<!-- Ribbon header -->
+					<!-- see in your order ends here -->
 				</div>
 				<div class="col-xs-5">
-					<div class="dropdown">
+					<div class="dropdown row">
 						<div class="rectangle_sm rectangle_sm_wd">
 							<h2 class="dropdown-toggle" data-toggle="dropdown">
 								Cart <i class="icon-shopping-cart"></i> <b class="caret"></b>
 							</h2>
-							<ul class="dropdown-menu font_Size_12" role="menu" aria-labelledby="menu1" style="min-width: 100px; z-index: 1">
+							<ul class="dropdown-menu font_Size_12" role="menu" aria-labelledby="menu1" style="min-width: 100px;">
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign in </a></li>
 								<li role="presentation"><a rolw="menuitem" tabindex="-1" href="#">View Cart</a></li>
 							</ul>
+							<!-- Ribbon side-fold (left and right) -->
+							<div class="triangle-l triangle-left-pos"></div>
+							<div class="triangle-r triangle-right-pos"></div>
 						</div>
-						<!-- <span class="dropdown-toggle" id="cartDropDownId" data-toggle="dropdown" style="color: #428bca;"> <span class="icon-shopping-cart"></span> &nbsp;&nbsp; Cart
-						</span> -->
 
-						<!-- Ribbon side-fold (left and right) -->
-						<div class="triangle-l triangle-l-sm-wd"></div>
-						<div class="triangle-r triangle-r-sm-wd"></div>
 					</div>
 				</div>
 			</div>
