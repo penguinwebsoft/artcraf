@@ -91,14 +91,14 @@ public class MenuController {
 		return new ModelAndView("reportPurchase");
 	}
 
-	@RequestMapping("/login")
+	@RequestMapping("/sellerLogin")
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("login");
+		return new ModelAndView("sellerLogin");
 	}
 
-	@RequestMapping("/home")
+	@RequestMapping("/customerHome")
 	public ModelAndView showHome(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("home");
+		return new ModelAndView("customerHome");
 	}
 
 	@RequestMapping("/registration")
@@ -106,9 +106,9 @@ public class MenuController {
 		return new ModelAndView("registration");
 	}
 
-	@RequestMapping("/customerLogIn")
+	@RequestMapping("/customerLogin")
 	public ModelAndView showCustomerLogIn(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("customerLogIn");
+		return new ModelAndView("customerLogin");
 	}
 
 }
