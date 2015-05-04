@@ -4,197 +4,6 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-
-						/**********customer care section disbale enable tab section*****************/
-						var clickEvent = false;
-
-						$("#customerCareTabs .nav a").click(function(e) {
-							e.preventDefault();
-							$(this).tab('show');
-						});
-
-						/**********customer care section disbale enable tab section*****************/
-
-						/***************need assistance tab enable*****************************************/
-
-						/* $("#tab-one li a").click(function(e) {
-							e.preventDefault();
-							$("#assistanceTab").show();
-						}); */
-						/***************need assistance tab enable*****************************************/
-
-						$(document)
-								.on(
-										'click',
-										function(e) {
-											if ($(e.target).closest(
-													'#tab-one li a').length) {
-												$("#assistanceTab").show();
-											} else if (!$(e.target).closest(
-													'#assistanceTab').length) {
-												$('#assistanceTab').hide();
-											}
-										});
-
-						/***************need assistance tab2 enable*****************************************/
-						$(document)
-								.on(
-										'click',
-										function(e) {
-											if ($(e.target).closest(
-													'#tab-two li a').length) {
-												$("#assistanceTab2").show();
-											} else if (!$(e.target).closest(
-													'#assistanceTab2').length) {
-												$('#assistanceTab2').hide();
-											}
-										});
-						$("#horizontalTabContentOrder").hide();
-						$("#horizontalTabContentSection").hide();
-						$("#horizontalTabContentCustomerCare").hide();
-
-						$("#customerPersonalDetails")
-								.click(
-										function() {
-											$(
-													"#horizontalTabContentCustomerCare")
-													.hide();
-											$("#customermainBox").remove();
-											$("#horizontalTabContentSection")
-													.hide();
-											$("#horizontalTabContentOrder")
-													.hide();
-
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='firstname' class='control-label'>First Name :</label><input type='text' style='width:50%;' class='form-control pull-right' id='firstname'/></div><div class='form-group' style='margin-left:15%;'><label for='lastname' class='control-label'>Last Name:</label><input type='text' style='width:50%;' class='form-control pull-right' id='lastname'/></div><div class='form-group' style='margin-left:15%;'><label for='gender' class='control-label'>Gender :</label><select type='text' id='gender' style='width:50%;' name='Gender' class='form-control pull-right'><option value='1'>Male</option><option value='2'>Female</option></select></div><div class='form-group' style='margin-left:15%;'><label for='address' class='control-label'>Address :</label><input type='text' style='width:50%;' class='form-control pull-right' id='address'/></div><div class='form-group' style='margin-left:15%;'><label for='dateofbirth' class='control-label'>Date of birth :</label><input type='text' style='width:50%;' class='form-control pull-right' id='dateofbirth'/></div><div class='form-group' style='margin-left:15%;'><label for='mobileno' class='control-label'>Mobile No :</label><input type='text' style='width:50%;' class='form-control pull-right' id='mobileno'/><div class='form-group' style='margin-left:25%;margin-top:10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
-										});
-
-						$("#customerAddresses")
-								.click(
-										function() {
-											$(
-													"#horizontalTabContentCustomerCare")
-													.hide();
-											$("#horizontalTabContentSection")
-													.hide();
-											$("#customermainBox").remove();
-											$("#horizontalTabContent").hide();
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='streetaddress' class='control-label'>Street Address :</label><input type='text' style='width:50%;' class='form-control pull-right' id='streetaddress'/></div><div class='form-group' style='margin-left:15%;'><label for='city' class='control-label'>City :</label><input type='text' style='width:50%;' class='form-control pull-right' id='city'/></div><div class='form-group' style='margin-left:15%;'><label for='landMark' class='control-label'>Land Mark :</label><input type='text' style='width:50%;' class='form-control pull-right' id='landMark'/></div><div class='form-group' style='margin-left:15%;'><label for='state' class='control-label'>State :</label><input type='text' style='width:50%;' class='form-control pull-right' id='state'/></div><div class='form-group' style='margin-left:15%;'><label for='pinCode' class='control-label'>Pin Code :</label><input type='text' style='width:50%;' class='form-control pull-right' id='pinCode'/></div><div class='form-group' style='margin-left:15%;'><label for='country' class='control-label'>Country :</label><select type='text' id='country' name='country' style='width:50%;' class='form-control pull-right'><option value='1'>India</option></select></div><div class='form-group' style='margin-left:15%;'><label for='mobile no' class='control-label'>Mobile No :</label><input type='text' style='width:50%;' class='form-control pull-right' id='mobile no'/></div><div class='form-group' style='margin-left:15%;'><label for='landlineno' class='control-label'>LandLine No :</label><input type='text' style='width:50%;' class='form-control pull-right' id='landlineno'/></div><div class='form-group' style='margin-left: 25%; margin-top: 10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
-
-										});
-
-						$("#customerProfileSetting")
-								.click(
-										function() {
-											$(
-													"#horizontalTabContentCustomerCare")
-													.hide();
-											$("#horizontalTabContentSection")
-													.hide();
-											$("#customermainBox").remove();
-											$("#horizontalTabContentOrder")
-													.hide();
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='text' class='control-label'>Public Profile Name :</label><input type='text' style='width:50%;' class='form-control pull-right' id='text'/><div ><div class='form-group' style='margin-left:25%;margin-top:10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
-										});
-
-						$("#CustomerUpdateEmail")
-								.click(
-										function() {
-											$(
-													"#horizontalTabContentCustomerCare")
-													.hide();
-											$("#horizontalTabContentSection")
-													.hide();
-											$("#customermainBox").remove();
-											$("#horizontalTabContentOrder")
-													.hide();
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='email' class='control-label'>Email Id :</label><input type='text' style='width:50%;' class='form-control pull-right' id='email'/></div><div class='form-group' style='margin-left:15%;'><label for='alternativeemailid' class='control-label'>Alternative Email Id :</label><input type='text' style='width:50%;' class='form-control pull-right' id='alternativeemailid'/></div><div class='form-group' style='margin-left:25%;margin-top:10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
-
-										});
-
-						$("#CustomerChangePassword")
-								.click(
-										function() {
-											$(
-													"#horizontalTabContentCustomerCare")
-													.hide();
-											$("#horizontalTabContentSection")
-													.hide();
-											$("#customermainBox").remove();
-											$("#horizontalTabContentOrder")
-													.hide();
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='presentPassword' class='control-label'>Present Password :</label><input type='password' style='width:50%;' class='form-control pull-right' id='presentpassword'/></div><div class='form-group' style='margin-left:15%'><label for='newPassword' class='control-label'>New Password :</label><input type='password' class='form-control pull-right' style='width:50%;'  id='newPassword'/></div><div class='form-group' style='margin-left:15%'><label for='confirmPassword' class='control-label'>Confirm Password :</label><input type='password' style='width:50%;' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group' style='margin-left: 25%; margin-top: 10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
-
-										});
-
-						$("#CustomerDeactivateAccount")
-								.click(
-										function() {
-											$(
-													"#horizontalTabContentCustomerCare")
-													.hide();
-											$("#horizontalTabContentSection")
-													.hide();
-											$("#customermainBox").remove();
-											$("#horizontalTabContentOrder")
-													.hide();
-											$("#mainBox")
-													.append(
-															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='emailaddress' class='control-label'>Email Address :</label><input type='text' style='width:50%;' class='form-control pull-right' id='emailaddress'/></div><div class='form-group' style='margin-left:15%'><label for='password' class='control-label'>Password :</label><input type='password' class='form-control pull-right' style='width:50%;'  id='password'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>Confirm Deactivated</button></div></div>");
-
-										});
-
-						$("#customerMyOrder").click(function() {
-							$("#horizontalTabContentCustomerCare").hide();
-							$("#horizontalTabContentSection").hide();
-							$("#customermainBox").remove();
-							$("#horizontalTabContentOrder").show();
-
-						});
-
-						$("#customerReviewAndRatting").click(function() {
-							$("#horizontalTabContentCustomerCare").hide();
-							$("#customermainBox").remove();
-							$("#horizontalTabContentSection").show();
-							$("#horizontalTabContentOrder").hide();
-						});
-
-						$("#contactSeller").click(function() {
-							$("#horizontalTabContentCustomerCare").hide();
-							$("#customermainBox").remove();
-							$("#horizontalTabContentSection").hide();
-							$("#horizontalTabContentOrder").hide();
-						});
-
-						$("#customerCare").click(function() {
-							$("#horizontalTabContentCustomerCare").show();
-							$("#customermainBox").remove();
-							$("#horizontalTabContentSection").hide();
-							$("#horizontalTabContentOrder").hide();
-						});
-
-						/* $("#emailButton").click(function() {
-							alert();
-							
-						});
-						 */
-
-					});
-</script>
-
 <hr style="border-color: #332619; margin-top: 1px;">
 <!-- BEGIN BODY -->
 <div class="col-md-9">
@@ -220,7 +29,7 @@
 					</ul>
 					<li data-target="#reviewAndRatting" data-toggle="collapse" class="collapsed active"><a href="#"> Review And Ratting </a></li>
 					<ul class="sub-menu" id="reviewAndRatting">
-						<li id="customerreviewAndRatting"><a href="#">Review</a></li>
+						<li id="customerReviewAndRating"><a href="#">Review</a></li>
 					</ul>
 					<li data-target="#service" data-toggle="collapse" class="collapsed active"><a href="#"> Support </a></li>
 					<ul class="sub-menu" id="service">
@@ -561,3 +370,179 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+						/**********customer care section disbale enable tab section*****************/
+						var clickEvent = false;
+
+						$("#customerCareTabs .nav a").click(function(e) {
+							e.preventDefault();
+							$(this).tab('show');
+						});
+
+						/**********customer care section disbale enable tab section*****************/
+
+						/***************need assistance tab enable*****************************************/
+
+						$(document)
+								.on(
+										'click',
+										function(e) {
+											if ($(e.target).closest(
+													'#tab-one li a').length) {
+												$("#assistanceTab").show();
+											} else if (!$(e.target).closest(
+													'#assistanceTab').length) {
+												$('#assistanceTab').hide();
+											}
+										});
+
+						/***************need assistance tab2 enable*****************************************/
+						$(document)
+								.on(
+										'click',
+										function(e) {
+											if ($(e.target).closest(
+													'#tab-two li a').length) {
+												$("#assistanceTab2").show();
+											} else if (!$(e.target).closest(
+													'#assistanceTab2').length) {
+												$('#assistanceTab2').hide();
+											}
+										});
+						$("#horizontalTabContentOrder").hide();
+						$("#horizontalTabContentSection").hide();
+						$("#horizontalTabContentCustomerCare").hide();
+
+						$("#customerPersonalDetails")
+								.click(
+										function() {
+											$(
+													"#horizontalTabContentCustomerCare")
+													.hide();
+											$("#customermainBox").remove();
+											$("#horizontalTabContentSection")
+													.hide();
+											$("#horizontalTabContentOrder")
+													.hide();
+
+											$("#mainBox")
+													.append(
+															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='firstname' class='control-label'>First Name :</label><input type='text' style='width:50%;' class='form-control pull-right' id='firstname'/></div><div class='form-group' style='margin-left:15%;'><label for='lastname' class='control-label'>Last Name:</label><input type='text' style='width:50%;' class='form-control pull-right' id='lastname'/></div><div class='form-group' style='margin-left:15%;'><label for='gender' class='control-label'>Gender :</label><select type='text' id='gender' style='width:50%;' name='Gender' class='form-control pull-right'><option value='1'>Male</option><option value='2'>Female</option></select></div><div class='form-group' style='margin-left:15%;'><label for='address' class='control-label'>Address :</label><input type='text' style='width:50%;' class='form-control pull-right' id='address'/></div><div class='form-group' style='margin-left:15%;'><label for='dateofbirth' class='control-label'>Date of birth :</label><input type='text' style='width:50%;' class='form-control pull-right' id='dateofbirth'/></div><div class='form-group' style='margin-left:15%;'><label for='mobileno' class='control-label'>Mobile No :</label><input type='text' style='width:50%;' class='form-control pull-right' id='mobileno'/><div class='form-group' style='margin-left:25%;margin-top:10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
+										});
+
+						$("#customerAddresses")
+								.click(
+										function() {
+											$(
+													"#horizontalTabContentCustomerCare")
+													.hide();
+											$("#horizontalTabContentSection")
+													.hide();
+											$("#customermainBox").remove();
+											$("#horizontalTabContent").hide();
+											$("#mainBox")
+													.append(
+															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='streetaddress' class='control-label'>Street Address :</label><input type='text' style='width:50%;' class='form-control pull-right' id='streetaddress'/></div><div class='form-group' style='margin-left:15%;'><label for='city' class='control-label'>City :</label><input type='text' style='width:50%;' class='form-control pull-right' id='city'/></div><div class='form-group' style='margin-left:15%;'><label for='landMark' class='control-label'>Land Mark :</label><input type='text' style='width:50%;' class='form-control pull-right' id='landMark'/></div><div class='form-group' style='margin-left:15%;'><label for='state' class='control-label'>State :</label><input type='text' style='width:50%;' class='form-control pull-right' id='state'/></div><div class='form-group' style='margin-left:15%;'><label for='pinCode' class='control-label'>Pin Code :</label><input type='text' style='width:50%;' class='form-control pull-right' id='pinCode'/></div><div class='form-group' style='margin-left:15%;'><label for='country' class='control-label'>Country :</label><select type='text' id='country' name='country' style='width:50%;' class='form-control pull-right'><option value='1'>India</option></select></div><div class='form-group' style='margin-left:15%;'><label for='mobile no' class='control-label'>Mobile No :</label><input type='text' style='width:50%;' class='form-control pull-right' id='mobile no'/></div><div class='form-group' style='margin-left:15%;'><label for='landlineno' class='control-label'>LandLine No :</label><input type='text' style='width:50%;' class='form-control pull-right' id='landlineno'/></div><div class='form-group' style='margin-left: 25%; margin-top: 10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
+
+										});
+
+						$("#customerProfileSetting")
+								.click(
+										function() {
+											$(
+													"#horizontalTabContentCustomerCare")
+													.hide();
+											$("#horizontalTabContentSection")
+													.hide();
+											$("#customermainBox").remove();
+											$("#horizontalTabContentOrder")
+													.hide();
+											$("#mainBox")
+													.append(
+															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='text' class='control-label'>Public Profile Name :</label><input type='text' style='width:50%;' class='form-control pull-right' id='text'/><div ><div class='form-group' style='margin-left:25%;margin-top:10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
+										});
+
+						$("#CustomerUpdateEmail")
+								.click(
+										function() {
+											$(
+													"#horizontalTabContentCustomerCare")
+													.hide();
+											$("#horizontalTabContentSection")
+													.hide();
+											$("#customermainBox").remove();
+											$("#horizontalTabContentOrder")
+													.hide();
+											$("#mainBox")
+													.append(
+															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='email' class='control-label'>Email Id :</label><input type='text' style='width:50%;' class='form-control pull-right' id='email'/></div><div class='form-group' style='margin-left:15%;'><label for='alternativeemailid' class='control-label'>Alternative Email Id :</label><input type='text' style='width:50%;' class='form-control pull-right' id='alternativeemailid'/></div><div class='form-group' style='margin-left:25%;margin-top:10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
+
+										});
+
+						$("#CustomerChangePassword")
+								.click(
+										function() {
+											$(
+													"#horizontalTabContentCustomerCare")
+													.hide();
+											$("#horizontalTabContentSection")
+													.hide();
+											$("#customermainBox").remove();
+											$("#horizontalTabContentOrder")
+													.hide();
+											$("#mainBox")
+													.append(
+															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='presentPassword' class='control-label'>Present Password :</label><input type='password' style='width:50%;' class='form-control pull-right' id='presentpassword'/></div><div class='form-group' style='margin-left:15%'><label for='newPassword' class='control-label'>New Password :</label><input type='password' class='form-control pull-right' style='width:50%;'  id='newPassword'/></div><div class='form-group' style='margin-left:15%'><label for='confirmPassword' class='control-label'>Confirm Password :</label><input type='password' style='width:50%;' class='form-control pull-right' id='confirmPassword'/></div><div class='form-group' style='margin-left: 25%; margin-top: 10%'><button type='button' class='btn btn-primary'>SaveChanges</button></div></div>");
+
+										});
+
+						$("#CustomerDeactivateAccount")
+								.click(
+										function() {
+											$(
+													"#horizontalTabContentCustomerCare")
+													.hide();
+											$("#horizontalTabContentSection")
+													.hide();
+											$("#customermainBox").remove();
+											$("#horizontalTabContentOrder")
+													.hide();
+											$("#mainBox")
+													.append(
+															"<div id='customermainBox'><div class='form-group' style='margin-left:15%;'><label for='emailaddress' class='control-label'>Email Address :</label><input type='text' style='width:50%;' class='form-control pull-right' id='emailaddress'/></div><div class='form-group' style='margin-left:15%'><label for='password' class='control-label'>Password :</label><input type='password' class='form-control pull-right' style='width:50%;'  id='password'/></div><div class='form-group'><button type='button' style='margin-left: 15%; margin-top: 3%' class='btn btn-primary'>Confirm Deactivated</button></div></div>");
+
+										});
+
+						$("#customerMyOrder").click(function() {
+							$("#horizontalTabContentCustomerCare").hide();
+							$("#horizontalTabContentSection").hide();
+							$("#customermainBox").remove();
+							$("#horizontalTabContentOrder").show();
+
+						});
+
+						$("#customerReviewAndRating").click(function() {
+							$("#horizontalTabContentCustomerCare").hide();
+							$("#customermainBox").remove();
+							$("#horizontalTabContentSection").show();
+							$("#horizontalTabContentOrder").hide();
+						});
+
+						$("#contactSeller").click(function() {
+							$("#horizontalTabContentCustomerCare").hide();
+							$("#customermainBox").remove();
+							$("#horizontalTabContentSection").hide();
+							$("#horizontalTabContentOrder").hide();
+						});
+
+						$("#customerCare").click(function() {
+							$("#horizontalTabContentCustomerCare").show();
+							$("#customermainBox").remove();
+							$("#horizontalTabContentSection").hide();
+							$("#horizontalTabContentOrder").hide();
+						});
+
+					});
+</script>

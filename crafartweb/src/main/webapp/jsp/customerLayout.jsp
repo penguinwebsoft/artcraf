@@ -35,29 +35,28 @@
 <link rel="stylesheet" href="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.css" />
 
 <!-- CSS SCRIPTS -->
+
 <!--START SCRIPTS -->
 <script src="${context}/resources/javascript/jquery-core/jquery-1.11.0.min.js"></script>
 <script src="${context}/resources/javascript/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
 <script src="${context}/resources/javascript/menuHighlight/highlight.js"></script>
 <script src="${context}/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-
-<!-- END SCRIPTS -->
 <script type="text/javascript">
-	$(document).ready(function() {
-		/********************Adding body background image on load of document******************/
+	$(document).ready(
+			function() {
+				/********************Adding body background image on load of document******************/
 
-		var imageURL = "url("
-				+ $('#bgImage').val()
-				+ "/resources/img/background_img.jpg)";
+				var imageURL = "url(" + $('#bgImage').val()
+						+ "/resources/img/background_img.jpg)";
 
-		$('body').css('background', imageURL);
+				$('body').css('background', imageURL);
 
-		/********************Adding body background image on load of document******************/
+				/********************Adding body background image on load of document******************/
 
-	});
+			});
 </script>
 
+<!-- END SCRIPTS -->
 </head>
 
 <!-- END HEAD -->
@@ -69,29 +68,29 @@
 	<div id="wrap" class="container-fluid">
 
 		<!-- HEADER SECTION -->
-		<div id="header" class="row-fluid">
+		<header id="header" class="row-fluid">
 			<tiles:insertAttribute name="header" />
-		</div>
+		</header>
 		<!-- END HEADER SECTION -->
 
 		<!-- MENU SECTION -->
-<%-- 		<div id="left">
+		<%-- 		<div id="left">
 			<tiles:insertAttribute name="menu" />
 		</div> --%>
 		<!--END MENU SECTION -->
 
 		<!--PAGE CONTENT -->
-		<div id="content" class="row-fluid">
+		<section id="content" class="row-fluid clearfix">
 			<tiles:insertAttribute name="body" />
-		</div>
+		</section>
 		<!--END PAGE CONTENT -->
 
 		<!--END MAIN WRAPPER -->
 
 		<!-- FOOTER -->
-		<div id="footer">
+		<footer id="footers" class="row-fluid clearfix">
 			<tiles:insertAttribute name="footer" />
-		</div>
+		</footer>
 		<!--END FOOTER -->
 	</div>
 
