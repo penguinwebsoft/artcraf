@@ -5,7 +5,16 @@ body {
 	font-size: 12px !important;
 	line-height: 20px;
 	background: url("../resources/img/background_img.jpg");
+	background-attachment: fixed;
 }
+
+/*********tiles context and footer space**************/
+
+#content{
+	margin-bottom: 10px;
+}
+
+/*********tiles context and footer space**************/
 
 .container-fluid {
 	padding-right: 15px;
@@ -439,7 +448,7 @@ h2.title {
 }
 
 #sellerLoginBox .form-group {
-	margin-left: 5px;
+	margin-left: 15px;
 }
 
 .margin-left-30- {
@@ -943,3 +952,10 @@ ol, ul {
 }
 
 /*************customer login style ends here******************************/
+
+/**********login btn padding right, left********/
+.login-btn{
+	padding-left: 20px; 
+	padding-right: 20px;
+	border-radius: 0px;
+}
