@@ -103,10 +103,15 @@
 		<put-attribute name="title" value="Customer login" />
 		<put-attribute name="body" value="/jsp/customerLogin.jsp" />
 	</definition>
-	
+
 	<definition name="registration" extends="customer.definition">
 		<put-attribute name="title" value="Customer registration" />
 		<put-attribute name="body" value="/jsp/registration.jsp" />
+	</definition>
+
+	<definition name="staticWebPage" extends="customer.definition">
+		<put-attribute name="title" value="Static Page" />
+		<put-attribute name="body" value="/jsp/staticWebPage.jsp" />
 	</definition>
 	<!-- customer views ends here -->
 </tiles-definitions>
