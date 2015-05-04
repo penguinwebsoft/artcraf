@@ -263,19 +263,19 @@
 				</div>
 			</form>
 		</div>
-		<div class="form-group">
+		<div class="form-group row">
 			<input type="checkbox" /> By clicking Register,you agree that you have read and accepted the <a href="#">Policy for buyer</a>, <a href="#">Terms & Conditions</a>, <a href="#">Privacy Policy</a>and
 			that you are at least 18 years old.
 		</div>
 		<br>
 
-		<div class="row-fluid">
-			<span class="col-sm-offset-5" style="margin-left: 13.50%;"> <a class="btn btn-success" id="createButton" style="border-radius: 0px;">Create Account</a>&nbsp;&nbsp;&nbsp;
+		<div class="row">
+			<span class="col-sm-offset-9" > <a class="btn btn-success" id="createButton" style="border-radius: 0px;">Create Account</a>&nbsp;&nbsp;&nbsp;
 			</span>
 		</div>
 	</div>
 
-	<div class="verticalLine col-sm-1" style="height: 500px; width: 2%; padding-left: 3%;"></div>
+	<div class="verticalLine col-sm-1  hidden-xs" style="height: 500px; width: 2%; padding-left: 3%;"></div>
 
 	<div class="col-lg-5 col-sm-offset-1">
 
@@ -326,7 +326,7 @@
 		</div>
 		<br>
 		<div class="row">
-			<span class="col-sm-4 col-sm-offset-1"> <a class="btn btn-success btn-flat" href="#" id="loginButton" style="border-radius: 0px;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>
+			<span class="col-sm-4"> <a class="btn btn-success btn-flat" href="#" id="loginButton" style="border-radius: 0px;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>
 			</span>
 		</div>
 	</div>
