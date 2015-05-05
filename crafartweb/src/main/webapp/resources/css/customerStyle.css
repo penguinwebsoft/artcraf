@@ -990,5 +990,7 @@ ol, ul {
 	font-size: 24px;
 	font-weight: 700;
 }
-
+.product-box h2 i{
+	padding-right: 2px;
+}
 /**************************************product box styles***********************************/
