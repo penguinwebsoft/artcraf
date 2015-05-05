@@ -308,6 +308,7 @@
 								<!--/row-->
 							</div>
 						</div>
+
 					</div>
 					<!--/carousel-inner-->
 
@@ -446,7 +447,7 @@
 						</nav>
 					</div>
 					<!-- CATEGORY HEADING ENDS -->
-					<div id="thumbCarousel2" class="carousel slide ">
+					<div id="thumbCarousel2" class="carousel slide">
 
 						<!-- Carousel items -->
 						<div class="carousel-inner">
@@ -497,6 +498,7 @@
 								</div>
 							</div>
 							<!--/row-->
+
 						</div>
 						<!--/carousel-inner-->
 
@@ -627,14 +629,15 @@
 									</div>
 									<!--/row-->
 								</div>
+
 							</div>
 							<!--/carousel-inner-->
-
 							<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
 								class="sr-only">Previous</span>
 							</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
 								class="sr-only">Next</span>
 							</a>
+
 						</div>
 						<!--/thumbCarousel-->
 					</div>
@@ -760,14 +763,15 @@
 									</div>
 								</div>
 								<!--/row-->
+
 							</div>
 							<!--/carousel-inner-->
-
 							<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
 								class="sr-only">Previous</span>
 							</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
 								class="sr-only">Next</span>
 							</a>
+
 						</div>
 						<!--/thumbCarousel-->
 					</div>
