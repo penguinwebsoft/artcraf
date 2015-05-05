@@ -1,5 +1,5 @@
 <!-- footer section starts here -->
-<div class="col-lg-10 col-lg-offset-1 col-xs-12 col-md-3 fk-mainfooter" id="footer">
+<div class="col-lg-10 col-lg-offset-1 col-xs-12 col-md-3 fk-mainfooter padding-top-15" id="footer">
 	<div class="row-fluid clearfix">
 		<div class="col-lg-3  col-md-3 col-sm-4 col-xs-6">
 			<div>
@@ -70,8 +70,8 @@
 			<div class="text-center col-lg-6 col-sm-6 col-xs-6">
 				<h4>Follow us on</h4>
 				<!-- just add href= for your links, like this: -->
-				<a href="http://facebook.com" class="btn btn-social-icon btn-facebook"> <i class="fa fa-facebook"></i></a> <a class="btn btn-social-icon btn-google-plus" style="margin-right:3px "><i class="fa fa-google-plus"></i></a><a
-					class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a> <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+				<a href="http://facebook.com" class="btn btn-social-icon btn-facebook"> <i class="fa fa-facebook"></i></a> <a class="btn btn-social-icon btn-google-plus" style="margin-right: 3px"><i
+					class="fa fa-google-plus"></i></a><a class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a> <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
 			</div>
 		</div>
 	</div>
@@ -108,10 +108,11 @@
 		<p class="pull-left">Copyright © Crafart.com. All right reserved.</p>
 		<div class="pull-right">
 			<ul class="nav nav-pills payments">
-				<li><i class="fa fa-cc-visa"></i></li>
-				<li><i class="fa fa-cc-mastercard"></i></li>
-				<li><i class="fa fa-cc-amex"></i></li>
-				<li><i class="fa fa-cc-paypal"></i></li>
+				<li><i title="Net Banking" class="fa fa-credit-card"></i></li>
+				<li><i title="Visa" class="fa fa-cc-visa"></i></li>
+				<li><i title="Master Card" class="fa fa-cc-mastercard"></i></li>
+				<li><i title="American express" class="fa fa-cc-amex"></i></li>
+				<li><i title="Paypal" class="fa fa-cc-paypal"></i></li>
 			</ul>
 		</div>
 	</div>

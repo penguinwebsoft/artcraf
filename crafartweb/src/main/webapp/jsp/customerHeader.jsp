@@ -17,7 +17,7 @@
 							Order</span>
 				</a></li>
 
-				<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
+				<li><a href="#"> <i class="fa fa-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
 
 
 				<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="fa fa-chevron-circle-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
