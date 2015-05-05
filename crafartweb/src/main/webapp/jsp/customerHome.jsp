@@ -329,7 +329,7 @@
 							<img src="${context}/resources/img/home/product1.jpg" alt="" />
 							<div class="caption">
 								<h2>
-									<i class="fa fa-inr">56</i>
+									<i class="fa fa-inr"></i>56
 								</h2>
 								<p>Easy Polo Black Edition</p>
 							</div>
@@ -341,7 +341,7 @@
 							<img src="${context}/resources/img/home/product2.jpg" alt="" />
 							<div class="caption">
 								<h2>
-									<i class="fa fa-inr">122</i>
+									<i class="fa fa-inr"></i>122
 								</h2>
 								<p>Levis Polo Green Edition</p>
 							</div>
@@ -353,7 +353,7 @@
 							<img src="${context}/resources/img/home/product3.jpg" alt="" />
 							<div class="caption">
 								<h2>
-									<i class="fa fa-inr">321</i>
+									<i class="fa fa-inr"></i>321
 								</h2>
 								<p>Womens Polo Black Edition</p>
 							</div>
@@ -365,7 +365,7 @@
 							<img src="${context}/resources/img/home/product4.jpg" alt="" />
 							<div class="caption">
 								<h2>
-									<i class="fa fa-inr">91</i>
+									<i class="fa fa-inr"></i>91
 								</h2>
 								<p>Womens Polo Black Edition</p>
 							</div>
@@ -518,7 +518,7 @@
 								<img src="${context}/resources/img/home/gallery1.jpg" alt="" />
 								<div class="caption">
 									<h2>
-										<i class="fa fa-inr">321</i>
+										<i class="fa fa-inr"></i>321
 									</h2>
 									<p>Womens Polo Grey Edition</p>
 								</div>
@@ -530,7 +530,7 @@
 								<img src="${context}/resources/img/home/gallery2.jpg" alt="" />
 								<div class="caption">
 									<h2>
-										<i class="fa fa-inr">321</i>
+										<i class="fa fa-inr"></i>321
 									</h2>
 									<p>Mens Classic Blue Edition</p>
 								</div>
@@ -542,7 +542,7 @@
 								<img src="${context}/resources/img/home/gallery3.jpg" alt="" />
 								<div class="caption">
 									<h2>
-										<i class="fa fa-inr">450</i>
+										<i class="fa fa-inr"></i>450
 									</h2>
 									<p>Womens Party wear Edition</p>
 								</div>
@@ -554,7 +554,7 @@
 								<img src="${context}/resources/img/home/gallery4.jpg" alt="" />
 								<div class="caption">
 									<h2>
-										<i class="fa fa-inr">150</i>
+										<i class="fa fa-inr"></i>150
 									</h2>
 									<p>Womens Party wear Edition</p>
 								</div>
@@ -649,7 +649,7 @@
 									<img src="${context}/resources/img/home/gallery1.jpg" alt="" />
 									<div class="caption">
 										<h2>
-											<i class="fa fa-inr">321</i>
+											<i class="fa fa-inr"></i>321
 										</h2>
 										<p>Womens Polo Grey Edition</p>
 									</div>
@@ -661,7 +661,7 @@
 									<img src="${context}/resources/img/home/gallery2.jpg" alt="" />
 									<div class="caption">
 										<h2>
-											<i class="fa fa-inr">321</i>
+											<i class="fa fa-inr"></i>321
 										</h2>
 										<p>Mens Classic Blue Edition</p>
 									</div>
@@ -673,7 +673,7 @@
 									<img src="${context}/resources/img/home/gallery3.jpg" alt="" />
 									<div class="caption">
 										<h2>
-											<i class="fa fa-inr">450</i>
+											<i class="fa fa-inr"></i>450
 										</h2>
 										<p>Womens Party wear Edition</p>
 									</div>
@@ -685,7 +685,7 @@
 									<img src="${context}/resources/img/home/gallery4.jpg" alt="" />
 									<div class="caption">
 										<h2>
-											<i class="fa fa-inr">150</i>
+											<i class="fa fa-inr"></i>150
 										</h2>
 										<p>Womens Party wear Edition</p>
 									</div>
