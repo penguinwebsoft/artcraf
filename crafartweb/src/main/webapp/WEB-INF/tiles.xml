@@ -113,5 +113,16 @@
 		<put-attribute name="title" value="Static Page" />
 		<put-attribute name="body" value="/jsp/staticWebPage.jsp" />
 	</definition>
+	
+	<definition name="productList" extends="customer.definition">
+		<put-attribute name="title" value="product List" />
+		<put-attribute name="body" value="/jsp/productList.jsp" />
+	</definition>
+	
+	<definition name="productDetails" extends="customer.definition">
+		<put-attribute name="title" value="product Details" />
+		<put-attribute name="body" value="/jsp/productDetails.jsp" />
+	</definition>
+	
 	<!-- customer views ends here -->
 </tiles-definitions>
