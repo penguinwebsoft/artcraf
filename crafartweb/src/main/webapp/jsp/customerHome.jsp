@@ -226,7 +226,7 @@
 
 
 
-<div class="row-fluid">
+<div class="row-fluid hidden-sm hidden-md hidden-xs">
 	<div class="col-sm-12" style="background-color: #e4e4e4; height: 40px; margin-top: -20px"></div>
 </div>
 
