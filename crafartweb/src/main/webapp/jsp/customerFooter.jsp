@@ -1,5 +1,5 @@
 <!-- footer section starts here -->
-<div class="col-lg-10 col-lg-offset-1 col-xs-12 col-md-3 fk-mainfooter" id="footer">
+<div class="col-lg-10 col-lg-offset-1 col-xs-12 col-md-3 fk-mainfooter padding-top-15" id="footer">
 	<div class="row-fluid clearfix">
 		<div class="col-lg-3  col-md-3 col-sm-4 col-xs-6">
 			<div>
