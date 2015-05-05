@@ -9,27 +9,28 @@
 		<div id="top-links" class="nav pull-right">
 			<ul class="list-inline no_margin">
 
-				<li><a href="${baseURL}/menu/sellerLogin" title="Sell on Crafart" style="vertical-align: middle;"> <i class="icon-shopping-cart pull-left"></i> <span
+				<li><a href="${baseURL}/menu/sellerLogin" title="Sell on Crafart" style="vertical-align: middle;"> <i class="fa fa-shopping-cart pull-left"></i> <span
 						class="hidden-xs hidden-sm hidden-md col-lg-12">Sell on Crafart</span>
 				</a></li>
 
-				<li><a href="${baseURL}/menu/productDetails" title="Track your Order"> <i class="icon-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your
+				<li><a href="${baseURL}/menu/productDetails" title="Track your Order"> <i class="fa fa-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your
 							Order</span>
 				</a></li>
 
 				<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
 
-				<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="icon-chevron-sign-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
+
+				<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="fa fa-chevron-circle-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
 				</a></li>
 
-				<li><a href="${baseURL}/menu/customerLogin" title="Login In"> <i class="icon-signin pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Login</span>
+				<li><a href="${baseURL}/menu/customerLogin" title="Login In"> <i class="fa fa-sign-in pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Login</span>
 				</a></li>
 
 				<li>
 					<form action="#" method="post" enctype="multipart/form-data" id="currency" class="no_margin">
 						<div class="btn-group dropdown">
 							<button class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="padding: 2px;">
-								<strong class="pull-left">&#x20b9;</strong> <span class="hidden-xs hidden-sm hidden-md col-lg-9 pull-left">Ruppee</span> <i class="icon-caret-down pull-right"></i>
+								<i class="fa fa-inr pull-left"></i><span class="hidden-xs hidden-sm hidden-md col-lg-9 pull-left">Ruppee</span> <i class="fa fa-caret-down pull-right"></i>
 							</button>
 
 							<ul class="dropdown-menu pull-left">
@@ -100,7 +101,7 @@
 			<div class="dropdown row">
 				<div class="rectangle_sm rectangle_sm_wd">
 					<h2 class="dropdown-toggle" data-toggle="dropdown">
-						Cart <i class="icon-shopping-cart"></i> <b class="caret"></b>
+						Cart <i class="fa fa-shopping-cart"></i> <b class="caret"></b>
 					</h2>
 					<ul class="dropdown-menu font_Size_12" role="menu" aria-labelledby="menu1" style="min-width: 100px;">
 						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign in </a></li>

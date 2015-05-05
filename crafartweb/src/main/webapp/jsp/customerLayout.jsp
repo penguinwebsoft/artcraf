@@ -18,7 +18,7 @@
 
 <!-- CSS SCRIPTS -->
 <link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="${context}/resources/plugins/social-buttons/social-buttons.css" />
 <link rel="stylesheet" href="${context}/resources/css/customerStyle.css" />
 <link rel="stylesheet" href="${context}/resources/css/jquery.cleditor-hack.css" />
