@@ -17,7 +17,8 @@
 							Order</span>
 				</a></li>
 
-				<li><a href="${baseURL}/menu/customerPanel"> <i class="fa fa-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
+				<li><a href="#"> <i class="icon-phone pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Contact Us</span></a></li>
+
 
 				<li><a href="${baseURL}/menu/registration" title="Sign Up"> <i class="fa fa-chevron-circle-up pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Sign Up</span>
 				</a></li>
@@ -86,7 +87,7 @@
 
 					<li role="presentation" style="background-color: white;"><a class="btn btn-warning btn-flat btn-rect" href="#">sign in</a></li>
 					<li role="presentation" class="divider" style="margin-bottom: 2px;"></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Account</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="${baseURL}/menu/customerPanel">Your Account</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">order Account</a></li>
 				</ul>
 				<!-- Ribbon side-fold (left and right) -->

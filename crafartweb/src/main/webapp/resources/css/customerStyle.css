@@ -711,7 +711,7 @@ ol, ul {
 }
 
 .nav-side-menu .brand {
-	background-color: #23282e;
+	background-color: #332619;
 	line-height: 50px;
 	display: block;
 	text-align: center;
@@ -770,10 +770,10 @@ ol, ul {
 }
 
 .nav-side-menu ul .sub-menu li, .nav-side-menu li .sub-menu li {
-	background-color: #181c20;
+	background-color: #332619;
 	border: none;
 	line-height: 28px;
-	border-bottom: 1px solid #23282e;
+	border-bottom: 1px solid #332619;
 	margin-left: 0px;
 }
 

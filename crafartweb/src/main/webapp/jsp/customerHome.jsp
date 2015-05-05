@@ -94,96 +94,89 @@
 
 
 <!-- slider banner starts here -->
-<div class="container-fluid">
+<div class="row-fluid">
+	<nav class="navbar navbar-inverse navbar-static-top marginBottom-0" role="navigation" style="background-color: #332619; min-height: 40px; z-index: 1">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand visible-sm" href="#" target="_blank">Category</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="dropdown nav navbar-nav" style="float: inherit; margin-top: 5px; margin-bottom: 0px">
+				<li class="col-sm-2"><a href="#"></a></li>
+				<li id="categoryDropDownId" class="col-sm-2"><a href="#" class="text-center dropdown-toggle" data-toggle="dropdown">SEE ALL CATEGORY <b class="caret"></b>
+				</a>
+					<ul id="dropdownMenuId" class="dropdown-menu pull-right" role="menu" style="min-width: 198px; margin-right: 8px; margin-top: 0px; border-radius: 0px;">
+						<li role="presentation"><a role="menuitem" href="#">Designer Sarees</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Handicrafts</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Earthern wares</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Nature Products</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Color Paintings</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Paper Paintings</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Kids</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Women</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Mens Handicrafts</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Women Handicrafts</a></li>
+						<li role="presentation"><a role="menuitem" href="#">Kides Handicrafts</a></li>
+						<li role="presentation" class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sampleLinkId">Perfumes</a> <!-- <div class="" id="addFrame" style="z-index: 0; background-color: black;"> -->
+							<div class="div-submenu-container" style="margin-top: -292px; height: 337px; width: 650px; border-radius: 0px; background-image: url('${context}/resources/img/Fashion.jpg')">
+								<ul class="dropdown-menu" style="z-index: 1; position: relative;">
+									<li><a href="#">Dropdown 12.1</a></li>
+									<li><a href="#">Dropdown 12.2</a></li>
+									<li><a href="#">Dropdown 12.3</a></li>
+									<li><a href="#">Dropdown 12.4</a></li>
+								</ul>
+							</div></li>
+						<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Khandikraft Products</a>
+							<div class="div-submenu-container" style="margin-top: -317px; height: 337px; width: 650px; border-radius: 0px; background-image: url(' . ./ resources/ img/ Fashion.jpg">
+								<ul class="dropdown-menu" style="z-index: 1;">
+									<li><a href="#">Dropdown 13.1</a></li>
+									<li><a href="#">Dropdown 13.2</a></li>
+									<li><a href="#">Dropdown 13.3</a></li>
+									<li class="divider"></li>
+									<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 13.4</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Dropdown 13.4.1</a></li>
+											<li><a href="#">Dropdown 13.4.2</a></li>
+											<li class="divider"></li>
+											<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 13.4.3</a>
+												<ul class="dropdown-menu">
+													<li><a href="#">Dropdown 13.4.3.1</a></li>
+													<li><a href="#">Dropdown 13.4.3.2</a></li>
+													<li><a href="#">Dropdown 13.4.3.3</a></li>
+													<li><a href="#">Dropdown 13.4.3.4</a></li>
+												</ul></li>
+											<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 13.4.4</a>
+												<ul class="dropdown-menu">
+													<li><a href="#">Dropdown 13.4.4.1</a></li>
+													<li><a href="#">Dropdown 13.4.4.2</a></li>
+													<li><a href="#">Dropdown 13.4.4.3</a></li>
+													<li><a href="#">Dropdown 13.4.4.4</a></li>
+												</ul></li>
+										</ul></li>
+								</ul>
+							</div></li>
+						<li><a href="#">SEE ALL CATEGORY</a></li>
+					</ul></li>
+				<li class="col-sm-1"><a href="#"></a></li>
+				<li class="col-sm-1"><a href="#"></a></li>
+				<li class="col-sm-1"><a href="#"></a></li>
+				<li class="col-sm-1 padding-left padding-right"><a href="#">Exhibition</a></li>
+				<li class="col-sm-1 padding-left padding-right"><a href="#">Paintings</a></li>
+				<li class="col-sm-1 padding-left padding-right"><a href="#">Antique</a></li>
+				<li class="col-sm-1 padding-left padding-right"><a href="#">Handlooms</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- slider banner ends here -->
+
+	<!-- slider banner images starts here -->
 	<div class="row-fluid">
-		<nav class="navbar navbar-inverse navbar-static-top marginBottom-0" role="navigation" style="background-color: #332619; min-height: 40px; z-index: 1">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand visible-sm" href="#" target="_blank">Category</a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="navbar-collapse-1">
-				<ul class="dropdown nav navbar-nav" style="float: inherit; margin-top: 5px; margin-bottom: 0px">
-					<li class="col-sm-2"><a href="#"></a></li>
-					<li id="categoryDropDownId" class="col-sm-2"><a href="#" class="text-center dropdown-toggle" data-toggle="dropdown">SEE ALL CATEGORY <b class="caret"></b>
-					</a>
-						<ul id="dropdownMenuId" class="dropdown-menu pull-right" role="menu" style="min-width: 198px; margin-right: 8px; margin-top: 0px; border-radius: 0px;">
-							<li role="presentation"><a role="menuitem" href="#">Designer Sarees</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Handicrafts</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Earthern wares</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Nature Products</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Color Paintings</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Paper Paintings</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Kids</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Women</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Mens Handicrafts</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Women Handicrafts</a></li>
-							<li role="presentation"><a role="menuitem" href="#">Kides Handicrafts</a></li>
-							<li role="presentation" class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sampleLinkId">Perfumes</a> <!-- <div class="" id="addFrame" style="z-index: 0; background-color: black;"> -->
-								<div class="div-submenu-container" style="margin-top: -292px; height: 337px; width: 650px; border-radius: 0px; background-image: url('${context}/resources/img/Fashion.jpg')">
-									<ul class="dropdown-menu" style="z-index: 1; position: relative;">
-										<li><a href="#">Dropdown 12.1</a></li>
-										<li><a href="#">Dropdown 12.2</a></li>
-										<li><a href="#">Dropdown 12.3</a></li>
-										<li><a href="#">Dropdown 12.4</a></li>
-									</ul>
-								</div></li>
-							<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Khandikraft Products</a>
-								<div class="div-submenu-container" style="margin-top: -317px; height: 337px; width: 650px; border-radius: 0px; background-image: url(' . ./ resources/ img/ Fashion.jpg">
-									<ul class="dropdown-menu" style="z-index: 1;">
-										<li><a href="#">Dropdown 13.1</a></li>
-										<li><a href="#">Dropdown 13.2</a></li>
-										<li><a href="#">Dropdown 13.3</a></li>
-										<li class="divider"></li>
-										<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 13.4</a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Dropdown 13.4.1</a></li>
-												<li><a href="#">Dropdown 13.4.2</a></li>
-												<li class="divider"></li>
-												<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 13.4.3</a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Dropdown 13.4.3.1</a></li>
-														<li><a href="#">Dropdown 13.4.3.2</a></li>
-														<li><a href="#">Dropdown 13.4.3.3</a></li>
-														<li><a href="#">Dropdown 13.4.3.4</a></li>
-													</ul></li>
-												<li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 13.4.4</a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Dropdown 13.4.4.1</a></li>
-														<li><a href="#">Dropdown 13.4.4.2</a></li>
-														<li><a href="#">Dropdown 13.4.4.3</a></li>
-														<li><a href="#">Dropdown 13.4.4.4</a></li>
-													</ul></li>
-											</ul></li>
-									</ul>
-								</div></li>
-							<li><a href="#">SEE ALL CATEGORY</a></li>
-						</ul></li>
-					<li class="col-sm-1"><a href="#"></a></li>
-					<li class="col-sm-1"><a href="#"></a></li>
-					<li class="col-sm-1"><a href="#"></a></li>
-					<li class="col-sm-1 padding-left padding-right"><a href="#">Exhibition</a></li>
-					<li class="col-sm-1 padding-left padding-right"><a href="#">Paintings</a></li>
-					<li class="col-sm-1 padding-left padding-right"><a href="#">Antique</a></li>
-					<li class="col-sm-1 padding-left padding-right"><a href="#">Handlooms</a></li>
-				</ul>
-			</div>
-		</nav>
-	</div>
-</div>
-
-
-<!-- slider banner ends here -->
-
-<!-- slider banner images starts here -->
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div id="carousel-example-generic" class="carousel slide article-slide" data-ride="carousel" style="height: 335px;">
+		<div id="carousel-example-generic" class="carousel slide article-slide" data-ride="carousel">
 			<!-- Indicators -->
-
-			<ol class="carousel-indicators" style="min-height: 31px;">
+			<ol class="carousel-indicators">
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span>FURNITURE</span></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1"><span>CLOTHES</span></li>
 				<li data-target="#carousel-example-generic" data-slide-to="2"><span>SPORTS-FITNESS</span></li>
@@ -191,7 +184,6 @@
 				<li data-target="#carousel-example-generic" data-slide-to="4"><span>CAMERAS</span></li>
 				<li data-target="#carousel-example-generic" data-slide-to="5"><span>KITCHEN</span></li>
 			</ol>
-
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -215,25 +207,27 @@
 				<div class="item">
 					<img src="${context}/resources/img/2.jpg" alt="..." class="img-responsive">
 				</div>
+
 			</div>
-
-			<!-- Controls -->
-
 			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
 				class="sr-only">Previous</span>
 			</a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
 				class="sr-only">Next</span>
 			</a>
+			<!-- Controls -->
+
+
 		</div>
 	</div>
+
+	<!-- slider banner images ends here -->
 </div>
 
-<!-- slider banner images ends here -->
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="col-sm-12" style="background-color: #e4e4e4; height: 40px;"></div>
-	</div>
+
+
+<div class="row-fluid">
+	<div class="col-sm-12" style="background-color: #e4e4e4; height: 40px;"></div>
 </div>
 
 <!-- product category wise listing , best seller, sold product sections start here -->
