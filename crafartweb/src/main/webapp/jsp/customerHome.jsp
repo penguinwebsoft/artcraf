@@ -176,13 +176,13 @@
 	<div class="row-fluid">
 		<div id="carousel-example-generic" class="carousel slide article-slide" data-ride="carousel">
 			<!-- Indicators -->
-			<ol class="carousel-indicators">
+			<ol class="carousel-indicators col-lg-offset-6">
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span>FURNITURE</span></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"><span>CLOTHES</span></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2"><span>SPORTS-FITNESS</span></li>
-				<li data-target="#carousel-example-generic" data-slide-to="3"><span> ELECTRONICS</span></li>
-				<li data-target="#carousel-example-generic" data-slide-to="4"><span>CAMERAS</span></li>
-				<li data-target="#carousel-example-generic" data-slide-to="5"><span>KITCHEN</span></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1" class=""><span>CLOTHES</span></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2" class=""><span>SPORTS-FITNESS</span></li>
+				<li data-target="#carousel-example-generic" data-slide-to="3" class=""><span> ELECTRONICS</span></li>
+				<li data-target="#carousel-example-generic" data-slide-to="4" class=""><span>CAMERAS</span></li>
+				<li data-target="#carousel-example-generic" data-slide-to="5" class=""><span>KITCHEN</span></li>
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
@@ -227,7 +227,7 @@
 
 
 <div class="row-fluid">
-	<div class="col-sm-12" style="background-color: #e4e4e4; height: 40px;"></div>
+	<div class="col-sm-12" style="background-color: #e4e4e4; height: 40px; margin-top: -20px"></div>
 </div>
 
 <!-- product category wise listing , best seller, sold product sections start here -->
@@ -325,45 +325,48 @@
 				<div class="row" style="padding-right: 15px">
 					<div class="col-md-3 text-center col-sm-3 padding-right">
 						<div class="thumbnail product-box">
-							<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+							<img src="${context}/resources/img/home/product1.jpg" alt="" />
 							<div class="caption">
-								<h3>
-									<a href="#">coffee tea sets</a>
-								</h3>
+								<h2>
+									<i class="fa fa-inr">56</i>
+								</h2>
+								<p>Easy Polo Black Edition</p>
 							</div>
 						</div>
 					</div>
 					<!-- /.col -->
 					<div class="col-md-3 text-center col-sm-3 padding-right">
 						<div class="thumbnail product-box">
-							<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+							<img src="${context}/resources/img/home/product2.jpg" alt="" />
 							<div class="caption">
-								<h3>
-									<a href="#">Dinner sets</a>
-								</h3>
+								<h2>
+									<i class="fa fa-inr">122</i>
+								</h2>
+								<p>Levis Polo Green Edition</p>
 							</div>
 						</div>
 					</div>
 					<!-- /.col -->
 					<div class="col-md-3 text-center col-sm-3 padding-right">
 						<div class="thumbnail product-box">
-							<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
-
+							<img src="${context}/resources/img/home/product3.jpg" alt="" />
 							<div class="caption">
-								<h3>
-									<a href="#">coffee tea sets</a>
-								</h3>
+								<h2>
+									<i class="fa fa-inr">321</i>
+								</h2>
+								<p>Womens Polo Black Edition</p>
 							</div>
 						</div>
 					</div>
 
 					<div class="col-md-3 text-center col-sm-3  padding-right">
 						<div class="thumbnail product-box">
-							<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+							<img src="${context}/resources/img/home/product4.jpg" alt="" />
 							<div class="caption">
-								<h3>
-									<a href="#">Dinner sets</a>
-								</h3>
+								<h2>
+									<i class="fa fa-inr">91</i>
+								</h2>
+								<p>Womens Polo Black Edition</p>
 							</div>
 						</div>
 					</div>
@@ -510,45 +513,48 @@
 					<div class="row" style="padding-right: 15px">
 						<div class="col-md-3 text-center col-sm-3 padding-right">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+								<img src="${context}/resources/img/home/gallery1.jpg" alt="" />
 								<div class="caption">
-									<h3>
-										<a href="#">coffee tea sets</a>
-									</h3>
+									<h2>
+										<i class="fa fa-inr">321</i>
+									</h2>
+									<p>Womens Polo Grey Edition</p>
 								</div>
 							</div>
 						</div>
 						<!-- /.col -->
 						<div class="col-md-3 text-center col-sm-3 padding-right">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+								<img src="${context}/resources/img/home/gallery2.jpg" alt="" />
 								<div class="caption">
-									<h3>
-										<a href="#">Dinner sets</a>
-									</h3>
+									<h2>
+										<i class="fa fa-inr">321</i>
+									</h2>
+									<p>Mens Classic Blue Edition</p>
 								</div>
 							</div>
 						</div>
 						<!-- /.col -->
 						<div class="col-md-3 text-center col-sm-3 padding-right">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
-
+								<img src="${context}/resources/img/home/gallery3.jpg" alt="" />
 								<div class="caption">
-									<h3>
-										<a href="#">coffee tea sets</a>
-									</h3>
+									<h2>
+										<i class="fa fa-inr">450</i>
+									</h2>
+									<p>Womens Party wear Edition</p>
 								</div>
 							</div>
 						</div>
 
 						<div class="col-md-3 text-center col-sm-3 padding-right">
 							<div class="thumbnail product-box">
-								<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+								<img src="${context}/resources/img/home/gallery4.jpg" alt="" />
 								<div class="caption">
-									<h3>
-										<a href="#">Dinner sets</a>
-									</h3>
+									<h2>
+										<i class="fa fa-inr">150</i>
+									</h2>
+									<p>Womens Party wear Edition</p>
 								</div>
 							</div>
 						</div>
@@ -637,45 +643,48 @@
 						<div class="row" style="padding-right: 15px">
 							<div class="col-md-3 text-center col-sm-3 padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
+									<img src="${context}/resources/img/home/gallery1.jpg" alt="" />
 									<div class="caption">
-										<h3>
-											<a href="#">coffee tea sets</a>
-										</h3>
+										<h2>
+											<i class="fa fa-inr">321</i>
+										</h2>
+										<p>Womens Polo Grey Edition</p>
 									</div>
 								</div>
 							</div>
 							<!-- /.col -->
 							<div class="col-md-3 text-center col-sm-3 padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+									<img src="${context}/resources/img/home/gallery2.jpg" alt="" />
 									<div class="caption">
-										<h3>
-											<a href="#">Dinner sets</a>
-										</h3>
+										<h2>
+											<i class="fa fa-inr">321</i>
+										</h2>
+										<p>Mens Classic Blue Edition</p>
 									</div>
 								</div>
 							</div>
 							<!-- /.col -->
 							<div class="col-md-3 text-center col-sm-3 padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/coffee-tea-sets.jpg" alt="" />
-
+									<img src="${context}/resources/img/home/gallery3.jpg" alt="" />
 									<div class="caption">
-										<h3>
-											<a href="#">coffee tea sets</a>
-										</h3>
+										<h2>
+											<i class="fa fa-inr">450</i>
+										</h2>
+										<p>Womens Party wear Edition</p>
 									</div>
 								</div>
 							</div>
 
 							<div class="col-md-3 text-center col-sm-3 padding-right">
 								<div class="thumbnail product-box">
-									<img src="${context}/resources/img/product2/description/dinner-sets.jpg" alt="" />
+									<img src="${context}/resources/img/home/gallery4.jpg" alt="" />
 									<div class="caption">
-										<h3>
-											<a href="#">Dinner sets</a>
-										</h3>
+										<h2>
+											<i class="fa fa-inr">150</i>
+										</h2>
+										<p>Womens Party wear Edition</p>
 									</div>
 								</div>
 							</div>
