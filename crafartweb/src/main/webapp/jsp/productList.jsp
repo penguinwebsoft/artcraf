@@ -165,7 +165,7 @@
 	</div>
 
 
-</div>
+ </div>
 <!-- right side -->
 
 <div class="col-md-10 pull-right">
