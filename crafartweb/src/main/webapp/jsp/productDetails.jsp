@@ -5,7 +5,7 @@
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
 <!-- BODY CONTENT -->
-	<div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;background-image: url(${context}/resources/img/background_img.jpg);"">
+	 <div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;background-image: url(${context}/resources/img/background_img.jpg);"">
 
 		<!-- left side image -->
 		<div style="background-color: #FBF5F5; margin-left: 5%; margin-right: 5%">
