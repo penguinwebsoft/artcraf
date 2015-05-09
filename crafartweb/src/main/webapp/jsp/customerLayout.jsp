@@ -81,7 +81,13 @@
 
 		<!--PAGE CONTENT -->
 		<section id="content" class="row-fluid clearfix">
-			<tiles:insertAttribute name="body" />
+			<div id="customerLeftMenu">
+				<tiles:insertAttribute name="customerMenu" />
+			</div>
+			<div id="customerBody">
+				<tiles:insertAttribute name="body" />
+			</div>
+
 		</section>
 		<!--END PAGE CONTENT -->
 

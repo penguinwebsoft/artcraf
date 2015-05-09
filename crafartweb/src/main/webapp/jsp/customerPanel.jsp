@@ -40,6 +40,7 @@
 	</div>
 </div>
 
+
 <!-- put this script for customer care section only, remove this script after adding to customer care jsp -->
 <!-- <script type="text/javascript">
 	$(document).ready(function() {
