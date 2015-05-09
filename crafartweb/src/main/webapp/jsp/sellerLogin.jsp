@@ -160,28 +160,28 @@
 			<div id="checkListMainBox" style="margin-left: 15%">
 				<span><h3>Facilities offered to sale products</h3></span>
 				<div id="checkBox1" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span> <span>Multiple product images upload facility for each product</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span> <span>Multiple product images upload facility for each product</span>
 				</div>
 				<div id="checkBox2" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span><span>All India or State based shipping facility</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>All India or State based shipping facility</span>
 				</div>
 				<div id="checkBox3" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span><span>Add your own discount coupon facility</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Add your own discount coupon facility</span>
 				</div>
 				<div id="checkBox4" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span><span>Add your Special Price for each product</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Add your Special Price for each product</span>
 				</div>
 				<div id="checkBox5" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span>Fill up registration fields</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span>Fill up registration fields</span>
 				</div>
 				<div id="checkBox6" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span><span>Add your details in My Account</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Add your details in My Account</span>
 				</div>
 				<div id="checkBox7" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span><span>Upload your Product details</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Upload your Product details</span>
 				</div>
 				<div id="checkBox8" style="margin-top: 5%">
-					<span><i class="icon-check icon-2x checkListColor"></i></span><span>On Approval see your Product live in site</span>
+					<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>On Approval see your Product live in site</span>
 				</div>
 			</div>
 		</div>
@@ -312,16 +312,16 @@
 		<div id="checkListMainBox1" style="margin-left: 5%">
 			<span><h3>Steps of uploading Product Details</h3></span>
 			<div id="checkBoxSec1" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span> <span>Fill up registration fields</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span> <span>Fill up registration fields</span>
 			</div>
 			<div id="checkBoxSec2" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span> Add your details in My Account</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span> Add your details in My Account</span>
 			</div>
 			<div id="checkBoxSec3" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>Upload your Product details</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Upload your Product details</span>
 			</div>
 			<div id="checkBoxSec4" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>On Approval see your Product live in site</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>On Approval see your Product live in site</span>
 			</div>
 		</div>
 	</div>
@@ -329,20 +329,20 @@
 		<div id="checkListMainBox2" style="margin-left: 5%">
 			<span><h3>Steps of shipping an order</h3></span>
 			<div id="checkBoxSec1" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span> <span>Get order details in your mail </span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span> <span>Get order details in your mail </span>
 			</div>
 			<div id="checkBoxSec2" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>Login in seller panel and check for orders</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Login in seller panel and check for orders</span>
 			</div>
 			<div id="checkBoxSec3" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>Download invoice and packing slips </span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Download invoice and packing slips </span>
 			</div>
 			<div id="checkBoxSec4" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>Change order status to processing</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Change order status to processing</span>
 			</div>
 
 			<div id="checkBoxSec5" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span> <span>Pack the product with care</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span> <span>Pack the product with care</span>
 			</div>
 		</div>
 	</div>
@@ -350,16 +350,16 @@
 		<div id="checkListMainBox2" style="margin-left: 5%; margin-top: 13%">
 
 			<div id="checkBoxSec6" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>Change order status to processed</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Change order status to processed</span>
 			</div>
 			<div id="checkBoxSec7" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>Ship the product to customer's shipping address</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Ship the product to customer's shipping address</span>
 			</div>
 			<div id="checkBoxSec8" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>Change order status to shipped and include tracking details</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>Change order status to shipped and include tracking details</span>
 			</div>
 			<div id="checkBoxSec9" style="margin-top: 5%">
-				<span><i class="icon-check icon-2x checkListColor"></i></span><span>After delivery confirmation,change order status to complete</span>
+				<span><i class="fa fa-check-square-o fa-2x checkListColor"></i></span><span>After delivery confirmation,change order status to complete</span>
 			</div>
 
 		</div>

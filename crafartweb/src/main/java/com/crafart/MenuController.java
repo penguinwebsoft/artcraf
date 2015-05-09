@@ -21,6 +21,16 @@ public class MenuController {
 		return new ModelAndView("dashboard");
 	}
 
+	@RequestMapping("/staticWebPage")
+	public ModelAndView showStaticWebPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("staticWebPage");
+	}
+
+	@RequestMapping("/productList")
+	public ModelAndView showProductList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("productList");
+	}
+
 	@RequestMapping("/customerPanel")
 	public ModelAndView showcustomerPanel(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("customerPanel");
@@ -66,7 +76,7 @@ public class MenuController {
 		return new ModelAndView("productDetails");
 	}
 
-	@RequestMapping("/orders")
+	@RequestMapping("/orders") 
 	public ModelAndView showOrders(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("orders");
 	}
