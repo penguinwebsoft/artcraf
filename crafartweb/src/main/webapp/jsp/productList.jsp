@@ -53,7 +53,7 @@
 	</div>
 	<div class="dropdown">
 		<a href="#" data-toggle="dropdown" class="dropdown-toggle pull-right"><b class="caret"></b></a> <span><b>TYPE</b></span>
-		<ul class="dropdown-menu">
+		<ul class="dropdown-menu"> 
 			<li><input type="checkbox" />SmartPhone 6</li>
 		</ul>
 
