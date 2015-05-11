@@ -1,6 +1,6 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <!-- header section starts here -->
@@ -104,7 +104,7 @@
 						Cart <i class="fa fa-shopping-cart"></i> <b class="caret"></b>
 					</h2>
 					<ul class="dropdown-menu font_Size_12" role="menu" aria-labelledby="menu1" style="min-width: 100px;">
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign in </a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="${baseURL}/menu/cartSection">Sign in </a></li>
 						<li role="presentation"><a rolw="menuitem" tabindex="-1" href="${baseURL}/customerMenu/paymentGateway">View Cart</a></li>
 					</ul>
 					<!-- Ribbon side-fold (left and right) -->
