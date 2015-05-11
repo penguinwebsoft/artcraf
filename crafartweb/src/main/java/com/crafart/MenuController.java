@@ -14,12 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller("menuController")
 @RequestMapping("menu")
-public class MenuController {
+public class MenuController { 
 
 	@RequestMapping("/dashboard")
 	public ModelAndView showHomePage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("dashboard");
-	}
+	} 
 
 	@RequestMapping("/staticWebPage")
 	public ModelAndView showStaticWebPage(HttpServletRequest request, HttpServletResponse response) {
@@ -30,6 +30,17 @@ public class MenuController {
 	public ModelAndView showProductList(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("productList");
 	}
+
+	@RequestMapping("/cartSection")
+	public ModelAndView showcartSection(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("cartSection");
+	}
+	
+	@RequestMapping("/checkoutSection")
+	public ModelAndView showcheckoutSection(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("checkoutSection");
+	}
+
 
 	@RequestMapping("/customerPanel")
 	public ModelAndView showcustomerPanel(HttpServletRequest request, HttpServletResponse response) {

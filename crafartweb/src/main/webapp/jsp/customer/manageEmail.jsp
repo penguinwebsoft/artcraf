@@ -7,5 +7,5 @@
 	</div>
 	<div class='form-group' style='margin-left: 25%; margin-top: 10%'>
 		<button type='button' class='btn btn-primary'>Save</button>
-	</div>
+	</div> 
 </div>

@@ -37,5 +37,9 @@ public class CustomerMenuController {
 		return new ModelAndView("manageEmail");
 	}
 	
-
+	@RequestMapping("/paymentGateway")
+	public ModelAndView showPaymentGateway(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("paymentGateway");
+	}
+	
 }

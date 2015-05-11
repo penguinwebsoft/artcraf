@@ -1,8 +1,6 @@
 <script type="text/javascript">
 	setPage("customerPersonalDetails");
 </script>
-
-
 <div id='customermainBox' class="col-lg-6">
 	<div class='form-group' style='margin-left: 15%;'>
 		<label for='firstname' class='control-label'>First Name :</label><input type='text' style='width: 50%;' class='form-control pull-right' id='firstname' />
