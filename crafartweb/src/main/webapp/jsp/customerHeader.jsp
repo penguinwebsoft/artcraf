@@ -105,7 +105,7 @@
 					</h2>
 					<ul class="dropdown-menu font_Size_12" role="menu" aria-labelledby="menu1" style="min-width: 100px;">
 						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign in </a></li>
-						<li role="presentation"><a rolw="menuitem" tabindex="-1" href="#">View Cart</a></li>
+						<li role="presentation"><a rolw="menuitem" tabindex="-1" href="${baseURL}/customerMenu/paymentGateway">View Cart</a></li>
 					</ul>
 					<!-- Ribbon side-fold (left and right) -->
 					<div class="triangle-l triangle-left-pos"></div>
