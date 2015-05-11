@@ -154,5 +154,15 @@
 		<put-attribute name="body" value="/jsp/payment/payuform.jsp" />
 	</definition>
 
+	<definition name="cartSection" extends="customer.definition">
+		<put-attribute name="title" value="Cart Section" />
+		<put-attribute name="body" value="/jsp/cartSection.jsp" />
+	</definition>
+	
+	<definition name="checkoutSection" extends="customer.definition">
+		<put-attribute name="title" value="Checkout Section" />
+		<put-attribute name="body" value="/jsp/checkoutSection.jsp" />
+	</definition>
+	
 	<!-- customer views ends here -->
 </tiles-definitions>
