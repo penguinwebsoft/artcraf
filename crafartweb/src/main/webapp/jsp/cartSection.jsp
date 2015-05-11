@@ -1,3 +1,9 @@
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
+
 <div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;background-image: url(${context}/resources/img/background_img.jpg);">
 	<div style="background-color: #FBF5F5; margin-left: 5%; margin-right: 5%">
 	<div id="horizontalTabContentOrder">
@@ -34,7 +40,7 @@
 			<span style="margin-left: 83%">Payable Amount: Rs 9999</span>
 		</div>
 		<div style="margin-left: 25%;margin-top:2%">
-			<span><button type="button" class="btn btn-default">CONTINUE SHOPPING</button></span> <span><button type="button" class="btn btn-primary">PROCEED TO PAYMENT</button></span>
+			<span><button type="button" class="btn btn-default">CONTINUE SHOPPING</button></span> <span><a type="button" href="${baseURL}/menu/checkoutSection" class="btn btn-primary">PROCEED TO PAYMENT</a></span>
 		</div>
 		<div>
 			<ul class="line ssa-block col-xs-12">
