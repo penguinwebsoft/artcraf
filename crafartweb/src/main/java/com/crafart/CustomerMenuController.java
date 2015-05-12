@@ -42,4 +42,9 @@ public class CustomerMenuController {
 		return new ModelAndView("paymentGateway");
 	}
 	
+	@RequestMapping("/cart")
+	public ModelAndView showCartSection(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("cartSection");
+	}
+	
 }

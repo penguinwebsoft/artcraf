@@ -70,14 +70,14 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-8" style="margin-bottom: 15px;">
-				<a class="btn btn-block btn-social btn-google-plus" style="border-radius: 0px;"> <i class="icon-google-plus"></i> Sign in with Google
+				<a class="btn btn-block btn-social btn-google-plus" style="border-radius: 0px;"> <i class="fa fa-google-plus"></i> Sign in with Google
 				</a>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-sm-8">
-				<a class="btn btn-block btn-social btn-facebook" style="border-radius: 0px;"> <i class="icon-facebook"></i> Sign in with Facebook
+				<a class="btn btn-block btn-social btn-facebook" style="border-radius: 0px;"> <i class="fa fa-facebook"></i> Sign in with Facebook
 				</a>
 			</div>
 		</div>
