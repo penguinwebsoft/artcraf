@@ -285,14 +285,14 @@
 		</div>
 		<div class="row">
 			<div id="googleLogin" class="col-sm-6" style="margin-bottom: 15px;">
-				<a href="#" class="btn btn-block btn-social btn-google-plus" style="border-radius: 0px;"> <i class="icon-google-plus"></i> Sign in with Google
+				<a href="#" class="btn btn-block btn-social btn-google-plus" style="border-radius: 0px;"> <i class="fa fa-google-plus"></i> Sign in with Google
 				</a>
 			</div>
 		</div>
 
 		<div class="row">
 			<div id="facebookLogin" class="col-sm-6">
-				<a href="#" class="btn btn-block btn-social btn-facebook" style="border-radius: 0px;"> <i class="icon-facebook"></i> Sign in with Facebook
+				<a href="#" class="btn btn-block btn-social btn-facebook" style="border-radius: 0px;"> <i class="fa fa-facebook"></i> Sign in with Facebook
 				</a>
 			</div>
 		</div>
