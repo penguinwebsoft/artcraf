@@ -26,6 +26,8 @@ import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
 import com.crafart.dataobjects.ProductDiscountDO;
+import com.crafart.dataobjects.ProductRatingDO;
+import com.crafart.dataobjects.ProductReviewDO;
 import com.crafart.dataobjects.ProductShippingDO;
 import com.crafart.dataobjects.ProductSpecialDO;
 import com.crafart.dataobjects.SellerDO;
@@ -52,6 +54,8 @@ import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
 import com.crafart.service.businessobjects.ProductDiscountBO;
+import com.crafart.service.businessobjects.ProductRatingBO;
+import com.crafart.service.businessobjects.ProductReviewBO;
 import com.crafart.service.businessobjects.ProductShippingBO;
 import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
@@ -91,7 +95,7 @@ public class BeanMapper {
 
 	}
 
-	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO) {
+	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO, AddressBO addressBO, StoreBO storeBO) {
 		sellerBO.setApproved(sellerDO.getApproved());
 		sellerBO.setCommission(sellerDO.getCommission());
 		sellerBO.setCompanyLogo(sellerDO.getCompanyLogo());
@@ -107,11 +111,13 @@ public class BeanMapper {
 		sellerBO.setGender(sellerDO.getGender());
 		sellerBO.setDateOfBirth(sellerDO.getDateOfBirth());
 		sellerBO.setPassword(sellerDO.getPassword());
+		sellerBO.setAddressBO(addressBO);
+		sellerBO.setStoreBO(storeBO);
 		return sellerBO;
 
 	}
 
-	public ProductDO mapProductBOToDO(ProductBO productBO, ProductDO productDO, WeightClassDO weightClassDO) {
+	public ProductDO mapProductBOToDO(ProductBO productBO, ProductDO productDO, WeightClassDO weightClassDO, List<SellerDO> sellerDOs) {
 		productDO.setCategoryId(productBO.getCategoryId());
 		productDO.setDateAvailable(productBO.getDateAvailable());
 		productDO.setDateAvailable(productBO.getDateAvailable());
@@ -125,7 +131,7 @@ public class BeanMapper {
 		productDO.setPrice(productBO.getPrice());
 		productDO.setProductId(productBO.getProductId());
 		productDO.setQuantity(productBO.getQuantity());
-		productDO.setSellerId(productBO.getSellerId());
+		productDO.setSellerDOs(sellerDOs);
 		productDO.setShipping(productBO.getShipping());
 		productDO.setSku(productBO.getSku());
 		productDO.setSortOrder(productBO.getSortOrder());
@@ -140,7 +146,7 @@ public class BeanMapper {
 		return productDO;
 	}
 
-	public ProductBO mapProductDOToBO(ProductDO productDO, ProductBO productBO) {
+	public ProductBO mapProductDOToBO(ProductDO productDO, ProductBO productBO, SellerBO sellerBO) {
 		productBO.setCategoryId(productDO.getCategoryId());
 		productBO.setDateAvailable(productDO.getDateAvailable());
 		productBO.setHeight(productDO.getHeight());
@@ -153,7 +159,7 @@ public class BeanMapper {
 		productBO.setPrice(productDO.getPrice());
 		productBO.setProductId(productDO.getProductId());
 		productBO.setQuantity(productDO.getQuantity());
-		productBO.setSellerId(productDO.getSellerId());
+		productBO.setSellerBO(sellerBO);
 		productBO.setShipping(productDO.getShipping());
 		productBO.setSku(productDO.getSku());
 		productBO.setSortOrder(productDO.getSortOrder());
@@ -235,6 +241,16 @@ public class BeanMapper {
 		customerDOs.add(customerDO);
 		addressDO.setCustomerDOs(customerDOs);
 		return addressDO;
+
+	}
+
+	public AddressBO mapAddressDOToBO(AddressDO addressDO, AddressBO addressBO) {
+		addressBO.setAddressId(addressDO.getAddressId());
+		addressBO.setCityId(addressDO.getCityId());
+		addressBO.setPinCode(addressDO.getPinCode());
+		addressBO.setStateId(addressDO.getStateId());
+		addressBO.setStreet(addressDO.getStreet());
+		return addressBO;
 
 	}
 
@@ -375,7 +391,7 @@ public class BeanMapper {
 		productSpecialDO.setProductSpecialId(productSpecialBO.getProductSpecialId());
 		productSpecialDO.setStartDate(productSpecialBO.getStartDate());
 		productSpecialDO.setProductDO(productDO);
-		productSpecialDO.setSellerId(productDO.getSellerId());
+		productSpecialDO.setSellerId(productDO.getSellerDOs().get(0).getSellerId());
 		return productSpecialDO;
 
 	}
@@ -387,7 +403,7 @@ public class BeanMapper {
 		productDiscountDO.setQuantity(productDiscountBO.getQuantity());
 		productDiscountDO.setStartDate(productDiscountBO.getStartDate());
 		productDiscountDO.setProductDO(productDO);
-		productDiscountDO.setSellerId(productDO.getSellerId());
+		productDiscountDO.setSellerId(productDO.getSellerDOs().get(0).getSellerId());
 		return productDiscountDO;
 
 	}
@@ -406,7 +422,7 @@ public class BeanMapper {
 		taxRateDO.setName(taxRateBO.getName());
 		taxRateDO.setProductDO(productDO);
 		taxRateDO.setRate(taxRateBO.getRate());
-		taxRateDO.setSellerId(productDO.getSellerId());
+		taxRateDO.setSellerId(productDO.getSellerDOs().get(0).getSellerId());
 		taxRateDO.setTaxRateId(taxRateBO.getSellerId());
 		taxRateDO.setType(taxRateBO.getType());
 		return taxRateDO;
@@ -417,7 +433,7 @@ public class BeanMapper {
 		taxRateBO.setName(taxRateDO.getName());
 		taxRateBO.setProductBO(productBO);
 		taxRateBO.setRate(taxRateDO.getRate());
-		taxRateBO.setSellerId(productBO.getSellerId());
+		taxRateBO.setSellerId(productBO.getSellerBO().getSellerId());
 		taxRateBO.setTaxRateId(taxRateDO.getSellerId());
 		taxRateBO.setType(taxRateDO.getType());
 		return taxRateBO;
@@ -521,7 +537,7 @@ public class BeanMapper {
 		return customerDO;
 	}
 
-	public CustomerBO mapCustomerDOToBO(CustomerDO customerDO, CustomerBO customerBO) {
+	public CustomerBO mapCustomerDOToBO(CustomerDO customerDO, CustomerBO customerBO, AddressBO addressBO, List<ContactBO> contactBOs) {
 		customerBO.setCustomerId(customerDO.getCustomerId());
 		customerBO.setDateOfBirth(customerDO.getDateOfBirth());
 		customerBO.setGender(customerDO.getGender());
@@ -530,6 +546,8 @@ public class BeanMapper {
 		customerBO.setLastName(customerDO.getLastName());
 		customerBO.setPassword(customerDO.getPassword());
 		customerBO.setStatus(customerDO.getStatus());
+		customerBO.setAddressBO(addressBO);
+		customerBO.setContactBOs(contactBOs);
 		return customerBO;
 
 	}
@@ -619,6 +637,27 @@ public class BeanMapper {
 		contactBO.setCustomerBO(customerBO);
 		contactBO.setSellerBO(sellerBO);
 		return contactBO;
+
+	}
+
+	public ProductRatingBO mapProductRatingDOToBO(ProductRatingDO productRatingDO, ProductRatingBO productRatingBO, CustomerBO customerBO, ProductBO productBO) {
+		productRatingBO.setCustomerBO(customerBO);
+		productRatingBO.setProductBO(productBO);
+		productRatingBO.setPoints(productRatingDO.getPoints());
+		productRatingBO.setProductRatingId(productRatingDO.getProductRatingId());
+		return productRatingBO;
+
+	}
+
+	public ProductReviewBO mapProductReviewDOToBO(ProductReviewDO productReviewDO, ProductReviewBO productReviewBO, CustomerBO customerBO, ProductBO productBO) {
+		productReviewBO.setAuthour(productReviewDO.getAuthour());
+		productReviewBO.setProductReviewId(productReviewDO.getProductReviewId());
+		productReviewBO.setRating(productReviewDO.getRating());
+		productReviewBO.setStatus(productReviewDO.getStatus());
+		productReviewBO.setText(productReviewDO.getText());
+		productReviewBO.setCustomerBO(customerBO);
+		productReviewBO.setProductBO(productBO);
+		return productReviewBO;
 
 	}
 }
