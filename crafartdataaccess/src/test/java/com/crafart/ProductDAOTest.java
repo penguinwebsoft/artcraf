@@ -3,6 +3,9 @@
  */
 package com.crafart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,9 +20,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.data.ProductDAOImpl;
 import com.crafart.data.SellerDAOImpl;
+import com.crafart.dataobjects.AddressDO;
+import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.StoreDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.LengthClassDAO;
@@ -72,20 +78,20 @@ public class ProductDAOTest {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	private ProductDO getProduct() {
-		SellerDO sellerDO = getSellerDO();
 		ProductDO productDO = new ProductDO();
+		List<SellerDO> sellerDOs = getSellerDO();
 		productDO.setCategoryId(1);
 		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");
 		productDO.setLength(63.2);
-		productDO.setLocation("from service");
+		productDO.setLocation("testing for fetching");
 		productDO.setMinimum(26.00);
 		productDO.setModel("service");
 		productDO.setPoints(5);
 		productDO.setPrice(12.2f);
+		productDO.setSellerDOs(sellerDOs);
 		productDO.setQuantity("2");
-		productDO.setSellerId(sellerDO.getSellerId());
 		productDO.setShipping(2);
 		productDO.setSku("aqaqaq");
 		productDO.setSortOrder("aes");
@@ -104,7 +110,7 @@ public class ProductDAOTest {
 	private LengthClassDO getLengthClass() {
 		LengthClassDO lengthClassDO = new LengthClassDO();
 		lengthClassDO.setTitle("from dao");
-		lengthClassDO.setIsActive(0); 
+		lengthClassDO.setIsActive(0);
 		try {
 			lengthClassDAOImpl.addLengthClass(lengthClassDO);
 		} catch (CrafartDataException cdExp) {
@@ -130,7 +136,8 @@ public class ProductDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private SellerDO getSellerDO() {
+	private List<SellerDO> getSellerDO() {
+		List<SellerDO> sellerDOs = new ArrayList<>();
 		SellerDO sellerDO = new SellerDO();
 		sellerDO.setFirstName("xxxx");
 		sellerDO.setLastName("yyyy");
@@ -145,14 +152,84 @@ public class ProductDAOTest {
 		sellerDO.setCommission("aaaa");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
+		sellerDO.setStoreDO(getStoreDOs(sellerDO));
+		sellerDOs.add(sellerDO);
+		sellerDO.setAddressDOs(getAddressDOs(sellerDOs));
+		sellerDO.setContactDOs(getContactDOs(sellerDOs));
+
+		/*
+		 * try { sellerDAOImpl.addSeller(sellerDO);
+		 * sellerDO.setSellerId(sellerDO.getSellerId());
+		 * sellerDOs.add(sellerDO); } catch (CrafartDataException cdExp) {
+		 * cdExp.printStackTrace(); }
+		 */
+		return sellerDOs;
+
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<ContactDO> getContactDOs(List<SellerDO> sellerDOs) {
+		List<ContactDO> contactDOs = new ArrayList<>();
+		ContactDO contactDO = new ContactDO();
+		contactDO.setContactTypeId(1);
+		contactDO.setContactValue("9999900000");
+		contactDO.setSellerDOs(sellerDOs);
+		ContactDO contactDO2 = new ContactDO();
+		contactDO2.setContactTypeId(2);
+		contactDO2.setContactValue("044-505000");
+		contactDO2.setSellerDOs(sellerDOs);
+		ContactDO contactDO3 = new ContactDO();
+		contactDO3.setContactTypeId(3);
+		contactDO3.setContactValue("seller@iii.com");
+		contactDO3.setSellerDOs(sellerDOs);
+		ContactDO contactDO4 = new ContactDO();
+		contactDO4.setContactTypeId(4);
+		contactDO4.setContactValue("seller@iii.com");
+		contactDO4.setSellerDOs(sellerDOs);
+		contactDOs.add(contactDO);
+		contactDOs.add(contactDO2);
+		contactDOs.add(contactDO3);
+		contactDOs.add(contactDO4);
+		return contactDOs;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private List<AddressDO> getAddressDOs(List<SellerDO> sellerDOs) {
+		AddressDO addressDO = new AddressDO();
+		addressDO.setCityId(1);
+		addressDO.setPinCode("001100");
+		addressDO.setSellerDOs(sellerDOs);
+		addressDO.setStateId(2);
+		addressDO.setStreet("qwertyuiop");
+		List<AddressDO> addressDOs = new ArrayList<>();
+		addressDOs.add(addressDO);
+		return addressDOs;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private StoreDO getStoreDOs(SellerDO sellerDO) {
+		StoreDO storeDO = new StoreDO();
+		storeDO.setName("store craf");
+		storeDO.setStoreDescription("penguin store");
+		storeDO.setStoreReturn("test desc");
+		storeDO.setStoreUrl("acx");
+		storeDO.setSellerDO(sellerDO);
+		/*
+		 * List<StoreDO> storeDOs = new ArrayList<>(); storeDOs.add(storeDO);
+		 */
+		return storeDO;
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetProductDetails() {
 		try {
-			sellerDAOImpl.addSeller(sellerDO);
-			sellerDO.setSellerId(sellerDO.getSellerId());
+			ProductDO productDO = productDAOImpl.getProductDetail(20141);
+			Assert.assertNotNull(productDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
+			Assert.fail();
 		}
-		return sellerDO;
-
 	}
 
 }

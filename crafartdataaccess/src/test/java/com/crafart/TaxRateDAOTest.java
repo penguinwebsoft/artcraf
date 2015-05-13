@@ -3,6 +3,9 @@
  */
 package com.crafart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,7 +71,9 @@ public class TaxRateDAOTest {
 		TaxRateDO taxRateDO = new TaxRateDO();
 		ProductDO productDO = getProduct();
 		taxRateDO.setProductDO(productDO);
-		taxRateDO.setSellerId(productDO.getSellerId());
+		for (SellerDO sellerDO : productDO.getSellerDOs()) {
+			taxRateDO.setSellerId(sellerDO.getSellerId());
+		}
 		taxRateDO.setName("qqq");
 		taxRateDO.setRate(1);
 		taxRateDO.setType("nnnn");
@@ -78,9 +83,11 @@ public class TaxRateDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public ProductDO getProduct() {
 		SellerDO sellerDO = getSellerDO();
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
 		ProductDO productDO = new ProductDO();
 		productDO.setCategoryId(1);
-		productDO.setSellerId(sellerDO.getSellerId());
+		productDO.setSellerDOs(sellerDOs);
 		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");

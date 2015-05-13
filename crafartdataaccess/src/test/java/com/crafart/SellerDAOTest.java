@@ -111,7 +111,7 @@ public class SellerDAOTest {
 		contactDO3.setContactValue("seller@iii.com");
 		contactDO3.setSellerDOs(sellerDOs);
 		ContactDO contactDO4 = new ContactDO();
-		contactDO4.setContactTypeId(3);
+		contactDO4.setContactTypeId(4);
 		contactDO4.setContactValue("seller@iii.com");
 		contactDO4.setSellerDOs(sellerDOs);
 		contactDOs.add(contactDO);
@@ -146,6 +146,21 @@ public class SellerDAOTest {
 		 * List<StoreDO> storeDOs = new ArrayList<>(); storeDOs.add(storeDO);
 		 */
 		return storeDO;
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetSellerDetail() {
+		try {
+			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(31661);
+			List<ContactDO> contactDOs = sellerDO.getContactDOs();
+			for (ContactDO contactDO : contactDOs) {
+				System.out.print("\n" + contactDO.getContactValue());
+			}
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 }

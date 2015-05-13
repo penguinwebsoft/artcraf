@@ -134,9 +134,11 @@ public class ProductShippingDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public ProductDO getProduct() {
 		SellerDO sellerDO = getSellerDO();
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
 		ProductDO productDO = new ProductDO();
 		productDO.setCategoryId(1);
-		productDO.setSellerId(sellerDO.getSellerId());
+		productDO.setSellerDOs(sellerDOs);
 		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");
