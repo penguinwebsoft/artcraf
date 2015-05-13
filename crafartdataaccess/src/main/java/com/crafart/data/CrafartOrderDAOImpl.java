@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -75,5 +77,26 @@ public class CrafartOrderDAOImpl implements CrafartOrderDAO {
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while updating Crafart order", hExp);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<CrafartOrderDO> getCustomerOrder(long customerId) throws CrafartDataException {
+		List<CrafartOrderDO> crafartOrderDOs = new ArrayList<>();
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from CrafartOrderDO where customer_id = :customer_id");
+			query.setLong("customer_id", customerId);
+			crafartOrderDOs = (List<CrafartOrderDO>) query.list();
+			session.getTransaction().commit();
+			session.close();
+		} catch (EmptyResultDataAccessException hExp) {
+			return null;
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("Error while retriving order details", hExp);
+		}
+		return crafartOrderDOs;
 	}
 }
