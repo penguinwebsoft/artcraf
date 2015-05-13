@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crafart.inter.service.ManageCrafartOrderService;
 import com.crafart.service.businessobjects.CrafartOrderBO;
+import com.crafart.service.businessobjects.CustomerBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -80,6 +81,27 @@ public class CrafartOrderController {
 		ModelMap modelMap = new ModelMap();
 		CrafartOrderBO crafartOrderBO = (CrafartOrderBO) session.getAttribute("crafartOrderBO");
 		modelMap.addAttribute(crafartOrderBO);
+		return modelMap;
+	}
+
+	@RequestMapping(value = { "/getCustomerOrderBO" }, method = RequestMethod.POST)
+	public @ResponseBody
+	ModelMap getCustomerOrderBO(HttpSession session) {
+		log.info("********getCustomerorderBO********");
+		ModelMap modelMap = new ModelMap();
+		List<CrafartOrderBO> crafartOrderBOs = new ArrayList<>();
+		CustomerBO customerBO = (CustomerBO) session.getAttribute("customerProfile");
+		try {
+			crafartOrderBOs = manageCrafartOrderServiceImpl.getCustomerOrder(customerBO.getCustomerId());
+			log.info(crafartOrderBOs.isEmpty());
+			if (crafartOrderBOs.isEmpty()){
+				modelMap.addAttribute("result", "empty");
+				log.info("empty********");
+			}
+			modelMap.addAttribute("crafartOrderBOs", crafartOrderBOs);
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application error while getting customer order details", crafartServiceException);
+		}
 		return modelMap;
 	}
 }

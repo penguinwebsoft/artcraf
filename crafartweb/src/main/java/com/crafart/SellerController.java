@@ -63,7 +63,6 @@ public class SellerController {
 		try {
 			sellerBO.setPassword(bCryptPasswordEncoder.encode(sellerBO.getPassword()));
 			manageSellerServiceImpl.addSeller(sellerBO);
-			session.setAttribute("sellerprofile", sellerBO);
 			modelMap.addAttribute("result", true);
 			modelMap.addAttribute("message", "saved successfully");
 		} catch (CrafartServiceException crafartServiceException) {
@@ -137,9 +136,11 @@ public class SellerController {
 			}
 			ContactBO contactBO = manageSellerServiceImpl.findByEmailId(email);
 			if (contactBO != null && contactBO.getContactValue().equals(email)) {
-				if (bCryptPasswordEncoder.matches(password, contactBO.getSellerBO().getPassword()))
+				SellerBO sellerBO = contactBO.getSellerBO();
+				if (bCryptPasswordEncoder.matches(password, contactBO.getSellerBO().getPassword())) {
+					session.setAttribute("sellerprofile", sellerBO);
 					modelMap.addAttribute("message", "success");
-				else
+				} else
 					modelMap.addAttribute("message", "password is mismatch");
 			} else {
 				modelMap.addAttribute("message", "User not exist");
@@ -147,6 +148,20 @@ public class SellerController {
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application error while checking normal login credentials", crafartServiceException);
 		}
+		return modelMap;
+
+	}
+
+	@RequestMapping(value = "getSellerDetails", method = RequestMethod.POST)
+	public @ResponseBody
+	ModelMap getSeller(HttpSession session) {
+		ModelMap modelMap = new ModelMap();
+		SellerBO sellerBO = (SellerBO) session.getAttribute("sellerprofile");
+		AddressBO addressBO = sellerBO.getAddressBO();
+		StoreBO storeBO = sellerBO.getStoreBO();
+		modelMap.addAttribute("SellerBO", sellerBO);
+		modelMap.addAttribute("AddressBO", addressBO);
+		modelMap.addAttribute("StoreBO", storeBO);
 		return modelMap;
 
 	}
