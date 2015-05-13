@@ -133,7 +133,7 @@ public class ManageSellerTest {
 	public void testFindByEmail() {
 		try {
 			ContactBO contactBO = manageSellerServiceImpl.findByEmailId("sam@gmail.com");
-			System.out.print(contactBO.getContactId()+"\t"+ contactBO.getSellerBO().getSellerId());
+			System.out.print(contactBO.getContactId()+"\t"+ contactBO.getSellerBO().getSellerId()+"\t"+contactBO.getSellerBO().getAddressBO().getAddressId()+"\t"+contactBO.getSellerBO().getStoreBO().getStoreId());
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

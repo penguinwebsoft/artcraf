@@ -93,7 +93,7 @@ public class ManageProductServiceTest {
 		productBO.setPoints(5);
 		productBO.setPrice(12.2f);
 		productBO.setQuantity("2");
-		productBO.setSellerId(sellerBO.getSellerId());
+		productBO.setSellerBO(sellerBO);
 		productBO.setShipping(2);
 		productBO.setSku("aqaqaq");
 		productBO.setSortOrder("aes");
@@ -283,7 +283,6 @@ public class ManageProductServiceTest {
 		return storeBO;
 
 	}
-	
 
 	private List<ContactBO> getContactBOs(SellerBO sellerBO) {
 		List<ContactBO> contactBOs = new ArrayList<>();
@@ -303,6 +302,21 @@ public class ManageProductServiceTest {
 		contactBOs.add(contactBO2);
 		contactBOs.add(contactBO3);
 		return contactBOs;
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetProductDetails() {
+		try {
+			ProductBO productBO = manageProductServiceImpl.getProductDetail(20881);
+			System.out.print(productBO.getSellerBO().getStoreBO().getStoreDescription());
+			Assert.assertNotNull(productBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		}
 	}
 
 }
