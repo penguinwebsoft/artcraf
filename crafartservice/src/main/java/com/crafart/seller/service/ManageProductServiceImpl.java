@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
 import com.crafart.dataobjects.ProductDiscountDO;
 import com.crafart.dataobjects.ProductShippingDO;
 import com.crafart.dataobjects.ProductSpecialDO;
+import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.TaxRateDO;
 import com.crafart.dataobjects.TaxRuleDO;
 import com.crafart.dataobjects.WeightClassDO;
@@ -32,12 +34,15 @@ import com.crafart.inter.data.TaxRateDAO;
 import com.crafart.inter.data.TaxRuleDAO;
 import com.crafart.inter.data.WeightClassDAO;
 import com.crafart.inter.service.ManageProductService;
+import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
 import com.crafart.service.businessobjects.ProductDiscountBO;
 import com.crafart.service.businessobjects.ProductShippingBO;
 import com.crafart.service.businessobjects.ProductSpecialBO;
+import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.TaxRateBO;
 import com.crafart.service.businessobjects.TaxRuleBO;
 import com.crafart.service.businessobjects.WeightClassBO;
@@ -93,8 +98,12 @@ public class ManageProductServiceImpl implements ManageProductService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addProduct(ProductBO productBO) throws CrafartServiceException {
 		WeightClassBO weightClassBO = productBO.getWeightClassBO();
+		SellerBO sellerBO = productBO.getSellerBO();
+		SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
 		WeightClassDO weightClassDO = beanMapper.mapWeightClassBOToDO(weightClassBO, new WeightClassDO());
-		ProductDO productDO = beanMapper.mapProductBOToDO(productBO, new ProductDO(), weightClassDO);
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
+		ProductDO productDO = beanMapper.mapProductBOToDO(productBO, new ProductDO(), weightClassDO, sellerDOs);
 		ProductDescriptionBO productDescriptionBO = productBO.getProductDescriptionBO();
 		ProductDescriptionDO productDescriptionDO = beanMapper.mapProductDescriptionBOToDO(productDescriptionBO, new ProductDescriptionDO(), productDO);
 		productDO.setWeightClassDO(weightClassDO);
@@ -168,6 +177,29 @@ public class ManageProductServiceImpl implements ManageProductService {
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("error in adding product detail to DB", crafartDataException);
 		}
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public ProductBO getProductDetail(long productId) throws CrafartServiceException {
+		ProductBO productBO = new ProductBO();
+		try {
+			ProductDO productDO = productDAOImpl.getProductDetail(productId);
+			SellerDO sellerDO = productDO.getSellerDOs().get(0);
+			List<AddressDO> addressDOs = sellerDO.getAddressDOs();
+			for (AddressDO addressDO : addressDOs) {
+				productBO = beanMapper.mapProductDOToBO(
+						productDO,
+						new ProductBO(),
+						beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), beanMapper.mapAddressDOToBO(addressDO, new AddressBO()),
+								beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(), null)));
+			}
+
+		} catch (CrafartDataException cdExp) {
+			throw new CrafartServiceException("Error while retriving product details", cdExp);
+		}
+		return productBO;
+
 	}
 
 }

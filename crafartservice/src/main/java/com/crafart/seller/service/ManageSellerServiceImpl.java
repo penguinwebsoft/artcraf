@@ -21,8 +21,10 @@ import com.crafart.inter.data.AddressDAO;
 import com.crafart.inter.data.ContactDAO;
 import com.crafart.inter.data.SellerDAO;
 import com.crafart.inter.service.ManageSellerService;
+import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
 
@@ -53,7 +55,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 
 	@Autowired
 	private ContactDAO contactDAOImpl;
-	
+
 	/**
 	 * mapping is done from BO to DO by mappSellerBOToDO method after mapping BO
 	 * to DO we are calling dataaccess addSeller method using sellerDO
@@ -117,7 +119,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 			throw new CrafartServiceException("updating new seller failed from service is ", cdExp);
 		}
 	}
-	
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public ContactBO findByEmailId(String eMailId) throws CrafartServiceException {
@@ -128,14 +130,32 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 				return null;
 			List<SellerDO> sellerDOs = contactDO.getSellerDOs();
 			SellerBO sellerBO = new SellerBO();
+			AddressBO addressBO = new AddressBO();
 			for (SellerDO sellerDO : sellerDOs) {
-				sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO());
+				for (AddressDO addressDO : sellerDO.getAddressDOs()) {
+					addressBO = beanMapper.mapAddressDOToBO(addressDO, new AddressBO());
+				}
+				StoreBO storeBO = beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(),null);
+				sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), addressBO, storeBO);
 			}
 			contactBO = beanMapper.mapContactDOToBO(contactDO, new ContactBO(), null, sellerBO);
 		} catch (CrafartDataException cdExp) {
 			throw new CrafartServiceException("Error while Getting emailId", cdExp);
 		}
 		return contactBO;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public SellerBO getSellerContacts(long sellerId) throws CrafartServiceException {
+		SellerBO sellerBO = new SellerBO();
+		try {
+			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(sellerId);
+			sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), null, null);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+		}
+		return sellerBO;
 	}
 
 }
