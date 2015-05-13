@@ -15,4 +15,6 @@ public interface ManageProductService {
 
 	public void addProduct(ProductBO productBO) throws CrafartServiceException;
 
+	public ProductBO getProductDetail(long productId) throws CrafartServiceException;
+
 }

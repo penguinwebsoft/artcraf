@@ -19,4 +19,9 @@ public interface ManageCustomerService {
 	public void addCustomerDetail(CustomerBO customerBO) throws CrafartServiceException;
 
 	public ContactBO findByEmailId(String eMailId) throws CrafartServiceException;
+
+	public CustomerBO getCustomerDetails(long customerId) throws CrafartServiceException;
+
+	public void updateCustomerDetail(CustomerBO customerBO) throws CrafartServiceException;
+
 }
