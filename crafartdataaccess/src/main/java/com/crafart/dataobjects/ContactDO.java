@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,7 +42,7 @@ public class ContactDO implements Serializable, Cloneable {
 	@Column(name = "contact_value")
 	private String contactValue;
 
-	@ManyToMany(mappedBy = "contactDOs")
+	@ManyToMany(mappedBy = "contactDOs", fetch = FetchType.EAGER)
 	private List<CustomerDO> customerDOs = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "contactDOs")
