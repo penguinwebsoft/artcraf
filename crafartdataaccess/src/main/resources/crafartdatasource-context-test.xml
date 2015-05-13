@@ -59,6 +59,8 @@
 				<value>com.crafart.dataobjects.ContactTypeDO</value>
 				<value>com.crafart.dataobjects.SellerAddressDO</value>
 				<value>com.crafart.dataobjects.SellerContactDO</value>
+				<value>com.crafart.dataobjects.ProductReviewDO</value>
+				<value>com.crafart.dataobjects.ProductRatingDO</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
