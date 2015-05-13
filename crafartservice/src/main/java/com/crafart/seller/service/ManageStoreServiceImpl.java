@@ -14,7 +14,6 @@ import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.StoreDAO;
 import com.crafart.inter.service.ManageStoreService;
-import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
@@ -55,10 +54,11 @@ public class ManageStoreServiceImpl implements ManageStoreService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public StoreBO checkStoreUrl(String storeUrl) throws CrafartServiceException {
-		StoreBO storeBO = new StoreBO();
+		StoreBO storeBO = null;
 		try {
 			StoreDO storeDO = storeDAOImpl.checkStoreUrl(storeUrl);
-			storeBO = beanMapper.mapStoreDOToBO(storeDO, new StoreBO(), beanMapper.mapSellerDOToBO(storeDO.getSellerDO(), new SellerBO()));
+			if (null != storeDO)
+				storeBO = beanMapper.mapStoreDOToBO(storeDO, new StoreBO(), null);
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("Exception while getting store url", crafartDataException);
 		}
