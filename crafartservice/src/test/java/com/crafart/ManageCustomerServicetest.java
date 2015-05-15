@@ -50,6 +50,35 @@ public class ManageCustomerServicetest {
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testUpdateCustomerDetails() {
+		CustomerBO customerBO = getCustomer();
+		try {
+			customerServiceImpl.addCustomerDetail(customerBO);
+			//failing test case if the insertion get failed, i.e if customer id is 0
+			if(customerBO.getCustomerId() == 0){
+				Assert.fail();
+			}
+			System.out.print(customerBO.getCustomerId());
+			customerBO.setFirstName("update");
+			AddressBO addressBO = customerBO.getAddressBO();
+			addressBO.setStreet("krishna college");
+			List<ContactBO> contactBOs = customerBO.getContactBOs();
+			for (ContactBO contactBO : contactBOs) {
+				if (contactBO.getContactTypeId() == 1)
+					contactBO.setContactValue("15243");
+			}
+			customerServiceImpl.updateCustomerDetail(customerBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		} catch (Exception exp) {
+			exp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private CustomerBO getCustomer() {
 		CustomerBO customerBO = new CustomerBO();
@@ -57,7 +86,7 @@ public class ManageCustomerServicetest {
 		customerBO.setDateOfBirth("00-00-1000");
 		customerBO.setFirstName("satur");
 		customerBO.setGender(0);
-		customerBO.setLastName("day");
+		customerBO.setLastName("monday");
 		customerBO.setIp("120000001200");
 		customerBO.setPassword("klklkl");
 		customerBO.setStatus(1);
@@ -102,11 +131,29 @@ public class ManageCustomerServicetest {
 	@Rollback(true)
 	public void testFindByEmail() {
 		try {
-			@SuppressWarnings("unused")
 			ContactBO contactBO = customerServiceImpl.findByEmailId("karthikool12@gmail.com");
+			CustomerBO customerBO = contactBO.getCustomerBO();
+			for (ContactBO contactBO2 : customerBO.getContactBOs()) {
+				System.out.println(contactBO2.getContactValue());
+			}
+			System.out.println(customerBO.getAddressBO().getAddressId());
+			System.out.println(customerBO.getFirstName() + "\t" + customerBO.getCustomerId());
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetCustomerDetail() {
+		try {
+			CustomerBO customerBO = customerServiceImpl.getCustomerDetails(4881);
+			for (ContactBO contactBO : customerBO.getContactBOs()) {
+				System.out.println(contactBO.getContactValue());
+			}
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
 		}
 	}
 }

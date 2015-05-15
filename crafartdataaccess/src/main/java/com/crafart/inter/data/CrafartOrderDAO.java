@@ -19,4 +19,6 @@ public interface CrafartOrderDAO {
 	public List<CrafartOrderDO> getCrafartOrder() throws CrafartDataException;
 
 	public void updateCrafartOrder(CrafartOrderDO crafartOrderDO) throws CrafartDataException;
+	
+	public List<CrafartOrderDO> getCustomerOrder(long customerId) throws CrafartDataException;
 }

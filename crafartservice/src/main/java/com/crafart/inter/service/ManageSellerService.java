@@ -21,4 +21,6 @@ public interface ManageSellerService {
 
 	public ContactBO findByEmailId(String eMailId) throws CrafartServiceException;
 
+	public SellerBO getSellerContacts(long sellerId) throws CrafartServiceException;
+
 }

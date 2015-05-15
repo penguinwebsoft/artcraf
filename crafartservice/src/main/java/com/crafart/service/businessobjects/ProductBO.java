@@ -36,7 +36,7 @@ public class ProductBO implements Serializable {
 
 	private String image;
 
-	private long sellerId;
+	private SellerBO sellerBO;
 
 	private long shipping;
 
@@ -156,14 +156,6 @@ public class ProductBO implements Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-
-	public long getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(long sellerId) {
-		this.sellerId = sellerId;
 	}
 
 	public long getShipping() {
@@ -316,6 +308,14 @@ public class ProductBO implements Serializable {
 
 	public void setTaxRateBO(TaxRateBO taxRateBO) {
 		this.taxRateBO = taxRateBO;
+	}
+
+	public SellerBO getSellerBO() {
+		return sellerBO;
+	}
+
+	public void setSellerBO(SellerBO sellerBO) {
+		this.sellerBO = sellerBO;
 	}
 
 }

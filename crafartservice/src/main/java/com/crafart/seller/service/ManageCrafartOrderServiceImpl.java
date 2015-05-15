@@ -6,6 +6,7 @@ package com.crafart.seller.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,6 +16,7 @@ import com.crafart.dataobjects.CrafartOrderDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CrafartOrderDAO;
 import com.crafart.inter.service.ManageCrafartOrderService;
+import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CrafartOrderBO;
@@ -42,6 +44,13 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 	@Autowired
 	private BeanMapper beanMapper;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.crafart.inter.service.ManageCrafartOrderService#getCrafartOrder(com
+	 * .crafart.service.businessobjects.SellerBO)
+	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public List<CrafartOrderBO> getCrafartOrder(SellerBO sellerBO) throws CrafartServiceException {
@@ -49,17 +58,56 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 		try {
 			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl.getCrafartOrder();
 			for (CrafartOrderDO crafartOrderDO : crafartOrderDOs) {
-				CrafartOrderBO crafartOrderBO = beanMapper.mapCrafartOrderDOToBO(crafartOrderDO, new CrafartOrderBO(),
-						beanMapper.mapCommissionDOToBO(crafartOrderDO.getCommissionDO(), new CommissionBO()), beanMapper.mapCourierDOToBO(crafartOrderDO.getCourierDO(), new CourierBO()),
-						beanMapper.mapCrafartUserDOToBO(crafartOrderDO.getCrafartUserDO(), new CrafartUserBO()), beanMapper.mapCurrencyDOToBO(crafartOrderDO.getCurrencyDO(), new CurrencyBO()),
-						beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO()),
-						beanMapper.mapInvoiceDOToBO(crafartOrderDO.getInvoiceDO(), new InvoiceBO(), sellerBO, beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO())),
-						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO()), beanMapper.mapStoreDOToBO(crafartOrderDO.getStoreDO(), new StoreBO(), sellerBO),
-						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(), beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO())));
+				CrafartOrderBO crafartOrderBO = beanMapper.mapCrafartOrderDOToBO(
+						crafartOrderDO,
+						new CrafartOrderBO(),
+						beanMapper.mapCommissionDOToBO(crafartOrderDO.getCommissionDO(), new CommissionBO()),
+						beanMapper.mapCourierDOToBO(crafartOrderDO.getCourierDO(), new CourierBO()),
+						beanMapper.mapCrafartUserDOToBO(crafartOrderDO.getCrafartUserDO(), new CrafartUserBO()),
+						beanMapper.mapCurrencyDOToBO(crafartOrderDO.getCurrencyDO(), new CurrencyBO()),
+						beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null),
+						beanMapper.mapInvoiceDOToBO(crafartOrderDO.getInvoiceDO(), new InvoiceBO(), sellerBO,
+								beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null)),
+						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO()), beanMapper.mapStoreDOToBO(crafartOrderDO.getStoreDO(), new StoreBO(), sellerBO),
+						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(), beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO())));
 				crafartOrderBOs.add(crafartOrderBO);
 			}
 		} catch (CrafartDataException cdExp) {
 			throw new CrafartServiceException("Error while retriving order details", cdExp);
+		}
+		return crafartOrderBOs;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public List<CrafartOrderBO> getCustomerOrder(long customerId) throws CrafartServiceException {
+		List<CrafartOrderBO> crafartOrderBOs = new ArrayList<>();
+		try {
+			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl.getCustomerOrder(customerId);
+			if (crafartOrderDOs == null)
+				return null;
+			for (CrafartOrderDO crafartOrderDO : crafartOrderDOs) {
+				CrafartOrderBO crafartOrderBO = beanMapper.mapCrafartOrderDOToBO(
+						crafartOrderDO,
+						new CrafartOrderBO(),
+						beanMapper.mapCommissionDOToBO(crafartOrderDO.getCommissionDO(), new CommissionBO()),
+						beanMapper.mapCourierDOToBO(crafartOrderDO.getCourierDO(), new CourierBO()),
+						beanMapper.mapCrafartUserDOToBO(crafartOrderDO.getCrafartUserDO(), new CrafartUserBO()),
+						beanMapper.mapCurrencyDOToBO(crafartOrderDO.getCurrencyDO(), new CurrencyBO()),
+						beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null),
+						beanMapper.mapInvoiceDOToBO(crafartOrderDO.getInvoiceDO(), new InvoiceBO(),
+								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO()),
+								beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null)),
+						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO()),
+						beanMapper.mapStoreDOToBO(crafartOrderDO.getStoreDO(), new StoreBO(),
+								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO())),
+						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(), beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO())));
+				crafartOrderBOs.add(crafartOrderBO);
+			}
+
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
 		}
 		return crafartOrderBOs;
 	}

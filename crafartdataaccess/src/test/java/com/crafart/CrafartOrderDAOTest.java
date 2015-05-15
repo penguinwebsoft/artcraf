@@ -138,7 +138,9 @@ public class CrafartOrderDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public CrafartOrderDO getCrafartOrder() {
 		SellerDO sellerDO = getSeller();
-		ProductDO productDO = getProduct(sellerDO.getSellerId());
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
+		ProductDO productDO = getProduct(sellerDOs);
 		CurrencyDO currencyDO = getCurrency();
 		CommissionDO commissionDO = getCommission();
 		CrafartUserDO crafartUserDO = getCrafartUser();
@@ -343,7 +345,7 @@ public class CrafartOrderDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private ProductDO getProduct(long sellerId) {
+	private ProductDO getProduct(List<SellerDO> sellerDOs) {
 		ProductDO productDO = new ProductDO();
 		productDO.setCategoryId(1);
 		productDO.setDateAvailable("03-10-1982");
@@ -356,7 +358,7 @@ public class CrafartOrderDAOTest {
 		productDO.setPoints(5);
 		productDO.setPrice(12.2f);
 		productDO.setQuantity("2");
-		productDO.setSellerId(sellerId);
+		productDO.setSellerDOs(sellerDOs);
 		productDO.setShipping(2);
 		productDO.setSku("aqaqaq");
 		productDO.setSortOrder("aes");
@@ -404,6 +406,17 @@ public class CrafartOrderDAOTest {
 			Assert.fail();
 		}
 		return weightClassDO;
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetCustomerOrder() {
+		try {
+			crafartOrderDAOImpl.getCustomerOrder(1041);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 }

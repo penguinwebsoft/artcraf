@@ -56,6 +56,31 @@ public class CustomerDAOTest {
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testUpdateSeller() {
+		try {
+			CustomerDO customerDO = getCustomer();
+			customerDAOImpl.addCustomer(customerDO);
+			customerDO.setFirstName("montueswed");
+			customerDO.setIp("1651csc16516");
+			List<AddressDO> addressDOs = customerDO.getAddressDOs();
+			for (AddressDO addressDO : addressDOs) {
+				addressDO.setStreet("nmk tharapuram");
+			}
+			List<ContactDO> contactDOs = customerDO.getContactDOs();
+			for (ContactDO contactDO : contactDOs) {
+				if (contactDO.getContactTypeId() == 1)
+					contactDO.setContactValue("1230001230");
+
+			}
+			customerDAOImpl.updateCustomerDetails(customerDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private CustomerDO getCustomer() {
 		CustomerDO customerDO = new CustomerDO();
@@ -104,6 +129,21 @@ public class CustomerDAOTest {
 		contactDOs.add(contactDO2);
 		contactDOs.add(contactDO3);
 		return contactDOs;
+	}
+
+	@Test
+	@Rollback(true)
+	public void tesCustomerDetails() {
+		try {
+			CustomerDO customerDO = customerDAOImpl.getCustomerDetails(4881);
+			List<AddressDO> addressDOs = customerDO.getAddressDOs();
+			for (AddressDO addressDO : addressDOs) {
+				System.out.println(addressDO.getAddressId());
+			}
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 }

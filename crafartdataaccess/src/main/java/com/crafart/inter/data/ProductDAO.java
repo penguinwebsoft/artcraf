@@ -15,5 +15,7 @@ import com.crafart.exception.CrafartDataException;
 @Repository("productDAO")
 public interface ProductDAO {
 
-	public int addProduct(ProductDO productDO) throws CrafartDataException;
+	public void addProduct(ProductDO productDO) throws CrafartDataException;
+
+	public ProductDO getProductDetail(long productId) throws CrafartDataException;
 }

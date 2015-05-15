@@ -79,13 +79,17 @@ public class ProductSpecialDAOTest {
 		productSpecialDO.setStartDate("11/11/1111");
 		productSpecialDO.setPrice(112.5f);
 		productSpecialDO.setProductDO(productDO);
-		productSpecialDO.setSellerId(productDO.getSellerId());
+		for (SellerDO sellerDO : productDO.getSellerDOs()) {
+			productSpecialDO.setSellerId(sellerDO.getSellerId());
+		}
 		ProductSpecialDO productSpecialDO2 = new ProductSpecialDO();
 		productSpecialDO2.setEndDate("12/03/2000");
 		productSpecialDO2.setStartDate("11/11/1111");
 		productSpecialDO2.setPrice(112.5f);
 		productSpecialDO2.setProductDO(productDO);
-		productSpecialDO2.setSellerId(productDO.getSellerId());
+		for (SellerDO sellerDO : productDO.getSellerDOs()) {
+			productSpecialDO2.setSellerId(sellerDO.getSellerId());
+		}
 		productSpecialDOs.add(productSpecialDO2);
 		productSpecialDOs.add(productSpecialDO);
 		return productSpecialDOs;
@@ -94,10 +98,11 @@ public class ProductSpecialDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public ProductDO getProduct() {
 		SellerDO sellerDO = getSellerDO();
-
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
 		ProductDO productDO = new ProductDO();
 		productDO.setCategoryId(1);
-		productDO.setSellerId(sellerDO.getSellerId());
+		productDO.setSellerDOs(sellerDOs);
 		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");

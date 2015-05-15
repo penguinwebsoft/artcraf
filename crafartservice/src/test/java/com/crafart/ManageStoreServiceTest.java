@@ -90,8 +90,7 @@ public class ManageStoreServiceTest {
 	@Rollback(true)
 	public void testCheckStoreUrl() {
 		try {
-			StoreBO storeBO = manageStoreServiceImpl.checkStoreUrl("sam");
-			System.out.print(storeBO.getSellerBO().getSellerId());
+			manageStoreServiceImpl.checkStoreUrl("sam");
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

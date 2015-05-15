@@ -3,8 +3,6 @@
  */
 package com.crafart;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +15,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.inter.service.ManageCrafartOrderService;
-import com.crafart.service.businessobjects.CrafartOrderBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.exception.CrafartServiceException;
 
@@ -40,10 +37,18 @@ public class ManageCrafartOrderServiceTest {
 	public void testGetCrafartOrder() {
 		SellerBO sellerBO = new SellerBO();
 		try {
-			List<CrafartOrderBO> crafartOrderBOs = manageCrafartOrderServiceImpl.getCrafartOrder(sellerBO);
-			for (CrafartOrderBO crafartOrderBO : crafartOrderBOs) {
-				System.out.print(crafartOrderBO.getTotal()+"\n");
-			}
+			manageCrafartOrderServiceImpl.getCrafartOrder(sellerBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetCustomerOrder() {
+		try {
+			manageCrafartOrderServiceImpl.getCustomerOrder(1041);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

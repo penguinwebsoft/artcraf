@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crafart.inter.service.ManageProductService;
@@ -37,7 +39,7 @@ public class ProductController {
 	long addProduct(@RequestBody ProductBO productBO, HttpServletRequest httpServletRequest, HttpSession httpSession) {
 		try {
 			SellerBO sellerBO = (SellerBO) httpSession.getAttribute("sellerprofile");
-			productBO.setSellerId(sellerBO.getSellerId());
+			productBO.setSellerBO(sellerBO);
 			manageProductServiceImpl.addProduct(productBO);
 		} catch (CrafartServiceException serviceException) {
 			log.error("Application-error while adding product for product_id " + productBO.getProductId(), serviceException);
@@ -45,4 +47,18 @@ public class ProductController {
 		return productBO.getProductId();
 	}
 
+	@RequestMapping("/getProductDetails")
+	public @ResponseBody
+	ModelMap getProductDetails(@RequestParam(value = "productId") long productId, HttpSession httpSession) {
+		ModelMap modelMap = new ModelMap();
+		try {
+			ProductBO productBO = manageProductServiceImpl.getProductDetail(productId);
+			modelMap.addAttribute("productBO", productBO);
+		} catch (CrafartServiceException csExp) {
+			log.error("Application-error while gettting product details", csExp);
+		} catch (Exception exp) {
+			log.error("Exception while getting product details");
+		}
+		return modelMap;
+	}
 }

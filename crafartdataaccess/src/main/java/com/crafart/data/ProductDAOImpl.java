@@ -5,9 +5,9 @@ package com.crafart.data;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -43,17 +43,34 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public int addProduct(ProductDO productDO) throws CrafartDataException {
+	public void addProduct(ProductDO productDO) throws CrafartDataException {
 		try {
 			Session session = this.sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
-			session.persist(productDO);
-			transaction.commit();
+			session.beginTransaction();
+			session.save(productDO);
+			session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while adding product ", hExp);
+		} catch (Exception exp) {
+			exp.printStackTrace();
 		}
-		return 0;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public ProductDO getProductDetail(long productId) throws CrafartDataException {
+		ProductDO productDO = new ProductDO();
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from ProductDO where product_id = :product_id");
+			query.setLong("product_id", productId);
+			productDO = (ProductDO) query.uniqueResult();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("Error while retriving product details", hExp);
+		}
+		return productDO;
 	}
 
 }

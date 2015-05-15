@@ -1,6 +1,7 @@
 package com.crafart.data;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,22 @@ public class SellerDAOImpl implements SellerDAO {
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Erroe while updating table", hExp);
 		}
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public SellerDO getSellerContacts(long seller_id) throws CrafartDataException {
+		SellerDO sellerDO = new SellerDO();
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from SellerDO where seller_id = :seller_id");
+			query.setLong("seller_id", seller_id);
+			sellerDO = (SellerDO) query.uniqueResult();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("Error while getting seller detail", hExp);
+		}
+		return sellerDO;
 	}
 
 }

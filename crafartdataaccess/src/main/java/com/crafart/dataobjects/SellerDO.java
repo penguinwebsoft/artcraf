@@ -57,6 +57,9 @@ public class SellerDO implements Serializable, Cloneable {
 	@JoinTable(name = "SELLER_CONTACT", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "CONTACT_ID") })
 	private List<ContactDO> contactDOs = new ArrayList<>();
 
+	@ManyToMany(mappedBy = "sellerDOs")
+	private List<ProductDO> productDOs = new ArrayList<>();
+
 	@Column(name = "last_Name")
 	private String lastName;
 
@@ -235,4 +238,13 @@ public class SellerDO implements Serializable, Cloneable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<ProductDO> getProductDOs() {
+		return productDOs;
+	}
+
+	public void setProductDOs(List<ProductDO> productDOs) {
+		this.productDOs = productDOs;
+	}
+
 }

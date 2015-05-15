@@ -4,13 +4,18 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -61,8 +66,9 @@ public class ProductDO implements Serializable, Cloneable {
 	@Column(name = "image")
 	private String image;
 
-	@Column(name = "seller_Id")
-	private long sellerId;
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "SELLER_PRODUCT", joinColumns = { @JoinColumn(name = "PRODUCT_ID") }, inverseJoinColumns = { @JoinColumn(name = "SELLER_ID") })
+	private List<SellerDO> sellerDOs = new ArrayList<>();
 
 	@Column(name = "shipping")
 	private long shipping;
@@ -179,12 +185,12 @@ public class ProductDO implements Serializable, Cloneable {
 		this.image = image;
 	}
 
-	public long getSellerId() {
-		return sellerId;
+	public List<SellerDO> getSellerDOs() {
+		return sellerDOs;
 	}
 
-	public void setSellerId(long sellerId) {
-		this.sellerId = sellerId;
+	public void setSellerDOs(List<SellerDO> sellerDOs) {
+		this.sellerDOs = sellerDOs;
 	}
 
 	public long getShipping() {

@@ -50,3 +50,8 @@ CREATE TABLE product
  */
 
  alter table product alter column date_available type varchar(45) using date_available::date
+ 
+ 
+ /* Alter Query on 12/05/2015*/
+ ALTER TABLE PRODUCT DROP COLUMN SELLER_ID
+ 
