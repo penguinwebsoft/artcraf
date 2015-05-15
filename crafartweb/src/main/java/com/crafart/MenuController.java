@@ -132,4 +132,15 @@ public class MenuController {
 		return new ModelAndView("customerLogin");
 	}
 
+	@RequestMapping("/trackOrder")
+	public ModelAndView showTrackOrder(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("trackOrder");
+	}
+	
+	@RequestMapping("/trackId")
+	public ModelAndView showTrackId(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("trackId");
+	}
+
+
 }
