@@ -15,12 +15,12 @@
 			<ul id="menu-content" class="menu-content collapse out">
 				<li data-toggle="collapse" data-target="#myAccount" class="collapsed active"><a href="#"> My Account </a></li>
 				<ul class="sub-menu" id="myAccount">
-					<li id="customerPersonalDetails"><a href="${baseURL}/customerMenu/customerDetails">Personal Details</a></li>
-					<li id="customerAddresses"><a href="${baseURL}/customerMenu/addressContacts">Addresses</a></li>
-					<li id="customerProfileSetting"><a href="${baseURL}/customerMenu/profileSettings">Profile setting</a></li>
-					<li id="CustomerUpdateEmail"><a href="${baseURL}/customerMenu/manageEmail">Update Email</a></li>
-					<li id="CustomerChangePassword"><a href="#">Change Password</a></li>
-					<li id="CustomerDeactivateAccount"><a href="#">Deactivate Account</a></li>
+					<li id="customerPersonalDetails"><a href="${baseURL}/customer/customerDetails">Personal Details</a></li>
+					<li id="customerAddresses"><a href="${baseURL}/customer/addressContacts">Addresses</a></li>
+					<li id="customerProfileSetting"><a href="${baseURL}/customer/profileSettings">Profile setting</a></li>
+					<li id="CustomerUpdateEmail"><a href="${baseURL}/customer/manageEmail">Update Email</a></li>
+					<li id="CustomerChangePassword"><a href="${baseURL}/customer/changePassword">Change Password</a></li>
+					<li id="CustomerDeactivateAccount"><a href="${baseURL}/customer/deactivateAccount">Deactivate Account</a></li>
 				</ul>
 				<li data-toggle="collapse" data-target="#order" class="collapsed active"><a href="#"> Order </a></li>
 				<ul class="sub-menu" id="order">
