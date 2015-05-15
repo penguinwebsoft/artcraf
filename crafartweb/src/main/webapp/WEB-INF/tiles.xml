@@ -79,6 +79,7 @@
 		<put-attribute name="body" value="/jsp/reportPurchase.jsp" />
 	</definition>
 
+
 	<!-- <definition name="thirdPartyLogin" extends="base.definition"> <put-attribute 
 		name="title" value="Crafart Third Party Login" /> <put-attribute name="body" 
 		value="/jsp/thirdPartyLogin.jsp" /> </definition> -->
@@ -89,10 +90,12 @@
 		<put-attribute name="body" value="/jsp/customerHome.jsp" />
 	</definition>
 
+
 	<definition name="customerPanel" extends="customer.definition">
 		<put-attribute name="title" value="Customer panel" />
 		<put-attribute name="body" value="/jsp/customerPanel.jsp" />
 	</definition>
+
 
 	<definition name="sellerLogin" extends="customer.definition">
 		<put-attribute name="title" value="Seller login" />
@@ -158,11 +161,22 @@
 		<put-attribute name="title" value="Cart Section" />
 		<put-attribute name="body" value="/jsp/cartSection.jsp" />
 	</definition>
-	
+
 	<definition name="checkoutSection" extends="customer.definition">
 		<put-attribute name="title" value="Checkout Section" />
 		<put-attribute name="body" value="/jsp/checkoutSection.jsp" />
 	</definition>
+
+	<definition name="trackOrder" extends="customer.definition">
+		<put-attribute name="title" value="Track Order" />
+		<put-attribute name="body" value="/jsp/trackOrder.jsp" />
+	</definition>
 	
+	<definition name="trackId" extends="customer.definition">
+		<put-attribute name="title" value="Track Id" />
+		<put-attribute name="body" value="/jsp/trackId.jsp" />
+	</definition>
+	
+
 	<!-- customer views ends here -->
 </tiles-definitions>
