@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.crafart.seller.service;
 
 import java.util.ArrayList;
