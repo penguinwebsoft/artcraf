@@ -33,11 +33,6 @@ import com.crafart.service.mapper.BeanMapper;
  * @version 1.0
  * 
  */
-/**
- * @author Karthi
- * @version 1.0
- * 
- */
 @Service("manageSellerServiceImpl")
 public class ManageSellerServiceImpl implements ManageSellerService {
 
