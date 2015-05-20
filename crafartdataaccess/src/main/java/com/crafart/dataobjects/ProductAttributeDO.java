@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -34,7 +34,7 @@ public class ProductAttributeDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_productattribute")
 	private long attributeId;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "product_id", nullable = false)
 	private ProductDO productDO;
 
