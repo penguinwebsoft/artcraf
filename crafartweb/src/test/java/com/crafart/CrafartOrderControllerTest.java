@@ -4,6 +4,7 @@
 package com.crafart;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,17 @@ public class CrafartOrderControllerTest {
 			Assert.fail();
 		}
 
+	}
+
+	@Test
+	@Ignore
+	@Rollback(true)
+	public void testGetCustomerDetails() {
+		try {
+			crafartOrderControllerImpl.getCustomerOrderBO(new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
 	}
 }

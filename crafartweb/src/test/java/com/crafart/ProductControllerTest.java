@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.ContactBO;
@@ -99,7 +100,7 @@ public class ProductControllerTest {
 		productBO.setPoints(5);
 		productBO.setPrice(12.2f);
 		productBO.setQuantity("2");
-		productBO.setSellerId(sellerBO.getSellerId());
+		productBO.setSellerBO(sellerBO);
 		productBO.setShipping(2);
 		productBO.setSku("aqaqaq");
 		productBO.setSortOrder("aes");
@@ -319,6 +320,29 @@ public class ProductControllerTest {
 		contactBOs.add(contactBO2);
 		contactBOs.add(contactBO3);
 		return contactBOs;
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetProductDetails() {
+		try {
+			productController.getProductDetails(16641, new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetAllProduct() {
+		try {
+			ModelMap modelMap = productController.getAllProduct(new MockHttpSession());
+			System.out.print(modelMap.isEmpty());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 }
