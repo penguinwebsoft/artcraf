@@ -15,4 +15,6 @@ import com.crafart.service.exception.CrafartServiceException;
 public interface ManageProductReviewService {
 
 	public List<ProductReviewBO> getProductReview(long customerId) throws CrafartServiceException;
+
+	public List<ProductReviewBO> getSingleProductReviews(long productId) throws CrafartServiceException;
 }
