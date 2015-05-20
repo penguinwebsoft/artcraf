@@ -68,8 +68,8 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 						beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null),
 						beanMapper.mapInvoiceDOToBO(crafartOrderDO.getInvoiceDO(), new InvoiceBO(), sellerBO,
 								beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null)),
-						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO()), beanMapper.mapStoreDOToBO(crafartOrderDO.getStoreDO(), new StoreBO(), sellerBO),
-						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(), beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO())));
+						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO(), null, null), beanMapper.mapStoreDOToBO(crafartOrderDO.getStoreDO(), new StoreBO(), sellerBO),
+						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(), beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO(), null, null)));
 				crafartOrderBOs.add(crafartOrderBO);
 			}
 		} catch (CrafartDataException cdExp) {
@@ -98,10 +98,11 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 						beanMapper.mapInvoiceDOToBO(crafartOrderDO.getInvoiceDO(), new InvoiceBO(),
 								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO()),
 								beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null)),
-						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO()),
+						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO(), null, null),
 						beanMapper.mapStoreDOToBO(crafartOrderDO.getStoreDO(), new StoreBO(),
 								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO())),
-						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(), beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO())));
+						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(),
+								beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO(), null, null)));
 				crafartOrderBOs.add(crafartOrderBO);
 			}
 
