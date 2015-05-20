@@ -152,10 +152,10 @@ public class SellerDAOTest {
 	@Rollback(true)
 	public void testGetSellerDetail() {
 		try {
-			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(31661);
-			List<ContactDO> contactDOs = sellerDO.getContactDOs();
-			for (ContactDO contactDO : contactDOs) {
-				System.out.print("\n" + contactDO.getContactValue());
+			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(41681);
+			List<AddressDO> addressDOs = sellerDO.getAddressDOs();
+			for (AddressDO addressDO : addressDOs) {
+				System.out.print("\n" + addressDO.getAddressId());
 			}
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
