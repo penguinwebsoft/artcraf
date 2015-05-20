@@ -3,6 +3,8 @@
  */
 package com.crafart;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +16,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.inter.service.ManageProductReviewService;
+import com.crafart.service.businessobjects.ProductReviewBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
@@ -34,6 +37,20 @@ public class ManageProductReviewServiceTest {
 	public void testGetProductReview() {
 		try {
 			manageProductReviewServiceImpl.getProductReview(8081);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetSingleProductReviews() {
+		try {
+			List<ProductReviewBO> productReviewBOs = manageProductReviewServiceImpl.getSingleProductReviews(21841);
+			for (ProductReviewBO productReviewBO : productReviewBOs) {
+				System.out.print(productReviewBO.getAuthour());
+			}
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
