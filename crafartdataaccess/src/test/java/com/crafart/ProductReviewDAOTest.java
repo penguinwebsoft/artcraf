@@ -230,4 +230,19 @@ public class ProductReviewDAOTest {
 			Assert.fail();
 		}
 	}
+
+	@Test
+	@Rollback(true)
+	public void testGetSingleProductReviews() {
+		try {
+			List<ProductReviewDO> productReviewDOs = productReiewDAOImpl.getSingleProductReviews(21841);
+			Assert.assertNotNull(productReviewDOs);
+			for (ProductReviewDO productReviewDO2 : productReviewDOs) {
+				System.out.print(productReviewDO2.getText() + "\n");
+			}
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
 }
