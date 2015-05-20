@@ -201,6 +201,7 @@
 						<div>1.5 GB RAM</div>
 						<div>Dual Sim</div>
 						<div>8 MP Primary Camera</div>
+						
 					</div>
 					<hr>
 					<span class="style"><input type="checkbox" />Add to Compare</span>
