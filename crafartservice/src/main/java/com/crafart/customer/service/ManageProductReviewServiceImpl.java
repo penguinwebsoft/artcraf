@@ -47,12 +47,33 @@ public class ManageProductReviewServiceImpl implements ManageProductReviewServic
 			for (ProductReviewDO productReviewDO : productReviewDOs) {
 				ProductReviewBO productReviewBO = beanMapper.mapProductReviewDOToBO(productReviewDO, new ProductReviewBO(),
 						beanMapper.mapCustomerDOToBO(productReviewDO.getCustomerDO(), new CustomerBO(), new AddressBO(), null),
-						beanMapper.mapProductDOToBO(productReviewDO.getProductDO(), new ProductBO(), new SellerBO()));
+						beanMapper.mapProductDOToBO(productReviewDO.getProductDO(), new ProductBO(), new SellerBO(), null, null));
 				productReviewBOs.add(productReviewBO);
 			}
 		} catch (CrafartDataException cdExp) {
 			throw new CrafartServiceException("Error while retriving product review details", cdExp);
 		}
+		return productReviewBOs;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public List<ProductReviewBO> getSingleProductReviews(long productId) throws CrafartServiceException {
+		List<ProductReviewBO> productReviewBOs = new ArrayList<>();
+		List<ProductReviewDO> productReviewDOs;
+		try {
+			productReviewDOs = productReviewDAOImpl.getSingleProductReviews(productId);
+			if (productReviewDOs == null)
+				return null;
+			for (ProductReviewDO productReviewDO : productReviewDOs) {
+				ProductReviewBO productReviewBO = beanMapper.mapProductReviewDOToBO(productReviewDO, new ProductReviewBO(), null,
+						beanMapper.mapProductDOToBO(productReviewDO.getProductDO(), new ProductBO(), null, null, null));
+				productReviewBOs.add(productReviewBO);
+			}
+		} catch (CrafartDataException cdExp) {
+			throw new CrafartServiceException("Error while getting single product review details", cdExp);
+		}
+
 		return productReviewBOs;
 	}
 }

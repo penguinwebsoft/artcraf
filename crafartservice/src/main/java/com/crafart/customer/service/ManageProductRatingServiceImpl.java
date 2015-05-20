@@ -46,7 +46,7 @@ public class ManageProductRatingServiceImpl implements ManageProductRatingServic
 			for (ProductRatingDO productRatingDO : productRatingDOs) {
 				ProductRatingBO productRatingBO = beanMapper.mapProductRatingDOToBO(productRatingDO, new ProductRatingBO(),
 						beanMapper.mapCustomerDOToBO(productRatingDO.getCustomerDO(), new CustomerBO(), null, null),
-						beanMapper.mapProductDOToBO(productRatingDO.getProductDO(), new ProductBO(), new SellerBO()));
+						beanMapper.mapProductDOToBO(productRatingDO.getProductDO(), new ProductBO(), new SellerBO(), null, null));
 				productRatingBOs.add(productRatingBO);
 			}
 		} catch (CrafartDataException cdExp) {
