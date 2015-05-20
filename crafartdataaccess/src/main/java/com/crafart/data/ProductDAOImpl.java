@@ -3,11 +3,15 @@
  */
 package com.crafart.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -71,6 +75,23 @@ public class ProductDAOImpl implements ProductDAO {
 			throw new CrafartDataException("Error while retriving product details", hExp);
 		}
 		return productDO;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<ProductDO> getAllProduct() throws CrafartDataException {
+		List<ProductDO> productDOs = new ArrayList<>();
+		try {
+			Session session = this.sessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			productDOs = session.createQuery("from ProductDO").list();
+			tx.commit();
+			session.close();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB Error while reteriving courier details", hExp);
+		}
+		return productDOs;
 	}
 
 }
