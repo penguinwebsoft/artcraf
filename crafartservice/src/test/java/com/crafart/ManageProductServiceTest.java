@@ -56,7 +56,7 @@ public class ManageProductServiceTest {
 
 	@Test
 	@Rollback(true)
-	public void testManageProductService() {
+	public void testManageAddProductService() {
 
 		ProductBO productBO = getProductBO();
 		try {
@@ -87,7 +87,7 @@ public class ManageProductServiceTest {
 		productBO.setHeight(52);
 		productBO.setImage("a15cb5e");
 		productBO.setLength(63.2);
-		productBO.setLocation("from service testing");
+		productBO.setLocation("for getting product details");
 		productBO.setMinimum(26.00);
 		productBO.setModel("service");
 		productBO.setPoints(5);
@@ -154,11 +154,11 @@ public class ManageProductServiceTest {
 		ProductAttributeBO productAttributeBO = new ProductAttributeBO();
 		productAttributeBO.setAttributeGroupId(21);
 		productAttributeBO.setSortOrder(1);
-		productAttributeBO.setText("yellow");
+		productAttributeBO.setText("black&white");
 		ProductAttributeBO productAttributeBO2 = new ProductAttributeBO();
 		productAttributeBO2.setAttributeGroupId(21);
 		productAttributeBO2.setSortOrder(2);
-		productAttributeBO2.setText("green");
+		productAttributeBO2.setText("red&green");
 		productAttributeBOs.add(productAttributeBO2);
 		productAttributeBOs.add(productAttributeBO);
 		return productAttributeBOs;
@@ -243,7 +243,7 @@ public class ManageProductServiceTest {
 		sellerBO.setCompanyName("penguin");
 		sellerBO.setCstNo("4444");
 		sellerBO.setEpchNo("121212");
-		sellerBO.setFirstName("from service");
+		sellerBO.setFirstName("test for getting attribute");
 		sellerBO.setLastName("service");
 		sellerBO.setStatus(2);
 		sellerBO.setTinNo(2);
@@ -266,9 +266,9 @@ public class ManageProductServiceTest {
 	private AddressBO getAddressBO(SellerBO sellerBO) {
 		AddressBO addressBO = new AddressBO();
 		addressBO.setCityId(0);
-		addressBO.setPinCode("service now");
+		addressBO.setPinCode("adding address");
 		addressBO.setStateId(0);
-		addressBO.setStreet("testing now");
+		addressBO.setStreet("adding address");
 		addressBO.setSellerBO(sellerBO);
 		return addressBO;
 	}
@@ -308,15 +308,34 @@ public class ManageProductServiceTest {
 	@Rollback(true)
 	public void testGetProductDetails() {
 		try {
-			ProductBO productBO = manageProductServiceImpl.getProductDetail(20881);
-			System.out.print(productBO.getSellerBO().getStoreBO().getStoreDescription());
-			Assert.assertNotNull(productBO);
+			ProductBO productBO = manageProductServiceImpl.getProductDetail(21821);
+
+			for (ProductAttributeBO productAttributeBO : productBO.getProductAttributeBOs()) {
+				System.out.print(productAttributeBO.getText());
+			}
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		} catch (Exception exp) {
 			exp.printStackTrace();
+			Assert.fail();
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testGetAllProduct() {
+		try {
+			List<ProductBO> productBOs = manageProductServiceImpl.getAllProduct();
+			for (ProductBO productBO : productBOs) {
+				for (ProductAttributeBO productAttributeBO : productBO.getProductAttributeBOs()) {
+					System.out.println(productAttributeBO.getAttributeGroupId() + "\t" + productAttributeBO.getText());
+				}
+			}
+			Assert.assertNotNull(productBOs);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
 }
