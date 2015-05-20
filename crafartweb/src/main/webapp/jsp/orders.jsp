@@ -16,10 +16,10 @@
 	$(document).ready(function() {
 		
 		/**************below code to disable search box inside datatable**************************/
-		$('table').dataTable({search: false});
+		/* $('table').dataTable({search: false}); */
 		
 		/***********************to enable search box, uncomment below code and comment above code*****************************/
-		/* $('#dataTables-example').dataTable(); */
+		 $('#dataTables-example').dataTable(); 
 		
 
 		$("#dp2").datepicker({
@@ -59,7 +59,6 @@
 		
 	 	$(document).on(	'click','a.orderEdit', function(){
 			var orderId = this.id;
-			alert(orderId);
 			$.ajax({
 				url : "../crafartorder/showOrder",
 				type : "post",
@@ -67,7 +66,6 @@
 				contentType : "application/json",
 				dataType : "json",
 				success : function(data) {
-					alert("success");
 				}
 		}); 
 	 	});
