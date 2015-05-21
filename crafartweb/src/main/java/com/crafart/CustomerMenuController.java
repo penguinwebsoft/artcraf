@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  * 
  */
 @Controller("customerMenuController")
-@RequestMapping("customerMenu")
+@RequestMapping("customer")
 public class CustomerMenuController {
 
 	@RequestMapping("/customerDetails")
@@ -31,12 +31,40 @@ public class CustomerMenuController {
 		return new ModelAndView("profileSettings");
 	}
 	
+	@RequestMapping("/changePassword")
+	public ModelAndView showChangePassword(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("changePassword");
+	}
+	
+	@RequestMapping("/deactivateAccount")
+	public ModelAndView showDeactiveAccount(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("deactivateAccount");
+	}
 	
 	@RequestMapping("/manageEmail")
 	public ModelAndView showManageEmail(HttpServletRequest request, HttpServletResponse response){
 		return new ModelAndView("manageEmail");
 	}
 	
+	@RequestMapping("/myOrder")
+	public ModelAndView showMyOrder(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("myOrder");
+	}
+	
+	@RequestMapping("/orderSection")
+	public ModelAndView showorderSection(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("orderSection");
+	}
+	
+	@RequestMapping("/reviewSection")
+	public ModelAndView showreviewSection(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("reviewSection");
+	}
+	
+	@RequestMapping("/customerCare")
+	public ModelAndView showcustomerCare(HttpServletRequest request, HttpServletResponse response){
+		return new ModelAndView("customerCare");
+	}
 	@RequestMapping("/paymentGateway")
 	public ModelAndView showPaymentGateway(HttpServletRequest request, HttpServletResponse response){
 		return new ModelAndView("paymentGateway");
