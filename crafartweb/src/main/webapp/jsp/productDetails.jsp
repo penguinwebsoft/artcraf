@@ -9,10 +9,10 @@
 
 <div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;background-image: url(${context}/resources/img/background_img.jpg);">
 	<div class="col-md-3" style="margin-left: 4%">
-		<a href="#"><img src="${context}/resources/img/wood 2.jpg" id="image" title="" alt="" class="img-responsive" style="margin-top: 1%;" /></a>
-		<a href="#"><img src="${context}/resources/img/wood 1 img.jpg"  class="img-responsive pull-left" style="margin-top: 1%;" /></a>
-		<a href="#"><img src="${context}/resources/img/wood 2 img.jpg" id="image" title="" alt="" class="img-responsive pull-left" style="margin-top: 1%;" /></a>
-		<a href="#"><img src="${context}/resources/img/wood 3 img.jpg" id="image" title="" alt="" class="img-responsive pull-left" style="margin-top: 1%;" /></a>
+		<img id="image" class="image" src="${context}/resources/img/wood 2.jpg" title="" alt="" class="img-responsive" style="margin-top: 1%" /> <img id="zoom" class="zoom"
+			src="${context}/resources/img/wood 2.jpg" title="" alt="" class="img-responsive" style="margin-top: 1%" />
+
+
 	</div>
 
 	<!-- right side content -->
@@ -20,9 +20,9 @@
 	<div style="background-color: #FBF5F5; margin-left: 5%; margin-right: 5%">
 		<div class="col-md-8" style="margin-top: 2%">
 			<div class="col-md-6">
-				<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="margin-left: 2%"></span> <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> <span
-					class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> <span class="glyphicon glyphicon-star-empty"
-					aria-hidden="true">Ratting</span> <span>REVIEWS</span>
+				<div class="starrating">
+					<span class="star">&#9734;<span class="star">&#9734;<span class="star">&#9734;<span class="star">&#9734;<span class="star">&#9734;</span></span></span></span></span>
+				</div>
 				<ul style="margin-top: 1%">
 					<li>Android v4.4.4 OS</li>
 					<li>Dual Sim (GSM + GSM)</li>
@@ -85,6 +85,108 @@
 		<div>
 			<nav class="navbar breadcrumb_cust" role="navigation" style="z-index: -1"></nav>
 		</div>
+		<hr>
+		<!-- SOLD BY SELLER SECTION -->
+		<div class="row">
+			<span class="col-md-offset-1"><b>Sold By Seller</b></span> <span class="col-md-offset-8"><b>SORT BY:</b></span>
+			<div class="col-md-offset-10">
+				<select>
+					<option value="Relevance">Relevance</option>
+					<option value="Seller Rating">Seller Rating</option>
+					<option value="Delivery Time">Delivery Time</option>
+					<option value="Price">Price</option>
+				</select>
+			</div>
+			<hr>
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<span class="col-md-offset-4"><b>SELLER</b></span>
+				</div>
+				<div class="col-md-3">
+					<span class="glyphicon glyphicon-arrow-down" style="margin-left: 35%">RATING</span>
+				</div>
+				<div class="col-md-2">
+					<span class="glyphicon glyphicon-arrow-up">DELIVERED BY</span>
+				</div>
+				<div class="col-md-2">
+					<span class="">OFFERS</span>
+				</div>
+				<div class="col-md-2">
+					<span class="glyphicon glyphicon-arrow-down">PRICE</span>
+				</div>
+			</div>
+
+			<div>
+				<span class="col-md-offset-1"><b>Krishna Enterprises</b></span> <span class="col-md-offset-2"><button type="button" class="btn btn-primary btn-xs"<img src="${context}/resources/img/no_image-100x100.png"/>4/5</button></span>
+				<span class="col-md-offset-1">Usually Delivery in 8-9 business days</span> <span style="margin-left: 17%">RS.1000</span>
+			</div>
+			<div class="glyphicon glyphicon-refresh col-md-offset-1">
+				<b>10 days</b> Replacement solution
+			</div>
+			<div class="col-md-offset-1">
+				<div class="glyphicon glyphicon-usd">Cash on Delivery</div>
+			</div>
+			<div class="col-md-offset-3" style="margin-top: 2%">
+				<button type="button" class="btn btn-warning" style="margin-left: 2%">ADD TO CART</button>
+				<button type="button" class="btn btn-success">BUY NOW</button>
+			</div>
+
+			<div style="margin-top: 1%">
+				<span class="col-md-offset-1"><b>Ramya Electra</b></span> <span class="col-md-offset-2">New Seller!</span> <span class="col-md-offset-1">Usually Delivery in 8-9 business days</span> <span
+					style="margin-left: 17%">RS.1100</span>
+			</div>
+			<div class="glyphicon glyphicon-refresh col-md-offset-1">
+				<b>10 days</b> Replacement solution
+			</div>
+			<div class="col-md-offset-1">
+				<div class="glyphicon glyphicon-usd">Cash on Delivery</div>
+			</div>
+			<div class="col-md-offset-3" style="margin-top: 2%">
+				<button type="button" class="btn btn-warning" style="margin-left: 2%">ADD TO CART</button>
+				<button type="button" class="btn btn-success">BUY NOW</button>
+			</div>
+
+			<div style="margin-top: 1%">
+				<span class="col-md-offset-1"><b>Electra Enterprises</b></span> <span class="col-md-offset-2"><button type="button" class="btn btn-primary btn-xs"<img src="${context}/resources/img/no_image-100x100.png"/>4/5</button></span>
+				<span class="col-md-offset-1">Usually Delivery in 8-9 business days</span> <span style="margin-left: 17%">RS.1300</span>
+			</div>
+			<div class="glyphicon glyphicon-refresh col-md-offset-1">
+				<b>10 days</b> Replacement solution
+			</div>
+			<div class="col-md-offset-1">
+				<div class="glyphicon glyphicon-usd">Cash on Delivery</div>
+			</div>
+			<div class="col-md-offset-3" style="margin-top: 2%">
+				<button type="button" class="btn btn-warning" style="margin-left: 2%">ADD TO CART</button>
+				<button type="button" class="btn btn-success">BUY NOW</button>
+			</div>
+
+			<div style="margin-top: 1%">
+				<span class="col-md-offset-1"><b>WOOD Enterprises</b></span> <span class="col-md-offset-2"><button type="button" class="btn btn-primary btn-xs"<img src="${context}/resources/img/no_image-100x100.png"/>4/5</button></span>
+				<span class="col-md-offset-1">Usually Delivery in 8-9 business days</span> <span style="margin-left: 17%">RS.1350</span>
+			</div>
+			<div class="glyphicon glyphicon-refresh col-md-offset-1">
+				<b>10 days</b> Replacement solution
+			</div>
+			<div class="col-md-offset-1">
+				<div class="glyphicon glyphicon-usd">Cash on Delivery</div>
+			</div>
+			<div class="col-md-offset-3" style="margin-top: 2%">
+				<button type="button" class="btn btn-warning" style="margin-left: 2%">ADD TO CART</button>
+				<button type="button" class="btn btn-success">BUY NOW</button>
+			</div>
+
+			<div class="dropdown col-md-offset-4">
+				<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="margin-top: 2%">
+					VIEW ALL SELLERS <span class="caret"></span>
+				</button>
+			</div>
+
+		</div>
+
+
+		<!-- SOLD BY SELLER SECTION END -->
+
 		<!-- Catagory items -->
 		<div style="margin-left: 4%; margin-right: 4%;">
 			<div>
