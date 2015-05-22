@@ -68,4 +68,25 @@ public class ProductReviewDAOImpl implements ProductReviewDAO {
 		return productReviewDOs;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<ProductReviewDO> getSingleProductReviews(long productId) throws CrafartDataException {
+		List<ProductReviewDO> productReviewDOs = new ArrayList<>();
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from ProductReviewDO where product_id = :product_id");
+			query.setLong("product_id", productId);
+			productReviewDOs = (List<ProductReviewDO>) query.list();
+			session.getTransaction().commit();
+			session.close();
+		} catch (EmptyResultDataAccessException hExp) {
+			return null;
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("Error while retriving product review details", hExp);
+		}
+		return productReviewDOs;
+	}
+
 }

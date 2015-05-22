@@ -70,12 +70,24 @@ public class ProductAttributeDAOTest {
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testGetProductAttribute() {
+		try {
+			List<ProductAttributeDO> attributeDOs = productAttributeDAOImpl.getProductAttribute(10981);
+			Assert.assertNotNull("List of AttribteDO is null", attributeDOs);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
 	private List<ProductAttributeDO> getProductAttribute() {
 		List<ProductAttributeDO> productAttributeDOs = new ArrayList<>();
 		ProductAttributeDO productAttributeDO = new ProductAttributeDO();
 		ProductDO productDO = getProduct();
 		productAttributeDO.setAttributeGroupId(21);
-		productAttributeDO.setText("black");
+		productAttributeDO.setText("Black&green");
 		productAttributeDO.setSortOrder(1);
 		productAttributeDO.setProductDO(productDO);
 		ProductAttributeDO productAttributeDO2 = new ProductAttributeDO();

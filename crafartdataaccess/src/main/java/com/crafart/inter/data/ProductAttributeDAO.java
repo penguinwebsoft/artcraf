@@ -16,5 +16,6 @@ public interface ProductAttributeDAO {
 
 	public void addProductAttribute(List<ProductAttributeDO> productAttributeDOs) throws CrafartDataException;
 
-	public List<ProductAttributeDO> getProductAttribute() throws CrafartDataException;
+	public List<ProductAttributeDO> getProductAttribute(long productId) throws CrafartDataException;
+
 }

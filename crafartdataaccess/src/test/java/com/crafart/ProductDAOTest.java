@@ -224,7 +224,12 @@ public class ProductDAOTest {
 	@Rollback(true)
 	public void testGetProductDetails() {
 		try {
-			ProductDO productDO = productDAOImpl.getProductDetail(20141);
+			ProductDO productDO = productDAOImpl.getProductDetail(21901);
+			for (SellerDO sellerDO : productDO.getSellerDOs()) {
+				for (AddressDO addressDO : sellerDO.getAddressDOs()) {
+					System.out.print(addressDO.getAddressId());
+				}
+			}
 			Assert.assertNotNull(productDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
@@ -232,4 +237,15 @@ public class ProductDAOTest {
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testGetAllProduct() {
+		try {
+			List<ProductDO> productDOs = productDAOImpl.getAllProduct();
+			Assert.assertNotNull(productDOs);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
 }

@@ -1,4 +1,57 @@
+<script type="text/javascript">
+	var productBOs = {};
 
+	$(document)
+			.ready(
+					function() {
+						$.ajax({
+							url : "../product/getAllProduct",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								productBOs = data.productBOs;
+								displayProducts();
+							}
+						});
+						function displayProducts() {
+							$
+									.each(
+											productBOs,
+											function(key, value) {
+												var productBO = value;
+
+												html = '<div class="col-md-3">';
+												html += '<div class="style"><img src="../resources/img/m14.jpg" title="" alt="" class="img-responsive" style="margin-top: 0px; margin-left: 20px" /></div>';
+												html += '<div><span class="style">&nbsp'
+														+ productBO.model
+														+ '</span></div>';
+												html += '<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="margin-left: 20%"></span> <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> <span	class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> <span class="glyphicon glyphicon-star-empty"aria-hidden="true">Ratting</span>';
+												html += '<hr>';
+												html += '<div><span class="style">Rs.'
+														+ productBO.price
+														+ '</span></div>';
+												html += '<div><span class="style">EMI from Rs. 330</span></div>';
+												html += '<div class="style" id="description'+key+'">';
+												/* html += '<div id="description1'+key+'"></div>';
+												html += '<div id="description1'+key+1+'"></div>'; */
+												/*  html += '<div id="description3'+key+'">Dual Sim</div>';
+												html += '<div>8 MP Primary Camera</div>'; */
+												html += '</div>';
+												html += '<hr>';
+												html += '<span class="style"><input type="checkbox" />Add to Compare</span>';
+												html += '</div>';
+												html += '<div style="margin-top: 5%">';
+												html += '</div>';
+												$('#productList').append(html);
+												$.grep(productBO.productAttributeBOs, function(
+														element, index) {
+													$('#description'+key+'').append('<span><h6>'+element.text+'</h6></span>');
+												});
+											});
+						}
+					});
+</script>
 <!-- Left Side -->
 <div class="col-md-2" style="margin-top: 3%">
 
@@ -177,9 +230,9 @@
 			<span>Relevance</span> <span>Popular</span> <span>High Price</span> <span>Low Price</span> <span>New</span>
 		</div>
 		<!-- 	Seperate Section -->
-		<div class="row">
+		<div class="row" id="productList">
 			<div style="margin-top: 5%">
-				<div class="col-md-3">
+				<!-- <div class="col-md-3">
 					<div class="style">
 						<img src="../resources/img/m11.jpg" title="" alt="" class="img-responsive" style="margin-top: 0px; margin-left: 20px" />
 					</div>
@@ -201,6 +254,7 @@
 						<div>1.5 GB RAM</div>
 						<div>Dual Sim</div>
 						<div>8 MP Primary Camera</div>
+						
 					</div>
 					<hr>
 					<span class="style"><input type="checkbox" />Add to Compare</span>
@@ -287,12 +341,12 @@
 					<hr>
 					<span class="style"><input type="checkbox" />Add to Compare</span>
 
-				</div>
+				</div> -->
 
 			</div>
 		</div>
-		<!-- 	Second Row -->
-		<div class="row">
+ 		<!-- 	Second Row -->
+		<!--<div class="row">
 			<div style="margin-top: 10%">
 				<div class="col-md-3">
 				<div class="style">
@@ -403,7 +457,7 @@
 			</div>
 
 		</div>
-		<!-- 	Third Row -->
+			Third Row
 		<div class="row">
 			<div style="margin-top: 10%">
 				<div class="col-md-3">
@@ -516,5 +570,6 @@
 
 			</div>
 
-		</div>
+		</div> -->
+	</div>
 	</div>

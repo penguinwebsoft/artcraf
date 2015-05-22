@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,9 @@ public class CustomerControllerTest {
 
 	@Autowired
 	private CustomerController customerController;
-	
+
 	@Test
 	@Rollback(true)
-	
 	public void testAddCustomer() {
 		CustomerBO customerBO = getCustomer();
 		try {
@@ -108,4 +108,33 @@ public class CustomerControllerTest {
 			Assert.fail();
 		}
 	}
+
+	@Test
+	@Ignore
+	@Rollback(true)
+	public void testUpdateCustomerDetails() {
+		CustomerBO customerBO = getCustomer();
+		try {
+			customerController.addCustomer(customerBO, new MockHttpSession());
+			// failing test case if the insertion get failed, i.e if customer id
+			// is 0
+			if (customerBO.getCustomerId() == 0) {
+				Assert.fail();
+			}
+			System.out.print(customerBO.getCustomerId());
+			customerBO.setFirstName("update");
+			AddressBO addressBO = customerBO.getAddressBO();
+			addressBO.setStreet("krishna college");
+			List<ContactBO> contactBOs = customerBO.getContactBOs();
+			for (ContactBO contactBO : contactBOs) {
+				if (contactBO.getContactTypeId() == 1)
+					contactBO.setContactValue("15243");
+			}
+			customerController.updateCustomerDetail(customerBO, new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+
 }

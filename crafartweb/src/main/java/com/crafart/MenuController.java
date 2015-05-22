@@ -141,6 +141,40 @@ public class MenuController {
 	public ModelAndView showTrackId(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("trackId");
 	}
-
-
+	
+	@RequestMapping("/trackPage")
+	public ModelAndView showTrackPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("trackPage");
+	}
+	   
+	@RequestMapping("/sellerLoginHeader")
+	public ModelAndView showSellerLoginHeader(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("sellerLoginHeader");
+	}
+    
+	@RequestMapping("/adminPanel")
+	public ModelAndView showAdminPanel(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("adminPanel");
+	}
+	
+	@RequestMapping("/adminLayout")
+	public ModelAndView showAdminLayout(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("adminLayout");
+	}
+	
+	@RequestMapping("/adminHeader")
+	public ModelAndView showAdminHeader(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("adminHeader");
+	}
+	
+	@RequestMapping("/adminMenu")
+	public ModelAndView showAdminMenu(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("adminMenu");
+	}
+	
+	@RequestMapping("/adminFooter")
+	public ModelAndView showAdminFooter(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("adminFooter");
+	}
+	
 }

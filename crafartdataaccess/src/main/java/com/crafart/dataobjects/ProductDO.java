@@ -16,9 +16,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * product entity are maped to product table in crafart database productid is
@@ -112,6 +116,30 @@ public class ProductDO implements Serializable, Cloneable {
 
 	@Column(name = "viewed")
 	private int viewed;
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "productDO", cascade = CascadeType.ALL)
+	private List<ProductAttributeDO> productAttributeDOs = new ArrayList<>();
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "productDO", cascade = CascadeType.ALL)
+	private List<ProductDiscountDO> productDiscountDOs = new ArrayList<>();
+
+	public List<ProductDiscountDO> getProductDiscountDOs() {
+		return productDiscountDOs;
+	}
+
+	public void setProductDiscountDOs(List<ProductDiscountDO> productDiscountDOs) {
+		this.productDiscountDOs = productDiscountDOs;
+	}
+
+	public List<ProductAttributeDO> getProductAttributeDOs() {
+		return productAttributeDOs;
+	}
+
+	public void setProductAttributeDOs(List<ProductAttributeDO> productAttributeDOs) {
+		this.productAttributeDOs = productAttributeDOs;
+	}
 
 	public long getProductId() {
 		return productId;

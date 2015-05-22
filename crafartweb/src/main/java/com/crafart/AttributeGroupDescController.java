@@ -37,12 +37,10 @@ public class AttributeGroupDescController {
 	public @ResponseBody
 	ModelMap getAttributeGroupDesc(HttpSession session) {
 		ModelMap modelMap = new ModelMap();
-		log.info("AttributeController*****&&&&&^^^^%%%$$##");
 		List<AttributeGroupDescBO> attributeGroupDescBOs = new ArrayList<>();
 		try {
 			attributeGroupDescBOs = manageAttributeGroupDescServiceImpl.getAttributeGroupDesc();
 			modelMap.addAttribute("attributeGroupDescBOs", attributeGroupDescBOs);
-			log.info("*****&&&&&&^^^^^^^"+attributeGroupDescBOs.size());
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application-error in retrieving attribute group description details from db", crafartServiceException);
 		}

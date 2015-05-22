@@ -69,7 +69,6 @@
 					customerBO.contactBOs = contactBOs;
 					customerBO.addressBO = addressBO;
 					postData = JSON.stringify(customerBO);
-					alert(postData);
 					$.ajax({
 						url : "../customer/addcustomer",
 						type : "post",
@@ -98,7 +97,8 @@
 										+ $("#userPasswordId").val(),
 								success : function(data) {
 									alert(data.message);
-									window.location.replace("../menu/home");
+									if(data.message == "success")
+									window.location.replace("../menu/customerPanel");
 								}
 							});
 						});

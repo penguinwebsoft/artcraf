@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,12 +53,14 @@ public class ProductAttributeDAOImpl implements ProductAttributeDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<ProductAttributeDO> getProductAttribute() throws CrafartDataException {
+	public List<ProductAttributeDO> getProductAttribute(long productId) throws CrafartDataException {
 		List<ProductAttributeDO> productAttributeDOs = new ArrayList<>();
 		try {
 			Session session = this.sessionFactory.openSession();
 			session.beginTransaction();
-			productAttributeDOs = session.createQuery("from ProductAttributeDO").list();
+			Query query = session.createQuery("from ProductAttributeDO where product_id = :product_id");
+			query.setLong("product_id", productId);
+			productAttributeDOs = query.list();
 			session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {
@@ -65,5 +68,4 @@ public class ProductAttributeDAOImpl implements ProductAttributeDAO {
 		}
 		return productAttributeDOs;
 	}
-
 }

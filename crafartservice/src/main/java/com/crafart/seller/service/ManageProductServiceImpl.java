@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
@@ -28,13 +27,13 @@ import com.crafart.inter.data.ProductAttributeDAO;
 import com.crafart.inter.data.ProductDAO;
 import com.crafart.inter.data.ProductDescriptionDAO;
 import com.crafart.inter.data.ProductDiscountDAO;
+import com.crafart.inter.data.ProductReviewDAO;
 import com.crafart.inter.data.ProductShippingDAO;
 import com.crafart.inter.data.ProductSpecialDAO;
 import com.crafart.inter.data.TaxRateDAO;
 import com.crafart.inter.data.TaxRuleDAO;
 import com.crafart.inter.data.WeightClassDAO;
 import com.crafart.inter.service.ManageProductService;
-import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
@@ -83,6 +82,9 @@ public class ManageProductServiceImpl implements ManageProductService {
 
 	@Autowired
 	private ProductAttributeDAO productAttributeDAOImpl;
+
+	@Autowired
+	private ProductReviewDAO productReviewDAOImpl;
 
 	@Autowired
 	private TaxRateDAO taxRateDAOImpl;
@@ -174,6 +176,7 @@ public class ManageProductServiceImpl implements ManageProductService {
 
 			productBO.setProductId(productDO.getProductId());
 			productBO.getWeightClassBO().setWeightClassId(productDO.getWeightClassDO().getWeightClassId());
+			productBO.getProductDescriptionBO().setProductDescriptionId(productBO.getProductDescriptionBO().getProductDescriptionId());
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("error in adding product detail to DB", crafartDataException);
 		}
@@ -183,18 +186,22 @@ public class ManageProductServiceImpl implements ManageProductService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public ProductBO getProductDetail(long productId) throws CrafartServiceException {
 		ProductBO productBO = new ProductBO();
+		List<ProductAttributeBO> productAttributeBOs = new ArrayList<>();
+
 		try {
 			ProductDO productDO = productDAOImpl.getProductDetail(productId);
-			SellerDO sellerDO = productDO.getSellerDOs().get(0);
-			List<AddressDO> addressDOs = sellerDO.getAddressDOs();
-			for (AddressDO addressDO : addressDOs) {
-				productBO = beanMapper.mapProductDOToBO(
-						productDO,
-						new ProductBO(),
-						beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), beanMapper.mapAddressDOToBO(addressDO, new AddressBO()),
-								beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(), null)));
+			for (ProductAttributeDO productAttributeDO : productDO.getProductAttributeDOs()) {
+				ProductAttributeBO productAttributeBO = beanMapper.mapProductAttributeDOToBO(productAttributeDO, new ProductAttributeBO());
+				productAttributeBOs.add(productAttributeBO);
 			}
-
+			List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
+			for (ProductDiscountDO productDiscountDO : productDO.getProductDiscountDOs()) {
+				ProductDiscountBO productDiscountBO = beanMapper.mapProductDiscountDOToBO(productDiscountDO, new ProductDiscountBO());
+				productDiscountBOs.add(productDiscountBO);
+			}
+			SellerDO sellerDO = productDO.getSellerDOs().get(0);
+			productBO = beanMapper.mapProductDOToBO(productDO, new ProductBO(),
+					beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), null, beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(), null)), productAttributeBOs, productDiscountBOs);
 		} catch (CrafartDataException cdExp) {
 			throw new CrafartServiceException("Error while retriving product details", cdExp);
 		}
@@ -202,4 +209,29 @@ public class ManageProductServiceImpl implements ManageProductService {
 
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public List<ProductBO> getAllProduct() throws CrafartServiceException {
+		List<ProductBO> productBOs = new ArrayList<>();
+		try {
+			List<ProductDO> productDOs = productDAOImpl.getAllProduct();
+			for (ProductDO productDO : productDOs) {
+				List<ProductAttributeBO> productAttributeBOs = new ArrayList<>();
+				for (ProductAttributeDO productAttributeDO : productDO.getProductAttributeDOs()) {
+					ProductAttributeBO productAttributeBO = beanMapper.mapProductAttributeDOToBO(productAttributeDO, new ProductAttributeBO());
+					productAttributeBOs.add(productAttributeBO);
+				}
+				List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
+				for (ProductDiscountDO productDiscountDO : productDO.getProductDiscountDOs()) {
+					ProductDiscountBO productDiscountBO = beanMapper.mapProductDiscountDOToBO(productDiscountDO, new ProductDiscountBO());
+					productDiscountBOs.add(productDiscountBO);
+				}
+				ProductBO productBO = beanMapper.mapProductDOToBO(productDO, new ProductBO(), null, productAttributeBOs, productDiscountBOs);
+				productBOs.add(productBO);
+			}
+		} catch (CrafartDataException cdExp) {
+			throw new CrafartServiceException("Error while getting product details", cdExp);
+		}
+		return productBOs;
+	}
 }

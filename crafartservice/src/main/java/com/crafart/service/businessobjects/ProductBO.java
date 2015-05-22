@@ -76,6 +76,10 @@ public class ProductBO implements Serializable {
 
 	private List<ProductAttributeBO> productAttributeBOs;
 
+	private List<ProductReviewBO> productReviewBOs;
+
+	private List<ProductRatingBO> productRatingBOs;
+
 	private TaxRateBO taxRateBO;
 
 	public WeightClassBO getWeightClassBO() {
@@ -312,6 +316,22 @@ public class ProductBO implements Serializable {
 
 	public SellerBO getSellerBO() {
 		return sellerBO;
+	}
+
+	public List<ProductReviewBO> getProductReviewBOs() {
+		return productReviewBOs;
+	}
+
+	public void setProductReviewBOs(List<ProductReviewBO> productReviewBOs) {
+		this.productReviewBOs = productReviewBOs;
+	}
+
+	public List<ProductRatingBO> getProductRatingBOs() {
+		return productRatingBOs;
+	}
+
+	public void setProductRatingBOs(List<ProductRatingBO> productRatingBOs) {
+		this.productRatingBOs = productRatingBOs;
 	}
 
 	public void setSellerBO(SellerBO sellerBO) {
