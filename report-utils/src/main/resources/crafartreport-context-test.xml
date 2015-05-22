@@ -11,4 +11,7 @@
 
 	<context:component-scan base-package="com.crafart.reports" />
 
+	<bean id="solrSearch" class="com.crafart.reports.SolrSearchServiceImpl">
+	    <constructor-arg type="java.lang.String" value="http://localhost:8080/solr/employees/"/>
+	</bean>
 </beans>
