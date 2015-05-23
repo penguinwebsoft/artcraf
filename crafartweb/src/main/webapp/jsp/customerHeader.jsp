@@ -4,6 +4,7 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <!-- header section starts here -->
+
 <nav id="top" class="padding-top" style="padding-bottom: 25px">
 	<div class="row-fluid" style="padding-bottom: 15px">
 		<div id="top-links" class="nav pull-right">
@@ -13,7 +14,7 @@
 						class="hidden-xs hidden-sm hidden-md col-lg-12">Sell on Crafart</span>
 				</a></li>
 
-				<li><a href="${baseURL}/menu/productDetails" title="Track your Order"> <i class="fa fa-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your
+				<li><a href="${baseURL}/menu/trackPage" title="Track Page"> <i class="fa fa-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your
 							Order</span>
 				</a></li>
 
@@ -68,7 +69,7 @@
 					<li><a href="javascript:void(0)">ANY</a></li>
 				</ul>
 			</div>
-			<input type="text" style="border-radius: 0px;" name="search" value="" placeholder="Search" class="form-control" />
+			<input type="text" style="border-radius: 0px;" id="searchText" name="search" value="" placeholder="Search" class="form-control" />
 			<div id="searchBtn" class="input-group-btn">
 				<button type="button" class="btn btn-success searchPad">Search</button>
 			</div>
@@ -118,3 +119,33 @@
 </div>
 
 <!-- home page search box ends here -->
+<script type="text/javascript">
+<!-- customer search auto complete functionality script -->
+	$(document).ready(function() {
+		$("#searchText").autocomplete({
+			source : function(request, response) {
+				var params = $("#searchText").val();
+				var searchBO = {};
+				searchBO.searchTerm = params;
+				var postData = JSON.stringify(searchBO);
+				$.ajax({
+					url : "search/products",
+					dataType : "json",
+					contentType : "application/json",
+					type : "post",
+					data : postData,
+					cache : false
+				}).done(function(modelMap) {
+					response($.each(modelMap.searchResults, function(productId, searchTerm) {
+						return {
+							lable : productId,
+							value : searchTerm
+				        }
+					}));
+				});
+				return products;
+			},
+			minLength : 0
+		});
+	});
+</script>
