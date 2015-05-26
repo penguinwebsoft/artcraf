@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -34,8 +35,8 @@ public class ProductReviewDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_review")
 	private long productReviewId;
 
-	@OneToOne
-	@JoinColumn(name = "product_id")
+	@ManyToOne
+	@JoinColumn(name = "product_id", nullable = false)
 	private ProductDO productDO;
 
 	@OneToOne
