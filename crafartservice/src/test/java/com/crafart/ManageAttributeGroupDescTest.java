@@ -23,7 +23,8 @@ import com.crafart.service.exception.CrafartServiceException;
  * @author Karthi
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
+		"classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -36,10 +37,9 @@ public class ManageAttributeGroupDescTest {
 	@Rollback(true)
 	public void testgetAttributeGroupDesc() {
 		try {
-			List<AttributeGroupDescBO> attributeGroupDescBOs= manageAttributeGroupDescServiceImpl.getAttributeGroupDesc();
-			for (AttributeGroupDescBO attributeGroupDescBO : attributeGroupDescBOs) {
-				System.out.print("\n"+attributeGroupDescBO.getAtrributeGroupDescId()+ attributeGroupDescBO.getAttributeGroupName());
-			}
+			List<AttributeGroupDescBO> attributeGroupDescBOs = manageAttributeGroupDescServiceImpl
+					.getAttributeGroupDesc();
+			Assert.assertNotNull(attributeGroupDescBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
