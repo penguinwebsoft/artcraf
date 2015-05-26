@@ -44,10 +44,7 @@ public class ManageCategoryServiceTest {
 		try {
 			testaddCategoryBO();
 			List<CategoryBO> categoryBOs = manageCategoryServiceImpl.getCategory();
-			for (@SuppressWarnings("unused")
-			CategoryBO categoryBO : categoryBOs) {
-				// System.out.print("\n" + categoryBO.getCategoryId());
-			}
+			Assert.assertNotNull(categoryBOs);
 		} catch (CrafartServiceException e) {
 			Assert.fail();
 			e.printStackTrace();
