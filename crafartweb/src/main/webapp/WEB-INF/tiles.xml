@@ -19,41 +19,36 @@
 		<put-attribute name="footer" value="/jsp/customerFooter.jsp" />
 	</definition>
 	
-	<definition name="admin.definition" template="/jsp/adminLayout.jsp">
-		<put-attribute name="header" value="/jsp/adminHeader.jsp" />
-		<put-attribute name="menu" value="" />
-		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/jsp/adminFooter.jsp" />
-	</definition>
-      
-	 <definition name="adminLayout" extends="admin.definition">
-		<put-attribute name="header" value="Admin Layout" />
-		<put-attribute name="body" value="/jsp/adminLayout.jsp" />
-	</definition>	
+	<!--  Admin views starts here -->
 
-	<definition name="adminHeader" extends="admin.definition">
-		<put-attribute name="title" value="Admin Header" />
-		<put-attribute name="body" value="/jsp/adminHeader.jsp" />
-	</definition>	
+	<definition name="admin.definition" template="/jsp/admin/adminLayout.jsp">
+		<put-attribute name="adminHeader" value="/jsp/admin/adminHeader.jsp" />
+		<put-attribute name="adminMenu" value="/jsp/admin/adminMenu.jsp" />
+		<put-attribute name="adminBody" value="" />
+		<put-attribute name="adminFooter" value="/jsp/admin/adminFooter.jsp" />
+	</definition>
+
+	<definition name="uploadProducts" extends="admin.definition">
+		<put-attribute name="title" value="Upload Products" />
+		<put-attribute name="adminBody" value="/jsp/admin/uploadProducts.jsp" />
+	</definition>
 	
-	<!-- <definition name="adminMenu" extends="admin.definition">
-		<put-attribute name="title" value="Admin Menu" />
-		<put-attribute name="body" value="/jsp/adminMenu.jsp" />
-	</definition> -->
+	<definition name="manageSeller" extends="admin.definition">
+		<put-attribute name="title" value="Manage Seller" />
+		<put-attribute name="adminBody" value="/jsp/admin/manageSeller.jsp" />
+	</definition>
+
+	<definition name="adminPanel" extends="admin.definition">
+		<put-attribute name="title" value="Admin Panel" />
+		<put-attribute name="body" value="/jsp/admin/adminPanel.jsp" />
+		<put-attribute name="menu" value="/jsp/admin/adminMenu.jsp" />
+	</definition>
 	
-	<definition name="adminFooter" extends="admin.definition">
-		<put-attribute name="title" value="Admin Footer" />
-		<put-attribute name="body" value="/jsp/adminFooter.jsp" />
-	</definition>	
-	
+	<!--  Admin views seller here -->
+
 	<definition name="dashboard" extends="base.definition">
 		<put-attribute name="title" value="Crafart Seller Dashboard" />
 		<put-attribute name="body" value="/jsp/dashboard.jsp" />
-	</definition>
-	
-	<definition name="adminPanel" extends="base.definition">
-		<put-attribute name="title" value="Admin Panel" />
-		<put-attribute name="body" value="/jsp/adminPanel.jsp" />
 	</definition>
 
 	<definition name="myAccount" extends="base.definition">
@@ -110,13 +105,6 @@
 		<put-attribute name="title" value="Crafart Report Purchase" />
 		<put-attribute name="body" value="/jsp/reportPurchase.jsp" />
 	</definition>
-	
-	
-
-
-	<!-- <definition name="thirdPartyLogin" extends="base.definition"> <put-attribute 
-		name="title" value="Crafart Third Party Login" /> <put-attribute name="body" 
-		value="/jsp/thirdPartyLogin.jsp" /> </definition> -->
 
 	<!-- customer views starts here -->
 	<definition name="customerHome" extends="customer.definition">
@@ -124,12 +112,10 @@
 		<put-attribute name="body" value="/jsp/customerHome.jsp" />
 	</definition>
 
-
 	<definition name="customerPanel" extends="customer.definition">
 		<put-attribute name="title" value="Customer panel" />
 		<put-attribute name="body" value="/jsp/customerPanel.jsp" />
 	</definition>
-
 
 	<definition name="sellerLogin" extends="customer.definition">
 		<put-attribute name="title" value="Seller login" />
@@ -185,39 +171,38 @@
 		<put-attribute name="customerMenu" value="/jsp/customerPanel.jsp" />
 		<put-attribute name="body" value="/jsp/customer/addressContact.jsp" />
 	</definition>
-	
+
 	<definition name="changePassword" extends="customer.definition">
 		<put-attribute name="title" value="change password" />
 		<put-attribute name="customerMenu" value="/jsp/customerPanel.jsp" />
 		<put-attribute name="body" value="/jsp/customer/changePassword.jsp" />
 	</definition>
-	
+
 	<definition name="deactivateAccount" extends="customer.definition">
 		<put-attribute name="title" value="deactivate account" />
 		<put-attribute name="customerMenu" value="/jsp/customerPanel.jsp" />
-		<put-attribute name="body" value="/jsp/customer/deactivateAccount.jsp" />
+		<put-attribute name="body"
+			value="/jsp/customer/deactivateAccount.jsp" />
 	</definition>
-	
+
 	<definition name="orderSection" extends="customer.definition">
 		<put-attribute name="title" value="order Section" />
- 		<put-attribute name="customerMenu" value="/jsp/customerPanel.jsp" /> 
+		<put-attribute name="customerMenu" value="/jsp/customerPanel.jsp" />
 		<put-attribute name="body" value="/jsp/customer/orderSection.jsp" />
 	</definition>
-	
+
 	<definition name="reviewSection" extends="customer.definition">
 		<put-attribute name="title" value="Review Section" />
 		<put-attribute name="customerMenu" value="/jsp/customerPanel.jsp" />
 		<put-attribute name="body" value="/jsp/customer/reviewSection.jsp" />
 	</definition>
-	
+
 	<definition name="customerCare" extends="customer.definition">
 		<put-attribute name="title" value="customer Care" />
 		<put-attribute name="customerMenu" value="/jsp/customerPanel.jsp" />
 		<put-attribute name="body" value="/jsp/customer/customerCare.jsp" />
 	</definition>
-	
 
-	
 	<definition name="paymentGateway" extends="customer.definition">
 		<put-attribute name="title" value="Payment Gateway" />
 		<put-attribute name="body" value="/jsp/payment/payuform.jsp" />
@@ -237,26 +222,21 @@
 		<put-attribute name="title" value="Track Order" />
 		<put-attribute name="body" value="/jsp/trackOrder.jsp" />
 	</definition>
-	
+
 	<definition name="trackId" extends="customer.definition">
 		<put-attribute name="title" value="Track Id" />
 		<put-attribute name="body" value="/jsp/trackId.jsp" />
 	</definition>
-      
+
 	<definition name="trackPage" extends="customer.definition">
 		<put-attribute name="title" value="Track Page" />
 		<put-attribute name="body" value="/jsp/trackPage.jsp" />
 	</definition>
-	
 
-	
-     <definition name="sellerLoginHeader" extends="customer.definition">
+	<definition name="sellerLoginHeader" extends="customer.definition">
 		<put-attribute name="title" value="Seller Login Header" />
 		<put-attribute name="body" value="/jsp/sellerLoginHeader.jsp" />
 	</definition>
-	
-      
-	
-	
+
 	<!-- customer views ends here -->
 </tiles-definitions>
