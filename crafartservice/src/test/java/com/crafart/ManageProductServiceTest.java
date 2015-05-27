@@ -99,6 +99,7 @@ public class ManageProductServiceTest {
 		productBO.setSortOrder("aes");
 		productBO.setStatus(1);
 		productBO.setStockStatusId("20");
+		productBO.setProductName("Micromax");
 		productBO.setSubtract(20.0001);
 		productBO.setUpc("asd");
 		productBO.setViewed(2);
@@ -307,8 +308,15 @@ public class ManageProductServiceTest {
 	@Test
 	@Rollback(true)
 	public void testGetProductDetails() {
+		ProductBO productBO1 = getProductBO();
 		try {
-			ProductBO productBO = manageProductServiceImpl.getProductDetail(21821);
+			manageProductServiceImpl.addProduct(productBO1);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		try {
+			ProductBO productBO = manageProductServiceImpl.getProductDetail(productBO1.getProductId());
 
 			for (ProductAttributeBO productAttributeBO : productBO.getProductAttributeBOs()) {
 				System.out.print(productAttributeBO.getText());
