@@ -108,12 +108,12 @@ public class ProductRatingDAOTest {
 		productDO.setWeight("25");
 		productDO.setWeightClassDO(getWeightClass());
 		productDO.setWidth(12.5);
-		try {
+	/*	try {
 			productDAOImpl.addProduct(productDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
-		}
+		}*/
 		return productDO;
 	}
 
@@ -148,12 +148,12 @@ public class ProductRatingDAOTest {
 		sellerDO.setCommission("aaaa");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
-		try {
+		/*try {
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.setSellerId(sellerDO.getSellerId());
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
-		}
+		}*/
 		return sellerDO;
 
 	}
@@ -172,13 +172,13 @@ public class ProductRatingDAOTest {
 		customerDOs.add(customerDO);
 		customerDO.setContactDOs(getContactDOs(customerDOs));
 		customerDO.setAddressDOs(getAddressDOs(customerDOs));
-		try {
+		/*try {
 			customerDAOImpl.addCustomer(customerDO);
 			customerDO.setCustomerId(customerDO.getCustomerId());
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
-		}
+		}*/
 		return customerDO;
 	}
 
