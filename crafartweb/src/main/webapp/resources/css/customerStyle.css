@@ -1269,11 +1269,10 @@ ol,ul {
 	position: absolute;
 	color: yellow;
 }
-
 /**************************************Review section end**********************************/
 /**************************************product list page hover**********************************/
 .productBox:hover {
 	border:2px solid #428bca;
 }
-
 /**************ends here *********************/
+

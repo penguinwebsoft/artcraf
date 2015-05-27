@@ -6,34 +6,34 @@
 
 <hr style="border-color: #332619; margin-top: 1px;">
 <!-- BEGIN BODY -->
-<div class="col-md-4">
+<div class="col-md-3">
 	<!-- Nav tabs -->
-	<div class="nav-side-menu col-lg-offset-2">
+	<div class="nav-side-menu">
 		<div class="brand">Customer Panel</div>
 		<i class="brand fa fa-bars fa-1x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 		<div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
 				<li data-toggle="collapse" data-target="#myAccount" class="collapsed active"><a href="#"> My Account </a></li>
 				<ul class="sub-menu" id="myAccount">
-					<li id="customerPersonalDetails"><a href="${baseURL}/customer/customerDetails">Personal Details</a></li>
-					<li id="customerAddresses"><a href="${baseURL}/customer/addressContacts">Addresses</a></li>
+					<li id="customerDetails"><a href="${baseURL}/customer/customerDetails">Personal Details</a></li>
+					<li id="customerAddressContact"><a href="${baseURL}/customer/addressContacts">Addresses</a></li>
 					<li id="customerProfileSetting"><a href="${baseURL}/customer/profileSettings">Profile setting</a></li>
-					<li id="CustomerUpdateEmail"><a href="${baseURL}/customer/manageEmail">Update Email</a></li>
+					<li id="CustomermanageEmail"><a href="${baseURL}/customer/manageEmail">Update Email</a></li>
 					<li id="CustomerChangePassword"><a href="${baseURL}/customer/changePassword">Change Password</a></li>
-					<li id="CustomerDeactivateAccount"><a href="${baseURL}/customer/deactivateAccount">Deactivate Account</a></li>
+					<li id="CustomerdeactivateAccount"><a href="${baseURL}/customer/deactivateAccount">Deactivate Account</a></li>
 				</ul>
 				<li data-toggle="collapse" data-target="#order" class="collapsed active"><a href="#"> Order </a></li>
 				<ul class="sub-menu" id="order">
-					<li id="customerMyOrder"><a href="#">My Order</a></li>
+					<li id="customerMyOrder"><a href="${baseURL}/customer/orderSection">My Order</a></li>
 				</ul>
 				<li data-target="#reviewAndRatting" data-toggle="collapse" class="collapsed active"><a href="#"> Review And Ratting </a></li>
 				<ul class="sub-menu" id="reviewAndRatting">
-					<li id="customerReviewAndRating"><a href="#">Review</a></li>
+					<li id="customerReviewAndRating"><a href="${baseURL}/customer/reviewSection">Review</a></li>
 				</ul>
 				<li data-target="#service" data-toggle="collapse" class="collapsed active"><a href="#"> Support </a></li>
 				<ul class="sub-menu" id="service">
 					<li id="contactSeller">Contact Seller</li>
-					<li id="customerCare">Customer Care</li>
+					<li id="customerCare"><a href="${baseURL}/customer/customerCareSection">Customer Care</a></li>
 				</ul>
 			</ul>
 		</div>
