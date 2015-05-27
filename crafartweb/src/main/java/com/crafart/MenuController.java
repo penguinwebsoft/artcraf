@@ -177,4 +177,14 @@ public class MenuController {
 		return new ModelAndView("adminFooter");
 	}
 	
+	@RequestMapping("/uploadProducts")
+	public ModelAndView showUploadProducts(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("uploadProducts");
+	}
+	
+	@RequestMapping("/manageSeller")
+	public ModelAndView showManageSeller(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("manageSeller");
+	}
+	
 }
