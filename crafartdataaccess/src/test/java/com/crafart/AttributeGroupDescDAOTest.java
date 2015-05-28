@@ -46,15 +46,15 @@ public class AttributeGroupDescDAOTest {
 			Assert.fail();
 		}
 	}
+
 	@Test
 	@Rollback(true)
-	public void getAttributeGroupDesc(){
+	public void getAttributeGroupDesc() {
 		List<AttributeGroupDescDO> attributeGroupDescDOs = new ArrayList<>();
 		try {
+			addAttributeGroupDesc();
 			attributeGroupDescDOs = attributeGroupDescDAOImpl.getAttributeGroupDesc();
-			for (AttributeGroupDescDO attributeGroupDescDO : attributeGroupDescDOs) {
-				System.out.print("\n"+attributeGroupDescDO.getAtrributeGroupDescId());
-			}
+			Assert.assertNotNull(attributeGroupDescDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
