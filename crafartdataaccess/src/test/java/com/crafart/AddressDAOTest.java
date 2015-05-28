@@ -34,7 +34,10 @@ public class AddressDAOTest {
 
 	@Autowired
 	private AddressDAO addressDAOImpl;
-
+	
+	/*
+	 * Test CAse to add address in Address table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddAddress() {
