@@ -14,6 +14,9 @@ import com.crafart.service.exception.CrafartServiceException;
  */
 public interface ManageProductRatingService {
 
-	public List<ProductRatingBO> getProductRating(long customerId) throws CrafartServiceException;
+	public List<ProductRatingBO> getProductRating(long customerId)
+			throws CrafartServiceException;
+
+	public void addProductRatting(ProductRatingBO productRatingBO) throws CrafartServiceException;
 
 }

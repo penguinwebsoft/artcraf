@@ -220,11 +220,16 @@ public class ProductDAOTest {
 		return storeDO;
 	}
 
+	/*
+	 * Test case is to retrieve single product detail from product table
+	 */
 	@Test
 	@Rollback(true)
 	public void testGetProductDetails() {
 		try {
-			ProductDO productDO = productDAOImpl.getProductDetail(21901);
+			ProductDO productDO1 = getProduct();
+			productDAOImpl.addProduct(productDO1);
+			ProductDO productDO = productDAOImpl.getProductDetail(productDO1.getProductId());
 			for (SellerDO sellerDO : productDO.getSellerDOs()) {
 				for (AddressDO addressDO : sellerDO.getAddressDOs()) {
 					System.out.print(addressDO.getAddressId());
@@ -237,10 +242,15 @@ public class ProductDAOTest {
 		}
 	}
 
+	/*
+	 * Test case is to retrieve details from product table
+	 */
 	@Test
 	@Rollback(true)
 	public void testGetAllProduct() {
 		try {
+			ProductDO productDO1 = getProduct();
+			productDAOImpl.addProduct(productDO1);
 			List<ProductDO> productDOs = productDAOImpl.getAllProduct();
 			Assert.assertNotNull(productDOs);
 		} catch (CrafartDataException cdExp) {

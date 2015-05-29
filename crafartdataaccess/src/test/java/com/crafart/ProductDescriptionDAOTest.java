@@ -57,6 +57,9 @@ public class ProductDescriptionDAOTest {
 
 	@Autowired
 	private ProductDAO productDAOImpl;
+	/*
+	 * Test case to add data in product description table
+	 */
 
 	@Test
 	@Rollback(true)

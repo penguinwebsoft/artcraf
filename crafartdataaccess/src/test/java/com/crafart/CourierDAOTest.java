@@ -33,6 +33,9 @@ public class CourierDAOTest {
 	@Autowired
 	private CourierDAO courierDAOImpl;
 
+	/*
+	 * Test case to add data in courier table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddCourierDetail() {
@@ -54,6 +57,9 @@ public class CourierDAOTest {
 		return courierDO;
 	}
 
+	/**
+	 * Test case is to retrieve details from courier table
+	 */
 	@Test
 	@Rollback(true)
 	public void testGetCourierDetail() {
@@ -65,15 +71,8 @@ public class CourierDAOTest {
 			Assert.fail();
 		}
 		try {
-			@SuppressWarnings("unused")
 			List<CourierDO> courierDOs = courierDAOImpl.getCourierDetail();
-			/**
-			 * it will print the courierId to system console
-			 */
-			/*
-			 * for(CourierDO courierDO2 : courierDOs){
-			 * System.out.print("\n"+courierDO2.getCourierId()); }
-			 */
+			Assert.assertNotNull(courierDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

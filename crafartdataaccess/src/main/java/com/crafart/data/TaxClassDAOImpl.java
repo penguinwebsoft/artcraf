@@ -50,20 +50,19 @@ public class TaxClassDAOImpl implements TaxClassDAO {
 	}
 
 	/**
-	 * get
+	 * getting tax_class value from tax_class table
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<TaxClassDO> getTaxClassDetail() throws CrafartDataException {
 		List<TaxClassDO> taxClassDOs = new ArrayList<>();
-		try{
+		try {
 			Session session = this.sessionFactory.openSession();
 			session.beginTransaction();
 			taxClassDOs = session.createQuery("from TaxClassDO").list();
-			session.getTransaction().commit();
 			session.close();
-		} catch(HibernateException hExp){
+		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while reteriving taxclassdetail from taxclass table", hExp);
 		}
 		return taxClassDOs;

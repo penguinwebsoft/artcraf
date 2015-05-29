@@ -6,22 +6,21 @@ package com.crafart.data;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.WeightClassDO;
+import com.crafart.dataobjects.UserGroupDO;
 import com.crafart.exception.CrafartDataException;
-import com.crafart.inter.data.WeightClassDAO;
+import com.crafart.inter.data.UserGroupDAO;
 
 /**
- * @author Karthi
- * 
+ * @author Deepam
+ *
  */
-@Repository("weightClassImpl")
-public class WeightClassDAOImpl implements WeightClassDAO {
+@Repository("userGroupDAOImpl")
+public class UserGroupDAOImpl implements UserGroupDAO {
 
 	private SessionFactory sessionFactory;
 
@@ -30,24 +29,17 @@ public class WeightClassDAOImpl implements WeightClassDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	/**
-	 * adding weight class details to weight_class table
-	 * 
-	 */
-
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addWeightClass(WeightClassDO weightClassDO) throws CrafartDataException {
-
+	public void addUserGroup(UserGroupDO userGroupDO) throws CrafartDataException {
 		try {
 			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
-			session.save(weightClassDO);
-			tx.commit();
+			session.beginTransaction();
+			session.persist(userGroupDO);
+			session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {
-			throw new CrafartDataException("DB Error while weight_class details", hExp);
+			throw new CrafartDataException("Error in adding User Group Detail", hExp);
 		}
 	}
-
 }

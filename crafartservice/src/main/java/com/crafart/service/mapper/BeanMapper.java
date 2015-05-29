@@ -139,6 +139,7 @@ public class BeanMapper {
 		productDO.setStockStatusId(productBO.getStockStatusId());
 		productDO.setSubtract(productBO.getSubtract());
 		productDO.setUpc(productBO.getUpc());
+		productDO.setProductName(productBO.getProductName());
 		productDO.setViewed(productBO.getViewed());
 		productDO.setWeight(productBO.getWeight());
 		productDO.setWeightClassDO(weightClassDO);
@@ -157,6 +158,7 @@ public class BeanMapper {
 		productBO.setModel(productDO.getModel());
 		productBO.setPoints(productDO.getPoints());
 		productBO.setPrice(productDO.getPrice());
+		productBO.setProductName(productDO.getProductName());
 		productBO.setProductId(productDO.getProductId());
 		productBO.setQuantity(productDO.getQuantity());
 		productBO.setSellerBO(sellerBO);
@@ -671,6 +673,15 @@ public class BeanMapper {
 
 	}
 
+	public ProductRatingDO mapProductRatingBOToDO(ProductRatingBO productRatingBO, ProductRatingDO productRatingDO, CustomerDO customerDO, ProductDO productDO) {
+		productRatingDO.setCustomerDO(customerDO);
+		productRatingDO.setPoints(productRatingBO.getPoints());
+		productRatingDO.setProductDO(productDO);
+		productRatingDO.setProductRatingId(productRatingBO.getProductRatingId());
+		return productRatingDO;
+
+	}
+
 	public ProductReviewBO mapProductReviewDOToBO(ProductReviewDO productReviewDO, ProductReviewBO productReviewBO, CustomerBO customerBO, ProductBO productBO) {
 		productReviewBO.setAuthour(productReviewDO.getAuthour());
 		productReviewBO.setProductReviewId(productReviewDO.getProductReviewId());
@@ -680,6 +691,18 @@ public class BeanMapper {
 		productReviewBO.setCustomerBO(customerBO);
 		productReviewBO.setProductBO(productBO);
 		return productReviewBO;
+
+	}
+
+	public ProductReviewDO mapProductReviewBOToDO(ProductReviewBO productReviewBO, ProductReviewDO productReviewDO, CustomerDO customerDO, ProductDO productDO) {
+		productReviewDO.setAuthour(productReviewBO.getAuthour());
+		productReviewDO.setProductReviewId(productReviewBO.getProductReviewId());
+		productReviewDO.setRating(productReviewBO.getRating());
+		productReviewDO.setStatus(productReviewBO.getStatus());
+		productReviewDO.setText(productReviewBO.getText());
+		productReviewDO.setCustomerDO(customerDO);
+		productReviewDO.setProductDO(productDO);
+		return productReviewDO;
 
 	}
 }

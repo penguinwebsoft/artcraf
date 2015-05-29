@@ -54,6 +54,10 @@ public class ProductDiscountDAOTest {
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
+	/*
+	 * Test case to add data in product discount table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void testAddProductDiscount() {

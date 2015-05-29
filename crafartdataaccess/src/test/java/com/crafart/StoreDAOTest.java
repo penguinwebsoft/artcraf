@@ -5,6 +5,7 @@ package com.crafart;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,10 @@ public class StoreDAOTest {
 
 	@Autowired
 	private SellerDAO sellerDAOImpl;
+
+	/*
+	 * Test case to add data in store table
+	 */
 
 	@Test
 	@Rollback(true)
@@ -95,12 +100,18 @@ public class StoreDAOTest {
 
 	}
 
+	/*
+	 * Test case to check
+	 */
 	@Test
+	@Ignore
 	@Rollback(true)
 	public void testCheckStoreUrl() {
 		try {
-			StoreDO storeDO = storeDAOImpl.checkStoreUrl("sam");
-			System.out.print(storeDO.getSellerDO().getSellerId());
+			StoreDO storeDO1 = getStoreDO();
+			storeDAOImpl.addStoreDetail(storeDO1);
+			StoreDO storeDO = storeDAOImpl.checkStoreUrl(storeDO1.getStoreUrl());
+			Assert.assertNotNull(storeDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

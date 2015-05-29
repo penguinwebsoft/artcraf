@@ -32,6 +32,9 @@ public class CommissionTestDAO {
 	@Autowired
 	private CommissionDAO commissionDAOImpl;
 
+	/*
+	 * Test case to add data in table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddCommission() {
@@ -44,14 +47,18 @@ public class CommissionTestDAO {
 		}
 	}
 
+	/*
+	 * 
+	 * Test method is to retrieve details from category table
+	 */
 	@Test
 	@Rollback(true)
 	public void getCommissionDetail() {
 		try {
+			/* adding data to table then retrieve from table */
+			testAddCommission();
 			List<CommissionDO> commissionDOs = commissionDAOImpl.getCommission();
-			for (CommissionDO commissionDO : commissionDOs) {
-				System.out.print(commissionDO.getCommissionId());
-			}
+			Assert.assertNotNull(commissionDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
