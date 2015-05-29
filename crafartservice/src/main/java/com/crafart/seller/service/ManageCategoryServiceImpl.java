@@ -71,4 +71,22 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 		}
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public List<CategoryBO> getSubCategory(long categoryId) throws CrafartServiceException {
+		List<CategoryBO> categoryBOs = new ArrayList<>();
+		try {
+			List<CategoryDO> categoryDOs = categoryDAOImpl.getSubCategory(categoryId);
+			for (CategoryDO categoryDO : categoryDOs) {
+				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO());
+				categoryBOs.add(categoryBO);
+			}
+
+		} catch (CrafartDataException cdExp) {
+			throw new CrafartServiceException("Error while fetching sub-category", cdExp);
+		}
+		return categoryBOs;
+
+	}
+
 }
