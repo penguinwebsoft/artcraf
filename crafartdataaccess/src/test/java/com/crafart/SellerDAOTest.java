@@ -3,7 +3,6 @@ package com.crafart;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,8 +30,6 @@ import com.crafart.inter.data.SellerDAO;
 @Transactional
 public class SellerDAOTest {
 
-	private static final Logger log = Logger.getLogger(SellerDAOTest.class);
-
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
@@ -45,7 +42,6 @@ public class SellerDAOTest {
 		try {
 			SellerDO sellerDO = getSellerDO();
 			sellerDAOImpl.addSeller(sellerDO);
-			log.info("Seller id is" + sellerDO.getSellerId());
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
@@ -148,15 +144,17 @@ public class SellerDAOTest {
 		return storeDO;
 	}
 
+	/*
+	 * Test case is to retrieve seller details from seller table
+	 */
 	@Test
 	@Rollback(true)
 	public void testGetSellerDetail() {
 		try {
-			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(41681);
-			List<AddressDO> addressDOs = sellerDO.getAddressDOs();
-			for (AddressDO addressDO : addressDOs) {
-				System.out.print("\n" + addressDO.getAddressId());
-			}
+			SellerDO sellerDO1 = getSellerDO();
+			sellerDAOImpl.addSeller(sellerDO1);
+			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(sellerDO1.getSellerId());
+			Assert.assertNotNull(sellerDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

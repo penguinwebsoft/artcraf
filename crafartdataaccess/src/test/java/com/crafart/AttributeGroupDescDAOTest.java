@@ -32,7 +32,10 @@ public class AttributeGroupDescDAOTest {
 
 	@Autowired
 	private AttributeGroupDescDAO attributeGroupDescDAOImpl;
-
+	
+	/*
+	 * Test case to add attribute group to attribte grop description table
+	 */
 	@Test
 	@Rollback(true)
 	public void addAttributeGroupDesc() {
@@ -47,11 +50,15 @@ public class AttributeGroupDescDAOTest {
 		}
 	}
 
+	/*
+	 * Test case to retrieve to data from table
+	 */
 	@Test
 	@Rollback(true)
 	public void getAttributeGroupDesc() {
 		List<AttributeGroupDescDO> attributeGroupDescDOs = new ArrayList<>();
 		try {
+			/*Adding data to table and then retrieve data from table*/
 			addAttributeGroupDesc();
 			attributeGroupDescDOs = attributeGroupDescDAOImpl.getAttributeGroupDesc();
 			Assert.assertNotNull(attributeGroupDescDOs);

@@ -57,6 +57,10 @@ public class ProductSpecialDAOTest {
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
+	/*
+	 * Test case to add data in product special table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void testAddProductSpecial() {

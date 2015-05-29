@@ -30,6 +30,9 @@ public class GeoZoneDAOTest {
 	@Autowired
 	private GeoZoneDAO geoZoneDAOImpl;
 
+	/*
+	 * Test case to add data in geozone table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddGeoZoneDetail() {
@@ -49,6 +52,9 @@ public class GeoZoneDAOTest {
 		return geoZoneDO;
 	}
 
+	/*
+	 * Test case is to retrieve details from geozone table
+	 */
 	@Test
 	@Rollback(true)
 	public void testgetGeoZoneDetail() {
@@ -60,12 +66,8 @@ public class GeoZoneDAOTest {
 			Assert.fail();
 		}
 		try {
-			@SuppressWarnings("unused")
 			List<GeoZoneDO> geoZoneDOs = geoZoneDAOImpl.getGeoZoneDetail();
-			/*
-			 * for (GeoZoneDO geoZoneDO2 : geoZoneDOs) {
-			 * System.out.print("\n"+geoZoneDO2.getGeoZoneId()); }
-			 */
+			Assert.assertNotNull(geoZoneDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

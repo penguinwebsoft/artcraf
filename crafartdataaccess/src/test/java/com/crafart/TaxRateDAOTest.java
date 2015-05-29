@@ -54,6 +54,10 @@ public class TaxRateDAOTest {
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
+	/*
+	 * Test case to add data in tax_rate table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void testAddTaxRate() {

@@ -58,8 +58,11 @@ public class ProductAttributeDAOTest {
 	@Autowired
 	private AttributeGroupDescDAO attributeGroupDescDAOImpl;
 
+	/*
+	 * Test case to add data in product attribute table
+	 */
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public void testAddProductAttribute() {
 		List<ProductAttributeDO> productAttributeDOs = getProductAttribute();
 		try {
@@ -70,12 +73,26 @@ public class ProductAttributeDAOTest {
 		}
 	}
 
+	/*
+	 * Test case is to retrieve details from category table
+	 */
 	@Test
 	@Rollback(true)
 	public void testGetProductAttribute() {
 		try {
-			List<ProductAttributeDO> attributeDOs = productAttributeDAOImpl.getProductAttribute(10981);
-			Assert.assertNotNull("List of AttribteDO is null", attributeDOs);
+			List<ProductAttributeDO> productAttributeDOs1 = getProductAttribute();
+			try {
+				productAttributeDAOImpl.addProductAttribute(productAttributeDOs1);
+			} catch (CrafartDataException cdExp) {
+				cdExp.printStackTrace();
+				Assert.fail();
+			}
+			long productId = 0;
+			for (ProductAttributeDO productAttributeDO : productAttributeDOs1) {
+				productId = productAttributeDO.getProductDO().getProductId();
+			}
+			List<ProductAttributeDO> productAttributeDOs = productAttributeDAOImpl.getProductAttribute(productId);
+			Assert.assertNotNull("List of AttribteDO is null", productAttributeDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
