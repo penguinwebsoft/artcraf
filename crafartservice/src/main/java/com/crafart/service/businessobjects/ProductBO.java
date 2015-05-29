@@ -20,6 +20,8 @@ public class ProductBO implements Serializable {
 
 	private long productId;
 
+	private String productName;
+
 	private long categoryId;
 
 	private String model;
@@ -336,6 +338,14 @@ public class ProductBO implements Serializable {
 
 	public void setSellerBO(SellerBO sellerBO) {
 		this.sellerBO = sellerBO;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }
