@@ -17,4 +17,6 @@ public interface ManageProductReviewService {
 	public List<ProductReviewBO> getProductReview(long customerId) throws CrafartServiceException;
 
 	public List<ProductReviewBO> getSingleProductReviews(long productId) throws CrafartServiceException;
+
+	public void addProductReview(ProductReviewBO productReviewBO) throws CrafartServiceException;
 }

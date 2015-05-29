@@ -17,4 +17,6 @@ public interface ManageCategoryService {
 	public List<CategoryBO> getCategory() throws CrafartServiceException;
 
 	public void addCategory(CategoryBO categoryBO) throws CrafartServiceException;
+
+	public List<CategoryBO> getSubCategory(long categoryId) throws CrafartServiceException;
 }
