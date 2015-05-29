@@ -20,4 +20,6 @@ public interface CategoryDAO {
 	public void addCategory(CategoryDO categoryDO) throws CrafartDataException;
 
 	public List<CategoryDO> getCategory() throws CrafartDataException;
+
+	public List<CategoryDO> getSubCategory(long categoryId) throws CrafartDataException;
 }
