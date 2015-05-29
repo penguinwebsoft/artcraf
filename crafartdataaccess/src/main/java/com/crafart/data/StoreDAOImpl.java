@@ -44,7 +44,7 @@ public class StoreDAOImpl implements StoreDAO {
 		try {
 			Session session = this.sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
-			session.persist(storeDO);
+			session.save(storeDO);
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {

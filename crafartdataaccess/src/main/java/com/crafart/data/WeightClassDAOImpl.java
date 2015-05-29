@@ -42,7 +42,7 @@ public class WeightClassDAOImpl implements WeightClassDAO {
 		try {
 			Session session = this.sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
-			session.persist(weightClassDO);
+			session.save(weightClassDO);
 			tx.commit();
 			session.close();
 		} catch (HibernateException hExp) {
