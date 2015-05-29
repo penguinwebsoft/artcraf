@@ -6,12 +6,17 @@ package com.crafart.customer.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.dataobjects.CustomerDO;
+import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductRatingDO;
+import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.ProductRatingDAO;
 import com.crafart.inter.service.ManageProductRatingService;
@@ -53,6 +58,25 @@ public class ManageProductRatingServiceImpl implements ManageProductRatingServic
 			throw new CrafartServiceException("Error while getting prodct rating from table", cdExp);
 		}
 		return productRatingBOs;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void addProductRatting(ProductRatingBO productRatingBO) throws CrafartServiceException {
+		SellerBO sellerBO = productRatingBO.getProductBO().getSellerBO();
+		SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
+		List<SellerDO> sellerDOs = new ArrayList<>();
+		sellerDOs.add(sellerDO);
+
+		ProductRatingDO productRatingDO = beanMapper.mapProductRatingBOToDO(productRatingBO, new ProductRatingDO(), beanMapper.mapCustomerBOToDO(productRatingBO.getCustomerBO(), new CustomerDO()),
+				beanMapper.mapProductBOToDO(productRatingBO.getProductBO(), new ProductDO(), beanMapper.mapWeightClassBOToDO(productRatingBO.getProductBO().getWeightClassBO(), new WeightClassDO()),
+						sellerDOs));
+		try {
+			productRatingDAOImpl.addProductRating(productRatingDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 }
