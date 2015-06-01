@@ -36,7 +36,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		try {
 			Session session = this.sessionFactory.openSession();
 			session.beginTransaction();
-			session.save(customerDO);
+			session.persist(customerDO);
 			session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {

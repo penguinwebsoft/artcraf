@@ -52,6 +52,9 @@ public class ProductDO implements Serializable, Cloneable {
 	@Column(name = "model")
 	private String model;
 
+	@Column(name = "product_name")
+	private String productName;
+
 	@Column(name = "sku")
 	private String sku;
 
@@ -71,6 +74,7 @@ public class ProductDO implements Serializable, Cloneable {
 	private String image;
 
 	@ManyToMany(cascade = { CascadeType.ALL })
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "SELLER_PRODUCT", joinColumns = { @JoinColumn(name = "PRODUCT_ID") }, inverseJoinColumns = { @JoinColumn(name = "SELLER_ID") })
 	private List<SellerDO> sellerDOs = new ArrayList<>();
 
@@ -137,7 +141,8 @@ public class ProductDO implements Serializable, Cloneable {
 		return productAttributeDOs;
 	}
 
-	public void setProductAttributeDOs(List<ProductAttributeDO> productAttributeDOs) {
+	public void setProductAttributeDOs(
+			List<ProductAttributeDO> productAttributeDOs) {
 		this.productAttributeDOs = productAttributeDOs;
 	}
 
@@ -331,6 +336,14 @@ public class ProductDO implements Serializable, Cloneable {
 
 	public void setDateAvailable(String dateAvailable) {
 		this.dateAvailable = dateAvailable;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }

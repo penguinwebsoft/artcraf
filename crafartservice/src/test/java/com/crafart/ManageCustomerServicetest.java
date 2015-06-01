@@ -28,7 +28,8 @@ import com.crafart.service.exception.CrafartServiceException;
  * @author Karthi
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
+		"classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -56,8 +57,9 @@ public class ManageCustomerServicetest {
 		CustomerBO customerBO = getCustomer();
 		try {
 			customerServiceImpl.addCustomerDetail(customerBO);
-			//failing test case if the insertion get failed, i.e if customer id is 0
-			if(customerBO.getCustomerId() == 0){
+			// failing test case if the insertion get failed, i.e if customer id
+			// is 0
+			if (customerBO.getCustomerId() == 0) {
 				Assert.fail();
 			}
 			System.out.print(customerBO.getCustomerId());
@@ -131,13 +133,15 @@ public class ManageCustomerServicetest {
 	@Rollback(true)
 	public void testFindByEmail() {
 		try {
-			ContactBO contactBO = customerServiceImpl.findByEmailId("karthikool12@gmail.com");
+			ContactBO contactBO = customerServiceImpl
+					.findByEmailId("karthikool12@gmail.com");
 			CustomerBO customerBO = contactBO.getCustomerBO();
 			for (ContactBO contactBO2 : customerBO.getContactBOs()) {
 				System.out.println(contactBO2.getContactValue());
 			}
 			System.out.println(customerBO.getAddressBO().getAddressId());
-			System.out.println(customerBO.getFirstName() + "\t" + customerBO.getCustomerId());
+			System.out.println(customerBO.getFirstName() + "\t"
+					+ customerBO.getCustomerId());
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -147,8 +151,16 @@ public class ManageCustomerServicetest {
 	@Test
 	@Rollback(true)
 	public void testGetCustomerDetail() {
+		CustomerBO customerBO1 = getCustomer();
 		try {
-			CustomerBO customerBO = customerServiceImpl.getCustomerDetails(4881);
+			customerServiceImpl.addCustomerDetail(customerBO1);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		try {
+			CustomerBO customerBO = customerServiceImpl
+					.getCustomerDetails(customerBO1.getCustomerId());
 			for (ContactBO contactBO : customerBO.getContactBOs()) {
 				System.out.println(contactBO.getContactValue());
 			}

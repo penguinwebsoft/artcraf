@@ -44,6 +44,9 @@ public class CustomerDAOTest {
 	@Autowired
 	private AddressDAO addressDAOImpl;
 
+	/*
+	 * Test case is to add data to category table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddCustomer() {
@@ -56,6 +59,9 @@ public class CustomerDAOTest {
 		}
 	}
 
+	/*
+	 * Test case is to update details in category table
+	 */
 	@Test
 	@Rollback(true)
 	public void testUpdateSeller() {
@@ -131,15 +137,19 @@ public class CustomerDAOTest {
 		return contactDOs;
 	}
 
+	/*
+	 * Test case is to retrieve details from category table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void tesCustomerDetails() {
 		try {
-			CustomerDO customerDO = customerDAOImpl.getCustomerDetails(4881);
+			CustomerDO customerDO1 = getCustomer();
+			customerDAOImpl.addCustomer(customerDO1);
+			CustomerDO customerDO = customerDAOImpl.getCustomerDetails(customerDO1.getCustomerId());
 			List<AddressDO> addressDOs = customerDO.getAddressDOs();
-			for (AddressDO addressDO : addressDOs) {
-				System.out.println(addressDO.getAddressId());
-			}
+			Assert.assertNotNull(addressDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

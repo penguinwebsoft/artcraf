@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -66,6 +67,27 @@ public class CategoryDAOImpl implements CategoryDAO {
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding category details", hExp);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<CategoryDO> getSubCategory(long categoryId) throws CrafartDataException {
+		List<CategoryDO> categoryDOs = new ArrayList<CategoryDO>();
+		try {
+			Session session = this.sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from CategoryDO where parent_id = :parent_id");
+			query.setLong("parent_id", categoryId);
+			categoryDOs = (List<CategoryDO>) query.list();
+			session.close();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB Error while fetching sub-category details", hExp);
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		}
+
+		return categoryDOs;
 	}
 
 }

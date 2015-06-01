@@ -34,11 +34,14 @@ public class AddressDAOTest {
 
 	@Autowired
 	private AddressDAO addressDAOImpl;
-
+	
+	/*
+	 * Test CAse to add address in Address table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddAddress() {
-		AddressDO addressDO = getAddress();
+		AddressDO addressDO = addAddress();
 		try {
 			addressDAOImpl.addAddress(addressDO);
 		} catch (CrafartDataException cdExp) {
@@ -48,7 +51,7 @@ public class AddressDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private AddressDO getAddress() {
+	private AddressDO addAddress() {
 		AddressDO addressDO = new AddressDO();
 		addressDO.setCityId(12);
 		addressDO.setPinCode("000000");

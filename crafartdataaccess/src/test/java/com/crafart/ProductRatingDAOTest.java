@@ -56,6 +56,11 @@ public class ProductRatingDAOTest {
 	@Autowired
 	private CustomerDAO customerDAOImpl;
 
+
+	/*
+	 * Test case to add data in product Rating table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void testAddRating() {
@@ -148,12 +153,14 @@ public class ProductRatingDAOTest {
 		sellerDO.setCommission("aaaa");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
+
 		try {
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.setSellerId(sellerDO.getSellerId());
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 		}
+
 		return sellerDO;
 
 	}
@@ -214,6 +221,10 @@ public class ProductRatingDAOTest {
 		contactDOs.add(contactDO3);
 		return contactDOs;
 	}
+	
+	/*
+	 * Test case is to retrieve product rating detail from product rating table
+	 */
 
 	@Test
 	@Rollback(true)

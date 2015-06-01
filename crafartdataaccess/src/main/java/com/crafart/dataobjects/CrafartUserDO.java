@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,8 +34,9 @@ public class CrafartUserDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
 	private long userId;
 
-	@Column(name = "user_group_id")
-	private long userGroupId;
+	@ManyToOne
+	@JoinColumn(name = "user_group_id", nullable = false)
+	private UserGroupDO userGroupDO;
 
 	@Column(name = "user_name")
 	private String userName;
@@ -64,12 +67,12 @@ public class CrafartUserDO implements Serializable, Cloneable {
 		this.userId = userId;
 	}
 
-	public long getUserGroupId() {
-		return userGroupId;
+	public UserGroupDO getUserGroupDO() {
+		return userGroupDO;
 	}
 
-	public void setUserGroupId(long userGroupId) {
-		this.userGroupId = userGroupId;
+	public void setUserGroupDO(UserGroupDO userGroupDO) {
+		this.userGroupDO = userGroupDO;
 	}
 
 	public String getUserName() {

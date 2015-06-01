@@ -30,6 +30,7 @@ import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.dataobjects.TaxRateDO;
+import com.crafart.dataobjects.UserGroupDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CommissionDAO;
@@ -43,6 +44,7 @@ import com.crafart.inter.data.LengthClassDAO;
 import com.crafart.inter.data.ProductDAO;
 import com.crafart.inter.data.SellerDAO;
 import com.crafart.inter.data.TaxRateDAO;
+import com.crafart.inter.data.UserGroupDAO;
 import com.crafart.inter.data.WeightClassDAO;
 
 /**
@@ -91,6 +93,14 @@ public class CrafartOrderDAOTest {
 	@Autowired
 	private CourierDAO courierDAOImpl;
 
+	@Autowired
+	private UserGroupDAO userGroupDAOImpl;
+
+	
+	
+	/*
+	 * Test case to add data in crafart_order table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddCrafartOrder() {
@@ -103,22 +113,26 @@ public class CrafartOrderDAOTest {
 		}
 	}
 
+	/*
+	 * Test case is to retrieve details from crafart_order table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void testGetCrafartOrder() {
-		List<CrafartOrderDO> crafartOrderDOs = new ArrayList<>();
-		testAddCrafartOrder();
+		/* adding data to table and then retrieving from table */
 		try {
-			crafartOrderDOs = crafartOrderDAOImpl.getCrafartOrder();
-			for (CrafartOrderDO crafartOrderDO : crafartOrderDOs) {
-				System.out.print("\n" + crafartOrderDO.getOrderId());
-			}
+			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl.getCrafartOrder();
+			Assert.assertNotNull(crafartOrderDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
 
+	/*
+	 * Test case to update the crafart_order table
+	 */
 	@Test
 	@Rollback(true)
 	public void testUpdateCrafartOrder() {
@@ -129,6 +143,29 @@ public class CrafartOrderDAOTest {
 			crafartOrderDO.getCourierDO().setName("ranchi");
 			crafartOrderDO.getProductDO().setModel("abc0001111");
 			crafartOrderDAOImpl.updateCrafartOrder(crafartOrderDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	/*
+	 * Test case to get single order detail
+	 */
+
+	@Test
+	@Rollback(true)
+	public void testGetCustomerOrderList() {
+		CrafartOrderDO crafartOrderDO = getCrafartOrder();
+		try {
+			crafartOrderDAOImpl.addCrafartOrder(crafartOrderDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		try {
+			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl.getCustomerOrder(crafartOrderDO.getCustomerDO().getCustomerId());
+			Assert.assertNotNull(crafartOrderDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
@@ -327,13 +364,14 @@ public class CrafartOrderDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	private CrafartUserDO getCrafartUser() {
 		CrafartUserDO crafartUserDO = new CrafartUserDO();
+		UserGroupDO userGroupDO = getUserGroup();
 		crafartUserDO.setFirstName("klkl");
 		crafartUserDO.setIp("127.127.00.91");
 		crafartUserDO.setLastName("jkjk");
 		crafartUserDO.setPassword("opopop");
 		crafartUserDO.setSellerPermission(1);
 		crafartUserDO.setStatus(1);
-		crafartUserDO.setUserGroupId(2);
+		crafartUserDO.setUserGroupDO(userGroupDO);
 		crafartUserDO.setUserName("klkl jkjk");
 		try {
 			crafartUserDAOImpl.addCrafartUser(crafartUserDO);
@@ -342,6 +380,21 @@ public class CrafartOrderDAOTest {
 			Assert.fail();
 		}
 		return crafartUserDO;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private UserGroupDO getUserGroup() {
+		UserGroupDO userGroupDO = new UserGroupDO();
+		userGroupDO.setName("Admin");
+		userGroupDO.setPermission("Accessed");
+		try {
+			userGroupDAOImpl.addUserGroup(userGroupDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return userGroupDO;
+
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -406,17 +459,6 @@ public class CrafartOrderDAOTest {
 			Assert.fail();
 		}
 		return weightClassDO;
-	}
-
-	@Test
-	@Rollback(true)
-	public void testGetCustomerOrder() {
-		try {
-			crafartOrderDAOImpl.getCustomerOrder(1041);
-		} catch (CrafartDataException cdExp) {
-			cdExp.printStackTrace();
-			Assert.fail();
-		}
 	}
 
 }

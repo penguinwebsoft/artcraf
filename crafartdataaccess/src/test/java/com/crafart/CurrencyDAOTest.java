@@ -33,6 +33,9 @@ public class CurrencyDAOTest {
 	@Autowired
 	private CurrencyDAO currencyDAOImpl;
 
+	/*
+	 * Test case to add data in currency table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddCurrency() {
@@ -46,14 +49,17 @@ public class CurrencyDAOTest {
 
 	}
 
+	/*
+	 * Test case is to retrieve details from category table
+	 */
 	@Test
 	@Rollback(true)
 	public void testGetCurrency() {
 		try {
+			/* adding data to table and then retrieving data from table */
+			testAddCurrency();
 			List<CurrencyDO> currencyDOs = currencyDAOImpl.getCurrencyDetail();
-			for (CurrencyDO currencyDO : currencyDOs) {
-				System.out.print(currencyDO.getCurrencyId());
-			}
+			Assert.assertNotNull(currencyDOs);
 		} catch (CrafartDataException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

@@ -21,7 +21,7 @@
 											function(key, value) {
 												var productBO = value;
 
-												html = '<div class="col-md-3">';
+												html = '<div class="col-md-3 productBox	" id="productDetailBox'+productBO.productId+'">';
 												html += '<div class="style"><img src="../resources/img/m14.jpg" title="" alt="" class="img-responsive" style="margin-top: 0px; margin-left: 20px" /></div>';
 												html += '<div><span class="style">&nbsp'
 														+ productBO.model
@@ -51,6 +51,18 @@
 											});
 						}
 					});
+	$(document).on('click','.productBox',function(e) {
+		var id = $(this).prop('id');
+		alert($(this).prop('id'));
+		var productID = parseInt(/productDetailBox(\d+)/.exec(id)[1]);
+		/*var productBOObj = $.grep(productBOs, function(element){
+			 return element.productId == productID;
+		});
+		 alert(JSON.stringify(productBOObj));
+		alert(productBOObj.hasOwnProperty(model)); */
+		
+		window.location.replace("../menu/productDetails"); 
+	});
 </script>
 <!-- Left Side -->
 <div class="col-md-2" style="margin-top: 3%">

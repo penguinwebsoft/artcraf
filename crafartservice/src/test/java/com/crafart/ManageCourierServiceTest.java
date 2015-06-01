@@ -24,7 +24,8 @@ import com.crafart.service.exception.CrafartServiceException;
  * @author karthi
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
+		"classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -48,21 +49,11 @@ public class ManageCourierServiceTest {
 
 	@Test
 	@Rollback(true)
-	public void getCourierDetail() {
-		CourierBO courierBO = getCourier();
+	public void testGetCourierDetail() {
 		try {
-			manageCourierServiceImpl.addCourierDetail(courierBO);
-		} catch (CrafartServiceException csExp) {
-			csExp.printStackTrace();
-			Assert.fail();
-		}
-		try {
-			@SuppressWarnings("unused")
-			List<CourierBO> courierBOs = manageCourierServiceImpl.getCourierDetail();
-			/*
-			 * for (CourierBO courierBO2 : courierBOs) {
-			 * System.out.print("\n"+courierBO2.getCourierId()); }
-			 */
+			List<CourierBO> courierBOs = manageCourierServiceImpl
+					.getCourierDetail();
+			Assert.assertNotNull(courierBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

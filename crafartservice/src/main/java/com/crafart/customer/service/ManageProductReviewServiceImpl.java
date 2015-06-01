@@ -76,4 +76,10 @@ public class ManageProductReviewServiceImpl implements ManageProductReviewServic
 
 		return productReviewBOs;
 	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void addProductReview(ProductReviewBO productReviewBO) throws CrafartServiceException {
+		
+	}
 }

@@ -46,6 +46,9 @@ public class InvoiceDAOTest {
 	@Autowired
 	private CustomerDAO customerDAOImpl;
 
+	/*
+	 * Test case to add data in Invoice table
+	 */
 	@Test
 	@Rollback(true)
 	public void testAddInvoice() {

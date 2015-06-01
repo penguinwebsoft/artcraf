@@ -33,27 +33,25 @@ public class CategoryDAOTest {
 	private CategoryDAO categoryDAOImpl;
 
 	/**
-	 * this test method is to retrive details from category table 
+	 * Test case is to retrieve details from category table
 	 */
 	@Test
 	@Rollback(true)
 	public void testGetCategory() {
 		try {
+			/* adding data in table and then retrieving from table */
 			testaddcategory();
-			@SuppressWarnings("unused")
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategory();
-			/**
-			 * it will print the categoryId to system console
-			 */
-			/*for (CategoryDO categoryDO2 : categoryDOs) {
-				System.out.print("\n" + categoryDO2.getCategoryId());
-			}*/
+			Assert.assertNotNull(categoryDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
 
+	/*
+	 * Test case to add data in category table
+	 */
 	@Test
 	@Rollback(true)
 	public void testaddcategory() {

@@ -120,20 +120,27 @@ public class ManageSellerTest {
 		contactBO.setSellerBO(sellerBO);
 		ContactBO contactBO3 = new ContactBO();
 		contactBO3.setContactTypeId(3);
-		contactBO3.setContactValue("sellerservice@iii.com");
+		contactBO3.setContactValue("deepam@iii.com");
 		contactBO.setSellerBO(sellerBO);
 		contactBOs.add(contactBO);
 		contactBOs.add(contactBO2);
 		contactBOs.add(contactBO3);
 		return contactBOs;
 	}
-	
+
 	@Test
 	@Rollback(true)
 	public void testFindByEmail() {
 		try {
-			ContactBO contactBO = manageSellerServiceImpl.findByEmailId("sam@gmail.com");
-			System.out.print(contactBO.getContactId()+"\t"+ contactBO.getSellerBO().getSellerId()+"\t"+contactBO.getSellerBO().getAddressBO().getAddressId()+"\t"+contactBO.getSellerBO().getStoreBO().getStoreId());
+			SellerBO sellerBO = getSellerBO();
+			manageSellerServiceImpl.addSeller(sellerBO);
+			String email=null;
+			for (ContactBO contactBO : sellerBO.getContactBOs()) {
+				if(contactBO.getContactTypeId()==3){
+					email = contactBO.getContactValue();
+				}
+			}
+			manageSellerServiceImpl.findByEmailId(email);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

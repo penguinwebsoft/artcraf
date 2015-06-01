@@ -42,7 +42,7 @@ public class ManageStoreServiceImpl implements ManageStoreService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addStoreDetail(StoreBO storeBO) throws CrafartServiceException {
 
-		StoreDO storeDO = beanMapper.mapStoreBOToDO(storeBO, new StoreDO(), new SellerDO());
+		StoreDO storeDO = beanMapper.mapStoreBOToDO(storeBO, new StoreDO(), beanMapper.mapSellerBOToDO(storeBO.getSellerBO(), new SellerDO()));
 		try {
 			storeDAOImpl.addStoreDetail(storeDO);
 			storeBO.setStoreId(storeDO.getStoreId());

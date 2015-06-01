@@ -57,7 +57,7 @@ public class CrafartOrderDAOImpl implements CrafartOrderDAO {
 			Session session = this.sessionFactory.openSession();
 			session.beginTransaction();
 			crafartOrderDOs = session.createQuery("from CrafartOrderDO").list();
-			session.getTransaction().commit();
+			//session.getTransaction().commit();
 			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while retriving from DB", hExp);

@@ -67,6 +67,10 @@ public class ProductShippingDAOTest {
 	@Autowired
 	private GeoZoneDAO geoZoneDAOImpl;
 
+	/*
+	 * Test case to add data in product shipping table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void testAddProductShipping() {

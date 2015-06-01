@@ -14,7 +14,7 @@
 						class="hidden-xs hidden-sm hidden-md col-lg-12">Sell on Crafart</span>
 				</a></li>
 
-				<li><a href="${baseURL}/menu/productDetails" title="Track your Order"> <i class="fa fa-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your
+				<li><a href="${baseURL}/menu/trackPage" title="Track Page"> <i class="fa fa-map-marker pull-left"></i> <span class="hidden-xs hidden-sm hidden-md col-lg-12">Track your
 							Order</span>
 				</a></li>
 

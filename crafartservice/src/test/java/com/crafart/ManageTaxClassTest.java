@@ -38,7 +38,7 @@ public class ManageTaxClassTest {
 		try {
 			@SuppressWarnings("unused")
 			List<TaxClassBO> taxClassBOs = manageTaxClassServiceImpl.getTaxClassDetail();
-			/*for (TaxClassBO taxClassBO : taxClassBOs) {
+		/*	for (TaxClassBO taxClassBO : taxClassBOs) {
 				System.out.print("\n" + taxClassBO.getTaxClassId());
 			}*/
 		} catch (CrafartServiceException csExp) {

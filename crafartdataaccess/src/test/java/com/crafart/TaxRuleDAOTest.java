@@ -59,6 +59,10 @@ public class TaxRuleDAOTest {
 	@Autowired
 	private SellerDAO sellerDAOImpl;
 
+	/*
+	 * Test case to add data in tax_rule table
+	 */
+
 	@Test
 	@Rollback(true)
 	public void testAddTaxRule() {
