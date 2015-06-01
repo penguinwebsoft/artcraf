@@ -182,9 +182,48 @@ public class MenuController {
 		return new ModelAndView("uploadProducts");
 	}
 	
-	@RequestMapping("/manageSeller")
-	public ModelAndView showManageSeller(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("manageSeller");
+	@RequestMapping("/manageSellers")
+	public ModelAndView showManageSellers(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("manageSellers");
 	}
 	
+	@RequestMapping("/addNewSeller")
+	public ModelAndView showAddNewSeller(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addNewSeller");
+	}
+
+	@RequestMapping("/viewSellers")
+	public ModelAndView showViewSellers(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("viewSellers");
+	}
+	
+	@RequestMapping("/manageCouriers")
+	public ModelAndView showManageCouriers(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("manageCouriers");
+	}
+	
+	@RequestMapping("/addNewCouriers")
+	public ModelAndView showAddNewCouriers(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addNewCouriers");
+	}
+     
+	@RequestMapping("/editCouriers")
+	public ModelAndView showEditCouriers(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editCouriers");
+	}
+	
+	@RequestMapping("/categories")
+	public ModelAndView showCategories(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("categories");
+	}
+	
+	@RequestMapping("/categoriesNextPage")
+	public ModelAndView showCategoriesNextPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("categoriesNextPage");
+	}
+	
+	@RequestMapping("/addCategories")
+	public ModelAndView showAddCategories(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addCategories");
+	}
 }
