@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
+<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
@@ -17,7 +18,7 @@
 			</div>
 		</div>
 
-		<!-- Table Section--> 
+		<!-- Table Section-->
 		<div class="container-fluid" style="background-color: white;">
 			<div class="container">
 				<div class="tab-pane" id="tab-shipping">
@@ -126,3 +127,4 @@
 		</div>
 	</div>
 </div>
+

@@ -18,7 +18,7 @@ public class CrafartUserBO implements Serializable {
 
 	private long userId;
 
-	private long userGroupId;
+	private UserGroupBO userGroupBO;
 
 	private String userName;
 
@@ -40,14 +40,6 @@ public class CrafartUserBO implements Serializable {
 
 	public void setUserId(long userId) {
 		this.userId = userId;
-	}
-
-	public long getUserGroupId() {
-		return userGroupId;
-	}
-
-	public void setUserGroupId(long userGroupId) {
-		this.userGroupId = userGroupId;
 	}
 
 	public String getUserName() {
@@ -104,6 +96,14 @@ public class CrafartUserBO implements Serializable {
 
 	public void setSellerPermission(int sellerPermission) {
 		this.sellerPermission = sellerPermission;
+	}
+
+	public UserGroupBO getUserGroupBO() {
+		return userGroupBO;
+	}
+
+	public void setUserGroupBO(UserGroupBO userGroupBO) {
+		this.userGroupBO = userGroupBO;
 	}
 
 }

@@ -528,7 +528,7 @@ public class BeanMapper {
 		crafartUserDO.setPassword(crafartUserBO.getPassword());
 		crafartUserDO.setSellerPermission(crafartUserBO.getSellerPermission());
 		crafartUserDO.setStatus(crafartUserBO.getStatus());
-		crafartUserDO.setUserGroupId(crafartUserBO.getUserGroupId());
+		crafartUserDO.setUserGroupDO(null);
 		crafartUserDO.setUserId(crafartUserBO.getUserId());
 		crafartUserDO.setUserName(crafartUserBO.getUserName());
 		return crafartUserDO;
@@ -542,7 +542,7 @@ public class BeanMapper {
 		crafartUserBO.setPassword(crafartUserDO.getPassword());
 		crafartUserBO.setSellerPermission(crafartUserDO.getSellerPermission());
 		crafartUserBO.setStatus(crafartUserDO.getStatus());
-		crafartUserBO.setUserGroupId(crafartUserDO.getUserGroupId());
+		crafartUserBO.setUserGroupBO(null);
 		crafartUserBO.setUserId(crafartUserDO.getUserId());
 		crafartUserBO.setUserName(crafartUserDO.getUserName());
 		return crafartUserBO;

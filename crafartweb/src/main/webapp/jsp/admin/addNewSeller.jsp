@@ -1,3 +1,9 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
+<c:set var="context" value="${pageContext.servletContext.contextPath}" />
+
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -32,7 +38,7 @@
 							</ul>
 							<!-- MYACCOUNT tab-data-->
 							<div class="tab-content">
-								<div class="tab-pane fade in active" id="tab-myaccount" >
+								<div class="tab-pane fade in active" id="tab-myaccount">
 									<div class="form-group required">
 										<label class="col-sm-2 control-label" for="input-model">First Name</label>
 										<div class="col-sm-10">
@@ -120,10 +126,7 @@
 											<button type="button">Browse</button>
 										</div>
 									</div>
-
 								</div>
-
-
 								<!-- BANK DETAILS Section -->
 
 								<div class="tab-pane" id="tab-bankdetails">
