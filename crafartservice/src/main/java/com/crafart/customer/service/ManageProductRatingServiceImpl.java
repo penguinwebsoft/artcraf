@@ -64,7 +64,7 @@ public class ManageProductRatingServiceImpl implements ManageProductRatingServic
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void addProductRatting(ProductRatingBO productRatingBO) throws CrafartServiceException {
 		SellerBO sellerBO = productRatingBO.getProductBO().getSellerBO();
-		SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
+		SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(), null);
 		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
 
