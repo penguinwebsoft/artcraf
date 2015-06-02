@@ -19,28 +19,28 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "COMMISSION")
-public class CommissionDO implements Serializable, Cloneable{
+public class CommissionDO implements Serializable, Cloneable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1508931011562716578L;
-	
+
 	@Id
 	@Column(name = "commission_id")
 	@SequenceGenerator(name = "seq_commission", sequenceName = "seq_commission", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_commission")
 	private long commissionId;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "type")
 	private String type;
-	
+
 	@Column(name = "value")
 	private float value;
-	
+
 	@Column(name = "sort_order")
 	private int sortOrder;
 
@@ -83,5 +83,5 @@ public class CommissionDO implements Serializable, Cloneable{
 	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;
 	}
-	
+
 }
