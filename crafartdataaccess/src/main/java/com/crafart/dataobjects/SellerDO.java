@@ -86,7 +86,9 @@ public class SellerDO implements Serializable, Cloneable {
 	@Column(name = "cst_no")
 	private String cst_no;
 
-	private String commission;
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "commission_id",nullable = true)
+	private CommissionDO commissionDO;
 
 	private int status;
 
@@ -166,12 +168,12 @@ public class SellerDO implements Serializable, Cloneable {
 		this.cst_no = cst_no;
 	}
 
-	public String getCommission() {
-		return commission;
+	public CommissionDO getCommissionDO() {
+		return commissionDO;
 	}
 
-	public void setCommission(String commission) {
-		this.commission = commission;
+	public void setCommissionDO(CommissionDO commissionDO) {
+		this.commissionDO = commissionDO;
 	}
 
 	public int getStatus() {
