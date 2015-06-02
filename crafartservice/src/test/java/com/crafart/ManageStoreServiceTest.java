@@ -75,7 +75,6 @@ public class ManageStoreServiceTest {
 		sellerBO.setGender(1);
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("service");
 		sellerBO.setCompanyName("service");
 		sellerBO.setCstNo("4444");

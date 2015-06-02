@@ -300,7 +300,6 @@ public class ManageProductReviewServiceTest {
 		sellerBO.setGender(1);
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("qqq");
 		sellerBO.setCompanyName("penguin");
 		sellerBO.setCstNo("4444");
