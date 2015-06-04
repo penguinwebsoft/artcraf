@@ -75,9 +75,9 @@ import com.crafart.service.businessobjects.WeightClassBO;
 @Component("beanMapper")
 public class BeanMapper {
 
-	public SellerDO mapSellerBOToDO(SellerBO sellerBO, SellerDO sellerDO) {
+	public SellerDO mapSellerBOToDO(SellerBO sellerBO, SellerDO sellerDO, CommissionDO commissionDO) {
 		sellerDO.setApproved(sellerBO.getApproved());
-		sellerDO.setCommission(sellerBO.getCommission());
+		sellerDO.setCommissionDO(commissionDO);
 		sellerDO.setCompanyLogo(sellerBO.getCompanyLogo());
 		sellerDO.setCompanyName(sellerBO.getCompanyName());
 		sellerDO.setCst_no(sellerBO.getCstNo());
@@ -95,9 +95,9 @@ public class BeanMapper {
 
 	}
 
-	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO, AddressBO addressBO, StoreBO storeBO) {
+	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO, AddressBO addressBO, StoreBO storeBO, CommissionBO commissionBO) {
 		sellerBO.setApproved(sellerDO.getApproved());
-		sellerBO.setCommission(sellerDO.getCommission());
+		sellerBO.setCommissionBO(commissionBO);
 		sellerBO.setCompanyLogo(sellerDO.getCompanyLogo());
 		sellerBO.setCompanyName(sellerDO.getCompanyName());
 		sellerBO.setCstNo(sellerDO.getCst_no());

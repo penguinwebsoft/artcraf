@@ -104,11 +104,11 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 						beanMapper.mapCurrencyDOToBO(crafartOrderDO.getCurrencyDO(), new CurrencyBO()),
 						beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null),
 						beanMapper.mapInvoiceDOToBO(crafartOrderDO.getInvoiceDO(), new InvoiceBO(),
-								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO()),
+								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO(), null),
 								beanMapper.mapCustomerDOToBO(crafartOrderDO.getCustomerDO(), new CustomerBO(), null, null)),
 						beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO(), null, null),
 						beanMapper.mapStoreDOToBO(crafartOrderDO.getStoreDO(), new StoreBO(),
-								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO())),
+								beanMapper.mapSellerDOToBO(crafartOrderDO.getStoreDO().getSellerDO(), new SellerBO(), new AddressBO(), new StoreBO(), null)),
 						beanMapper.mapTaxRateDOToBO(crafartOrderDO.getTaxRateDO(), new TaxRateBO(),
 								beanMapper.mapProductDOToBO(crafartOrderDO.getProductDO(), new ProductBO(), new SellerBO(), null, null)));
 				crafartOrderBOs.add(crafartOrderBO);

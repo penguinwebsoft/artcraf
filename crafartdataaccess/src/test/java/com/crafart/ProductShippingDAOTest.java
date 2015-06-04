@@ -17,6 +17,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.dataobjects.CommissionDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.dataobjects.LengthClassDO;
@@ -25,6 +26,7 @@ import com.crafart.dataobjects.ProductShippingDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CommissionDAO;
 import com.crafart.inter.data.CourierDAO;
 import com.crafart.inter.data.GeoZoneDAO;
 import com.crafart.inter.data.LengthClassDAO;
@@ -48,6 +50,9 @@ public class ProductShippingDAOTest {
 
 	@Autowired
 	private ProductShippingDAO productShippingDAOImpl;
+	
+	@Autowired
+	private CommissionDAO commissionDAOImpl;
 
 	@Autowired
 	private LengthClassDAO lengthClassDAOImpl;
@@ -215,7 +220,7 @@ public class ProductShippingDAOTest {
 		sellerDO.setEpch_no("123");
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
-		sellerDO.setCommission("aaaa");
+		sellerDO.setCommissionDO(getCommission());
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 		try {
@@ -226,6 +231,22 @@ public class ProductShippingDAOTest {
 		}
 		return sellerDO;
 
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	private CommissionDO getCommission() {
+		CommissionDO commissionDO = new CommissionDO();
+		commissionDO.setName("qwqw");
+		commissionDO.setSortOrder(2);
+		commissionDO.setType("comm");
+		commissionDO.setValue(3.5f);
+		try {
+			commissionDAOImpl.addCommission(commissionDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return commissionDO;
 	}
 
 }

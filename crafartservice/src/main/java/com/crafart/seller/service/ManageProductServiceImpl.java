@@ -101,7 +101,7 @@ public class ManageProductServiceImpl implements ManageProductService {
 	public void addProduct(ProductBO productBO) throws CrafartServiceException {
 		WeightClassBO weightClassBO = productBO.getWeightClassBO();
 		SellerBO sellerBO = productBO.getSellerBO();
-		SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
+		SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(),null);
 		WeightClassDO weightClassDO = beanMapper.mapWeightClassBOToDO(weightClassBO, new WeightClassDO());
 		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
@@ -201,7 +201,7 @@ public class ManageProductServiceImpl implements ManageProductService {
 			}
 			SellerDO sellerDO = productDO.getSellerDOs().get(0);
 			productBO = beanMapper.mapProductDOToBO(productDO, new ProductBO(),
-					beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), null, beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(), null)), productAttributeBOs, productDiscountBOs);
+					beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), null, beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(), null), null), productAttributeBOs, productDiscountBOs);
 		} catch (CrafartDataException cdExp) {
 			throw new CrafartServiceException("Error while retriving product details", cdExp);
 		}

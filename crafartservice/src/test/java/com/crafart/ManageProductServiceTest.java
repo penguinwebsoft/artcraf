@@ -239,7 +239,6 @@ public class ManageProductServiceTest {
 		sellerBO.setGender(1);
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("qqq");
 		sellerBO.setCompanyName("penguin");
 		sellerBO.setCstNo("4444");
@@ -335,11 +334,6 @@ public class ManageProductServiceTest {
 	public void testGetAllProduct() {
 		try {
 			List<ProductBO> productBOs = manageProductServiceImpl.getAllProduct();
-			for (ProductBO productBO : productBOs) {
-				for (ProductAttributeBO productAttributeBO : productBO.getProductAttributeBOs()) {
-					System.out.println(productAttributeBO.getAttributeGroupId() + "\t" + productAttributeBO.getText());
-				}
-			}
 			Assert.assertNotNull(productBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();

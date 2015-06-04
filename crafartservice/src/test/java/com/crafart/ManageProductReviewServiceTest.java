@@ -17,13 +17,17 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.inter.service.ManageCourierService;
 import com.crafart.inter.service.ManageCustomerService;
+import com.crafart.inter.service.ManageGeoZoneService;
 import com.crafart.inter.service.ManageProductReviewService;
 import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.ContactBO;
+import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CustomerBO;
+import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
@@ -60,6 +64,12 @@ public class ManageProductReviewServiceTest {
 
 	@Autowired
 	private ManageCustomerService manageCustomerServiceImpl;
+	
+	@Autowired
+	private ManageGeoZoneService manageGeoZoneServiceImpl;
+	
+	@Autowired
+	private ManageCourierService manageCourierServiceImpl;
 
 	@Test
 	@Rollback(true)
@@ -230,18 +240,50 @@ public class ManageProductReviewServiceTest {
 	private List<ProductShippingBO> getProductShipping() {
 		List<ProductShippingBO> productShippingBOs = new ArrayList<>();
 		ProductShippingBO productShippingBO = new ProductShippingBO();
-		productShippingBO.setCourierId(41);
-		productShippingBO.setGeoZoneId(50);
+		CourierBO courierBO = getCourier();
+		GeoZoneBO geoZoneBO = getGeoZone();
+		productShippingBO.setCourierId(courierBO.getCourierId());
+		productShippingBO.setGeoZoneId(geoZoneBO.getGeoZoneId());
 		productShippingBO.setShippingRate(125);
 		ProductShippingBO productShippingBO2 = new ProductShippingBO();
-		productShippingBO2.setCourierId(41);
-		productShippingBO2.setGeoZoneId(50);
+		productShippingBO2.setCourierId(courierBO.getCourierId());
+		productShippingBO2.setGeoZoneId(geoZoneBO.getGeoZoneId());
 		productShippingBO2.setShippingRate(154);
 		productShippingBOs.add(productShippingBO2);
 		productShippingBOs.add(productShippingBO);
 		return productShippingBOs;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
+	private GeoZoneBO getGeoZone() {
+		GeoZoneBO geoZoneBO = new GeoZoneBO();
+		geoZoneBO.setDescription("jlk");
+		geoZoneBO.setName("Kerala");
+		try {
+			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		return geoZoneBO;
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	private CourierBO getCourier() {
+		CourierBO courierBO = new CourierBO();
+		courierBO.setImage("from service");
+		courierBO.setName("DTTC");
+		courierBO.setProductLimit(4);
+		courierBO.setSortOrder(9);
+		try {
+			manageCourierServiceImpl.addCourierDetail(courierBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		return courierBO;
+	}
+	
 	@Transactional(propagation = Propagation.REQUIRED)
 	private List<ProductDiscountBO> getProductDiscount() {
 		List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
@@ -300,7 +342,6 @@ public class ManageProductReviewServiceTest {
 		sellerBO.setGender(1);
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("qqq");
 		sellerBO.setCompanyName("penguin");
 		sellerBO.setCstNo("4444");

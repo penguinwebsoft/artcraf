@@ -12,10 +12,13 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.inter.service.ManageCommissionService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -30,6 +33,9 @@ public class ManageSellerTest {
 
 	@Autowired
 	private ManageSellerService manageSellerServiceImpl;
+
+	@Autowired
+	private ManageCommissionService manageCommissionServiceImpl;
 
 	@Test
 	@Rollback(true)
@@ -54,6 +60,7 @@ public class ManageSellerTest {
 			sellerBO.getStoreBO().setStoreReturn("its from service update query");
 			sellerBO.getStoreBO().setStoreDescription("from service update query");
 			sellerBO.setVatNo("serv12");
+			sellerBO.setCommissionBO(getCommision());
 			sellerBO.setCstNo("servcs12");
 			manageSellerServiceImpl.updateSeller(sellerBO);
 		} catch (CrafartServiceException csExp) {
@@ -90,7 +97,6 @@ public class ManageSellerTest {
 		sellerBO.setGender(1);
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
 		sellerBO.setCompanyLogo("service");
 		sellerBO.setCompanyName("service");
 		sellerBO.setCstNo("4444");
@@ -105,6 +111,22 @@ public class ManageSellerTest {
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
 		sellerBO.setContactBOs(getContactBOs(sellerBO));
 		return sellerBO;
+
+	}
+
+	private CommissionBO getCommision() {
+		CommissionBO commissionBO = new CommissionBO();
+		commissionBO.setName("qwerty");
+		commissionBO.setSortOrder(2);
+		commissionBO.setType("qwert");
+		commissionBO.setValue(2.0f);
+		try {
+			manageCommissionServiceImpl.addCommission(commissionBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		return commissionBO;
 
 	}
 
@@ -134,9 +156,9 @@ public class ManageSellerTest {
 		try {
 			SellerBO sellerBO = getSellerBO();
 			manageSellerServiceImpl.addSeller(sellerBO);
-			String email=null;
+			String email = null;
 			for (ContactBO contactBO : sellerBO.getContactBOs()) {
-				if(contactBO.getContactTypeId()==3){
+				if (contactBO.getContactTypeId() == 3) {
 					email = contactBO.getContactValue();
 				}
 			}

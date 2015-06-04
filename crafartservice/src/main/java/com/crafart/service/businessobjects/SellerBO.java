@@ -44,14 +44,14 @@ public class SellerBO implements Serializable {
 
 	private String cstNo;
 
-	private String commission;
+	private CommissionBO commissionBO;
 
 	private int status;
 
 	private int approved;
 
 	private List<ContactBO> contactBOs;
-	
+
 	private String password;
 
 	public long getSellerId() {
@@ -60,6 +60,14 @@ public class SellerBO implements Serializable {
 
 	public void setSellerId(long sellerId) {
 		this.sellerId = sellerId;
+	}
+
+	public CommissionBO getCommissionBO() {
+		return commissionBO;
+	}
+
+	public void setCommissionBO(CommissionBO commissionBO) {
+		this.commissionBO = commissionBO;
 	}
 
 	public String getFirstName() {
@@ -124,14 +132,6 @@ public class SellerBO implements Serializable {
 
 	public void setCstNo(String cst_no) {
 		this.cstNo = cst_no;
-	}
-
-	public String getCommission() {
-		return commission;
-	}
-
-	public void setCommission(String commission) {
-		this.commission = commission;
 	}
 
 	public int getStatus() {

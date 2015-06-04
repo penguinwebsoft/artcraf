@@ -10,15 +10,18 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
+import com.crafart.dataobjects.CommissionDO;
 import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.AddressDAO;
+import com.crafart.inter.data.CommissionDAO;
 import com.crafart.inter.data.ContactDAO;
 import com.crafart.inter.data.SellerDAO;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -48,6 +51,9 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	@Autowired
 	private ContactDAO contactDAOImpl;
 
+	@Autowired
+	private CommissionDAO commissionDAOImpl;
+
 	/**
 	 * mapping is done from BO to DO by mappSellerBOToDO method after mapping BO
 	 * to DO we are calling dataaccess addSeller method using sellerDO
@@ -58,7 +64,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 
 		try {
 
-			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
+			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(), null);
 			AddressDO addressDO = beanMapper.mapAddressBOToDO(sellerBO.getAddressBO(), new AddressDO(), sellerDO, null);
 			StoreDO storeDO = beanMapper.mapStoreBOToDO(sellerBO.getStoreBO(), new StoreDO(), sellerDO);
 			// List<StoreDO> storeDOLst = new ArrayList<>();
@@ -75,7 +81,6 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 				contactDOs.add(contactDO);
 			}
 			sellerDO.setContactDOs(contactDOs);
-
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerBO.getStoreBO().setStoreId(sellerDO.getStoreDO().getStoreId());
 			// assuming the seller having one address, hence getting first
@@ -95,8 +100,8 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	public void updateSeller(SellerBO sellerBO) throws CrafartServiceException {
 
 		try {
-
-			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO());
+			CommissionDO commissionDO = beanMapper.mapCommissionBOToDO(sellerBO.getCommissionBO(), new CommissionDO());
+			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(), commissionDO);
 			AddressDO addressDO = beanMapper.mapAddressBOToDO(sellerBO.getAddressBO(), new AddressDO(), sellerDO, null);
 			StoreDO storeDO = beanMapper.mapStoreBOToDO(sellerBO.getStoreBO(), new StoreDO(), sellerDO);
 			// List<StoreDO> storeDOLst = new ArrayList<>();
@@ -127,8 +132,9 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 				for (AddressDO addressDO : sellerDO.getAddressDOs()) {
 					addressBO = beanMapper.mapAddressDOToBO(addressDO, new AddressBO());
 				}
-				StoreBO storeBO = beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(),null);
-				sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), addressBO, storeBO);
+				StoreBO storeBO = beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(), null);
+				CommissionBO commissionBO = beanMapper.mapCommissionDOToBO(sellerDO.getCommissionDO(), new CommissionBO());
+				sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), addressBO, storeBO, commissionBO);
 			}
 			contactBO = beanMapper.mapContactDOToBO(contactDO, new ContactBO(), null, sellerBO);
 		} catch (CrafartDataException cdExp) {
@@ -143,7 +149,8 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 		SellerBO sellerBO = new SellerBO();
 		try {
 			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(sellerId);
-			sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), null, null);
+			CommissionBO commissionBO = beanMapper.mapCommissionDOToBO(sellerDO.getCommissionDO(), new CommissionBO());
+			sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), null, null, commissionBO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 		}
