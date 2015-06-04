@@ -6,13 +6,21 @@ package com.crafart.seller.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.CrafartOrderDO;
+import com.crafart.dataobjects.CrafartUserDO;
+import com.crafart.dataobjects.CurrencyDO;
+import com.crafart.dataobjects.CustomerDO;
+import com.crafart.dataobjects.InvoiceDO;
+import com.crafart.dataobjects.ProductDO;
+import com.crafart.dataobjects.StoreDO;
+import com.crafart.dataobjects.TaxRateDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CrafartOrderDAO;
 import com.crafart.inter.service.ManageCrafartOrderService;
@@ -107,9 +115,21 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 			}
 
 		} catch (CrafartDataException cdExp) {
-			cdExp.printStackTrace();
-			Assert.fail();
+			throw new CrafartServiceException("Error while retriving order details for customer id " + customerId, cdExp);
 		}
 		return crafartOrderBOs;
+	}
+
+	@Override
+	public CrafartOrderBO addCustomerOrder(CrafartOrderBO crafartOrderBO) throws CrafartServiceException {
+		CrafartOrderDO crafartOrderDO = beanMapper.mapCrafartOrderBOToDO(crafartOrderBO, new CrafartOrderDO(), new CommissionDO(), new CourierDO(), new CrafartUserDO(), new CurrencyDO(),
+				new CustomerDO(), new InvoiceDO(), new ProductDO(), new StoreDO(), new TaxRateDO());
+		try {
+			crafartOrderDAOImpl.addCrafartOrder(crafartOrderDO);
+		} catch (CrafartDataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
