@@ -354,4 +354,24 @@ public class MenuController {
 	public ModelAndView showEditInformationPage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("EditInformationPage");
 	}
+
+	@RequestMapping("/filterPage")
+	public ModelAndView showFilterPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("filterPage");
+	}
+	
+	@RequestMapping("/addFilterPage")
+	public ModelAndView showAddFilterPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addFilterPage");
+	}
+
+	@RequestMapping("/editFilterPage")
+	public ModelAndView showeditFilterPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editFilterPage");
+	}
+	
+	@RequestMapping("/orderList")
+	public ModelAndView showOrderList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("orderList");
+	}
 }
