@@ -18,10 +18,10 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/jsp/customerFooter.jsp" />
 	</definition>
-	
-	<!--  Admin views starts here -->
 
-	<definition name="admin.definition" template="/jsp/admin/adminLayout.jsp">
+	<!-- Admin views starts here -->
+
+	<definition name="admin.definition" template="/jsp/admin/adminLayout.jsp"> 
 		<put-attribute name="adminHeader" value="/jsp/admin/adminHeader.jsp" />
 		<put-attribute name="adminMenu" value="/jsp/admin/adminMenu.jsp" />
 		<put-attribute name="adminBody" value="" />
@@ -32,58 +32,188 @@
 		<put-attribute name="title" value="Upload Products" />
 		<put-attribute name="adminBody" value="/jsp/admin/uploadProducts.jsp" />
 	</definition>
-	
+
 	<definition name="manageSellers" extends="admin.definition">
 		<put-attribute name="title" value="Manage Sellers" />
 		<put-attribute name="adminBody" value="/jsp/admin/manageSellers.jsp" />
 	</definition>
-	
+
 	<definition name="addNewSeller" extends="admin.definition">
 		<put-attribute name="title" value="add New Seller" />
 		<put-attribute name="adminBody" value="/jsp/admin/addNewSeller.jsp" />
 	</definition>
-	
+
 	<definition name="viewSellers" extends="admin.definition">
 		<put-attribute name="title" value="View Sellers" />
 		<put-attribute name="adminBody" value="/jsp/admin/viewSellers.jsp" />
 	</definition>
-	
+
 	<definition name="manageCouriers" extends="admin.definition">
 		<put-attribute name="title" value="Manage couriers" />
 		<put-attribute name="adminBody" value="/jsp/admin/manageCouriers.jsp" />
 	</definition>
-	
+
 	<definition name="addNewCouriers" extends="admin.definition">
 		<put-attribute name="title" value="add New Couriers" />
 		<put-attribute name="adminBody" value="/jsp/admin/addNewCouriers.jsp" />
 	</definition>
-	
+
 	<definition name="editCouriers" extends="admin.definition">
 		<put-attribute name="title" value="Edit Couriers" />
 		<put-attribute name="adminBody" value="/jsp/admin/editCouriers.jsp" />
 	</definition>
-	
+
 	<definition name="categories" extends="admin.definition">
 		<put-attribute name="title" value="Categories" />
 		<put-attribute name="adminBody" value="/jsp/admin/categories.jsp" />
 	</definition>
-	
+
 	<definition name="categoriesNextPage" extends="admin.definition">
 		<put-attribute name="title" value="Categories Next Page" />
 		<put-attribute name="adminBody" value="/jsp/admin/categoriesNextPage.jsp" />
 	</definition>
-	
+
 	<definition name="addCategories" extends="admin.definition">
 		<put-attribute name="title" value="Add Categories" />
 		<put-attribute name="adminBody" value="/jsp/admin/addCategories.jsp" />
+	</definition>
+
+	<definition name="editCategories" extends="admin.definition">
+		<put-attribute name="title" value="Edit Categories" />
+		<put-attribute name="adminBody" value="/jsp/admin/editCategories.jsp" />
+	</definition>
+
+	<definition name="productPage" extends="admin.definition">
+		<put-attribute name="title" value="product Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/productPage.jsp" />
+	</definition>
+
+	<definition name="productNextPage" extends="admin.definition">
+		<put-attribute name="title" value="product Next Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/productNextPage.jsp" />
+	</definition>
+
+	<definition name="addProductPage" extends="admin.definition">
+		<put-attribute name="title" value="Add Product Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/addProductPage.jsp" />
+	</definition>
+
+	<definition name="editProduct" extends="admin.definition">
+		<put-attribute name="title" value="Edit Product Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/editProduct.jsp" />
+	</definition>
+
+	<definition name="commissionPage" extends="admin.definition">
+		<put-attribute name="title" value="Commission Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/commissionPage.jsp" />
+	</definition>
+	
+	<definition name="commissionList" extends="admin.definition">
+		<put-attribute name="title" value="Commission List" />
+		<put-attribute name="adminBody" value="/jsp/admin/commissionList.jsp" />
+	</definition>
+	
+	<definition name="editCommission" extends="admin.definition">
+		<put-attribute name="title" value="Edit Commission" />
+		<put-attribute name="adminBody" value="/jsp/admin/editCommission.jsp" />
+	</definition>
+	
+	<definition name="subCategories" extends="admin.definition">
+		<put-attribute name="title" value="Sub Categories" />
+		<put-attribute name="adminBody" value="/jsp/admin/subCategories.jsp" />
+	</definition>
+	
+	<definition name="addSubCategories" extends="admin.definition">
+		<put-attribute name="title" value="Add Sub Categories" />
+		<put-attribute name="adminBody" value="/jsp/admin/addSubCategories.jsp" />
+	</definition>
+	
+	<definition name="sellerProduct" extends="admin.definition">
+		<put-attribute name="title" value="Seller Product" />
+		<put-attribute name="adminBody" value="/jsp/admin/sellerProduct.jsp" />
+	</definition>
+	
+	<definition name="attributePage" extends="admin.definition">
+		<put-attribute name="title" value="Attribute Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/attributePage.jsp" />
+	</definition>
+	
+	<definition name="addAttribute" extends="admin.definition">
+		<put-attribute name="title" value="Add Attribute" />
+		<put-attribute name="adminBody" value="/jsp/admin/addAttribute.jsp" />
+	</definition>
+	
+	<definition name="editAttribute" extends="admin.definition">
+		<put-attribute name="title" value="edit Attribute" />
+		<put-attribute name="adminBody" value="/jsp/admin/editAttribute.jsp" />
+	</definition>
+	
+	<definition name="taxDetails" extends="admin.definition">
+		<put-attribute name="title" value="Tax Details" />
+		<put-attribute name="adminBody" value="/jsp/admin/taxDetails.jsp" />
+	</definition>
+	
+	<definition name="addTaxDetails" extends="admin.definition">
+		<put-attribute name="title" value="Add Tax Details" />
+		<put-attribute name="adminBody" value="/jsp/admin/addTaxDetails.jsp" />
+	</definition>
+	
+	<definition name="editTaxDetails" extends="admin.definition">
+		<put-attribute name="title" value="edit Tax Details" />
+		<put-attribute name="adminBody" value="/jsp/admin/editTaxDetails.jsp" />
+	</definition>
+	
+	<definition name="lengthDetails" extends="admin.definition">
+		<put-attribute name="title" value="length Details" />
+		<put-attribute name="adminBody" value="/jsp/admin/lengthDetails.jsp" />
+	</definition>
+	
+	<definition name="addLengthDetails" extends="admin.definition">
+		<put-attribute name="title" value="Add Length Details" />
+		<put-attribute name="adminBody" value="/jsp/admin/addLengthDetails.jsp" />
+	</definition>
+	
+	<definition name="editLengthDetails" extends="admin.definition">
+		<put-attribute name="title" value="edit Length Details" />
+		<put-attribute name="adminBody" value="/jsp/admin/editLengthDetails.jsp" />
+	</definition>
+	
+	<definition name="geoZone" extends="admin.definition">
+		<put-attribute name="title" value="Geo_Zone" />
+		<put-attribute name="adminBody" value="/jsp/admin/geoZone.jsp" />
+	</definition>
+	
+	<definition name="addGeoZone" extends="admin.definition">
+		<put-attribute name="title" value="Add Geo_Zone" />
+		<put-attribute name="adminBody" value="/jsp/admin/addGeoZone.jsp" />
+	</definition>
+	
+	<definition name="editGeoZone" extends="admin.definition">
+		<put-attribute name="title" value="Edit Geo_Zone" />
+		<put-attribute name="adminBody" value="/jsp/admin/editGeoZone.jsp" />
+	</definition>
+	
+	<definition name="informationPage" extends="admin.definition">
+		<put-attribute name="title" value="Information Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/informationPage.jsp" />
+	</definition>
+	
+	<definition name="addInformationPage" extends="admin.definition">
+		<put-attribute name="title" value="Add Information Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/addInformationPage.jsp" />
+	</definition>
+	
+	<definition name="editInformationPage" extends="admin.definition">
+		<put-attribute name="title" value="Edit Information Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/editInformationPage.jsp" />
 	</definition>
 
 	<definition name="adminPanel" extends="admin.definition">
 		<put-attribute name="title" value="Admin Panel" />
 		<put-attribute name="adminBody" value="/jsp/admin/adminPanel.jsp" />
 	</definition>
-	
-	<!--  Admin views seller here -->
+
+	<!-- Admin views seller here -->
 
 	<definition name="dashboard" extends="base.definition">
 		<put-attribute name="title" value="Crafart Seller Dashboard" />
