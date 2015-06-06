@@ -18,5 +18,7 @@ public interface ManageCrafartOrderService {
 	public List<CrafartOrderBO> getCrafartOrder(SellerBO sellerBO) throws CrafartServiceException;
 
 	public List<CrafartOrderBO> getCustomerOrder(long customerId) throws CrafartServiceException;
+	
+	public CrafartOrderBO addCustomerOrder(CrafartOrderBO crafartOrderBO) throws CrafartServiceException;
 
 }
