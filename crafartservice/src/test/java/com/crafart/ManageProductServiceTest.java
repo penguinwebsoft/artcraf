@@ -334,11 +334,6 @@ public class ManageProductServiceTest {
 	public void testGetAllProduct() {
 		try {
 			List<ProductBO> productBOs = manageProductServiceImpl.getAllProduct();
-			for (ProductBO productBO : productBOs) {
-				for (ProductAttributeBO productAttributeBO : productBO.getProductAttributeBOs()) {
-					System.out.println(productAttributeBO.getAttributeGroupId() + "\t" + productAttributeBO.getText());
-				}
-			}
 			Assert.assertNotNull(productBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
