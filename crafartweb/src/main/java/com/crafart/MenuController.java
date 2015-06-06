@@ -226,4 +226,132 @@ public class MenuController {
 	public ModelAndView showAddCategories(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("addCategories");
 	}
+	
+	@RequestMapping("/editCategories")
+	public ModelAndView showEditCategories(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editCategories");
+	}
+	@RequestMapping("/productPage")
+	public ModelAndView showProductPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("productPage");
+	}
+	@RequestMapping("/productNextPage")
+	public ModelAndView showProductNextPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("productNextPage");
+	}
+
+	@RequestMapping("/addProductPage")
+	public ModelAndView showAddProductPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addProductPage");
+	}
+	
+	@RequestMapping("/editProduct")
+	public ModelAndView showEditProduct(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editProduct");
+	}
+	
+	@RequestMapping("/commissionPage")
+	public ModelAndView showCommissionPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("commissionPage");
+	}
+	
+	@RequestMapping("/commissionList")
+	public ModelAndView showCommissionList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("commissionList");
+	}
+	
+	@RequestMapping("/editCommission")
+	public ModelAndView showEditCommission(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editCommission");
+	}
+    
+	@RequestMapping("/subCategories")
+	public ModelAndView showSubCategories(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("subCategories");
+	}
+    
+	@RequestMapping("/addSubCategories")
+	public ModelAndView showAddSubCategories(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addSubCategories");
+	}
+
+	@RequestMapping("/sellerProduct")
+	public ModelAndView showSellerProduct(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("sellerProduct");
+	}
+	
+	@RequestMapping("/attributePage")
+	public ModelAndView showAttributePage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("attributePage");
+	}
+	
+	@RequestMapping("/addAttribute")
+	public ModelAndView showAddAttribute(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addAttribute");
+	}
+     
+	@RequestMapping("/editAttribute")
+	public ModelAndView showeditAttribute(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editAttribute");
+	}
+	
+	@RequestMapping("/taxDetails")
+	public ModelAndView showTaxDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("taxDetails");
+	}
+
+	@RequestMapping("/addTaxDetails")
+	public ModelAndView showAddTaxDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addTaxDetails");
+	}
+
+	@RequestMapping("/editTaxDetails")
+	public ModelAndView showEditTaxDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editTaxDetails");
+	}
+	
+	@RequestMapping("/lengthDetails")
+	public ModelAndView showLengthDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("lengthDetails");
+	}
+
+	@RequestMapping("/addLengthDetails")
+	public ModelAndView showAddLengthDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addLengthDetails");
+	}
+
+	@RequestMapping("/editLengthDetails")
+	public ModelAndView showEditLengthDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editLengthDetails");
+	}
+
+	@RequestMapping("/geoZone")
+	public ModelAndView showGeo_Zone(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("geoZone");
+	}
+    
+	@RequestMapping("/addGeoZone")
+	public ModelAndView showAddGeo_Zone(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addGeoZone");
+	}
+	
+	@RequestMapping("/editGeoZone")
+	public ModelAndView showeditGeo_Zone(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editGeoZone");
+	}
+
+	@RequestMapping("/informationPage")
+	public ModelAndView showInformationPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("informationPage");
+	}
+	
+	@RequestMapping("/addInformationPage")
+	public ModelAndView showAddInformationPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addInformationPage");
+	}
+
+	@RequestMapping("/editInformationPage")
+	public ModelAndView showEditInformationPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("EditInformationPage");
+	}
 }
