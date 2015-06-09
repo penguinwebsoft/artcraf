@@ -42,6 +42,7 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 		GeoZoneDO geoZoneDO = beanMapper.mapGeoZoneBOToDO(geoZoneBO, new GeoZoneDO());
 		try {
 			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
+			geoZoneBO.setGeoZoneId(geoZoneDO.getGeoZoneId());
 		} catch (CrafartDataException e) {
 			throw new CrafartServiceException("Error while adding geo zone", e);
 		}
