@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,6 +119,7 @@ public class CrafartOrderDAOTest {
 	 */
 
 	@Test
+	@Ignore
 	@Rollback(true)
 	public void testGetCrafartOrder() {
 		/* adding data to table and then retrieving from table */
@@ -154,6 +156,7 @@ public class CrafartOrderDAOTest {
 	 */
 
 	@Test
+	@Ignore
 	@Rollback(true)
 	public void testGetCustomerOrderList() {
 		CrafartOrderDO crafartOrderDO = getCrafartOrder();
