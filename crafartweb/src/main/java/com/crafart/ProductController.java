@@ -46,21 +46,22 @@ public class ProductController {
 	private ManageProductRatingService manageProductRatingServiceImpl;
 
 	@RequestMapping("/addProduct")
-	public @ResponseBody
-	long addProduct(@RequestBody ProductBO productBO, HttpServletRequest httpServletRequest, HttpSession httpSession) {
+	public @ResponseBody ModelMap addProduct(@RequestBody ProductBO productBO, HttpServletRequest httpServletRequest, HttpSession httpSession) {
+		ModelMap modelMap = new ModelMap();
 		try {
 			SellerBO sellerBO = (SellerBO) httpSession.getAttribute("sellerprofile");
 			productBO.setSellerBO(sellerBO);
 			manageProductServiceImpl.addProduct(productBO);
+			modelMap.addAttribute("result", true);
 		} catch (CrafartServiceException serviceException) {
 			log.error("Application-error while adding product for product_id " + productBO.getProductId(), serviceException);
+			return modelMap.addAttribute("result", false);
 		}
-		return productBO.getProductId();
+		return modelMap;
 	}
 
 	@RequestMapping("/getProductDetails")
-	public @ResponseBody
-	ModelMap getProductDetails(@RequestParam(value = "productId") long productId, HttpSession httpSession) {
+	public @ResponseBody ModelMap getProductDetails(@RequestParam(value = "productId") long productId, HttpSession httpSession) {
 		ModelMap modelMap = new ModelMap();
 		try {
 			ProductBO productBO = manageProductServiceImpl.getProductDetail(productId);
@@ -74,8 +75,7 @@ public class ProductController {
 	}
 
 	@RequestMapping("/getProductReviewDetails")
-	public @ResponseBody
-	ModelMap getProductReviewDetails(@RequestParam(value = "productId") long productId, HttpSession httpSession) {
+	public @ResponseBody ModelMap getProductReviewDetails(@RequestParam(value = "productId") long productId, HttpSession httpSession) {
 		ModelMap modelMap = new ModelMap();
 		try {
 			List<ProductReviewBO> productReviewBOs = manageProductReviewServiceImpl.getSingleProductReviews(productId);
@@ -89,8 +89,7 @@ public class ProductController {
 	}
 
 	@RequestMapping("/getAllProduct")
-	public @ResponseBody
-	ModelMap getAllProduct(HttpSession httpSession) {
+	public @ResponseBody ModelMap getAllProduct(HttpSession httpSession) {
 		ModelMap modelMap = new ModelMap();
 		try {
 			List<ProductBO> productBOs = manageProductServiceImpl.getAllProduct();
