@@ -20,8 +20,6 @@ public class CategoryBO implements Serializable {
 
 	private String imageLocation;
 
-	private long categoryColumn;
-
 	private long parentId;
 
 	private int sortOrder;
@@ -29,6 +27,10 @@ public class CategoryBO implements Serializable {
 	private int status;
 
 	private String categoryName;
+
+	private SeoBO seoBO;
+	
+	private String description;
 
 	public long getCategoryId() {
 		return categoryId;
@@ -44,14 +46,6 @@ public class CategoryBO implements Serializable {
 
 	public void setImageLocation(String imageLocation) {
 		this.imageLocation = imageLocation;
-	}
-
-	public long getCategoryColumn() {
-		return categoryColumn;
-	}
-
-	public void setCategoryColumn(long categoryColumn) {
-		this.categoryColumn = categoryColumn;
 	}
 
 	public long getParentId() {
@@ -84,6 +78,22 @@ public class CategoryBO implements Serializable {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public SeoBO getSeoBO() {
+		return seoBO;
+	}
+
+	public void setSeoBO(SeoBO seoBO) {
+		this.seoBO = seoBO;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
