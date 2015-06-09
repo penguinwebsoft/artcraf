@@ -21,7 +21,7 @@ public class SearchController {
 
 	private static final Logger log = Logger.getLogger(SearchController.class);
 
-	@Autowired
+	@Autowired(required = false)
 	private Search SolrSearchServiceImpl;
 
 	@RequestMapping(value = "/products", method = RequestMethod.POST)
