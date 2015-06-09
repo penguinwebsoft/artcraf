@@ -16,8 +16,10 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.CategoryDO;
+import com.crafart.dataobjects.SeoDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CategoryDAO;
+import com.crafart.inter.data.SeoDAO;
 
 /**
  * @author karthi
@@ -31,6 +33,9 @@ public class CategoryDAOTest {
 
 	@Autowired
 	private CategoryDAO categoryDAOImpl;
+	
+	@Autowired
+	private SeoDAO seoDAOImpl;
 
 	/**
 	 * Test case is to retrieve details from category table
@@ -57,16 +62,30 @@ public class CategoryDAOTest {
 	public void testaddcategory() {
 		try {
 			CategoryDO categoryDO = new CategoryDO();
-			categoryDO.setCategoryColumn(3);
 			categoryDO.setImageLocation("");
-			categoryDO.setParentId(2);
 			categoryDO.setSortOrder(2);
 			categoryDO.setStatus(2);
+			categoryDO.setSeoDO(getSeo());
+			categoryDO.setDescription("Its gold jwellery");
 			categoryDO.setCategoryName("gold");
 			categoryDAOImpl.addCategory(categoryDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
+	}
+
+	private SeoDO getSeo() {
+		SeoDO seoDO = new SeoDO();
+		seoDO.setMetaDesc("abc");
+		seoDO.setMetaKeyword("cde");
+		seoDO.setMetaTitle("jkl");
+		try {
+			seoDAOImpl.addSeo(seoDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return seoDO;
 	}
 }
