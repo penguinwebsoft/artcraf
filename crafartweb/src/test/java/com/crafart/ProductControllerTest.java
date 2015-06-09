@@ -326,7 +326,7 @@ public class ProductControllerTest {
 	@Rollback(true)
 	public void testGetProductDetails() {
 		try {
-			productController.getProductDetails(16641, new MockHttpSession());
+			productController.getProductDetails(22261, new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
