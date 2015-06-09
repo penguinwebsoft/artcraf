@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.crafart.inter.data.CategoryDAO;
 import com.crafart.inter.service.ManageCategoryService;
 import com.crafart.service.businessobjects.CategoryBO;
+import com.crafart.service.businessobjects.SeoBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
@@ -58,12 +59,12 @@ public class ManageCategoryServiceTest {
 	@Rollback(true)
 	public void testaddCategoryBO() {
 		CategoryBO categoryBO = new CategoryBO();
-		categoryBO.setCategoryColumn(32);
 		categoryBO.setImageLocation("");
 		categoryBO.setCategoryName("bag");
-		categoryBO.setParentId(25);
 		categoryBO.setSortOrder(12);
+		categoryBO.setDescription("its paper bag");
 		categoryBO.setStatus(2);
+		categoryBO.setSeoBO(getSeo());
 		try {
 			manageCategoryServiceImpl.addCategory(categoryBO);
 		} catch (CrafartServiceException csExp) {
@@ -71,6 +72,14 @@ public class ManageCategoryServiceTest {
 			Assert.fail();
 		}
 
+	}
+
+	private SeoBO getSeo() {
+		SeoBO seoBO = new SeoBO();
+		seoBO.setMetaDesc("asdf");
+		seoBO.setMetaKeyword("qwert");
+		seoBO.setMetaTitle("zxcvbn");
+		return seoBO;
 	}
 
 }
