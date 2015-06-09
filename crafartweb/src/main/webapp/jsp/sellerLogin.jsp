@@ -72,7 +72,6 @@
 									sellerBO.addressBO = addressBO;
 									sellerBO.contactBOs = contactBOs;
 									var postData = JSON.stringify(sellerBO);
-									alert(postData);
 
 									if ($("#Password").val() == $(
 											"#confirmPassword").val()) {
@@ -98,10 +97,8 @@
 								.click(
 										function() {
 
-											alert($("#shopUrl").val());
 											if ($("#shopUrl").val() != null
 													&& $("#shopUrl").val() != undefined) {
-												alert($("#shopUrl").val());
 												$
 														.ajax({
 															url : "../seller/checkStoreUrlAvailability",
@@ -143,7 +140,7 @@
 														success : function(data) {
 															alert(data.message);
 															window.location
-																	.replace("../menu/dashboard");
+																	.replace("../menu/uploadProducts");
 														}
 													});
 										});
