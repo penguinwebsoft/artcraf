@@ -38,6 +38,7 @@ public class ManageCourierServiceImpl implements ManageCourierService {
 		CourierDO courierDO = beanMapper.mapCourierBOToDO(courierBO, new CourierDO());
 		try {
 			courierDAOImpl.addCourierDetail(courierDO);
+			courierBO.setCourierId(courierDO.getCourierId());
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("Error while adding courier detail", crafartDataException);
 		}
