@@ -72,6 +72,7 @@
 				<value>com.crafart.dataobjects.ProductReviewDO</value>
 				<value>com.crafart.dataobjects.ProductRatingDO</value>
 				<value>com.crafart.dataobjects.UserGroupDO</value>
+				<value>com.crafart.dataobjects.SeoDO</value>
 			</list>
 		</property>
 

@@ -75,7 +75,7 @@
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-location">Street Address</label>
 										<div class="col-sm-10">
-											<input type="number" name="address" value="" placeholder="address" id="input-address" class="form-control" />
+											<input type="text" name="address" value="" placeholder="address" id="input-address" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">

@@ -49,4 +49,15 @@ public class ManageAttributeGroupDescServiceImpl implements ManageAttributeGroup
 		return attributeGroupDescBOs;
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void addAttributeGroupDesc(AttributeGroupDescBO attributeGroupDescBO) throws CrafartServiceException {
+		AttributeGroupDescDO attributeGroupDescDO  = beanMapper.mapAttributeGroupDescBOToDO(attributeGroupDescBO, new AttributeGroupDescDO());
+		try {
+			attributeGroupDescDAOImpl.addAttributeGroupDesc(attributeGroupDescDO);
+		} catch (CrafartDataException crafartDataException) {
+			throw new CrafartServiceException("Error while adding attribute group to DB",crafartDataException);
+		}
+	}
+
 }

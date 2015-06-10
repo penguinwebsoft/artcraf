@@ -50,6 +50,7 @@
 				<value>com.crafart.dataobjects.CrafartUserDO</value>
 				<value>com.crafart.dataobjects.CrafartOrderDO</value>
 				<value>com.crafart.dataobjects.ContactDO</value>
+				<value>com.crafart.dataobjects.SeoDO</value>
 				<value>com.crafart.dataobjects.CustomerContactDO</value>
 				<value>com.crafart.dataobjects.ContactTypeDO</value>
 				<value>com.crafart.dataobjects.UserGroupDO</value>
