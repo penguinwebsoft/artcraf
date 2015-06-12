@@ -198,7 +198,7 @@ public class CrafartOrderDAOTest {
 		crafartOrderDO.setCrafartUserDO(crafartUserDO);
 		crafartOrderDO.setCustomerDO(invoiceDO.getCustomerDO());
 		crafartOrderDO.setInvoiceDO(invoiceDO);
-		crafartOrderDO.setTaxRateDO(getTaxRate(productDO, sellerDO.getSellerId()));
+		crafartOrderDO.setTaxRateDO(getTaxRate(productDO, sellerDO));
 		crafartOrderDO.setProductDO(productDO);
 		crafartOrderDO.setStoreDO(sellerDO.getStoreDO());
 		crafartOrderDO.setCourierDO(courierDO);
@@ -222,10 +222,10 @@ public class CrafartOrderDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private TaxRateDO getTaxRate(ProductDO productDO, long sellerId) {
+	private TaxRateDO getTaxRate(ProductDO productDO, SellerDO sellerDO) {
 		TaxRateDO taxRateDO = new TaxRateDO();
 		taxRateDO.setProductDO(productDO);
-		taxRateDO.setSellerId(sellerId);
+		taxRateDO.setSellerId(sellerDO.getSellerId());
 		taxRateDO.setName("qqq");
 		taxRateDO.setRate(1);
 		taxRateDO.setType("nnnn");
