@@ -664,14 +664,11 @@ public class BeanMapper {
 
 	public ContactDO mapContactBOToDO(ContactBO contactBO, ContactDO contactDO, CustomerDO customerDO, SellerDO sellerDO) {
 		List<CustomerDO> customerDOs = new ArrayList<>();
-		List<SellerDO> sellerDOs = new ArrayList<>();
-		sellerDOs.add(sellerDO);
 		customerDOs.add(customerDO);
 		contactDO.setContactId(contactBO.getContactId());
 		contactDO.setContactTypeId(contactBO.getContactTypeId());
 		contactDO.setContactValue(contactBO.getContactValue());
 		contactDO.setCustomerDOs(customerDOs);
-		contactDO.setSellerDOs(sellerDOs);
 		return contactDO;
 
 	}
