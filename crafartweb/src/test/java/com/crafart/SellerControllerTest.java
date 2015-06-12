@@ -17,6 +17,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -76,7 +77,7 @@ public class SellerControllerTest {
 		sellerBO.setGender(1);
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
+		sellerBO.setCommissionBO(new CommissionBO());
 		sellerBO.setCompanyLogo("service");
 		sellerBO.setCompanyName("service");
 		sellerBO.setCstNo("4444");
