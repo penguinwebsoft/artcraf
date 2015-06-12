@@ -45,7 +45,7 @@ public class ManageCustomerServiceImpl implements ManageCustomerService {
 	private BeanMapper beanMapper;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCustomerDetail(CustomerBO customerBO) throws CrafartServiceException {
 
 		CustomerDO customerDO = beanMapper.mapCustomerBOToDO(customerBO, new CustomerDO());
@@ -70,7 +70,7 @@ public class ManageCustomerServiceImpl implements ManageCustomerService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public ContactBO findByEmailId(String eMailId) throws CrafartServiceException {
 		ContactBO contactBO = new ContactBO();
 		try {
@@ -102,7 +102,7 @@ public class ManageCustomerServiceImpl implements ManageCustomerService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public CustomerBO getCustomerDetails(long customerId) throws CrafartServiceException {
 		CustomerBO customerBO = new CustomerBO();
 		try {
@@ -124,7 +124,7 @@ public class ManageCustomerServiceImpl implements ManageCustomerService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void updateCustomerDetail(CustomerBO customerBO) throws CrafartServiceException {
 		CustomerDO customerDO = beanMapper.mapCustomerBOToDO(customerBO, new CustomerDO());
 		AddressDO addressDO = beanMapper.mapAddressBOToDO(customerBO.getAddressBO(), new AddressDO(), null, customerDO);

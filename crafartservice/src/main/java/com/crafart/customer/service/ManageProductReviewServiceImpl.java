@@ -37,7 +37,7 @@ public class ManageProductReviewServiceImpl implements ManageProductReviewServic
 	private BeanMapper beanMapper;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<ProductReviewBO> getProductReview(long customerId) throws CrafartServiceException {
 		List<ProductReviewBO> productReviewBOs = new ArrayList<>();
 		try {
@@ -57,7 +57,7 @@ public class ManageProductReviewServiceImpl implements ManageProductReviewServic
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<ProductReviewBO> getSingleProductReviews(long productId) throws CrafartServiceException {
 		List<ProductReviewBO> productReviewBOs = new ArrayList<>();
 		List<ProductReviewDO> productReviewDOs;
@@ -78,7 +78,7 @@ public class ManageProductReviewServiceImpl implements ManageProductReviewServic
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addProductReview(ProductReviewBO productReviewBO) throws CrafartServiceException {
 		
 	}
