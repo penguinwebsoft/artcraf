@@ -24,6 +24,7 @@ import com.crafart.inter.service.ManageProductReviewService;
 import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CustomerBO;
@@ -64,10 +65,10 @@ public class ManageProductReviewServiceTest {
 
 	@Autowired
 	private ManageCustomerService manageCustomerServiceImpl;
-	
+
 	@Autowired
 	private ManageGeoZoneService manageGeoZoneServiceImpl;
-	
+
 	@Autowired
 	private ManageCourierService manageCourierServiceImpl;
 
@@ -267,7 +268,7 @@ public class ManageProductReviewServiceTest {
 		}
 		return geoZoneBO;
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private CourierBO getCourier() {
 		CourierBO courierBO = new CourierBO();
@@ -283,7 +284,7 @@ public class ManageProductReviewServiceTest {
 		}
 		return courierBO;
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private List<ProductDiscountBO> getProductDiscount() {
 		List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
@@ -355,7 +356,7 @@ public class ManageProductReviewServiceTest {
 		sellerBO.setStoreBO(getStoreBO(sellerBO));
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
 		sellerBO.setContactBOs(getContactBOs(sellerBO));
-
+		sellerBO.setCommissionBO(getCommision());
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
 		} catch (CrafartServiceException csExp) {
@@ -363,6 +364,16 @@ public class ManageProductReviewServiceTest {
 			Assert.fail();
 		}
 		return sellerBO;
+
+	}
+
+	private CommissionBO getCommision() {
+		CommissionBO commissionBO = new CommissionBO();
+		commissionBO.setName("qwerty");
+		commissionBO.setSortOrder(2);
+		commissionBO.setType("qwert");
+		commissionBO.setValue(2.0f);
+		return commissionBO;
 
 	}
 
