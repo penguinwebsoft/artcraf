@@ -47,7 +47,11 @@ public class SellerDAOImpl extends CommonDAOImpl implements SellerDAO {
 	public void updateSeller(SellerDO sellerDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
-			session.update(sellerDO);
+			//bug fix- save or update wont work incase if save and update actions happens
+			// in the same session, in that hibernate throws error saying 
+			// "a different object with the same identifier value was already associated with the session"
+			// in that case, we need to do merge object which has same identifier
+			session.merge(sellerDO);
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Erroe while updating table", hExp);
 		}
