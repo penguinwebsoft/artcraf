@@ -18,13 +18,17 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.inter.service.ManageCommissionService;
 import com.crafart.inter.service.ManageCustomerService;
+import com.crafart.inter.service.ManageGeoZoneService;
 import com.crafart.inter.service.ManageProductRatingService;
 import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.CustomerBO;
+import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
@@ -47,7 +51,6 @@ import com.crafart.service.exception.CrafartServiceException;
 @ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Transactional
 @Component
 public class ManageProductRatingServiceTest {
 
@@ -63,8 +66,15 @@ public class ManageProductRatingServiceTest {
 	@Autowired
 	private ManageCustomerService manageCustomerServiceImpl;
 
+	@Autowired
+	private ManageGeoZoneService manageGeoZoneServiceImpl;
+
+	@Autowired
+	private ManageCommissionService manageCommissionServiceImpl;
+
 	@Test
 	@Rollback(true)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void testGetProductRating() {
 		ProductRatingBO productRatingBO1 = getProductRating();
 		try {
@@ -86,6 +96,7 @@ public class ManageProductRatingServiceTest {
 
 	@Test
 	@Rollback(true)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void testAddProductRating() {
 		ProductRatingBO productRatingBO = getProductRating();
 		try {
@@ -270,11 +281,11 @@ public class ManageProductRatingServiceTest {
 		List<ProductShippingBO> productShippingBOs = new ArrayList<>();
 		ProductShippingBO productShippingBO = new ProductShippingBO();
 		productShippingBO.setCourierId(41);
-		productShippingBO.setGeoZoneId(50);
+		productShippingBO.setGeoZoneId(getGeoZone().getGeoZoneId());
 		productShippingBO.setShippingRate(125);
 		ProductShippingBO productShippingBO2 = new ProductShippingBO();
 		productShippingBO2.setCourierId(41);
-		productShippingBO2.setGeoZoneId(50);
+		productShippingBO2.setGeoZoneId(getGeoZone().getGeoZoneId());
 		productShippingBO2.setShippingRate(154);
 		productShippingBOs.add(productShippingBO2);
 		productShippingBOs.add(productShippingBO);
@@ -352,6 +363,7 @@ public class ManageProductRatingServiceTest {
 		sellerBO.setStoreBO(getStoreBO(sellerBO));
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
 		sellerBO.setContactBOs(getContactBOs(sellerBO));
+		sellerBO.setCommissionBO(getCommision());
 
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
@@ -360,6 +372,16 @@ public class ManageProductRatingServiceTest {
 			Assert.fail();
 		}
 		return sellerBO;
+
+	}
+
+	private CommissionBO getCommision() {
+		CommissionBO commissionBO = new CommissionBO();
+		commissionBO.setName("qwerty");
+		commissionBO.setSortOrder(2);
+		commissionBO.setType("qwert");
+		commissionBO.setValue(2.0f);
+		return commissionBO;
 
 	}
 
@@ -402,5 +424,19 @@ public class ManageProductRatingServiceTest {
 		contactBOs.add(contactBO2);
 		contactBOs.add(contactBO3);
 		return contactBOs;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private GeoZoneBO getGeoZone() {
+		GeoZoneBO geoZoneBO = new GeoZoneBO();
+		geoZoneBO.setDescription("jlk");
+		geoZoneBO.setName("Kerala");
+		try {
+			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		return geoZoneBO;
 	}
 }
