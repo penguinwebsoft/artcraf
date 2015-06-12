@@ -30,7 +30,7 @@ public class ManageSeoServiceImpl implements ManageSeoService {
 	private BeanMapper beanMapper;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addSeo(SeoBO seoBO) throws CrafartServiceException {
 		SeoDO seoDO = beanMapper.mapSeoBOToDO(seoBO, new SeoDO());
 		try {

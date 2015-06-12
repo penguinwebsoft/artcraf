@@ -60,7 +60,7 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 	 * .crafart.service.businessobjects.SellerBO)
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CrafartOrderBO> getCrafartOrder(SellerBO sellerBO) throws CrafartServiceException {
 		List<CrafartOrderBO> crafartOrderBOs = new ArrayList<>();
 		try {
@@ -87,7 +87,7 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CrafartOrderBO> getCustomerOrder(long customerId) throws CrafartServiceException {
 		List<CrafartOrderBO> crafartOrderBOs = new ArrayList<>();
 		try {

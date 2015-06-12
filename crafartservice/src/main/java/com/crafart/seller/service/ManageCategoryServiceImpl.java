@@ -45,7 +45,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	 * {@link CategoryDAO} getCategory()
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CategoryBO> getCategory() throws CrafartServiceException {
 		List<CategoryBO> categoryBOs = new ArrayList<>();
 		try {
@@ -65,7 +65,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	 * {@link CategoryDAO} addCategory()
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCategory(CategoryBO categoryBO) throws CrafartServiceException {
 		try {
 			SeoDO seoDO = beanMapper.mapSeoBOToDO(categoryBO.getSeoBO(), new SeoDO());
@@ -79,7 +79,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CategoryBO> getSubCategory(long categoryId) throws CrafartServiceException {
 		List<CategoryBO> categoryBOs = new ArrayList<>();
 		try {

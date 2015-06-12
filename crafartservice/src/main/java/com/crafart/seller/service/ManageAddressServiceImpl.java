@@ -5,6 +5,8 @@ package com.crafart.seller.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.exception.CrafartDataException;
@@ -28,6 +30,7 @@ public class ManageAddressServiceImpl implements ManageAddressService {
 	private BeanMapper beanMapper;
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void addAddress(AddressBO addressBO) throws CrafartServiceException {
 
 		AddressDO addressDO = beanMapper.mapAddressBOToDO(addressBO, new AddressDO(), null, null);

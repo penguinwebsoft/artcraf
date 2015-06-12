@@ -183,7 +183,7 @@ public class ManageProductServiceImpl implements ManageProductService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public ProductBO getProductDetail(long productId) throws CrafartServiceException {
 		ProductBO productBO = new ProductBO();
 		List<ProductAttributeBO> productAttributeBOs = new ArrayList<>();
@@ -210,7 +210,7 @@ public class ManageProductServiceImpl implements ManageProductService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<ProductBO> getAllProduct() throws CrafartServiceException {
 		List<ProductBO> productBOs = new ArrayList<>();
 		try {

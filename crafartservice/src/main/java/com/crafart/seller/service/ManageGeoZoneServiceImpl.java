@@ -53,7 +53,7 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 	 * {@link GeoZoneDAO} getGeoZoneDetail()
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartServiceException {
 		List<GeoZoneBO> geoZoneBOs = new ArrayList<>();
 		try {

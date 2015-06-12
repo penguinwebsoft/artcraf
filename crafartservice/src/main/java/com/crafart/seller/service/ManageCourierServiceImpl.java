@@ -33,7 +33,7 @@ public class ManageCourierServiceImpl implements ManageCourierService {
 	private CourierDAO courierDAOImpl;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCourierDetail(CourierBO courierBO) throws CrafartServiceException {
 		CourierDO courierDO = beanMapper.mapCourierBOToDO(courierBO, new CourierDO());
 		try {
@@ -45,7 +45,7 @@ public class ManageCourierServiceImpl implements ManageCourierService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CourierBO> getCourierDetail() throws CrafartServiceException {
 		List<CourierBO> courierBOs = new ArrayList<>();
 		try {

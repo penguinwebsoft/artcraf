@@ -30,11 +30,12 @@ public class ManageCommissionServiceImpl implements ManageCommissionService {
 	private BeanMapper beanMapper;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCommission(CommissionBO commissionBO) throws CrafartServiceException {
 		CommissionDO commissionDO = beanMapper.mapCommissionBOToDO(commissionBO, new CommissionDO());
 		try {
 			commissionDAOImpl.addCommission(commissionDO);
+			commissionBO.setCommissionId(commissionDO.getCommissionId());
 		} catch (CrafartDataException csExp) {
 			throw new CrafartServiceException("Error while adding commission in table", csExp);
 		}

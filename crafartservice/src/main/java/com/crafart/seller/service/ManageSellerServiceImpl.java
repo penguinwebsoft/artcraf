@@ -59,7 +59,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	 * to DO we are calling dataaccess addSeller method using sellerDO
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addSeller(SellerBO sellerBO) throws CrafartServiceException {
 
 		try {
@@ -67,12 +67,14 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(), null);
 			AddressDO addressDO = beanMapper.mapAddressBOToDO(sellerBO.getAddressBO(), new AddressDO(), sellerDO, null);
 			StoreDO storeDO = beanMapper.mapStoreBOToDO(sellerBO.getStoreBO(), new StoreDO(), sellerDO);
+			CommissionDO commissionDO = beanMapper.mapCommissionBOToDO(sellerBO.getCommissionBO(), new CommissionDO());
 			// List<StoreDO> storeDOLst = new ArrayList<>();
 			// sellerDO.setStoreDOs(storeDOs);
 			sellerDO.setStoreDO(storeDO);
 			List<AddressDO> addressDOs = new ArrayList<>();
 			addressDOs.add(addressDO);
 			sellerDO.setAddressDOs(addressDOs);
+			sellerDO.setCommissionDO(commissionDO);
 
 			List<ContactBO> contactBOs = sellerBO.getContactBOs();
 			List<ContactDO> contactDOs = new ArrayList<>();
@@ -118,7 +120,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public ContactBO findByEmailId(String eMailId) throws CrafartServiceException {
 		ContactBO contactBO = new ContactBO();
 		try {
@@ -144,7 +146,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public SellerBO getSellerContacts(long sellerId) throws CrafartServiceException {
 		SellerBO sellerBO = new SellerBO();
 		try {
