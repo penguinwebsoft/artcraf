@@ -3,8 +3,6 @@ package com.crafart.data;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,14 +17,8 @@ import com.crafart.inter.data.SellerDAO;
  * 
  */
 @Repository("sellerDAOImpl")
-public class SellerDAOImpl implements SellerDAO {
+public class SellerDAOImpl extends CommonDAOImpl implements SellerDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/**
 	 * Add seller details to database and returns with generated primary key. if
@@ -42,11 +34,8 @@ public class SellerDAOImpl implements SellerDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addSeller(SellerDO sellerDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.save(sellerDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding new seller details", hExp);
 		}
@@ -57,11 +46,8 @@ public class SellerDAOImpl implements SellerDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void updateSeller(SellerDO sellerDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.update(sellerDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Erroe while updating table", hExp);
 		}
@@ -72,8 +58,7 @@ public class SellerDAOImpl implements SellerDAO {
 	public SellerDO getSellerContacts(long seller_id) throws CrafartDataException {
 		SellerDO sellerDO = new SellerDO();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from SellerDO where seller_id = :seller_id");
 			query.setLong("seller_id", seller_id);
 			sellerDO = (SellerDO) query.uniqueResult();

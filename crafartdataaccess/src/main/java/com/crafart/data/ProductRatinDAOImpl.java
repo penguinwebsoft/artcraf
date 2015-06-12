@@ -9,8 +9,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,23 +23,14 @@ import com.crafart.inter.data.ProductRatingDAO;
  * 
  */
 @Repository("productRatinDAOImpl")
-public class ProductRatinDAOImpl implements ProductRatingDAO {
+public class ProductRatinDAOImpl extends CommonDAOImpl implements ProductRatingDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public void addProductRating(ProductRatingDO productRatingDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
-			session.persist(productRatingDO);
-			session.getTransaction().commit();
-			session.close();
+			Session session = this.getSessionFactory().getCurrentSession();
+			session.save(productRatingDO);
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding Rating in table", hExp);
 		}
@@ -54,13 +43,10 @@ public class ProductRatinDAOImpl implements ProductRatingDAO {
 	public List<ProductRatingDO> getProductRating(long customerId) throws CrafartDataException {
 		List<ProductRatingDO> productRatingDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from ProductRatingDO where customer_id = :customer_id");
 			query.setLong("customer_id", customerId);
 			productRatingDOs = (List<ProductRatingDO>) query.list();
-			session.getTransaction().commit();
-			session.close();
 		} catch (EmptyResultDataAccessException hExp) {
 			return null;
 		} catch (HibernateException hExp) {

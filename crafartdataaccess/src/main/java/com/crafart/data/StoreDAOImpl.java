@@ -6,9 +6,6 @@ package com.crafart.data;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -24,14 +21,9 @@ import com.crafart.inter.data.StoreDAO;
  * 
  */
 @Repository("StoreDAOImpl")
-public class StoreDAOImpl implements StoreDAO {
+public class StoreDAOImpl extends CommonDAOImpl implements StoreDAO {
 
-	private SessionFactory sessionFactory;
 
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/**
 	 * adding store detail to store table {@link CrafartDataException} will
@@ -42,11 +34,8 @@ public class StoreDAOImpl implements StoreDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addStoreDetail(StoreDO storeDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.save(storeDO);
-			tx.commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding new store details", hExp);
 		}
@@ -57,8 +46,7 @@ public class StoreDAOImpl implements StoreDAO {
 	public StoreDO checkStoreUrl(String storeUrl) throws CrafartDataException {
 		StoreDO storeDO = new StoreDO();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from StoreDO where store_url = :store_url");
 			query.setString("store_url", storeUrl);
 			storeDO = (StoreDO) query.uniqueResult();

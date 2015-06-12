@@ -5,9 +5,7 @@ package com.crafart.data;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,14 +19,8 @@ import com.crafart.inter.data.LengthClassDAO;
  * 
  */
 @Repository("LengthClassImpl")
-public class LengthClassDAOImpl implements LengthClassDAO {
+public class LengthClassDAOImpl extends CommonDAOImpl implements LengthClassDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/**
 	 * adding length class details to lenght_class table
@@ -39,7 +31,7 @@ public class LengthClassDAOImpl implements LengthClassDAO {
 	public void addLengthClass(LengthClassDO lengthClassDO) throws CrafartDataException {
 
 		try {
-			Session session = this.sessionFactory.openSession();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Transaction tx = session.beginTransaction();
 			session.persist(lengthClassDO);
 			tx.commit();

@@ -9,8 +9,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,24 +23,14 @@ import com.crafart.inter.data.CrafartOrderDAO;
  * 
  */
 @Repository("crafartOrderDAOImpl")
-public class CrafartOrderDAOImpl implements CrafartOrderDAO {
-
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+public class CrafartOrderDAOImpl extends CommonDAOImpl implements CrafartOrderDAO {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCrafartOrder(CrafartOrderDO crafartOrderDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(crafartOrderDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error in adding Crafart Order Detail", hExp);
 		}
@@ -53,12 +41,10 @@ public class CrafartOrderDAOImpl implements CrafartOrderDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CrafartOrderDO> getCrafartOrder() throws CrafartDataException {
 		List<CrafartOrderDO> crafartOrderDOs = new ArrayList<>();
+		Session session = this.getSessionFactory().getCurrentSession();
+		session.refresh(CrafartOrderDO.class);
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
 			crafartOrderDOs = session.createQuery("from CrafartOrderDO").list();
-			//session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while retriving from DB", hExp);
 		}
@@ -69,11 +55,8 @@ public class CrafartOrderDAOImpl implements CrafartOrderDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void updateCrafartOrder(CrafartOrderDO crafartOrderDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.update(crafartOrderDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while updating Crafart order", hExp);
 		}
@@ -85,13 +68,10 @@ public class CrafartOrderDAOImpl implements CrafartOrderDAO {
 	public List<CrafartOrderDO> getCustomerOrder(long customerId) throws CrafartDataException {
 		List<CrafartOrderDO> crafartOrderDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from CrafartOrderDO where customer_id = :customer_id");
 			query.setLong("customer_id", customerId);
 			crafartOrderDOs = (List<CrafartOrderDO>) query.list();
-			session.getTransaction().commit();
-			session.close();
 		} catch (EmptyResultDataAccessException hExp) {
 			return null;
 		} catch (HibernateException hExp) {

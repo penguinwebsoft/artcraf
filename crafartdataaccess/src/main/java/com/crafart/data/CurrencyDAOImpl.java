@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,24 +21,15 @@ import com.crafart.inter.data.CurrencyDAO;
  * 
  */
 @Repository("currencyDAOImpl")
-public class CurrencyDAOImpl implements CurrencyDAO {
+public class CurrencyDAOImpl extends CommonDAOImpl implements CurrencyDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCurrency(CurrencyDO currencyDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(currencyDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding Currency details in table", hExp);
 		}
@@ -52,11 +41,8 @@ public class CurrencyDAOImpl implements CurrencyDAO {
 	public List<CurrencyDO> getCurrencyDetail() throws CrafartDataException {
 		List<CurrencyDO> currencyDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			currencyDOs = session.createQuery("from CurrencyDO").list();
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while retriving detail from DB", hExp);
 		}

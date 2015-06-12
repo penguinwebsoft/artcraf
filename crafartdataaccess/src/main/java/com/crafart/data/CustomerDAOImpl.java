@@ -6,8 +6,6 @@ package com.crafart.data;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,24 +19,15 @@ import com.crafart.inter.data.CustomerDAO;
  * 
  */
 @Repository("customerDAOImpl")
-public class CustomerDAOImpl implements CustomerDAO {
+public class CustomerDAOImpl extends CommonDAOImpl implements CustomerDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCustomer(CustomerDO customerDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(customerDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB error while adding customer detail", hExp);
 	}
@@ -49,8 +38,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public CustomerDO getCustomerDetails(long customerId) throws CrafartDataException {
 		CustomerDO customerDO = new CustomerDO();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from CustomerDO where customer_id = :customer_id");
 			query.setLong("customer_id", customerId);
 			customerDO = (CustomerDO) query.uniqueResult();
@@ -64,11 +52,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void updateCustomerDetails(CustomerDO customerDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.update(customerDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Erroe while updating customer details", hExp);
 		}
