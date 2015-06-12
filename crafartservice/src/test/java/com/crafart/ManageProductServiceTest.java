@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,13 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.inter.service.ManageGeoZoneService;
 import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
+import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
@@ -53,6 +57,9 @@ public class ManageProductServiceTest {
 
 	@Autowired
 	private ManageSellerService manageSellerServiceImpl;
+
+	@Autowired
+	private ManageGeoZoneService manageGeoZoneServiceImpl;
 
 	@Test
 	@Rollback(true)
@@ -170,11 +177,11 @@ public class ManageProductServiceTest {
 		List<ProductShippingBO> productShippingBOs = new ArrayList<>();
 		ProductShippingBO productShippingBO = new ProductShippingBO();
 		productShippingBO.setCourierId(41);
-		productShippingBO.setGeoZoneId(50);
+		productShippingBO.setGeoZoneId(getGeoZone().getGeoZoneId());
 		productShippingBO.setShippingRate(125);
 		ProductShippingBO productShippingBO2 = new ProductShippingBO();
 		productShippingBO2.setCourierId(41);
-		productShippingBO2.setGeoZoneId(50);
+		productShippingBO2.setGeoZoneId(getGeoZone().getGeoZoneId());
 		productShippingBO2.setShippingRate(154);
 		productShippingBOs.add(productShippingBO2);
 		productShippingBOs.add(productShippingBO);
@@ -252,7 +259,7 @@ public class ManageProductServiceTest {
 		sellerBO.setStoreBO(getStoreBO(sellerBO));
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
 		sellerBO.setContactBOs(getContactBOs(sellerBO));
-
+		sellerBO.setCommissionBO(getCommision());
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
 		} catch (CrafartServiceException csExp) {
@@ -260,7 +267,15 @@ public class ManageProductServiceTest {
 			Assert.fail();
 		}
 		return sellerBO;
+	}
 
+	private CommissionBO getCommision() {
+		CommissionBO commissionBO = new CommissionBO();
+		commissionBO.setName("qwerty");
+		commissionBO.setSortOrder(2);
+		commissionBO.setType("qwert");
+		commissionBO.setValue(2.0f);
+		return commissionBO;
 	}
 
 	private AddressBO getAddressBO(SellerBO sellerBO) {
@@ -304,7 +319,7 @@ public class ManageProductServiceTest {
 		return contactBOs;
 	}
 
-	@Test
+	@Ignore
 	@Rollback(true)
 	public void testGetProductDetails() {
 		ProductBO productBO1 = getProductBO();
@@ -339,5 +354,19 @@ public class ManageProductServiceTest {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private GeoZoneBO getGeoZone() {
+		GeoZoneBO geoZoneBO = new GeoZoneBO();
+		geoZoneBO.setDescription("jlk");
+		geoZoneBO.setName("Kerala");
+		try {
+			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		return geoZoneBO;
 	}
 }
