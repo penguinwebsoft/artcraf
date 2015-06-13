@@ -34,11 +34,20 @@ ul.wysihtml5-toolbar>li {
 			.ready(
 					function() {
 
+						var subCategories = [];
+						var taxRateBO = {};
+						var taxRuleBOs = new Array();
+						var taxRuleBO = {};
+
 						$("#dateOfBirthId").datepicker({
 							viewMode : 'years',
 							format : 'dd/mm/yyyy',
 
 						});
+
+						function isEmpty(el) {
+							return !$.trim(el.html());
+						}
 
 						$('#dateOfBirthId').on('changeDate', function(ev) {
 							//close when viewMode='0' (days)
@@ -47,18 +56,46 @@ ul.wysihtml5-toolbar>li {
 							}
 						});
 
-						$("#ProductTaxId").on('change', function(e) {
-							var valueSelected = this.value;
-							if (valueSelected == 0) {
-								$("#taxVatId").hide();
-								$("#taxCstId").hide();
-								$("#taxGstId").hide();
-							} else {
-								$("#taxVatId").show();
-								$("#taxCstId").show();
-								$("#taxGstId").show();
-							}
-						});
+						$("#ProductTaxId")
+								.on(
+										'change',
+										function(e) {
+											var valueSelected = this.value;
+											if (valueSelected == 0) {
+												$("#taxVatId").hide();
+											} else if (valueSelected == 1) {
+												if (isEmpty($("#taxVatId"))) {
+													$
+															.ajax({
+																url : "../taxClass/getTaxClass",
+																type : "post",
+																contentType : "application/json",
+																dataType : "json",
+																success : function(
+																		data) {
+																	var taxClassBOs = data.taxClassBOs;
+																	$
+																			.each(
+																					taxClassBOs,
+																					function(
+																							key,
+																							value) {
+																						$(
+																								"#taxVatId")
+																								.append(
+																										'<div><label class="col-sm-3 control-label" for="VatId">'
+																												+ value.description
+																												+ '</label></div><div class="col-sm-3"><input type="text" name="vatId" value=""placeholder="'+value.title+'" id="'+value.taxClassId+'" class="form-control" /></div>');
+																					});
+																}
+															});
+												} else {
+													$("#taxVatId").show();
+												}
+
+											}
+
+										});
 
 						$.ajax({
 							url : "../category/getCategory",
@@ -76,6 +113,49 @@ ul.wysihtml5-toolbar>li {
 							}
 
 						});
+
+						$("#productCategory")
+								.on(
+										'change',
+										function() {
+											$
+													.ajax({
+														url : "../category/getSubCategory",
+														type : "post",
+														cache : false,
+														dataType : "json",
+														data : "categoryId="
+																+ $(this).val(),
+														success : function(data) {
+															var subCategoryBOs = data.subCategoryBOs;
+															$(
+																	"#productSubCategory option")
+																	.remove();
+															$
+																	.each(
+																			subCategoryBOs,
+																			function(
+																					key,
+																					subCategoryBO) {
+																				subCategories
+																						.push({
+																							lable : subCategoryBO.categoryId,
+																							value : subCategoryBO.categoryName
+																						});
+																				$(
+																						"#productSubCategory")
+																						.append(
+																								'<option value='+subCategoryBO.categoryId+'>'
+																										+ subCategoryBO.categoryName
+																										+ '</option>');
+																			});
+														}
+													});
+										});
+						$("#productSubCategory").autocomplete({
+							source : subCategories
+						});
+
 						$.ajax({
 							url : "../geoZone/getGeoZone",
 							type : "post",
@@ -117,6 +197,11 @@ ul.wysihtml5-toolbar>li {
 
 						});
 
+						$('#taxVatId').on('click', 'input[type="text"]',
+								function() {
+									var id = $(this).attr('id');
+								});
+
 						$("#saveButton")
 								.click(
 										function() {
@@ -124,14 +209,15 @@ ul.wysihtml5-toolbar>li {
 												var productBO = {};
 												var weightClassBO = {};
 												var lengthClassBO = {};
-												var taxRateBO = {};
+												/* var taxRateBO = {}; */
 												var productDescriptionBO = {};
 												var productDiscountBOs = new Array();
 												var productSpecialBOs = new Array();
 												var productShippingBOs = new Array();
 												var productAttributeBOs = new Array();
-												var taxRuleBOs = new Array();
+												/* var taxRuleBOs = new Array(); */
 												var taxRuleBO = {};
+
 												taxRuleBO.value = $("#vatId")
 														.val();
 												taxRuleBO.value = $("#cstId")
@@ -257,7 +343,6 @@ ul.wysihtml5-toolbar>li {
 												productBO.taxRateBO = taxRateBO;
 												postData = JSON
 														.stringify(productBO);
-												alert(postData);
 											}
 											$
 													.ajax({
@@ -267,10 +352,10 @@ ul.wysihtml5-toolbar>li {
 														contentType : "application/json",
 														dataType : "json",
 														success : function(data) {
-															alert("Saved Successfully");
-														},
-														error : function(error) {
-															alert("Details failed to save");
+															if (data.result == true)
+																alert("Saved Successfully");
+															else
+																alert("some tab is empty");
 														}
 													});
 										});
@@ -489,14 +574,8 @@ ul.wysihtml5-toolbar>li {
 										<label class="control-label col-sm-2">Product Sub Category</label>
 
 										<div class="col-sm-10">
-											<select data-placeholder="Choose a Country" class="form-control chzn-select" multiple="multiple" tabindex="4" style="height: 25px;">
-												<option value="United States" selected="selected">United States</option>
-												<option value="United Kingdom">United Kingdom</option>
-												<option value="Afghanistan">Afghanistan</option>
-												<option value="Albania">Albania</option>
-												<option value="Algeria">Algeria</option>
-												<option value="American Samoa">American Samoa</option>
-												<option value="Andorra">Andorra</option>
+											<select id="productSubCategory" data-placeholder="Choose a Country" class="form-control" multiple="multiple" tabindex="4">
+
 											</select>
 										</div>
 									</div>
@@ -653,7 +732,7 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 								</div>
-
+								<!-- Start tab-SEO-->
 								<div class="tab-pane fade" id="tab-SEO">
 
 									<div class="form-group required">
@@ -682,8 +761,7 @@ ul.wysihtml5-toolbar>li {
 									</div>
 								</div>
 
-
-
+								<!-- Start tab-Shipping-->
 								<div class="tab-pane" id="tab-shipping">
 									<div class="table-responsive">
 										<table id="shipping" class="table table-striped table-bordered table-hover">
@@ -709,6 +787,7 @@ ul.wysihtml5-toolbar>li {
 									</div>
 								</div>
 
+								<!-- Start tab-Attribute-->
 								<div class="tab-pane" id="tab-attribute">
 									<div class="table-responsive">
 										<table id="attribute" class="table table-striped table-bordered table-hover">
@@ -733,6 +812,7 @@ ul.wysihtml5-toolbar>li {
 									</div>
 								</div>
 
+								<!-- Start tab-Image-->
 								<div class="tab-pane" id="tab-image">
 									<div class="table-responsive">
 										<table id="images" class="table table-striped table-bordered table-hover">
@@ -756,15 +836,17 @@ ul.wysihtml5-toolbar>li {
 										</table>
 									</div>
 								</div>
-
+								
+								<!-- Start tab-discount-->
 								<div class="tab-pane" id="tab-discount">
 									<div class="table-responsive">
 										<table id="discount" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
 													<td class="text-left">Discount Type</td>
-													<td class="text-right">Quantity</td>
-													<td class="text-right">values</td>
+													<td class="text-left">Discount Value</td>
+													<td class="text-left">Discount Code</td>
+													<td class="text-left">Quantity</td>
 													<td class="text-left">Date Start</td>
 													<td class="text-left">Date End</td>
 													<td></td>
@@ -783,6 +865,7 @@ ul.wysihtml5-toolbar>li {
 										</table>
 									</div>
 								</div>
+								<!-- Start tab-Special-->
 								<div class="tab-pane" id="tab-special">
 									<div class="table-responsive">
 										<table id="special" class="table table-striped table-bordered table-hover">
@@ -807,35 +890,19 @@ ul.wysihtml5-toolbar>li {
 										</table>
 									</div>
 								</div>
-
+								
+								<!-- Start tab-Tax-->
 								<div class="tab-pane fade" id="tab-Tax">
 									<div class="form-group">
 										<label class="col-sm-3 control-label" for="ProductTaxId">Product Tax Details</label>
 										<div class="col-sm-3">
 											<select name="ProductTax" id="ProductTaxId" class="form-control">
-												<option id="ProductTaxableGoodsId" value="1" selected="selected">Taxable Goods</option>
-												<option id="ProductNonTaxableGoodsId" value="0">Non Taxable Goods</option>
+												<option id="ProductTaxableGoodsId" value="1">Taxable Goods</option>
+												<option id="ProductNonTaxableGoodsId" value="0" selected="selected">Non Taxable Goods</option>
 											</select>
 										</div>
 									</div>
-									<div class="form-group required" id="taxVatId">
-										<label class="col-sm-3 control-label" for="VatId">VAT Rate (%)</label>
-										<div class="col-sm-3">
-											<input type="text" name="vatId" value="" placeholder="VAT Rate (%)" id="vatId" class="form-control" />
-										</div>
-									</div>
-									<div class="form-group required" id="taxCstId">
-										<label class="col-sm-3 control-label" for="cstId">CST Rate (%)</label>
-										<div class="col-sm-3">
-											<input type="text" name="cstId" value="" placeholder="CST Rate (%)" id="cstId" class="form-control" />
-										</div>
-									</div>
-									<div class="form-group required" id="taxGstId">
-										<label class="col-sm-3 control-label" for="gstId">GST Rate (%)</label>
-										<div class="col-sm-3">
-											<input type="text" name="gstId" value="" placeholder="GST Rate (%)" id="gstId" class="form-control" />
-										</div>
-									</div>
+									<div class="form-group required" id="taxVatId"></div>
 								</div>
 							</div>
 						</form>
