@@ -13,7 +13,7 @@
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Save</button>
-				<button type="button" class="btn btn-Warning">Delete</button>
+				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 		<hr />
