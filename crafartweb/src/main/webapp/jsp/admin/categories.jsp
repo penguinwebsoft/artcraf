@@ -41,8 +41,8 @@ $(document).ready(function() {
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Categories</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<button type="button" class="btn btn-success">Add</button>
-				<button type="button" class="btn btn-Warning">Delete</button>
+				<a class="btn btn-success" href="${baseURL}/menu/addCategories">Add</a>
+				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 		<hr />
