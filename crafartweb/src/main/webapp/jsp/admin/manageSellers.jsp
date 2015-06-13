@@ -1,19 +1,18 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
-<c:set var="context" value="${pageContext.servletContext.contextPath}" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
+<c:set var="context" value="${pageContext.request.contextPath}" />
 
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
-			<div class="col-lg-3">
+			<div class="col-lg-3"> 
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Manage Sellers</h1>
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<button type="button" class="btn btn-success">Add</button>
+				<a class="btn btn-success" href="${baseURL}/menu/addNewSellers">Add</a>
 				<button type="button" class="btn btn-warning">Delete</button>
 			</div>
 		</div>
