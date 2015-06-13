@@ -5,6 +5,35 @@
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" /> 
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
+<script type="text/javascript">
+var categoryBOs = {};
+$(document).ready(function() {
+	
+	$.ajax({
+		url : "../category/getCategory",
+		type : "post",
+		contentType : "application/json",
+		dataType : "json",
+		success : function(data){
+			categoryBOs = data.categoryBOs;
+			displayCategoryList();
+		}
+	});
+	function displayCategoryList(){
+		 $.each(categoryBOs, function(key, value) {
+			 var categoryBO = value;
+				html = '<tr>';
+				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+				html +='<td>'+categoryBO.categoryName+'</td>';
+				html +='<td>'+categoryBO.sortOrder+'</td>';
+				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
+				html +='</tr>';
+				$('#shipping tbody').append(html);
+			}); 
+		}
+});
+</script>
+
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -12,7 +41,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Categories</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<button type="button" class="btn btn-success">Save</button>
+				<button type="button" class="btn btn-success">Add</button>
 				<button type="button" class="btn btn-Warning">Delete</button>
 			</div>
 		</div>
@@ -38,71 +67,9 @@
 									<td>Action</td>
 								</tr>
 							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>MP3 Players > test 18</td>
-									<td>0</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>MP3 Players > test 19</td>
-									<td>0</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components</td>
-									<td>3</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components > Mice and Trackballs</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components > Components  >  Printers</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components > Components  >  Scanners</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Desktops</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Laptops & Notebooks  >  Macs</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-
+							<tbody>
+							
+							</tbody>
 						</table>
 						<nav>
 							<ul class="pagination">
