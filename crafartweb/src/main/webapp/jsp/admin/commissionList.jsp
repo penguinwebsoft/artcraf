@@ -12,7 +12,7 @@
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<a class="btn btn-success" href="${baseURL}/menu/commissionPage">Add</a>
-				<button type="button" class="btn">Delete</button>
+				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 		<hr />
