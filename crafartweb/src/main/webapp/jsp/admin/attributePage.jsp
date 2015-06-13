@@ -11,8 +11,8 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Attribute Page</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/uploadProducts">Add</a>
-				<button type="button" class="btn btn-Warning">Delete</button>
+				<a class="btn btn-success" href="${baseURL}/menu/addAttribute">Add</a>
+				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 		<hr />
