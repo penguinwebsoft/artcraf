@@ -12,8 +12,8 @@
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-warning" href="${baseURL}/menu/addNewCouriers">Add</a>
-				<button type="button" class="btn btn-warning">Delete</button>
+				<a class="btn btn-success" href="${baseURL}/menu/addNewCouriers">Add</a>
+				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 
