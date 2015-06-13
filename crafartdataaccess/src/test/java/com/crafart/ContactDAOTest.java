@@ -29,7 +29,7 @@ import com.crafart.inter.data.ContactDAO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-public class contactDAOTest {
+public class ContactDAOTest {
 
 	@Autowired
 	private ContactDAO contactDAOImpl;
@@ -38,7 +38,7 @@ public class contactDAOTest {
 	@Rollback(true)
 	public void testFindByEmailId() {
 		try {
-			ContactDO contactDO = contactDAOImpl.findByEmailId("sam@gmail.com");
+			ContactDO contactDO = contactDAOImpl.findByEmailId("asasddds@iii.com");
 			System.out.print(contactDO.getContactValue() + "\t");
 			List<SellerDO> sellerDOs = contactDO.getSellerDOs();
 			for (SellerDO sellerDO : sellerDOs) {
