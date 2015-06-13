@@ -12,7 +12,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.inter.service.ManageCommissionService;
@@ -37,7 +36,6 @@ public class ManageSellerTest {
 	@Autowired
 	private ManageCommissionService manageCommissionServiceImpl;
 
-	@Test
 	@Rollback(true)
 	public void testAddSeller() {
 
@@ -63,6 +61,25 @@ public class ManageSellerTest {
 			sellerBO.setCommissionBO(getCommision());
 			sellerBO.setCstNo("servcs12");
 			manageSellerServiceImpl.updateSeller(sellerBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	@Rollback(true)
+	public void testFindByEmail() {
+		try {
+			SellerBO sellerBO = getSellerBO();
+			manageSellerServiceImpl.addSeller(sellerBO);
+			String email = null;
+			for (ContactBO contactBO : sellerBO.getContactBOs()) {
+				if (contactBO.getContactTypeId() == 3) {
+					email = contactBO.getContactValue();
+				}
+			}
+			manageSellerServiceImpl.findByEmailId(email);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -110,6 +127,7 @@ public class ManageSellerTest {
 		sellerBO.setStoreBO(getStoreBO(sellerBO));
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
 		sellerBO.setContactBOs(getContactBOs(sellerBO));
+		sellerBO.setCommissionBO(getCommision());
 		return sellerBO;
 
 	}
@@ -120,12 +138,6 @@ public class ManageSellerTest {
 		commissionBO.setSortOrder(2);
 		commissionBO.setType("qwert");
 		commissionBO.setValue(2.0f);
-		try {
-			manageCommissionServiceImpl.addCommission(commissionBO);
-		} catch (CrafartServiceException csExp) {
-			csExp.printStackTrace();
-			Assert.fail();
-		}
 		return commissionBO;
 
 	}
@@ -135,37 +147,20 @@ public class ManageSellerTest {
 		ContactBO contactBO = new ContactBO();
 		contactBO.setContactTypeId(1);
 		contactBO.setContactValue("0000000");
-		contactBO.setSellerBO(sellerBO);
+		//contactBO.setSellerBO(sellerBO);
 		ContactBO contactBO2 = new ContactBO();
 		contactBO2.setContactTypeId(2);
 		contactBO2.setContactValue("044-202020");
-		contactBO.setSellerBO(sellerBO);
+		//contactBO.setSellerBO(sellerBO);
 		ContactBO contactBO3 = new ContactBO();
 		contactBO3.setContactTypeId(3);
-		contactBO3.setContactValue("deepam@iii.com");
-		contactBO.setSellerBO(sellerBO);
+		contactBO3.setContactValue("required@crafart.com");
+		//contactBO.setSellerBO(sellerBO);
 		contactBOs.add(contactBO);
 		contactBOs.add(contactBO2);
 		contactBOs.add(contactBO3);
 		return contactBOs;
 	}
 
-	@Test
-	@Rollback(true)
-	public void testFindByEmail() {
-		try {
-			SellerBO sellerBO = getSellerBO();
-			manageSellerServiceImpl.addSeller(sellerBO);
-			String email = null;
-			for (ContactBO contactBO : sellerBO.getContactBOs()) {
-				if (contactBO.getContactTypeId() == 3) {
-					email = contactBO.getContactValue();
-				}
-			}
-			manageSellerServiceImpl.findByEmailId(email);
-		} catch (CrafartServiceException csExp) {
-			csExp.printStackTrace();
-			Assert.fail();
-		}
-	}
+
 }

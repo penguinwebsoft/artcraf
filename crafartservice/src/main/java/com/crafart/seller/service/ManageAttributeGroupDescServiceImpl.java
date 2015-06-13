@@ -33,7 +33,7 @@ public class ManageAttributeGroupDescServiceImpl implements ManageAttributeGroup
 	private AttributeGroupDescDAO attributeGroupDescDAOImpl;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<AttributeGroupDescBO> getAttributeGroupDesc() throws CrafartServiceException {
 		List<AttributeGroupDescBO> attributeGroupDescBOs = new ArrayList<>();
 		try {
@@ -47,6 +47,17 @@ public class ManageAttributeGroupDescServiceImpl implements ManageAttributeGroup
 		}
 
 		return attributeGroupDescBOs;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void addAttributeGroupDesc(AttributeGroupDescBO attributeGroupDescBO) throws CrafartServiceException {
+		AttributeGroupDescDO attributeGroupDescDO  = beanMapper.mapAttributeGroupDescBOToDO(attributeGroupDescBO, new AttributeGroupDescDO());
+		try {
+			attributeGroupDescDAOImpl.addAttributeGroupDesc(attributeGroupDescDO);
+		} catch (CrafartDataException crafartDataException) {
+			throw new CrafartServiceException("Error while adding attribute group to DB",crafartDataException);
+		}
 	}
 
 }

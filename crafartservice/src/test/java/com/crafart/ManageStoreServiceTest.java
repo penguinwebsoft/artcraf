@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.inter.service.ManageStoreService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -88,6 +89,7 @@ public class ManageStoreServiceTest {
 		sellerBO.setStoreBO(storeBO);
 		sellerBO.setAddressBO(getAddressBO(sellerBO));
 		sellerBO.setContactBOs(getContactBOs(sellerBO));
+		sellerBO.setCommissionBO(getCommision());
 		try {
 			manageSellerServiceImpl.addSeller(sellerBO);
 		} catch (CrafartServiceException csExp) {
@@ -95,6 +97,16 @@ public class ManageStoreServiceTest {
 			Assert.fail();
 		}
 		return sellerBO;
+
+	}
+	
+	private CommissionBO getCommision() {
+		CommissionBO commissionBO = new CommissionBO();
+		commissionBO.setName("qwerty");
+		commissionBO.setSortOrder(2);
+		commissionBO.setType("qwert");
+		commissionBO.setValue(2.0f);
+		return commissionBO;
 
 	}
 

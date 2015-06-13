@@ -13,8 +13,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.CategoryDO;
+import com.crafart.dataobjects.SeoDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CategoryDAO;
+import com.crafart.inter.data.SeoDAO;
 import com.crafart.inter.service.ManageCategoryService;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.exception.CrafartServiceException;
@@ -33,6 +35,9 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	private CategoryDAO categoryDAOImpl;
 
 	@Autowired
+	private SeoDAO seoDAOImpl;
+
+	@Autowired
 	private BeanMapper beanMapper;
 
 	/**
@@ -40,13 +45,13 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	 * {@link CategoryDAO} getCategory()
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CategoryBO> getCategory() throws CrafartServiceException {
 		List<CategoryBO> categoryBOs = new ArrayList<>();
 		try {
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategory();
 			for (CategoryDO categoryDO : categoryDOs) {
-				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO());
+				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
 				categoryBOs.add(categoryBO);
 			}
 		} catch (CrafartDataException e) {
@@ -60,10 +65,12 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	 * {@link CategoryDAO} addCategory()
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCategory(CategoryBO categoryBO) throws CrafartServiceException {
-		CategoryDO categoryDO = beanMapper.mapCategoryBOToDO(categoryBO, new CategoryDO());
 		try {
+			SeoDO seoDO = beanMapper.mapSeoBOToDO(categoryBO.getSeoBO(), new SeoDO());
+			seoDAOImpl.addSeo(seoDO);
+			CategoryDO categoryDO = beanMapper.mapCategoryBOToDO(categoryBO, new CategoryDO(), seoDO);
 			categoryDAOImpl.addCategory(categoryDO);
 			categoryBO.setCategoryId(categoryDO.getCategoryId());
 		} catch (CrafartDataException e) {
@@ -72,13 +79,13 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CategoryBO> getSubCategory(long categoryId) throws CrafartServiceException {
 		List<CategoryBO> categoryBOs = new ArrayList<>();
 		try {
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getSubCategory(categoryId);
 			for (CategoryDO categoryDO : categoryDOs) {
-				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO());
+				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
 				categoryBOs.add(categoryBO);
 			}
 

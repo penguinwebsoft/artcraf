@@ -31,9 +31,10 @@
 <link rel="stylesheet" href="${context}/resources/plugins/validationengine/css/validationEngine.jquery.css" />
 <link rel="stylesheet" href="${context}/resources/plugins/chosen/chosen.min.css" />
 <link rel="stylesheet" href="${context}/resources/plugins/wysihtml5/dist/bootstrap-wysihtml5-0.0.2.css" />
-<link rel="stylesheet" href="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.css" />
-
 <link rel="stylesheet" href="http://factmint.io/column-bar.css">
+<link rel="stylesheet" href="${context}/resources/plugins/datepicker/css/datepicker.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.css" />
+<%-- <link rel="stylesheet" href="${content}/resources/javascript/zingchartScript/zingchart.css"/> --%>
 
 <!--START SCRIPTS -->
 
@@ -54,12 +55,10 @@
 <script src="${context}/resources/plugins/chosen/chosen.jquery.min.js"></script>
 <script src="${context}/resources/plugins/wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
 <script src="${context}/resources/plugins/bootstrap-wysihtml5-hack.js"></script>
-<script src="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.min.js"></script>
-<script src="${content}/resources/javascript/zingchartScript/zingchart.min.js"></script>
-<script src="${content}/resources/javascript/zingchartScript/zingchart.jquery.js"></script>
-
-
 <script async src="http://factmint.io/column-bar.js"></script>
+<script src="${context}/resources/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.min.js"></script>
+<script src="${content}/resources/javascript/zingchartScript/zingchart.min.js"></script> 
 
 
 <!-- END SCRIPTS -->
@@ -79,9 +78,9 @@
 		<!-- END HEADER SECTION -->
 
 		<!--PAGE CONTENT -->
-		<section id="adminLayout" class="row-fluid clearfix">
+		<section id="adminLayout" class="row clearfix">
 			<div id="adminMenu">
-				<tiles:insertAttribute name="adminMenu" />
+				<tiles:insertAttribute name="adminMenu" />	
 			</div>
 			<div id="adminBody">
 				<tiles:insertAttribute name="adminBody" />

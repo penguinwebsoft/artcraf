@@ -156,12 +156,12 @@ public class ProductReviewDAOTest {
 		sellerDO.setCommissionDO(getCommission());
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
-	/*	try {
+		try {
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.setSellerId(sellerDO.getSellerId());
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
-		}*/
+		}
 		return sellerDO;
 
 	}

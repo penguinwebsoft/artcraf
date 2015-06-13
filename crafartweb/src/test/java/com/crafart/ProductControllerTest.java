@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.LengthClassBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
@@ -256,7 +257,7 @@ public class ProductControllerTest {
 		sellerBO.setGender(1);
 		sellerBO.setDateOfBirth("00/00/0000");
 		sellerBO.setApproved(1);
-		sellerBO.setCommission("www");
+		sellerBO.setCommissionBO(new CommissionBO());
 		sellerBO.setCompanyLogo("qqq");
 		sellerBO.setPassword("jsavdjhv");
 		sellerBO.setCompanyName("penguin");
@@ -326,7 +327,7 @@ public class ProductControllerTest {
 	@Rollback(true)
 	public void testGetProductDetails() {
 		try {
-			productController.getProductDetails(16641, new MockHttpSession());
+			productController.getProductDetails(22261, new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();

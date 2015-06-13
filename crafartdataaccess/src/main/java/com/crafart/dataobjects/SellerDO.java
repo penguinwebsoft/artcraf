@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -53,7 +54,7 @@ public class SellerDO implements Serializable, Cloneable {
 	@JoinTable(name = "SELLER_ADDRESS", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS_ID") })
 	private List<AddressDO> addressDOs = new ArrayList<>();
 
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "SELLER_CONTACT", joinColumns = { @JoinColumn(name = "SELLER_ID") }, inverseJoinColumns = { @JoinColumn(name = "CONTACT_ID") })
 	private List<ContactDO> contactDOs = new ArrayList<>();
 

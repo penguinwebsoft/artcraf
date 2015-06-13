@@ -9,8 +9,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,23 +23,14 @@ import com.crafart.inter.data.ProductReviewDAO;
  * 
  */
 @Repository("ProductReviewDAOImpl")
-public class ProductReviewDAOImpl implements ProductReviewDAO {
+public class ProductReviewDAOImpl extends CommonDAOImpl implements ProductReviewDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public void addProductReview(ProductReviewDO productReviewDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(productReviewDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding product review details in table", hExp);
 		}
@@ -53,13 +42,10 @@ public class ProductReviewDAOImpl implements ProductReviewDAO {
 	public List<ProductReviewDO> getProductReview(long customerId) throws CrafartDataException {
 		List<ProductReviewDO> productReviewDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from ProductReviewDO where customer_id = :customer_id");
 			query.setLong("customer_id", customerId);
 			productReviewDOs = (List<ProductReviewDO>) query.list();
-			session.getTransaction().commit();
-			session.close();
 		} catch (EmptyResultDataAccessException hExp) {
 			return null;
 		} catch (HibernateException hExp) {
@@ -74,13 +60,10 @@ public class ProductReviewDAOImpl implements ProductReviewDAO {
 	public List<ProductReviewDO> getSingleProductReviews(long productId) throws CrafartDataException {
 		List<ProductReviewDO> productReviewDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			Query query = session.createQuery("from ProductReviewDO where product_id = :product_id");
 			query.setLong("product_id", productId);
 			productReviewDOs = (List<ProductReviewDO>) query.list();
-			session.getTransaction().commit();
-			session.close();
 		} catch (EmptyResultDataAccessException hExp) {
 			return null;
 		} catch (HibernateException hExp) {

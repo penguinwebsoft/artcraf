@@ -46,7 +46,7 @@
 										<td>ABG</td>
 										<td></td>
 										<td>
-											<button type="button" class="btn btn-warning">Edit</button>
+											<a class="btn btn-warning" href="${baseURL}/menu/editAttributes">Edit</a>
 										</td>
 									</tr>
 								</thead>

@@ -25,7 +25,7 @@
 	<div class='form-group' style='margin-left: 15%;'>
 		<label for='landlineno' class='control-label'>LandLine No :</label> <input type='text' style='width: 50%;' class='form-control pull-right' id='landlineno' />
 	</div>
-	<div class='form-group' style='margin-left: 25%; margin-top: 10%'>
+	<div class='form-group' style='margin-left: 30%; margin-top: 10%'>
 		<button type='button' class='btn btn-primary'>SaveChanges</button>
 	</div>
 </div>

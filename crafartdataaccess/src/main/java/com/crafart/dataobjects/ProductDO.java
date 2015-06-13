@@ -73,7 +73,7 @@ public class ProductDO implements Serializable, Cloneable {
 	@Column(name = "image")
 	private String image;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(cascade = { CascadeType.MERGE })
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "SELLER_PRODUCT", joinColumns = { @JoinColumn(name = "PRODUCT_ID") }, inverseJoinColumns = { @JoinColumn(name = "SELLER_ID") })
 	private List<SellerDO> sellerDOs = new ArrayList<>();

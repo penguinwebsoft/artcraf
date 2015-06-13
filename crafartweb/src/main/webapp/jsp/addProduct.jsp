@@ -195,7 +195,6 @@ ul.wysihtml5-toolbar>li {
 								productBO.productAttributeBOs = productAttributeBOs;
 								productBO.taxRateBO = taxRateBO;
 								postData = JSON.stringify(productBO);
-								alert(postData);
 							}
 							$.ajax({
 										url : "../product/addProduct",

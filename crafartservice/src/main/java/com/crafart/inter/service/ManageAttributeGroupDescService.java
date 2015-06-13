@@ -15,4 +15,6 @@ import com.crafart.service.exception.CrafartServiceException;
 public interface ManageAttributeGroupDescService {
 
 	public List<AttributeGroupDescBO> getAttributeGroupDesc() throws CrafartServiceException;
+	
+	public void addAttributeGroupDesc(AttributeGroupDescBO attributeGroupDescBO)throws CrafartServiceException;
 }

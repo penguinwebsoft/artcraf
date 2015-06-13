@@ -5,9 +5,6 @@ package com.crafart.data;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,14 +18,8 @@ import com.crafart.inter.data.AddressDAO;
  * 
  */
 @Repository("AddressDAOImpl")
-public class AddressDAOImpl implements AddressDAO {
+public class AddressDAOImpl extends CommonDAOImpl implements AddressDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/**
 	 * creating DB connection and inserting values through persist(),after
@@ -38,11 +29,8 @@ public class AddressDAOImpl implements AddressDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addAddress(AddressDO addressDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(addressDO);
-			tx.commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding new address details", hExp);
 		}

@@ -8,6 +8,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.TaxClassDO;
 import com.crafart.exception.CrafartDataException;
@@ -31,6 +33,7 @@ public class ManageTaxClassServiceImpl implements ManageTaxClassService {
 	private BeanMapper beanMapper;
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<TaxClassBO> getTaxClassDetail() throws CrafartServiceException {
 		List<TaxClassBO> taxClassBOs = new ArrayList<>();
 		try {

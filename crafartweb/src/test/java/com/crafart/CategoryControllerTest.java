@@ -3,6 +3,7 @@
  */
 package com.crafart;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,11 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 
+import com.crafart.service.businessobjects.CategoryBO;
+import com.crafart.service.businessobjects.SeoBO;
+
 /**
- * @author Karth
+ * @author Karthi
  * 
  */
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
@@ -33,6 +37,34 @@ public class CategoryControllerTest {
 	@Rollback(true)
 	public void testGetCourierDetail() {
 		ModelMap modelMap = categoryController.getCategory(new MockHttpSession());
-		// System.out.print(modelMap.isEmpty());
+		System.out.println("CategoryControllerTest.testGetCourierDetail()");
+		System.out.print(modelMap.size());
+	}
+	
+
+	@Test
+	@Rollback(true)
+	public void testaddCategoryBO() {
+		CategoryBO categoryBO = new CategoryBO();
+		categoryBO.setImageLocation("");
+		categoryBO.setCategoryName("bag");
+		categoryBO.setSortOrder(12);
+		categoryBO.setStatus(2);
+		categoryBO.setSeoBO(getSeo());
+		try {
+			categoryController.addCategory(categoryBO, new MockHttpSession());
+		} catch (Exception exp) {
+			exp.printStackTrace();
+			Assert.fail();
+		}
+
+	}
+
+	private SeoBO getSeo() {
+		SeoBO seoBO = new SeoBO();
+		seoBO.setMetaDesc("asdf");
+		seoBO.setMetaKeyword("qwert");
+		seoBO.setMetaTitle("zxcvbn");
+		return seoBO;
 	}
 }

@@ -45,7 +45,6 @@ public class AccountDAOTest {
 		AccountDO accountDO = addAccount();
 		try {
 			accountDAOImpl.addBankAccountDetail(accountDO);
-			log.info("account_id " + accountDO.getAccountId());
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

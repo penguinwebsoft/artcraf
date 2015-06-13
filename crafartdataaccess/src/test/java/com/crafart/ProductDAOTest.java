@@ -50,7 +50,7 @@ public class ProductDAOTest {
 
 	@Autowired
 	private ProductDAO productDAOImpl;
-	
+
 	@Autowired
 	private CommissionDAO commissionDAOImpl;
 
@@ -139,7 +139,7 @@ public class ProductDAOTest {
 		}
 		return weightClassDO;
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private CommissionDO getCommission() {
 		CommissionDO commissionDO = new CommissionDO();
@@ -178,12 +178,14 @@ public class ProductDAOTest {
 		sellerDO.setAddressDOs(getAddressDOs(sellerDOs));
 		sellerDO.setContactDOs(getContactDOs(sellerDOs));
 
-		/*
-		 * try { sellerDAOImpl.addSeller(sellerDO);
-		 * sellerDO.setSellerId(sellerDO.getSellerId());
-		 * sellerDOs.add(sellerDO); } catch (CrafartDataException cdExp) {
-		 * cdExp.printStackTrace(); }
-		 */
+		try {
+			sellerDAOImpl.addSeller(sellerDO);
+			sellerDO.setSellerId(sellerDO.getSellerId());
+			sellerDOs.add(sellerDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+		}
+
 		return sellerDOs;
 
 	}

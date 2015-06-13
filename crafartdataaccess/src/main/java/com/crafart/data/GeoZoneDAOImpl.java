@@ -8,9 +8,6 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,14 +21,8 @@ import com.crafart.inter.data.GeoZoneDAO;
  * 
  */
 @Repository("geoZoneDAOImpl")
-public class GeoZoneDAOImpl implements GeoZoneDAO {
+public class GeoZoneDAOImpl extends CommonDAOImpl implements GeoZoneDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/**
 	 * adding GeoZoneDetail details to geo_zone table by addGeoZoneDetails
@@ -40,11 +31,8 @@ public class GeoZoneDAOImpl implements GeoZoneDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addGeoZoneDetail(GeoZoneDO geoZoneDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(geoZoneDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding geo zone details in table", hExp);
 		}
@@ -56,11 +44,8 @@ public class GeoZoneDAOImpl implements GeoZoneDAO {
 	public List<GeoZoneDO> getGeoZoneDetail() throws CrafartDataException {
 		List<GeoZoneDO> geoZoneDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			geoZoneDOs = session.createQuery("from GeoZoneDO").list();
-			tx.commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while reteriving GeoZone details", hExp);
 		}

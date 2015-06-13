@@ -42,6 +42,7 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 		GeoZoneDO geoZoneDO = beanMapper.mapGeoZoneBOToDO(geoZoneBO, new GeoZoneDO());
 		try {
 			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
+			geoZoneBO.setGeoZoneId(geoZoneDO.getGeoZoneId());
 		} catch (CrafartDataException e) {
 			throw new CrafartServiceException("Error while adding geo zone", e);
 		}
@@ -52,7 +53,7 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 	 * {@link GeoZoneDAO} getGeoZoneDetail()
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartServiceException {
 		List<GeoZoneBO> geoZoneBOs = new ArrayList<>();
 		try {

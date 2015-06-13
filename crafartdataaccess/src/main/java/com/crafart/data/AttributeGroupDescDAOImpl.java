@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.crafart.dataobjects.AttributeGroupDescDO;
@@ -21,23 +19,17 @@ import com.crafart.inter.data.AttributeGroupDescDAO;
  * 
  */
 @Repository("attributeGroupDescDAOImpl")
-public class AttributeGroupDescDAOImpl implements AttributeGroupDescDAO {
+public class AttributeGroupDescDAOImpl extends CommonDAOImpl implements AttributeGroupDescDAO {
 
-	private SessionFactory sessionFactory;
 
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
+	/**
+	 * Method to add attribute group description
+	 */
 	@Override
 	public void addAttributeGroupDesc(AttributeGroupDescDO attributeGroupDescDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(attributeGroupDescDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB error while adding attributegroup", hExp);
 		}
@@ -48,11 +40,8 @@ public class AttributeGroupDescDAOImpl implements AttributeGroupDescDAO {
 	public List<AttributeGroupDescDO> getAttributeGroupDesc() throws CrafartDataException {
 		List<AttributeGroupDescDO> attributeGroupDescDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			attributeGroupDescDOs = session.createQuery("from AttributeGroupDescDO").list();
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while retriving data from attribute_group_desc", hExp);
 		}

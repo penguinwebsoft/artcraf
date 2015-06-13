@@ -24,13 +24,13 @@
 		<ul class="collapse" id="component-catalog-nav">
 			<li><a id="categoriesMenuId" href="${baseURL}/menu/categories"> <i class="icon-angle-right"></i> Categories
 			</a></li>
+			<li><a id="subCategoriesMenuId" href="${baseURL}/menu/subCategories"> <i class="icon-angle-right"></i>Sub Categories
+			</a></li>
 			<li><a id="productsMenuId" href="${baseURL}/menu/products"> <i class="icon-angle-right"></i> Products
 			</a></li>
 			<li><a id="recurringprofilesMenuId" href="${baseURL}/menu/recurringprofile"> <i class="icon-angle-right"></i> Recurring Profiles
 			</a></li>
 			<li><a id="filterMenuId" href="${baseURL}/menu/filter"> <i class="icon-angle-right"></i> Filter
-			</a></li>
-			<li><a id="attributesMenuId" href="${baseURL}/menu/attributes"> <i class="icon-angle-right"></i> Attributes
 			</a></li>
 			<li><a id="optionsMenuId" href="${baseURL}/menu/options"> <i class="icon-angle-right"></i> Options
 			</a></li>
@@ -41,6 +41,8 @@
 			<li><a id="reviewersMenuId" href="${baseURL}/menu/reviews"> <i class="icon-angle-right"></i> Reviewers
 			</a></li>
 			<li><a id="informationsMenuId" href="${baseURL}/menu/information"> <i class="icon-angle-right"></i> Informations
+			</a></li>
+			<li><a id="BannerMenuId" href="${baseURL}/menu/banner"> <i class="icon-angle-right"></i> Banner
 			</a></li>
 		</ul></li>
 
@@ -56,6 +58,14 @@
 			</a></li>
 			<li><a id="returnMenuId" href="${baseURL}/menu/return"> <i class="icon-angle-right"></i>Return
 			</a></li>
+			<ul class="collapse" id="component-sales-navs">
+			<li><a id="returnstatusMenuId" href="${baseURL}/menu/returnstatus"> <i class="icon-angle-right"></i>Return Status
+			</a></li>
+			<li><a id="returnactionMenuId" href="${baseURL}/menu/returnaction"> <i class="icon-angle-right"></i>Return Action
+			</a></li>
+			<li><a id="returnreasonMenuId" href="${baseURL}/menu/returnreason"> <i class="icon-angle-right"></i>Return Reason
+			</a></li>
+			</ul>
 			<li><a id="giftvoucherMenuId" href="${baseURL}/menu/giftvoucher"> <i class="icon-angle-right"></i>Gift Voucher
 			</a></li>
 			<li><a id="customerMenuId" href="${baseURL}/menu/customer"> <i class="icon-angle-right"></i>Customer
@@ -69,12 +79,10 @@
 		</span> &nbsp;
 	</a>
 		<ul class="collapse" id="component-vendor-navs">
-			
-			<li><a id="uploadProductsMenuId" href="${baseURL}/menu/uploadProducts"> <i class="icon-angle-right"></i> Upload Products
+
+			<li><a id="ProductsMenuId" href="${baseURL}/menu/Products"> <i class="icon-angle-right"></i> Products
 			</a></li>
 			<li><a id="manageSellersMenuId" href="${baseURL}/menu/manageSellers"> <i class="icon-angle-right"></i> Manage Sellers
-			</a></li>
-			<li><a id="managecouriersMenuId" href="${baseURL}/menu/managecouriers"> <i class="icon-angle-right"></i>Manage couriers
 			</a></li>
 			<li><a id="catalogMenuId" href="${baseURL}/menu/catalog"> <i class="icon-angle-right"></i>Catalog
 			</a></li>
@@ -106,13 +114,23 @@
 		</span> &nbsp;
 	</a>
 		<ul class="collapse" id="component-system-navs">
-			<li><a id="settingMenuId" href="${baseURL}/menu/setting"> <i class="icon-angle-right"></i> Setting
+			<li><a id="attributesMenuId" href="${baseURL}/menu/attributes"> <i class="icon-angle-right"></i> Attributes
 			</a></li>
-			<li><a id="designMenuId" href="${baseURL}/menu/design"> <i class="icon-angle-right"></i>Design
+			<li><a id="commissionMenuId" href="${baseURL}/menu/commission"> <i class="icon-angle-right"></i>Commission
 			</a></li>
-			<li><a id="userMenuId" href="${baseURL}/menu/user"> <i class="icon-angle-right"></i>User
+			<li><a id="taxdetailsMenuId" href="${baseURL}/menu/taxdetails"> <i class="icon-angle-right"></i>Tax Details
 			</a></li>
-			<li><a id="localisationMenuId" href="${baseURL}/menu/localisation"> <i class="icon-angle-right"></i>Localisation
+			<li><a id="managecouriersMenuId" href="${baseURL}/menu/managecouriers"> <i class="icon-angle-right"></i>Manage couriers
+			</a></li>
+			<li><a id="lengthdetailsMenuId" href="${baseURL}/menu/lengthdetails"> <i class="icon-angle-right"></i>Length Details 
+			</a></li>
+			<li><a id="geozoneMenuId" href="${baseURL}/menu/geozone"> <i class="icon-angle-right"></i>Geo_Zone 
+			</a></li>
+			<li><a id="emailtemplateMenuId" href="${baseURL}/menu/emailtemplate"> <i class="icon-angle-right"></i>Email Template 
+			</a></li>
+			<li><a id="currenciesMenuId" href="${baseURL}/menu/currencies"> <i class="icon-angle-right"></i>Currencies 
+			</a></li>
+			<li><a id="orderstatusMenuId" href="${baseURL}/menu/orderstatus"> <i class="icon-angle-right"></i>OrderStatus 
 			</a></li>
 		</ul></li>
 
@@ -131,5 +149,5 @@
 			</a></li>
 		</ul></li>
 
-	
+
 </ul>

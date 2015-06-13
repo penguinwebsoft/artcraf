@@ -31,6 +31,7 @@ import com.crafart.dataobjects.ProductReviewDO;
 import com.crafart.dataobjects.ProductShippingDO;
 import com.crafart.dataobjects.ProductSpecialDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.SeoDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.dataobjects.TaxClassDO;
 import com.crafart.dataobjects.TaxRateDO;
@@ -59,6 +60,7 @@ import com.crafart.service.businessobjects.ProductReviewBO;
 import com.crafart.service.businessobjects.ProductShippingBO;
 import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.SeoBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.TaxClassBO;
 import com.crafart.service.businessobjects.TaxRateBO;
@@ -276,27 +278,47 @@ public class BeanMapper {
 
 	}
 
-	public CategoryDO mapCategoryBOToDO(CategoryBO categoryBO, CategoryDO categoryDO) {
-		categoryDO.setCategoryColumn(categoryBO.getCategoryColumn());
+	public CategoryDO mapCategoryBOToDO(CategoryBO categoryBO, CategoryDO categoryDO, SeoDO seoDO) {
 		categoryDO.setCategoryId(categoryBO.getCategoryId());
+		categoryDO.setSeoDO(seoDO);
 		categoryDO.setImageLocation(categoryBO.getImageLocation());
 		categoryDO.setParentId(categoryBO.getParentId());
 		categoryDO.setSortOrder(categoryBO.getSortOrder());
 		categoryDO.setCategoryName(categoryBO.getCategoryName());
 		categoryDO.setStatus(categoryBO.getStatus());
+		categoryDO.setDescription(categoryBO.getDescription());
 		return categoryDO;
 
 	}
 
-	public CategoryBO mapCategoryDOToBO(CategoryDO categoryDO, CategoryBO categoryBO) {
-		categoryBO.setCategoryColumn(categoryDO.getCategoryColumn());
+	public CategoryBO mapCategoryDOToBO(CategoryDO categoryDO, CategoryBO categoryBO, SeoBO seoBO) {
 		categoryBO.setCategoryId(categoryDO.getCategoryId());
+		categoryBO.setSeoBO(seoBO);
 		categoryBO.setImageLocation(categoryDO.getImageLocation());
 		categoryBO.setParentId(categoryDO.getParentId());
 		categoryBO.setSortOrder(categoryDO.getSortOrder());
+		categoryBO.setDescription(categoryDO.getDescription());
 		categoryBO.setStatus(categoryDO.getStatus());
 		categoryBO.setCategoryName(categoryDO.getCategoryName());
 		return categoryBO;
+
+	}
+
+	public SeoDO mapSeoBOToDO(SeoBO seoBO, SeoDO seoDO) {
+		seoDO.setMetaDesc(seoBO.getMetaDesc());
+		seoDO.setMetaKeyword(seoBO.getMetaKeyword());
+		seoDO.setMetaTitle(seoBO.getMetaTitle());
+		seoDO.setSeo_id(seoBO.getSeo_id());
+		return seoDO;
+
+	}
+
+	public SeoBO mapSeoDOToBO(SeoDO seoDO, SeoBO seoBO) {
+		seoBO.setMetaDesc(seoDO.getMetaDesc());
+		seoBO.setMetaKeyword(seoDO.getMetaKeyword());
+		seoBO.setMetaTitle(seoDO.getMetaTitle());
+		seoBO.setSeo_id(seoDO.getSeo_id());
+		return seoBO;
 
 	}
 
@@ -642,14 +664,11 @@ public class BeanMapper {
 
 	public ContactDO mapContactBOToDO(ContactBO contactBO, ContactDO contactDO, CustomerDO customerDO, SellerDO sellerDO) {
 		List<CustomerDO> customerDOs = new ArrayList<>();
-		List<SellerDO> sellerDOs = new ArrayList<>();
-		sellerDOs.add(sellerDO);
 		customerDOs.add(customerDO);
 		contactDO.setContactId(contactBO.getContactId());
 		contactDO.setContactTypeId(contactBO.getContactTypeId());
 		contactDO.setContactValue(contactBO.getContactValue());
 		contactDO.setCustomerDOs(customerDOs);
-		contactDO.setSellerDOs(sellerDOs);
 		return contactDO;
 
 	}

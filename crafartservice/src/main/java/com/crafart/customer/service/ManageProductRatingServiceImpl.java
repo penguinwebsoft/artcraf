@@ -41,7 +41,7 @@ public class ManageProductRatingServiceImpl implements ManageProductRatingServic
 	private ProductRatingDAO productRatingDAOImpl;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<ProductRatingBO> getProductRating(long customerId) throws CrafartServiceException {
 		List<ProductRatingBO> productRatingBOs = new ArrayList<>();
 		try {
@@ -61,7 +61,7 @@ public class ManageProductRatingServiceImpl implements ManageProductRatingServic
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addProductRatting(ProductRatingBO productRatingBO) throws CrafartServiceException {
 		SellerBO sellerBO = productRatingBO.getProductBO().getSellerBO();
 		SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(), null);
