@@ -564,17 +564,12 @@ ul.wysihtml5-toolbar>li {
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;
-					Add Product</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Product</h1>
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-primary" title="" data-toggle="tooltip"
-					data-original-title="Add New" id="saveButton">
-					&nbsp;&nbsp;&nbsp;SAVE&nbsp;&nbsp;&nbsp; </a> <a class="btn btn-danger"
-					style="font-size: 14px !important" title="" title=""
-					data-toggle="tooltip" type="button" data-original-title="Delete">
-					CANCEL </a>
+				<a class="btn btn-primary" title="" data-toggle="tooltip" data-original-title="Add New" id="saveButton"> &nbsp;&nbsp;&nbsp;SAVE&nbsp;&nbsp;&nbsp; </a> <a class="btn btn-danger"
+					style="font-size: 14px !important" title="" title="" data-toggle="tooltip" type="button" data-original-title="Delete"> CANCEL </a>
 			</div>
 		</div>
 		<hr />
@@ -588,25 +583,18 @@ ul.wysihtml5-toolbar>li {
 				<br>
 				<div class="row">
 					<div class="col-lg-12">
-						<form id="form-product" class="form-horizontal"
-							enctype="multipart/form-data" method="post" action="#">
-							<ul class="nav nav-tabs nav_tabs_bottom_border"
-								style="margin-bottom: 40px" id="productFieldsTabs">
-								<li class="active" id="tabGeneral"><a data-toggle="tab"
-									href="#tab-general">General</a></li>
+						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+							<ul class="nav nav-tabs nav_tabs_bottom_border" style="margin-bottom: 40px" id="productFieldsTabs">
+								<li class="active" id="tabGeneral"><a data-toggle="tab" href="#tab-general">General</a></li>
 								<li id="tabData"><a data-toggle="tab" href="#tab-data">Values</a></li>
 								<li id="tabSEO"><a data-toggle="tab" href="#tab-SEO">SEO</a></li>
-								<li id="tabShipping"><a data-toggle="tab"
-									href="#tab-shipping">Shipping</a></li>
-								<li id="tabAttribute"><a data-toggle="tab"
-									href="#tab-attribute">Attribute</a></li>
+								<li id="tabShipping"><a data-toggle="tab" href="#tab-shipping">Shipping</a></li>
+								<li id="tabAttribute"><a data-toggle="tab" href="#tab-attribute">Attribute</a></li>
 								<li id="tabImage"><a data-toggle="tab" href="#tab-image">Image</a></li>
-								<li id="tabDiscount"><a data-toggle="tab"
-									href="#tab-discount">Discount</a></li>
-								<li id="tabSpecial"><a data-toggle="tab"
-									href="#tab-special">Special Price</a></li>
-								<li id="tabTax"><a data-toggle="tab" href="#tab-Tax">
-										Tax </a></li>
+								<li id="tabDiscount"><a data-toggle="tab" href="#tab-discount">Discount</a></li>
+								<li id="tabSpecial"><a data-toggle="tab" href="#tab-special">Special Price</a></li>
+								<li id="tabTax"><a data-toggle="tab" href="#tab-tax"> Tax </a></li>
+								<li id="tabSetting"><a data-toggle="tab" href="#tab-setting"> Setting</a></li>
 							</ul>
 
 							<div class="tab-content" style="border: 0px; padding: 0px;">
@@ -614,11 +602,8 @@ ul.wysihtml5-toolbar>li {
 									<div class="form-group">
 										<label class="control-label col-sm-2">Choose Seller</label>
 										<div class="col-sm-10">
-											<span class="col-sm-4"><input type="text"
-												style="widows: 100%" placeholder="Search Seller"
-												id="searchSeller" class="form-control" /></span> <span
-												class="col-sm-1"><button type="button"
-													class="btn btn-success" style="margin-top: 1%">Search</button></span>
+											<span class="col-sm-4"><input type="text" style="widows: 100%" placeholder="Search Seller" id="searchSeller" class="form-control" /></span> <span class="col-sm-1"><button
+													type="button" class="btn btn-success" style="margin-top: 1%">Search</button></span>
 										</div>
 									</div>
 
@@ -633,27 +618,21 @@ ul.wysihtml5-toolbar>li {
 
 
 									<div class="form-group">
-										<label class="control-label col-sm-2">Product Sub
-											Category</label>
+										<label class="control-label col-sm-2">Product Sub Category</label>
 
 										<div class="col-sm-10">
 
 											<select id="productSubCategory" data-placeholder="Choose a Country" class="form-control" multiple="multiple" tabindex="4">
 
-											<select id="productSubCategory"
-												data-placeholder="Choose a Country" class="form-control"
-												multiple="multiple" tabindex="4">
+												<select id="productSubCategory" data-placeholder="Choose a Country" class="form-control" multiple="multiple" tabindex="4">
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group required">
-										<label class="col-sm-2 control-label" for="input-name1">Product
-											Name</label>
+										<label class="col-sm-2 control-label" for="input-name1">Product Name</label>
 										<div class="col-sm-10">
-											<input type="text" name="product_description[1][name]"
-												value="" placeholder="Product Name" id="productName"
-												class="form-control" />
+											<input type="text" name="product_description[1][name]" value="" placeholder="Product Name" id="productName" class="form-control" />
 										</div>
 									</div>
 									<br>
@@ -664,8 +643,7 @@ ul.wysihtml5-toolbar>li {
 												<div id="cleditorDiv" class="body collapse in">
 													<form>
 														<textarea id="cleditor" class="form-control"></textarea>
-														<div class="form-actions no-margin-bottom"
-															id="cleditorForm">
+														<div class="form-actions no-margin-bottom" id="cleditorForm">
 															<br />
 														</div>
 													</form>
@@ -681,13 +659,11 @@ ul.wysihtml5-toolbar>li {
 									<div class="form-group required">
 										<label class="col-sm-2 control-label" for="input-model">Model</label>
 										<div class="col-sm-10">
-											<input type="text" name="model" value="" placeholder="Model"
-												id="input-model" class="form-control" />
+											<input type="text" name="model" value="" placeholder="Model" id="input-model" class="form-control" />
 										</div>
 									</div>
 									<!--mvds-->
-									<input type="hidden" name="product_name" size="100" value="" />
-									<input type="hidden" name="pending_status" size="100" value="1" />
+									<input type="hidden" name="product_name" size="100" value="" /> <input type="hidden" name="pending_status" size="100" value="1" />
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-status">Status</label>
 										<div class="col-sm-10">
@@ -699,69 +675,48 @@ ul.wysihtml5-toolbar>li {
 									</div>
 									<!--mvde-->
 									<div class="form-group">
-										<label class="col-sm-2 control-label"
-											style="padding-top: 1px;" for="input-sku"><span
-											data-toggle="tooltip" title="Stock Keeping Unit">Stock
-												Keeping Unit(SKU)</span></label>
+										<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-sku"><span data-toggle="tooltip" title="Stock Keeping Unit">Stock Keeping Unit(SKU)</span></label>
 										<div class="col-sm-10">
-											<input type="text" name="sku" value="" placeholder="SKU"
-												id="input-sku" class="form-control" />
+											<input type="text" name="sku" value="" placeholder="SKU" id="input-sku" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label"
-											style="padding-top: 1px;" for="input-upc"><span
-											data-toggle="tooltip" title="Universal Product Code">Universal
-												Product Code(UPC)</span></label>
+										<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-upc"><span data-toggle="tooltip" title="Universal Product Code">Universal Product Code(UPC)</span></label>
 										<div class="col-sm-10">
-											<input type="text" name="upc" value="" placeholder="UPC"
-												id="input-upc" class="form-control" />
+											<input type="text" name="upc" value="" placeholder="UPC" id="input-upc" class="form-control" />
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-location">State</label>
 										<div class="col-sm-10">
-											<input type="text" name="location" value=""
-												placeholder="Enter State" id="input-location"
-												class="form-control" />
+											<input type="text" name="location" value="" placeholder="Enter State" id="input-location" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-price">Price</label>
 										<div class="col-sm-10">
-											<input type="text" name="price" value="" placeholder="Price"
-												id="input-price" class="form-control" />
+											<input type="text" name="price" value="" placeholder="Price" id="input-price" class="form-control" />
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-quantity">Quantity</label>
 										<div class="col-sm-10">
-											<input type="text" name="quantity" value="1"
-												placeholder="Quantity" id="input-quantity"
-												class="form-control" />
+											<input type="text" name="quantity" value="1" placeholder="Quantity" id="input-quantity" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-minimum"><span
-											data-toggle="tooltip" title="Force a minimum ordered amount">Minimum
-												Quantity</span></label>
+										<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Minimum Quantity</span></label>
 										<div class="col-sm-10">
-											<input type="text" name="minimum" value="1"
-												placeholder="Minimum Quantity" id="input-minimum"
-												class="form-control" />
+											<input type="text" name="minimum" value="1" placeholder="Minimum Quantity" id="input-minimum" class="form-control" />
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-stock-status"><span
-											data-toggle="tooltip"
-											title="Status shown when a product is out of stock">Out
-												Of Stock Status</span></label>
+										<label class="col-sm-2 control-label" for="input-stock-status"><span data-toggle="tooltip" title="Status shown when a product is out of stock">Out Of Stock Status</span></label>
 										<div class="col-sm-10">
-											<select name="stock_status_id" id="input-stock-status"
-												class="form-control">
+											<select name="stock_status_id" id="input-stock-status" class="form-control">
 												<option value="1">2-3 Days</option>
 												<option value="2">In Stock</option>
 												<option value="3">Out Of Stock</option>
@@ -769,44 +724,33 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label"
-											for="input-date-available">Date Available</label>
+										<label class="col-sm-2 control-label" for="input-date-available">Date Available</label>
 										<div class="col-sm-3">
 
-											<input type="text" class="form-control"
-												placeholder="10/09/1990" value=""
-												data-date-format="mm/dd/yy" id="dateOfBirthId"">
+											<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yy" id="dateOfBirthId"">
 
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-length">Dimensions
-											(L x W x H)</label>
+										<label class="col-sm-2 control-label" for="input-length">Dimensions (L x W x H)</label>
 										<div class="col-sm-10">
 											<div class="row">
 												<div class="col-sm-4">
-													<input type="text" name="length" value=""
-														placeholder="Length" id="input-length"
-														class="form-control" />
+													<input type="text" name="length" value="" placeholder="Length" id="input-length" class="form-control" />
 												</div>
 												<div class="col-sm-4">
-													<input type="text" name="width" value=""
-														placeholder="Width" id="input-width" class="form-control" />
+													<input type="text" name="width" value="" placeholder="Width" id="input-width" class="form-control" />
 												</div>
 												<div class="col-sm-4">
-													<input type="text" name="height" value=""
-														placeholder="Height" id="input-height"
-														class="form-control" />
+													<input type="text" name="height" value="" placeholder="Height" id="input-height" class="form-control" />
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-length-class">Length
-											Class</label>
+										<label class="col-sm-2 control-label" for="input-length-class">Length Class</label>
 										<div class="col-sm-10">
-											<select name="length_class_id" id="input-length-class"
-												class="form-control">
+											<select name="length_class_id" id="input-length-class" class="form-control">
 												<option value="11" selected="selected">Centimeter</option>
 												<option value="12">Millimeter</option>
 												<option value="13">Inch</option>
@@ -816,16 +760,13 @@ ul.wysihtml5-toolbar>li {
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-weight">Weight</label>
 										<div class="col-sm-10">
-											<input type="text" name="weight" value=""
-												placeholder="Weight" id="input-weight" class="form-control" />
+											<input type="text" name="weight" value="" placeholder="Weight" id="input-weight" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-weight-class">Weight
-											Class</label>
+										<label class="col-sm-2 control-label" for="input-weight-class">Weight Class</label>
 										<div class="col-sm-10">
-											<select name="weight_class_id" id="input-weight-class"
-												class="form-control">
+											<select name="weight_class_id" id="input-weight-class" class="form-control">
 												<option value="11" selected="selected">Kilogram</option>
 												<option value="12">Gram</option>
 												<option value="13">Pound</option>
@@ -834,12 +775,9 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-sort-order">Sort
-											Order</label>
+										<label class="col-sm-2 control-label" for="input-sort-order">Sort Order</label>
 										<div class="col-sm-10">
-											<input type="text" name="sort_order" value="1"
-												placeholder="Sort Order" id="input-sort-order"
-												class="form-control" />
+											<input type="text" name="sort_order" value="1" placeholder="Sort Order" id="input-sort-order" class="form-control" />
 										</div>
 									</div>
 								</div>
@@ -847,39 +785,27 @@ ul.wysihtml5-toolbar>li {
 								<div class="tab-pane fade" id="tab-SEO">
 
 									<div class="form-group required">
-										<label class="col-sm-2 control-label" for="input-meta-title1">Meta
-											Tag Title</label>
+										<label class="col-sm-2 control-label" for="input-meta-title1">Meta Tag Title</label>
 										<div class="col-sm-10">
-											<input type="text" name="product_description[1][meta_title]"
-												value="" placeholder="Meta Tag Title" id="tagTitle"
-												class="form-control" />
+											<input type="text" name="product_description[1][meta_title]" value="" placeholder="Meta Tag Title" id="tagTitle" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label"
-											for="input-meta-description1">Meta Tag Description</label>
+										<label class="col-sm-2 control-label" for="input-meta-description1">Meta Tag Description</label>
 										<div class="col-sm-10">
-											<textarea name="product_description[1][meta_description]"
-												rows="5" placeholder="Meta Tag Description"
-												id="metaDescription" class="form-control"></textarea>
+											<textarea name="product_description[1][meta_description]" rows="5" placeholder="Meta Tag Description" id="metaDescription" class="form-control"></textarea>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label"
-											for="input-meta-keyword1">Meta Tag Keywords</label>
+										<label class="col-sm-2 control-label" for="input-meta-keyword1">Meta Tag Keywords</label>
 										<div class="col-sm-10">
-											<textarea name="product_description[1][meta_keyword]"
-												rows="5" placeholder="Meta Tag Keywords"
-												id="metaTagAndSEOKeyword" class="form-control"></textarea>
+											<textarea name="product_description[1][meta_keyword]" rows="5" placeholder="Meta Tag Keywords" id="metaTagAndSEOKeyword" class="form-control"></textarea>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-tag1"><span
-											data-toggle="tooltip" title="comma separated">SEO
-												Keyword</span></label>
+										<label class="col-sm-2 control-label" for="input-tag1"><span data-toggle="tooltip" title="comma separated">SEO Keyword</span></label>
 										<div class="col-sm-10">
-											<input type="text" name="SEO Keyword" value=""
-												placeholder="SEO Keyword" id="" class="form-control" />
+											<input type="text" name="SEO Keyword" value="" placeholder="SEO Keyword" id="" class="form-control" />
 										</div>
 									</div>
 								</div>
@@ -887,8 +813,7 @@ ul.wysihtml5-toolbar>li {
 								<!-- Start tab-Shipping-->
 								<div class="tab-pane" id="tab-shipping">
 									<div class="table-responsive">
-										<table id="shipping"
-											class="table table-striped table-bordered table-hover">
+										<table id="shipping" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
 													<td class="text-left">Shipping Courier</td>
@@ -902,10 +827,7 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="3"></td>
-													<td class="text-left"><button type="button"
-															id="addshippingBtnId" onclick="addShipping();"
-															data-toggle="tooltip" title="Add Shipping"
-															class="btn btn-primary">
+													<td class="text-left"><button type="button" id="addshippingBtnId" onclick="addShipping();" data-toggle="tooltip" title="Add Shipping" class="btn btn-primary">
 															<i class="icon-plus-sign"></i>
 														</button></td>
 												</tr>
@@ -917,8 +839,7 @@ ul.wysihtml5-toolbar>li {
 								<!-- Start tab-Attribute-->
 								<div class="tab-pane" id="tab-attribute">
 									<div class="table-responsive">
-										<table id="attribute"
-											class="table table-striped table-bordered table-hover">
+										<table id="attribute" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
 													<td class="text-left">Attribute</td>
@@ -931,9 +852,7 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="2"></td>
-													<td class="text-left"><button type="button"
-															onclick="addAttribute();" data-toggle="tooltip"
-															title="Add Attribute" class="btn btn-primary">
+													<td class="text-left"><button type="button" onclick="addAttribute();" data-toggle="tooltip" title="Add Attribute" class="btn btn-primary">
 															<i class="icon-plus-sign"></i>
 														</button></td>
 												</tr>
@@ -945,8 +864,7 @@ ul.wysihtml5-toolbar>li {
 								<!-- Start tab-Image-->
 								<div class="tab-pane" id="tab-image">
 									<div class="table-responsive">
-										<table id="images"
-											class="table table-striped table-bordered table-hover">
+										<table id="images" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
 													<td class="text-left">Image</td>
@@ -959,9 +877,7 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="2"></td>
-													<td class="text-left"><button type="button"
-															onclick="addImage();" data-toggle="tooltip"
-															title="Add Image" class="btn btn-primary">
+													<td class="text-left"><button type="button" onclick="addImage();" data-toggle="tooltip" title="Add Image" class="btn btn-primary">
 															<i class="icon-plus-sign"></i>
 														</button></td>
 												</tr>
@@ -969,12 +885,11 @@ ul.wysihtml5-toolbar>li {
 										</table>
 									</div>
 								</div>
-								
+
 								<!-- Start tab-discount-->
 								<div class="tab-pane" id="tab-discount">
 									<div class="table-responsive">
-										<table id="discount"
-											class="table table-striped table-bordered table-hover">
+										<table id="discount" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
 													<td class="text-left">Discount Type</td>
@@ -991,9 +906,7 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="6"></td>
-													<td class="text-left"><button type="button"
-															onclick="addDiscount();" data-toggle="tooltip"
-															title="Add Discount" class="btn btn-primary">
+													<td class="text-left"><button type="button" onclick="addDiscount();" data-toggle="tooltip" title="Add Discount" class="btn btn-primary">
 															<i class="icon-plus-sign"></i>
 														</button></td>
 												</tr>
@@ -1004,8 +917,7 @@ ul.wysihtml5-toolbar>li {
 								<!-- Start tab-Special-->
 								<div class="tab-pane" id="tab-special">
 									<div class="table-responsive">
-										<table id="special"
-											class="table table-striped table-bordered table-hover">
+										<table id="special" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
 													<td class="text-right">Price</td>
@@ -1019,9 +931,7 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="5"></td>
-													<td class="text-left"><button type="button"
-															onclick="addSpecial();" data-toggle="tooltip"
-															title="Add Special" class="btn btn-primary">
+													<td class="text-left"><button type="button" onclick="addSpecial();" data-toggle="tooltip" title="Add Special" class="btn btn-primary">
 															<i class="icon-plus-sign"></i>
 														</button></td>
 												</tr>
@@ -1029,28 +939,45 @@ ul.wysihtml5-toolbar>li {
 										</table>
 									</div>
 								</div>
-								
+
 								<!-- Start tab-Tax-->
-								<div class="tab-pane fade" id="tab-Tax">
+								<div class="tab-pane fade" id="tab-tax">
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="ProductTaxId">Product
-											Tax Details</label>
+										<label class="col-sm-3 control-label" for="ProductTaxId">Product Tax Details</label>
 										<div class="col-sm-3">
 
 											<select name="ProductTax" id="ProductTaxId" class="form-control">
 												<option id="ProductTaxableGoodsId" value="1">Taxable Goods</option>
 												<option id="ProductNonTaxableGoodsId" value="0" selected="selected">Non Taxable Goods</option>
 
-											<select name="ProductTax" id="ProductTaxId"
-												class="form-control">
-												<option id="ProductTaxableGoodsId" value="1"
-													>Taxable Goods</option>
-												<option id="ProductNonTaxableGoodsId" value="0" selected="selected">Non
-													Taxable Goods</option>
+												<select name="ProductTax" id="ProductTaxId" class="form-control">
+													<option id="ProductTaxableGoodsId" value="1">Taxable Goods</option>
+													<option id="ProductNonTaxableGoodsId" value="0" selected="selected">Non Taxable Goods</option>
 											</select>
 										</div>
 									</div>
 									<div class="form-group required" id="taxVatId"></div>
+								</div>
+
+								<!-- Setting Page -->
+								<div class="tab-pane fade" id="tab-setting">
+									<div class="form-group required" id="chooseseller">
+										<label class="col-sm-3 control-label" for="chooseseller">Choose Seller</label>
+										<div class="col-sm-3">
+											<input type="text" name="chooseseller" value="" placeholder="chooseseller" id="chooseseller" class="form-control" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-status">Status</label>
+										<div class="col-sm-10">
+											<select name="status" id="input-status" class="form-control">
+												<option value="11" selected="selected">Approved</option>
+												<option value="12">Pending Approved</option>
+												<option value="13">Reject</option>
+											</select>
+										</div>
+									</div>
 								</div>
 							</div>
 						</form>
