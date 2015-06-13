@@ -16,7 +16,7 @@
 
 			<div class="pull-right" style="padding: 25px;">
 				<a class="btn btn-success" href="${baseURL}/menu/addNewSellers">Add</a>
-				<button type="button" class="btn btn-warning">Delete</button>
+				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 
@@ -46,8 +46,8 @@
 									<td>0</td>
 									<td>Pending Approval</td>
 									<td>
-										<button type="button" class="btn btn-success">View</button>
-										<button type="button" class="btn btn-warning">Edit</button>
+										<a class="btn btn-success" href="${baseURL}/menu/viewSellers">View</a>
+										<a class="btn btn-warning" href="${baseURL}/menu/editSeller">Edit</a>
 									</td>
 								</tr>
 							</thead>
