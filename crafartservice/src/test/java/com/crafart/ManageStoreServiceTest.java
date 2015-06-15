@@ -50,7 +50,7 @@ public class ManageStoreServiceTest {
 	@Rollback(true)
 	public void testAddStoreDetail() {
 
-		StoreBO storeBO = getStoreBO();
+		//StoreBO storeBO = getStoreBO();
 		/*
 		 * try { manageStoreServiceImpl.addStoreDetail(storeBO); } catch
 		 * (CrafartServiceException csExp) { csExp.printStackTrace();
