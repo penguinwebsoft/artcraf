@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author Karthi
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Repository;
  * 
  */
 @Repository("CommonDAOImpl")
+@EnableTransactionManagement
 public abstract class CommonDAOImpl {
 
 	private JdbcTemplate jdbctemplate;
