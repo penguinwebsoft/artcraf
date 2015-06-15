@@ -22,11 +22,8 @@ public class CrafartUserDAOImpl extends CommonDAOImpl implements CrafartUserDAO 
 	@Override
 	public void addCrafartUser(CrafartUserDO crafartUserDO) throws CrafartDataException {
 		try {
-			Session session = this.getSessionFactory().openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(crafartUserDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding CrafartUser details in table", hExp);
 		}
