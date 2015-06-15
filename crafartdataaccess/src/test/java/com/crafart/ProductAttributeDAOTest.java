@@ -17,19 +17,24 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.dataobjects.AttributeGroupDescDO;
+import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CommissionDO;
 import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.SeoDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.AttributeGroupDescDAO;
+import com.crafart.inter.data.CategoryDAO;
 import com.crafart.inter.data.CommissionDAO;
 import com.crafart.inter.data.LengthClassDAO;
 import com.crafart.inter.data.ProductAttributeDAO;
 import com.crafart.inter.data.ProductDAO;
 import com.crafart.inter.data.SellerDAO;
+import com.crafart.inter.data.SeoDAO;
 import com.crafart.inter.data.WeightClassDAO;
 
 /**
@@ -62,6 +67,13 @@ public class ProductAttributeDAOTest {
 
 	@Autowired
 	private AttributeGroupDescDAO attributeGroupDescDAOImpl;
+	
+	@Autowired
+	private CategoryDAO categoryDAOImpl;
+	
+	@Autowired
+	private SeoDAO seoDAOImpl;
+
 
 	/*
 	 * Test case to add data in product attribute table
@@ -108,13 +120,13 @@ public class ProductAttributeDAOTest {
 		List<ProductAttributeDO> productAttributeDOs = new ArrayList<>();
 		ProductAttributeDO productAttributeDO = new ProductAttributeDO();
 		ProductDO productDO = getProduct();
-		productAttributeDO.setAttributeGroupId(21);
+		productAttributeDO.setAttributeGroupId(getAttributeGroupDesc().getAtrributeGroupDescId());
 		productAttributeDO.setText("Black&green");
 		productAttributeDO.setSortOrder(1);
 		productAttributeDO.setProductDO(productDO);
 		ProductAttributeDO productAttributeDO2 = new ProductAttributeDO();
 		productAttributeDO2.setText("brown");
-		productAttributeDO2.setAttributeGroupId(21);
+		productAttributeDO2.setAttributeGroupId(getAttributeGroupDesc().getAtrributeGroupDescId());
 		productAttributeDO2.setSortOrder(2);
 		productAttributeDO2.setProductDO(productDO);
 		productAttributeDOs.add(productAttributeDO2);
@@ -122,13 +134,26 @@ public class ProductAttributeDAOTest {
 		return productAttributeDOs;
 	}
 
+	
+	public AttributeGroupDescDO getAttributeGroupDesc() {
+		AttributeGroupDescDO attributeGroupDescDO = new AttributeGroupDescDO();
+		attributeGroupDescDO.setAttributeGroupName("model");
+		attributeGroupDescDO.setSortOrder(1);
+		try {
+			attributeGroupDescDAOImpl.addAttributeGroupDesc(attributeGroupDescDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return attributeGroupDescDO;
+	}
 	@Transactional(propagation = Propagation.REQUIRED)
 	public ProductDO getProduct() {
 		SellerDO sellerDO = getSellerDO();
 		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
 		ProductDO productDO = new ProductDO();
-		productDO.setCategoryId(1);
+		productDO.setCategoryId(getCategory().getCategoryId());
 		productDO.setSellerDOs(sellerDOs);
 		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
@@ -174,6 +199,40 @@ public class ProductAttributeDAOTest {
 		return lengthClassDO;
 	}
 
+
+	public CategoryDO getCategory(){
+		CategoryDO categoryDO = new CategoryDO();
+		categoryDO.setImageLocation("");
+		categoryDO.setSortOrder(2);
+		categoryDO.setStatus(2);
+		categoryDO.setSeoDO(getSeo());
+		categoryDO.setDescription("Its gold jwellery");
+		categoryDO.setCategoryName("gold");
+		try {
+			categoryDAOImpl.addCategory(categoryDO);
+		} catch (CrafartDataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return categoryDO;
+	}
+
+	public SeoDO getSeo(){
+		SeoDO seoDO = new SeoDO();
+		seoDO.setMetaDesc("abc");
+		seoDO.setMetaKeyword("cde");
+		seoDO.setMetaTitle("jkl");
+		try {
+			seoDAOImpl.addSeo(seoDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return seoDO;
+	}
+
+
+	
 	@Transactional(propagation = Propagation.REQUIRED)
 	private WeightClassDO getWeightClass() {
 		WeightClassDO weightClassDO = new WeightClassDO();
