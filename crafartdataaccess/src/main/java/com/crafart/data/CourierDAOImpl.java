@@ -21,8 +21,8 @@ import com.crafart.inter.data.CourierDAO;
  * 
  */
 @Repository("courierDAOImpl")
+@Transactional
 public class CourierDAOImpl extends CommonDAOImpl implements CourierDAO {
-
 
 	/**
 	 * adding courier details to courier table by addCourierDetails
@@ -32,7 +32,7 @@ public class CourierDAOImpl extends CommonDAOImpl implements CourierDAO {
 	public void addCourierDetail(CourierDO courierDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
-			session.persist(courierDO);
+			session.save(courierDO);
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB Error while adding Courier details in table", hExp);
 		}

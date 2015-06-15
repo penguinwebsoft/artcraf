@@ -17,4 +17,7 @@ public interface ManageCourierService {
 	public void addCourierDetail(CourierBO courierBO) throws CrafartServiceException;
 
 	public List<CourierBO> getCourierDetail() throws CrafartServiceException;
+	
+
+
 }

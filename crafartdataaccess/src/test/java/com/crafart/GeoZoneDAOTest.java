@@ -49,9 +49,9 @@ public class GeoZoneDAOTest {
 		GeoZoneDO geoZoneDO = new GeoZoneDO();
 		geoZoneDO.setDescription("qwerty");
 		geoZoneDO.setName("Delhi");
+		geoZoneDO.setSortOrder(1);
 		return geoZoneDO;
 	}
-
 	/*
 	 * Test case is to retrieve details from geozone table
 	 */

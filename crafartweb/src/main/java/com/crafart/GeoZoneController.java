@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,9 +34,10 @@ public class GeoZoneController {
 	@Autowired
 	private ManageGeoZoneService manageGeoZoneServiceImpl;
 
+	
 	@RequestMapping(value = { "/getGeoZone" }, method = RequestMethod.POST)
 	public @ResponseBody
-	ModelMap getGeoZone(HttpSession httpSession) {
+	ModelMap getGeoZone(HttpSession httpSession) throws CrafartServiceException {
 		ModelMap modelMap = new ModelMap();
 		List<GeoZoneBO> geoZoneBOs = new ArrayList<>();
 		try {
@@ -43,6 +45,20 @@ public class GeoZoneController {
 			modelMap.addAttribute("geoZoneBOs", geoZoneBOs);
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application-error in retrieving details from DB", crafartServiceException);
+		}
+		return modelMap;
+
+	}
+
+	@RequestMapping(value = { "/addGeoZone" }, method = RequestMethod.POST)
+	public @ResponseBody ModelMap addGeoZone(@RequestBody GeoZoneBO GeoZoneBO, HttpSession session) {
+		ModelMap modelMap = new ModelMap();
+		try {
+			manageGeoZoneServiceImpl.addGeoZoneDetail(GeoZoneBO);
+			modelMap.addAttribute("result", true);
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application-error while adding to DB", crafartServiceException);
+			modelMap.addAttribute("result", false);
 		}
 		return modelMap;
 

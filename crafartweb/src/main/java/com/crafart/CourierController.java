@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,6 +46,23 @@ public class CourierController {
 			log.error("Application-Error while retriving courier detail", crafartServiceException);
 		}
 		return modelMap;
+	}
+	
+	
+
+	@RequestMapping(value = { "/addCourier" }, method = RequestMethod.POST)
+	public @ResponseBody ModelMap addCourier(@RequestBody CourierBO courierBO, HttpSession session) {
+		ModelMap modelMap = new ModelMap();
+		try {
+			manageCourierServiceImpl.addCourierDetail(courierBO);
+			modelMap.addAttribute("result", true);
+		} catch (CrafartServiceException crafartServiceException) {
+			log.error("Application-error while adding courier", crafartServiceException);
+			modelMap.addAttribute("result", false);
+		}
+		return modelMap;
 
 	}
+
+	
 }

@@ -23,6 +23,8 @@ public class CourierBO implements Serializable {
 	private String image;
 
 	private int productLimit;
+	
+	private String estimatedDeliveryTime;
 
 	private int sortOrder;
 
@@ -65,4 +67,13 @@ public class CourierBO implements Serializable {
 	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;
 	}
+
+	public String getEstimatedDeliveryTime() {
+		return estimatedDeliveryTime;
+	}
+
+	public void setEstimatedDeliveryTime(String estimatedDeliveryTime) {
+		this.estimatedDeliveryTime = estimatedDeliveryTime;
+	}
+	
 }

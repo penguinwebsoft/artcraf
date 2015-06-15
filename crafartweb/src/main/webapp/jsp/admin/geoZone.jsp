@@ -62,3 +62,33 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var geoZoneBO = {};
+			
+			geoZoneBO.Geo_Zone Title = $("#Geo_Zone Title").val();
+			geoZoneBO.Geo_Zone Description = $("#Geo_Zone Description").val();
+			geoZoneBO.Sort Order = $("#Sort Order").val();
+			geoZoneBO.Action = $("#Action").val();
+			
+			
+			postData = JSON.stringify(geoZoneBO);
+			$.ajax({
+				url : "../geoZone/addgeoZone",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+
+
+</script>

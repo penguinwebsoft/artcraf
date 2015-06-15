@@ -3,7 +3,6 @@
  */
 package com.crafart;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,8 +27,6 @@ import com.crafart.inter.data.AccountDAO;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public class AccountDAOTest {
-
-	private static final Logger log = Logger.getLogger(AccountDAOTest.class);
 
 	@Autowired
 	private AccountDAO accountDAOImpl;

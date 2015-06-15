@@ -35,8 +35,12 @@ public class GeoZoneDO implements Serializable, Cloneable {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "description")
+	@Column(name = "description")   
 	private String description;
+	
+	@Column(name = "sortOrder")    
+	private Integer sortOrder;
+	
 
 	public long getGeoZoneId() {
 		return geoZoneId;
@@ -61,5 +65,14 @@ public class GeoZoneDO implements Serializable, Cloneable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Integer getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+	
 
 }
