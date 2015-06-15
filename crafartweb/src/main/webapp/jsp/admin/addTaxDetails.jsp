@@ -34,7 +34,7 @@
 									<input type="text" name="taxtitle" value="" placeholder="taxtitle" id="input-taxtitle" class="form-control" />
 								</div>
 							</div>
-					
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-sku"><span data-toggle="tooltip" title="companyname">Tax Description</span></label>
 								<div class="col-sm-10">
@@ -45,6 +45,15 @@
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
 									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Status</label>
+								<div class="col-sm-10">
+									<select name="status" id="status" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected">Enable</option>
+										<option value="0">Disable</option>
+									</select>
 								</div>
 							</div>
 					</div>
