@@ -11,7 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Tax Details</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/AddTaxDetails">Add</a>
+				<a class="btn btn-success" href="${baseURL}/menu/addTaxDetails">Add</a>
 				<button type="button" class="btn btn-danger">Cancel</button>
 			</div>
 		</div>

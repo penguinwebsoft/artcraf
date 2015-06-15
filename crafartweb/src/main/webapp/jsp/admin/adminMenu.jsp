@@ -16,7 +16,6 @@
 <ul id="menu" class="collapse col-lg-2" id="sampleTabs" style="background-color: #333;">
 	<li class="panel"><a id="dashboardMenuId" href="${baseURL}/menu/dashboard"> <i class="icon-table"></i> Dashboard
 	</a></li>
-
 	<li class="panel" id="catalogMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-catalog-nav"> <i class="icon-tasks"> </i> Catalog<span
 			class="pull-right"> <i class="icon-angle-left"></i>
 		</span> &nbsp;
@@ -46,8 +45,19 @@
 		<ul class="collapse" id="component-sales-navs">
 			<li><a id="orderListMenuId" href="${baseURL}/menu/orderList"> <i class="icon-angle-right"></i> Order
 			</a></li>
-			<li><a id="returnPageMenuId" href="${baseURL}/menu/returnPage"> <i class="icon-angle-right"></i>Return
+			<li id="returnPageMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-returnPage-navs"> <i class="icon-tasks"> </i> Return <span
+					class="pull-right"> <i class="icon-angle-left"></i>
+				</span> &nbsp;
+			</a>
+			<ul class="collapse" id="component-returnPage-navs">
+			<li><a id="returnStatusMenuId" href="${baseURL}/menu/returnStatus"> <i class="icon-angle-right"></i> Return Status
 			</a></li>
+			<li><a id="returnActionMenuId" href="${baseURL}/menu/returnAction"> <i class="icon-angle-right"></i> Return Action
+			</a></li>
+			<li><a id="returnReasonMenuId" href="${baseURL}/menu/returnReason"> <i class="icon-angle-right"></i> Return Reason
+			</a></li>
+			</ul>
+			</li>
 			<li><a id="customerListMenuId" href="${baseURL}/menu/customerList"> <i class="icon-angle-right"></i>Customer
 			</a></li>
 		</ul></li>
@@ -61,6 +71,10 @@
 			<li><a id="manageSellersMenuId" href="${baseURL}/menu/manageSellers"> <i class="icon-angle-right"></i> Manage Sellers
 			</a></li>
 			<li><a id="salesMenuId" href="${baseURL}/menu/sales"> <i class="icon-angle-right"></i>Sales
+			</a></li>
+			<li><a id="transportPageMenuId" href="${baseURL}/menu/transportPage"> <i class="icon-angle-right"></i>Transport
+			</a></li>
+			<li><a id="paymentHistoryMenuId" href="${baseURL}/menu/paymentHistory"> <i class="icon-angle-right"></i>Payment
 			</a></li>
 		</ul></li>
 
@@ -105,13 +119,43 @@
 		</span> &nbsp;
 	</a>
 		<ul class="collapse" id="component-reports-navs">
-			<li><a id="salesMenuId" href="${baseURL}/menu/sales"> <i class="icon-angle-right"></i> Sales
+			<li id="saleMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-sale-navs"> <i class="icon-tasks"> </i> sales <span
+					class="pull-right"> <i class="icon-angle-left"></i>
+				</span> &nbsp;
+			</a>
+			<ul class="collapse" id="component-sale-navs">
+			<li><a id="salesOrderPageMenuId" href="${baseURL}/menu/salesOrderPage"> <i class="icon-angle-right"></i> Sales Order
 			</a></li>
-			<li><a id="productsMenuId" href="${baseURL}/menu/products"> <i class="icon-angle-right"></i>Products
+			<li><a id="taxOrderMenuId" href="${baseURL}/menu/taxOrder"> <i class="icon-angle-right"></i> Tax Order
 			</a></li>
-			<li><a id="customerMenuId" href="${baseURL}/menu/customer"> <i class="icon-angle-right"></i>Customer
+			<li><a id="shippingReportMenuId" href="${baseURL}/menu/shippingReport"> <i class="icon-angle-right"></i> Shipping Report
 			</a></li>
-			<li><a id="marketingMenuId" href="${baseURL}/menu/marketing"> <i class="icon-angle-right"></i>Marketing
+			<li><a id="returnReportMenuId" href="${baseURL}/menu/returnReport"> <i class="icon-angle-right"></i> Return Report
+			</a></li>
+			<li><a id="couponsReportMenuId" href="${baseURL}/menu/couponReport"> <i class="icon-angle-right"></i> Coupons Report
+			</a></li>
+			</ul>
+			</li>
+			<li id="productsMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-products-navs"> <i class="icon-tasks"> </i> Products <span
+					class="pull-right"> <i class="icon-angle-left"></i>
+				</span> &nbsp;
+			</a>
+			<ul class="collapse" id="component-products-navs">
+			<li><a id="productPurchaseReportMenuId" href="${baseURL}/menu/productPurchaseReport"> <i class="icon-angle-right"></i> Product Purchase Report
+			</a></li>
+			<li><a id="productViewReportMenuId" href="${baseURL}/menu/productViewReport"> <i class="icon-angle-right"></i> Product View Report
+			</a></li>
+			</ul> 
+			</li>
+			<li id="customerMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-customer-navs"> <i class="icon-tasks"> </i> Customer <span
+					class="pull-right"> <i class="icon-angle-left"></i>
+				</span> &nbsp;
+			</a>
+			<ul class="collapse" id="component-customer-navs">
+			<li><a id="customerOrderReportMenuId" href="${baseURL}/menu/customerOrderReport"> <i class="icon-angle-right"></i> Customer Order Report
+			</a></li>
+			</ul>
+			</li><li><a id="marketingMenuId" href="${baseURL}/menu/marketing"> <i class="icon-angle-right"></i>Marketing
 			</a></li>
 		</ul></li>
 
