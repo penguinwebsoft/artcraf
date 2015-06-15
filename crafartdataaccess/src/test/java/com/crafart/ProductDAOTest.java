@@ -21,18 +21,22 @@ import org.springframework.transaction.annotation.Transactional;
 import com.crafart.data.ProductDAOImpl;
 import com.crafart.data.SellerDAOImpl;
 import com.crafart.dataobjects.AddressDO;
+import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CommissionDO;
 import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.SeoDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CategoryDAO;
 import com.crafart.inter.data.CommissionDAO;
 import com.crafart.inter.data.LengthClassDAO;
 import com.crafart.inter.data.ProductDAO;
 import com.crafart.inter.data.SellerDAO;
+import com.crafart.inter.data.SeoDAO;
 import com.crafart.inter.data.WeightClassDAO;
 
 /**
@@ -63,6 +67,11 @@ public class ProductDAOTest {
 	@Autowired
 	private LengthClassDAO lengthClassDAOImpl;
 
+	@Autowired
+	private CategoryDAO categoryDAOImpl;
+	
+	@Autowired
+	private SeoDAO seoDAOImpl;
 	/**
 	 * test case for addProduct, first getting sellerId by calling
 	 * {@link SellerDAOImpl} addSeller, then by getting sellerId, we are calling
@@ -85,7 +94,7 @@ public class ProductDAOTest {
 	private ProductDO getProduct() {
 		ProductDO productDO = new ProductDO();
 		List<SellerDO> sellerDOs = getSellerDO();
-		productDO.setCategoryId(1);
+		productDO.setCategoryId(getCategory().getCategoryId());
 		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");
@@ -110,7 +119,39 @@ public class ProductDAOTest {
 		productDO.setWidth(12.5);
 		return productDO;
 	}
+	
+	
+	public CategoryDO getCategory(){
+		CategoryDO categoryDO = new CategoryDO();
+		categoryDO.setImageLocation("");
+		categoryDO.setSortOrder(2);
+		categoryDO.setStatus(2);
+		categoryDO.setSeoDO(getSeo());
+		categoryDO.setDescription("Its gold jwellery");
+		categoryDO.setCategoryName("gold");
+		try {
+			categoryDAOImpl.addCategory(categoryDO);
+		} catch (CrafartDataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return categoryDO;
+	}
 
+	public SeoDO getSeo(){
+		SeoDO seoDO = new SeoDO();
+		seoDO.setMetaDesc("abc");
+		seoDO.setMetaKeyword("cde");
+		seoDO.setMetaTitle("jkl");
+		try {
+			seoDAOImpl.addSeo(seoDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return seoDO;
+	}
+	
 	@Transactional(propagation = Propagation.REQUIRED)
 	private LengthClassDO getLengthClass() {
 		LengthClassDO lengthClassDO = new LengthClassDO();
