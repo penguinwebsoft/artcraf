@@ -80,7 +80,7 @@ public class ProductDiscountDAOTest {
 		ProductDO productDO = getProduct();
 		ProductDiscountDO productDiscountDO = new ProductDiscountDO();
 		productDiscountDO.setEndDate("00/00/0000");
-		productDiscountDO.setPrice(125.6f);
+		productDiscountDO.setValue(125.6f);
 		productDiscountDO.setQuantity(20);
 		productDiscountDO.setStartDate("00/00/0000");
 		productDiscountDO.setProductDO(productDO);
@@ -90,7 +90,7 @@ public class ProductDiscountDAOTest {
 		ProductDiscountDO productDiscountDO2 = new ProductDiscountDO();
 		productDiscountDO2.setEndDate("00/00/0000");
 		productDiscountDO2.setStartDate("00/01/0202");
-		productDiscountDO2.setPrice(150);
+		productDiscountDO2.setValue(150);
 		productDiscountDO2.setProductDO(productDO);
 		for (SellerDO sellerDO : productDO.getSellerDOs()) {
 			productDiscountDO2.setSellerId(sellerDO.getSellerId());
