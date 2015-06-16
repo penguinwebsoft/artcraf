@@ -28,7 +28,7 @@
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>Geo_Zone Title</td>
 									<td>Geo_Zone Description</td>
-									<td>Sort Order</td>
+	 								<td>Sort Order</td>
 									<td>Action</td>
 								</tr>
 							</thead>
@@ -89,6 +89,4 @@ $(document).ready(function() {
 			});
 		});
 	});
-
-
 </script>
