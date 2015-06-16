@@ -4,6 +4,39 @@
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.request.contextPath}" />
 
+<script type="text/javascript">
+var manageCourierBOs = {};
+$(document).ready(function() {
+	
+	$.ajax({
+		url : "../manageCourier/getManageCourier",
+		type : "post",
+		contentType : "application/json",
+		dataType : "json",
+		success : function(data){
+			manageCouriersBOs = data.manageCouriersBOs;
+			displayManageCourierList();
+		}
+	});
+	function displaymanageCourierList(){
+		 $.each(manageCouriersBOs, function(key, value) {
+			 var manageCouriersBOs = value;
+				html = '<tr>';
+				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+				html +='<td>'+manageCouriersBO.manageCouriersName+'</td>';
+				html +='<td>'+manageCouriersBO.sortOrder+'</td>';
+				html +='<td>'+manageCouriersBO.estimatedDeliveryTime+'</td>';
+				html +='<td>'+manageCouriersBO.totalProducts+'</td>';
+				html +='<td>'+manageCouriersBO.action+'</td>';
+				
+				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
+				html +='</tr>';
+				$('#shipping tbody').append(html);
+			}); 
+		}
+});
+</script>
+
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -116,7 +149,9 @@
 
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
 </div>
+
