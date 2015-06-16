@@ -23,7 +23,7 @@
 				</h3>
 			</div>
 			<div class="panel-body">
-				<br>
+	 			<br>
 				<div class="row">
 					<div class="col-lg-12">
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
