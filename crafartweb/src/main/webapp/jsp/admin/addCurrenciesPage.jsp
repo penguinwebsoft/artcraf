@@ -32,37 +32,37 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="currencytitle"><span data-toggle="tooltip" title="currencytitle">Currency Title</span></label>
 									<div class="col-sm-10">
-										<input type="text" name="currencytitle" value="" placeholder="currencytitle" id="currencytitle" class="form-control" />
+										<input type="text" id="currencytitle"name="currencytitle" value="" placeholder="currencytitle" id="currencytitle" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="code"><span data-toggle="tooltip" title="code">Code</span></label>
 									<div class="col-sm-10">
-										<input type="text" name="code" value="" placeholder="code" id="code" class="form-control" />
+										<input type="text" id="code" name="code" value="" placeholder="code" id="code" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="symbolleft"><span data-toggle="tooltip" title="symbolleft">Symbol Left</span></label>
 									<div class="col-sm-10">
-										<input type="text" name="symbolleft" value="" placeholder="symbolleft" id="symbolleft" class="form-control" />
+										<input type="text" id="symbolleft"name="symbolleft" value="" placeholder="symbolleft" id="symbolleft" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="symbolright"><span data-toggle="tooltip" title="symbolright">Symbol Right</span></label>
 									<div class="col-sm-10">
-										<input type="text" name="symbolright" value="" placeholder="symbolright" id="symbolright" class="form-control" />
+										<input type="text" id="symbolright"name="symbolright" value="" placeholder="symbolright" id="symbolright" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="decimalplaces"><span data-toggle="tooltip" title="decimalvalues">Decimal Values</span></label>
 									<div class="col-sm-10">
-										<input type="text" name="decimalplaces" value="" placeholder="decimalplaces" id="decimalplaces" class="form-control" />
+										<input type="text" id="decimalplaces"name="decimalplaces" value="" placeholder="decimalplaces" id="decimalplaces" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-attributename"><span data-toggle="tooltip" title="Values">Values</span></label>
 									<div class="col-sm-10">
-										<input type="text" name="values" value="" placeholder="values" id="values" class="form-control" />
+										<input type="text" id="values" name="values" value="" placeholder="values" id="values" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -83,3 +83,35 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var currenciesBO = {};
+			
+			currenciesBO.title = $("#currencytitle").val();
+			currenciesBO.code= $("#code").val();
+			currenciesBO.symbolLeft = $("#symbolleft").val();
+			currenciesBO.symbolRight = $("#symbolright").val();
+			currenciesBO.decimalPlace = $("#decimalplaces").val();
+			currenciesBO.value = $("#values").val();
+			currenciesBO.status = $("#status").val();
+			postData = JSON.stringify(geoZoneBO);
+			alert("currencies object" + postData);
+			$.ajax({
+				url : "../currencies/addCurrencies",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+
+
+</script>
