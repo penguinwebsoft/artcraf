@@ -434,7 +434,7 @@ public class BeanMapper {
 
 	public ProductDiscountDO mapProductDiscountBOToDO(ProductDiscountBO productDiscountBO, ProductDiscountDO productDiscountDO, ProductDO productDO) {
 		productDiscountDO.setEndDate(productDiscountBO.getEndDate());
-		productDiscountDO.setPrice(productDiscountBO.getPrice());
+		productDiscountDO.setValue(productDiscountBO.getValue());
 		productDiscountDO.setProductDiscountId(productDiscountBO.getProductDiscountId());
 		productDiscountDO.setQuantity(productDiscountBO.getQuantity());
 		productDiscountDO.setStartDate(productDiscountBO.getStartDate());
@@ -446,7 +446,7 @@ public class BeanMapper {
 
 	public ProductDiscountBO mapProductDiscountDOToBO(ProductDiscountDO productDiscountDO, ProductDiscountBO productDiscountBO) {
 		productDiscountBO.setEndDate(productDiscountDO.getEndDate());
-		productDiscountBO.setPrice(productDiscountDO.getPrice());
+		productDiscountBO.setValue(productDiscountDO.getValue());
 		productDiscountBO.setProductDiscountId(productDiscountDO.getProductDiscountId());
 		productDiscountBO.setQuantity(productDiscountDO.getQuantity());
 		productDiscountBO.setStartDate(productDiscountDO.getStartDate());
