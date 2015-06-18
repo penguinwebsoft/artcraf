@@ -20,11 +20,13 @@ public class ProductDiscountBO implements Serializable {
 
 	private int quantity;
 
-	private float price;
+	private float value;
 
 	private String startDate;
 
 	private String endDate;
+	
+	private String discountCode;
 
 	private ProductBO productBO;
 
@@ -46,12 +48,12 @@ public class ProductDiscountBO implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public float getPrice() {
-		return price;
+	public float getValue() {
+		return value;
 	}
 
-	public void setPrice(float price) {
-		this.price = price;
+	public void setValue(float value) {
+		this.value = value;
 	}
 
 	public String getStartDate() {
@@ -84,6 +86,14 @@ public class ProductDiscountBO implements Serializable {
 
 	public void setSellerBO(SellerBO sellerBO) {
 		this.sellerBO = sellerBO;
+	}
+
+	public String getDiscountCode() {
+		return discountCode;
+	}
+
+	public void setDiscountCode(String discountCode) {
+		this.discountCode = discountCode;
 	}
 
 }

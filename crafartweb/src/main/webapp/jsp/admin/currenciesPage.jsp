@@ -3,7 +3,39 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.request.contextPath}" />
-
+<script type="text/javascript">
+var currenciesBOs = {};
+$(document).ready(function() {
+	
+	$.ajax({
+		url : "../currencies/getCurrencies",
+		type : "post",
+		contentType : "application/json",
+		dataType : "json",
+		success : function(data){
+			currenciesBOsn= data.currenciesBOs;
+			displayCurrenciesList();
+		}
+	});
+	function displayCurrenciesList(){
+		 $.each(currenciesBOs, function(key, value) {
+			 var currenciesBO = value;
+				html = '<tr>';
+				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+				html +='<td>'+currenciesBO.currenciesTitle+'</td>';
+				html +='<td>'+currenciesBO.code+'</td>';
+				html +='<td>'+currenciesBO.value+'</td>';
+				html +='<td>'+currenciesBO.created_dttm+'</td>';
+				html +='<td>'+currenciesBO.modified_dttm+'</td>';
+				html +='<td>'+currenciesBO.action+'</td>';
+				
+				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
+				html +='</tr>';
+				$('#shipping tbody').append(html);
+			}); 
+		}
+});
+</script>
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -26,7 +58,7 @@
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Currency title</td>
+			 						<td>Currency title</td>
 									<td>Code</td>
 									<td>Value</td>
 									<td>Last Updates</td>

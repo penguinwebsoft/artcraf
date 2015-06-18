@@ -37,14 +37,17 @@ public class ProductDiscountDO implements Serializable, Cloneable {
 	@Column(name = "quantity")
 	private int quantity;
 
-	@Column(name = "price")
-	private float price;
+	@Column(name = "value")
+	private float value;
 
 	@Column(name = "start_date")
 	private String startDate;
 
 	@Column(name = "end_date")
 	private String endDate;
+	
+	@Column(name = "discount_code")
+	private String discountCode;
 
 	@ManyToOne
 	@JoinColumn(name = "product_id", nullable = false)
@@ -69,12 +72,13 @@ public class ProductDiscountDO implements Serializable, Cloneable {
 		this.quantity = quantity;
 	}
 
-	public float getPrice() {
-		return price;
+
+	public float getValue() {
+		return value;
 	}
 
-	public void setPrice(float price) {
-		this.price = price;
+	public void setValue(float value) {
+		this.value = value;
 	}
 
 	public String getStartDate() {
@@ -109,4 +113,13 @@ public class ProductDiscountDO implements Serializable, Cloneable {
 		SellerId = sellerId;
 	}
 
+	public String getDiscountCode() {
+		return discountCode;
+	}
+
+	public void setDiscountCode(String discountCode) {
+		this.discountCode = discountCode;
+	}
+
+	
 }

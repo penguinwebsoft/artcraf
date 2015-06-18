@@ -4,6 +4,37 @@
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.request.contextPath}" />
 
+
+<script type="text/javascript">
+var geoZoneBOs = {};
+$(document).ready(function() {
+	
+	$.ajax({
+		url : "../geoZone/getGeoZoneBO",
+		type : "post",
+		contentType : "application/json",
+		dataType : "json",
+		success : function(data){
+			geoZoneBO = data.geoZoneBO;
+			displayGeoZoneList();
+		}
+	});
+	function displayGeoZoneList(){
+		 $.each(geoZoneBO, function(key, value) {
+			 var geoZoneBO = value;
+				html = '<tr>';
+				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+				html +='<td>'+geoZoneBO.geoZoneName+'</td>';
+				html +='<td>'+geoZoneBO.sortOrder+'</td>';
+				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
+				html +='</tr>';
+				$('#shipping tbody').append(html);
+			}); 
+		}
+});
+</script>
+
+
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -28,7 +59,7 @@
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>Geo_Zone Title</td>
 									<td>Geo_Zone Description</td>
-									<td>Sort Order</td>
+	 								<td>Sort Order</td>
 									<td>Action</td>
 								</tr>
 							</thead>
@@ -89,6 +120,5 @@ $(document).ready(function() {
 			});
 		});
 	});
-
-
 </script>
+
