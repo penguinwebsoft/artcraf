@@ -193,12 +193,12 @@ public class ProductControllerTest {
 		List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
 		ProductDiscountBO productDiscountBO = new ProductDiscountBO();
 		productDiscountBO.setEndDate("01/01/0505");
-		productDiscountBO.setPrice(101.2f);
+		productDiscountBO.setValue(101.2f);
 		productDiscountBO.setQuantity(23);
 		productDiscountBO.setStartDate("00/00/0202");
 		ProductDiscountBO productDiscountBO2 = new ProductDiscountBO();
 		productDiscountBO2.setEndDate("00/01/0909");
-		productDiscountBO2.setPrice(125);
+		productDiscountBO2.setValue(125);
 		productDiscountBO2.setQuantity(15);
 		productDiscountBO2.setStartDate("11/11/1111");
 		productDiscountBOs.add(productDiscountBO2);
