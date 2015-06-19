@@ -39,21 +39,21 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-status">To</label>
 								<div class="col-sm-10">
-									<select name="to" id="to" placeholder="---please select---" class="form-control">
+									<select name="input-to" id="to" placeholder="---please select---" class="form-control">
 										<option value="0" selected="selected">All Newsletters Subscriber</option>
-										<option value="1" >All customer</option>
-										<option value="2" >Customers</option>
+										<option value="1">All customer</option>
+										<option value="2">Customers</option>
 									</select>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group required toCustomers" id="to-2">
 								<label class="col-sm-2 control-label">Customer</label>
 								<div class="col-sm-10">
 									<input type="text" name="customer" value="" placeholder="customer" id="customerVisible" class="form-control" aria-hidden="false" />
 									<textarea id="customer" class="form-control"></textarea>
 								</div>
 							</div>
-						
+
 							<div class="form-group required">
 								<label class="col-sm-2 control-label">Subject</label>
 								<div class="col-sm-10">
@@ -83,16 +83,30 @@
 </div>
 
 <script>
+	setPage("mailPageMenuId");
+
+
 	$(document).ready(function() {
 		$("#cleditor").cleditor();
+		
+		$('select[name=input-to]').on('change', function() {
+			var toType = this.value.replace;
+			if (toType == 2) {
+				$('#to-' + this.value).show();
+			} else {
+				$('.toCustomers').hide();
+			}
+
+		});
+		$('select[name=input-to]').trigger('change');
 	});
 
 	function to() {
-	    document.getElementById("to").style.visibility = "hidden";
-	    document.getElementById("to").style.visibility = "hidden";
+		document.getElementById("to").style.visibility = "hidden";
+		document.getElementById("to").style.visibility = "hidden";
 	}
 
 	function to() {
-	    document.getElementById("to").style.visibility = "visible"; 
+		document.getElementById("to").style.visibility = "visible";
 	}
 </script>
