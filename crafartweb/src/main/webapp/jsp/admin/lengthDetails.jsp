@@ -62,3 +62,7 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	setPage("lengthDetailsMenuId");
+	</script>
