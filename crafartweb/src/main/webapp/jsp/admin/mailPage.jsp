@@ -39,7 +39,7 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-status">To</label>
 								<div class="col-sm-10">
-									<select name="input-to" id="to" placeholder="---please select---" class="form-control">
+									<select name="input-to" id="input-to" placeholder="---please select---" class="form-control">
 										<option value="0" selected="selected">All Newsletters Subscriber</option>
 										<option value="1">All customer</option>
 										<option value="2">Customers</option>
@@ -82,23 +82,23 @@
 	</div>
 </div>
 
-<script>
+<script type="text/javascript">
 	setPage("mailPageMenuId");
 
+	$('#input-to').on('change', function() {
+		var toType = this.value;
+		if (toType == 2) {
+			$('.toCustomers').show();
+		} else {
+			$('.toCustomers').hide();
+		}
 
+	});
 	$(document).ready(function() {
 		$("#cleditor").cleditor();
-		
-		$('select[name=input-to]').on('change', function() {
-			var toType = this.value.replace;
-			if (toType == 2) {
-				$('#to-' + this.value).show();
-			} else {
-				$('.toCustomers').hide();
-			}
 
-		});
-		$('select[name=input-to]').trigger('change');
+
+		//$('select[name=input-to]').trigger('change');
 	});
 
 	function to() {
