@@ -37,21 +37,24 @@
 										<option value="3">Month</option>
 										<option value="4">Years</option>
 								</select>
-								</span> 
+								</span>
 							</div>
 							<div class="form-group required">
-							<label class="col-sm-2 control-label" for="input-status">Order Status</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+								<label class="col-sm-2 control-label" for="input-status">Order Status</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
 									class="form-control">
 										<option value="1" selected="selected">Completed</option>
 										<option value="0">Pending</option>
 								</select>
 								</span> <label class="col-sm-2 control-label">Exports</label> <span class="col-sm-2"> <select name="exports" id="exports" placeholder="---please select---" class="form-control">
-										<option value="1" selected="selected">Export to XL</option>
+										<option value="1" selected="selected">Export to Excel</option>
 										<option value="2">Export to Pdf</option>
 								</select>
 								</span>
-								<button type="button" class="btn btn-primary col-md-offset-3">Filter</button>
 							</div>
+					</div>
+					<div>
+						<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+						<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top:5px">Filter</button>
 					</div>
 				</div>
 			</div>
@@ -93,6 +96,7 @@
 </div>
 
 <script type="text/javascript">
+	setPage("salesOrderPageMenuId");
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
