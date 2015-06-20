@@ -71,7 +71,7 @@
 	});
 </script>
 
-	<div class="col-lg-10">
+<div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
@@ -80,7 +80,7 @@
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Print Invoice</button>
 				<button type="button" class="btn btn-primary">Print Shipping List</button>
-				<button type="button" class="btn btn-warning">Edit</button>
+				<a class="btn btn-warning" href="${baseURL}/menu/editOrderList">Edit</a>
 				<button type="button" class="btn btn-default">Cancel</button>
 			</div>
 		</div>
@@ -220,6 +220,10 @@
 															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 															<td>$<span>972.00</span>
 															</td>
+														</tr>
+														<tr>
+															<td class="pull-right"><h4>Commend:</h4></td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 														</tr>
 													</table>
 												</div>
