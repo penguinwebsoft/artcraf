@@ -8,7 +8,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Product</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Edit Seller</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Save</button>
@@ -19,7 +19,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="icon-th-list"></i> &nbsp; Add New Seller
+					<i class="icon-th-list"></i> &nbsp; Edit Seller
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -61,9 +61,9 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-sku"><span data-toggle="tooltip" title="companyname">DateOfBirth</span></label>
+										<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-Dop"><span data-toggle="tooltip" title="Dop">DateOfBirth</span></label>
 										<div class="col-sm-10">
-											<input type="number" name="dob" value="" placeholder="dob" id="input-dob" class="form-control" />
+											<input type="text" name="Dob" value="" placeholder="Dob" id="Dob" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -76,6 +76,12 @@
 										<label class="col-sm-2 control-label" for="input-location">Street Address</label>
 										<div class="col-sm-10">
 											<input type="text" name="address" value="" placeholder="address" id="input-address" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="mobile no">Mobile Number</label>
+										<div class="col-sm-10">
+											<input type="text" name="mobileno" value="" placeholder="mobileno" id="mobileno" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -94,6 +100,12 @@
 										<label class="col-sm-2 control-label" for="input-quantity">Pincode</label>
 										<div class="col-sm-10">
 											<input type="number" name="pincode" value="" placeholder="pincode" id="input-state" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Email</label>
+										<div class="col-sm-10">
+											<input type="text" name="email" value="" placeholder="email" id="input-email" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -275,11 +287,16 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">User Group</span></label>
+										<label class="col-sm-2 control-label" for="input-status">UserGroup</label>
 										<div class="col-sm-10">
-											<input type="text" name="" value="user" placeholder="user" id="input-sortorder" class="form-control" />
+											<select name="usergroup" id="input-usergroup" class="form-control">
+												<option value="1" selected="selected"></option>
+												<option value="2" selected="selected"></option>
+
+											</select>
 										</div>
 									</div>
+
 								</div>
 						</form>
 					</div>
@@ -294,3 +311,21 @@
 		$('#tabs').tab();
 	});
 </script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#Dob").datepicker({
+			viewMode : 'years',
+			format : 'yyyy/mm/dd',
+		});
+
+		$('#Dob').on('changeDate', function(ev) {
+			//close when viewMode='0' (days)
+			if (ev.viewMode === 'days') {
+				$('#Dob').datepicker('hide');
+			}
+		})
+
+	});
+</script>
+
