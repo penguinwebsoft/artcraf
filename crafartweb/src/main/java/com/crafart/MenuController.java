@@ -76,13 +76,18 @@ public class MenuController {
 		return new ModelAndView("product");
 	}
 
+	@RequestMapping("/transactions")
+	public ModelAndView showTransactions(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("transactions");
+	}
+	
 	@RequestMapping("/addProduct")
 	public ModelAndView showAddProduct(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("addProduct");
 	}
 
 	@RequestMapping("/productDetails")
-	public ModelAndView showproductDetails(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView showProductDetails(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("productDetails");
 	}
 
@@ -92,13 +97,8 @@ public class MenuController {
 	}
 
 	@RequestMapping("/orderDetails")
-	public ModelAndView showorderDetails(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView showOrderDetails(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("orderDetails");
-	}
-
-	@RequestMapping("/transactions")
-	public ModelAndView showTransactions(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("transactions");
 	}
 
 	@RequestMapping("/reportView")
@@ -190,6 +190,11 @@ public class MenuController {
 	public ModelAndView showAddNewSeller(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("addNewSeller");
 	}
+	
+	@RequestMapping("/editSeller")
+	public ModelAndView showEditSeller(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editSeller");
+	}
 
 	@RequestMapping("/viewSellers")
 	public ModelAndView showViewSellers(HttpServletRequest request, HttpServletResponse response) {
@@ -255,15 +260,15 @@ public class MenuController {
 	public ModelAndView showCommissionPage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("commissionPage");
 	}
+		
+	@RequestMapping("/editCommission")
+	public ModelAndView showEditCommission(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editCommission");
+	}
 
 	@RequestMapping("/commissionList")
 	public ModelAndView showCommissionList(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("commissionList");
-	}
-
-	@RequestMapping("/editCommission")
-	public ModelAndView showEditCommission(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("editCommission");
 	}
 
 	@RequestMapping("/subCategories")
@@ -276,6 +281,11 @@ public class MenuController {
 		return new ModelAndView("addSubCategories");
 	}
 
+	@RequestMapping("/editSubCategories")
+	public ModelAndView showEditSubCategories(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editSubCategories");
+	}
+	
 	@RequestMapping("/sellerProduct")
 	public ModelAndView showSellerProduct(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("sellerProduct");
@@ -353,7 +363,7 @@ public class MenuController {
 
 	@RequestMapping("/editInformationPage")
 	public ModelAndView showEditInformationPage(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("EditInformationPage");
+		return new ModelAndView("editInformationPage");
 	}
 
 	@RequestMapping("/filterPage")
@@ -369,11 +379,16 @@ public class MenuController {
 	@RequestMapping("/editFilterPage")
 	public ModelAndView showeditFilterPage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("editFilterPage");
-	}
+	} 
 
 	@RequestMapping("/orderList")
 	public ModelAndView showOrderList(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("orderList");
+	}
+	
+	@RequestMapping("/addOrderList")
+	public ModelAndView showAddOrderList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addOrderList");
 	}
 
 	@RequestMapping("/viewOrderList")
@@ -414,6 +429,11 @@ public class MenuController {
 	@RequestMapping("/addReturnPage")
 	public ModelAndView showAddReturnPage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("addReturnPage");
+	}
+
+	@RequestMapping("/editReturnPage")
+	public ModelAndView showEditReturnPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editReturnPage");
 	}
 	
 	@RequestMapping("/bannerPage")
@@ -517,7 +537,7 @@ public class MenuController {
 
 	@RequestMapping("/addReturnReason")
 	public ModelAndView showAddReturnReason(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("addreturnReason");
+		return new ModelAndView("addReturnReason");
 	}
      
 	@RequestMapping("/editReturnReason")
@@ -597,5 +617,30 @@ public class MenuController {
 	@RequestMapping("/editCustomerOrder")
 	public ModelAndView showEditCustomerOrder(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("editCustomerOrder");
+	}
+	
+	@RequestMapping("/transactionPage")
+	public ModelAndView showTransactionPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("transactionPage");
+	}
+
+	@RequestMapping("/paymentHistory")
+	public ModelAndView showPaymentHistory(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("paymentHistory");
+	}
+    
+	@RequestMapping("/bannerGroup")
+	public ModelAndView showBannerGroup(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("bannerGroup");
+	}
+    
+	@RequestMapping("/addBannerGroup")
+	public ModelAndView showAddBannerGroup(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addBannerGroup");
+	}
+
+	@RequestMapping("/editBannerGroup")
+	public ModelAndView showEditBannerGroup(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editBannerGroup");
 	}
 }
