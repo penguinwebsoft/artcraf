@@ -9,14 +9,14 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Transport Page</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Transaction Page</h1>
 			</div>
 		</div>
 		<hr />
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="icon-th-list"></i> &nbsp; Transport List
+					<i class="icon-th-list"></i> &nbsp; Transaction List
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -72,7 +72,10 @@
 										<option value="2">Export to Pdf</option>
 								</select>
 								</span>
-								<button type="button" class="btn btn-primary col-md-offset-10">Filter</button>
+							</div>
+							<div>
+								<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+								<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
 							</div>
 					</div>
 				</div>
@@ -93,11 +96,15 @@
 								<td>Date Added</td>
 								<td>Status</td>
 								<td>Unit Price</td>
+								<td>VAT</td>
+								<td>GST</td>
+								<td>CST</td>
+								<td>Total Tax</td>
 								<td>Quantity</td>
 								<td>Total</td>
 								<td>Commission</td>
 								<td>NetAmount</td>
-								<td>Paid>
+								<td>Paid</td>
 							</tr>
 						</thead>
 						<thead>
@@ -108,6 +115,10 @@
 								<td>2/2/12</td>
 								<td>Pending</td>
 								<td>2000</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>2</td>
 								<td>4000</td>
 								<td>100</td>
@@ -123,6 +134,7 @@
 </div>
 
 <script type="text/javascript">
+setPage("transactionPageMenuId");
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
@@ -148,4 +160,7 @@
 			}
 		})
 	});
+</script>
+<script type="text/javascript">
+	
 </script>
