@@ -41,41 +41,13 @@
 									</td>
 								</tr>
 							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>About Us</td>
-									<td>1</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Delivery Information</td>
-									<td>2</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Privacy Policy</td>
-									<td>3</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-						</table>
-
+						</table> 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	setPage("informationPageMenuId");
+</script>
