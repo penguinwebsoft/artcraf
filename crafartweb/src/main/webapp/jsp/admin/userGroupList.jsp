@@ -12,7 +12,7 @@
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/addNewSellers">Add</a>
+				<a class="btn btn-success" href="${baseURL}/menu/addUserGroup">Add</a>
 				<button type="button" class="btn btn-warning">Delete</button>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 									<td>Ajaml</td>
 									<td></td>
 									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
+										<a class="btn btn-warning" href="${baseURL}/menu/editUserGroup">Add</a>
 									</td>
 								</tr>
 							</thead>
