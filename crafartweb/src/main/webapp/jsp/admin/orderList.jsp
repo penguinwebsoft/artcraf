@@ -44,15 +44,25 @@
 							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-total"><span data-toggle="tooltip" title="Force a minimum ordered amount">Total</span></label> <span class="col-sm-2"> <input
 									type="text" name="total" value="" placeholder="Rs" id="input-total" class="form-control" />
-								</span> 
-								<label class="col-sm-2 control-label" for="input-datestart"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Start</span></label> <span class="col-sm-2"> <input
+								</span> <label class="col-sm-2 control-label" for="input-datestart"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Start</span></label> <span class="col-sm-2"> <input
 									type="text" name="datestart" value="" placeholder="datestart" id="dateStart" class="form-control" />
-								</span> 
-								<label class="col-sm-2 control-label" for="input-dateend"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date End</span></label> <span class="col-sm-2"> <input
+								</span> <label class="col-sm-2 control-label" for="input-dateend"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date End</span></label> <span class="col-sm-2"> <input
 									type="text" name="dateend" value="" placeholder="dateend" id="dateEnd" class="form-control" />
 								</span>
 							</div>
-							<button type="button" class="btn btn-primary col-md-offset-6">Filter</button>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-status">Export</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+									class="form-control">
+										<option value="1" selected="selected">Export to Excel</option>
+										<option value="0">Export to pdf</option>
+								</select>
+								</span>
+
+							</div>
+							<div>
+								<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+								<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
+							</div>
 					</div>
 				</div>
 			</div>
@@ -87,11 +97,8 @@
 								<td>1000</td>
 								<td>05/05/2015</td>
 								<td>05/05/2015</td>
-								<td>
-									<a class="btn btn-warning" href="${baseURL}/menu/viewOrderList">View</a>
-									<a class="btn btn-warning" href="${baseURL}/menu/editOrderList">Edit</a>
-									<button type="button" class="btn btn-danger">Delete</button>
-								</td>
+								<td><a class="btn btn-warning" href="${baseURL}/menu/viewOrderList">View</a> <a class="btn btn-warning" href="${baseURL}/menu/editOrderList">Edit</a>
+									<button type="button" class="btn btn-danger">Delete</button></td>
 							</tr>
 						</thead>
 					</table>
@@ -102,6 +109,7 @@
 </div>
 
 <script type="text/javascript">
+	setPage("orderListMenuId");
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
