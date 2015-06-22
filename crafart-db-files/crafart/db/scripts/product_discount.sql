@@ -13,7 +13,7 @@ CREATE TABLE PRODUCT_DISCOUNT (
 	/********* ALTER TABLE TO CHANGE IN PRICE TO VALUE **************/
 	alter table  PRODUCT_DISCOUNT alter column value type float
 	
-	alter table  PRODUCT_DISCOUNT addcolumn discount_code type varchar(20)
+	alter table  PRODUCT_DISCOUNT alter column discount_code type varchar(20)
 	
 	
 	
