@@ -643,4 +643,44 @@ public class MenuController {
 	public ModelAndView showEditBannerGroup(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("editBannerGroup");
 	}
+	
+	@RequestMapping("/smsList")
+	public ModelAndView showSmsList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("smsList");
+	}
+	
+	@RequestMapping("/addSmsList")
+	public ModelAndView showAddSmsList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addSmsList");
+	}
+	
+	@RequestMapping("/editSmsList")
+	public ModelAndView showEditSmsList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editSmsList");
+	}
+	
+	@RequestMapping("/emailList")
+	public ModelAndView showEmailList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("emailList");
+	}
+	
+	@RequestMapping("/addEmailList")
+	public ModelAndView showAddEmailList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("addEmailList");
+	}
+
+	@RequestMapping("/editEmailList")
+	public ModelAndView showEditEmailList(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editEmailList");
+	}
+	
+	@RequestMapping("/cdnListPage")
+	public ModelAndView showCdnListPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("cdnListPage");
+	}
+	
+	@RequestMapping("/cloudfareEditPage")
+	public ModelAndView showCloudfareEditPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("cloudfareEditPage");
+	}
 }
