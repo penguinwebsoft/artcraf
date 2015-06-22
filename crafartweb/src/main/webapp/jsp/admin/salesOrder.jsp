@@ -54,7 +54,7 @@
 					</div>
 					<div>
 						<button type="button" class="btn btn-success col-md-offset-11">Export</button>
-						<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top:5px">Filter</button>
+						<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
 					</div>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 </div>
 
 <script type="text/javascript">
-	setPage("salesOrderPageMenuId");
+	
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
@@ -122,5 +122,9 @@
 			}
 		})
 	});
+</script>
+
+<script type="text/javascript">
+	setPage("salesOrderPageMenuId");
 </script>
 

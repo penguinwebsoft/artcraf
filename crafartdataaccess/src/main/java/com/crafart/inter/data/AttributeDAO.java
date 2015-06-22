@@ -14,4 +14,6 @@ public interface AttributeDAO {
 	public void addAttribute(AttributeDO attributeDO)throws CrafartDataException;
 	
 	public List<AttributeDO>  getAllAttributes()throws CrafartDataException;
+	
+	public void updateAttribute(AttributeDO attributeDO)throws CrafartDataException;
 }

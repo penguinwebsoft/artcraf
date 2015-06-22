@@ -80,7 +80,7 @@
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Print Invoice</button>
 				<button type="button" class="btn btn-primary">Print Shipping List</button>
-				<a class="btn btn-warning" href="${baseURL}/menu/editOrderList">Edit</a>
+				<button><a class="btn btn-warning" href="${baseURL}/menu/editOrderList">Edit</a></button>
 				<button type="button" class="btn btn-default">Cancel</button>
 			</div>
 		</div>

@@ -19,7 +19,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="icon-th-list"></i> &nbsp; Add Return PAge
+					<i class="icon-th-list"></i> &nbsp; Add Return Page
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -86,7 +86,7 @@
 									</div>
 								</div>
 								<div class="form-group required col-md-10">
-									<label class="col-sm-2 control-label">model Name</label>
+									<label class="col-sm-2 control-label">Model Name</label>
 									<div class="col-sm-10">
 										<input type="text" name="modelname" placeholder="modelname" id="modelname" class="form-control" />
 									</div>
@@ -113,9 +113,9 @@
 								</span> 
 								</div>
 								<div class="form-group required col-md-10">
-								<label class="col-sm-2 control-label" for="input-meta-description1">Command</label>
+								<label class="col-sm-2 control-label" for="input-meta-description1">Comment</label>
 								<div class="col-sm-10">
-									<textarea name="command" rows="5" placeholder="command" id="metaDescription" class="form-control"></textarea>
+									<textarea name="command" rows="5" placeholder="comment" id="metaDescription" class="form-control"></textarea>
 								</div>
 								</div>
 								<div class="form-group required col-md-10">

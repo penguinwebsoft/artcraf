@@ -83,7 +83,7 @@
 </div>
 
 <script type="text/javascript">
-	setPage("shippingReportMenuId");
+	
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
@@ -111,3 +111,6 @@
 	});
 </script>
 
+<script type="text/javascript">
+	setPage("shippingReportMenuId");
+	</script>

@@ -37,6 +37,7 @@
 										<td>Action</td>
 									</tr>
 								</thead>
+<<<<<<< HEAD
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>Clockspeed</td>
@@ -45,6 +46,18 @@
 									<td></td>
 									<td><a class="btn btn-warning" href="${baseURL}/menu/editAttributes">Edit</a></td>
 								</tr>
+=======
+								<thead>
+									<tr>
+										<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
+										<td>Clockspeed</td>
+										<td>ABG</td>
+										<td>ABG</td>
+										<td></td>
+										<td><a class="btn btn-warning" href="${baseURL}/menu/editAttribute">Edit</a></td>
+									</tr>
+								</thead>
+>>>>>>> 76f40f0c198c80e2b7eabdc8833ffef6517cdfa3
 							</table>
 						</div>
 					</div>
@@ -53,6 +66,7 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
@@ -75,4 +89,9 @@
 			});
 		}
 	});
+=======
+
+<script type="text/javascript">
+	setPage("attributePageMenuId");
+>>>>>>> 76f40f0c198c80e2b7eabdc8833ffef6517cdfa3
 </script>

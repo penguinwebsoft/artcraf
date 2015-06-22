@@ -74,6 +74,7 @@
 				<value>com.crafart.dataobjects.UserGroupDO</value>
 				<value>com.crafart.dataobjects.SeoDO</value>
 				<value>com.crafart.dataobjects.AttributeDO</value>
+				<!-- <value>com.crafart.dataobjects.AttributeCategoryDO</value> -->
 			</list>
 		</property>
 

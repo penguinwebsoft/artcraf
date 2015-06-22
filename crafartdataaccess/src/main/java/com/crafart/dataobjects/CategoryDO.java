@@ -4,13 +4,18 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -34,6 +39,10 @@ public class CategoryDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category")
 	private long categoryId;
 
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "ATTRIBUTE_CATEGORY", joinColumns = { @JoinColumn(name = "SUB_CATEGORY_ID") }, inverseJoinColumns = { @JoinColumn(name = "ATTRIBUTE_ID") })
+	private List<AttributeDO> attributeDOs;
+
 	@Column(name = "image_location")
 	private String imageLocation;
 
@@ -43,16 +52,29 @@ public class CategoryDO implements Serializable, Cloneable {
 	@Column(name = "parent_id")
 	private long parentId;
 
+	public List<AttributeDO> getAttributeDOs() {
+		if (attributeDOs == null) {
+			return new ArrayList<>();
+		} else {
+			return attributeDOs;
+		}
+
+	}
+
+	public void setAttributeDOs(List<AttributeDO> attributeDOs) {
+		this.attributeDOs = attributeDOs;
+	}
+
 	@Column(name = "sort_order")
 	private int sortOrder;
 
 	@Column(name = "status")
 	private int status;
 
-	@OneToOne
-	@JoinColumn(name = "seo_id", nullable = false)
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "seo_id", nullable = true)
 	private SeoDO seoDO;
-	
+
 	@Column(name = "description")
 	private String description;
 

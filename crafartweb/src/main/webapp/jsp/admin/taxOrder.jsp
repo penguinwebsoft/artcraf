@@ -86,7 +86,7 @@
 </div>
 
 <script type="text/javascript">
-	setPage("taxOrderMenuId");
+	
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
@@ -113,4 +113,6 @@
 		})
 	});
 </script>
-
+<script type="text/javascript">
+	setPage("taxOrderMenuId");
+</script>

@@ -22,9 +22,7 @@ import com.crafart.service.businessobjects.AccountBO;
  * @version 1.0
  *
  */
-/**
- * Unit test for simple App.
- */
+
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)

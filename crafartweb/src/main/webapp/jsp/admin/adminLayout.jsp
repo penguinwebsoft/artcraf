@@ -78,7 +78,7 @@
 		<!-- END HEADER SECTION -->
 
 		<!--PAGE CONTENT -->
-		<section id="adminLayout" class="row clearfix">
+		<section id="adminLayout" class="container-fluid">
 			<div id="adminMenu">
 				<tiles:insertAttribute name="adminMenu" />	
 			</div>

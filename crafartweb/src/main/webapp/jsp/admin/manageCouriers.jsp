@@ -154,3 +154,6 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	setPage("manageCouriersMenuId");
+</script>

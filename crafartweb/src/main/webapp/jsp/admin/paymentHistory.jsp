@@ -11,6 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Payment History</h1>
 			</div>
 		</div>
+		<hr>
 		<div class="form-group required">
 			<label class="col-sm-2 control-label">Exports</label> <span class="col-sm-2"> <select name="exports" id="exports" placeholder="---please select---" class="form-control">
 					<option value="1" selected="selected">Export to Excel</option>

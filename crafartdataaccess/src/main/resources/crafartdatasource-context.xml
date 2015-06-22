@@ -12,6 +12,7 @@
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="com.crafart.data" />
+	<context:annotation-config />
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -72,6 +73,8 @@
 				<value>com.crafart.dataobjects.ProductRatingDO</value>
 				<value>com.crafart.dataobjects.UserGroupDO</value>
 				<value>com.crafart.dataobjects.SeoDO</value>
+				<value>com.crafart.dataobjects.AttributeDO</value>
+				<!-- <value>com.crafart.dataobjects.AttributeCategoryDO</value> -->
 			</list>
 		</property>
 

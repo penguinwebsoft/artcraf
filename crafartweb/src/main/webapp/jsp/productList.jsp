@@ -1,6 +1,7 @@
 <script type="text/javascript">
 	var productBOs = {};
 
+	
 	$(document)
 			.ready(
 					function() {
@@ -44,14 +45,25 @@
 												html += '<div style="margin-top: 5%">';
 												html += '</div>';
 												$('#productList').append(html);
-												$.grep(productBO.productAttributeBOs, function(
-														element, index) {
-													$('#description'+key+'').append('<span><h6>'+element.text+'</h6></span>');
-												});
+												$
+														.grep(
+																productBO.productAttributeBOs,
+																function(
+																		element,
+																		index) {
+																	$(
+																			'#description'
+																					+ key
+																					+ '')
+																			.append(
+																					'<span><h6>'
+																							+ element.text
+																							+ '</h6></span>');
+																});
 											});
 						}
 					});
-	$(document).on('click','.productBox',function(e) {
+	$(document).on('click', '.productBox', function(e) {
 		var id = $(this).prop('id');
 		alert($(this).prop('id'));
 		var productID = parseInt(/productDetailBox(\d+)/.exec(id)[1]);
@@ -60,8 +72,8 @@
 		});
 		 alert(JSON.stringify(productBOObj));
 		alert(productBOObj.hasOwnProperty(model)); */
-		
-		window.location.replace("../menu/productDetails"); 
+
+		window.location.replace("../menu/productDetails");
 	});
 </script>
 <!-- Left Side -->

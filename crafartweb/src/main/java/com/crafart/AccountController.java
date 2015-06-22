@@ -38,9 +38,10 @@ public class AccountController {
 		ModelMap modelMap = new ModelMap();
 		try {
 			manageAccountServiceImpl.addBankAccountDetail(accountBO);
+			return modelMap.addAttribute("response", "SUCCESS");
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Error while adding account detail from controller, AccoundId is " + accountBO.getAccountId(), crafartServiceException);
+			return modelMap.addAttribute("response", "FAILED");
 		}
-		return modelMap;
 	}
 }

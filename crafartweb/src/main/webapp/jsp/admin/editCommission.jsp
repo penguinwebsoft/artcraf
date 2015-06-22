@@ -8,7 +8,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Edit Commission Page</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Commission Page</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Save</button>
@@ -21,7 +21,7 @@
 				<h3 class="panel-title">
 					<i class="icon-th-list"></i> &nbsp; Edit Commission
 				</h3>
-			</div> 
+			</div>
 			<div class="panel-body">
 				<br>
 				<div class="row">
@@ -35,16 +35,16 @@
 								</div>
 							</div>
 							<div class="form-group required" id="percentage">
-								<label class="col-sm-3 control-label" for="percentage">Percentage</label>
-								<div class="col-sm-3">
-									<select name="status" id="input-percentage" class="form-control">
+								<label class="col-sm-2 control-label" for="percentage">Commission Type</label>
+								<div class="col-sm-5">
+									<select name="status" id="commissionType" class="form-control">
 										<option value="1" selected="selected">Percentage</option>
 										<option value="0">Fixed Rate</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group required">
-								<label class="col-sm-2 control-label" for="input-model">Commission Rate</label>
+								<label class="col-sm-2 control-label" for="input-model">Rate</label>
 								<div class="col-sm-10">
 									<input type="number" name="rate" value="" placeholder="rate" id="input-rate" class="form-control" />
 								</div>

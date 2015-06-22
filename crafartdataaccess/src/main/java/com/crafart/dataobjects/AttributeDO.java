@@ -1,14 +1,15 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,10 +33,10 @@ public class AttributeDO implements Cloneable, Serializable {
 	@SequenceGenerator(name = "seq_attribute", sequenceName = "seq_attribute", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_attribute")
 	private long attributeId;
-
-	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
-	private CategoryDO categoryDO;
+	
+	
+	@ManyToMany(mappedBy = "attributeDOs", cascade=CascadeType.MERGE)
+	private List<CategoryDO> categoryDOs;
 
 	@Column(name = "name")
 	private String attributeName;
@@ -51,13 +52,12 @@ public class AttributeDO implements Cloneable, Serializable {
 		this.attributeId = attributeId;
 	}
 
-
-	public CategoryDO getCategoryDO() {
-		return categoryDO;
+	public List<CategoryDO> getCategoryDOs() {
+		return categoryDOs;
 	}
 
-	public void setCategoryDO(CategoryDO categoryDO) {
-		this.categoryDO = categoryDO;
+	public void setCategoryDOs(List<CategoryDO> categoryDOs) {
+		this.categoryDOs = categoryDOs;
 	}
 
 	public String getAttributeName() {

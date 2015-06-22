@@ -55,3 +55,6 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	setPage("couponListMenuId");
+</script>

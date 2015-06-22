@@ -42,7 +42,7 @@ public class SellerDAOTest {
 	 * test case for addSeller method
 	 */
 	@Test
-	@Rollback(true)
+	@Rollback(false)
 	public void testAddSeller() {
 		try {
 			SellerDO sellerDO = getSellerDO();

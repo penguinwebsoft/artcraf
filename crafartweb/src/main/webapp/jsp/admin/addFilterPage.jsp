@@ -29,15 +29,21 @@
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
 							<!-- Start tab-data-->
 							<div class="form-group">
-								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-attributename"><span data-toggle="tooltip" title="filtername">Categories</span></label>
+								<label class="col-sm-2 control-label" for="categories">Categories</label>
 								<div class="col-sm-10">
-									<input type="text" name="filtername" value="" placeholder="filtername" id="input-filtername" class="form-control" />
+									<select name="categories" id="input-categories" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected"></option>
+										<option value="0"></option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-attributename"><span data-toggle="tooltip" title="filtername">Sub-Categories</span></label>
+								<label class="col-sm-2 control-label" for="subcategories">Sub Categories</label>
 								<div class="col-sm-10">
-									<input type="text" name="filtername" value="" placeholder="filtername" id="input-filtername" class="form-control" />
+									<select name="subcategories" id="input-subcategories" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected"></option>
+										<option value="0"></option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">

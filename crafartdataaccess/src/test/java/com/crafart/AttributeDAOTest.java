@@ -1,5 +1,6 @@
 package com.crafart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -42,6 +43,10 @@ public class AttributeDAOTest {
 	public void testAddAttribute(){
 		try {
 			AttributeDO attributeDO = getAttributeDO();
+			List<AttributeDO> attributeDOs = new ArrayList<AttributeDO>();
+			CategoryDO categoryDO = getAttributeDO().getCategoryDOs().get(0);
+			attributeDOs.add(attributeDO);
+			categoryDO.setAttributeDOs(attributeDOs);
 			attributeDAOImpl.addAttribute(attributeDO);
 			System.out.println("attribute id - " + attributeDO.getAttributeId());
 		} catch (CrafartDataException cExp) {
@@ -50,6 +55,19 @@ public class AttributeDAOTest {
 		}
 	}
 	
+	@Test
+	@Rollback(true)
+	public void testUpdateAttribute(){
+		try {
+			AttributeDO attributeDO = getAttributeDO();
+			attributeDAOImpl.addAttribute(attributeDO);
+			attributeDO.setAttributeName("Color updated");
+			attributeDAOImpl.updateAttribute(attributeDO);
+		} catch (CrafartDataException cExp) {
+			cExp.printStackTrace();
+			Assert.fail();
+		}
+	}
 	
 	@Test
 	@Rollback(true)
@@ -58,9 +76,16 @@ public class AttributeDAOTest {
 			// adding attribute 1
 			attributeDAOImpl.addAttribute(getAttributeDO());
 			// adding attribute 2
-			attributeDAOImpl.addAttribute(getAttributeDO());
+			AttributeDO attributeDO1 = getAttributeDO();
+			attributeDAOImpl.addAttribute(attributeDO1);
 			List<AttributeDO> attributeDOs = attributeDAOImpl.getAllAttributes();
-			Assert.assertEquals(2, attributeDOs.size());
+			System.out.println("size of attribute list size" + attributeDOs.size());
+			for(AttributeDO attributeDO : attributeDOs){
+				if(attributeDO.getAttributeId() == attributeDO1.getAttributeId()){
+					System.out.println("categoryd id is " + attributeDO.getCategoryDOs().get(0).getCategoryId());
+				}
+			}
+						Assert.assertTrue(attributeDOs.size() >= 2);
 		} catch (CrafartDataException cExp) {
 			cExp.printStackTrace();
 			Assert.fail();
@@ -70,7 +95,9 @@ public class AttributeDAOTest {
 	private AttributeDO getAttributeDO(){
 		AttributeDO attributeDO = new AttributeDO();
 		attributeDO.setAttributeName("Color");
-		attributeDO.setCategoryDO(getCategory());
+		List<CategoryDO> categoryDOs = new ArrayList<>();
+		categoryDOs.add(getCategory());
+		attributeDO.setCategoryDOs(categoryDOs);
 		attributeDO.setSortOrder(1);
 		return attributeDO;
 	}
@@ -84,7 +111,7 @@ public class AttributeDAOTest {
 			categoryDO.setStatus(2);
 			categoryDO.setSeoDO(getSeo());
 			categoryDO.setDescription("Its gold jwellery");
-			categoryDO.setCategoryName("gold");
+			categoryDO.setCategoryName("Diamond");
 			categoryDAOImpl.addCategory(categoryDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();

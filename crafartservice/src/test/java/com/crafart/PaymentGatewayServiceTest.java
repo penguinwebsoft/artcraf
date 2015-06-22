@@ -2,7 +2,6 @@ package com.crafart;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 import org.junit.Assert;
 import org.junit.Ignore;

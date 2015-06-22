@@ -9,11 +9,10 @@
 	$(document).ready(function() {
 		$('#dataTables-example').dataTable();
 	});
-</script>
-
-<script type="text/javascript">
 	setPage("MyProductMenuId");
 </script>
+
+
 
 <div class="inner">
 	<div class="row">

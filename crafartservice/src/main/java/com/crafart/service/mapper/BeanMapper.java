@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.crafart.dataobjects.AccountDO;
 import com.crafart.dataobjects.AddressDO;
+import com.crafart.dataobjects.AttributeDO;
 import com.crafart.dataobjects.AttributeGroupDescDO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CommissionDO;
@@ -39,6 +40,7 @@ import com.crafart.dataobjects.TaxRuleDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.AttributeBO;
 import com.crafart.service.businessobjects.AttributeGroupDescBO;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.businessobjects.CommissionBO;
@@ -322,12 +324,25 @@ public class BeanMapper {
 
 	}
 
+	public AttributeDO mapAttributeBOToDO(AttributeBO attributeBO, AttributeDO attributeDO) {
+		attributeDO.setAttributeId(attributeBO.getAttributeId());
+		attributeDO.setAttributeName(attributeBO.getAttributeName());
+		attributeDO.setSortOrder(attributeBO.getSortOrder());
+		return attributeDO;
+	}
+	
+	public AttributeBO mapAttributeDOToBO(AttributeDO attributeDO, AttributeBO attributeBO) {
+		attributeBO.setAttributeId(attributeDO.getAttributeId());
+		attributeBO.setAttributeName(attributeDO.getAttributeName());
+		attributeBO.setSortOrder(attributeDO.getSortOrder());
+		return attributeBO;
+	}
+	
 	public AttributeGroupDescDO mapAttributeGroupDescBOToDO(AttributeGroupDescBO attributeGroupDescBO, AttributeGroupDescDO attributeGroupDescDO) {
 		attributeGroupDescDO.setAtrributeGroupDescId(attributeGroupDescBO.getAtrributeGroupDescId());
 		attributeGroupDescDO.setAttributeGroupName(attributeGroupDescBO.getAttributeGroupName());
 		attributeGroupDescDO.setSortOrder(attributeGroupDescBO.getSortOrder());
 		return attributeGroupDescDO;
-
 	}
 
 	public AttributeGroupDescBO mapAttributeGroupDescDOToBO(AttributeGroupDescDO attributeGroupDescDO, AttributeGroupDescBO attributeGroupDescBO) {

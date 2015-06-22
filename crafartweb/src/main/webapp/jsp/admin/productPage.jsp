@@ -53,8 +53,7 @@
 							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-sellername">Seller Name</label> <span class="col-sm-2"> <input type="text" name="sellername" value="" placeholder="sellername"
 									id="sellername" class="form-control" />
-								</span>
-								<label class="col-sm-2 control-label" for="input-status">Export</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+								</span> <label class="col-sm-2 control-label" for="input-status">Export</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
 									class="form-control">
 										<option value="1" selected="selected">Export to Excel</option>
 										<option value="0">Export to pdf</option>
@@ -212,5 +211,7 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+<script type="text/javascript">
+	setPage("productPageMenuId");
+</script>
