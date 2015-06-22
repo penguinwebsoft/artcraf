@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TAX_CLASS")
-public class TaxClassDO implements Serializable, Cloneable{
+public class TaxClassDO implements Serializable, Cloneable {
 
 	/**
 	 * 
@@ -31,12 +31,17 @@ public class TaxClassDO implements Serializable, Cloneable{
 	@SequenceGenerator(name = "seq_taxclass", sequenceName = "seq_taxclass", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_taxclass")
 	private long taxClassId;
-	
+
 	@Column(name = "title")
 	private String title;
-	
+
 	@Column(name = "description")
 	private String description;
+
+	@Column(name = "is_active")
+	private Integer isActive;
+	@Column(name = "sort_Order")
+	private Integer sortOrder;
 
 	public long getTaxClassId() {
 		return taxClassId;
@@ -61,6 +66,21 @@ public class TaxClassDO implements Serializable, Cloneable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	 
+
+	public Integer getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Integer isActive) {
+		this.isActive = isActive;
+	}
+
+	public Integer getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
 }
