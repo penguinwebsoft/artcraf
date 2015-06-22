@@ -41,9 +41,18 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-meta-description1">Description</label>
-										<div class="col-sm-10">
-											<textarea name="description[1][description]" rows="5" placeholder="description" id="description" class="form-control"></textarea>
+										<label class="col-sm-2 control-label" for="input-description1">Description</label>
+										<div class="col-lg-10">
+											<div class="box">
+												<div id="cleditorDiv" class="body collapse in">
+													<form>
+														<textarea id="cleditor" class="form-control"></textarea>
+														<div class="form-actions no-margin-bottom" id="cleditorForm">
+															<br />
+														</div>
+													</form>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-group required">
@@ -92,3 +101,6 @@
 		</div>
 	</div>
 </div>
+<script>
+        $(document).ready(function () { $("#cleditor").cleditor(); });
+    </script>
