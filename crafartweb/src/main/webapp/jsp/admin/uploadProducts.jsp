@@ -689,11 +689,23 @@ $(document).ready(function () { $("#cleditor").cleditor(); });
 											<input type="text" name="upc" value="" placeholder="UPC" id="input-upc" class="form-control" />
 										</div>
 									</div>
-
+                                     <div class="form-group">
+										<label class="col-sm-2 control-label" for="input-city">City</label>
+										<div class="col-sm-10">
+											<input type="text" name="city" value="" placeholder="city" id="input-city" class="form-control" />
+										</div>
+									</div>
+									
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-location">State</label>
 										<div class="col-sm-10">
 											<input type="text" name="location" value="" placeholder="Enter State" id="input-location" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-pincode">Pincode</label>
+										<div class="col-sm-10">
+											<input type="text" name="pincode" value="" placeholder="Pincode" id="input-pincode" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
