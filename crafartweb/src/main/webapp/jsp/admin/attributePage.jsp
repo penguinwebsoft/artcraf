@@ -27,10 +27,9 @@
 				<div class="container">
 					<div class="tab-pane" id="tab-shipping">
 						<div class="table-responsive">
-							<table id="shipping" class="table table-striped table-bordered table-hover pull-left">
+							<table id="attributeListTbl" class="table table-striped table-bordered table-hover pull-left">
 								<thead>
 									<tr>
-										<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 										<td>Attribute Name</td>
 										<td>Categories</td>
 										<td>Sub-Categories</td>
@@ -38,18 +37,14 @@
 										<td>Action</td>
 									</tr>
 								</thead>
-								<thead>
-									<tr>
-										<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-										<td>Clockspeed</td>
-										<td>ABG</td>
-										<td>ABG</td>
-										<td></td>
-										<td>
-											<a class="btn btn-warning" href="${baseURL}/menu/editAttributes">Edit</a>
-										</td>
-									</tr>
-								</thead>
+								<tr>
+									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
+									<td>Clockspeed</td>
+									<td>ABG</td>
+									<td>ABG</td>
+									<td></td>
+									<td><a class="btn btn-warning" href="${baseURL}/menu/editAttributes">Edit</a></td>
+								</tr>
 							</table>
 						</div>
 					</div>
@@ -57,5 +52,27 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+			url : "../attribute/getAttributes",
+			type : "get",
+			contentType : "application/json",
+			dataType : "json",
+			success : function(data) {
+				attributeBOs = data.attributes;
+				displayAttributes(attributeBOs);
+			}
+		});
+
+		function displayAttributes(attributeBOs)
+		{
+			$.each(attributeBOs, function(index, attributeBO) {
+				$("#attributeListTbl").append("<tr><td><input type='checkbox' name='myTextEditBox' value='checked' /></td><td>"+attributeBO.attributeName+"<\/td><td>"+
+						attributeBO.categoryBO.categoryName+"<\/td><td>"+attributeBO.categoryBO.categoryName
+						+"<\/td><td>"+attributeBO.sortOrder+"<\/td> <td><a class='btn btn-warning' href='${baseURL}/menu/editAttributes'>Edit</a></td> <\/tr>");
+			});
+		}
+	});
+</script>
