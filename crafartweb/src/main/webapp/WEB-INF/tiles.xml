@@ -460,8 +460,7 @@
 
 	<definition name="productPurchaseReport" extends="admin.definition">
 		<put-attribute name="title" value="Product Purchase Report" />
-		<put-attribute name="adminBody"
-			value="/jsp/admin/productPurchaseReport.jsp" />
+		<put-attribute name="adminBody" value="/jsp/admin/productPurchaseReport.jsp" />
 	</definition>
 
 	<definition name="customerOrderReport" extends="admin.definition">
@@ -497,6 +496,46 @@
 	<definition name="editBannerGroup" extends="admin.definition">
 		<put-attribute name="title" value="Edit Banner Group" />
 		<put-attribute name="adminBody" value="/jsp/admin/editBannerGroup.jsp" />
+	</definition>
+	
+	<definition name="smsList" extends="admin.definition">
+		<put-attribute name="title" value="Sms List" />
+		<put-attribute name="adminBody" value="/jsp/admin/smsList.jsp" />
+	</definition>
+	
+	<definition name="addSmsList" extends="admin.definition">
+		<put-attribute name="title" value="Add Sms List" />
+		<put-attribute name="adminBody" value="/jsp/admin/addSmsList.jsp" />
+	</definition>
+	
+	<definition name="editSmsList" extends="admin.definition">
+		<put-attribute name="title" value="Edit Sms List" />
+		<put-attribute name="adminBody" value="/jsp/admin/editSmsList.jsp" />
+	</definition>
+	
+	<definition name="emailList" extends="admin.definition">
+		<put-attribute name="title" value="Email List" />
+		<put-attribute name="adminBody" value="/jsp/admin/emailList.jsp" />
+	</definition>
+	
+	<definition name="addEmailList" extends="admin.definition">
+		<put-attribute name="title" value="Add Email List" />
+		<put-attribute name="adminBody" value="/jsp/admin/addEmailList.jsp" />
+	</definition>
+	
+	<definition name="editEmailList" extends="admin.definition">
+		<put-attribute name="title" value="Edit Email List" />
+		<put-attribute name="adminBody" value="/jsp/admin/editEmailList.jsp" />
+	</definition>
+	
+	<definition name="cdnListPage" extends="admin.definition">
+		<put-attribute name="title" value="Cdn List Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/cdnListPage.jsp" />
+	</definition>
+	
+	<definition name="cloudfareEditPage" extends="admin.definition">
+		<put-attribute name="title" value="Cloudfare Edit Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/cloudfareEditPage.jsp" />
 	</definition>
 
 	<definition name="adminPanel" extends="admin.definition">
