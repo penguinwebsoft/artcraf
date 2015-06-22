@@ -50,7 +50,27 @@
 				$("#saveButton")
 				.click(
 						function() {
-							var attributeGroupDescBO = {};
+							var attributeBO = {};
+							var categoryBO = {};
+							
+							categoryBO.categoryId= $("#productSubCategory").val();
+							attributeBO.categoryBO = categoryBO;
+							attributeBO.attributeName= $("#attributename").val();
+							attributeBO.sortOrder = $("#sortorder").val();
+							postData = JSON.stringify(attributeBO);
+							$.ajax({
+								url : "../attribute/addAttribute",
+								type : "post",
+								data : postData,
+								contentType : "application/json",
+								dataType : "json",
+								success : function(data) {
+									if(data.response == "SUCCESS")
+										alert("saved succefully");
+									else
+										alert("Application error- save failed");
+								}
+							});
 							
 						});
 			});
@@ -108,8 +128,8 @@
 									for="input-attributename"><span data-toggle="tooltip"
 									title="attributename">Attribute Name</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="attributename" value=""
-										placeholder="attributename" id="input-attributename"
+									<input type="text" name="attributename" id="attributename" value=""
+										placeholder="attributename" 
 										class="form-control" />
 								</div>
 							</div>
@@ -117,8 +137,8 @@
 								<label class="col-sm-2 control-label" for="input-sortorder"><span
 									data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
-									<input type="number" name="sortorder" value=""
-										placeholder="sortorder" id="input-sortorder"
+									<input type="number" name="sortorder" id="sortorder" value=""
+										placeholder="sortorder" 
 										class="form-control" />
 								</div>
 							</div>
