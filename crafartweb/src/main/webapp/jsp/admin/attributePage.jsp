@@ -45,9 +45,7 @@
 										<td>ABG</td>
 										<td>ABG</td>
 										<td></td>
-										<td>
-											<a class="btn btn-warning" href="${baseURL}/menu/editAttributes">Edit</a>
-										</td>
+										<td><a class="btn btn-warning" href="${baseURL}/menu/editAttribute">Edit</a></td>
 									</tr>
 								</thead>
 							</table>
@@ -57,5 +55,8 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+
+<script type="text/javascript">
+	setPage("attributePageMenuId");
+</script>
