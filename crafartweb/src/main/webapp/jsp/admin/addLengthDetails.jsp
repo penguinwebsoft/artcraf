@@ -28,7 +28,7 @@
 					<div class="col-lg-12">
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
 							<!-- Start tab-data-->
-					 		<div class="form-group required">
+							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-model">Length Class Title</label>
 								<div class="col-sm-10">
 									<input type="text" name="lengthclasstitle" value="" placeholder="lengthclasstitle" id="input-lengthclasstitle" class="form-control" />
@@ -44,6 +44,16 @@
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
 									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="input-status">Status</label>
+								<div class="col-sm-10">
+									<select name="status" id="input-status" class="form-control">
+										<option value="1" selected="selected">ENABLE</option>
+										<option value="2" selected="selected">DISABLE</option>
+
+									</select>
 								</div>
 							</div>
 					</div>
