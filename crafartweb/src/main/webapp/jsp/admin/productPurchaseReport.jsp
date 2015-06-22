@@ -76,7 +76,7 @@
 </div>
 
 <script type="text/javascript">
-	setPage("productPurchaseReportMenuId");
+	
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
@@ -103,4 +103,8 @@
 		})
 	});
 </script>
+
+<script type="text/javascript">
+	setPage("productPurchaseReportMenuId");
+	</script>
 
