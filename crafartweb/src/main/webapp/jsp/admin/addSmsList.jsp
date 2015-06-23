@@ -37,11 +37,39 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Send To</label>
 								<div class="col-sm-10">
-									<select name="sendto" id="input-sendto" placeholder="---please select---" class="form-control">
+									<select name="input-sendto" id="input-sendto" placeholder="---please select---" class="form-control">
 										<option value="1" selected="selected">All Customer</option>
 										<option value="2">Customer</option>
 										<option value="3">All seller</option>
 										<option value="4">Seller</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group toCustomers" id="to-2"">
+								<label class="col-sm-2 control-label">Customer</label>
+								<div class="col-sm-10">
+									<select name="customerVisible" id="customerVisible" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected">Dashboard</option>
+										<option value="2">Catalog</option>
+										<option value="3">Sales</option>
+										<option value="4">Seller</option>
+										<option value="5">Marketing</option>
+										<option value="6">System</option>
+										<option value="7">Report</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group toSellers" id="to-4">
+								<label class="col-sm-2 control-label">Sellers</label>
+								<div class="col-sm-10">
+									<select name="sellersVisible" id="sellersVisible" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected">Dashboard</option>
+										<option value="2">Catalog</option>
+										<option value="3">Sales</option>
+										<option value="4">Seller</option>
+										<option value="5">Marketing</option>
+										<option value="6">System</option>
+										<option value="7">Report</option>
 									</select>
 								</div>
 							</div>
@@ -117,4 +145,28 @@
 
 		$('#count_message').html(text_remaining + ' remaining');
 	});
+</script>
+
+<script type="text/javascript">
+
+	$('#input-sendto').on('change', function() {
+		var toType = this.value;
+		if (toType == 2) {
+			$('.toCustomers').show();
+		} else {
+			$('.toCustomers').hide();
+		}
+
+	});
+	
+	$('#input-sendto').on('change', function() {
+		var toType = this.value;
+		if (toType == 4) {
+			$('.toSellers').show();
+		} else {
+			$('.toSellers').hide();
+		}
+
+	});
+
 </script>
