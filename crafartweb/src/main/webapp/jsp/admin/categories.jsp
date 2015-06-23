@@ -2,36 +2,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page isELIgnored="false"%>
-<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" /> 
+<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
 <script type="text/javascript">
-var categoryBOs = {};
-$(document).ready(function() {
-	
-	$.ajax({
-		url : "../category/getCategory",
-		type : "post",
-		contentType : "application/json",
-		dataType : "json",
-		success : function(data){
-			categoryBOs = data.categoryBOs;
-			displayCategoryList();
-		}
-	});
-	function displayCategoryList(){
-		 $.each(categoryBOs, function(key, value) {
-			 var categoryBO = value;
-				html = '<tr>';
-				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
-				html +='<td>'+categoryBO.categoryName+'</td>';
-				html +='<td>'+categoryBO.sortOrder+'</td>';
-				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
-				html +='</tr>';
-				$('#shipping tbody').append(html);
-			}); 
-		}
-});
+	setPage("categoriesMenuId");
+	var categoryBOs = {};
+	$(document)
+			.ready(
+					function() {
+
+						$.ajax({
+							url : "../category/getCategory",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								categoryBOs = data.categoryBOs;
+								displayCategoryList();
+							}
+						});
+						function displayCategoryList() {
+							$
+									.each(
+											categoryBOs,
+											function(key, value) {
+												var categoryBO = value;
+												html = '<tr>';
+												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+												html += '<td>'
+														+ categoryBO.categoryName
+														+ '</td>';
+												html += '<td>'
+														+ categoryBO.sortOrder
+														+ '</td>';
+												html += '<td><button type="button" class="btn btn-warning">Edit</button></td>';
+												html += '</tr>';
+												$('#shipping tbody').append(
+														html);
+											});
+						}
+					});
 </script>
 
 <div class="col-lg-10">
@@ -67,9 +78,14 @@ $(document).ready(function() {
 									<td>Action</td>
 								</tr>
 							</thead>
-							<tbody>
-							
-							</tbody>
+							<thead>
+								<tr>
+									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
+									<td>Intel</td>
+									<td>Received</td>
+									<td><a class="btn btn-warning" href="${baseURL}/menu/editCategories">Edit</a></td>
+								</tr> 
+							</thead>
 						</table>
 						<nav>
 							<ul class="pagination">
@@ -84,7 +100,7 @@ $(document).ready(function() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 </div>
 

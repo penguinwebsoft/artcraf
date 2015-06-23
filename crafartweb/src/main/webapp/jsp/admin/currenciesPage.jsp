@@ -58,7 +58,7 @@ $(document).ready(function() {
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Currency title</td>
+			 						<td>Currency title</td>
 									<td>Code</td>
 									<td>Value</td>
 									<td>Last Updates</td>
@@ -84,4 +84,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	setPage("currenciesPageMenuId");
+</script>
 

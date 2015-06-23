@@ -9,7 +9,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Product Purchase Report</h1>
+				<h3 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Purchase Report</h3>
 			</div>
 		</div>
 		<hr />
@@ -30,7 +30,7 @@
 									type="text" name="datestart" value="" placeholder="datestart" id="dateStart" class="form-control" />
 								</span> <label class="col-sm-2 control-label" for="input-dateend"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date End</span></label> <span class="col-sm-2"> <input
 									type="text" name="dateend" value="" placeholder="dateend" id="dateEnd" class="form-control" />
-								</span>  
+								</span>
 							</div>
 							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-status">Order Status</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
@@ -39,11 +39,14 @@
 										<option value="0">Pending</option>
 								</select>
 								</span> <label class="col-sm-2 control-label">Exports</label> <span class="col-sm-2"> <select name="exports" id="exports" placeholder="---please select---" class="form-control">
-										<option value="1" selected="selected">Export to XL</option>
+										<option value="1" selected="selected">Export to Excel</option>
 										<option value="2">Export to Pdf</option>
 								</select>
 								</span>
-								<button type="button" class="btn btn-primary col-md-offset-3">Filter</button>
+								<div>
+									<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+									<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
+								</div>
 							</div>
 					</div>
 				</div>
@@ -73,6 +76,7 @@
 </div>
 
 <script type="text/javascript">
+	
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
@@ -99,4 +103,8 @@
 		})
 	});
 </script>
+
+<script type="text/javascript">
+	setPage("productPurchaseReportMenuId");
+	</script>
 

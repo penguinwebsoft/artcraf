@@ -8,7 +8,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Edit Return Reason Template</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Edit Return Reason</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<a class="btn btn-success">Save</a>

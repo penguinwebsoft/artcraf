@@ -46,11 +46,14 @@
 										<option value="0">Pending</option>
 								</select>
 								</span> <label class="col-sm-2 control-label">Exports</label> <span class="col-sm-2"> <select name="exports" id="exports" placeholder="---please select---" class="form-control">
-										<option value="1" selected="selected">Export to XL</option>
+										<option value="1" selected="selected">Export to Excel</option>
 										<option value="2">Export to Pdf</option>
 								</select>
 								</span>
-								<button type="button" class="btn btn-primary col-md-offset-3">Filter</button>
+								<div>
+									<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+									<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
+								</div>
 							</div>
 					</div>
 				</div>
@@ -79,6 +82,7 @@
 </div>
 
 <script type="text/javascript">
+	
 	$(document).ready(function() {
 		$("#dateStart").datepicker({
 			viewMode : 'years',
@@ -106,3 +110,6 @@
 	});
 </script>
 
+<script type="text/javascript">
+	setPage("returnReportMenuId");
+	</script>

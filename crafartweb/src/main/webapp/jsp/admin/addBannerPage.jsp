@@ -35,6 +35,14 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="col-sm-2 control-label" for="subcategories">BannerGroup</label>
+								<div class="col-sm-10">
+									<select name="subcategories" id="input-subcategories" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected"></option>
+										<option value="0"></option>
+									</select>
+								</div>
+							</div><div class="form-group">
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Image</span></label>
 								<div class="col-sm-10">
 									<img id="image" class="image" src="${context}/resources/img/dhl.png" style="width: 200px; height: 100px;" class="img-responsive">

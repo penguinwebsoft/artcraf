@@ -46,7 +46,7 @@
 									<td>MP3 Players > test 18</td>
 									<td>150.00</td>
 									<td>1</td>
-									<td><a class="btn btn-warning" href="${baseURL}/menu/editcommission">Edit</a></td>
+									<td><a class="btn btn-warning" href="${baseURL}/menu/editCommission">Edit</a></td>
 								</tr>
 							</thead>
 							<thead>
@@ -68,3 +68,7 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	setPage("commissionListMenuId");
+</script>

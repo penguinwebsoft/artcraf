@@ -8,11 +8,11 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Return Reason Template</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Return Reason</h1>
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/addNewSellers">Add</a>
+				<a class="btn btn-success" href="${baseURL}/menu/addReturnReason">Add</a>
 				<button type="button" class="btn btn-warning">Delete</button>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>Rupees</td>
 									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
+									<a class="btn btn-warning" href="${baseURL}/menu/editReturnReason">Edit</a>
 									</td>
 								</tr>
 							</thead>
@@ -47,3 +47,6 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+	setPage("returnReasonMenuId");
+	</script>

@@ -12,7 +12,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Sub Categories</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<button type="button" class="btn btn-success">Save</button>
+				<a class="btn btn-success" href="${baseURL}/menu/addSubCategories">Add</a>
 				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>MP3 Players > test 18</td>
 									<td>0</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
+									<td><a class="btn btn-warning" href="${baseURL}/menu/editSubCategories">edit</a></td>
 								</tr>
 							</thead>
 							<thead>
@@ -120,5 +120,7 @@
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	setPage("subCategoriesMenuId");
+</script>
 

@@ -33,9 +33,8 @@
 								<label class="col-sm-2 control-label">Customer Name</label> <span class="col-sm-2"> <input type="text" name="customername" value="" placeholder="customername" id="input-orderid"
 									class="form-control" />
 								</span> <label class="col-sm-2 control-label">Mobile Number</label> <span class="col-sm-2"> <input type="text" name="mobileno" value="" placeholder="mobileno" id="mobileno"
-									class="form-control" /> 
-								</span> 
-								<label class="col-sm-2 control-label">Approved</label> <span class="col-sm-2"> <select name="approved" id="approved" placeholder="---please select---" class="form-control">
+									class="form-control" />
+								</span> <label class="col-sm-2 control-label">Approved</label> <span class="col-sm-2"> <select name="approved" id="approved" placeholder="---please select---" class="form-control">
 										<option value="1" selected="selected">Yes</option>
 										<option value="0">No</option>
 								</select>
@@ -44,23 +43,29 @@
 							</div>
 
 							<div class="form-group required">
-
 								<label class="col-sm-2 control-label" style="padding-top: 1px;"><span data-toggle="tooltip" title="email">Email</span></label> <span class="col-sm-2"> <input type="text" name="email"
 									value="" placeholder="email" id="email" class="form-control" />
 								</span> <label class="col-sm-2 control-label">Status</label> <span class="col-sm-2"> <select name="status" id="status" placeholder="---please select---" class="form-control">
 										<option value="1" selected="selected">Enable</option>
 										<option value="0">disable</option>
 								</select>
-								</span> <label class="col-sm-2 control-label" for="input-datestart"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Start</span></label> <span class="col-sm-2"> <input
-									type="number" name="datestart" value="" placeholder="datestart" id="dateStart" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-dateadded"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Added</span></label> <span class="col-sm-2"> <input
+									type="text" name="dateadded" value="" placeholder="dateadded" id="dateAdded" class="form-control" />
 								</span>
+							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-status">Export</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+									class="form-control">
+										<option value="1" selected="selected">Export to Excel</option>
+										<option value="0">Export to pdf</option>
+								</select>
+								</span>
+
 							</div>
 							<div>
-								<label class="col-sm-2 control-label" style="padding-top: 1px;margin-left:-7px"><span data-toggle="tooltip" title="id">Id</span></label> <span class="col-sm-2"> <input type="number" name="id" value=""
-									placeholder="id" id="id" class="form-control" />
-								</span>
+								<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+								<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
 							</div>
-							<button type="button" class="btn btn-primary col-md-offset-7">Filter</button>
 					</div>
 				</div>
 			</div>
@@ -93,10 +98,7 @@
 								<td>Pending</td>
 								<td>124.82.60.49</td>
 								<td>05/05/2015</td>
-								<td>
-									
-									<a class="btn btn-warning" href="${baseURL}/menu/editCustomerList">Edit</a>
-								</td>
+								<td><a class="btn btn-warning" href="${baseURL}/menu/editCustomerList">Edit</a></td>
 							</tr>
 						</thead>
 					</table>
@@ -107,16 +109,17 @@
 </div>
 
 <script type="text/javascript">
+	setPage("customerListMenuId");
 	$(document).ready(function() {
-		$("#dateStart").datepicker({
+		$("#dateAdded").datepicker({
 			viewMode : 'years',
 			format : 'yyyy/mm/dd',
 		});
 
-		$('#dateStart').on('changeDate', function(ev) {
+		$('#dateAdded').on('changeDate', function(ev) {
 			//close when viewMode='0' (days)
 			if (ev.viewMode === 'days') {
-				$('#dateStart').datepicker('hide');
+				$('#dateAdded').datepicker('hide');
 			}
 		})
 

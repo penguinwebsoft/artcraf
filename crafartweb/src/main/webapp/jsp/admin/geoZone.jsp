@@ -59,7 +59,7 @@ $(document).ready(function() {
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>Geo_Zone Title</td>
 									<td>Geo_Zone Description</td>
-									<td>Sort Order</td>
+	 								<td>Sort Order</td>
 									<td>Action</td>
 								</tr>
 							</thead>
@@ -93,5 +93,36 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var geoZoneBO = {};
+			
+			geoZoneBO.Geo_Zone Title = $("#Geo_Zone Title").val();
+			geoZoneBO.Geo_Zone Description = $("#Geo_Zone Description").val();
+			geoZoneBO.Sort Order = $("#Sort Order").val();
+			geoZoneBO.Action = $("#Action").val();
+			
+			
+			postData = JSON.stringify(geoZoneBO);
+			$.ajax({
+				url : "../geoZone/addgeoZone",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+</script>
+<script type="text/javascript">
+	setPage("geoZoneMenuId");
+</script>
 
 

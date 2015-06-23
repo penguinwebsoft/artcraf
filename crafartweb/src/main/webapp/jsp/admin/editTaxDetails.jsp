@@ -8,7 +8,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Tax Details</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Edit Tax Details</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Save</button>
@@ -19,7 +19,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="icon-th-list"></i> &nbsp; Add Tax Details
+					<i class="icon-th-list"></i> &nbsp;Edit Tax Details
 				</h3>
 			</div>
 			<div class="panel-body">

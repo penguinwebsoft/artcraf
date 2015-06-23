@@ -131,7 +131,7 @@
 								<div class="col-sm-10">
 									<textarea name="command" rows="5" placeholder="command" id="command" class="form-control"></textarea>
 								</div>
-								<button type="button" class="btn btn-warning col-md-offset-10">Add History</button>
+								<button type="button" class="btn btn-warning col-md-offset-10" style="margin-top:5px">Add History</button>
 							</div>
 						</div>
 						<!-- Transaction tab-data-->
@@ -159,7 +159,7 @@
 									<input type="text" name="mobilephone" value="" placeholder="Amount" id="input-mobilephone" class="form-control" />
 								</div>
 							</div>
-							<button type="button" class="btn btn-warning col-md-offset-11">Add Transaction</button>
+							<button type="button" class="btn btn-warning col-md-offset-10">Add Transaction</button>
 						</div>
 						<!-- IpAddress tab-data-->
 						<div class="tab-pane fade" id="tab-ipaddress">

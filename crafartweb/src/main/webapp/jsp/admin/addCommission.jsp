@@ -8,9 +8,9 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Add Commission Page</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Commission Page</h1>
 			</div>
-			<div class="pull-right" style="padding: 25px;">
+			<div class="pull-right" style="padding: 25px;"> 
 				<button type="button" class="btn btn-success">Save</button>
 				<button type="button" class="btn">Cancel</button>
 			</div>

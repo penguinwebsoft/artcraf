@@ -49,15 +49,28 @@
 								</select>
 								</span>
 							</div>
-							<div>
-								<label class="col-sm-2 control-label" for="input-dateadded" style="margin-left: -7px"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Added</span></label> <span class="col-sm-2"> <input
-									type="dateadded" name="dateadded" value="" placeholder="dateadded" id="dateAdded" class="form-control" />
-								</span> 
-								<label class="col-sm-2 control-label" for="input-datemodified" style="margin-left: 10px"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Modified</span></label> <span class="col-sm-2"> <input
-									type="datemodified" name="datemodified" value="" placeholder="datemodified" id="dateModified" class="form-control" />
-								</span> 
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-dateadded"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Added</span></label> <span
+									class="col-sm-2"> <input type="dateadded" name="dateadded" value="" placeholder="dateadded" id="dateAdded" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-datemodified" style="margin-left: 10px"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Modified</span></label> <span
+									class="col-sm-2"> <input type="datemodified" name="datemodified" value="" placeholder="datemodified" id="dateModified" class="form-control" />
+								</span>
 							</div>
-							<button type="button" class="btn btn-primary col-md-offset-3">Filter</button>
+							<div class="form-group required">
+								<div>
+									<label class="col-sm-2 control-label" for="input-status">Export</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+										class="form-control">
+											<option value="1" selected="selected">Export to Excel</option>
+											<option value="0">Export to pdf</option>
+									</select>
+									</span>
+								</div>
+
+							</div>
+							<div>
+								<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+								<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
+							</div>
 					</div>
 				</div>
 			</div>
@@ -83,6 +96,20 @@
 								<td>Action</td>
 							</tr>
 						</thead>
+						<thead>
+							<tr>
+								<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
+								<td>1</td>
+								<td>1</td>
+								<td>raj</td>
+								<td>painting</td>
+								<td>god pic</td>
+								<td>received</td>
+								<td></td>
+								<td></td>
+								<td><a class="btn btn-warning" href="${baseURL}/menu/editReturnPage">Edit</a></td>
+							</tr>
+						</thead>
 					</table>
 				</div>
 			</div>
@@ -91,6 +118,7 @@
 </div>
 
 <script type="text/javascript">
+	setPage("returnPageMenuId");
 	$(document).ready(function() {
 		$("#dateAdded").datepicker({
 			viewMode : 'years',
@@ -103,7 +131,7 @@
 				$('#dateAdded').datepicker('hide');
 			}
 		})
-		
+
 		$("#dateModified").datepicker({
 			viewMode : 'years',
 			format : 'yyyy/mm/dd',

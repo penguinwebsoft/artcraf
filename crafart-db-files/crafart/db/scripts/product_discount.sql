@@ -5,15 +5,13 @@ CREATE TABLE PRODUCT_DISCOUNT (
 	QUANTITY NUMERIC,
 	PRICE FLOAT,
 	START_DATE VARCHAR(45),
-	END_DATE VARCHAR(45),
-	DISCOUNT_CODE VARCHAR(20)
+	END_DATE VARCHAR(45)
 	)
 	
+	/*************ADDING NEW COLUMN DISCOUNT CODE***********/
+	ALTER TABLE PRODUCT_DISCOUNT ADD COLUMN discount_code character varying(20)
 	
-	/********* ALTER TABLE TO CHANGE IN PRICE TO VALUE **************/
-	alter table  PRODUCT_DISCOUNT alter column value type float
-	
-	alter table  PRODUCT_DISCOUNT alter column discount_code type varchar(20)
-	
-	
+	/***************RENAMING COLUMN PRICE TO VALUE**************/
+	ALTER TABLE PRODUCT_DISCOUNT RENAME COLUMN PRICE TO VALUE
+
 	

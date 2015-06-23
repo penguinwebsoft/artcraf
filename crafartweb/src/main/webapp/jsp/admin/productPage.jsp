@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page isELIgnored="false"%>
-<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" /> 
+<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
 <div class="col-lg-10">
@@ -30,42 +30,40 @@
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
 							<!-- Start tab-data-->
 							<div class="form-group required">
-								<label class="col-sm-2 control-label" for="input-model">Product Name</label>
-								<div class="col-sm-10">
-									<input type="text" name="name" value="" placeholder="name" id="input-Name" class="form-control" />
+								<label class="col-sm-2 control-label" for="input-model">Product Name</label> <span class="col-sm-2"> <input type="text" name="productname" value="" placeholder="productname"
+									id="productname" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-startprice">Start Price</label> <span class="col-sm-2"> <input type="text" name="startprice" value="" placeholder="startprice"
+									id="startprice" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-endprice">End Price</label> <span class="col-sm-2"> <input type="text" name="endprice" value="" placeholder="endprice" id="endprice"
+									class="form-control" />
+								</span>
+							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-model">Model</label> <span class="col-sm-2"> <input type="text" name="model" value="" placeholder="model" id="model"
+									class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-quantity">Quantity</label> <span class="col-sm-2"> <input type="text" name="quantity" value="" placeholder="quantity" id="quantity"
+									class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-status">Status</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+									class="form-control">
+										<option value="1" selected="selected">Enable</option>
+										<option value="0">Disable</option>
+								</select>
+								</span>
+							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-sellername">Seller Name</label> <span class="col-sm-2"> <input type="text" name="sellername" value="" placeholder="sellername"
+									id="sellername" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-status">Export</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+									class="form-control">
+										<option value="1" selected="selected">Export to Excel</option>
+										<option value="0">Export to pdf</option>
+								</select>
+								</span>
+								<div>
+									<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+									<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-price"><span data-toggle="tooltip" title="companyname">Price</span></label>
-								<div class="col-sm-10">
-									<input type="number" name="price" value="" placeholder="price" id="input-price" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-model"><span data-toggle="tooltip" title="Force a minimum ordered amount">Model</span></label>
-								<div class="col-sm-10">
-									<input type="text" name="model" value="" placeholder="model" id="input-model" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Quantity</span></label>
-								<div class="col-sm-10">
-									<input type="number" name="quantity" value="" placeholder="quantity" id="input-quantity" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-status">Status</label>
-								<div class="col-sm-10">
-									<select name="status" id="input-status" placeholder="---please select---" class="form-control">
-										<option value="1" selected="selected">1</option>
-										<option value="0">2</option>
-									</select>
-								</div>
-							</div>
-							<button type="button" class="btn btn-primary col-md-offset-6">
-								<span class="glyphicon glyphicon glyphicon-search" aria-hidden="true">Filter</span>
-							</button>
 					</div>
 				</div>
 			</div>
@@ -100,9 +98,7 @@
 								<td>150.00</td>
 								<td>1</td>
 								<td>Enable</td>
-								<td>
-									<a class="btn btn-warning" href="${baseURL}/menu/editProduct">Edit</a>
-								</td>
+								<td><a class="btn btn-warning" href="${baseURL}/menu/editProduct">Edit</a></td>
 							</tr>
 						</thead>
 						<thead>
@@ -132,7 +128,7 @@
 								<td>Enable</td>
 								<td>
 									<button type="button" class="btn btn-warning">Edit</button>
-										</td>
+								</td>
 							</tr>
 						</thead>
 						<thead>
@@ -142,7 +138,7 @@
 								<td>Black Cotton Kurti</td>
 								<td>Black Cotton Kurti</td>
 								<td>12312</td>
-								<td>123123.0000 </td>
+								<td>123123.0000</td>
 								<td>1</td>
 								<td>Enable</td>
 								<td>
@@ -177,7 +173,7 @@
 								<td>Enable</td>
 								<td>
 									<button type="button" class="btn btn-warning">Edit</button>
-									</td>
+								</td>
 							</tr>
 						</thead>
 						<thead>
@@ -215,5 +211,7 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+<script type="text/javascript">
+	setPage("productPageMenuId");
+</script>

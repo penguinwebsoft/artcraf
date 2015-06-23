@@ -557,6 +557,9 @@ ul.wysihtml5-toolbar>li {
 		image_row++;
 	}
 </script>
+<script>
+$(document).ready(function () { $("#cleditor").cleditor(); });
+</script>
 
 <div class="col-lg-10">
 
@@ -602,7 +605,7 @@ ul.wysihtml5-toolbar>li {
 									<div class="form-group">
 										<label class="control-label col-sm-2">Choose Seller</label>
 										<div class="col-sm-10">
-											<span class="col-sm-4"><input type="text" style="widows: 100%" placeholder="Search Seller" id="searchSeller" class="form-control" /></span> <span class="col-sm-1"><button
+											<span class="col-sm-5" style="margin-left:-15px"><input type="text" style="widows: 100%" placeholder="Search Seller" id="searchSeller" class="form-control" /></span> <span class="col-sm-1"><button
 													type="button" class="btn btn-success" style="margin-top: 1%">Search</button></span>
 										</div>
 									</div>
@@ -637,7 +640,7 @@ ul.wysihtml5-toolbar>li {
 									</div>
 									<br>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-description1">Description</label>
+										<label class="col-sm-2 control-label" for="input-description1" style="margin-top:20px">Description</label>
 										<div class="col-lg-10">
 											<div class="box">
 												<div id="cleditorDiv" class="body collapse in">
@@ -686,11 +689,23 @@ ul.wysihtml5-toolbar>li {
 											<input type="text" name="upc" value="" placeholder="UPC" id="input-upc" class="form-control" />
 										</div>
 									</div>
-
+                                     <div class="form-group">
+										<label class="col-sm-2 control-label" for="input-city">City</label>
+										<div class="col-sm-10">
+											<input type="text" name="city" value="" placeholder="city" id="input-city" class="form-control" />
+										</div>
+									</div>
+									
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-location">State</label>
 										<div class="col-sm-10">
 											<input type="text" name="location" value="" placeholder="Enter State" id="input-location" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-pincode">Pincode</label>
+										<div class="col-sm-10">
+											<input type="text" name="pincode" value="" placeholder="Pincode" id="input-pincode" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -961,20 +976,13 @@ ul.wysihtml5-toolbar>li {
 
 								<!-- Setting Page -->
 								<div class="tab-pane fade" id="tab-setting">
-									<div class="form-group required" id="chooseseller">
-										<label class="col-sm-3 control-label" for="chooseseller">Choose Seller</label>
-										<div class="col-sm-3">
-											<input type="text" name="chooseseller" value="" placeholder="chooseseller" id="chooseseller" class="form-control" />
-										</div>
-									</div>
-
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-status">Status</label>
 										<div class="col-sm-10">
 											<select name="status" id="input-status" class="form-control">
 												<option value="11" selected="selected">Approved</option>
-												<option value="12">Pending Approved</option>
-												<option value="13">Reject</option>
+												<option value="12">Pending Approval</option>
+												<option value="13">Rejected</option>
 											</select>
 										</div>
 									</div>
@@ -991,3 +999,4 @@ ul.wysihtml5-toolbar>li {
 		</div>
 	</div>
 </div>
+

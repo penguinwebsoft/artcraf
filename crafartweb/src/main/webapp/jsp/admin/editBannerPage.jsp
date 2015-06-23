@@ -8,7 +8,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Banner Page</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Edit Banner Page</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Save</button>
@@ -19,7 +19,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="icon-th-list"></i> &nbsp; Add Banner Page
+					<i class="icon-th-list"></i> &nbsp; Edit Banner Page
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -32,6 +32,15 @@
 								<label class="col-sm-2 control-label">Banner Title</label>
 								<div class="col-sm-10">
 									<input type="text" name="bannertitle" value="" placeholder="bannertitle" id="input-bannertitle" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="subcategories">Banner Group</label>
+								<div class="col-sm-10">
+									<select name="subcategories" id="input-subcategories" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected"></option>
+										<option value="0"></option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">

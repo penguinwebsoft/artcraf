@@ -29,19 +29,13 @@
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
 							<!-- Start tab-data-->
 							<div class="form-group required">
-								<label class="col-sm-2 control-label" for="input-model">Length</label>
+								<label class="col-sm-2 control-label" for="input-model">Length Class Title</label>
 								<div class="col-sm-10">
 									<input type="text" name="length" value="" placeholder="length" id="input-length" class="form-control" />
 								</div>
 							</div>
-					<div class="form-group">
-								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-class"><span data-toggle="tooltip" title="class">Class</span></label>
-								<div class="col-sm-10">
-									<input type="text" name="class" value="" placeholder="class" id="input-class" class="form-control" />
-								</div>
-							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-class"><span data-toggle="tooltip" title="title">Title</span></label>
+								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-class"><span data-toggle="tooltip" title="title">Length Class Unit</span></label>
 								<div class="col-sm-10">
 									<input type="text" name="title" value="" placeholder="title" id="input-title" class="form-control" />
 								</div>
@@ -50,6 +44,16 @@
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
 									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="input-status">Status</label>
+								<div class="col-sm-10">
+									<select name="status" id="input-status" class="form-control">
+										<option value="1" selected="selected">ENABLE</option>
+										<option value="2" selected="selected">DISABLE</option>
+
+									</select>
 								</div>
 							</div>
 					</div>

@@ -29,67 +29,50 @@
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
 							<!-- Start tab-data-->
 							<div class="form-group required">
-								<label class="col-sm-2 control-label" for="input-model">Product Name</label>
-								<div class="col-sm-10">
-									<input type="text" name="name" value="" placeholder="name" id="input-Name" class="form-control" />
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-sku"><span data-toggle="tooltip" title="companyname">Model</span></label>
-								<div class="col-sm-10">
-									<input type="text" name="model" value="" placeholder="model" id="input-model" class="form-control" />
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-status">Status</label>
-								<div class="col-sm-10">
-									<select name="status" id="input-status" placeholder="---please select---" class="form-control">
+								<label class="col-sm-2 control-label" for="input-productname"><span data-toggle="tooltip" title="Force a minimum ordered amount">Product Name</span></label> <span class="col-sm-2"> <input
+									type="text" name="productname" value="" placeholder="productname" id="productname" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-model"><span data-toggle="tooltip" title="Force a minimum ordered amount">Model</span></label> <span class="col-sm-2"> <input
+									type="text" name="model" value="" placeholder="model" id="model" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-status">Status</label> <span class="col-sm-2"> <select name="status" id="status" placeholder="---please select---" class="form-control">
 										<option value="1" selected="selected">1</option>
-										<option value="0">2</option>
-									</select>
+										<option value="2">2</option>
+								</select>
+								</span>
+							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-ventorname">Ventor Name</label> <span class="col-sm-2"> <select name="ventorname" id="input-ventorname"
+									placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected">Admin</option>
+										<option value="0">Admin1</option>
+								</select>
+								</span> <label class="col-sm-2 control-label" for="input-price"><span data-toggle="tooltip" title="Force a minimum ordered amount">Price</span></label> <span class="col-sm-2"> <input
+									type="text" name="price" value="" placeholder="price" id="price" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="Force a minimum ordered amount">Sku</span></label> <span class="col-sm-2"> <input type="text"
+									name="sku" value="" placeholder="sku" id="sku" class="form-control" />
+								</span>
+							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-quantity"><span data-toggle="tooltip" title="Force a minimum ordered amount">Quantity</span></label> <span class="col-sm-2"> <input
+									type="text" name="quantity" value="" placeholder="quantity" id="quantity" class="form-control" />
+								</span> <label class="col-sm-2 control-label" for="input-status">Export</label> <span class="col-sm-2"> <select name="status" id="input-status" placeholder="---please select---"
+									class="form-control">
+										<option value="1" selected="selected">Export to Excel</option>
+										<option value="0">Export to pdf</option>
+								</select>
+								</span>
+								<div>
+									<button type="button" class="btn btn-success col-md-offset-11">Export</button>
+									<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-status">Vendor Name</label>
-								<div class="col-sm-10">
-									<select name="name" id="input-name" placeholder="please select" class="form-control">
-										<option value="1" selected="selected">admin</option>
-										<option value="0">admin1</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Price</span></label>
-								<div class="col-sm-10">
-									<input type="number" name="price" value="" placeholder="price" id="input-price" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SKU</span></label>
-								<div class="col-sm-10">
-									<input type="number" name="sku" value="" placeholder="sku" id="input-sku" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Quantity</span></label>
-								<div class="col-sm-10">
-									<input type="number" name="quantity" value="" placeholder="quantity" id="input-quantity" class="form-control" />
-								</div>
-							</div>
-							<button type="button" class="btn btn-primary col-md-offset-6">
-								<span class="glyphicon glyphicon glyphicon-search" aria-hidden="true">Filter</span>
-							</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<!-- Table Section-->
-	<div class="container-fluid" style="background-color: white;">
+	<div class="container" style="background-color: white;">
 		<div class="container">
 			<div class="tab-pane" id="tab-shipping">
 				<div class="table-responsive">
