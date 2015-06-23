@@ -45,7 +45,8 @@ import com.crafart.service.exception.CrafartServiceException;
  * @version 1.0
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
+		"classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -193,12 +194,12 @@ public class ManageProductServiceTest {
 		List<ProductDiscountBO> productDiscountBOs = new ArrayList<>();
 		ProductDiscountBO productDiscountBO = new ProductDiscountBO();
 		productDiscountBO.setEndDate("01/01/0101");
-		productDiscountBO.setPrice(101.2f);
+		productDiscountBO.setValue(101.2f);
 		productDiscountBO.setQuantity(23);
 		productDiscountBO.setStartDate("00/00/0202");
 		ProductDiscountBO productDiscountBO2 = new ProductDiscountBO();
 		productDiscountBO2.setEndDate("00/01/0101");
-		productDiscountBO2.setPrice(125);
+		productDiscountBO2.setValue(125);
 		productDiscountBO2.setQuantity(15);
 		productDiscountBO2.setStartDate("11/11/1111");
 		productDiscountBOs.add(productDiscountBO2);
@@ -330,9 +331,11 @@ public class ManageProductServiceTest {
 			Assert.fail();
 		}
 		try {
-			ProductBO productBO = manageProductServiceImpl.getProductDetail(productBO1.getProductId());
+			ProductBO productBO = manageProductServiceImpl
+					.getProductDetail(productBO1.getProductId());
 
-			for (ProductAttributeBO productAttributeBO : productBO.getProductAttributeBOs()) {
+			for (ProductAttributeBO productAttributeBO : productBO
+					.getProductAttributeBOs()) {
 				System.out.print(productAttributeBO.getText());
 			}
 		} catch (CrafartServiceException csExp) {
@@ -348,7 +351,8 @@ public class ManageProductServiceTest {
 	@Rollback(true)
 	public void testGetAllProduct() {
 		try {
-			List<ProductBO> productBOs = manageProductServiceImpl.getAllProduct();
+			List<ProductBO> productBOs = manageProductServiceImpl
+					.getAllProduct();
 			Assert.assertNotNull(productBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
