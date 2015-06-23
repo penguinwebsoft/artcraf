@@ -42,7 +42,7 @@ public class LengthClassDO implements Serializable, Cloneable {
 	private Integer sortorder;
 
 	@Column(name = "unit")
-	private Character unit;
+	private String unit;
 
 	public long getLengthClassId() {
 		return lengthClassId;
@@ -68,11 +68,11 @@ public class LengthClassDO implements Serializable, Cloneable {
 		this.isActive = isActive;
 	}
 
-	public Character getUnit() {
+	public String getUnit() {
 		return unit;
 	}
 
-	public void setUnit(Character unit) {
+	public void setUnit(String unit) {
 		this.unit = unit;
 	}
 

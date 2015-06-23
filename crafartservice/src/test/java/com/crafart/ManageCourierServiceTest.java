@@ -63,8 +63,8 @@ public class ManageCourierServiceTest {
 	private CourierBO getCourier() {
 		CourierBO courierBO = new CourierBO();
 		courierBO.setImage("from service");
-		courierBO.setName("DTTC");
-		courierBO.setProductLimit(4);
+		courierBO.setCourierName("BlueDart");
+		courierBO.setEstimatedDeliveryTime("lfl");
 		courierBO.setSortOrder(9);
 		return courierBO;
 	}

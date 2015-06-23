@@ -32,19 +32,16 @@ public class TaxClassController {
 
 	private static final Logger log = Logger.getLogger(TaxClassController.class);
 
-	@Autowired
-	private ManageTaxClassService manageTaxClassServiceImpl;
-
-	@RequestMapping(value = { " /getTaxClass " }, method = RequestMethod.POST)
+tMapping(value = { " /getTaxClass " }, method = RequestMethod.POST)
+	public @ResponseBody
+alue = { " /getTaxClass " }, method = RequestMethod.POST)
 	public @ResponseBody
 	ModelMap getTaxClassDetail(HttpSession session) {
-		ModelMap modelMap = new ModelMap();
-		List<TaxClassBO> taxClassBOs = new ArrayList<>();
-		try {
-			taxClassBOs = manageTaxClassServiceImpl.getTaxClassDetail();
-			modelMap.addAttribute("taxClassBOs", taxClassBOs);
+ @ResponseBody ModelMap getTaxClassDetail(HttpSession session) {
+BOs = new ArrayLis			modelMap.addAttribute("taxClassBOs", taxClassBOs);
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application-error while adding taxdetails", crafartServiceException);
+log.error("Application-error while adding taxdetails", crafartServiceException);
 		}
 		return modelMap;
 

@@ -97,8 +97,6 @@ public class CrafartOrderDAOTest {
 	@Autowired
 	private UserGroupDAO userGroupDAOImpl;
 
-	
-	
 	/*
 	 * Test case to add data in crafart_order table
 	 */
@@ -124,7 +122,8 @@ public class CrafartOrderDAOTest {
 	public void testGetCrafartOrder() {
 		/* adding data to table and then retrieving from table */
 		try {
-			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl.getCrafartOrder();
+			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl
+					.getCrafartOrder();
 			Assert.assertNotNull(crafartOrderDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
@@ -142,7 +141,7 @@ public class CrafartOrderDAOTest {
 		try {
 			crafartOrderDAOImpl.addCrafartOrder(crafartOrderDO);
 			crafartOrderDO.getCustomerDO().setFirstName("dhoni");
-			crafartOrderDO.getCourierDO().setName("ranchi");
+			crafartOrderDO.getCourierDO().setCourierName("ranchi");
 			crafartOrderDO.getProductDO().setModel("abc0001111");
 			crafartOrderDAOImpl.updateCrafartOrder(crafartOrderDO);
 		} catch (CrafartDataException cdExp) {
@@ -167,7 +166,9 @@ public class CrafartOrderDAOTest {
 			Assert.fail();
 		}
 		try {
-			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl.getCustomerOrder(crafartOrderDO.getCustomerDO().getCustomerId());
+			List<CrafartOrderDO> crafartOrderDOs = crafartOrderDAOImpl
+					.getCustomerOrder(crafartOrderDO.getCustomerDO()
+							.getCustomerId());
 			Assert.assertNotNull(crafartOrderDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
@@ -209,8 +210,8 @@ public class CrafartOrderDAOTest {
 	private CourierDO getCourier() {
 		CourierDO courierDO = new CourierDO();
 		courierDO.setImage("asdfgh");
-		courierDO.setName("BlueDart");
-		courierDO.setProductLimit(1);
+		courierDO.setCourierName("BlueDart");
+		courierDO.setEstimatedDeliveryTime("gjtr");
 		courierDO.setSortOrder(1);
 		try {
 			courierDAOImpl.addCourierDetail(courierDO);
@@ -333,12 +334,12 @@ public class CrafartOrderDAOTest {
 	private CurrencyDO getCurrency() {
 		CurrencyDO currencyDO = new CurrencyDO();
 		currencyDO.setCode("klkl");
-		currencyDO.setDecimalPlace(2);
+		currencyDO.setDecimalPlace(9);
 		currencyDO.setStatus("sdsd");
-		currencyDO.setSymbolLeft('$');
+		currencyDO.setSymbolRight('$');
 		currencyDO.setSymbolRight('$');
 		currencyDO.setTitle("jkl");
-		currencyDO.setValue(15);
+		currencyDO.setValue(5);
 		try {
 			currencyDAOImpl.addCurrency(currencyDO);
 		} catch (CrafartDataException cdExp) {

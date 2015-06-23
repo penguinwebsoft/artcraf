@@ -21,6 +21,8 @@ public class TaxClassBO implements Serializable {
 	private String title;
 
 	private String description;
+	
+	private int sortOrder;
 
 	public long getTaxClassId() {
 		return taxClassId;
@@ -45,4 +47,15 @@ public class TaxClassBO implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public int getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(int sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
+
+
 }

@@ -39,7 +39,7 @@ public class CurrencyDAOTest {
 	@Test
 	@Rollback(true)
 	public void testAddCurrency() {
-		CurrencyDO currencyDO = getCurrency();
+		CurrencyDO currencyDO = getCurrencyDetail();
 		try {
 			currencyDAOImpl.addCurrency(currencyDO);
 		} catch (CrafartDataException csExp) {
@@ -54,7 +54,7 @@ public class CurrencyDAOTest {
 	 */
 	@Test
 	@Rollback(true)
-	public void testGetCurrency() {
+	public void testGetCurrencyDetail() {
 		try {
 			/* adding data to table and then retrieving data from table */
 			testAddCurrency();
@@ -67,10 +67,10 @@ public class CurrencyDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private CurrencyDO getCurrency() {
+	private CurrencyDO getCurrencyDetail() {
 		CurrencyDO currencyDO = new CurrencyDO();
 		currencyDO.setCode("klkl");
-		currencyDO.setDecimalPlace(2);
+		currencyDO.setDecimalPlace(90);
 		currencyDO.setStatus("sdsd");
 		currencyDO.setSymbolLeft('$');
 		currencyDO.setSymbolRight('&');

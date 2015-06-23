@@ -26,7 +26,7 @@ public class CurrencyBO implements Serializable {
 
 	private char symbolRight;
 
-	private int decimalPlace;
+	private Integer decimalPlace;
 
 	private double value;
 
@@ -60,23 +60,23 @@ public class CurrencyBO implements Serializable {
 		return symbolLeft;
 	}
 
-	public void setSymbolLeft(char symbolLeft) {
-		this.symbolLeft = symbolLeft;
+	public void setSymbolLeft(char c) {
+		this.symbolLeft = c;
 	}
 
 	public char getSymbolRight() {
 		return symbolRight;
 	}
 
-	public void setSymbolRight(char symbolRight) {
-		this.symbolRight = symbolRight;
+	public void setSymbolRight(char c) {
+		this.symbolRight = c;
 	}
 
-	public int getDecimalPlace() {
+	public Integer getDecimalPlace() {
 		return decimalPlace;
 	}
 
-	public void setDecimalPlace(int decimalPlace) {
+	public void setDecimalPlace(Integer decimalPlace) {
 		this.decimalPlace = decimalPlace;
 	}
 
