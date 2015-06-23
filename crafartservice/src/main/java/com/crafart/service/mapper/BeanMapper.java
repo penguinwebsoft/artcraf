@@ -376,8 +376,9 @@ public class BeanMapper {
 	public CourierDO mapCourierBOToDO(CourierBO courierBO, CourierDO courierDO) {
 		courierDO.setCourierId(courierBO.getCourierId());
 		courierDO.setImage(courierBO.getImage());
-		courierDO.setName(courierBO.getName());
-		courierDO.setProductLimit(courierBO.getProductLimit());
+		courierDO.setCourierName(courierBO.getCourierName());
+		courierDO
+				.setEstimatedDeliveryTime(courierBO.getEstimatedDeliveryTime());
 		courierDO.setSortOrder(courierBO.getSortOrder());
 		return courierDO;
 
@@ -386,8 +387,8 @@ public class BeanMapper {
 	public CourierBO mapCourierDOToBO(CourierDO courierDO, CourierBO courierBO) {
 		courierBO.setCourierId(courierDO.getCourierId());
 		courierBO.setImage(courierDO.getImage());
-		courierBO.setName(courierDO.getName());
-		courierBO.setProductLimit(courierDO.getProductLimit());
+		courierBO.setCourierName(courierDO.getCourierName());
+		courierBO.setEstimatedDeliveryTime(courierDO.getEstimatedDeliveryTime());
 		courierBO.setSortOrder(courierDO.getSortOrder());
 		return courierBO;
 
@@ -434,7 +435,7 @@ public class BeanMapper {
 
 	public ProductDiscountDO mapProductDiscountBOToDO(ProductDiscountBO productDiscountBO, ProductDiscountDO productDiscountDO, ProductDO productDO) {
 		productDiscountDO.setEndDate(productDiscountBO.getEndDate());
-		productDiscountDO.setPrice(productDiscountBO.getPrice());
+		productDiscountDO.setValue(productDiscountBO.getValue());
 		productDiscountDO.setProductDiscountId(productDiscountBO.getProductDiscountId());
 		productDiscountDO.setQuantity(productDiscountBO.getQuantity());
 		productDiscountDO.setStartDate(productDiscountBO.getStartDate());
@@ -446,7 +447,7 @@ public class BeanMapper {
 
 	public ProductDiscountBO mapProductDiscountDOToBO(ProductDiscountDO productDiscountDO, ProductDiscountBO productDiscountBO) {
 		productDiscountBO.setEndDate(productDiscountDO.getEndDate());
-		productDiscountBO.setPrice(productDiscountDO.getPrice());
+		productDiscountBO.setValue(productDiscountDO.getValue());
 		productDiscountBO.setProductDiscountId(productDiscountDO.getProductDiscountId());
 		productDiscountBO.setQuantity(productDiscountDO.getQuantity());
 		productDiscountBO.setStartDate(productDiscountDO.getStartDate());
