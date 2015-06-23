@@ -455,7 +455,17 @@ public class MenuController {
 	public ModelAndView showMailPage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("mailPage");
 	}
-    
+
+	@RequestMapping("/mailListPage")
+	public ModelAndView showMailListPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("mailListPage");
+	}
+
+	@RequestMapping("/editMailPage")
+	public ModelAndView showEditMailPage(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editMailPage");
+	}
+	
 	@RequestMapping("/couponList")
 	public ModelAndView showCouponList(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("couponList");
