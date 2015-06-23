@@ -322,6 +322,16 @@
 		<put-attribute name="title" value="Mail Page" />
 		<put-attribute name="adminBody" value="/jsp/admin/mailPage.jsp" />
 	</definition>
+	
+	<definition name="mailListPage" extends="admin.definition">
+		<put-attribute name="title" value="Mail List Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/mailListPage.jsp" />
+	</definition>
+	
+	<definition name="editMailPage" extends="admin.definition">
+		<put-attribute name="title" value="Edit Mail Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/editMailPage.jsp" />
+	</definition>
 
 	<definition name="currenciesPage" extends="admin.definition">
 		<put-attribute name="title" value="Currencies Page" />
