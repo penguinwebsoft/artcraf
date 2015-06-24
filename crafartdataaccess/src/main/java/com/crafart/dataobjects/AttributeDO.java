@@ -37,7 +37,7 @@ public class AttributeDO implements Cloneable, Serializable {
 	@JoinColumn(name = "category_id", nullable = false)
 	private CategoryDO categoryDO;
 
-	@Column(name = "name")
+	@Column(name = "attribute_name")
 	private String attributeName;
 
 	@Column(name = "sort_order")
