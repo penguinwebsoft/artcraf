@@ -14,3 +14,5 @@ CREATE TABLE COURIER (
     ALTER TABLE courier ADD COLUMN estimated_delivery_time time with time zone;
     ALTER TABLE courier DROP COLUMN product_limit small int;
    
+    /***********************changing estimated delivery time to character varying*******************/
+    ALTER TABLE courier ALTER COLUMN estimated_delivery_time TYPE character varying(20);
