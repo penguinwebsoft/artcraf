@@ -72,8 +72,8 @@ public class CurrencyDAOTest {
 		currencyDO.setCode("klkl");
 		currencyDO.setDecimalPlace(90);
 		currencyDO.setStatus("sdsd");
-		currencyDO.setSymbolLeft('$');
-		currencyDO.setSymbolRight('&');
+		currencyDO.setSymbolLeft("$");
+		currencyDO.setSymbolRight("$");
 		currencyDO.setTitle("jkl");
 		currencyDO.setValue(15);
 		return currencyDO;

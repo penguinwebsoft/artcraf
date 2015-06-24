@@ -26,7 +26,7 @@ public class CourierBO implements Serializable {
 
 	private String estimatedDeliveryTime;
 
-	private int sortOrder;
+	private Integer sortOrder;
 
 	public long getCourierId() {
 		return courierId;
@@ -60,11 +60,11 @@ public class CourierBO implements Serializable {
 		this.productLimit = productLimit;
 	}
 
-	public int getSortOrder() {
+	public Integer getSortOrder() {
 		return sortOrder;
 	}
 
-	public void setSortOrder(int sortOrder) {
+	public void setSortOrder(Integer sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 

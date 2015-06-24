@@ -22,9 +22,9 @@ public class CurrencyBO implements Serializable {
 
 	private String code;
 
-	private char symbolLeft;
+	private String symbolLeft;
 
-	private char symbolRight;
+	private String symbolRight;
 
 	private Integer decimalPlace;
 
@@ -56,20 +56,21 @@ public class CurrencyBO implements Serializable {
 		this.code = code;
 	}
 
-	public char getSymbolLeft() {
-		return symbolLeft;
-	}
-
-	public void setSymbolLeft(char c) {
-		this.symbolLeft = c;
-	}
-
-	public char getSymbolRight() {
+	
+	public String getSymbolRight() {
 		return symbolRight;
 	}
 
-	public void setSymbolRight(char c) {
-		this.symbolRight = c;
+	public void setSymbolRight(String symbolRight) {
+		this.symbolRight = symbolRight;
+	}
+
+	public String getSymbolLeft() {
+		return symbolLeft;
+	}
+
+	public void setSymbolLeft(String symbolLeft) {
+		this.symbolLeft = symbolLeft;
 	}
 
 	public Integer getDecimalPlace() {

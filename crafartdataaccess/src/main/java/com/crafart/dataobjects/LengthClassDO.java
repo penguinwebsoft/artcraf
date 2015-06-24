@@ -36,7 +36,7 @@ public class LengthClassDO implements Serializable, Cloneable {
 	private String title;
 
 	@Column(name = "is_active")
-	private int isActive;
+	private Integer isActive;
 
 	@Column(name = "sort_order")
 	private Integer sortorder;
@@ -60,11 +60,11 @@ public class LengthClassDO implements Serializable, Cloneable {
 		this.title = title;
 	}
 
-	public int getIsActive() {
+	public Integer getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(int isActive) {
+	public void setIsActive(Integer isActive) {
 		this.isActive = isActive;
 	}
 

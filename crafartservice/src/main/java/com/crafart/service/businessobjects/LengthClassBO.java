@@ -22,7 +22,7 @@ public class LengthClassBO implements Serializable {
 	
 	private String unit;
 
-	private int isActive;
+	private Integer isActive;
 	
 	private Integer sortorder;
 	
@@ -55,11 +55,11 @@ public class LengthClassBO implements Serializable {
 		this.unit = unit;
 	}
 
-	public int getIsActive() {
+	public Integer getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(int isActive) {
+	public void setIsActive(Integer isActive) {
 		this.isActive = isActive;
 	}
 

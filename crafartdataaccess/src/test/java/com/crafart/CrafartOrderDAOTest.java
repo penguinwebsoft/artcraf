@@ -336,8 +336,8 @@ public class CrafartOrderDAOTest {
 		currencyDO.setCode("klkl");
 		currencyDO.setDecimalPlace(9);
 		currencyDO.setStatus("sdsd");
-		currencyDO.setSymbolRight('$');
-		currencyDO.setSymbolRight('$');
+		currencyDO.setSymbolRight("$");
+		currencyDO.setSymbolRight("$");
 		currencyDO.setTitle("jkl");
 		currencyDO.setValue(5);
 		try {

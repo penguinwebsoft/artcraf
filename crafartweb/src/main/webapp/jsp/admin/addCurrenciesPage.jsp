@@ -83,22 +83,22 @@
 	</div>
 </div>
 
+
 <script type="text/javascript">
 $(document).ready(function() {
 		$("#saveBtn").click(function() {
-			var currenciesBO = {};
-			
-			currenciesBO.title = $("#currencytitle").val();
-			currenciesBO.code= $("#code").val();
-			currenciesBO.symbolLeft = $("#symbolleft").val();
-			currenciesBO.symbolRight = $("#symbolright").val();
-			currenciesBO.decimalPlace = $("#decimalplaces").val();
-			currenciesBO.value = $("#values").val();
-			currenciesBO.status = $("#status").val();
-			postData = JSON.stringify(geoZoneBO);
+			var currencyBO = {};
+	        currencyBO.title = $("#currencytitle").val();
+	        currencyBO.code= $("#code").val();
+	        currencyBO.symbolLeft = $("#symbolleft").val();
+	        currencyBO.symbolRight = $("#symbolright").val();
+	        currencyBO.decimalPlace = $("#decimalplaces").val();
+	        currencyBO.value = $("#values").val();
+	        currencyBO.status = $("#status").val();
+			postData = JSON.stringify(currencyBO);
 			alert("currencies object" + postData);
 			$.ajax({
-				url : "../currencies/addCurrencies",
+				url : "../currency/addCurrency",
 				type : "post",
 				data : postData,
 				contentType : "application/json",

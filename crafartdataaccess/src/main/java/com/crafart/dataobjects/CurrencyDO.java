@@ -39,10 +39,10 @@ public class CurrencyDO implements Serializable, Cloneable {
 	private String code;
 
 	@Column(name = "symbol_left")
-	private char symbolLeft;
+	private String symbolLeft;
 
 	@Column(name = "symbol_right")
-	private char symbolRight;
+	private String symbolRight;
 
 	@Column(name = "decimal_place")
 	private int decimalPlace;
@@ -77,20 +77,22 @@ public class CurrencyDO implements Serializable, Cloneable {
 		this.code = code;
 	}
 
-	public char getSymbolLeft() {
-		return symbolLeft;
-	}
+	
 
-	public void setSymbolLeft(char symbolLeft) {
-		this.symbolLeft = symbolLeft;
-	}
-
-	public char getSymbolRight() {
+	public String getSymbolRight() {
 		return symbolRight;
 	}
 
-	public void setSymbolRight(char symbolRight) {
+	public void setSymbolRight(String symbolRight) {
 		this.symbolRight = symbolRight;
+	}
+
+	public String getSymbolLeft() {
+		return symbolLeft;
+	}
+
+	public void setSymbolLeft(String symbolLeft) {
+		this.symbolLeft = symbolLeft;
 	}
 
 	public int getDecimalPlace() {

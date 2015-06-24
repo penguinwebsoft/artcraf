@@ -13,7 +13,7 @@
 		<i class="brand fa fa-bars fa-1x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 		<div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
-				<li data-toggle="collapse" data-target="#myAccount" class="collapsed active"><a href="#"> My Account </a></li>
+				<li data-toggle="collapse" data-target="#myAccount" class="active"><a href="#"> My Account </a></li>
 				<ul class="sub-menu" id="myAccount">
 					<li id="customerDetails"><a href="${baseURL}/customer/customerDetails">Personal Details</a></li>
 					<li id="customerAddressContact"><a href="${baseURL}/customer/addressContacts">Addresses</a></li>

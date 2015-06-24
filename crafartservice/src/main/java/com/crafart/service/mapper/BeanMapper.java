@@ -277,6 +277,17 @@ public class BeanMapper {
 		return lengthClassDO;
 
 	}
+	public LengthClassBO mapLengthClassDOToBO(LengthClassDO lengthClassDO, LengthClassBO lengthClassBO) {
+		lengthClassBO.setLengthClassId(lengthClassDO.getLengthClassId());
+		lengthClassBO.setTitle(lengthClassDO.getTitle());
+		lengthClassBO.setUnit(lengthClassDO.getUnit());
+		lengthClassBO.setIsActive(lengthClassDO.getIsActive());
+		lengthClassBO.setSortorder(lengthClassDO.getSortorder());
+		
+		return lengthClassBO;
+
+	}
+
 
 	public CategoryDO mapCategoryBOToDO(CategoryBO categoryBO, CategoryDO categoryDO, SeoDO seoDO) {
 		categoryDO.setCategoryId(categoryBO.getCategoryId());
@@ -725,4 +736,6 @@ public class BeanMapper {
 		return productReviewDO;
 
 	}
+
 }
+	
