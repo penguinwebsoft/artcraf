@@ -27,8 +27,8 @@
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>Banner Id</td>
-									<td>Banner Image</td>
 									<td>Banner Title</td>
+									<td>Banner Image</td>
 									<td>Sort Order</td>
 									<td>Action</td>
 								</tr>
