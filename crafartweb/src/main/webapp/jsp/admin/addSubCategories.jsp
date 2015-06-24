@@ -145,13 +145,11 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-status">SORTorder</label>
+										<label class="col-sm-2 control-label" for="input-status">SORT Order</label>
 										<div class="col-sm-10">
-											<select name="status" id="sortOrder"
-												placeholder="---please select---" class="form-control">
-												<option value="1" selected="selected"></option>
-												<option value="0"></option>
-											</select>
+											<input type="text" name="sort order" value=""
+												placeholder="sort order" id="sort order"
+												class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
