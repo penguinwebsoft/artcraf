@@ -48,6 +48,13 @@
 									<img id="image" class="image" src="${context}/resources/img/dhl.png" style="width: 200px; height: 100px;" class="img-responsive">
 								</div>
 							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label">Banner URL</label>
+								<div class="col-sm-10">
+									<input type="text" name="bannerurl" value="" placeholder="bannerURL" id="input-bannerurl" class="form-control" />
+								</div>
+							</div>
+				
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
