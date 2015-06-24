@@ -145,7 +145,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-status">SORT Order</label>
+										<label class="col-sm-2 control-label" for="input-status">Sort Order</label>
 										<div class="col-sm-10">
 											<input type="text" name="sort order" value=""
 												placeholder="sort order" id="sort order"
