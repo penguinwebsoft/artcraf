@@ -55,6 +55,15 @@
 									</div>
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="input-status">Status</label>
+								<div class="col-sm-10">
+									<select id="status" placeholder="---please select---" class="form-control">
+										<option value="1" selected="selected">Enable</option>
+										<option value="0">Disable</option>
+									</select>
+								</div>
+							</div>
 					</div>
 				</div>
 			</div>
