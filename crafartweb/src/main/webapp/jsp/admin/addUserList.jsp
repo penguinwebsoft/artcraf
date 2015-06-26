@@ -53,11 +53,11 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Permission</label>
+								<label class="col-sm-2 control-label">User Group</label>
 								<div class="col-sm-10">
 									<select name="permission" id="permission" placeholder="---please select---" class="form-control">
-										<option value="1" selected="selected">Yes</option>
-										<option value="0">No</option>
+										<option value="1" selected="selected"></option>
+										<option value="0"></option>
 									</select>
 								</div>
 							</div>
