@@ -8,7 +8,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Add Mail Page</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Edit Mail Page</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Send</button>
@@ -19,7 +19,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="icon-th-list"></i> &nbsp;Add Mail Page
+					<i class="icon-th-list"></i> &nbsp;Edit Mail Page
 				</h3>
 			</div>
 			<div class="panel-body">

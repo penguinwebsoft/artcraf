@@ -38,7 +38,7 @@
 								<label class="col-sm-2 control-label">Permission</label>
 								<div class="col-sm-10">
 									<select multiple class="form-control">
-									<option>Dashboard</option>
+										<option>Dashboard</option>
 										<option>Catalog</option>
 										<option>Sales</option>
 										<option>Sellers</option>
@@ -46,6 +46,12 @@
 										<option>System</option>
 										<option>Reports</option>
 									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="input-sortorder"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
+								<div class="col-sm-10">
+									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
 								</div>
 							</div>
 					</div>

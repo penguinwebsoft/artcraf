@@ -8,12 +8,12 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;User Group List</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Mail List Page</h1>
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/addUserGroup">Add</a>
-				<button type="button" class="btn btn-warning">Delete</button>
+				<a class="btn btn-success" href="${baseURL}/menu/mailPage">Add</a>
+				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 
@@ -26,21 +26,19 @@
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>USer Group Id</td>
-									<td>User Group Name</td>
-									<td>Permission</td>
+									<td>Mail Id</td>
+									<td>To</td>
+									<td>Subject</td>
 									<td>Action</td>
 								</tr>
 							</thead>
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>1</td>
-									<td>Ajaml</td>
-									<td></td>
-									<td>
-										<a class="btn btn-warning" href="${baseURL}/menu/editUserGroup">Edit</a>
-									</td>
+									<td>TextTiles</td>
+									<td>TextTiles</td>
+									<td>0</td>
+									<td><a class="btn btn-warning" href="${baseURL}/menu/editMailPage">Edit</a></td>
 								</tr>
 							</thead>
 						</table>
@@ -50,6 +48,9 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
-	setPage("userGroupListMenuId");
-	</script>
+	setPage("geoZoneMenuId");
+</script>
+
+
