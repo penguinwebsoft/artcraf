@@ -44,7 +44,7 @@
 <!-- <script type="text/javascript">
 	$(document).ready(function() {
 
-		/**********customer care section disbale enable tab section*****************/
+		/**********customer care section disable enable tab section*****************/
 		var clickEvent = false;
 
 		$("#customerCareTabs .nav a").click(function(e) {
