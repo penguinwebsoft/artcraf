@@ -62,31 +62,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-		$("#saveBtn").click(function() {
-			var LengthClassBO = {};
-			
-			lengthClassBO.title= $("#lengthclasstitle").val();
-			lengthClassBO.unit= $("#lengthclassunit").val();
-			lengthClassBO.sortorder = $("#sortorder").val();
-			postData = JSON.stringify(lengthClassBO);
-			alert("taxDetail object" + postData);
-			$.ajax({
-				url : "../lengthClass/addLengthClass",
-				type : "post",
-				data : postData,
-				contentType : "application/json",
-				dataType : "json",
-				success : function(data) {
-					if(data.result == true)
-						alert("saved succefully");
-					else
-						alert("Details failed to save");
-				}
-			});
-		});
-	});
-
-
-</script>

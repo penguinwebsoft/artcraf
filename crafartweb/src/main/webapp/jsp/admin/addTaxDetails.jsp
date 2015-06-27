@@ -62,31 +62,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-		$("#saveBtn").click(function() {
-			var TaxClassBO = {};
-			
-			taxClassBO.title= $("#taxtitle").val();
-			taxClassBO.description= $("#taxdescription").val();
-			taxClassBO.sortOrder = $("#sortorder").val();
-			postData = JSON.stringify(taxClassBO);
-			alert("taxDetail object" + postData);
-			$.ajax({
-				url : "../taxDetail/addTaxDetail",
-				type : "post",
-				data : postData,
-				contentType : "application/json",
-				dataType : "json",
-				success : function(data) {
-					if(data.result == true)
-						alert("saved succefully");
-					else
-						alert("Details failed to save");
-				}
-			});
-		});
-	});
-
-
-</script>

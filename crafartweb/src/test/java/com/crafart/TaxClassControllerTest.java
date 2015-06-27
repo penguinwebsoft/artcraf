@@ -15,8 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.service.businessobjects.TaxClassBO;
-
 /**
  * @author Karthi
  * 
@@ -35,20 +33,11 @@ public class TaxClassControllerTest {
 	@Rollback(true)
 	public void testGetTaxClass() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			taxClassController.getTaxClassDetail(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-	
-	@SuppressWarnings("unused")
-	private TaxClassBO getTaxdetail() {
-		TaxClassBO taxClassBO = new TaxClassBO();
-		taxClassBO.setTitle("fg");
-		taxClassBO.setDescription("vdfvcds");
-		taxClassBO.setSortOrder(9);
-		
-		return taxClassBO;
-	}
+
 }
