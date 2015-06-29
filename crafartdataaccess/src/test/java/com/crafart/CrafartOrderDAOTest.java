@@ -389,8 +389,9 @@ public class CrafartOrderDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	private UserGroupDO getUserGroup() {
 		UserGroupDO userGroupDO = new UserGroupDO();
-		userGroupDO.setName("Admin");
+		userGroupDO.setGroupName("Admin");
 		userGroupDO.setPermission("Accessed");
+		userGroupDO.setSortOrder(787);
 		try {
 			userGroupDAOImpl.addUserGroup(userGroupDO);
 		} catch (CrafartDataException cdExp) {
