@@ -48,6 +48,12 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-sku"><span data-toggle="tooltip" title="companyname">Tracking URL</span></label>
+								<div class="col-sm-10">
+									<input type="text" id="trackingUrl" name="trackingUrl" value="" placeholder="TrackingURL" id="input-TrackingUrl" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
 									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
