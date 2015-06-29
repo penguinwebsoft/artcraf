@@ -53,7 +53,7 @@
 								<label class="col-sm-2 control-label" for="input-dateadded"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Added</span></label> <span
 									class="col-sm-2"> <input type="dateadded" name="dateadded" value="" placeholder="dateadded" id="dateAdded" class="form-control" />
 								</span> <label class="col-sm-2 control-label" for="input-datemodified" style="margin-left: 10px"><span data-toggle="tooltip" title="Force a minimum ordered amount">Date Modified</span></label> <span
-									class="col-sm-2"> <input type="datemodified" name="datemodified" value="" placeholder="datemodified" id="dateModified" class="form-control" />
+									class="col-sm-2" style="margin-left:-9px"> <input type="datemodified" name="datemodified" value="" placeholder="datemodified" id="dateModified" class="form-control" />
 								</span>
 							</div>
 							<div class="form-group required">
@@ -67,9 +67,9 @@
 								</div>
 
 							</div>
-							<div>
-								<button type="button" class="btn btn-success col-md-offset-11">Export</button>
-								<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
+							<div class="col-md-offset-10">
+								<button type="button" class="btn btn-success">Export</button>
+								<button type="button" class="btn btn-primary">Filter</button>
 							</div>
 					</div>
 				</div>
