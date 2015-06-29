@@ -50,9 +50,9 @@
 								</select>
 								</span>
 							</div>
-							<div>
-								<button type="button" class="btn btn-success col-md-offset-11">Export</button>
-								<button type="button" class="btn btn-primary col-md-offset-11" style="margin-top: 5px">Filter</button>
+							<div class="col-md-offset-10">
+								<button type="button" class="btn btn-success">Export</button>
+								<button type="button" class="btn btn-primary">Filter</button>
 							</div> 
 					</div>
 				</div>
