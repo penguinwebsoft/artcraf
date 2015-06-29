@@ -64,7 +64,7 @@ $(document).ready(function() {
 	$("#saveBtn").click(function() {
 		var courierBO = {};
 		
-		courierBO.name = $("#name").val();
+		courierBO.courierName = $("#name").val();
 		courierBO.image = $("#image").val();
 		courierBO.estimatedDeliveryTime = $("#estimatedDeliveryTime").val();
 		courierBO.sortOrder = $("#sortOrder").val();

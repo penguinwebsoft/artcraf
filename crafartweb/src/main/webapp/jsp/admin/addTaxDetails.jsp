@@ -11,7 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Tax Details</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<button type="button" class="btn btn-success">Save</button>
+			<button type="button" name="saveBtn" id="saveBtn" class="btn btn-success">Save</button>
 				<button type="button" class="btn">Return</button>
 			</div>
 		</div>
@@ -31,20 +31,20 @@
 							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-model">Tax Title</label>
 								<div class="col-sm-10">
-									<input type="text" name="taxtitle" value="" placeholder="taxtitle" id="input-taxtitle" class="form-control" />
+									<input type="text" id="taxtitle"name="taxtitle" value="" placeholder="taxtitle" id="input-taxtitle" class="form-control" />
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-sku"><span data-toggle="tooltip" title="companyname">Tax Description</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="taxdescription" value="" placeholder="TaxDescription" id="input-taxdescription" class="form-control" />
+									<input type="text" id="taxdescription"name="taxdescription" value="" placeholder="TaxDescription" id="input-taxdescription" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
-									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
+									<input type="number" id="sortorder"name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -62,3 +62,32 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var taxClassBO = {};
+			
+			taxClassBO.title = $("#taxtitle").val();
+			taxClassBO.description= $("#taxdescription").val();
+			taxClassBO.sortOrder = $("#sortorder").val();
+			taxClassBO.isActive = $("#status").val();
+			postData = JSON.stringify(taxClassBO);
+			alert("taxclass object" + postData);
+			$.ajax({
+				url : "../taxClass/addTaxClass",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+
+
+</script>

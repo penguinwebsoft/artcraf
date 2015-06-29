@@ -11,7 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Add Order Status</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success">Save</a>
+			<button type="button" name="saveBtn" id="saveBtn" class="btn btn-success">Save</button>
 				<button type="button" class="btn btn-default">Cancel</button>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="osm"><span data-toggle="tooltip" title="osm">Order Status Name</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="osm" value="" placeholder="orderstatus" id="osm" class="form-control" />
+									<input type="text" name="orderstatus" value="" placeholder="orderstatus" id="orderstatus" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -41,7 +41,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-description1">Description</label>
+								<label class="col-sm-2 control-label" id="description"for="input-description1">Description</label>
 								<div class="col-lg-10">
 									<div class="box">
 										<div id="cleditorDiv" class="body collapse in">
@@ -75,4 +75,33 @@
 	$(document).ready(function() {
 		$("#cleditor").cleditor();
 	});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var orderStatusBO = {};
+			
+			orderStatusBO.orderStatusTitle = $("#orderstatus").val();
+			orderStatusBO.orderStatusSubject= $("#subjectline").val();
+			orderStatusBO.description = $("#description").val();
+			orderStatusBO.sortOrder = $("status").val();
+			postData = JSON.stringify(orderStatusBO);
+			alert("orderStatus object" + postData);
+			$.ajax({
+				url : "../orderStatus/addOrderStatus",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+
+
 </script>

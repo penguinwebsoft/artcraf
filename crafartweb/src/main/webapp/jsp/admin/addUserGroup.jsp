@@ -11,7 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Add User Group</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success">Save</a>
+			<button type="button" name="saveBtn" id="saveBtn" class="btn btn-success">Save</button>
 				<button type="button" class="btn btn-default">Cancel</button>
 			</div>
 		</div>
@@ -31,13 +31,13 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="usergroupname"><span data-toggle="tooltip" title="rrm">User Group Name</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="usergroupname" value="" placeholder="usergroupname" id="rrm" class="form-control" />
+									<input type="text" id="usergroupname"name="usergroupname" value="" placeholder="usergroupname" id="rrm" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Permission</label>
 								<div class="col-sm-10">
-									<select multiple class="form-control">
+									<select id="permission"multiple class="form-control">
 										<option>Dashboard</option>
 										<option>Catalog</option>
 										<option>Sales</option>
@@ -51,7 +51,7 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-sortorder"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
-									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
+									<input type="number" id="sortorder"name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
 								</div>
 							</div>
 					</div>
@@ -61,3 +61,33 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var userGroupBO = {};
+			
+			userGroupBO. userName= $("#usergroupname").val();
+			userGroupBO.permission= $("#permission").val();
+			userGroupBO.sortOrder = $("#sortorder").val();
+			
+			
+			postData = JSON.stringify(userGroupBO);
+			alert("userGroup object" + postData);
+			$.ajax({
+				url : "../userGroup/addUserGroup",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+
+
+</script>
