@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import com.crafart.dataobjects.AccountDO;
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.AttributeGroupDescDO;
+import com.crafart.dataobjects.BannerDO;
+import com.crafart.dataobjects.BannerGroupDO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CommissionDO;
 import com.crafart.dataobjects.ContactDO;
@@ -20,8 +22,10 @@ import com.crafart.dataobjects.CrafartUserDO;
 import com.crafart.dataobjects.CurrencyDO;
 import com.crafart.dataobjects.CustomerDO;
 import com.crafart.dataobjects.GeoZoneDO;
+import com.crafart.dataobjects.InformationDO;
 import com.crafart.dataobjects.InvoiceDO;
 import com.crafart.dataobjects.LengthClassDO;
+import com.crafart.dataobjects.OrderStatusDO;
 import com.crafart.dataobjects.ProductAttributeDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductDescriptionDO;
@@ -36,10 +40,14 @@ import com.crafart.dataobjects.StoreDO;
 import com.crafart.dataobjects.TaxClassDO;
 import com.crafart.dataobjects.TaxRateDO;
 import com.crafart.dataobjects.TaxRuleDO;
+import com.crafart.dataobjects.UserDO;
+import com.crafart.dataobjects.UserGroupDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.service.businessobjects.AccountBO;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.AttributeGroupDescBO;
+import com.crafart.service.businessobjects.BannerBO;
+import com.crafart.service.businessobjects.BannerGroupBO;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
@@ -49,8 +57,10 @@ import com.crafart.service.businessobjects.CrafartUserBO;
 import com.crafart.service.businessobjects.CurrencyBO;
 import com.crafart.service.businessobjects.CustomerBO;
 import com.crafart.service.businessobjects.GeoZoneBO;
+import com.crafart.service.businessobjects.InformationBO;
 import com.crafart.service.businessobjects.InvoiceBO;
 import com.crafart.service.businessobjects.LengthClassBO;
+import com.crafart.service.businessobjects.OrderStatusBO;
 import com.crafart.service.businessobjects.ProductAttributeBO;
 import com.crafart.service.businessobjects.ProductBO;
 import com.crafart.service.businessobjects.ProductDescriptionBO;
@@ -65,6 +75,8 @@ import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.TaxClassBO;
 import com.crafart.service.businessobjects.TaxRateBO;
 import com.crafart.service.businessobjects.TaxRuleBO;
+import com.crafart.service.businessobjects.UserBO;
+import com.crafart.service.businessobjects.UserGroupBO;
 import com.crafart.service.businessobjects.WeightClassBO;
 
 /**
@@ -736,6 +748,121 @@ public class BeanMapper {
 		return productReviewDO;
 
 	}
+
+	public BannerBO mapBannerDOToBO(BannerDO bannerDO, BannerBO bannerBO) {
+		bannerBO.setBannerId(bannerDO.getBannerId());
+		bannerBO.setBannerImage(bannerDO.getBannerImage());
+		bannerBO.setBannerName(bannerDO.getBannerName());
+		bannerBO.setBannerUrl(bannerDO.getBannerUrl());
+		bannerBO.setSortOrder(bannerDO.getSortOrder());
+		return bannerBO;
+	}
+	public BannerDO mapBannerBOToDO(BannerBO bannerBO, BannerDO bannerDO) {
+		bannerDO.setBannerId(bannerBO.getBannerId());
+		bannerDO.setBannerImage(bannerBO.getBannerImage());
+		bannerDO.setBannerName(bannerBO.getBannerName());
+		bannerDO.setBannerUrl(bannerBO.getBannerUrl());
+		bannerDO.setSortOrder(bannerBO.getSortOrder());
+		return bannerDO;
+	}
+
+	public BannerGroupDO mapBannerGroupBOToDO(BannerGroupBO bannerGroupBO, BannerGroupDO bannerGroupDO) {
+		bannerGroupDO.setBannerGroupId(bannerGroupBO.getBannerGroupId());
+		bannerGroupDO.setBannerGroupName(bannerGroupBO.getBannerGroupName());
+		bannerGroupDO.setBannerSize(bannerGroupBO.getBannerSize());
+		bannerGroupDO.setSortOrder(bannerGroupBO.getSortOrder());
+		return bannerGroupDO;
+	}
+
+	public BannerGroupBO mapGeoZoneDOToBO(BannerGroupDO bannerGroupDO, BannerGroupBO bannerGroupBO) {
+		
+		bannerGroupBO.setBannerGroupId(bannerGroupDO.getBannerGroupId());
+		bannerGroupBO.setBannerGroupName(bannerGroupDO.getBannerGroupName());
+		bannerGroupBO.setBannerSize(bannerGroupDO.getBannerSize());
+		bannerGroupBO.setSortOrder(bannerGroupDO.getSortOrder());
+		return bannerGroupBO;
+	}
+
+	public InformationDO mapInformationBOToDO(InformationBO informationBO, InformationDO informationDO) {
+		informationDO.setInformationId(informationBO.getInformationId());
+		informationDO.setInformationTitle(informationBO.getInformationTitle());
+		informationDO.setMetaDescription(informationBO.getMetaDescription());
+		informationDO.setDescription(informationBO.getDescription());
+		informationDO.setMetaTitle(informationBO.getMetaTitle());
+		informationDO.setMetaKeyword(informationBO.getMetaKeyword());
+		informationDO.setSortOrder(informationBO.getSortOrder());
+		informationDO.setIsActive(informationBO.getIsActive());
+		return informationDO;
+	}
+	public InformationBO mapInformationDOToBO(InformationDO informationDO, InformationBO informationBO) {
+		informationBO.setInformationId(informationDO.getInformationId());
+		informationBO.setInformationTitle(informationDO.getInformationTitle());
+		informationBO.setMetaDescription(informationDO.getMetaDescription());
+		informationBO.setDescription(informationDO.getDescription());
+		informationBO.setMetaTitle(informationDO.getMetaTitle());
+		informationBO.setMetaKeyword(informationDO.getMetaKeyword());
+		informationBO.setSortOrder(informationDO.getSortOrder());
+		informationBO.setIsActive(informationDO.getIsActive());
+		return informationBO;
+	}
+
+	public UserGroupDO mapUserGroupBOToDO(UserGroupBO userGroupBO, UserGroupDO userGroupDO) {
+		userGroupDO.setUserGroupId(userGroupBO.getUserGroupId());
+		userGroupDO.setGroupName(userGroupBO.getUserName());
+		userGroupDO.setPermission(userGroupBO.getPermission());
+		userGroupDO.setSortOrder(userGroupBO.getSortOrder());
+		return userGroupDO;
+	}
+	
+	public UserGroupBO mapUserGroupDOToBO(UserGroupDO userGroupDO, UserGroupBO userGroupBO) {
+		userGroupBO.setUserGroupId(userGroupDO.getUserGroupId());
+		userGroupBO.setUserName(userGroupDO.getGroupName());
+		userGroupBO.setPermission(userGroupDO.getPermission());
+		userGroupBO.setSortOrder(userGroupDO.getSortOrder());
+		return userGroupBO;
+	}
+
+	public UserDO mapUserBOToDO(UserBO userBO, UserDO userDO) {
+		userDO.setUserId(userBO.getUserId());
+		userDO.setUserGroupId(userBO.getUserGroupId());
+		userDO.setUserName(userBO.getUserName());
+		userDO.setFirstName(userBO.getFirstName());
+		userDO.setLastName(userBO.getLastName());
+		userDO.setPassword(userBO.getPassword());
+		userDO.setIsActive(userBO.getIsActive());
+		return userDO;
+	}
+
+
+	public UserBO mapUserDOToBO(UserDO userDO, UserBO userBO) {
+		userBO.setUserId(userDO.getUserId());
+		userBO.setUserGroupId(userDO.getUserGroupId());
+		userBO.setUserName(userDO.getUserName());
+		userBO.setFirstName(userDO.getFirstName());
+		userBO.setLastName(userDO.getLastName());
+		userBO.setPassword(userDO.getPassword());
+		userBO.setIsActive(userDO.getIsActive());
+		return userBO;
+	}
+
+	public OrderStatusDO mapOrderStatusBOToDO(OrderStatusBO orderStatusBO, OrderStatusDO orderStatusDO) {
+		orderStatusDO.setOrderStatusId(orderStatusBO.getOrderStatusId());
+		orderStatusDO.setOrderStatusTitle(orderStatusBO.getOrderStatusTitle());
+		orderStatusDO.setDescription(orderStatusBO.getDescription());
+		orderStatusDO.setOrderStatusSubject(orderStatusBO.getOrderStatusSubject());
+		orderStatusDO.setSortOrder(orderStatusBO.getSortOrder());
+		return orderStatusDO;
+	}
+
+	public OrderStatusBO mapOrderStatusDOToBO(OrderStatusDO orderStatusDO, OrderStatusBO orderStatusBO) {
+		orderStatusBO.setOrderStatusId(orderStatusDO.getOrderStatusId());
+		orderStatusBO.setOrderStatusTitle(orderStatusDO.getOrderStatusTitle());
+		orderStatusBO.setDescription(orderStatusDO.getDescription());
+		orderStatusBO.setOrderStatusSubject(orderStatusDO.getOrderStatusSubject());
+		orderStatusBO.setSortOrder(orderStatusDO.getSortOrder());
+		return orderStatusBO;
+	}
+
 
 }
 	
