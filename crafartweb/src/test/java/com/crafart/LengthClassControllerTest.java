@@ -13,7 +13,13 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
+
+import com.crafart.service.businessobjects.CurrencyBO;
+import com.crafart.service.businessobjects.LengthClassBO;
+import com.crafart.service.exception.CrafartServiceException;
 
 /**
  * @author Karthi
@@ -24,20 +30,31 @@ import org.springframework.transaction.annotation.Transactional;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class TaxClassControllerTest {
+public class LengthClassControllerTest {
 
 	@Autowired
-	private TaxClassController taxClassController;
+	private LengthController lengthController;
 
 	@Test
 	@Rollback(true)
-	public void testGetTaxClass() {
+	public void testGetLengthClass() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			lengthController.getLengthClass(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-
+	
+	@SuppressWarnings("unused")
+	private LengthClassBO getLengthClassdetail() {
+		LengthClassBO lengthClassBO = new LengthClassBO();
+		lengthClassBO.setTitle("jj");
+		lengthClassBO.setUnit("jnn");
+		lengthClassBO.setIsActive(9);
+		lengthClassBO.setSortorder(9);
+		
+		return lengthClassBO;
+	}
 }
+

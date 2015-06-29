@@ -15,8 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.service.businessobjects.OrderStatusBO;
+
 /**
- * @author Karthi
+ * @author
  * 
  */
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
@@ -24,20 +26,30 @@ import org.springframework.transaction.annotation.Transactional;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class TaxClassControllerTest {
+public class OrderStatusControllerTest {
 
 	@Autowired
-	private TaxClassController taxClassController;
+	private OrderStatusController orderStatusController;
 
 	@Test
 	@Rollback(true)
-	public void testGetTaxClass() {
+	public void testGetOrderStatus() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			orderStatusController.getOrderStatus(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-
+	
+	@SuppressWarnings("unused")
+	private OrderStatusBO getOrderStatus() {
+		OrderStatusBO orderStatusBO = new OrderStatusBO();
+		orderStatusBO.setOrderStatusTitle("hdfg");
+		orderStatusBO.setOrderStatusSubject("djfhdj");
+		orderStatusBO.setDescription("fjj");
+		orderStatusBO.setSortOrder(5675);
+		return orderStatusBO;
+	}
 }
+

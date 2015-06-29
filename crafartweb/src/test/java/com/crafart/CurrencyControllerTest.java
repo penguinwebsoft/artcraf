@@ -15,6 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.service.businessobjects.CurrencyBO;
+
 /**
  * @author Karthi
  * 
@@ -24,20 +26,33 @@ import org.springframework.transaction.annotation.Transactional;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class TaxClassControllerTest {
+public class CurrencyControllerTest {
 
 	@Autowired
-	private TaxClassController taxClassController;
+	private CurrencyController currencyController;
 
 	@Test
 	@Rollback(true)
-	public void testGetTaxClass() {
+	public void testGetCurrency() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			currencyController.getCurrency(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-
+	
+	@SuppressWarnings("unused")
+	private CurrencyBO getCurrencydetail() {
+		CurrencyBO currencyBO = new CurrencyBO();
+		currencyBO.setTitle("fg");
+		currencyBO.setValue(9);
+		currencyBO.setSymbolRight("$");
+		currencyBO.setSymbolLeft("$");
+		currencyBO.setDecimalPlace(9);
+		currencyBO.setStatus("enable");
+		currencyBO.setCode("cd");
+		return currencyBO;
+	}
 }
+

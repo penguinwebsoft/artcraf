@@ -15,8 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.service.businessobjects.BannerGroupBO;
+
 /**
- * @author Karthi
+ * @author 
  * 
  */
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
@@ -24,20 +26,30 @@ import org.springframework.transaction.annotation.Transactional;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class TaxClassControllerTest {
+public class BannerGroupControllerTest {
 
 	@Autowired
-	private TaxClassController taxClassController;
+	private BannerGroupController bannerGroupController;
 
 	@Test
 	@Rollback(true)
-	public void testGetTaxClass() {
+	public void testGetBannerGroup() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			bannerGroupController.getBannerGroup(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-
+	
+	@SuppressWarnings("unused")
+	private BannerGroupBO getBannerGroupdetail() {
+		BannerGroupBO bannerGroupBO = new BannerGroupBO();
+		bannerGroupBO.setBannerGroupName("dfds");
+		bannerGroupBO.setBannerSize("jxn");
+		bannerGroupBO.setSortOrder(99);
+		
+		return bannerGroupBO;
+	}
 }
+

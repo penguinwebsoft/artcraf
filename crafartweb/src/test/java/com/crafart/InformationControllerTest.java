@@ -15,8 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.service.businessobjects.InformationBO;
+
 /**
- * @author Karthi
+ * @author 
  * 
  */
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
@@ -24,20 +26,33 @@ import org.springframework.transaction.annotation.Transactional;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class TaxClassControllerTest {
+public class InformationControllerTest {
 
 	@Autowired
-	private TaxClassController taxClassController;
+	private InformationController informationController;
 
 	@Test
 	@Rollback(true)
-	public void testGetTaxClass() {
+	public void testGetInformation() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			informationController.getInformation(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-
+	
+	@SuppressWarnings("unused")
+	private InformationBO getInformationdetail() {
+		InformationBO informationBO = new InformationBO();
+		informationBO.setInformationTitle("yjtyh");
+		informationBO.setDescription("fgbf");
+		informationBO.setSortOrder(99);
+		informationBO.setMetaTitle("fgb");
+		informationBO.setMetaDescription("fhdb");
+		informationBO.setMetaKeyword("bhbh");
+		informationBO.setIsActive("fds");
+		return informationBO;
+	}
 }
+

@@ -15,29 +15,37 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author Karthi
- * 
- */
+import com.crafart.service.businessobjects.UserGroupBO;
+
+
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class TaxClassControllerTest {
+public class UserGroupControllerTest {
 
 	@Autowired
-	private TaxClassController taxClassController;
+	private UserGroupController userGroupController;
 
 	@Test
 	@Rollback(true)
-	public void testGetTaxClass() {
+	public void testGetUserGroup() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			userGroupController.getUserGroup(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-
+	
+	@SuppressWarnings("unused")
+	private UserGroupBO getUserGroupdetail() {
+		UserGroupBO userGroupBO = new UserGroupBO();
+		userGroupBO.setUserName("admin");
+		userGroupBO.setPermission("allowed");
+		userGroupBO.setSortOrder(90);
+		return userGroupBO;
+	}
 }
+

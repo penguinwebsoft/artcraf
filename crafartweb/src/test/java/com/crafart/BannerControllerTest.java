@@ -15,29 +15,37 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author Karthi
- * 
- */
+import com.crafart.service.businessobjects.BannerBO;
+
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @Component
-public class TaxClassControllerTest {
+public class BannerControllerTest {
 
 	@Autowired
-	private TaxClassController taxClassController;
+	private BannerController BannerController;
 
 	@Test
 	@Rollback(true)
-	public void testGetTaxClass() {
+	public void testGetBanner() {
 		try {
-			taxClassController.getTaxClass(new MockHttpSession());
+			BannerController.getBanner(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-
+	
+	@SuppressWarnings("unused")
+	private BannerBO getBannerdetail() {
+		BannerBO bannerBO = new BannerBO();
+		bannerBO.setBannerTitle("dfdg");
+		bannerBO.setBannerUrl("sgxshxbsbb");
+		bannerBO.setBannerImage("fjdfn");
+		bannerBO.setSortOrder(90);
+		return bannerBO;
+	}
 }
+
