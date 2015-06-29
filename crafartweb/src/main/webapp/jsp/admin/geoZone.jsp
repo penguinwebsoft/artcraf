@@ -10,7 +10,7 @@ var geoZoneBOs = {};
 $(document).ready(function() {
 	
 	$.ajax({
-		url : "../geoZone/getGeoZoneBO",
+		url : "../geoZone/getGeoZone",
 		type : "post",
 		contentType : "application/json",
 		dataType : "json",
@@ -26,6 +26,7 @@ $(document).ready(function() {
 				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
 				html +='<td>'+geoZoneBO.geoZoneName+'</td>';
 				html +='<td>'+geoZoneBO.sortOrder+'</td>';
+				html +='<td>'+geoZoneBO.description+'</td>';
 				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
 				html +='</tr>';
 				$('#shipping tbody').append(html);
@@ -93,36 +94,8 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-		$("#saveBtn").click(function() {
-			var geoZoneBO = {};
-			
-			geoZoneBO.Geo_Zone Title = $("#Geo_Zone Title").val();
-			geoZoneBO.Geo_Zone Description = $("#Geo_Zone Description").val();
-			geoZoneBO.Sort Order = $("#Sort Order").val();
-			geoZoneBO.Action = $("#Action").val();
-			
-			
-			postData = JSON.stringify(geoZoneBO);
-			$.ajax({
-				url : "../geoZone/addgeoZone",
-				type : "post",
-				data : postData,
-				contentType : "application/json",
-				dataType : "json",
-				success : function(data) {
-					if(data.result == true)
-						alert("saved succefully");
-					else
-						alert("Details failed to save");
-				}
-			});
-		});
-	});
-</script>
+
 <script type="text/javascript">
 	setPage("geoZoneMenuId");
 </script>
-
 
