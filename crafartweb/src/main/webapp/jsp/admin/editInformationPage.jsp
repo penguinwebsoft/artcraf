@@ -11,7 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Edit Information Page</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<button type="button" class="btn btn-success">Save</button>
+			<button type="button" class="btn btn-success" id="saveButton">Save</button>
 				<button type="button" class="btn btn-warning">Delete</button>
 			</div>
 		</div>
@@ -104,3 +104,36 @@
 <script>
         $(document).ready(function () { $("#cleditor").cleditor(); });
     </script>
+    
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var informationBO = {};
+			
+			informationBO. informationTitle= $("#informationtitle").val();
+			informationBO.description= $("#description").val();
+			informationBO.metaTitle = $("#metatagtitle").val();
+			informationBO.metaDescription =  $("#metatagdescription").val();
+			informationBO.metaKeyword =  $("#metatagkeyword").val();
+			informationBO.sortOrder =  $("#sortorder").val();
+			informationBO.isActive =  $("#status").val();
+			postData = JSON.stringify(informationBO);
+			alert("information object" + postData);
+			$.ajax({
+				url : "../Information/addInformation",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+
+
+</script>
