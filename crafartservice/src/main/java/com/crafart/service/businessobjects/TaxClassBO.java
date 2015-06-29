@@ -6,7 +6,7 @@ package com.crafart.service.businessobjects;
 import java.io.Serializable;
 
 /**
- * @author Karthi
+ * @author 
  * 
  */
 public class TaxClassBO implements Serializable {
@@ -23,7 +23,8 @@ public class TaxClassBO implements Serializable {
 	private String description;
 	
 	private int sortOrder;
-
+    
+	private String isActive;
 	public long getTaxClassId() {
 		return taxClassId;
 	}
@@ -54,6 +55,14 @@ public class TaxClassBO implements Serializable {
 
 	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;
+	}
+
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
 	}
 
 
