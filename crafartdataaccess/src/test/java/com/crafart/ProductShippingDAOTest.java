@@ -50,7 +50,7 @@ public class ProductShippingDAOTest {
 
 	@Autowired
 	private ProductShippingDAO productShippingDAOImpl;
-	
+
 	@Autowired
 	private CommissionDAO commissionDAOImpl;
 
@@ -127,8 +127,8 @@ public class ProductShippingDAOTest {
 	private CourierDO getCourier() {
 		CourierDO courierDO = new CourierDO();
 		courierDO.setImage("asdfgh");
-		courierDO.setName("TRACK");
-		courierDO.setProductLimit(1);
+		courierDO.setCourierName("TRACK");
+		courierDO.setEstimatedDeliveryTime("kjkk");
 		courierDO.setSortOrder(1);
 		try {
 			courierDAOImpl.addCourierDetail(courierDO);
@@ -232,7 +232,7 @@ public class ProductShippingDAOTest {
 		return sellerDO;
 
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	private CommissionDO getCommission() {
 		CommissionDO commissionDO = new CommissionDO();

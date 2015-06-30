@@ -39,7 +39,7 @@ public class CourierDAOTest {
 	@Test
 	@Rollback(true)
 	public void testAddCourierDetail() {
-		CourierDO courierDO = getCourier();
+		CourierDO courierDO = getCourierDetail();
 		try {
 			courierDAOImpl.addCourierDetail(courierDO);
 		} catch (CrafartDataException cdExp) {
@@ -48,11 +48,11 @@ public class CourierDAOTest {
 		}
 	}
 
-	private CourierDO getCourier() {
+	private CourierDO getCourierDetail() {
 		CourierDO courierDO = new CourierDO();
 		courierDO.setImage("asdfgh");
-		courierDO.setName("BlueDart");
-		courierDO.setProductLimit(1);
+		courierDO.setCourierName("lkkkk");
+		courierDO.setEstimatedDeliveryTime("jj");
 		courierDO.setSortOrder(1);
 		return courierDO;
 	}
@@ -63,7 +63,7 @@ public class CourierDAOTest {
 	@Test
 	@Rollback(true)
 	public void testGetCourierDetail() {
-		CourierDO courierDO = getCourier();
+		CourierDO courierDO = getCourierDetail();
 		try {
 			courierDAOImpl.addCourierDetail(courierDO);
 		} catch (CrafartDataException cdExp) {
@@ -78,4 +78,5 @@ public class CourierDAOTest {
 			Assert.fail();
 		}
 	}
+
 }

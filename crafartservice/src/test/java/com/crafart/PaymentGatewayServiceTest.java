@@ -28,6 +28,7 @@ public class PaymentGatewayServiceTest {
 			HttpEntity<String> entity = new HttpEntity<String>("", headers);
 
 			ResponseEntity<String> response = rest.postForEntity(URI, entity, String.class);
+			@SuppressWarnings("unused")
 			String responseBody = response.getBody();
 		} catch (RestClientException | URISyntaxException restClntExp) {
 			restClntExp.printStackTrace();
@@ -37,10 +38,6 @@ public class PaymentGatewayServiceTest {
 	
 	@Test
 	public void dummyTest(){
-		
-	}
-
-	private class PaymentData{
 		
 	}
 	

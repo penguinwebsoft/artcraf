@@ -55,6 +55,7 @@ public class ManageAttributeGroupDescServiceImpl implements ManageAttributeGroup
 		AttributeGroupDescDO attributeGroupDescDO  = beanMapper.mapAttributeGroupDescBOToDO(attributeGroupDescBO, new AttributeGroupDescDO());
 		try {
 			attributeGroupDescDAOImpl.addAttributeGroupDesc(attributeGroupDescDO);
+			attributeGroupDescBO.setAtrributeGroupDescId(attributeGroupDescDO.getAtrributeGroupDescId());
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("Error while adding attribute group to DB",crafartDataException);
 		}

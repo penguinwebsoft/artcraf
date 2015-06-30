@@ -39,7 +39,7 @@ public class AttributeDO implements Cloneable, Serializable {
 	@ManyToMany(mappedBy = "attributeDOs", cascade=CascadeType.MERGE, fetch=FetchType.LAZY)
 	private List<CategoryDO> categoryDOs;
 
-	@Column(name = "name")
+	@Column(name = "attribute_name")
 	private String attributeName;
 
 	@Column(name = "sort_order")

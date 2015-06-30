@@ -71,7 +71,7 @@ public class CategoryDO implements Serializable, Cloneable {
 	@Column(name = "status")
 	private int status;
 
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "seo_id", nullable = true)
 	private SeoDO seoDO;
 

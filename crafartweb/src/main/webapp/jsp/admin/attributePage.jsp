@@ -3,7 +3,6 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.request.contextPath}" />
-
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -30,6 +29,7 @@
 							<table id="attributeListTbl" class="table table-striped table-bordered table-hover pull-left">
 								<thead>
 									<tr>
+										<td>Select</td>
 										<td>Attribute Name</td>
 										<td>Categories</td>
 										<td>Sub-Categories</td>
@@ -37,27 +37,6 @@
 										<td>Action</td>
 									</tr>
 								</thead>
-<<<<<<< HEAD
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Clockspeed</td>
-									<td>ABG</td>
-									<td>ABG</td>
-									<td></td>
-									<td><a class="btn btn-warning" href="${baseURL}/menu/editAttributes">Edit</a></td>
-								</tr>
-=======
-								<thead>
-									<tr>
-										<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-										<td>Clockspeed</td>
-										<td>ABG</td>
-										<td>ABG</td>
-										<td></td>
-										<td><a class="btn btn-warning" href="${baseURL}/menu/editAttribute">Edit</a></td>
-									</tr>
-								</thead>
->>>>>>> 76f40f0c198c80e2b7eabdc8833ffef6517cdfa3
 							</table>
 						</div>
 					</div>
@@ -66,32 +45,40 @@
 		</div>
 	</div>
 </div>
-<<<<<<< HEAD
 <script type="text/javascript">
-	$(document).ready(function() {
-		$.ajax({
-			url : "../attribute/getAttributes",
-			type : "get",
-			contentType : "application/json",
-			dataType : "json",
-			success : function(data) {
-				attributeBOs = data.attributes;
-				displayAttributes(attributeBOs);
-			}
-		});
+	$(document)
+			.ready(
+					function() {
+						$.ajax({
+							url : "../attribute/getAttributes",
+							type : "get",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								attributeBOs = data.attributes;
+								displayAttributes(attributeBOs);
+							}
+						});
 
-		function displayAttributes(attributeBOs)
-		{
-			$.each(attributeBOs, function(index, attributeBO) {
-				$("#attributeListTbl").append("<tr><td><input type='checkbox' name='myTextEditBox' value='checked' /></td><td>"+attributeBO.attributeName+"<\/td><td>"+
-						attributeBO.categoryBO.categoryName+"<\/td><td>"+attributeBO.categoryBO.categoryName
-						+"<\/td><td>"+attributeBO.sortOrder+"<\/td> <td><a class='btn btn-warning' href='${baseURL}/menu/editAttributes'>Edit</a></td> <\/tr>");
-			});
-		}
-	});
-=======
+						function displayAttributes(attributeBOs) {
+							$
+									.each(
+											attributeBOs,
+											function(index, attributeBO) {
+												$("#attributeListTbl")
+														.append(
+																"<tr><td><input type='checkbox' name='myTextEditBox' value='checked' /></td><td>"
+																		+ attributeBO.attributeName
+																		+ "<\/td><td>"
+																		+ attributeBO.categoryBO.categoryName
+																		+ "<\/td><td>"
+																		+ attributeBO.subCategoryBO.categoryName
+																		+ "<\/td><td>"
+																		+ attributeBO.sortOrder
+																		+ "<\/td> <td><a class='btn btn-warning' href='${baseURL}/attribute/editAttribute?attributeId="+attributeBO.attributeId+"'>Edit</a></td> <\/tr>");
+											});
+						}
+					});
 
-<script type="text/javascript">
 	setPage("attributePageMenuId");
->>>>>>> 76f40f0c198c80e2b7eabdc8833ffef6517cdfa3
 </script>

@@ -18,9 +18,11 @@ public class UserGroupBO implements Serializable {
 
 	private long userGroupId;
 
-	private String name;
+	private String userName;
 
 	private String permission;
+	
+	private Integer sortOrder;
 
 	public long getUserGroupId() {
 		return userGroupId;
@@ -30,12 +32,14 @@ public class UserGroupBO implements Serializable {
 		this.userGroupId = userGroupId;
 	}
 
-	public String getName() {
-		return name;
+	
+
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPermission() {
@@ -44,6 +48,14 @@ public class UserGroupBO implements Serializable {
 
 	public void setPermission(String permission) {
 		this.permission = permission;
+	}
+
+	public Integer getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
 	}
 
 }

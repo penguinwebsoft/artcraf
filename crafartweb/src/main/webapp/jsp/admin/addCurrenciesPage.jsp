@@ -11,7 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Add Currencies Page</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success">Save</a>
+				<button type="button" name="saveBtn" id="saveBtn" class="btn btn-success">Save</button>
 				<button type="button" class="btn btn-default">Cancel</button>
 			</div>
 		</div>
@@ -86,19 +86,20 @@
 <script type="text/javascript">
 $(document).ready(function() {
 		$("#saveBtn").click(function() {
-			var currenciesBO = {};
+			var currencyBO = {};
 			
-			currenciesBO.title = $("#currencytitle").val();
-			currenciesBO.code= $("#code").val();
-			currenciesBO.symbolLeft = $("#symbolleft").val();
-			currenciesBO.symbolRight = $("#symbolright").val();
-			currenciesBO.decimalPlace = $("#decimalplaces").val();
-			currenciesBO.value = $("#values").val();
-			currenciesBO.status = $("#status").val();
-			postData = JSON.stringify(geoZoneBO);
+			currencyBO.title = $("#currencytitle").val();
+			currencyBO.code= $("#code").val();
+			currencyBO.symbolLeft = $("#symbolleft").val();
+			currencyBO.symbolRight = $("#symbolright").val();
+			currencyBO.decimalPlace = $("#decimalplaces").val();
+			currencyBO.value = $("#values").val();
+			currencyBO.status = $("#status").val();
+			
+			postData = JSON.stringify(currencyBO);
 			alert("currencies object" + postData);
 			$.ajax({
-				url : "../currencies/addCurrencies",
+				url : "../currency/addCurrency",
 				type : "post",
 				data : postData,
 				contentType : "application/json",

@@ -36,7 +36,13 @@ public class LengthClassDO implements Serializable, Cloneable {
 	private String title;
 
 	@Column(name = "is_active")
-	private int isActive;
+	private Integer isActive;
+
+	@Column(name = "sort_order")
+	private Integer sortorder;
+
+	@Column(name = "unit")
+	private String unit;
 
 	public long getLengthClassId() {
 		return lengthClassId;
@@ -54,12 +60,27 @@ public class LengthClassDO implements Serializable, Cloneable {
 		this.title = title;
 	}
 
-	public int getIsActive() {
+	public Integer getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(int isActive) {
+	public void setIsActive(Integer isActive) {
 		this.isActive = isActive;
 	}
 
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public Integer getSortorder() {
+		return sortorder;
+	}
+
+	public void setSortorder(Integer sortorder) {
+		this.sortorder = sortorder;
+	}
 }

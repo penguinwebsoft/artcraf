@@ -11,7 +11,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Add User List</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success">Save</a>
+			<button type="button" name="saveBtn" id="saveBtn" class="btn btn-success">Save</button>
 				<button type="button" class="btn btn-default">Cancel</button>
 			</div>
 		</div>
@@ -31,33 +31,33 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="username"><span data-toggle="tooltip" title="username">User Name</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="username" value="" placeholder="username" id="username" class="form-control" />
+									<input type="text" id="username"name="username" value="" placeholder="username" id="username" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="firstname"><span data-toggle="tooltip" title="firstname">First Name</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="firstname" value="" placeholder="firstname" id="firstname" class="form-control" />
+									<input type="text" id="firstname"name="firstname" value="" placeholder="firstname" id="firstname" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="lastname"><span data-toggle="tooltip" title="lastname">Last Name</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="lastname" value="" placeholder="lastname" id="lastname" class="form-control" />
+									<input type="text" id="lastname" name="lastname" value="" placeholder="lastname" id="lastname" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="password"><span data-toggle="tooltip" title="password">Password</span></label>
 								<div class="col-sm-10">
-									<input type="text" name="password" value="" placeholder="password" id="password" class="form-control" />
+									<input type="text" id="password" name="password" value="" placeholder="password" id="password" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Permission</label>
+								<label class="col-sm-2 control-label">User Group</label>
 								<div class="col-sm-10">
 									<select name="permission" id="permission" placeholder="---please select---" class="form-control">
-										<option value="1" selected="selected">Yes</option>
-										<option value="0">No</option>
+										<option value="1" selected="selected"></option>
+										<option value="0"></option>
 									</select>
 								</div>
 							</div>
@@ -77,3 +77,34 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var userBO = {};
+			
+			userBO. userName= $("#username").val();
+			userBO.firstName= $("#firstname").val();
+			userBO.lastName = $("#lastname").val();
+			userBO.password =  $("#password").val();
+			userBO.isActive =  $("#status").val();
+		
+			postData = JSON.stringify(userBO);
+			alert("user object" + postData);
+			$.ajax({
+				url : "../user/addUser",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+
+
+</script>

@@ -94,7 +94,7 @@ public class AttributeDAOTest {
 	
 	private AttributeDO getAttributeDO(){
 		AttributeDO attributeDO = new AttributeDO();
-		attributeDO.setAttributeName("Color");
+		attributeDO.setAttributeName("Color update");
 		List<CategoryDO> categoryDOs = new ArrayList<>();
 		categoryDOs.add(getCategory());
 		attributeDO.setCategoryDOs(categoryDOs);

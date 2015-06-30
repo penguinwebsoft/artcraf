@@ -18,9 +18,9 @@
 					<option value="2">Export to Pdf</option>
 			</select>
 			</span>
-			<div>
-				<button type="button" class="btn btn-success col-md-offset-3">Export</button>
-				<button type="button" class="btn btn-primary col-md-offset-1" style="margin-top: 5px">Filter</button>
+			<div class="col-md-offset-3">
+				<button type="button" class="btn btn-success">Export</button>
+				<button type="button" class="btn btn-primary">Filter</button>
 			</div>
 		</div>
 

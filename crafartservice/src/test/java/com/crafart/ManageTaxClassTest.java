@@ -23,7 +23,8 @@ import com.crafart.service.exception.CrafartServiceException;
  * @author karthi
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
+		"classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -36,14 +37,35 @@ public class ManageTaxClassTest {
 	@Rollback(true)
 	public void testGetTaxClassDetail() {
 		try {
-			@SuppressWarnings("unused")
-			List<TaxClassBO> taxClassBOs = manageTaxClassServiceImpl.getTaxClassDetail();
-		/*	for (TaxClassBO taxClassBO : taxClassBOs) {
+			List<TaxClassBO> taxClassBOs = manageTaxClassServiceImpl
+					.getTaxClassDetail();
+			for (TaxClassBO taxClassBO : taxClassBOs) {
 				System.out.print("\n" + taxClassBO.getTaxClassId());
-			}*/
+			}
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
 	}
+
+	@Test
+	@Rollback(true)
+	public void testAddTaxClassDetail() {
+		TaxClassBO taxClassBO = getTaxClassDetail();
+		try {
+			manageTaxClassServiceImpl.addTaxClassDetail(taxClassBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	private TaxClassBO getTaxClassDetail() {
+		TaxClassBO taxClassBO = new TaxClassBO();
+		taxClassBO.setTitle("jlk");
+		taxClassBO.setDescription("kkf");
+		taxClassBO.setSortOrder(1);
+		return taxClassBO;
+	}
+
 }

@@ -18,6 +18,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.inter.service.ManageAttributeGroupDescService;
 import com.crafart.inter.service.ManageCommissionService;
 import com.crafart.inter.service.ManageCustomerService;
 import com.crafart.inter.service.ManageGeoZoneService;
@@ -25,6 +26,7 @@ import com.crafart.inter.service.ManageProductRatingService;
 import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
+import com.crafart.service.businessobjects.AttributeGroupDescBO;
 import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.CustomerBO;
@@ -59,6 +61,9 @@ public class ManageProductRatingServiceTest {
 
 	@Autowired
 	private ManageSellerService manageSellerServiceImpl;
+	
+	@Autowired
+	private ManageAttributeGroupDescService manageAttributeGroupDescServiceImpl;
 
 	@Autowired
 	private ManageProductService manageProductServiceImpl;
@@ -264,11 +269,11 @@ public class ManageProductRatingServiceTest {
 	private List<ProductAttributeBO> getProductAttribute() {
 		List<ProductAttributeBO> productAttributeBOs = new ArrayList<>();
 		ProductAttributeBO productAttributeBO = new ProductAttributeBO();
-		productAttributeBO.setAttributeGroupId(21);
+		productAttributeBO.setAttributeGroupId(getAttributeGroupDescBO().getAtrributeGroupDescId());
 		productAttributeBO.setSortOrder(1);
 		productAttributeBO.setText("black&white");
 		ProductAttributeBO productAttributeBO2 = new ProductAttributeBO();
-		productAttributeBO2.setAttributeGroupId(21);
+		productAttributeBO2.setAttributeGroupId(getAttributeGroupDescBO().getAtrributeGroupDescId());
 		productAttributeBO2.setSortOrder(2);
 		productAttributeBO2.setText("red&green");
 		productAttributeBOs.add(productAttributeBO2);
@@ -300,11 +305,13 @@ public class ManageProductRatingServiceTest {
 		productDiscountBO.setValue(101.2f);
 		productDiscountBO.setQuantity(23);
 		productDiscountBO.setStartDate("00/00/0202");
+		productDiscountBO.setDiscountCode("test");
 		ProductDiscountBO productDiscountBO2 = new ProductDiscountBO();
 		productDiscountBO2.setEndDate("00/01/0101");
 		productDiscountBO2.setValue(125);
 		productDiscountBO2.setQuantity(15);
 		productDiscountBO2.setStartDate("11/11/1111");
+		productDiscountBO2.setDiscountCode("teste");
 		productDiscountBOs.add(productDiscountBO2);
 		productDiscountBOs.add(productDiscountBO);
 		return productDiscountBOs;
@@ -438,5 +445,18 @@ public class ManageProductRatingServiceTest {
 			Assert.fail();
 		}
 		return geoZoneBO;
+	}
+	
+	public AttributeGroupDescBO getAttributeGroupDescBO(){
+		AttributeGroupDescBO attributeGroupDescBO = new AttributeGroupDescBO();
+		attributeGroupDescBO.setAttributeGroupName("Jewllery");
+		attributeGroupDescBO.setSortOrder(1);
+		try {
+			manageAttributeGroupDescServiceImpl.addAttributeGroupDesc(attributeGroupDescBO);
+		} catch (CrafartServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return attributeGroupDescBO;
 	}
 }

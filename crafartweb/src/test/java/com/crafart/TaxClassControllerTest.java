@@ -33,7 +33,7 @@ public class TaxClassControllerTest {
 	@Rollback(true)
 	public void testGetTaxClass() {
 		try {
-			taxClassController.getTaxClassDetail(new MockHttpSession());
+			taxClassController.getTaxClass(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();

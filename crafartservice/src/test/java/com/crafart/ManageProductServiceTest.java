@@ -45,7 +45,8 @@ import com.crafart.service.exception.CrafartServiceException;
  * @version 1.0
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
+		"classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -330,9 +331,11 @@ public class ManageProductServiceTest {
 			Assert.fail();
 		}
 		try {
-			ProductBO productBO = manageProductServiceImpl.getProductDetail(productBO1.getProductId());
+			ProductBO productBO = manageProductServiceImpl
+					.getProductDetail(productBO1.getProductId());
 
-			for (ProductAttributeBO productAttributeBO : productBO.getProductAttributeBOs()) {
+			for (ProductAttributeBO productAttributeBO : productBO
+					.getProductAttributeBOs()) {
 				System.out.print(productAttributeBO.getText());
 			}
 		} catch (CrafartServiceException csExp) {
@@ -348,7 +351,8 @@ public class ManageProductServiceTest {
 	@Rollback(true)
 	public void testGetAllProduct() {
 		try {
-			List<ProductBO> productBOs = manageProductServiceImpl.getAllProduct();
+			List<ProductBO> productBOs = manageProductServiceImpl
+					.getAllProduct();
 			Assert.assertNotNull(productBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();

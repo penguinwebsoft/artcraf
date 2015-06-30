@@ -93,8 +93,6 @@
 			</a></li>
 			<li><a id="geoZoneMenuId" href="${baseURL}/menu/geoZone"> <i class="icon-angle-right"></i>Geo_Zone
 			</a></li>
-			<li><a id="emailtemplateMenuId" href="${baseURL}/menu/emailtemplate"> <i class="icon-angle-right"></i>Email Template
-			</a></li>
 			<li><a id="currenciesPageMenuId" href="${baseURL}/menu/currenciesPage"> <i class="icon-angle-right"></i>Currencies
 			</a></li>
 			<li><a id="orderStatusMenuId" href="${baseURL}/menu/orderStatus"> <i class="icon-angle-right"></i>Order Status
@@ -116,10 +114,11 @@
 				</span> &nbsp;
 			</a>
 				<ul class="collapse" id="component-users-navs">
-					<li><a id="userGroupListMenuId" href="${baseURL}/menu/userGroupList"> <i class="icon-angle-right"></i> User Group List
+					<li><a id="userListPageMenuId" href="${baseURL}/menu/userListPage"> <i class="icon-angle-right"></i> Users
 					</a></li>
-					<li><a id="userListPageMenuId" href="${baseURL}/menu/userListPage"> <i class="icon-angle-right"></i> User List Page
+					<li><a id="userGroupListMenuId" href="${baseURL}/menu/userGroupList"> <i class="icon-angle-right"></i> User Group 
 					</a></li>
+					
 				</ul></li>
 			<li id="SettingMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-setting-navs"> <i class="icon-tasks"> </i> Setting <span
 					class="pull-right"> <i class="icon-angle-left"></i>

@@ -32,26 +32,33 @@ public class TaxClassDAOTest {
 	@Autowired
 	public TaxClassDAO taxClassDAOImpl;
 
-	/*
-	 * @Test
-	 * 
-	 * @Rollback(true) public void testaddTaxClassDetail(){ TaxClassDO
-	 * taxClassDO = getTaxClass(); try {
-	 * taxClassDAOImpl.addTaxClassDetail(taxClassDO); } catch
-	 * (CrafartDataException e) { e.printStackTrace(); Assert.fail(); } }
-	 */
+	@Test
+	@Rollback(true)
+	public void testaddTaxClassDetail() {
+		TaxClassDO taxClassDO = getTaxClassDetail();
+		try {
+			taxClassDAOImpl.addTaxClassDetail(taxClassDO);
+		} catch (CrafartDataException e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
 
-	/*
-	 * private TaxClassDO getTaxClass() { TaxClassDO taxClassDO = new
-	 * TaxClassDO(); taxClassDO.setDescription("VAT %");
-	 * taxClassDO.setTitle("VAT"); return taxClassDO; }
-	 */
+	private TaxClassDO getTaxClassDetail() {
+		TaxClassDO taxClassDO = new TaxClassDO();
+		taxClassDO.setDescription("VAT %");
+		taxClassDO.setTitle("VAT");
+		taxClassDO.setSortOrder(1);
+		return taxClassDO;
+	}
+
 	@Test
 	@Rollback(true)
 	public void testGetTaxClassDetail() {
 		try {
 			List<TaxClassDO> taxClassDOs = taxClassDAOImpl.getTaxClassDetail();
 			for (TaxClassDO taxClassDO : taxClassDOs) {
+				taxClassDAOImpl.addTaxClassDetail(taxClassDO);
 				System.out.print("\n" + taxClassDO.getTaxClassId());
 			}
 		} catch (CrafartDataException cdExp) {

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page isELIgnored="false"%>
-<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" /> 
+<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
 <div class="col-lg-10">
@@ -29,77 +29,13 @@
 			<div class="container">
 				<div class="tab-pane" id="tab-shipping">
 					<div class="table-responsive">
-						<table id="shipping" class="table table-striped table-bordered table-hover pull-left">
+						<table id="subCategoryLst" class="table table-striped table-bordered table-hover pull-left">
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Categories Name</td>
+									<td>Sub Category Name</td>
 									<td>Sort Order</td>
 									<td>Action</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>MP3 Players > test 18</td>
-									<td>0</td>
-									<td><a class="btn btn-warning" href="${baseURL}/menu/editSubCategories">edit</a></td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>MP3 Players > test 19</td>
-									<td>0</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components</td>
-									<td>3</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components > Mice and Trackballs</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components > Components  >  Printers</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Components > Components  >  Scanners</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Desktops</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-								<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Laptops & Notebooks  >  Macs</td>
-									<td>1</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
 								</tr>
 							</thead>
 
@@ -121,6 +57,33 @@
 	</div>
 </div>
 <script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$.ajax({
+							url : "../category/getAllSubCategories",
+							type : "get",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								categoryBOs = data.subCategoryBOs;
+								displayAttributes(categoryBOs);
+							}
+						});
+
+						function displayAttributes(categoryBOs) {
+							$.each(categoryBOs,	function(index, categoryBO) {
+												$("#subCategoryLst")
+														.append(
+																"<tr><td><input type='checkbox' name='myTextEditBox' value='checked' /></td><td>"
+																		+ categoryBO.categoryName
+																		+ "<\/td><td>"
+																		+ categoryBO.sortOrder
+																		+ "<\/td> <td><a class='btn btn-warning' href='${baseURL}/menu/addAttribute'>Edit</a></td> <\/tr>");
+											});
+						}
+					});
+
 	setPage("subCategoriesMenuId");
 </script>
 

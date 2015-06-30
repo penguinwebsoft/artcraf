@@ -62,7 +62,6 @@ $(document).ready(function() {
 									<td>Image</td>
 									<td>Courier Name</td>
 									<td>Estimated Delivery Time</td>
-									<td>Total Products</td>
 									<td>Sort Order</td>
 									<td>Action</td>
 								</tr>
@@ -73,7 +72,6 @@ $(document).ready(function() {
 									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
 									<td>China Post Air Mail</td>
 									<td>15-30 Days</td>
-									<td>0</td>
 									<td>0</td>
 									<td>
 										<a class="btn btn-warning" href="${baseURL}/menu/editCouriers">Edit</a>
@@ -87,7 +85,6 @@ $(document).ready(function() {
 									<td>DHL</td>
 									<td>3-7 Days</td>
 									<td>0</td>
-									<td>0</td>
 									<td>
 										<button type="button" class="btn btn-warning">Edit</button>
 									</td>
@@ -99,7 +96,6 @@ $(document).ready(function() {
 									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
 									<td>EMS</td>
 									<td>5-10 Days</td>
-									<td>0</td>
 									<td>0</td>
 									<td>
 										<button type="button" class="btn btn-warning">Edit</button>
@@ -113,7 +109,6 @@ $(document).ready(function() {
 									<td>Fedex</td>
 									<td>3-7 Days</td>
 									<td>0</td>
-									<td>0</td>
 									<td>
 										<button type="button" class="btn btn-warning">Edit</button>
 									</td>
@@ -126,7 +121,6 @@ $(document).ready(function() {
 									<td>Hong Kong Air Mail</td>
 									<td>15-30 Days</td>
 									<td>0</td>
-									<td>0</td>
 									<td>
 										<button type="button" class="btn btn-warning">Edit</button>
 									</td>
@@ -138,7 +132,6 @@ $(document).ready(function() {
 									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
 									<td>JNE</td>
 									<td>3-7 Days</td>
-									<td>0</td>
 									<td>0</td>
 									<td>
 										<button type="button" class="btn btn-warning">Edit</button>

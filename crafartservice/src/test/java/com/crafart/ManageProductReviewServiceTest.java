@@ -48,7 +48,8 @@ import com.crafart.service.exception.CrafartServiceException;
  * @author Karthi
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
+		"classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -83,7 +84,8 @@ public class ManageProductReviewServiceTest {
 			Assert.fail();
 		}
 		try {
-			manageProductReviewServiceImpl.getProductReview(productReviewBO.getProductReviewId());
+			manageProductReviewServiceImpl.getProductReview(productReviewBO
+					.getProductReviewId());
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -101,7 +103,9 @@ public class ManageProductReviewServiceTest {
 			Assert.fail();
 		}
 		try {
-			manageProductReviewServiceImpl.getSingleProductReviews(productReviewBO1.getProductBO().getProductId());
+			manageProductReviewServiceImpl
+					.getSingleProductReviews(productReviewBO1.getProductBO()
+							.getProductId());
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -273,8 +277,7 @@ public class ManageProductReviewServiceTest {
 	private CourierBO getCourier() {
 		CourierBO courierBO = new CourierBO();
 		courierBO.setImage("from service");
-		courierBO.setName("DTTC");
-		courierBO.setProductLimit(4);
+		courierBO.setEstimatedDeliveryTime("e");
 		courierBO.setSortOrder(9);
 		try {
 			manageCourierServiceImpl.addCourierDetail(courierBO);

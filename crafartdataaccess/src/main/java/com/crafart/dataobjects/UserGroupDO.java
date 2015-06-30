@@ -39,11 +39,13 @@ public class UserGroupDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user_group")
 	private long userGroupId;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "group_name")
+	private String groupName;
 
 	@Column(name = "permission")
 	private String permission;
+	@Column(name = "sort_order")
+	private Integer sortOrder;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "userGroupDO", cascade = CascadeType.ALL)
@@ -65,12 +67,15 @@ public class UserGroupDO implements Serializable, Cloneable {
 		this.userGroupId = userGroupId;
 	}
 
-	public String getName() {
-		return name;
+	
+
+	
+	public String getGroupName() {
+		return groupName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 
 	public String getPermission() {
@@ -81,4 +86,13 @@ public class UserGroupDO implements Serializable, Cloneable {
 		this.permission = permission;
 	}
 
+	public Integer getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
+	
 }

@@ -39,7 +39,7 @@
 									<td>Ajaml</td>
 									<td></td>
 									<td>
-										<a class="btn btn-warning" href="${baseURL}/menu/editUserGroup">Add</a>
+										<a class="btn btn-warning" href="${baseURL}/menu/editUserGroup">Edit</a>
 									</td>
 								</tr>
 							</thead>

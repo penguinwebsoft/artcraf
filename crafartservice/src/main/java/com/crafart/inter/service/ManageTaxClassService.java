@@ -15,4 +15,8 @@ import com.crafart.service.exception.CrafartServiceException;
 public interface ManageTaxClassService {
 
 	public List<TaxClassBO> getTaxClassDetail() throws CrafartServiceException;
+	
+	public void addTaxClassDetail(TaxClassBO taxClassBO) throws CrafartServiceException;
+	
+
 }

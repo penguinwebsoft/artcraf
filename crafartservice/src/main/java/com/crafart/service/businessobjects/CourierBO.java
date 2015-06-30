@@ -18,15 +18,15 @@ public class CourierBO implements Serializable {
 
 	private long courierId;
 
-	private String name;
+	private String courierName;
 
 	private String image;
 
 	private int productLimit;
-	
+
 	private String estimatedDeliveryTime;
 
-	private int sortOrder;
+	private Integer sortOrder;
 
 	public long getCourierId() {
 		return courierId;
@@ -36,12 +36,12 @@ public class CourierBO implements Serializable {
 		this.courierId = courierId;
 	}
 
-	public String getName() {
-		return name;
+	public String getCourierName() {
+		return courierName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCourierName(String courierName) {
+		this.courierName = courierName;
 	}
 
 	public String getImage() {
@@ -60,11 +60,11 @@ public class CourierBO implements Serializable {
 		this.productLimit = productLimit;
 	}
 
-	public int getSortOrder() {
+	public Integer getSortOrder() {
 		return sortOrder;
 	}
 
-	public void setSortOrder(int sortOrder) {
+	public void setSortOrder(Integer sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 
@@ -75,5 +75,5 @@ public class CourierBO implements Serializable {
 	public void setEstimatedDeliveryTime(String estimatedDeliveryTime) {
 		this.estimatedDeliveryTime = estimatedDeliveryTime;
 	}
-	
+
 }

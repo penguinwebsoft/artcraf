@@ -11,6 +11,8 @@ import com.crafart.exception.CrafartDataException;
 @Repository("attributeDAO")
 public interface AttributeDAO {
 
+	public AttributeDO getAttributeDO(long attributeId)throws CrafartDataException;
+	
 	public void addAttribute(AttributeDO attributeDO)throws CrafartDataException;
 	
 	public List<AttributeDO>  getAllAttributes()throws CrafartDataException;

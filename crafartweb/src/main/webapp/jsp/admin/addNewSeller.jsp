@@ -8,7 +8,7 @@
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Product</h1>
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add New Seller</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Save</button>
@@ -79,9 +79,9 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="mobile no">Mobile Number</label>
+										<label class="col-sm-2 control-label" for="mobile no">Office Number</label>
 										<div class="col-sm-10">
-											<input type="text" name="mobileno" value="" placeholder="mobileno" id="mobileno" class="form-control" />
+											<input type="text" name="officeno" value="" placeholder="officeno" id="officeno" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -103,15 +103,21 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Mobile Number</span></label>
+										<div class="col-sm-10">
+											<input type="number" name="mobileno" value="" placeholder="mobileno" id="input-mobileno" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
 										<label class="col-sm-2 control-label">Email</label>
 										<div class="col-sm-10">
 											<input type="text" name="email" value="" placeholder="email" id="input-email" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">PhoneNumber</span></label>
+										<label class="col-sm-2 control-label">Pan Number</label>
 										<div class="col-sm-10">
-											<input type="number" name="phoneno" value="" placeholder="phoneno" id="input-phoneno" class="form-control" />
+											<input type="text" name="panno" value="" placeholder="PanNo" id="input-panno" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">

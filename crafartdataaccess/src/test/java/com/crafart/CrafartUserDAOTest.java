@@ -21,7 +21,7 @@ import com.crafart.inter.data.CrafartUserDAO;
 import com.crafart.inter.data.UserGroupDAO;
 
 /**
- * @author Karthi
+ * @author 
  * 
  */
 @ContextConfiguration("classpath:crafartdatasource-context-test.xml")
@@ -69,8 +69,9 @@ public class CrafartUserDAOTest {
 	@Transactional(propagation = Propagation.REQUIRED)
 	private UserGroupDO getUserGroup() {
 		UserGroupDO userGroupDO = new UserGroupDO();
-		userGroupDO.setName("Admin");
+		userGroupDO.setGroupName("Admin");
 		userGroupDO.setPermission("Accessed");
+		userGroupDO.setSortOrder(867);
 		try {
 			userGroupDAOImpl.addUserGroup(userGroupDO);
 		} catch (CrafartDataException cdExp) {

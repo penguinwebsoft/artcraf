@@ -31,18 +31,18 @@ public class CourierDO implements Serializable,Cloneable {
 	@SequenceGenerator(name = "seq_courier", sequenceName = "seq_courier", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_courier")
 	private long courierId;
-	
-	@Column(name = "name")
-	private String name;
-	
+
+	@Column(name = "courier_name")
+	private String courierName;
+
 	@Column(name = "image")
 	private String image;
-	
-	@Column(name = "product_limit")
-	private int productLimit;
-	
+
+	@Column(name = "estimated_delivery_time")
+	private String estimatedDeliveryTime;
+
 	@Column(name = "sort_order")
-	private int sortOrder;
+	private Integer sortOrder;
 
 	public long getCourierId() {
 		return courierId;
@@ -52,12 +52,12 @@ public class CourierDO implements Serializable,Cloneable {
 		this.courierId = courierId;
 	}
 
-	public String getName() {
-		return name;
+	public String getCourierName() {
+		return courierName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCourierName(String courierName) {
+		this.courierName = courierName;
 	}
 
 	public String getImage() {
@@ -68,19 +68,20 @@ public class CourierDO implements Serializable,Cloneable {
 		this.image = image;
 	}
 
-	public int getProductLimit() {
-		return productLimit;
+	public String getEstimatedDeliveryTime() {
+		return estimatedDeliveryTime;
 	}
 
-	public void setProductLimit(int productLimit) {
-		this.productLimit = productLimit;
+	public void setEstimatedDeliveryTime(String estimatedDeliveryTime) {
+		this.estimatedDeliveryTime = estimatedDeliveryTime;
 	}
 
-	public int getSortOrder() {
+	public Integer getSortOrder() {
 		return sortOrder;
 	}
 
-	public void setSortOrder(int sortOrder) {
+	public void setSortOrder(Integer sortOrder) {
 		this.sortOrder = sortOrder;
 	}
+
 }

@@ -4,7 +4,9 @@
 package com.crafart.seller.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,16 +48,16 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<CategoryBO> getCategory() throws CrafartServiceException {
-		List<CategoryBO> categoryBOs = new ArrayList<>();
+	public Map<Long, CategoryBO> getCategories() throws CrafartServiceException {
+		Map<Long, CategoryBO> categoryBOs = new HashMap<>();
 		try {
-			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategory();
+			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategories();
 			for (CategoryDO categoryDO : categoryDOs) {
 				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
-				categoryBOs.add(categoryBO);
+				categoryBOs.put(categoryBO.getCategoryId(), categoryBO);
 			}
-		} catch (CrafartDataException e) {
-			log.error("error while reteriving category");
+		} catch (CrafartDataException cExp) {
+			throw new CrafartServiceException("Sevice Error while retrieving all categories", cExp);
 		}
 		return categoryBOs;
 	}
@@ -77,12 +79,32 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 			throw new CrafartServiceException("Error while adding category" + categoryBO.getCategoryId());
 		}
 	}
+	
+	
+	/**
+	 * updates category object for identifier categoryid {@link CategoryBO}
+	 * 
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateCategory(CategoryBO categoryBO) throws CrafartServiceException {
+		try {
+			CategoryDO categoryDO = categoryDAOImpl.getCategory(categoryBO.getCategoryId());
+			SeoDO seoDO = beanMapper.mapSeoBOToDO(categoryBO.getSeoBO(), categoryDO.getSeoDO());
+			seoDAOImpl.addSeo(seoDO);
+			categoryDO = beanMapper.mapCategoryBOToDO(categoryBO, categoryDO, seoDO);
+			categoryDAOImpl.updateCategory(categoryDO);
+		} catch (CrafartDataException e) {
+			throw new CrafartServiceException("Error while adding category" + categoryBO.getCategoryId());
+		}
+	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<CategoryBO> getSubCategory(long categoryId) throws CrafartServiceException {
 		List<CategoryBO> categoryBOs = new ArrayList<>();
 		try {
+			log.debug("Getting category details for cateogry id =" + categoryId);
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getSubCategory(categoryId);
 			for (CategoryDO categoryDO : categoryDOs) {
 				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
@@ -94,6 +116,39 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 		}
 		return categoryBOs;
 
+	}
+
+	/**
+	 * Return category business object for category id
+	 * 
+	 * @return {@link CategoryDO}
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public CategoryBO getCategory(long categoryId) throws CrafartServiceException {
+		try {
+			CategoryDO categoryDO = categoryDAOImpl.getCategory(categoryId);
+			CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
+			return categoryBO;
+		} catch (CrafartDataException cdExp) {
+			throw new CrafartServiceException("Error while getting category for category id - " + categoryId, cdExp);
+		}
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<CategoryBO> getAllSubCategories() throws CrafartServiceException {
+		List<CategoryBO> categoryBOs = new ArrayList<>();
+		try {
+			List<CategoryDO> categoryDOs = categoryDAOImpl.getAllSubCategories();
+			for (CategoryDO categoryDO : categoryDOs) {
+				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
+				categoryBOs.add(categoryBO);
+			}
+		} catch (CrafartDataException cExp) {
+			throw new CrafartServiceException("Sevice Error while retrieving all sub categories", cExp);
+		}
+		return categoryBOs;
 	}
 
 }

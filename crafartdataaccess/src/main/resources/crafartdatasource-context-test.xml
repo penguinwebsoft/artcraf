@@ -75,6 +75,11 @@
 				<value>com.crafart.dataobjects.SeoDO</value>
 				<value>com.crafart.dataobjects.AttributeDO</value>
 				<!-- <value>com.crafart.dataobjects.AttributeCategoryDO</value> -->
+				<value>com.crafart.dataobjects.UserDO</value>
+				<value>com.crafart.dataobjects.InformationDO</value>
+				<value>com.crafart.dataobjects.BannerDO</value>
+				<value>com.crafart.dataobjects.BannerGroupDO</value>
+				<value>com.crafart.dataobjects.OrderStatusDO</value>
 			</list>
 		</property>
 

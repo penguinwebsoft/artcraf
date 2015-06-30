@@ -33,7 +33,7 @@ public class CategoryDAOTest {
 
 	@Autowired
 	private CategoryDAO categoryDAOImpl;
-	
+
 	@Autowired
 	private SeoDAO seoDAOImpl;
 
@@ -46,10 +46,43 @@ public class CategoryDAOTest {
 		try {
 			/* adding data in table and then retrieving from table */
 			testaddcategory();
-			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategory();
+			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategories();
+			System.out.println("category list = " + categoryDOs.size());
 			Assert.assertNotNull(categoryDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
+	
+	@Test
+	@Rollback(true)
+	public void testGetAllSubCategories() {
+		try {
+			/* adding data in table and then retrieving from table */
+			testaddcategory();
+			List<CategoryDO> categoryDOs = categoryDAOImpl.getAllSubCategories();
+			for(CategoryDO categoryDO : categoryDOs){
+				System.out.println(categoryDO.getParentId());
+				Assert.assertTrue(categoryDO.getParentId() > 0);
+			}
+			
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetCategoryForCategoryId() {
+		try {
+			CategoryDO categoryDO = categoryDAOImpl.getCategory(getCategoryDO().getCategoryId());
+			Assert.assertNotNull(categoryDO);
+		} catch (CrafartDataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			Assert.fail();
 		}
 	}
@@ -73,6 +106,48 @@ public class CategoryDAOTest {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testUpdatecategory() {
+		try {
+			CategoryDO categoryDO = new CategoryDO();
+			categoryDO.setImageLocation("");
+			categoryDO.setSortOrder(2);
+			categoryDO.setStatus(2);
+			categoryDO.setSeoDO(getSeo());
+			categoryDO.setDescription("Its gold jwellery");
+			categoryDO.setCategoryName("gold");
+			categoryDAOImpl.addCategory(categoryDO);
+			//Updating category data
+			categoryDO.setCategoryName("Gold Jwellery update");
+			categoryDAOImpl.updateCategory(categoryDO);
+			categoryDO = categoryDAOImpl.getCategory(categoryDO.getCategoryId());
+			Assert.assertEquals("Gold Jwellery update", categoryDO.getCategoryName());
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
+	private CategoryDO getCategoryDO() {
+		CategoryDO categoryDO = new CategoryDO();
+		try {
+
+			categoryDO.setImageLocation("");
+			categoryDO.setSortOrder(2);
+			categoryDO.setStatus(2);
+			categoryDO.setSeoDO(getSeo());
+			categoryDO.setDescription("Its gold jwellery");
+			categoryDO.setCategoryName("gold");
+			categoryDAOImpl.addCategory(categoryDO);
+
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return categoryDO;
 	}
 
 	private SeoDO getSeo() {

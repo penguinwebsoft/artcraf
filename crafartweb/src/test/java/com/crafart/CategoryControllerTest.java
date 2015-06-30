@@ -3,6 +3,8 @@
  */
 package com.crafart;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,12 +37,25 @@ public class CategoryControllerTest {
 
 	@Test
 	@Rollback(true)
-	public void testGetCourierDetail() {
+	public void testGetCategories() {
 		ModelMap modelMap = categoryController.getCategory(new MockHttpSession());
 		System.out.println("CategoryControllerTest.testGetCourierDetail()");
 		System.out.print(modelMap.size());
 	}
-	
+
+	@Test
+	@Rollback(true)
+	public void testGetAllSubCategories() {
+		ModelMap modelMap = categoryController.getAllSubCategories(new MockHttpSession());
+		@SuppressWarnings("unchecked")
+		List<CategoryBO> categoryBOs = (List<CategoryBO>) modelMap.get("subCategoryBOs");
+		for (CategoryBO categoryBO : categoryBOs) {
+			System.out.println("sub category parent id = " + categoryBO.getParentId());
+			Assert.assertTrue(categoryBO.getParentId() > 0);
+		}
+		System.out.println("CategoryControllerTest.testGetCourierDetail()");
+		System.out.print(modelMap.size());
+	}
 
 	@Test
 	@Rollback(true)

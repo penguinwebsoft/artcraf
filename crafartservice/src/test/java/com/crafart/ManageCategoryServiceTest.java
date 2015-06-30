@@ -4,6 +4,7 @@
 package com.crafart;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -44,9 +45,9 @@ public class ManageCategoryServiceTest {
 	public void testGetCategory() {
 		try {
 			testaddCategoryBO();
-			List<CategoryBO> categoryBOs = manageCategoryServiceImpl.getCategory();
-			for (CategoryBO categoryBO : categoryBOs) {
-				System.out.println(categoryBO.getCategoryName());
+			Map<Long, CategoryBO> categoryBOs = manageCategoryServiceImpl.getCategories();
+			for (Map.Entry<Long, CategoryBO> categoryBOMap : categoryBOs.entrySet()) {
+				System.out.println(categoryBOMap.getValue().getCategoryName());
 			}
 			Assert.assertNotNull(categoryBOs);
 		} catch (CrafartServiceException e) {
@@ -55,6 +56,54 @@ public class ManageCategoryServiceTest {
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testUpdateCategory() {
+		try {
+			testaddCategoryBO();
+			Map<Long, CategoryBO> categoryBOs = manageCategoryServiceImpl.getCategories();
+			for (Map.Entry<Long, CategoryBO> categoryBOMap : categoryBOs.entrySet()) {
+				System.out.println(categoryBOMap.getValue().getCategoryName());
+			}
+			Assert.assertNotNull(categoryBOs);
+		} catch (CrafartServiceException e) {
+			Assert.fail();
+			e.printStackTrace();
+		}
+	}
+
+	
+	@Test
+	@Rollback(true)
+	public void testGetAllSubCategories() {
+		try {
+			testaddCategoryBO();
+			List<CategoryBO> categoryBOs = manageCategoryServiceImpl.getAllSubCategories();
+			for (CategoryBO categoryBO : categoryBOs) {
+				System.out.println("sub category parent id = " + categoryBO.getParentId());
+				Assert.assertTrue(categoryBO.getParentId() > 0);
+			}
+			Assert.assertNotNull(categoryBOs);
+		} catch (CrafartServiceException e) {
+			Assert.fail();
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	@Rollback(true)
+	public void testGetCategoryForCategoryId(){
+		CategoryBO categoryBO = getCategoryBO();
+		try {
+		categoryBO = manageCategoryServiceImpl.getCategory(categoryBO.getCategoryId());
+		Assert.assertNotNull(categoryBO);
+		} catch (CrafartServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
 	@Test
 	@Rollback(true)
 	public void testaddCategoryBO() {
@@ -72,6 +121,50 @@ public class ManageCategoryServiceTest {
 			Assert.fail();
 		}
 
+	}
+	
+	
+	@Test
+	@Rollback(true)
+	public void testUpdateCategoryBO() {
+		CategoryBO categoryBO = new CategoryBO();
+		categoryBO.setImageLocation("");
+		categoryBO.setCategoryName("bag");
+		categoryBO.setSortOrder(12);
+		categoryBO.setDescription("its paper bag");
+		categoryBO.setStatus(2);
+		categoryBO.setSeoBO(getSeo());
+		try {
+			manageCategoryServiceImpl.addCategory(categoryBO);
+			categoryBO.setCategoryName("Bag updated");
+			categoryBO.setDescription("paper bag updated");
+			manageCategoryServiceImpl.updateCategory(categoryBO);
+			categoryBO =  manageCategoryServiceImpl.getCategory(categoryBO.getCategoryId());
+			Assert.assertEquals("Bag updated", categoryBO.getCategoryName());
+			Assert.assertEquals("paper bag updated", categoryBO.getDescription());
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+
+	}
+
+
+	public CategoryBO getCategoryBO() {
+		CategoryBO categoryBO = new CategoryBO();
+		categoryBO.setImageLocation("");
+		categoryBO.setCategoryName("bag");
+		categoryBO.setSortOrder(12);
+		categoryBO.setDescription("its paper bag");
+		categoryBO.setStatus(2);
+		categoryBO.setSeoBO(getSeo());
+		try {
+			manageCategoryServiceImpl.addCategory(categoryBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		return categoryBO;
 	}
 
 	private SeoBO getSeo() {
