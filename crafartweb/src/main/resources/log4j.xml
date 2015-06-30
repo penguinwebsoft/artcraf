@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{dd MMM yyyy HH:mm:ss} [%t] %-5p [%c] - %x - %m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/logs/crafartLogs.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p [%c] - %x - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Log all SQL DML statements as they are executed -->
+	<Logger name="org.hibernate.SQL" level="debug" />
+	<!-- Log all JDBC parameters -->
+	<Logger name="org.hibernate.type" level="debug" />
+
+	<logger name="org.hibernate">
+		<level value="ALL" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="fileAppender" />
+	</logger>
+	<root>
+		<level value="info" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="fileAppender" />
+	</root>
+
+</log4j:configuration>
