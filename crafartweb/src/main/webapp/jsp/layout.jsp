@@ -16,11 +16,11 @@
 <meta content="" name="author" />
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
-<link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="${context}/resources/plugins/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${context}/resources/plugins/Font-Awesome/css/font-awesome.css" />
-<link rel="stylesheet" href="${context}/resources/css/main.css" />
+<link rel="stylesheet" href="${context}/resources/css/adminSellerStyle.css" />
 <link rel="stylesheet" href="${context}/resources/css/MoneAdmin.css" />
-<link rel="stylesheet" href="${context}/resources/css/layout2.css" />
+<%-- <link rel="stylesheet" href="${context}/resources/css/layout2.css" /> --%>
 <link rel="stylesheet" href="${context}/resources/css/jquery.cleditor-hack.css" />
 <link rel="stylesheet" href="${context}/resources/css/bootstrap-wysihtml5-hack.css" />
 <link rel="stylesheet" href="${context}/resources/javascript/jquery-ui-1.10.3/themes/base/jquery-ui.css" type="text/css">
@@ -55,12 +55,6 @@
 <script src="${context}/resources/plugins/bootstrap-wysihtml5-hack.js"></script>
 <script src="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.min.js"></script>
 
-
-<%-- <script src="${context}/resources/plugins/flot/jquery.flot.js"></script> 
-<script src="${context}/resources/plugins/flot/jquery.flot.resize.js"></script> 
-<script src="${context}/resources/plugins/flot/jquery.flot.time.js"></script> 
-<script src="${context}/resources/plugins/flot/jquery.flot.stack.js"></script> 
-<script  src="${context}/resources/plugins/flot/jquery.flot.categories.js"></script> --%>
 
 <!-- END SCRIPTS -->
 
@@ -103,5 +97,3 @@
 
 </body>
 </html>
-
-

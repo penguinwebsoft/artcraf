@@ -11,7 +11,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
-
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -58,7 +57,7 @@ public class DateAndTimeUtility {
 	 * @param date1
 	 * @param date2
 	 * @return
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 	public static int getDateInterval(final Date eventDate) throws ParseException {
 		DateTime dateTime2 = new DateTime(eventDate);
@@ -71,17 +70,17 @@ public class DateAndTimeUtility {
 		return daysBtw;
 	}
 
-	//check the given date is less than or greater than current time stamp  
-	public static boolean getTimeStampInterval(Timestamp expiryDate){
+	// check the given date is less than or greater than current time stamp
+	public static boolean getTimeStampInterval(Timestamp expiryDate) {
 		Date date1 = new Date(expiryDate.getTime());
 		DateTime now = new DateTime();
 		Timestamp currentTimeStamp = new Timestamp(now.getMillis());
 		Date date2 = new Date(currentTimeStamp.getTime());
-        int diffInDays = (int) ((date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
-        System.out.print("differnce between current day and expiry date ="+diffInDays);
-        return(diffInDays == 0 ? false : true);
+		int diffInDays = (int) ((date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
+		System.out.print("differnce between current day and expiry date =" + diffInDays);
+		return (diffInDays == 0 ? false : true);
 	}
-	
+
 	/**
 	 * return start and end time string , when both start and endtime available,
 	 * final string will have both start and end time <li>For eg:- From 10:00 AM
@@ -127,14 +126,14 @@ public class DateAndTimeUtility {
 		return parsedDate;
 	}
 
-	public static String GetCurrentDateInStringDBFormat(int interval) throws ParseException{
+	public static String GetCurrentDateInStringDBFormat(int interval) throws ParseException {
 		Date currentDate = new Date(System.currentTimeMillis());
 		DateAndTimeUtility dtUtility = new DateAndTimeUtility(currentDate);
 		Date date = dtUtility.adjust(interval);
 		DateAndTimeUtility dUtility = new DateAndTimeUtility(date);
-		return(dUtility.getFormattedDate(DATEFORMAT.DB_FORMAT_YYYY_DD_MM).toString()); 
+		return (dUtility.getFormattedDate(DATEFORMAT.DB_FORMAT_YYYY_DD_MM).toString());
 	}
-	
+
 	public static Calendar getDateInTimeZone(Date currentDate, TimeZoneConstant timeZoneId) throws ParseException {
 		Calendar mbCal = new GregorianCalendar(TimeZone.getTimeZone(timeZoneId.getTimeZoneConstant()));
 		mbCal.setTimeInMillis(currentDate.getTime());

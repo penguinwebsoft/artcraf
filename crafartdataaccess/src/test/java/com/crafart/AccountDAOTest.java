@@ -3,7 +3,6 @@
  */
 package com.crafart;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,9 +14,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.AccountDAO;
 import com.crafart.dataobjects.AccountDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.AccountDAO;
 
 /**
  * @author Karthi
@@ -28,8 +27,6 @@ import com.crafart.exception.CrafartDataException;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public class AccountDAOTest {
-
-	private static final Logger log = Logger.getLogger(SellerDAOTest.class);
 
 	@Autowired
 	private AccountDAO accountDAOImpl;
@@ -45,9 +42,8 @@ public class AccountDAOTest {
 		AccountDO accountDO = addAccount();
 		try {
 			accountDAOImpl.addBankAccountDetail(accountDO);
-			log.info("account_id " + accountDO.getAccountId());
-		} catch (CrafartDataException e) {
-			e.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}

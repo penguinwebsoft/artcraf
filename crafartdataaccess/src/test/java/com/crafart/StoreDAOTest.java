@@ -5,6 +5,7 @@ package com.crafart;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,13 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.data.SellerDAO;
-import com.crafart.data.StoreDAO;
+import com.crafart.dataobjects.CommissionDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CommissionDAO;
+import com.crafart.inter.data.SellerDAO;
+import com.crafart.inter.data.StoreDAO;
 
 /**
  * @author Karthi
@@ -39,9 +42,16 @@ public class StoreDAOTest {
 
 	@Autowired
 	private StoreDAO storeDAOImpl;
+	
+	@Autowired
+	private CommissionDAO commissionDAOImpl;
 
 	@Autowired
 	private SellerDAO sellerDAOImpl;
+
+	/*
+	 * Test case to add data in store table
+	 */
 
 	@Test
 	@Rollback(true)
@@ -51,8 +61,8 @@ public class StoreDAOTest {
 		try {
 			storeDAOImpl.addStoreDetail(storeDO);
 			log.info("store_id " + storeDO.getStoreId());
-		} catch (CrafartDataException crafartDataException) {
-			crafartDataException.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
@@ -82,17 +92,51 @@ public class StoreDAOTest {
 		sellerDO.setEpch_no("123");
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
-		sellerDO.setCommission("aaaa");
+		sellerDO.setCommissionDO(getCommission());
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 		try {
 			sellerDAOImpl.addSeller(sellerDO);
 			sellerDO.setSellerId(sellerDO.getSellerId());
-		} catch (CrafartDataException uExp) {
-			uExp.printStackTrace();
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
 		}
 		return sellerDO;
 
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	private CommissionDO getCommission() {
+		CommissionDO commissionDO = new CommissionDO();
+		commissionDO.setName("qwqw");
+		commissionDO.setSortOrder(2);
+		commissionDO.setType("comm");
+		commissionDO.setValue(3.5f);
+		try {
+			commissionDAOImpl.addCommission(commissionDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return commissionDO;
+	}
+
+	/*
+	 * Test case to check
+	 */
+	@Test
+	@Ignore
+	@Rollback(true)
+	public void testCheckStoreUrl() {
+		try {
+			StoreDO storeDO1 = getStoreDO();
+			storeDAOImpl.addStoreDetail(storeDO1);
+			StoreDO storeDO = storeDAOImpl.checkStoreUrl(storeDO1.getStoreUrl());
+			Assert.assertNotNull(storeDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 }

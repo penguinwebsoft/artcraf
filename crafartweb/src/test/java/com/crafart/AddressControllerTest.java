@@ -34,15 +34,15 @@ public class AddressControllerTest {
 
 	@Autowired
 	private AddressController addressController;
-	
+
 	@Test
 	@Rollback(true)
-	public void addAddress(){
+	public void addAddress() {
 		AddressBO addressBO = getAddress();
-		try{
-		addressController.addAddress(addressBO, new MockHttpServletRequest());
-		}catch(Exception exception){
-			exception.printStackTrace();
+		try {
+			addressController.addAddress(addressBO, new MockHttpServletRequest());
+		} catch (Exception e) {
+			e.printStackTrace();
 			Assert.fail();
 		}
 	}

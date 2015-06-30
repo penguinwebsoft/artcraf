@@ -1,0 +1,7 @@
+CREATE SEQUENCE seq_taxrule
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 20
+  owned by tax_rule.tax_rule_id

@@ -7,30 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CategoryDAO;
 
 /**
- * @author Deepam
+ * @author Karthi
  * 
  */
 @Repository("categoryDAOImpl")
-public class CategoryDAOImpl implements CategoryDAO {
+public class CategoryDAOImpl extends CommonDAOImpl implements CategoryDAO {
 
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/**
 	 * getCategory() will get all details from Category table by createQery and
@@ -42,13 +35,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<CategoryDO> getCategory() throws CrafartDataException {
 		List<CategoryDO> categoryDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
-			categoryDOs = session.createQuery("from CategoryDO").list();
-			tx.commit();
-			session.close();
+			Session session = this.getSessionFactory().getCurrentSession();
+			categoryDOs = session.createQuery("from CategoryDO where parent_id=0").list();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while reteriving category details", hExp);
 		}
 		return categoryDOs;
@@ -58,15 +47,30 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCategory(CategoryDO categoryDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(categoryDO);
-			session.getTransaction().commit();
-			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while adding category details", hExp);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<CategoryDO> getSubCategory(long categoryId) throws CrafartDataException {
+		List<CategoryDO> categoryDOs = new ArrayList<CategoryDO>();
+		try {
+			Session session = this.getSessionFactory().getCurrentSession();
+			Query query = session.createQuery("from CategoryDO where parent_id = :parent_id");
+			query.setLong("parent_id", categoryId);
+			categoryDOs = (List<CategoryDO>) query.list();
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB Error while fetching sub-category details", hExp);
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		}
+
+		return categoryDOs;
 	}
 
 }

@@ -4,6 +4,7 @@
 package com.crafart.service.businessobjects;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author Karthi
@@ -20,7 +21,7 @@ public class SellerBO implements Serializable {
 	private long sellerId;
 
 	private StoreBO storeBO;
-	
+
 	private AddressBO addressBO;
 
 	private String firstName;
@@ -43,11 +44,15 @@ public class SellerBO implements Serializable {
 
 	private String cstNo;
 
-	private String commission;
+	private CommissionBO commissionBO;
 
 	private int status;
 
 	private int approved;
+
+	private List<ContactBO> contactBOs;
+
+	private String password;
 
 	public long getSellerId() {
 		return sellerId;
@@ -55,6 +60,14 @@ public class SellerBO implements Serializable {
 
 	public void setSellerId(long sellerId) {
 		this.sellerId = sellerId;
+	}
+
+	public CommissionBO getCommissionBO() {
+		return commissionBO;
+	}
+
+	public void setCommissionBO(CommissionBO commissionBO) {
+		this.commissionBO = commissionBO;
 	}
 
 	public String getFirstName() {
@@ -121,14 +134,6 @@ public class SellerBO implements Serializable {
 		this.cstNo = cst_no;
 	}
 
-	public String getCommission() {
-		return commission;
-	}
-
-	public void setCommission(String commission) {
-		this.commission = commission;
-	}
-
 	public int getStatus() {
 		return status;
 	}
@@ -175,6 +180,22 @@ public class SellerBO implements Serializable {
 
 	public void setAddressBO(AddressBO addressBO) {
 		this.addressBO = addressBO;
+	}
+
+	public List<ContactBO> getContactBOs() {
+		return contactBOs;
+	}
+
+	public void setContactBOs(List<ContactBO> contactBOs) {
+		this.contactBOs = contactBOs;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

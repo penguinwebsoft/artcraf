@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -35,8 +37,8 @@ public class CategoryDO implements Serializable, Cloneable {
 	@Column(name = "image_location")
 	private String imageLocation;
 
-	@Column(name = "category_column")
-	private long categoryColumn;
+	@Column(name = "category_name")
+	private String categoryName;
 
 	@Column(name = "parent_id")
 	private long parentId;
@@ -46,6 +48,13 @@ public class CategoryDO implements Serializable, Cloneable {
 
 	@Column(name = "status")
 	private int status;
+
+	@OneToOne
+	@JoinColumn(name = "seo_id", nullable = false)
+	private SeoDO seoDO;
+	
+	@Column(name = "description")
+	private String description;
 
 	public long getCategoryId() {
 		return categoryId;
@@ -61,14 +70,6 @@ public class CategoryDO implements Serializable, Cloneable {
 
 	public void setImageLocation(String imageLocation) {
 		this.imageLocation = imageLocation;
-	}
-
-	public long getCategoryColumn() {
-		return categoryColumn;
-	}
-
-	public void setCategoryColumn(long categoryColumn) {
-		this.categoryColumn = categoryColumn;
 	}
 
 	public long getParentId() {
@@ -93,6 +94,30 @@ public class CategoryDO implements Serializable, Cloneable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public SeoDO getSeoDO() {
+		return seoDO;
+	}
+
+	public void setSeoDO(SeoDO seoDO) {
+		this.seoDO = seoDO;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

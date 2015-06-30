@@ -1,0 +1,15 @@
+/*
+ * Created on 27/05/2015
+ */
+CREATE TABLE USER_GROUP  (
+USER_GROUP_ID BIGINT PRIMARY KEY NOT NULL,
+NAME VARCHAR(45),
+PERMISSION VARCHAR(45)
+)
+
+
+
+/*************ALTER COLUMN IN USER_GROUP TABLE NAME CHANGE TO USER_NAME AND ADD COLUMN IN SORT_ORDER ********************/
+
+ALTER TABLE user_group ADD COLUMN group_name character varying(45);
+ALTER TABLE user_group ADD COLUMN sort_order integer;

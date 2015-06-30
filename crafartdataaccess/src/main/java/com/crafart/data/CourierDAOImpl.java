@@ -8,29 +8,21 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CourierDAO;
 
 /**
  * @author Karthi
  * 
  */
 @Repository("courierDAOImpl")
-public class CourierDAOImpl implements CourierDAO {
-
-	private SessionFactory sessionFactory;
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+@Transactional
+public class CourierDAOImpl extends CommonDAOImpl implements CourierDAO {
 
 	/**
 	 * adding courier details to courier table by addCourierDetails
@@ -39,13 +31,9 @@ public class CourierDAOImpl implements CourierDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCourierDetail(CourierDO courierDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			session.beginTransaction();
-			session.persist(courierDO);
-			session.getTransaction().commit();
-			session.close();
+			Session session = this.getSessionFactory().getCurrentSession();
+			session.save(courierDO);
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while adding Courier details in table", hExp);
 		}
 	}
@@ -62,13 +50,9 @@ public class CourierDAOImpl implements CourierDAO {
 	public List<CourierDO> getCourierDetail() throws CrafartDataException {
 		List<CourierDO> courierDOs = new ArrayList<>();
 		try {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
+			Session session = this.getSessionFactory().getCurrentSession();
 			courierDOs = session.createQuery("from CourierDO").list();
-			tx.commit();
-			session.close();
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while reteriving courier details", hExp);
 		}
 		return courierDOs;

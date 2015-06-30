@@ -4,16 +4,16 @@
 package com.crafart.data;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.StoreDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.StoreDAO;
 
 /**
  * @author Karthi
@@ -21,14 +21,9 @@ import com.crafart.exception.CrafartDataException;
  * 
  */
 @Repository("StoreDAOImpl")
-public class StoreDAOImpl implements StoreDAO {
+public class StoreDAOImpl extends CommonDAOImpl implements StoreDAO {
 
-	private SessionFactory sessionFactory;
 
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/**
 	 * adding store detail to store table {@link CrafartDataException} will
@@ -39,15 +34,27 @@ public class StoreDAOImpl implements StoreDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addStoreDetail(StoreDO storeDO) throws CrafartDataException {
 		try {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
-			session.persist(storeDO);
-			tx.commit();
-			session.close();
+			Session session = this.getSessionFactory().getCurrentSession();
+			session.save(storeDO);
 		} catch (HibernateException hExp) {
-			hExp.printStackTrace();
 			throw new CrafartDataException("DB Error while adding new store details", hExp);
 		}
 
+	}
+
+	@Override
+	public StoreDO checkStoreUrl(String storeUrl) throws CrafartDataException {
+		StoreDO storeDO = new StoreDO();
+		try {
+			Session session = this.getSessionFactory().getCurrentSession();
+			Query query = session.createQuery("from StoreDO where store_url = :store_url");
+			query.setString("store_url", storeUrl);
+			storeDO = (StoreDO) query.uniqueResult();
+		} catch (EmptyResultDataAccessException hExp) {
+			return null;
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB error while finding customer id", hExp);
+		}
+		return storeDO;
 	}
 }

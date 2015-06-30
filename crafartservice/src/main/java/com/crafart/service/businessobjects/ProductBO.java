@@ -4,7 +4,7 @@
 package com.crafart.service.businessobjects;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 /**
  * @author Karthi
@@ -19,6 +19,8 @@ public class ProductBO implements Serializable {
 	private static final long serialVersionUID = 7025783569311015416L;
 
 	private long productId;
+
+	private String productName;
 
 	private long categoryId;
 
@@ -36,7 +38,7 @@ public class ProductBO implements Serializable {
 
 	private String image;
 
-	private long sellerId;
+	private SellerBO sellerBO;
 
 	private long shipping;
 
@@ -44,9 +46,7 @@ public class ProductBO implements Serializable {
 
 	private int points;
 
-	private long taxClassId;
-
-	private Date dateAvailable;
+	private String dateAvailable;
 
 	private String weight;
 
@@ -55,10 +55,6 @@ public class ProductBO implements Serializable {
 	private double length;
 
 	private double width;
-
-	private long weightClassId;
-
-	private long lengthClassId;
 
 	private double subtract;
 
@@ -69,6 +65,32 @@ public class ProductBO implements Serializable {
 	private int status;
 
 	private int viewed;
+
+	private WeightClassBO weightClassBO;
+
+	private ProductDescriptionBO productDescriptionBO;
+
+	private List<ProductSpecialBO> productSpecialBOs;
+
+	private List<ProductDiscountBO> productDiscountBOs;
+
+	private List<ProductShippingBO> productShippingBOs;
+
+	private List<ProductAttributeBO> productAttributeBOs;
+
+	private List<ProductReviewBO> productReviewBOs;
+
+	private List<ProductRatingBO> productRatingBOs;
+
+	private TaxRateBO taxRateBO;
+
+	public WeightClassBO getWeightClassBO() {
+		return weightClassBO;
+	}
+
+	public void setWeightClassBO(WeightClassBO weightClassBO) {
+		this.weightClassBO = weightClassBO;
+	}
 
 	public long getProductId() {
 		return productId;
@@ -142,14 +164,6 @@ public class ProductBO implements Serializable {
 		this.image = image;
 	}
 
-	public long getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(long sellerId) {
-		this.sellerId = sellerId;
-	}
-
 	public long getShipping() {
 		return shipping;
 	}
@@ -172,22 +186,6 @@ public class ProductBO implements Serializable {
 
 	public void setPoints(int points) {
 		this.points = points;
-	}
-
-	public long getTaxClassId() {
-		return taxClassId;
-	}
-
-	public void setTaxClassId(long taxClassId) {
-		this.taxClassId = taxClassId;
-	}
-
-	public Date getDateAvailable() {
-		return dateAvailable;
-	}
-
-	public void setDateAvailable(Date dateAvailable) {
-		this.dateAvailable = dateAvailable;
 	}
 
 	public String getWeight() {
@@ -220,22 +218,6 @@ public class ProductBO implements Serializable {
 
 	public void setWidth(double width) {
 		this.width = width;
-	}
-
-	public long getWeightClassId() {
-		return weightClassId;
-	}
-
-	public void setWeightClassId(long weightClassId) {
-		this.weightClassId = weightClassId;
-	}
-
-	public long getLengthClassId() {
-		return lengthClassId;
-	}
-
-	public void setLengthClassId(long lengthClassId) {
-		this.lengthClassId = lengthClassId;
 	}
 
 	public double getSubtract() {
@@ -276,6 +258,94 @@ public class ProductBO implements Serializable {
 
 	public void setViewed(int viewed) {
 		this.viewed = viewed;
+	}
+
+	public String getDateAvailable() {
+		return dateAvailable;
+	}
+
+	public void setDateAvailable(String dateAvailable) {
+		this.dateAvailable = dateAvailable;
+	}
+
+	public ProductDescriptionBO getProductDescriptionBO() {
+		return productDescriptionBO;
+	}
+
+	public void setProductDescriptionBO(ProductDescriptionBO productDescriptionBO) {
+		this.productDescriptionBO = productDescriptionBO;
+	}
+
+	public List<ProductSpecialBO> getProductSpecialBOs() {
+		return productSpecialBOs;
+	}
+
+	public void setProductSpecialBOs(List<ProductSpecialBO> productSpecialBOs) {
+		this.productSpecialBOs = productSpecialBOs;
+	}
+
+	public List<ProductDiscountBO> getProductDiscountBOs() {
+		return productDiscountBOs;
+	}
+
+	public void setProductDiscountBOs(List<ProductDiscountBO> productDiscountBOs) {
+		this.productDiscountBOs = productDiscountBOs;
+	}
+
+	public List<ProductShippingBO> getProductShippingBOs() {
+		return productShippingBOs;
+	}
+
+	public void setProductShippingBOs(List<ProductShippingBO> productShippingBOs) {
+		this.productShippingBOs = productShippingBOs;
+	}
+
+	public List<ProductAttributeBO> getProductAttributeBOs() {
+		return productAttributeBOs;
+	}
+
+	public void setProductAttributeBOs(List<ProductAttributeBO> productAttributeBOs) {
+		this.productAttributeBOs = productAttributeBOs;
+	}
+
+	public TaxRateBO getTaxRateBO() {
+		return taxRateBO;
+	}
+
+	public void setTaxRateBO(TaxRateBO taxRateBO) {
+		this.taxRateBO = taxRateBO;
+	}
+
+	public SellerBO getSellerBO() {
+		return sellerBO;
+	}
+
+	public List<ProductReviewBO> getProductReviewBOs() {
+		return productReviewBOs;
+	}
+
+	public void setProductReviewBOs(List<ProductReviewBO> productReviewBOs) {
+		this.productReviewBOs = productReviewBOs;
+	}
+
+	public List<ProductRatingBO> getProductRatingBOs() {
+		return productRatingBOs;
+	}
+
+	public void setProductRatingBOs(List<ProductRatingBO> productRatingBOs) {
+		this.productRatingBOs = productRatingBOs;
+	}
+
+	public void setSellerBO(SellerBO sellerBO) {
+		this.sellerBO = sellerBO;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }

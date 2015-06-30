@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,6 +33,10 @@ public class ProductDescriptionDO implements Serializable, Cloneable {
 	@SequenceGenerator(name = "seq_productdesc", sequenceName = "seq_productdesc", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_productdesc")
 	private long productDescriptionId;
+
+	@OneToOne
+	@JoinColumn(name = "product_id", nullable = false)
+	private ProductDO productDO;
 
 	@Column(name = "name")
 	private String name;
@@ -93,6 +99,14 @@ public class ProductDescriptionDO implements Serializable, Cloneable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public ProductDO getProductDO() {
+		return productDO;
+	}
+
+	public void setProductDO(ProductDO productDO) {
+		this.productDO = productDO;
 	}
 
 }

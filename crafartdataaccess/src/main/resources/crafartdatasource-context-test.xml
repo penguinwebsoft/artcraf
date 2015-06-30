@@ -1,23 +1,32 @@
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/jee
     http://www.springframework.org/schema/jee/spring-jee.xsd
     http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context.xsd">
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="com.crafart.data" />
 	<context:annotation-config />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
 
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		<property name="url" value="jdbc:postgresql://localhost:5432/crafart" />
 		<property name="username" value="postgres" />
@@ -25,7 +34,8 @@
 	</bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
-	<bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
@@ -34,20 +44,55 @@
 				<value>com.crafart.dataobjects.ProductDO</value>
 				<value>com.crafart.dataobjects.StoreDO</value>
 				<value>com.crafart.dataobjects.AddressDO</value>
-				<!-- <value>com.crafart.dataobjects.SellerAddressDO</value> -->
+				<value>com.crafart.dataobjects.WeightClassDO</value>
+				<value>com.crafart.dataobjects.LengthClassDO</value>
+				<value>com.crafart.dataobjects.CategoryDO</value>
+				<value>com.crafart.dataobjects.CourierDO</value>
+				<value>com.crafart.dataobjects.GeoZoneDO</value>
+				<value>com.crafart.dataobjects.TaxClassDO</value>
+				<value>com.crafart.dataobjects.ProductDescriptionDO</value>
+				<value>com.crafart.dataobjects.ProductSpecialDO</value>
+				<value>com.crafart.dataobjects.ProductDiscountDO</value>
+				<value>com.crafart.dataobjects.ProductShippingDO</value>
+				<value>com.crafart.dataobjects.ProductAttributeDO</value>
+				<value>com.crafart.dataobjects.AttributeGroupDescDO</value>
+				<value>com.crafart.dataobjects.TaxRateDO</value>
+				<value>com.crafart.dataobjects.TaxRuleDO</value>
+				<value>com.crafart.dataobjects.CommissionDO</value>
+				<value>com.crafart.dataobjects.CurrencyDO</value>
+				<value>com.crafart.dataobjects.CustomerDO</value>
+				<value>com.crafart.dataobjects.InvoiceDO</value>
+				<value>com.crafart.dataobjects.CrafartUserDO</value>
+				<value>com.crafart.dataobjects.CrafartOrderDO</value>
+				<value>com.crafart.dataobjects.ContactDO</value>
+				<value>com.crafart.dataobjects.CustomerContactDO</value>
+				<value>com.crafart.dataobjects.ContactTypeDO</value>
+				<value>com.crafart.dataobjects.SellerAddressDO</value>
+				<value>com.crafart.dataobjects.SellerContactDO</value>
+				<value>com.crafart.dataobjects.ProductReviewDO</value>
+				<value>com.crafart.dataobjects.ProductRatingDO</value>
+				<value>com.crafart.dataobjects.UserGroupDO</value>
+				<value>com.crafart.dataobjects.SeoDO</value>
+				<value>com.crafart.dataobjects.AttributeDO</value>
+				<value>com.crafart.dataobjects.UserDO</value>
+				<value>com.crafart.dataobjects.InformationDO</value>
+				<value>com.crafart.dataobjects.BannerDO</value>
+				<value>com.crafart.dataobjects.BannerGroupDO</value>
+				<value>com.crafart.dataobjects.OrderStatusDO</value>
 			</list>
 		</property>
+
+
+
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-				<prop key="hibernate.current_session_context_class">thread</prop>
+				<!--Bug Fix - commented below line , to facilitate spring/container managed transaction and rollback.
+				with this enabled, no rollback was happening -->
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
 				<prop key="hibernate.show_sql">false</prop>
 			</props>
 		</property>
 	</bean>
 
-
-	<bean id="sellerDAO" class="com.crafart.data.SellerDAOImpl">
-		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</bean>
 </beans>

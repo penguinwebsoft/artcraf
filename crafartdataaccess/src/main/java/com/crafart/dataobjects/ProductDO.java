@@ -4,16 +4,25 @@
 package com.crafart.dataobjects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * product entity are maped to product table in crafart database productid is
@@ -43,6 +52,9 @@ public class ProductDO implements Serializable, Cloneable {
 	@Column(name = "model")
 	private String model;
 
+	@Column(name = "product_name")
+	private String productName;
+
 	@Column(name = "sku")
 	private String sku;
 
@@ -61,8 +73,10 @@ public class ProductDO implements Serializable, Cloneable {
 	@Column(name = "image")
 	private String image;
 
-	@Column(name = "seller_Id")
-	private long sellerId;
+	@ManyToMany(cascade = { CascadeType.MERGE })
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinTable(name = "SELLER_PRODUCT", joinColumns = { @JoinColumn(name = "PRODUCT_ID") }, inverseJoinColumns = { @JoinColumn(name = "SELLER_ID") })
+	private List<SellerDO> sellerDOs = new ArrayList<>();
 
 	@Column(name = "shipping")
 	private long shipping;
@@ -72,9 +86,6 @@ public class ProductDO implements Serializable, Cloneable {
 
 	@Column(name = "points")
 	private int points;
-
-	@Column(name = "tax_Class_Id")
-	private long taxClassId;
 
 	@Column(name = "date_Available")
 	private String dateAvailable;
@@ -95,10 +106,6 @@ public class ProductDO implements Serializable, Cloneable {
 	@JoinColumn(name = "weight_class_id", nullable = false)
 	private WeightClassDO weightClassDO;
 
-	@OneToOne
-	@JoinColumn(name = "length_class_id", nullable = false)
-	private LengthClassDO lengthClassDO;
-
 	@Column(name = "subtract")
 	private double subtract;
 
@@ -113,6 +120,31 @@ public class ProductDO implements Serializable, Cloneable {
 
 	@Column(name = "viewed")
 	private int viewed;
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "productDO", cascade = CascadeType.ALL)
+	private List<ProductAttributeDO> productAttributeDOs = new ArrayList<>();
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "productDO", cascade = CascadeType.ALL)
+	private List<ProductDiscountDO> productDiscountDOs = new ArrayList<>();
+
+	public List<ProductDiscountDO> getProductDiscountDOs() {
+		return productDiscountDOs;
+	}
+
+	public void setProductDiscountDOs(List<ProductDiscountDO> productDiscountDOs) {
+		this.productDiscountDOs = productDiscountDOs;
+	}
+
+	public List<ProductAttributeDO> getProductAttributeDOs() {
+		return productAttributeDOs;
+	}
+
+	public void setProductAttributeDOs(
+			List<ProductAttributeDO> productAttributeDOs) {
+		this.productAttributeDOs = productAttributeDOs;
+	}
 
 	public long getProductId() {
 		return productId;
@@ -186,12 +218,12 @@ public class ProductDO implements Serializable, Cloneable {
 		this.image = image;
 	}
 
-	public long getSellerId() {
-		return sellerId;
+	public List<SellerDO> getSellerDOs() {
+		return sellerDOs;
 	}
 
-	public void setSellerId(long sellerId) {
-		this.sellerId = sellerId;
+	public void setSellerDOs(List<SellerDO> sellerDOs) {
+		this.sellerDOs = sellerDOs;
 	}
 
 	public long getShipping() {
@@ -208,14 +240,6 @@ public class ProductDO implements Serializable, Cloneable {
 
 	public void setPoints(int points) {
 		this.points = points;
-	}
-
-	public long getTaxClassId() {
-		return taxClassId;
-	}
-
-	public void setTaxClassId(long taxClassId) {
-		this.taxClassId = taxClassId;
 	}
 
 	public String getWeight() {
@@ -306,20 +330,20 @@ public class ProductDO implements Serializable, Cloneable {
 		this.weightClassDO = weightClassDO;
 	}
 
-	public LengthClassDO getLengthClassDO() {
-		return lengthClassDO;
-	}
-
-	public void setLengthClassDO(LengthClassDO lengthClassDO) {
-		this.lengthClassDO = lengthClassDO;
-	}
-
 	public String getDateAvailable() {
 		return dateAvailable;
 	}
 
 	public void setDateAvailable(String dateAvailable) {
 		this.dateAvailable = dateAvailable;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }
