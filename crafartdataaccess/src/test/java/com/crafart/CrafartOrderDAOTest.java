@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.CrafartOrderDO;
 import com.crafart.dataobjects.CrafartUserDO;
@@ -183,7 +183,7 @@ public class CrafartOrderDAOTest {
 		sellerDOs.add(sellerDO);
 		ProductDO productDO = getProduct(sellerDOs);
 		CurrencyDO currencyDO = getCurrency();
-		CommissionDO commissionDO = getCommission();
+		CommisionDO commissionDO = getCommission();
 		CrafartUserDO crafartUserDO = getCrafartUser();
 		CustomerDO customerDO = getCustomer();
 		InvoiceDO invoiceDO = getInvoice(customerDO, sellerDO);
@@ -195,7 +195,7 @@ public class CrafartOrderDAOTest {
 		crafartOrderDO.setOrderStatusId(1);
 		crafartOrderDO.setTotal(154);
 		crafartOrderDO.setCurrencyDO(currencyDO);
-		crafartOrderDO.setCommissionDO(commissionDO);
+		crafartOrderDO.setCommisionDO(commissionDO);
 		crafartOrderDO.setCrafartUserDO(crafartUserDO);
 		crafartOrderDO.setCustomerDO(invoiceDO.getCustomerDO());
 		crafartOrderDO.setInvoiceDO(invoiceDO);
@@ -269,7 +269,7 @@ public class CrafartOrderDAOTest {
 		sellerDO.setEpch_no("123");
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
-		sellerDO.setCommissionDO(getCommission());
+		sellerDO.setCommisionDO(getCommission());
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 		sellerDO.setStoreDO(getStoreDOs(sellerDO));
@@ -350,8 +350,8 @@ public class CrafartOrderDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private CommissionDO getCommission() {
-		CommissionDO commissionDO = new CommissionDO();
+	private CommisionDO getCommission() {
+		CommisionDO commissionDO = new CommisionDO();
 		commissionDO.setName("qwqw");
 		commissionDO.setSortOrder(2);
 		commissionDO.setType("comm");

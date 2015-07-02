@@ -22,7 +22,7 @@ import com.crafart.data.ProductDAOImpl;
 import com.crafart.data.SellerDAOImpl;
 import com.crafart.dataobjects.AddressDO;
 import com.crafart.dataobjects.CategoryDO;
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.LengthClassDO;
 import com.crafart.dataobjects.ProductDO;
@@ -182,8 +182,8 @@ public class ProductDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private CommissionDO getCommission() {
-		CommissionDO commissionDO = new CommissionDO();
+	private CommisionDO getCommission() {
+		CommisionDO commissionDO = new CommisionDO();
 		commissionDO.setName("qwqw");
 		commissionDO.setSortOrder(2);
 		commissionDO.setType("comm");
@@ -211,7 +211,7 @@ public class ProductDAOTest {
 		sellerDO.setEpch_no("123");
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
-		sellerDO.setCommissionDO(getCommission());
+		sellerDO.setCommisionDO(getCommission());
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 		sellerDO.setStoreDO(getStoreDOs(sellerDO));

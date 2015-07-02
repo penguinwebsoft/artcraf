@@ -18,19 +18,23 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CategoryDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.CustomerDO;
 import com.crafart.dataobjects.ProductDO;
 import com.crafart.dataobjects.ProductRatingDO;
 import com.crafart.dataobjects.SellerDO;
+import com.crafart.dataobjects.SeoDO;
 import com.crafart.dataobjects.WeightClassDO;
 import com.crafart.exception.CrafartDataException;
+import com.crafart.inter.data.CategoryDAO;
 import com.crafart.inter.data.CommissionDAO;
 import com.crafart.inter.data.CustomerDAO;
 import com.crafart.inter.data.ProductDAO;
 import com.crafart.inter.data.ProductRatingDAO;
 import com.crafart.inter.data.SellerDAO;
+import com.crafart.inter.data.SeoDAO;
 import com.crafart.inter.data.WeightClassDAO;
 
 /**
@@ -61,7 +65,11 @@ public class ProductRatingDAOTest {
 	@Autowired
 	private CustomerDAO customerDAOImpl;
 
+	@Autowired
+	private CategoryDAO categoryDAOImpl;
 
+	@Autowired
+	private SeoDAO seoDAOImpl;
 	/*
 	 * Test case to add data in product Rating table
 	 */
@@ -95,7 +103,7 @@ public class ProductRatingDAOTest {
 		List<SellerDO> sellerDOs = new ArrayList<>();
 		sellerDOs.add(sellerDO);
 		ProductDO productDO = new ProductDO();
-		productDO.setCategoryId(1);
+		productDO.setCategoryId(getCategoryDO().getCategoryId());
 		productDO.setDateAvailable("03-10-1982");
 		productDO.setHeight(52);
 		productDO.setImage("a15cb5e");
@@ -143,8 +151,8 @@ public class ProductRatingDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private CommissionDO getCommission() {
-		CommissionDO commissionDO = new CommissionDO();
+	private CommisionDO getCommission() {
+		CommisionDO commissionDO = new CommisionDO();
 		commissionDO.setName("qwqw");
 		commissionDO.setSortOrder(2);
 		commissionDO.setType("comm");
@@ -171,7 +179,7 @@ public class ProductRatingDAOTest {
 		sellerDO.setEpch_no("123");
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
-		sellerDO.setCommissionDO(getCommission());
+		sellerDO.setCommisionDO(getCommission());
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 
@@ -261,5 +269,38 @@ public class ProductRatingDAOTest {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
+	}
+	
+	private CategoryDO getCategoryDO() {
+		CategoryDO categoryDO = new CategoryDO();
+		try {
+
+			categoryDO.setImageLocation("");
+			categoryDO.setSortOrder(2);
+			categoryDO.setStatus(2);
+			categoryDO.setSeoDO(getSeo());
+			categoryDO.setDescription("Its gold jwellery");
+			categoryDO.setCategoryName("gold");
+			categoryDAOImpl.addCategory(categoryDO);
+
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return categoryDO;
+	}
+
+	private SeoDO getSeo() {
+		SeoDO seoDO = new SeoDO();
+		seoDO.setMetaDesc("abc");
+		seoDO.setMetaKeyword("cde");
+		seoDO.setMetaTitle("jkl");
+		try {
+			seoDAOImpl.addSeo(seoDO);
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return seoDO;
 	}
 }
