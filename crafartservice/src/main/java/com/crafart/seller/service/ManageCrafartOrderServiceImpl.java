@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.CrafartOrderDO;
 import com.crafart.dataobjects.CrafartUserDO;
@@ -25,7 +25,7 @@ import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CrafartOrderDAO;
 import com.crafart.inter.service.ManageCrafartOrderService;
 import com.crafart.service.businessobjects.AddressBO;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CrafartOrderBO;
 import com.crafart.service.businessobjects.CrafartUserBO;
@@ -69,7 +69,7 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 				CrafartOrderBO crafartOrderBO = beanMapper.mapCrafartOrderDOToBO(
 						crafartOrderDO,
 						new CrafartOrderBO(),
-						beanMapper.mapCommissionDOToBO(crafartOrderDO.getCommissionDO(), new CommissionBO()),
+						beanMapper.mapCommissionDOToBO(crafartOrderDO.getCommisionDO(), new CommisionBO()),
 						beanMapper.mapCourierDOToBO(crafartOrderDO.getCourierDO(), new CourierBO()),
 						beanMapper.mapCrafartUserDOToBO(crafartOrderDO.getCrafartUserDO(), new CrafartUserBO()),
 						beanMapper.mapCurrencyDOToBO(crafartOrderDO.getCurrencyDO(), new CurrencyBO()),
@@ -98,7 +98,7 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 				CrafartOrderBO crafartOrderBO = beanMapper.mapCrafartOrderDOToBO(
 						crafartOrderDO,
 						new CrafartOrderBO(),
-						beanMapper.mapCommissionDOToBO(crafartOrderDO.getCommissionDO(), new CommissionBO()),
+						beanMapper.mapCommissionDOToBO(crafartOrderDO.getCommisionDO(), new CommisionBO()),
 						beanMapper.mapCourierDOToBO(crafartOrderDO.getCourierDO(), new CourierBO()),
 						beanMapper.mapCrafartUserDOToBO(crafartOrderDO.getCrafartUserDO(), new CrafartUserBO()),
 						beanMapper.mapCurrencyDOToBO(crafartOrderDO.getCurrencyDO(), new CurrencyBO()),
@@ -122,7 +122,7 @@ public class ManageCrafartOrderServiceImpl implements ManageCrafartOrderService 
 
 	@Override
 	public CrafartOrderBO addCustomerOrder(CrafartOrderBO crafartOrderBO) throws CrafartServiceException {
-		CrafartOrderDO crafartOrderDO = beanMapper.mapCrafartOrderBOToDO(crafartOrderBO, new CrafartOrderDO(), new CommissionDO(), new CourierDO(), new CrafartUserDO(), new CurrencyDO(),
+		CrafartOrderDO crafartOrderDO = beanMapper.mapCrafartOrderBOToDO(crafartOrderBO, new CrafartOrderDO(), new CommisionDO(), new CourierDO(), new CrafartUserDO(), new CurrencyDO(),
 				new CustomerDO(), new InvoiceDO(), new ProductDO(), new StoreDO(), new TaxRateDO());
 		try {
 			crafartOrderDAOImpl.addCrafartOrder(crafartOrderDO);

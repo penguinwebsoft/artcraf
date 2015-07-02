@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CommissionDAO;
 import com.crafart.inter.service.ManageCommissionService;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
 
@@ -31,8 +31,8 @@ public class ManageCommissionServiceImpl implements ManageCommissionService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addCommission(CommissionBO commissionBO) throws CrafartServiceException {
-		CommissionDO commissionDO = beanMapper.mapCommissionBOToDO(commissionBO, new CommissionDO());
+	public void addCommission(CommisionBO commissionBO) throws CrafartServiceException {
+		CommisionDO commissionDO = beanMapper.mapCommissionBOToDO(commissionBO, new CommisionDO());
 		try {
 			commissionDAOImpl.addCommission(commissionDO);
 			commissionBO.setCommissionId(commissionDO.getCommissionId());

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
@@ -21,7 +21,7 @@ import com.crafart.inter.data.ContactDAO;
 import com.crafart.inter.data.SellerDAO;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -67,14 +67,14 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(), null);
 			AddressDO addressDO = beanMapper.mapAddressBOToDO(sellerBO.getAddressBO(), new AddressDO(), sellerDO, null);
 			StoreDO storeDO = beanMapper.mapStoreBOToDO(sellerBO.getStoreBO(), new StoreDO(), sellerDO);
-			CommissionDO commissionDO = beanMapper.mapCommissionBOToDO(sellerBO.getCommissionBO(), new CommissionDO());
+			CommisionDO commissionDO = beanMapper.mapCommissionBOToDO(sellerBO.getCommissionBO(), new CommisionDO());
 			// List<StoreDO> storeDOLst = new ArrayList<>();
 			// sellerDO.setStoreDOs(storeDOs);
 			sellerDO.setStoreDO(storeDO);
 			List<AddressDO> addressDOs = new ArrayList<>();
 			addressDOs.add(addressDO);
 			sellerDO.setAddressDOs(addressDOs);
-			sellerDO.setCommissionDO(commissionDO);
+			sellerDO.setCommisionDO(commissionDO);
 
 			List<ContactBO> contactBOs = sellerBO.getContactBOs();
 			List<ContactDO> contactDOs = new ArrayList<>();
@@ -102,7 +102,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 	public void updateSeller(SellerBO sellerBO) throws CrafartServiceException {
 
 		try {
-			CommissionDO commissionDO = beanMapper.mapCommissionBOToDO(sellerBO.getCommissionBO(), new CommissionDO());
+			CommisionDO commissionDO = beanMapper.mapCommissionBOToDO(sellerBO.getCommissionBO(), new CommisionDO());
 			SellerDO sellerDO = beanMapper.mapSellerBOToDO(sellerBO, new SellerDO(), commissionDO);
 			AddressDO addressDO = beanMapper.mapAddressBOToDO(sellerBO.getAddressBO(), new AddressDO(), sellerDO, null);
 			StoreDO storeDO = beanMapper.mapStoreBOToDO(sellerBO.getStoreBO(), new StoreDO(), sellerDO);
@@ -135,7 +135,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 					addressBO = beanMapper.mapAddressDOToBO(addressDO, new AddressBO());
 				}
 				StoreBO storeBO = beanMapper.mapStoreDOToBO(sellerDO.getStoreDO(), new StoreBO(), null);
-				CommissionBO commissionBO = beanMapper.mapCommissionDOToBO(sellerDO.getCommissionDO(), new CommissionBO());
+				CommisionBO commissionBO = beanMapper.mapCommissionDOToBO(sellerDO.getCommisionDO(), new CommisionBO());
 				sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), addressBO, storeBO, commissionBO);
 			}
 			contactBO = beanMapper.mapContactDOToBO(contactDO, new ContactBO(), null, sellerBO);
@@ -151,7 +151,7 @@ public class ManageSellerServiceImpl implements ManageSellerService {
 		SellerBO sellerBO = new SellerBO();
 		try {
 			SellerDO sellerDO = sellerDAOImpl.getSellerContacts(sellerId);
-			CommissionBO commissionBO = beanMapper.mapCommissionDOToBO(sellerDO.getCommissionDO(), new CommissionBO());
+			CommisionBO commissionBO = beanMapper.mapCommissionDOToBO(sellerDO.getCommisionDO(), new CommisionBO());
 			sellerBO = beanMapper.mapSellerDOToBO(sellerDO, new SellerBO(), null, null, commissionBO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
