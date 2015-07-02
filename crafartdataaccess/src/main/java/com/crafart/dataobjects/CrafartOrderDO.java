@@ -63,8 +63,8 @@ public class CrafartOrderDO implements Serializable, Cloneable {
 	private CurrencyDO currencyDO;
 
 	@OneToOne
-	@JoinColumn(name = "commission_id", nullable = false)
-	private CommissionDO commissionDO;
+	@JoinColumn(name = "commision_id", nullable = false)
+	private CommisionDO commisionDO;
 
 	@OneToOne
 	@JoinColumn(name = "user_id", nullable = false)
@@ -149,12 +149,12 @@ public class CrafartOrderDO implements Serializable, Cloneable {
 		this.currencyDO = currencyDO;
 	}
 
-	public CommissionDO getCommissionDO() {
-		return commissionDO;
+	public CommisionDO getCommisionDO() {
+		return commisionDO;
 	}
 
-	public void setCommissionDO(CommissionDO commissionDO) {
-		this.commissionDO = commissionDO;
+	public void setCommisionDO(CommisionDO commisionDO) {
+		this.commisionDO = commisionDO;
 	}
 
 	public CrafartUserDO getCrafartUserDO() {
