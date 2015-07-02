@@ -8,6 +8,6 @@ CREATE TABLE GEO_ZONE (
 	)
 	
 	
-	\**********   ALTER TABLE TO ADD SORTODER **********/
+	/**********   ALTER TABLE TO ADD SORTODER **********/
 	
 	ALTER TABLE GEO_ZONE ADD COLUMN sortorder integer
