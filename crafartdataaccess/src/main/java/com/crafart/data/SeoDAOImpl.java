@@ -34,4 +34,17 @@ public class SeoDAOImpl extends CommonDAOImpl implements SeoDAO {
 		}
 	}
 
+	@Override
+	public void updateSeo(SeoDO seoDO) throws CrafartDataException {
+		try {
+			Session session = this.getSessionFactory().getCurrentSession();
+			session.update(seoDO);
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB error while addind in SEO table", hExp);
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		}
+		
+	}
+
 }

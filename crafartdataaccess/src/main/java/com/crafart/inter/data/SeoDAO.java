@@ -14,5 +14,8 @@ import com.crafart.exception.CrafartDataException;
  */
 @Repository("SeoDAO")
 public interface SeoDAO {
+	
 	public void addSeo(SeoDO seoDO) throws CrafartDataException;
+
+	public void updateSeo(SeoDO seoDO) throws CrafartDataException;
 }
