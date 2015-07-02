@@ -43,7 +43,7 @@ public class AddressDAOTest {
 	 * Test CAse to add address in Address table
 	 */
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public void testAddAddress() {
 		AddressDO addressDO = addAddress();
 		List<SellerDO> sellerDOs = new ArrayList<SellerDO>();
