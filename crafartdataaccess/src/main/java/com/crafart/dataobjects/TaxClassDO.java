@@ -40,7 +40,8 @@ public class TaxClassDO implements Serializable, Cloneable {
 
 	@Column(name = "is_active")
 	private Integer isActive;
-	@Column(name = "sort_Order")
+	
+	@Column(name = "sort_order")
 	private Integer sortOrder;
 
 	public long getTaxClassId() {
