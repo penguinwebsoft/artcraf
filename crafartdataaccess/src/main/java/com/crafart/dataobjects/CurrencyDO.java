@@ -44,6 +44,7 @@ public class CurrencyDO implements Serializable, Cloneable {
 	@Column(name = "symbol_right")
 	private String symbolRight;
 
+	//decimal place is of type small int, it can hold +32767 <--> -32767
 	@Column(name = "decimal_place")
 	private int decimalPlace;
 
