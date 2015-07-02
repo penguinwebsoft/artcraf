@@ -29,8 +29,10 @@ public class CategoryBO implements Serializable {
 	private String categoryName;
 
 	private SeoBO seoBO;
-	
+
 	private String description;
+
+	private boolean update;
 
 	public long getCategoryId() {
 		return categoryId;
@@ -94,6 +96,14 @@ public class CategoryBO implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public boolean isUpdate() {
+		return update;
+	}
+
+	public void setUpdate(boolean update) {
+		this.update = update;
 	}
 
 }
