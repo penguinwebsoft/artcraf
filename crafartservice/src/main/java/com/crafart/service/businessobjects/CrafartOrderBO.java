@@ -32,7 +32,7 @@ public class CrafartOrderBO implements Serializable {
 
 	private CurrencyBO currencyBO;
 
-	private CommissionBO commissionBO;
+	private CommisionBO commissionBO;
 
 	private CrafartUserBO crafartUserBO;
 
@@ -110,11 +110,11 @@ public class CrafartOrderBO implements Serializable {
 		this.currencyBO = currencyBO;
 	}
 
-	public CommissionBO getCommissionBO() {
+	public CommisionBO getCommissionBO() {
 		return commissionBO;
 	}
 
-	public void setCommissionBO(CommissionBO commissionBO) {
+	public void setCommissionBO(CommisionBO commissionBO) {
 		this.commissionBO = commissionBO;
 	}
 

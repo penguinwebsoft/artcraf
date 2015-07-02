@@ -10,7 +10,7 @@
 			function() {
 				$.ajax({
 					url : "../category/getCategory",
-					type : "post",
+					type : "get",
 					contentType : "application/json",
 					dataType : "json",
 					success : function(data) {
@@ -32,7 +32,7 @@
 					categoryBO.parentId = $("#productCategory").val();
 					categoryBO.status = $("#status").val();
 					categoryBO.description = $("#description").val();
-					categoryBO.sortOrder = $("#sortOrder").val();
+					categoryBO.sortorder = $("#sortorder").val();
 					seoBO.metaTitle = $("#metaTagTitle").val();
 					seoBO.metaDesc = $("#metaDescription").val();
 					seoBO.metaKeyword = $("#metaTagKeyword").val();
@@ -148,7 +148,7 @@
 										<label class="col-sm-2 control-label" for="input-status">Sort Order</label>
 										<div class="col-sm-10">
 											<input type="text" name="sort order" value=""
-												placeholder="sort order" id="sort order"
+												placeholder="sort order" id="sortorder"
 												class="form-control" />
 										</div>
 									</div>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.crafart.service.businessobjects.AttributeBO;
+import com.crafart.service.businessobjects.CategoryBO;
 
 /**
  * @author Ambi
@@ -234,9 +235,21 @@ public class MenuController {
 		return new ModelAndView("categoriesNextPage");
 	}
 
-	@RequestMapping("/addCategories")
-	public ModelAndView showAddCategories(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("addCategories");
+	@RequestMapping("/addCategory")
+	public ModelAndView showAddCategories(@ModelAttribute(value = "categoryBO") CategoryBO categoryBO) {
+
+		ModelMap modelMap = new ModelMap();
+		if (null != categoryBO && categoryBO.getCategoryId() > 0) {
+			log.debug("attribute object is not null");
+			categoryBO.setUpdate(true);
+			modelMap.addAttribute("category", categoryBO);
+			return new ModelAndView("addCategory", modelMap);
+		} else {
+			CategoryBO newCategoryBO = new CategoryBO();
+			newCategoryBO.setUpdate(false);
+			modelMap.addAttribute("category", newCategoryBO);
+			return new ModelAndView("addCategory", modelMap);
+		}
 	}
 
 	@RequestMapping("/editCategories")
@@ -308,6 +321,7 @@ public class MenuController {
 	public ModelAndView showAddAttribute(@ModelAttribute(value = "attributeBO") AttributeBO attributeBO) {
 		ModelMap modelMap = new ModelMap();
 		if (null != attributeBO && attributeBO.getAttributeId() > 0) {
+			log.debug("attribute object is not null");
 			attributeBO.setUpdate(true);
 			modelMap.addAttribute("attribute", attributeBO);
 			return new ModelAndView("addAttribute", modelMap);

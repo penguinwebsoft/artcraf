@@ -83,6 +83,7 @@
 					attributeBO.subCategoryBO = subCategoryBO;
 					attributeBO.attributeName = $("#attributename").val();
 					attributeBO.sortOrder = $("#sortorder").val();
+					
 					if (isUpdate == "false") {
 						postData = JSON.stringify(attributeBO);
 						$.ajax({
@@ -172,7 +173,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="input-sortorder"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
+									<label class="col-sm-2 control-label" for="input-sortorder"><span data-toggle="tooltip" title="Force a minimum ordered amount">Sort order</span></label>
 									<div class="col-sm-10">
 										<form:input type="number" path="sortOrder" id="sortorder" value="" placeholder="sortorder" class="form-control" />
 									</div>

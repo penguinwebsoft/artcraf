@@ -24,7 +24,7 @@ import com.crafart.inter.service.ManageProductReviewService;
 import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CustomerBO;
@@ -370,8 +370,8 @@ public class ManageProductReviewServiceTest {
 
 	}
 
-	private CommissionBO getCommision() {
-		CommissionBO commissionBO = new CommissionBO();
+	private CommisionBO getCommision() {
+		CommisionBO commissionBO = new CommisionBO();
 		commissionBO.setName("qwerty");
 		commissionBO.setSortOrder(2);
 		commissionBO.setType("qwert");

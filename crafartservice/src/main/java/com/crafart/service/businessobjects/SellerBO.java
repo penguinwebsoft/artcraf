@@ -44,7 +44,7 @@ public class SellerBO implements Serializable {
 
 	private String cstNo;
 
-	private CommissionBO commissionBO;
+	private CommisionBO commissionBO;
 
 	private int status;
 
@@ -62,11 +62,11 @@ public class SellerBO implements Serializable {
 		this.sellerId = sellerId;
 	}
 
-	public CommissionBO getCommissionBO() {
+	public CommisionBO getCommissionBO() {
 		return commissionBO;
 	}
 
-	public void setCommissionBO(CommissionBO commissionBO) {
+	public void setCommissionBO(CommisionBO commissionBO) {
 		this.commissionBO = commissionBO;
 	}
 

@@ -16,7 +16,7 @@ public class SeoBO implements Serializable {
 	 */
 	private static final long serialVersionUID = -8661188086860064096L;
 
-	private long seo_id;
+	private long seoId;
 
 	private String metaTitle;
 
@@ -24,12 +24,13 @@ public class SeoBO implements Serializable {
 
 	private String metaKeyword;
 
-	public long getSeo_id() {
-		return seo_id;
+	
+	public long getSeoId() {
+		return seoId;
 	}
 
-	public void setSeo_id(long seo_id) {
-		this.seo_id = seo_id;
+	public void setSeoId(long seoId) {
+		this.seoId = seoId;
 	}
 
 	public String getMetaTitle() {

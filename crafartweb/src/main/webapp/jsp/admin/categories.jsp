@@ -12,7 +12,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Categories</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/addCategories">Add</a>
+				<a class="btn btn-success" href="${baseURL}/menu/addCategory">Add</a>
 				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
@@ -73,9 +73,7 @@
 						});
 						function displayCategoryList(categoryBOs) {
 							$
-									.each(
-											categoryBOs,
-											function(key, value) {
+									.each(categoryBOs,	function(key, value) {
 												var categoryBO = value;
 												var html = '<tr>';
 												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
@@ -85,7 +83,7 @@
 												html += '<td>'
 														+ categoryBO.sortOrder
 														+ '</td>';
-												html += '<td><button type="button" class="btn btn-warning">Edit</button></td>';
+												html += "<td><a class='btn btn-warning' href='${baseURL}/category/editCategory?categoryId="+categoryBO.categoryId+"'>Edit</button></td>";
 												html += '</tr>';
 												$('#shipping').append(
 														html);
@@ -94,5 +92,4 @@
 					});
 	setPage("categoriesMenuId");
 </script>
-
 

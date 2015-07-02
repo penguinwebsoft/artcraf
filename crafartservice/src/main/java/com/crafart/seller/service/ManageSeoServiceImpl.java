@@ -35,7 +35,7 @@ public class ManageSeoServiceImpl implements ManageSeoService {
 		SeoDO seoDO = beanMapper.mapSeoBOToDO(seoBO, new SeoDO());
 		try {
 			seoDAOImpl.addSeo(seoDO);
-			seoBO.setSeo_id(seoDO.getSeo_id());
+			seoBO.setSeoId(seoDO.getSeo_id());
 		} catch (CrafartDataException cdExp) {
 			throw new CrafartServiceException("Error while adding data to seo table", cdExp);
 		} catch (Exception exp) {

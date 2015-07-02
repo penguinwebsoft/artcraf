@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.AddressDO;
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.SellerDO;
 import com.crafart.dataobjects.StoreDO;
@@ -42,7 +42,7 @@ public class SellerDAOTest {
 	 * test case for addSeller method
 	 */
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public void testAddSeller() {
 		try {
 			SellerDO sellerDO = getSellerDO();
@@ -84,7 +84,7 @@ public class SellerDAOTest {
 		sellerDO.setEpch_no("123");
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
-		sellerDO.setCommissionDO(getCommission());
+		sellerDO.setCommisionDO(getCommission());
 		sellerDO.setPassword("jbskla");
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
@@ -136,8 +136,8 @@ public class SellerDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private CommissionDO getCommission() {
-		CommissionDO commissionDO = new CommissionDO();
+	private CommisionDO getCommission() {
+		CommisionDO commissionDO = new CommisionDO();
 		commissionDO.setName("qwqw");
 		commissionDO.setSortOrder(2);
 		commissionDO.setType("comm");

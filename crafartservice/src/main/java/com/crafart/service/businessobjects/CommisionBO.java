@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author Karthi
  * 
  */
-public class CommissionBO implements Serializable {
+public class CommisionBO implements Serializable {
 
 	/**
 	 * 

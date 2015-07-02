@@ -17,7 +17,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.dataobjects.LengthClassDO;
@@ -220,7 +220,7 @@ public class ProductShippingDAOTest {
 		sellerDO.setEpch_no("123");
 		sellerDO.setVat_no("123456a");
 		sellerDO.setCst_no("000");
-		sellerDO.setCommissionDO(getCommission());
+		sellerDO.setCommisionDO(getCommission());
 		sellerDO.setStatus(1);
 		sellerDO.setApproved(1);
 		try {
@@ -234,8 +234,8 @@ public class ProductShippingDAOTest {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private CommissionDO getCommission() {
-		CommissionDO commissionDO = new CommissionDO();
+	private CommisionDO getCommission() {
+		CommisionDO commissionDO = new CommisionDO();
 		commissionDO.setName("qwqw");
 		commissionDO.setSortOrder(2);
 		commissionDO.setType("comm");

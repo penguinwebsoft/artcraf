@@ -5,7 +5,7 @@ package com.crafart.inter.data;
 
 import java.util.List;
 
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.exception.CrafartDataException;
 
 /**
@@ -14,7 +14,7 @@ import com.crafart.exception.CrafartDataException;
  */
 public interface CommissionDAO {
 
-	public void addCommission(CommissionDO commissionDO) throws CrafartDataException;
+	public void addCommission(CommisionDO commissionDO) throws CrafartDataException;
 	
-	public List<CommissionDO> getCommission() throws CrafartDataException;
+	public List<CommisionDO> getCommission() throws CrafartDataException;
 }

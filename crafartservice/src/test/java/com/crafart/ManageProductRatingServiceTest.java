@@ -19,7 +19,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.inter.service.ManageAttributeGroupDescService;
+import com.crafart.inter.service.ManageCategoryService;
 import com.crafart.inter.service.ManageCommissionService;
+import com.crafart.inter.service.ManageCourierService;
 import com.crafart.inter.service.ManageCustomerService;
 import com.crafart.inter.service.ManageGeoZoneService;
 import com.crafart.inter.service.ManageProductRatingService;
@@ -27,8 +29,10 @@ import com.crafart.inter.service.ManageProductService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.AttributeGroupDescBO;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CategoryBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.businessobjects.ContactBO;
+import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CustomerBO;
 import com.crafart.service.businessobjects.GeoZoneBO;
 import com.crafart.service.businessobjects.LengthClassBO;
@@ -40,6 +44,7 @@ import com.crafart.service.businessobjects.ProductRatingBO;
 import com.crafart.service.businessobjects.ProductShippingBO;
 import com.crafart.service.businessobjects.ProductSpecialBO;
 import com.crafart.service.businessobjects.SellerBO;
+import com.crafart.service.businessobjects.SeoBO;
 import com.crafart.service.businessobjects.StoreBO;
 import com.crafart.service.businessobjects.TaxRateBO;
 import com.crafart.service.businessobjects.TaxRuleBO;
@@ -76,6 +81,13 @@ public class ManageProductRatingServiceTest {
 
 	@Autowired
 	private ManageCommissionService manageCommissionServiceImpl;
+	
+	@Autowired
+	private ManageCourierService manageCourierServiceImpl;
+	
+	@Autowired
+	private ManageCategoryService manageCategoryServiceImpl;
+
 
 	@Test
 	@Rollback(true)
@@ -182,7 +194,7 @@ public class ManageProductRatingServiceTest {
 	private ProductBO getProductBO() {
 		SellerBO sellerBO = getSellerBO();
 		ProductBO productBO = new ProductBO();
-		productBO.setCategoryId(1);
+		productBO.setCategoryId(getCategoryBO().getCategoryId());
 		productBO.setDateAvailable("20/00/0000");
 		productBO.setHeight(52);
 		productBO.setImage("a15cb5e");
@@ -220,6 +232,31 @@ public class ManageProductRatingServiceTest {
 		return productBO;
 	}
 
+	public CategoryBO getCategoryBO() {
+		CategoryBO categoryBO = new CategoryBO();
+		categoryBO.setImageLocation("");
+		categoryBO.setCategoryName("bag");
+		categoryBO.setSortOrder(12);
+		categoryBO.setDescription("its paper bag");
+		categoryBO.setStatus(2);
+		categoryBO.setSeoBO(getSeo());
+		try {
+			manageCategoryServiceImpl.addCategory(categoryBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		return categoryBO;
+	}
+	
+	private SeoBO getSeo() {
+		SeoBO seoBO = new SeoBO();
+		seoBO.setMetaDesc("asdf");
+		seoBO.setMetaKeyword("qwert");
+		seoBO.setMetaTitle("zxcvbn");
+		return seoBO;
+	}
+	
 	@Transactional(propagation = Propagation.REQUIRED)
 	private ProductDescriptionBO getProductDescriptionAndSeo() {
 		ProductDescriptionBO productDescriptionBO = new ProductDescriptionBO();
@@ -255,6 +292,20 @@ public class ManageProductRatingServiceTest {
 		return taxRuleBOs;
 	}
 
+	private CourierBO getCourier() {
+		CourierBO courierBO = new CourierBO();
+		courierBO.setImage("from service");
+		courierBO.setCourierName("BlueDart");
+		courierBO.setEstimatedDeliveryTime("lfl");
+		courierBO.setSortOrder(9);
+		try {
+			manageCourierServiceImpl.addCourierDetail(courierBO);
+		} catch (CrafartServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return courierBO;
+	}
 	@Transactional(propagation = Propagation.REQUIRED)
 	private TaxRateBO getTaxRate() {
 		TaxRateBO taxRateBO = new TaxRateBO();
@@ -285,11 +336,11 @@ public class ManageProductRatingServiceTest {
 	private List<ProductShippingBO> getProductShipping() {
 		List<ProductShippingBO> productShippingBOs = new ArrayList<>();
 		ProductShippingBO productShippingBO = new ProductShippingBO();
-		productShippingBO.setCourierId(41);
+		productShippingBO.setCourierId(getCourier().getCourierId());
 		productShippingBO.setGeoZoneId(getGeoZone().getGeoZoneId());
 		productShippingBO.setShippingRate(125);
 		ProductShippingBO productShippingBO2 = new ProductShippingBO();
-		productShippingBO2.setCourierId(41);
+		productShippingBO2.setCourierId(getCourier().getCourierId());
 		productShippingBO2.setGeoZoneId(getGeoZone().getGeoZoneId());
 		productShippingBO2.setShippingRate(154);
 		productShippingBOs.add(productShippingBO2);
@@ -382,8 +433,8 @@ public class ManageProductRatingServiceTest {
 
 	}
 
-	private CommissionBO getCommision() {
-		CommissionBO commissionBO = new CommissionBO();
+	private CommisionBO getCommision() {
+		CommisionBO commissionBO = new CommisionBO();
 		commissionBO.setName("qwerty");
 		commissionBO.setSortOrder(2);
 		commissionBO.setType("qwert");

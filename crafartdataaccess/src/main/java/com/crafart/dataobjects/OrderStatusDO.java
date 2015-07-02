@@ -28,8 +28,8 @@ public class OrderStatusDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "order_status_id")
-	@SequenceGenerator(name = "seq_orderstatus", sequenceName = "seq_orderstatus", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_orderstatus")
+	@SequenceGenerator(name = "seq_order_status", sequenceName = "seq_order_status", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_order_status")
 	private long orderStatusId;
 
 	@Column(name = "order_status_title")

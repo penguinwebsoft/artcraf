@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "COMMISSION")
-public class CommissionDO implements Serializable, Cloneable {
+public class CommisionDO implements Serializable, Cloneable {
 
 	/**
 	 * 

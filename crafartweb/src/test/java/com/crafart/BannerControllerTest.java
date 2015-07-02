@@ -41,7 +41,7 @@ public class BannerControllerTest {
 	@SuppressWarnings("unused")
 	private BannerBO getBannerdetail() {
 		BannerBO bannerBO = new BannerBO();
-		bannerBO.setBannerTitle("dfdg");
+		bannerBO.setBannerName("banner name");
 		bannerBO.setBannerUrl("sgxshxbsbb");
 		bannerBO.setBannerImage("fjdfn");
 		bannerBO.setSortOrder(90);

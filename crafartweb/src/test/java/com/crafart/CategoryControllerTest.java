@@ -38,7 +38,7 @@ public class CategoryControllerTest {
 	@Test
 	@Rollback(true)
 	public void testGetCategories() {
-		ModelMap modelMap = categoryController.getCategory(new MockHttpSession());
+		ModelMap modelMap = categoryController.getCategories(new MockHttpSession());
 		System.out.println("CategoryControllerTest.testGetCourierDetail()");
 		System.out.print(modelMap.size());
 	}

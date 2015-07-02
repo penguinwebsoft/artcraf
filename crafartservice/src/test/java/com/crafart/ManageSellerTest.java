@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.crafart.inter.service.ManageCommissionService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.SellerBO;
 import com.crafart.service.businessobjects.StoreBO;
@@ -132,8 +132,8 @@ public class ManageSellerTest {
 
 	}
 
-	private CommissionBO getCommision() {
-		CommissionBO commissionBO = new CommissionBO();
+	private CommisionBO getCommision() {
+		CommisionBO commissionBO = new CommisionBO();
 		commissionBO.setName("qwerty");
 		commissionBO.setSortOrder(2);
 		commissionBO.setType("qwert");
