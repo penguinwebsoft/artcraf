@@ -13,13 +13,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
 
-import com.crafart.service.businessobjects.CurrencyBO;
 import com.crafart.service.businessobjects.LengthClassBO;
-import com.crafart.service.exception.CrafartServiceException;
 
 /**
  * @author Karthi
