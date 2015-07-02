@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CommissionDAO;
 
@@ -26,10 +26,10 @@ public class CommissionDAOImpl extends CommonDAOImpl implements CommissionDAO {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addCommission(CommissionDO commissionDO) throws CrafartDataException {
+	public void addCommission(CommisionDO commisionDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
-			session.save(commissionDO);
+			session.save(commisionDO);
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB error while adding commission detail", hExp);
 		}
@@ -38,8 +38,8 @@ public class CommissionDAOImpl extends CommonDAOImpl implements CommissionDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<CommissionDO> getCommission() throws CrafartDataException {
-		List<CommissionDO> commissionDOs = new ArrayList<>();
+	public List<CommisionDO> getCommission() throws CrafartDataException {
+		List<CommisionDO> commissionDOs = new ArrayList<>();
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
 			commissionDOs = session.createQuery("from CommissionDO").list();
