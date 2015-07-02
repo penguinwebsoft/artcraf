@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crafart.inter.service.ManageCommissionService;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
@@ -32,7 +32,7 @@ public class CommissionController {
 	private ManageCommissionService manageCommissionServiceImpl;
 
 	@RequestMapping(value = { "/addCommission" }, method = RequestMethod.POST)
-	public @ResponseBody ModelMap addCommission(@RequestBody CommissionBO commissionBO, HttpSession session) {
+	public @ResponseBody ModelMap addCommission(@RequestBody CommisionBO commissionBO, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
 		try {
 			manageCommissionServiceImpl.addCommission(commissionBO);
