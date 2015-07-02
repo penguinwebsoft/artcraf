@@ -21,6 +21,7 @@ import com.crafart.inter.data.CategoryDAO;
 import com.crafart.inter.data.SeoDAO;
 import com.crafart.inter.service.ManageCategoryService;
 import com.crafart.service.businessobjects.CategoryBO;
+import com.crafart.service.businessobjects.SeoBO;
 import com.crafart.service.exception.CrafartServiceException;
 import com.crafart.service.mapper.BeanMapper;
 
@@ -53,7 +54,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 		try {
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getCategories();
 			for (CategoryDO categoryDO : categoryDOs) {
-				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
+				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), new SeoBO());
 				categoryBOs.put(categoryBO.getCategoryId(), categoryBO);
 			}
 		} catch (CrafartDataException cExp) {
@@ -72,6 +73,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 		try {
 			SeoDO seoDO = beanMapper.mapSeoBOToDO(categoryBO.getSeoBO(), new SeoDO());
 			seoDAOImpl.addSeo(seoDO);
+			categoryBO.getSeoBO().setSeoId(seoDO.getSeo_id());
 			CategoryDO categoryDO = beanMapper.mapCategoryBOToDO(categoryBO, new CategoryDO(), seoDO);
 			categoryDAOImpl.addCategory(categoryDO);
 			categoryBO.setCategoryId(categoryDO.getCategoryId());
@@ -91,7 +93,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 		try {
 			CategoryDO categoryDO = categoryDAOImpl.getCategory(categoryBO.getCategoryId());
 			SeoDO seoDO = beanMapper.mapSeoBOToDO(categoryBO.getSeoBO(), categoryDO.getSeoDO());
-			seoDAOImpl.addSeo(seoDO);
+			seoDAOImpl.updateSeo(seoDO);
 			categoryDO = beanMapper.mapCategoryBOToDO(categoryBO, categoryDO, seoDO);
 			categoryDAOImpl.updateCategory(categoryDO);
 		} catch (CrafartDataException e) {
@@ -128,7 +130,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 	public CategoryBO getCategory(long categoryId) throws CrafartServiceException {
 		try {
 			CategoryDO categoryDO = categoryDAOImpl.getCategory(categoryId);
-			CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
+			CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), new SeoBO());
 			return categoryBO;
 		} catch (CrafartDataException cdExp) {
 			throw new CrafartServiceException("Error while getting category for category id - " + categoryId, cdExp);
@@ -142,7 +144,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 		try {
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getAllSubCategories();
 			for (CategoryDO categoryDO : categoryDOs) {
-				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
+				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), new SeoBO());
 				categoryBOs.add(categoryBO);
 			}
 		} catch (CrafartDataException cExp) {
