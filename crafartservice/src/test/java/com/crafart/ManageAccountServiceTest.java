@@ -35,7 +35,7 @@ public class ManageAccountServiceTest {
 	private ManageAccountService manageAccountServiceImpl;
 
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public void testAddBankAccountDetail() {
 		AccountBO accountBO = getAccountDaetail();
 		try {
