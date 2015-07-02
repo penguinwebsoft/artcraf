@@ -58,7 +58,7 @@ public class ManageAttributeServiceTest {
 	
 	
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void testUpdateAttribute() {
 		try {
@@ -123,11 +123,34 @@ public class ManageAttributeServiceTest {
 	private AttributeBO getAttributeBO() {
 		AttributeBO attributeBO = new AttributeBO();
 		attributeBO.setAttributeName("Service attribute");
-		attributeBO.setSubCategoryBO(getCategory());
+		CategoryBO subCategoryBO = getSubCategory();
+		subCategoryBO.setParentId(getCategory().getCategoryId());
+		attributeBO.setSubCategoryBO(subCategoryBO);
 		attributeBO.setSortOrder(1);
 		return attributeBO;
 	}
 
+	// adding sub category 
+	private CategoryBO getSubCategory() {
+		CategoryBO categoryBO = new CategoryBO();
+		try {
+
+			categoryBO.setImageLocation("");
+			categoryBO.setSortOrder(2);
+			categoryBO.setStatus(2);
+			// add category for which sub category belongs
+			categoryBO.setSeoBO(getSeo());
+			categoryBO.setDescription("testing from service");
+			categoryBO.setCategoryName("gold sub category");
+			manageCategoryServiceImpl.addCategory(categoryBO);
+		} catch (CrafartServiceException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+		return categoryBO;
+	}
+
+	// adding category for sub category
 	private CategoryBO getCategory() {
 		CategoryBO categoryBO = new CategoryBO();
 		try {
@@ -135,7 +158,7 @@ public class ManageAttributeServiceTest {
 			categoryBO.setImageLocation("");
 			categoryBO.setSortOrder(2);
 			categoryBO.setStatus(2);
-			categoryBO.setParentId(1);
+			categoryBO.setParentId(0);
 			categoryBO.setSeoBO(getSeo());
 			categoryBO.setDescription("testing from service");
 			categoryBO.setCategoryName("gold");
@@ -146,7 +169,6 @@ public class ManageAttributeServiceTest {
 		}
 		return categoryBO;
 	}
-
 	private SeoBO getSeo() {
 		SeoBO seoBO = new SeoBO();
 		seoBO.setMetaDesc("abc");
