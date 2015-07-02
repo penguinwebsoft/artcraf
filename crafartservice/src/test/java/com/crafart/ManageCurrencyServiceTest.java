@@ -55,7 +55,7 @@ public class ManageCurrencyServiceTest {
 		currencyBO.setSymbolLeft("$");
 		currencyBO.setSymbolRight("$");
 		currencyBO.setValue(9);
-		currencyBO.setDecimalPlace(45544);
+		currencyBO.setDecimalPlace(222);
 		return currencyBO;
 		}
 
