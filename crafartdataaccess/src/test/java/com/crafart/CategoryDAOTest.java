@@ -65,6 +65,7 @@ public class CategoryDAOTest {
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getAllSubCategories();
 			for(CategoryDO categoryDO : categoryDOs){
 				System.out.println(categoryDO.getParentId());
+				System.out.println("seo id "+categoryDO.getSeoDO().getSeo_id());
 				Assert.assertTrue(categoryDO.getParentId() > 0);
 			}
 			
