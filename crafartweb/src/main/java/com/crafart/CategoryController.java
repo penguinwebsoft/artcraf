@@ -6,7 +6,6 @@ package com.crafart;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale.Category;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -27,7 +26,8 @@ import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
- * @author Deepam
+ * @author Prabaharan
+ * @version 1.0
  * 
  */
 @Controller("CategoryController")
@@ -97,7 +97,7 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value = { "/updateCategory" }, method = RequestMethod.POST)
-	public @ResponseBody ModelMap updateCategory(@RequestBody CategoryBO categoryBO, HttpSession session) {
+	public @ResponseBody ModelMap updateCategory(@RequestBody CategoryBO categoryBO) {
 		ModelMap modelMap = new ModelMap();
 		try {
 			manageCategoryServiceImpl.updateCategory(categoryBO);
