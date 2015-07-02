@@ -58,7 +58,7 @@
 				<value>com.crafart.dataobjects.AttributeGroupDescDO</value>
 				<value>com.crafart.dataobjects.TaxRateDO</value>
 				<value>com.crafart.dataobjects.TaxRuleDO</value>
-				<value>com.crafart.dataobjects.CommissionDO</value>
+				<value>com.crafart.dataobjects.CommisionDO</value>
 				<value>com.crafart.dataobjects.CurrencyDO</value>
 				<value>com.crafart.dataobjects.CustomerDO</value>
 				<value>com.crafart.dataobjects.InvoiceDO</value>
