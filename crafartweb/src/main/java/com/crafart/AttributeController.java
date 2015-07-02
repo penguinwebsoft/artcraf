@@ -35,7 +35,7 @@ public class AttributeController {
 		ModelMap modelMap = new ModelMap();
 		try {
 			manageAttributeServiceImpl.addAttribute(attributeBO);
-			log.info("******************** category object *****************************" + attributeBO.getCategoryBO().getCategoryId());
+			log.info("******************** category object *****************************" + attributeBO.getSubCategoryBO().getCategoryId());
 			return modelMap.addAttribute("response", "SUCCESS");
 		} catch (CrafartServiceException csExp) {
 			log.error("Error while adding attribute for attribute name - " + attributeBO.getAttributeName(), csExp);
