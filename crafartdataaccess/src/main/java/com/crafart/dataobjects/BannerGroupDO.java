@@ -25,8 +25,8 @@ public class BannerGroupDO implements Serializable, Cloneable {
 
 	@Id
 	@Column(name = "banner_group_id")
-	@SequenceGenerator(name = "seq_bannergroup", sequenceName = "seq_bannergroup", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_bannergroup")
+	@SequenceGenerator(name = "seq_banner_group", sequenceName = "seq_banner_group", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_banner_group")
 	private long bannerGroupId;
 
 	@Column(name = "banner_group_name")
