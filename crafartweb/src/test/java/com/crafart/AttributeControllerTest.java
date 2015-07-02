@@ -57,7 +57,7 @@ public class AttributeControllerTest {
 	private AttributeBO getAttributeBO() {
 		AttributeBO attributeBO = new AttributeBO();
 		attributeBO.setAttributeName("Color");
-		attributeBO.setCategoryBO(getCategoryBO());
+		attributeBO.setSubCategoryBO(getCategoryBO());
 		attributeBO.setSortOrder(1);
 		return attributeBO;
 	}
