@@ -79,7 +79,7 @@
 																		+ categoryBO.categoryName
 																		+ "<\/td><td>"
 																		+ categoryBO.sortOrder
-																		+ "<\/td> <td><a class='btn btn-warning' href='${baseURL}/menu/addAttribute'>Edit</a></td> <\/tr>");
+																		+ "<\/td> <td><a class='btn btn-warning' href='${baseURL}/menu/addSubCategories'>Edit</a></td> <\/tr>");
 											});
 						}
 					});
