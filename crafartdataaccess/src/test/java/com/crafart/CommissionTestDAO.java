@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CommissionDAO;
 
@@ -38,7 +38,7 @@ public class CommissionTestDAO {
 	@Test
 	@Rollback(true)
 	public void testAddCommission() {
-		CommissionDO commissionDO = getCommission();
+		CommisionDO commissionDO = getCommission();
 		try {
 			commissionDAOImpl.addCommission(commissionDO);
 		} catch (CrafartDataException cdExp) {
@@ -57,7 +57,7 @@ public class CommissionTestDAO {
 		try {
 			/* adding data to table then retrieve from table */
 			testAddCommission();
-			List<CommissionDO> commissionDOs = commissionDAOImpl.getCommission();
+			List<CommisionDO> commissionDOs = commissionDAOImpl.getCommission();
 			Assert.assertNotNull(commissionDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
@@ -65,8 +65,8 @@ public class CommissionTestDAO {
 		}
 	}
 
-	private CommissionDO getCommission() {
-		CommissionDO commissionDO = new CommissionDO();
+	private CommisionDO getCommission() {
+		CommisionDO commissionDO = new CommisionDO();
 		commissionDO.setName("qwqw");
 		commissionDO.setSortOrder(2);
 		commissionDO.setType("comm");
