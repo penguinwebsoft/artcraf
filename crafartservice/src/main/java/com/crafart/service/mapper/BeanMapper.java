@@ -15,7 +15,7 @@ import com.crafart.dataobjects.AttributeGroupDescDO;
 import com.crafart.dataobjects.BannerDO;
 import com.crafart.dataobjects.BannerGroupDO;
 import com.crafart.dataobjects.CategoryDO;
-import com.crafart.dataobjects.CommissionDO;
+import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.ContactDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.CrafartOrderDO;
@@ -51,7 +51,7 @@ import com.crafart.service.businessobjects.AttributeGroupDescBO;
 import com.crafart.service.businessobjects.BannerBO;
 import com.crafart.service.businessobjects.BannerGroupBO;
 import com.crafart.service.businessobjects.CategoryBO;
-import com.crafart.service.businessobjects.CommissionBO;
+import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.businessobjects.ContactBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CrafartOrderBO;
@@ -91,9 +91,9 @@ import com.crafart.service.businessobjects.WeightClassBO;
 @Component("beanMapper")
 public class BeanMapper {
 
-	public SellerDO mapSellerBOToDO(SellerBO sellerBO, SellerDO sellerDO, CommissionDO commissionDO) {
+	public SellerDO mapSellerBOToDO(SellerBO sellerBO, SellerDO sellerDO, CommisionDO commisionDO) {
 		sellerDO.setApproved(sellerBO.getApproved());
-		sellerDO.setCommissionDO(commissionDO);
+		sellerDO.setCommisionDO(commisionDO);
 		sellerDO.setCompanyLogo(sellerBO.getCompanyLogo());
 		sellerDO.setCompanyName(sellerBO.getCompanyName());
 		sellerDO.setCst_no(sellerBO.getCstNo());
@@ -111,7 +111,7 @@ public class BeanMapper {
 
 	}
 
-	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO, AddressBO addressBO, StoreBO storeBO, CommissionBO commissionBO) {
+	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO, AddressBO addressBO, StoreBO storeBO, CommisionBO commissionBO) {
 		sellerBO.setApproved(sellerDO.getApproved());
 		sellerBO.setCommissionBO(commissionBO);
 		sellerBO.setCompanyLogo(sellerDO.getCompanyLogo());
@@ -318,7 +318,10 @@ public class BeanMapper {
 
 	public CategoryBO mapCategoryDOToBO(CategoryDO categoryDO, CategoryBO categoryBO, SeoBO seoBO) {
 		categoryBO.setCategoryId(categoryDO.getCategoryId());
-		categoryBO.setSeoBO(seoBO);
+		SeoDO seoDO = categoryDO.getSeoDO();
+		if(null != seoDO){
+			categoryBO.setSeoBO(mapSeoDOToBO(seoDO, seoBO));
+		}
 		categoryBO.setImageLocation(categoryDO.getImageLocation());
 		categoryBO.setParentId(categoryDO.getParentId());
 		categoryBO.setSortOrder(categoryDO.getSortOrder());
@@ -333,7 +336,7 @@ public class BeanMapper {
 		seoDO.setMetaDesc(seoBO.getMetaDesc());
 		seoDO.setMetaKeyword(seoBO.getMetaKeyword());
 		seoDO.setMetaTitle(seoBO.getMetaTitle());
-		seoDO.setSeo_id(seoBO.getSeo_id());
+		seoDO.setSeo_id(seoBO.getSeoId());
 		return seoDO;
 
 	}
@@ -342,7 +345,7 @@ public class BeanMapper {
 		seoBO.setMetaDesc(seoDO.getMetaDesc());
 		seoBO.setMetaKeyword(seoDO.getMetaKeyword());
 		seoBO.setMetaTitle(seoDO.getMetaTitle());
-		seoBO.setSeo_id(seoDO.getSeo_id());
+		seoBO.setSeoId(seoDO.getSeo_id());
 		return seoBO;
 
 	}
@@ -536,7 +539,7 @@ public class BeanMapper {
 
 	}
 
-	public CommissionDO mapCommissionBOToDO(CommissionBO commissionBO, CommissionDO commissionDO) {
+	public CommisionDO mapCommissionBOToDO(CommisionBO commissionBO, CommisionDO commissionDO) {
 		commissionDO.setCommissionId(commissionBO.getCommissionId());
 		commissionDO.setName(commissionBO.getName());
 		commissionDO.setSortOrder(commissionBO.getSortOrder());
@@ -546,7 +549,7 @@ public class BeanMapper {
 
 	}
 
-	public CommissionBO mapCommissionDOToBO(CommissionDO commissionDO, CommissionBO commissionBO) {
+	public CommisionBO mapCommissionDOToBO(CommisionDO commissionDO, CommisionBO commissionBO) {
 		commissionBO.setCommissionId(commissionDO.getCommissionId());
 		commissionBO.setName(commissionDO.getName());
 		commissionBO.setSortOrder(commissionDO.getSortOrder());
@@ -659,10 +662,10 @@ public class BeanMapper {
 
 	}
 
-	public CrafartOrderDO mapCrafartOrderBOToDO(CrafartOrderBO crafartOrderBO, CrafartOrderDO crafartOrderDO, CommissionDO commissionDO, CourierDO courierDO, CrafartUserDO crafartUserDO,
+	public CrafartOrderDO mapCrafartOrderBOToDO(CrafartOrderBO crafartOrderBO, CrafartOrderDO crafartOrderDO, CommisionDO commissionDO, CourierDO courierDO, CrafartUserDO crafartUserDO,
 			CurrencyDO currencyDO, CustomerDO customerDO, InvoiceDO invoiceDO, ProductDO productDO, StoreDO storeDO, TaxRateDO taxRateDO) {
 		crafartOrderDO.setComment(crafartOrderBO.getComment());
-		crafartOrderDO.setCommissionDO(commissionDO);
+		crafartOrderDO.setCommisionDO(commissionDO);
 		crafartOrderDO.setCourierDO(courierDO);
 		crafartOrderDO.setCrafartUserDO(crafartUserDO);
 		crafartOrderDO.setCurrencyDO(currencyDO);
@@ -680,7 +683,7 @@ public class BeanMapper {
 
 	}
 
-	public CrafartOrderBO mapCrafartOrderDOToBO(CrafartOrderDO crafartOrderDO, CrafartOrderBO crafartOrderBO, CommissionBO commissionBO, CourierBO courierBO, CrafartUserBO crafartUserBO,
+	public CrafartOrderBO mapCrafartOrderDOToBO(CrafartOrderDO crafartOrderDO, CrafartOrderBO crafartOrderBO, CommisionBO commissionBO, CourierBO courierBO, CrafartUserBO crafartUserBO,
 			CurrencyBO currencyBO, CustomerBO customerBO, InvoiceBO invoiceBO, ProductBO productBO, StoreBO storeBO, TaxRateBO taxRateBO) {
 		crafartOrderBO.setComment(crafartOrderDO.getComment());
 		crafartOrderBO.setCommissionBO(commissionBO);
