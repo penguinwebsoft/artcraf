@@ -12,7 +12,8 @@
 		<h5 class="media-heading">Joe Romlin</h5>
 	</div>
 	<br />
-</div> --%>
+</div>
+ --%>
 <ul id="menu" class="collapse col-lg-2" id="sampleTabs" style="background-color: #333;">
 	<li class="panel"><a id="dashboardMenuId" href="${baseURL}/menu/dashboard"> <i class="icon-table"></i> Dashboard
 	</a></li>
@@ -54,7 +55,7 @@
 	<li class="panel" id="sellersMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-vendor-navs"> <i class="icon-tasks"> </i> Sellers <span
 			class="pull-right"> <i class="icon-angle-left"></i>
 		</span> &nbsp;
-	</a>
+	</a>    
 		<ul class="collapse" id="component-vendor-navs">
 
 			<li><a id="manageSellersMenuId" href="${baseURL}/menu/manageSellers"> <i class="icon-angle-right"></i> Manage Sellers
@@ -72,7 +73,7 @@
 		<ul class="collapse" id="component-marketing-navs">
 			<li><a id="couponListMenuId" href="${baseURL}/menu/couponList"> <i class="icon-angle-right"></i>Coupons
 			</a></li>
-			<li><a id="mailPageMenuId" href="${baseURL}/menu/mailPage"> <i class="icon-angle-right"></i>Mail
+			<li><a id="mailListPageMenuId" href="${baseURL}/menu/mailListPage"> <i class="icon-angle-right"></i>Mail List
 			</a></li>
 		</ul></li>
 
@@ -114,11 +115,11 @@
 				</span> &nbsp;
 			</a>
 				<ul class="collapse" id="component-users-navs">
-					<li><a id="userListPageMenuId" href="${baseURL}/menu/userListPage"> <i class="icon-angle-right"></i> Users
+					<li><a id="userListPageMenuId" href="${baseURL}/menu/userListPage"> <i class="icon-angle-right"></i> User List
 					</a></li>
-					<li><a id="userGroupListMenuId" href="${baseURL}/menu/userGroupList"> <i class="icon-angle-right"></i> User Group 
+					<li><a id="userGroupListMenuId" href="${baseURL}/menu/userGroupList"> <i class="icon-angle-right"></i> User Group
 					</a></li>
-					
+
 				</ul></li>
 			<li id="SettingMenuId"><a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-setting-navs"> <i class="icon-tasks"> </i> Setting <span
 					class="pull-right"> <i class="icon-angle-left"></i>
