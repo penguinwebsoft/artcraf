@@ -127,7 +127,7 @@
 								</div>
 								<!-- Shipping Details Section -->
 								<div class="tab-pane" id="tab-shippingdetails">
-									<div class="col-lg-6">
+									<div class="col-lg-12">
 										<div class="form-group">
 											<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="Force a minimum ordered amount">Street Address</span></label>
 											<div class="col-sm-10">
@@ -179,20 +179,69 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-6">
+									
 										<div class="form-group">
-											<label class="col-sm-2 control-label" for="input-country">Same Billing Address</label>
+											<label class="col-sm-2 control-label">Same Billing Address</label>
 											<div class="col-sm-10">
-												<select name="country" id="input-country" class="form-control">
+												<select name="input-address" id="input-address" class="form-control">
 													<option value="1">Yes</option>
 													<option value="2">No</option>
 												</select>
 											</div>
 										</div>
-
-									</div>
+									<div class="form-group required addressYes" id="address-1">	
+											<div class="form-group">
+												<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="Force a minimum ordered amount">Street Address</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="streetaddress" value="" placeholder="streetaddress" id="input-streetaddress" class="form-control" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="Force a minimum ordered amount">City</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="city" value="" placeholder="city" id="input-city" class="form-control" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Land Mark</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="landmark" value="" placeholder="landmark" id="input-landmark" class="form-control" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">State</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="state" value="" placeholder="state" id="input-state" class="form-control" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Pincode</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="pincode" value="" placeholder="pincode" id="input-pincode" class="form-control" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-country">Country</label>
+												<div class="col-sm-10">
+													<select name="country" id="input-country" class="form-control">
+														<option value="1" selected="selected">INDIA</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Mobile Number</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="mobileno" value="" placeholder="mobileno" id="input-mobileno" class="form-control" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">LandLine Number</span></label>
+												<div class="col-sm-10">
+													<input type="text" name="landlineno" value="" placeholder="landlineno" id="input-landlineno" class="form-control" />
+												</div>
+											</div>
+										</div>
 								</div>
-
 								<!-- Total Section -->
 								<div class="tab-pane" id="tab-totals">
 									<div class="row">
@@ -225,9 +274,21 @@
 								</div>
 							</div>
 						</form>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+</div>
+<script type="text/javascript">
+
+	$('#input-address').on('change', function() {
+		var toType = this.value;
+		if (toType == 1) {
+			$('.addressYes').show();
+		} else {
+			$('.addressYes').hide();
+		}
+
+	});
+</script>
