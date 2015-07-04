@@ -55,5 +55,5 @@
 	</div>
 </div>
 <script type="text/javascript">
-	setPage("smsListMenuId");
+	setPage("emailListMenuId");
 </script>
