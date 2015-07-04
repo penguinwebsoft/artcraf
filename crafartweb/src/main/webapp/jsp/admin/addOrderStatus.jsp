@@ -64,6 +64,12 @@
 									</select>
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="sortorder"><span data-toggle="tooltip" title="Force a minimum ordered amount">Sort Order</span></label>
+								<div class="col-sm-10">
+									<input type="text" name="sortorder" value="" placeholder="sortorder" id="sortorder" class="form-control" />
+								</div>
+							</div>
 					</div>
 				</div>
 			</div>
