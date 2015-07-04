@@ -38,7 +38,7 @@
 									<td>TextTiles</td>
 									<td>TextTiles</td>
 									<td>0</td>
-									<td><a class="btn btn-warning" href="${baseURL}/menu/editMailPage">Edit</a></td>
+									<td><a class="btn btn-warning" href="${baseURL}/menu/mailEditPage">Edit</a></td>
 								</tr>
 							</thead>
 						</table>
