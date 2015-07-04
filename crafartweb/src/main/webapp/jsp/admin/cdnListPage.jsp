@@ -61,5 +61,5 @@
 	</div>
 </div>
 <script type="text/javascript">
-	setPage("manageSellersMenuId");
+	setPage("cdnListPageMenuId");
 </script>
