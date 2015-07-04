@@ -51,5 +51,5 @@
 	</div>
 </div>
 <script type="text/javascript">
-	setPage("userListPageMenuId");
+	setPage("usersMenuId");
 	</script>
