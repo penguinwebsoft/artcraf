@@ -4,6 +4,10 @@
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.request.contextPath}" />
 
+<script type="text/javascript">
+	setPage("returnActionMenuId");
+	</script>
+
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -47,6 +51,3 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	setPage("returnActionMenuId");
-	</script>
