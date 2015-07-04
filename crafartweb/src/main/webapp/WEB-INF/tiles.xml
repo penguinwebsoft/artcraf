@@ -317,10 +317,20 @@
 		<put-attribute name="title" value="Edit Coupon List" />
 		<put-attribute name="adminBody" value="/jsp/admin/editCouponList.jsp" />
 	</definition>
+	
+	<definition name="mailListPage" extends="admin.definition">
+		<put-attribute name="title" value="Mail List Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/mailListPage.jsp" />
+	</definition>
 
 	<definition name="mailPage" extends="admin.definition">
 		<put-attribute name="title" value="Mail Page" />
 		<put-attribute name="adminBody" value="/jsp/admin/mailPage.jsp" />
+	</definition>
+	
+	<definition name="MailEditPage" extends="admin.definition">
+		<put-attribute name="title" value="Mail Edit Page" />
+		<put-attribute name="adminBody" value="/jsp/admin/mailEditPage.jsp" />
 	</definition>
 
 	<definition name="currenciesPage" extends="admin.definition">
