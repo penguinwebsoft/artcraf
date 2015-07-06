@@ -38,7 +38,7 @@
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
 									<td>1</td>
 									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>China Post Air Mail</td>
+									<td>India Post Air Mail</td>
 									<td>1</td>
 									<td><a class="btn btn-warning" href="${baseURL}/menu/editBannerPage">Edit</a></td>
 								</tr>
@@ -50,6 +50,65 @@
 		</div>
 	</div>
 </div>
+	</table>
+						<nav>
+							<ul class="pagination">
+								<li class="disabled"><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <script type="text/javascript">
+	setPage("bannerPageMenuId");
+</script>
+<script type="text/javascript">
+	
+	$(document)
+			.ready(
+					function() {
+						$.ajax({
+							url : "../banner/getBanner",
+							type : "get",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								bannerBOs = data.bannerBOs;
+								displayBannerList(bannerBOs);
+							}
+						});
+						function displayBannerList(bannerBOs) {
+							$
+									.each(bannerBOs,	function(key, value) {
+												var bannerBO = value;
+												var html = '<tr>';
+												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+												html += '<td>'
+														+ bannerBO.BannerName
+														+ '</td>';
+												html += '<td>'
+														+ bannerBO.BannerImage
+														+ '</td>';
+												html += '<td>'
+														+ bannerBO.bannerUrl
+														+ '</td>';
+												html += '<td>'
+														+ bannerBO.sortOrder
+														+ '</td>';	
+			html += "<td><a class='btn btn-warning' href='${baseURL}/banner/editBanner?bannerId="+bannerBO.bannerId+"'>Edit</button></td>";
+												html += '</tr>';
+												$('#shipping').append(
+														html);
+											});
+						}
+					});
 	setPage("bannerPageMenuId");
 </script>
