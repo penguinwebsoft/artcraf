@@ -38,37 +38,55 @@
 									<td>Action</td>
 								</tr>
 							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>MP3 Players > test 18</td>
-									<td>MP3 Players > test 18</td>
-									<td>MP3 Players > test 18</td>
-									<td>150.00</td>
-									<td>1</td>
-									<td><a class="btn btn-warning" href="${baseURL}/menu/editCommission">Edit</a></td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>MP3 Players > test 19</td>
-									<td>MP3 Players > test 19</td>
-									<td>MP3 Players > test 19</td>
-									<td>200.00</td>
-									<td>2</td>
-									<td><button type="button" class="btn btn-warning">Edit</button></td>
-								</tr>
-							</thead>
-						</table>
+							</table>
+						<nav>
+							<ul class="pagination">
+								<li class="disabled"><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								</a></li>
+							</ul>
+						</nav>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
+$(document)
+.ready(
+		function() {
+			$.ajax({
+				url : "../commission/getCommission",
+				type : "get",
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					commisionBOs = data.commisionBOs;
+					displayCommisionList(commisionBOs);
+				}
+			});
+			function displayCommisionList(commisionBOs) {
+				$
+						.each(commisionBOs,	function(key, value) {
+									var commisionBOs = value;
+									var html = '<tr>';
+									html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+									html += '<td>'
+											+ categoryBO.name
+											+ '</td>';
+									html += '<td>'
+											+ categoryBO.sortOrder
+											+ '</td>';
+									html += "<td><a class='btn btn-warning' href='${baseURL}/category/editCategory?categoryId="+categoryBO.categoryId+"'>Edit</button></td>";
+									html += '</tr>';
+									$('#shipping').append(
+											html);
+								});
+			}
+		});
 	setPage("commissionListMenuId");
 </script>
