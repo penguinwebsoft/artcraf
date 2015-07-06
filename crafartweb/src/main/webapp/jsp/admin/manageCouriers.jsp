@@ -3,40 +3,6 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.request.contextPath}" />
-
-<script type="text/javascript">
-var manageCourierBOs = {};
-$(document).ready(function() {
-	
-	$.ajax({
-		url : "../manageCourier/getManageCourier",
-		type : "post",
-		contentType : "application/json",
-		dataType : "json",
-		success : function(data){
-			manageCouriersBOs = data.manageCouriersBOs;
-			displayManageCourierList();
-		}
-	});
-	function displaymanageCourierList(){
-		 $.each(manageCouriersBOs, function(key, value) {
-			 var manageCouriersBOs = value;
-				html = '<tr>';
-				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
-				html +='<td>'+manageCouriersBO.manageCouriersName+'</td>';
-				html +='<td>'+manageCouriersBO.sortOrder+'</td>';
-				html +='<td>'+manageCouriersBO.estimatedDeliveryTime+'</td>';
-				html +='<td>'+manageCouriersBO.totalProducts+'</td>';
-				html +='<td>'+manageCouriersBO.action+'</td>';
-				
-				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
-				html +='</tr>';
-				$('#shipping tbody').append(html);
-			}); 
-		}
-});
-</script>
-
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
@@ -49,9 +15,15 @@ $(document).ready(function() {
 				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
-
+<hr />
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="icon-th-list"></i> &nbsp; Courier List
+				</h3>
+			</div>
+			<br>
 		<!-- Table Section-->
-		<div class="container-fluid" style="background-color: white;">
 			<div class="container">
 				<div class="tab-pane" id="tab-shipping">
 					<div class="table-responsive">
@@ -66,87 +38,69 @@ $(document).ready(function() {
 									<td>Action</td>
 								</tr>
 							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>China Post Air Mail</td>
-									<td>15-30 Days</td>
-									<td>0</td>
-									<td>
-										<a class="btn btn-warning" href="${baseURL}/menu/editCouriers">Edit</a>
-									</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>DHL</td>
-									<td>3-7 Days</td>
-									<td>0</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>EMS</td>
-									<td>5-10 Days</td>
-									<td>0</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>Fedex</td>
-									<td>3-7 Days</td>
-									<td>0</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>Hong Kong Air Mail</td>
-									<td>15-30 Days</td>
-									<td>0</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>JNE</td>
-									<td>3-7 Days</td>
-									<td>0</td>
-									<td>
-										<button type="button" class="btn btn-warning">Edit</button>
-									</td>
-								</tr>
-							</thead>
-						</table>
-
+							
+</table>
+						<nav>
+							<ul class="pagination">
+								<li class="disabled"><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								</a></li>
+							</ul>
+						</nav>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	setPage("manageCouriersMenuId");
+	
+	$(document)
+			.ready(
+					function() {
+						$.ajax({
+							url : "../courier/getCourier",
+							type : "get",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								courierBOs = data.courierBOs;
+								displayCourierList(courierBOs);
+							}
+						});
+						function displayCourierList(courierBOs) {
+							$
+									.each(courierBOs,	function(key, value) {
+												var courierBO = value;
+												var html = '<tr>';
+												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+												html += '<td>'
+														+ courierBO.courierName
+														+ '</td>';
+												html += '<td>'
+														+ courierBO.image
+														+ '</td>';
+												html += '<td>'
+														+ courierBO.productLimit
+														+ '</td>';
+												html += '<td>'
+														+ courierBO.estimatedDeliveryTime
+													    + '</td>';
+												html += '<td>'
+													+ courierBO.sortOrder
+													+ '</td>';
+												
+												html += "<td><a class='btn btn-warning' href='${baseURL}/courier/editCourier?courierId="+courierBO.courierId+"'>Edit</button></td>";
+												html += '</tr>';
+												$('#shipping').append(
+														html);
+											});
+						}
+					});
+	setPage("CourierMenuId");
 </script>
+
+
