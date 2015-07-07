@@ -82,6 +82,11 @@
 		<put-attribute name="title" value="Add Categories" />
 		<put-attribute name="adminBody" value="/jsp/admin/addCategory.jsp" />
 	</definition>
+	
+	<definition name="editSubCategory" extends="admin.definition">
+		<put-attribute name="title" value="Add Categories" />
+		<put-attribute name="adminBody" value="/jsp/admin/editSubCategory.jsp" />
+	</definition>
 
 	<definition name="editCategories" extends="admin.definition">
 		<put-attribute name="title" value="Edit Categories" />
@@ -328,7 +333,7 @@
 		<put-attribute name="adminBody" value="/jsp/admin/mailPage.jsp" />
 	</definition>
 	
-	<definition name="MailEditPage" extends="admin.definition">
+	<definition name="mailEditPage" extends="admin.definition">
 		<put-attribute name="title" value="Mail Edit Page" />
 		<put-attribute name="adminBody" value="/jsp/admin/mailEditPage.jsp" />
 	</definition>
