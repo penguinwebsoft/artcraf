@@ -181,18 +181,65 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
-											<label class="col-sm-2 control-label" for="input-country">Same Billing Address</label>
-											<div class="col-sm-10">
-												<select name="country" id="input-country" class="form-control">
-													<option value="1">Yes</option>
-													<option value="2">No</option>
-												</select>
+											<label class="col-sm-2 control-label">Same Billing Address</label> Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio"
+												onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+										</div>
+										<div id="ifNo" style="display: none">
+											<div class="" id='no' name='no'>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="Force a minimum ordered amount">Street Address</span></label>
+													<div class="col-sm-10">
+														<input type="text" name="streetaddress" value="" placeholder="streetaddress" id="input-streetaddress" class="form-control" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="Force a minimum ordered amount">City</span></label>
+													<div class="col-sm-10">
+														<input type="text" name="city" value="" placeholder="city" id="input-city" class="form-control" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Land Mark</span></label>
+													<div class="col-sm-10">
+														<input type="text" name="landmark" value="" placeholder="landmark" id="input-landmark" class="form-control" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">State</span></label>
+													<div class="col-sm-10">
+														<input type="text" name="state" value="" placeholder="state" id="input-state" class="form-control" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Pincode</span></label>
+													<div class="col-sm-10">
+														<input type="text" name="pincode" value="" placeholder="pincode" id="input-pincode" class="form-control" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-country">Country</label>
+													<div class="col-sm-10">
+														<select name="country" id="input-country" class="form-control">
+															<option value="1" selected="selected">INDIA</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">Mobile Number</span></label>
+													<div class="col-sm-10">
+														<input type="text" name="mobileno" value="" placeholder="mobileno" id="input-mobileno" class="form-control" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">LandLine Number</span></label>
+													<div class="col-sm-10">
+														<input type="text" name="landlineno" value="" placeholder="landlineno" id="input-landlineno" class="form-control" />
+													</div>
+												</div>
 											</div>
 										</div>
-
 									</div>
 								</div>
-
 								<!-- Total Section -->
 								<div class="tab-pane" id="tab-totals">
 									<div class="row">
@@ -206,11 +253,77 @@
 																<th width="10%">Price</th>
 																<th class="center" width="10%">Quantity</th>
 																<th width="10%" class="right">&nbsp;Subtotal</th>
-																<th width="10%" class="right">&nbsp;Tax</th>
+
 															</tr>
 														</thead>
+														<tr>
+															<td><a href="http://demo.mv.cs-cart.com/vendor.php?dispatch=products.update&amp;product_id=214">ASUS CP6130</a>
+																<div class="products-hint">
+																	<p>CODE:K02149B2ZX</p>
+																	<!-- Hook Reward points start -->
+																	<!-- Hook Reward points end -->
+																</div></td>
+															<td class="nowrap">$<span>972.00</span>
+															</td>
+															<td class="center">&nbsp;1<br />
+															</td>
+															<td class="right">&nbsp;<span> $<span>972.00</span>
+															</span></td>
+														</tr>
 													</table>
 
+												</div>
+											</div>
+											<div class="row">
+												<div class="table-responsive pull-right">
+													<table class="table borderless">
+														<tr class="totals">
+															<td>&nbsp;</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td><h4>Totals</h4></td>
+														</tr>
+
+														<tr>
+															<td class="pull-right">Subtotal:</td>&nbsp;&nbsp;
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>$<span>972.00</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="pull-right">Taxes:</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td class="pull-right"><span>&middot;</span>&nbsp;VAT&nbsp;10%&nbsp;included&nbsp;(1234242)</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>$<span>88.36</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="pull-right"><span>&middot;</span>&nbsp;GST&nbsp;10%&nbsp;included&nbsp;(1234243)</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>$<span>8.00</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="pull-right"><span>&middot;</span>&nbsp;CST&nbsp;10%&nbsp;included&nbsp;(1234244)</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>$<span>8.00</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="pull-right"><span>&middot;</span>&nbsp;Discount Coupon Code()&nbsp;</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td><span></span></td>
+														</tr>
+														<tr>
+															<td class="pull-right"><h4>Total:</h4></td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>$<span>972.00</span>
+															</td>
+														</tr>
+													</table>
 												</div>
 											</div>
 											<div class="form-group required">
@@ -231,3 +344,23 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function yesnoCheck() {
+		if (document.getElementById('noCheck').checked) {
+			document.getElementById('ifNo').style.display = 'block';
+		} else
+			document.getElementById('ifNo').style.display = 'none';
+	}
+</script>
+<!-- <script type="text/javascript">
+	$('#input-address').on('change', function() {
+		var toType = this.value;
+		if (toType == 2) {
+			$('.addressNo').show();
+		} else {
+			$('.addressNo').hide();
+		}
+
+	});
+</script> -->

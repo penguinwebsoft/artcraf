@@ -50,6 +50,12 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">BannerURL</span></label>
+								<div class="col-sm-10">
+									<input type="text" id="bannerurl" name="bannerurl" value="" placeholder="BannerURL" id="input-bannerurl" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
 									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />

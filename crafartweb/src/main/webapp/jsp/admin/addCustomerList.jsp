@@ -72,7 +72,7 @@
 												</div>
 											</div>
 											<div class="form-group required col-md-10">
-												<label class="col-sm-2 control-label">conform Password</label>
+												<label class="col-sm-2 control-label">Confirm Password</label>
 												<div class="col-sm-5">
 													<input type="text" name="cpassword" value="" placeholder="cPassword" id="input-cPassword" class="form-control" />
 												</div>

@@ -40,12 +40,12 @@
 								<label class="col-sm-2 control-label" for="input-status">To</label>
 								<div class="col-sm-10">
 									<select name="input-to" id="input-to" placeholder="---please select---" class="form-control">
-										<option value="2"  selected="selected">Customer</option>
-										<option value="0">All Newsletters Subscribers</option>
+										<option value="0" selected="selected">All Newsletters Subscribers</option>
 										<option value="1">All customers</option>
+										<option value="2">Customer</option>
 										<option value="3">All sellers</option>
 										<option value="4">Seller</option>
-										
+
 									</select>
 								</div>
 							</div>
@@ -85,6 +85,16 @@
 									</div>
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="input-status">Status</label>
+								<div class="col-sm-10">
+									<select name="input-to" id="status" placeholder="---please select---" class="form-control">
+										<option value="0" selected="selected">Enable</option>
+										<option value="1">Disable</option>
+									</select>
+								</div>
+							</div>
+							
 					</div>
 				</div>
 			</div>
@@ -94,7 +104,7 @@
 
 <script type="text/javascript">
 	setPage("mailPageMenuId");
-
+	
 	$('#input-to').on('change', function() {
 		var toType = this.value;
 		if (toType == 2) {

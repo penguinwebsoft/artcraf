@@ -148,9 +148,6 @@
 					});
 </script>
 
-
-
-
 <div class="row-fluid">
 	<div style="margin-top: 1%;" class="row-fluid" class="col-lg-12">
 		<div class="col-md-6" id="loginContent">

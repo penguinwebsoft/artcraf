@@ -214,7 +214,24 @@
 															<td>$<span>88.36</span>
 															</td>
 														</tr>
-
+														<tr>
+															<td class="pull-right"><span>&middot;</span>&nbsp;GST&nbsp;10%&nbsp;included&nbsp;(1234243)</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>$<span>8.00</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="pull-right"><span>&middot;</span>&nbsp;CST&nbsp;10%&nbsp;included&nbsp;(1234244)</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td>$<span>8.00</span>
+															</td>
+														</tr>
+														<tr>
+															<td class="pull-right"><span>&middot;</span>&nbsp;Discount Coupon Code()&nbsp;</td>
+															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+															<td><span></span>
+															</td>
+														</tr>
 														<tr>
 															<td class="pull-right"><h4>Total:</h4></td>
 															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -222,7 +239,7 @@
 															</td>
 														</tr>
 														<tr>
-															<td class="pull-right"><h4>Commend:</h4></td>
+															<td class="pull-right"><h4>Comment:</h4></td>
 															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 														</tr>
 													</table>
