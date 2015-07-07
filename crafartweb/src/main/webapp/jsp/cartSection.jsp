@@ -1,59 +1,136 @@
-<%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="context" value="${pageContext.request.contextPath}" />
-<c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
-
 <div class="container-fluid" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;background-image: url(${context}/resources/img/background_img.jpg);">
 	<div style="background-color: #FBF5F5; margin-left: 5%; margin-right: 5%">
 		<div id="horizontalTabContentOrder">
 			<ul class="nav nav-tabs nav_tabs_bottom_border" id="OrderSection">
 				<li class="active" id="tabCart"><a data-toggle="tab" href="#tab-Cart">Cart</a></li>
-				<li id="tabDigitalCart"><a data-toggle="tab" href="#tab-Digital Cart">Digital Cart</a></li>
 			</ul>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-10 col-md-offset-1">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Product</th>
+									<th>Quantity</th>
+									<th class="text-center">Price</th>
+									<th class="text-center">Total</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-sm-8 col-md-6">
+										<div class="media">
+											<a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
+												style="width: 72px; height: 72px;">
+											</a>
+											<div class="media-body">
+												<h4 class="media-heading">
+													<a href="#">Product name</a>
+												</h4>
+												<h5 class="media-heading">
+													by <a href="#">Brand name</a>
+												</h5>
+												<span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+											</div>
+										</div>
+									</td>
+									<td class="col-sm-1 col-md-1" style="text-align: center"><input type="email" class="form-control" id="exampleInputEmail1" value="3"></td>
+									<td class="col-sm-1 col-md-1 text-center"><strong>Rs.450</strong></td>
+									<td class="col-sm-1 col-md-1 text-center"><strong>Rs.1350</strong></td>
+									<td class="col-sm-1 col-md-1"><a class="btn btn-warning">Refresh</a> <a class="btn btn-danger" style="margin-top: 5px">Remove</a></td>
+								</tr>
+								<tr>
+									<td class="col-md-6">
+										<div class="media">
+											<a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
+												style="width: 72px; height: 72px;">
+											</a>
+											<div class="media-body">
+												<h4 class="media-heading">
+													<a href="#">Product name</a>
+												</h4>
+												<h5 class="media-heading">
+													by <a href="#">Brand name</a>
+												</h5>
+												<span>Status: </span><span class="text-warning"><strong>Leaves warehouse in 2 - 3 weeks</strong></span>
+											</div>
+										</div>
+									</td>
+									<td class="col-md-1" style="text-align: center"><input type="email" class="form-control" id="exampleInputEmail1" value="2"></td>
+									<td class="col-md-1 text-center"><strong>Rs.400</strong></td>
+									<td class="col-md-1 text-center"><strong>Rs.800</strong></td>
+									<td class="col-md-1"><a class="btn btn-warning">Refresh</a> <a class="btn btn-danger" style="margin-top: 5px">Remove</a></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><h5>
+											<b>Subtotal</b>
+										</h5></td>
+									<td class="text-right"><h5>
+											<strong>Rs.24.59</strong>
+										</h5></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><h5>
+											<b>Estimated shipping</b>
+										</h5></td>
+									<td class="text-right"><h5>
+											<strong>Rs.60</strong>
+										</h5></td>
 
-			<div class="col-md-12">
-				<div>
-					<span class="glyphicon glyphicon-shopping-cart"><font color="red"> MYCART </font></span>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><b>VAT(5%)</b></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><b>GST(2%)</b></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><b>CST(3%)</b></td>
+								</tr>
+								
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><h3>
+											<b>Total</b>
+										</h3></td>
+									<td class="text-right"><h3>
+											<strong>Rs.2150</strong>
+										</h3></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+										<button type="button" class="btn btn-primary">
+											<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+										</button>
+									</td>
+									<td><a type="button" href="${baseURL}/menu/checkoutSection" class="btn btn-success">CheckOut</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-				<div style="margin-top: 3%">
-					<span>PRODUCT(S)</span> <span style="margin-left: 10%">DISTRIBUTION</span> <span style="margin-left: 15%">QUANTITY</span> <span style="margin-left: 10%">UNIT PRICE</span> <span
-						style="margin-left: 10%">DELIVERY INFO</span> <span style="margin-left: 10%">SUB TOTAL</span>
-					<hr>
-				</div>
-				<div>
-					<span style="margin-left: 15%">Infocus M330 Black (Limited Edition)</span> <span style="margin-left: 7%"> <select>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-					</select></span> <span style="margin-left: 12%">Rs 9999</span> <span style="margin-left: 10%">Standard delivery: FREE</span> <span style="margin-left: 7%">Rs 9999</span>
-				</div>
-				<img src="../resources/img/m16.jpg" title="" alt="" class="img-responsive" style="margin-left: 3%" x />
 			</div>
-			<hr>
-			<div>
-				<span class="margin-top:5%">(You can use your Promo Codes and SD Cash during payment)</span> <span style="margin-left: 50%">Delivery Charges: Free</span>
-				<div>
-					<span>1 product(s) in your cart</span>
-				</div>
-				<span style="margin-left: 83%">Payable Amount: Rs 9999</span>
-			</div>
-			<div style="margin-left: 25%; margin-top: 2%">
-				<span><button type="button" class="btn btn-default">CONTINUE SHOPPING</button></span> <span><a type="button" href="${baseURL}/menu/checkoutSection" class="btn btn-primary">PROCEED TO
-						PAYMENT</a></span>
-			</div>
-			<div>
-				<ul class="line ssa-block col-xs-12">
-					<li class="glyphicon glyphicon-lock"><span>SECURE PAYMENT</span></li>
-					<li class="glyphicon glyphicon-star"><span>ORIGINAL PRODUCTS</span></li>
-					<li class="glyphicon glyphicon-refresh"><span>FREE & EASY RETURNS</span></li>
-					<li class="glyphicon glyphicon-ok-sign"><span>100% BUYER PROTECTION</span></li>
-					<span style="margin-left: 30%"><b>Need Help to Buy?</b></span>
-					<div style="margin-left: 87%">Contact us</div>
-				</ul>
-			</div>
-			<hr>
 		</div>
 	</div>
 </div>
