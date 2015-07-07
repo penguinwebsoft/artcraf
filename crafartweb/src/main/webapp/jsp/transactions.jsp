@@ -181,11 +181,15 @@
 									<td class="text-left">Product Name</td>
 									<td class="text-left">Date Added</td>
 									<td class="text-left">Status</td>
-									<td class="text-right">Unit Price (USD)</td>
+									<td class="text-right">Unit Price</td>
+									<td class="text-right">VAT</td>
+									<td class="text-right">GST</td>
+									<td class="text-right">CST</td>
+									<td class="text-right">Toatal Tax</td>
 									<td class="text-right">Quantity</td>
-									<td class="text-right">Total (USD)</td>
-									<td class="text-right">Commission (USD)</td>
-									<td class="text-right">Net Amount (USD)</td>
+									<td class="text-right">Total</td>
+									<td class="text-right">Commission</td>
+									<td class="text-right">Net Amount</td>
 									<td class="text-left">Paid</td>
 								</tr>
 							</thead>
