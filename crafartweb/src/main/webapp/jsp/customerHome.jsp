@@ -16,6 +16,7 @@
 				var clickEvent = false;
 				$('#myCarousel').on('click', '.nav a', function() {
 					clickEvent = true;
+					
 					$('.nav li').removeClass('active');
 					$('.nav li').removeClass('arrow_box');
 					$(this).parent().addClass('arrow_box');
@@ -39,7 +40,7 @@
 						});
 
 				/**********best seller and best sold products section*****************/
-
+				
 				$('#thumbCarousel').carousel({
 					interval : 10000
 				})
@@ -104,7 +105,7 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
-			<ul class="dropdown nav navbar-nav" style="float: inherit; margin-top: 5px; margin-bottom: 0px">
+			<ul class="dropdown nav navbar-nav" style="float: inherit; margin-top: 5px; margin-bottom: 3px">
 				<li class="col-sm-2"><a href="#"></a></li>
 				<li id="categoryDropDownId" class="col-sm-2"><a href="#" class="text-center dropdown-toggle" data-toggle="dropdown">SEE ALL CATEGORY <b class="caret"></b>
 				</a>
@@ -186,25 +187,25 @@
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item active">
+				<div class="item active" position: absolute;>
 					<img src="${context}/resources/img/1.jpg" alt="..." class="img-responsive">
 				</div>
-				<div class="item">
+				<div class="item" position: absolute;>
 					<img src="${context}/resources/img/2.jpg" alt="..." class="img-responsive">
 				</div>
 
-				<div class="item">
+				<div class="item" position: absolute;>
 					<img src="${context}/resources/img/3.jpg" alt="..." class="img-responsive">
 				</div>
 
-				<div class="item">
+				<div class="item" position: absolute;>
 					<img src="${context}/resources/img/4.jpg" alt="..." class="img-responsive">
 				</div>
-				<div class="item">
+				<div class="item" position: absolute;>
 					<img src="${context}/resources/img/1.jpg" alt="..." class="img-responsive">
 				</div>
 
-				<div class="item">
+				<div class="item" position: absolute;>
 					<img src="${context}/resources/img/2.jpg" alt="..." class="img-responsive">
 				</div>
 
@@ -863,3 +864,4 @@
 	<!-- right side advertisement section ends here -->
 
 </div>
+
