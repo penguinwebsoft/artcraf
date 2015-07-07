@@ -4,7 +4,6 @@
 <c:set var="context" value="${pageContext.servletContext.contextPath}" />
 
 <script type="text/javascript">
-	setPage("myAccountMenuId");
 	$(document).ready(function() {
 		var msg = "SAVED SUCCESSFULLY";
 
@@ -45,6 +44,7 @@
 			sellerBO.lastName = $("#lastName").val();
 			sellerBO.dateOfBirth = $("#dp2").val();
 			sellerBO.epchNo = $("#epchNo").val();
+			storeBO.email = $("#email").val();
 			storeBO.name = $("#storeName").val();
 			addressBO.street = $("#streetAddress").val();
 			addressBO.stateId = $("#states").val();
@@ -127,12 +127,18 @@
 								</div>
 
 								<div class="form-group">
-									<label for="" class="control-label col-lg-4">Phone-No</label>
+									<label for="" class="control-label col-lg-4">Office-No</label>
 									<div class="col-lg-8">
-										<input type="text" id="phoneNo" name="phoneNo" class="form-control" placeholder="Phone No" />
+										<input type="text" id="officeNo" name="officeNo" class="form-control" placeholder="office No" />
 									</div>
 								</div>
 
+								<div class="form-group">
+									<label for="" class="control-label col-lg-4">Pan No</label>
+									<div class="col-lg-8">
+										<input type="text" id="panNo" name="panNo" class="form-control" placeholder="PAN No" />
+									</div>
+								</div>
 
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">EPCH-No</label>
@@ -140,6 +146,8 @@
 										<input type="text" id="epchNo" name="epchNo" class="form-control" placeholder="EPCH No" />
 									</div>
 								</div>
+
+
 							</div>
 							<div class="col-lg-5">
 								<div class="form-group">
@@ -152,9 +160,7 @@
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Date-Of-Birth</label>
 									<div class="col-lg-8">
-
 										<input type="text" class="form-control" placeholder="10/09/1990" value="" data-date-format="mm/dd/yyyy" id="dp2">
-
 									</div>
 								</div>
 
@@ -176,7 +182,18 @@
 										<input type="text" id="pinCode" name="pinCode" class="form-control" placeholder="Pin Code" />
 									</div>
 								</div>
-
+								<div class="form-group">
+									<label for="" class="control-label col-lg-4">Mobile number</label>
+									<div class="col-lg-8">
+										<input type="text" id="mobileNo" name="mobileNo" class="form-control" placeholder="mobileno" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="control-label col-lg-4">Email</label>
+									<div class="col-lg-8">
+										<input type="text" id="email" name="email" class="form-control" placeholder="Email" />
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="" class="control-label col-lg-4">Store-Name</label>
 									<div class="col-lg-8">
@@ -197,6 +214,15 @@
 							</div>
 
 						</div>
+						<div class="row-fluid">
+							<div class="col-md-offset-2">
+								<div style="margin-top: 2%">
+									<input type="checkbox" /> NewsLetter
+								</div>
+
+							</div>
+						</div>
+
 						<br>
 
 						<div class="row">
