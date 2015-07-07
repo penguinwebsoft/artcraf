@@ -112,7 +112,6 @@
 				<li><i title="Visa" class="fa fa-cc-visa"></i></li>
 				<li><i title="Master Card" class="fa fa-cc-mastercard"></i></li>
 				<li><i title="American express" class="fa fa-cc-amex"></i></li>
-				<li><i title="Paypal" class="fa fa-cc-paypal"></i></li>
 			</ul>
 		</div>
 	</div>
