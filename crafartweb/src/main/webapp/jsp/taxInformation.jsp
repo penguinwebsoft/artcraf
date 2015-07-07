@@ -68,8 +68,14 @@
 										<input type="text" id="cstNo" name="cstNo" class="form-control" placeholder="CST N0" />
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="" class="control-label col-lg-4">GST-NO</label>
+									<div class="col-lg-8">
+										<input type="text" id="gstNo" name="gstNo" class="form-control" placeholder="GST N0" />
+									</div>
+								</div>
 							</div>
-						</div>
+						</div> 
 						<br>
 						<div class="row">
 							<div class="col-lg-7">
