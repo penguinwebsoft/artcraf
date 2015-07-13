@@ -5,8 +5,10 @@ package com.crafart.service.businessobjects;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Required;
+
 /**
- * @author 
+ * @author
  * 
  */
 public class BannerGroupBO implements Serializable {
@@ -21,13 +23,25 @@ public class BannerGroupBO implements Serializable {
 	private String bannerGroupName;
 
 	private String bannerSize;
-	
+
 	private int sortOrder;
+
+	public BannerGroupBO() {
+	}
+
+	public BannerGroupBO(long bannerGroupId, String bannerGroupName, String bannerSize, int sortOrder) {
+		this.bannerGroupId = bannerGroupId;
+		this.bannerGroupName = bannerGroupName;
+		this.bannerSize = bannerSize;
+		this.sortOrder = sortOrder;
+
+	}
 
 	public long getBannerGroupId() {
 		return bannerGroupId;
 	}
 
+	@Required
 	public void setBannerGroupId(long bannerGroupId) {
 		this.bannerGroupId = bannerGroupId;
 	}
@@ -56,5 +70,4 @@ public class BannerGroupBO implements Serializable {
 		this.sortOrder = sortOrder;
 	}
 
-	
 }
