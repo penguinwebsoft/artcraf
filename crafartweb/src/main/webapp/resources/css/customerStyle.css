@@ -33,7 +33,7 @@ body {
 	padding: 0 20px;
 }
 
-#top .btn-link,#top-links li,#top-links a {
+#top .btn-link, #top-links li, #top-links a {
 	color: #ccc;
 	/* text-shadow: 0 1px 0 #FFF; */
 	text-decoration: none;
@@ -43,7 +43,7 @@ body {
 	margin-top: 3px;
 }
 
-#top .btn-link:hover,#top-links a:hover {
+#top .btn-link:hover, #top-links a:hover {
 	color: #fdb45e;
 }
 
@@ -94,7 +94,7 @@ body {
 	margin-bottom: 0;
 }
 
-.nav .open>a,.nav .open>a:hover,.nav .open>a:focus {
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
 	background-color: #332619 !important;
 	border-color: #428bca;
 }
@@ -290,19 +290,19 @@ body {
 	color: #333;
 }
 
-.carousel-control.left,.carousel-control.right {
+.carousel-control.left, .carousel-control.right {
 	background-image: none;
 }
 
-.carousel-example-product,.col-sm-2 {
+.carousel-example-product, .col-sm-2 {
 	padding: 0px;
 }
 
-#Product1_description,.col-md-4 {
+#Product1_description, .col-md-4 {
 	padding-right: 0;
 }
 
-.carousel-example-product,.thumbnail {
+.carousel-example-product, .thumbnail {
 	padding: 10px;
 	border-radius: 0px;
 }
@@ -327,7 +327,7 @@ ul {
 	list-style-type: none;
 }
 
-#footers,#sellerLoginHeader {
+#footers, #sellerLoginHeader {
 	background-color: #332619;
 	color: #fff !important;
 }
@@ -409,8 +409,8 @@ ul {
 	color: #ffffff !important;
 }
 
-#myCarousel .nav-pills>li.active>a,.nav-pills>li.active>a:hover,.nav-pills>li.active>a:focus
-	{
+#myCarousel .nav-pills>li.active>a, .nav-pills>li.active>a:hover,
+	.nav-pills>li.active>a:focus {
 	background-color: #DE8A03 !important;
 	border-width: 0px !important;
 	color: #ffffff !important;
@@ -521,11 +521,11 @@ h2.title {
 	}
 }
 
-.line,.lastUnit {
+.line, .lastUnit {
 	overflow: hidden;
 }
 
-ol,ul {
+ol, ul {
 	list-style: outside none none;
 }
 
@@ -545,7 +545,7 @@ ol,ul {
 	text-transform: uppercase;
 }
 
-.line,.lastUnit {
+.line, .lastUnit {
 	overflow: hidden;
 }
 
@@ -584,7 +584,7 @@ ol,ul {
 }
 
 /* Ribbon header */
-.rectangle,.rectangle_sm {
+.rectangle, .rectangle_sm {
 	background: none repeat scroll 0 0 #de8a03;
 	float: left;
 	height: 32px;
@@ -690,7 +690,7 @@ ol,ul {
 	z-index: 1;
 }
 
-.arrow_box:after,.arrow_box:before {
+.arrow_box:after, .arrow_box:before {
 	top: 100%;
 	left: 50%;
 	border: solid transparent;
@@ -738,7 +738,7 @@ ol,ul {
 	display: none;
 }
 
-.nav-side-menu ul,.nav-side-menu li {
+.nav-side-menu ul, .nav-side-menu li {
 	list-style: none;
 	padding: 0px;
 	margin: 0px;
@@ -755,7 +755,7 @@ ol,ul {
 
 }
 }
-.nav-side-menu ul :not(collapsed) .arrow:before,.nav-side-menu li :not(collapsed) .arrow:before
+.nav-side-menu ul :not(collapsed) .arrow:before, .nav-side-menu li :not(collapsed) .arrow:before
 	{
 	font-family: FontAwesome;
 	content: "\f078";
@@ -766,22 +766,22 @@ ol,ul {
 	float: right;
 }
 
-.nav-side-menu ul .active,.nav-side-menu li .active {
+.nav-side-menu ul .active, .nav-side-menu li .active {
 	border-left: 3px solid #d19b3d;
 	background-color: #4f5b69;
 }
 
-.nav-side-menu ul .sub-menu li.active,.nav-side-menu li .sub-menu li.active
+.nav-side-menu ul .sub-menu li.active, .nav-side-menu li .sub-menu li.active
 	{
 	color: #d19b3d;
 }
 
-.nav-side-menu ul .sub-menu li.active a,.nav-side-menu li .sub-menu li.active a
+.nav-side-menu ul .sub-menu li.active a, .nav-side-menu li .sub-menu li.active a
 	{
 	color: #d19b3d;
 }
 
-.nav-side-menu ul .sub-menu li,.nav-side-menu li .sub-menu li {
+.nav-side-menu ul .sub-menu li, .nav-side-menu li .sub-menu li {
 	background-color: #332619;
 	border: none;
 	line-height: 28px;
@@ -789,12 +789,12 @@ ol,ul {
 	margin-left: 0px;
 }
 
-.nav-side-menu ul .sub-menu li:hover,.nav-side-menu li .sub-menu li:hover
+.nav-side-menu ul .sub-menu li:hover, .nav-side-menu li .sub-menu li:hover
 	{
 	background-color: #020203;
 }
 
-.nav-side-menu ul .sub-menu li:before,.nav-side-menu li .sub-menu li:before
+.nav-side-menu ul .sub-menu li:before, .nav-side-menu li .sub-menu li:before
 	{
 	font-family: FontAwesome;
 	content: "\f105";
@@ -876,7 +876,7 @@ ol,ul {
 	border: 2px solid black;
 }
 
-.form-signin .form-signin-heading,.form-signin .checkbox {
+.form-signin .form-signin-heading, .form-signin .checkbox {
 	margin-bottom: 10px;
 }
 
@@ -884,8 +884,8 @@ ol,ul {
 	font-weight: normal;
 }
 
-.form-signin input[type="text"],.form-signin input[type="password"],.form-signin input[type="email"]
-	{
+.form-signin input[type="text"], .form-signin input[type="password"],
+	.form-signin input[type="email"] {
 	position: relative;
 	font-size: 13px;
 	height: 40px !important;
@@ -897,8 +897,8 @@ ol,ul {
 	/*  margin-top:10px!important; */
 }
 
-.form-signin input[type="text"]:focus,.form-signin input[type="password"]:focus,.form-signin input[type="email"]:focus
-	{
+.form-signin input[type="text"]:focus, .form-signin input[type="password"]:focus,
+	.form-signin input[type="email"]:focus {
 	z-index: 2;
 }
 
@@ -1025,12 +1025,12 @@ ol,ul {
 	padding-left: 2px;
 }
 
-.rating-lg .rating-gly-star,.rating-lg .rating-gly-star .rating-stars:before
+.rating-lg .rating-gly-star, .rating-lg .rating-gly-star .rating-stars:before
 	{
 	padding-left: 4px;
 }
 
-.rating-xl .rating-gly-star,.rating-xl .rating-gly-star .rating-stars:before
+.rating-xl .rating-gly-star, .rating-xl .rating-gly-star .rating-stars:before
 	{
 	padding-left: 2px;
 }
@@ -1134,7 +1134,7 @@ ol,ul {
 /**
  * Clear rating button
  */
-.star-rating .clear-rating,.star-rating-rtl .clear-rating {
+.star-rating .clear-rating, .star-rating-rtl .clear-rating {
 	color: #aaa;
 	cursor: not-allowed;
 	display: inline-block;
@@ -1157,7 +1157,7 @@ ol,ul {
 /**
  * Caption
  */
-.star-rating .caption,.star-rating-rtl .caption {
+.star-rating .caption, .star-rating-rtl .caption {
 	color: #999;
 	display: inline-block;
 	vertical-align: middle;
@@ -1225,7 +1225,6 @@ ol,ul {
 	font-size: 40px;
 	color: orange;
 	cursor: pointer;
-	
 }
 
 .star:hover:before {
@@ -1233,7 +1232,6 @@ ol,ul {
 	position: absolute;
 	color: yellow;
 }
-
 
 .image {
 	width: 300px;
@@ -1261,7 +1259,6 @@ ol,ul {
 	font-size: 20px;
 	color: orange;
 	cursor: pointer;
-	
 }
 
 .star1:hover:before {
@@ -1272,7 +1269,107 @@ ol,ul {
 /**************************************Review section end**********************************/
 /**************************************product list page hover**********************************/
 .productBox:hover {
-	border:2px solid #428bca;
+	border: 2px solid #428bca;
 }
 /**************ends here *********************/
 
+/*******carousel slide alginment*************************/
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right
+	{
+	top: 45% !important;
+	left: 30% !important;
+}
+
+.category-tab {
+	overflow: hidden;
+}
+
+.category-tab ul {
+	background: #40403E;
+	border-bottom: 1px solid #FE980F;
+	list-style: none outside none;
+	margin: 0 0 10px;
+	padding: 0;
+	width: 100%;
+}
+
+.nav-tabs>li {
+	float: left;
+	margin-bottom: -1px;
+}
+
+.nav>li {
+	position: relative;
+	display: block;
+}
+
+ul li {
+	list-style: none;
+}
+
+.category-tab ul li a {
+	border: 0 none;
+	border-radius: 0;
+	color: #B3AFA8;
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.category-tab ul  li  a:hover {
+	background: #FE980F;
+	color: #fff;
+}
+
+.nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus	{
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-color: #FE980F;
+	border: 0px;
+	color: #FFFFFF;
+	cursor: default;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.nav-tabs  li  a {
+	border: 1px solid rgba(0, 0, 0, 0);
+	border-radius: 4px 4px 0 0;
+	line-height: 1.42857;
+	margin-right: 0;
+}
+
+.fade {
+	opacity: 0;
+	-webkit-transition: opacity .15s linear;
+	transition: opacity .15s linear;
+}
+
+.single-products {
+	position: relative;
+}
+
+a {
+  -webkit-transition: 1000ms;
+  -moz-transition: 300ms;
+    -o-transition: 300ms;
+    
+  transition: 1000ms;
+}
+
+.nav-tabs li a {
+	background: transparent;
+}
+
+.add-to-cart {
+	background: #F5F5ED;
+	border: 0 none;
+	border-radius: 0;
+	color: #696763;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	margin-bottom: 25px;
+}
