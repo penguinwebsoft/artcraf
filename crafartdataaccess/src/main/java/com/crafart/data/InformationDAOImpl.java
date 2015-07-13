@@ -17,34 +17,45 @@ import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.InformationDAO;
 
 /**
- * @author 
+ * data layer which manages information data
+ * 
+ * @author
  * 
  */
 @Repository("informationDAOImpl")
 public class InformationDAOImpl extends CommonDAOImpl implements InformationDAO {
 
+	/**
+	 * Get information object for identifier {@link Long} informationId
+	 * 
+	 * @return {@link InformationDO}
+	 * @throws CrafartDataException
+	 */
+	@Override
+	public InformationDO getInformation(long inforamtionId) throws CrafartDataException {
+		InformationDO informationDO = (InformationDO) this.getSessionFactory().getCurrentSession().get(InformationDO.class, inforamtionId);
+		return informationDO;
+	}
 
 	/**
-	 * adding informationDetail details to information table by addGeoZoneDetails
+	 * adding informationDetail details to information table by
+	 * addGeoZoneDetails
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addInformationDetail(InformationDO informationDO) throws CrafartDataException {
+	public void addInformation(InformationDO informationDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
-			session.persist(informationDO);
+			session.save(informationDO);
 		} catch (HibernateException hExp) {
-			throw new CrafartDataException("DB Error while adding information details in table", hExp);
+			throw new CrafartDataException("DB Error while adding information details", hExp);
 		}
 	}
-	
-	
-	
-	
-  @Override
+
+	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<InformationDO> getInformationDetail() throws CrafartDataException {
+	public List<InformationDO> getInformations() throws CrafartDataException {
 		List<InformationDO> informationDOs = new ArrayList<>();
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
@@ -53,6 +64,21 @@ public class InformationDAOImpl extends CommonDAOImpl implements InformationDAO 
 			throw new CrafartDataException("DB Error while reteriving Information details", hExp);
 		}
 		return informationDOs;
+	}
+
+	/**
+	 * updates information data for an identifier information id
+	 * @param informationDO
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateInformation(InformationDO informationDO) throws CrafartDataException {
+		try {
+			Session session = this.getSessionFactory().getCurrentSession();
+			session.save(informationDO);
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB Error while updating information details for information id =" + informationDO.getInformationId(), hExp);
+		}
 	}
 
 }

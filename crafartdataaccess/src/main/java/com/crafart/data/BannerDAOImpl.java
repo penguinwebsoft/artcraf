@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.BannerDO;
+import com.crafart.dataobjects.BannerGroupDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.BannerDAO;
 
@@ -23,9 +24,30 @@ import com.crafart.inter.data.BannerDAO;
 @Repository("bannerDAOImpl")
 public class BannerDAOImpl extends CommonDAOImpl implements BannerDAO {
 
+	
 
+	/**
+	 * obtain banner object which has identifier {@link Long} bannerId
+	 * @param categoryId
+	 * @return {@link BannerDO}
+	 * @throws CrafartDataException
+	 */
+	@Override
+	public BannerDO getBannerDO(long bannerId) throws CrafartDataException {
+		Session session = this.getSessionFactory().getCurrentSession();
+		BannerDO bannerDO = (BannerDO) session.get(BannerDO.class, bannerId);
+		return bannerDO;
+	}
+	
+
+	/**
+	 * add banner group for banner group id {@link BannerGroupDO}
+	 * @param bannerDO
+	 * @throws CrafartDataException
+	 */
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addBannerDetail(BannerDO bannerDO) throws CrafartDataException {
+	public void addBanner(BannerDO bannerDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(bannerDO);
@@ -34,6 +56,20 @@ public class BannerDAOImpl extends CommonDAOImpl implements BannerDAO {
 		}
 	}
 
+	/**
+	 * updating Banner data for banner id 
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateBanner(BannerDO bannerDO) throws CrafartDataException {
+		try {
+			Session session = this.getSessionFactory().getCurrentSession();
+			session.save(bannerDO);
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB Error while adding  banner details in table", hExp);
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<BannerDO> getBannerDetail() throws CrafartDataException {
