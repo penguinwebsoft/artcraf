@@ -291,17 +291,17 @@ public class BeanMapper {
 		return lengthClassDO;
 
 	}
+
 	public LengthClassBO mapLengthClassDOToBO(LengthClassDO lengthClassDO, LengthClassBO lengthClassBO) {
 		lengthClassBO.setLengthClassId(lengthClassDO.getLengthClassId());
 		lengthClassBO.setTitle(lengthClassDO.getTitle());
 		lengthClassBO.setUnit(lengthClassDO.getUnit());
 		lengthClassBO.setIsActive(lengthClassDO.getIsActive());
 		lengthClassBO.setSortorder(lengthClassDO.getSortorder());
-		
+
 		return lengthClassBO;
 
 	}
-
 
 	public CategoryDO mapCategoryBOToDO(CategoryBO categoryBO, CategoryDO categoryDO, SeoDO seoDO) {
 		categoryDO.setCategoryId(categoryBO.getCategoryId());
@@ -319,7 +319,7 @@ public class BeanMapper {
 	public CategoryBO mapCategoryDOToBO(CategoryDO categoryDO, CategoryBO categoryBO, SeoBO seoBO) {
 		categoryBO.setCategoryId(categoryDO.getCategoryId());
 		SeoDO seoDO = categoryDO.getSeoDO();
-		if(null != seoDO){
+		if (null != seoDO) {
 			categoryBO.setSeoBO(mapSeoDOToBO(seoDO, seoBO));
 		}
 		categoryBO.setImageLocation(categoryDO.getImageLocation());
@@ -356,14 +356,14 @@ public class BeanMapper {
 		attributeDO.setSortOrder(attributeBO.getSortOrder());
 		return attributeDO;
 	}
-	
+
 	public AttributeBO mapAttributeDOToBO(AttributeDO attributeDO, AttributeBO attributeBO) {
 		attributeBO.setAttributeId(attributeDO.getAttributeId());
 		attributeBO.setAttributeName(attributeDO.getAttributeName());
 		attributeBO.setSortOrder(attributeDO.getSortOrder());
 		return attributeBO;
 	}
-	
+
 	public AttributeGroupDescDO mapAttributeGroupDescBOToDO(AttributeGroupDescBO attributeGroupDescBO, AttributeGroupDescDO attributeGroupDescDO) {
 		attributeGroupDescDO.setAtrributeGroupDescId(attributeGroupDescBO.getAtrributeGroupDescId());
 		attributeGroupDescDO.setAttributeGroupName(attributeGroupDescBO.getAttributeGroupName());
@@ -418,8 +418,7 @@ public class BeanMapper {
 		courierDO.setCourierId(courierBO.getCourierId());
 		courierDO.setImage(courierBO.getImage());
 		courierDO.setCourierName(courierBO.getCourierName());
-		courierDO
-				.setEstimatedDeliveryTime(courierBO.getEstimatedDeliveryTime());
+		courierDO.setEstimatedDeliveryTime(courierBO.getEstimatedDeliveryTime());
 		courierDO.setSortOrder(courierBO.getSortOrder());
 		return courierDO;
 
@@ -773,8 +772,10 @@ public class BeanMapper {
 		bannerBO.setBannerName(bannerDO.getBannerName());
 		bannerBO.setBannerUrl(bannerDO.getBannerUrl());
 		bannerBO.setSortOrder(bannerDO.getSortOrder());
+		bannerBO.setBannerGroupBO(mapBannerGroupDOToBO(bannerDO.getBannerGroupDO()));
 		return bannerBO;
 	}
+
 	public BannerDO mapBannerBOToDO(BannerBO bannerBO, BannerDO bannerDO) {
 		bannerDO.setBannerId(bannerBO.getBannerId());
 		bannerDO.setBannerImage(bannerBO.getBannerImage());
@@ -782,6 +783,11 @@ public class BeanMapper {
 		bannerDO.setBannerUrl(bannerBO.getBannerUrl());
 		bannerDO.setSortOrder(bannerBO.getSortOrder());
 		return bannerDO;
+	}
+
+	public BannerGroupBO mapBannerGroupDOToBO(BannerGroupDO bannerGroupDO) {
+		BannerGroupBO bannerGroupBO = new BannerGroupBO(bannerGroupDO.getBannerGroupId(), bannerGroupDO.getBannerGroupName(), bannerGroupDO.getBannerSize(), bannerGroupDO.getSortOrder());
+		return bannerGroupBO;
 	}
 
 	public BannerGroupDO mapBannerGroupBOToDO(BannerGroupBO bannerGroupBO, BannerGroupDO bannerGroupDO) {
@@ -792,14 +798,6 @@ public class BeanMapper {
 		return bannerGroupDO;
 	}
 
-	public BannerGroupBO mapGeoZoneDOToBO(BannerGroupDO bannerGroupDO, BannerGroupBO bannerGroupBO) {
-		
-		bannerGroupBO.setBannerGroupId(bannerGroupDO.getBannerGroupId());
-		bannerGroupBO.setBannerGroupName(bannerGroupDO.getBannerGroupName());
-		bannerGroupBO.setBannerSize(bannerGroupDO.getBannerSize());
-		bannerGroupBO.setSortOrder(bannerGroupDO.getSortOrder());
-		return bannerGroupBO;
-	}
 
 	public InformationDO mapInformationBOToDO(InformationBO informationBO, InformationDO informationDO) {
 		informationDO.setInformationId(informationBO.getInformationId());
@@ -812,6 +810,7 @@ public class BeanMapper {
 		informationDO.setIsActive(informationBO.getIsActive());
 		return informationDO;
 	}
+
 	public InformationBO mapInformationDOToBO(InformationDO informationDO, InformationBO informationBO) {
 		informationBO.setInformationId(informationDO.getInformationId());
 		informationBO.setInformationTitle(informationDO.getInformationTitle());
@@ -831,7 +830,7 @@ public class BeanMapper {
 		userGroupDO.setSortOrder(userGroupBO.getSortOrder());
 		return userGroupDO;
 	}
-	
+
 	public UserGroupBO mapUserGroupDOToBO(UserGroupDO userGroupDO, UserGroupBO userGroupBO) {
 		userGroupBO.setUserGroupId(userGroupDO.getUserGroupId());
 		userGroupBO.setUserName(userGroupDO.getGroupName());
@@ -850,7 +849,6 @@ public class BeanMapper {
 		userDO.setIsActive(userBO.getIsActive());
 		return userDO;
 	}
-
 
 	public UserBO mapUserDOToBO(UserDO userDO, UserBO userBO) {
 		userBO.setUserId(userDO.getUserId());
@@ -881,6 +879,4 @@ public class BeanMapper {
 		return orderStatusBO;
 	}
 
-
 }
-	
