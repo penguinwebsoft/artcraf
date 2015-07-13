@@ -25,6 +25,6 @@ public interface ManageCategoryService {
 
 	public CategoryBO getCategory(long categoryId) throws CrafartServiceException;
 	
-	public List<CategoryBO> getAllSubCategories() throws CrafartServiceException;
+	public Map<Long, CategoryBO>  getAllSubCategories() throws CrafartServiceException;
 
 }

@@ -3,7 +3,7 @@
  */
 package com.crafart.inter.service;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,9 @@ import com.crafart.service.exception.CrafartServiceException;
 @Service
 public interface ManageInformationService {
 
-	public void addInformationDetail(InformationBO informationBO) throws CrafartServiceException;
+	public void addInformation(InformationBO informationBO) throws CrafartServiceException;
 
-	public List<InformationBO> getInformationDetail() throws CrafartServiceException;
+	public Map<Long, InformationBO> getInformations() throws CrafartServiceException;
+	
+	public void updateInformation(InformationBO informationBO) throws CrafartServiceException;
 }
