@@ -5,11 +5,14 @@ package com.crafart.dataobjects;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,9 +35,9 @@ public class BannerDO implements Serializable, Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_banner")
 	private long bannerId;
 	
-	
-	@Column(name = "banner_group_id")
-	private long bannerGroupId;
+	@OneToOne(cascade=CascadeType.DETACH)
+	@JoinColumn(name = "banner_group_id", nullable=false)
+	private BannerGroupDO bannerGroupDO;
 
 	@Column(name = "banner_name")
 	private String bannerName;
@@ -89,6 +92,14 @@ public class BannerDO implements Serializable, Cloneable {
 
 	public void setSortOrder(Integer sortOrder) {
 		this.sortOrder = sortOrder;
+	}
+
+	public BannerGroupDO getBannerGroupDO() {
+		return bannerGroupDO;
+	}
+
+	public void setBannerGroupDO(BannerGroupDO bannerGroupDO) {
+		this.bannerGroupDO = bannerGroupDO;
 	}
 	
 }
