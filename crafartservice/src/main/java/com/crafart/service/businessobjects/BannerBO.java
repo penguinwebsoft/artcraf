@@ -16,48 +16,48 @@ public class BannerBO implements Serializable {
 	 */
 	private static final long serialVersionUID = 2647978542496012178L;
 
-	private long BannerId;
+	private long bannerId;
 
-	private long BannerGroupId;
+	private BannerGroupBO bannerGroupBO;
 
-	private String BannerName;
+	private String bannerName;
 
-	private String BannerImage;
+	private String bannerImage;
 
 	private String bannerUrl;
 
 	private Integer sortOrder;
 
 	public long getBannerId() {
-		return BannerId;
+		return bannerId;
 	}
 
 	public void setBannerId(long bannerId) {
-		BannerId = bannerId;
+		this.bannerId = bannerId;
 	}
 
-	public long getBannerGroupId() {
-		return BannerGroupId;
+	public BannerGroupBO getBannerGroupBO() {
+		return bannerGroupBO;
 	}
 
-	public void setBannerGroupId(long bannerGroupId) {
-		BannerGroupId = bannerGroupId;
+	public void setBannerGroupBO(BannerGroupBO bannerGroupBO) {
+		this.bannerGroupBO = bannerGroupBO;
 	}
 
 	public String getBannerImage() {
-		return BannerImage;
+		return bannerImage;
 	}
 
 	public void setBannerImage(String bannerImage) {
-		BannerImage = bannerImage;
+		this.bannerImage = bannerImage;
 	}
 
 	public String getBannerName() {
-		return BannerName;
+		return bannerName;
 	}
 
 	public void setBannerName(String bannerName) {
-		BannerName = bannerName;
+		this.bannerName = bannerName;
 	}
 
 	public String getBannerUrl() {
