@@ -68,7 +68,7 @@
 							contentType : "application/json",
 							dataType : "json",
 							success : function(data) {
-							 bannerGroupBOs = data.bannerGroupBOs;
+							    bannerGroupBOs = data.bannerGroupBOs;
 								displayBannerGroupList(bannerGroupBOs);
 							}
 						});
