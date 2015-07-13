@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -48,10 +48,10 @@ public class CategoryControllerTest {
 	public void testGetAllSubCategories() {
 		ModelMap modelMap = categoryController.getAllSubCategories(new MockHttpSession());
 		@SuppressWarnings("unchecked")
-		List<CategoryBO> categoryBOs = (List<CategoryBO>) modelMap.get("subCategoryBOs");
-		for (CategoryBO categoryBO : categoryBOs) {
-			System.out.println("sub category parent id = " + categoryBO.getParentId());
-			Assert.assertTrue(categoryBO.getParentId() > 0);
+		Map<Long, CategoryBO> categoryBOs = (Map<Long, CategoryBO>) modelMap.get("subCategoryBOs");
+		for (Map.Entry<Long, CategoryBO> categoryBO : categoryBOs.entrySet()) {
+			System.out.println("sub category parent id = " + categoryBO.getValue().getParentId());
+			Assert.assertTrue(categoryBO.getValue().getParentId() > 0);
 		}
 		System.out.println("CategoryControllerTest.testGetCourierDetail()");
 		System.out.print(modelMap.size());

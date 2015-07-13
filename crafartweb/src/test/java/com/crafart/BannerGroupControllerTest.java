@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.crafart.service.businessobjects.BannerGroupBO;
 
 /**
- * @author 
+ * @author
  * 
  */
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
@@ -41,15 +41,10 @@ public class BannerGroupControllerTest {
 			Assert.fail();
 		}
 	}
-	
+
 	@SuppressWarnings("unused")
 	private BannerGroupBO getBannerGroupdetail() {
-		BannerGroupBO bannerGroupBO = new BannerGroupBO();
-		bannerGroupBO.setBannerGroupName("dfds");
-		bannerGroupBO.setBannerSize("jxn");
-		bannerGroupBO.setSortOrder(99);
-		
+		BannerGroupBO bannerGroupBO = new BannerGroupBO(0, "banner group name", "banner size", 2);
 		return bannerGroupBO;
 	}
 }
-
