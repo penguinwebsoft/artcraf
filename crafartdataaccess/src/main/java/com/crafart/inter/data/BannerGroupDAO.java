@@ -11,7 +11,12 @@ import com.crafart.exception.CrafartDataException;
  
 public interface BannerGroupDAO {
 
-	public void addBannerGroupDetail(BannerGroupDO bannerGroupDO) throws CrafartDataException;
+	public void addBannerGroup(BannerGroupDO bannerGroupDO) throws CrafartDataException;
 
-	public List<BannerGroupDO> getBannerGroupDetail() throws CrafartDataException;
+	public List<BannerGroupDO> getBannerGroups() throws CrafartDataException;
+	
+	public BannerGroupDO getBannerGroupDO(long bannerGroupId) throws CrafartDataException;
+
+	public void updateBannerGroup(BannerGroupDO bannerGroupDO) throws CrafartDataException;
+
 }
