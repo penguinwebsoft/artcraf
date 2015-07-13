@@ -239,17 +239,18 @@ public class MenuController {
 	public ModelAndView showAddCategories(@ModelAttribute(value = "categoryBO") CategoryBO categoryBO) {
 
 		ModelMap modelMap = new ModelMap();
-		if (null != categoryBO && categoryBO.getCategoryId() > 0) {
-			log.debug("attribute object is not null");
-			categoryBO.setUpdate(true);
-			modelMap.addAttribute("category", categoryBO);
-			return new ModelAndView("addCategory", modelMap);
-		} else {
-			CategoryBO newCategoryBO = new CategoryBO();
-			newCategoryBO.setUpdate(false);
-			modelMap.addAttribute("category", newCategoryBO);
-			return new ModelAndView("addCategory", modelMap);
-		}
+		/*
+		 * if (null != categoryBO && categoryBO.getCategoryId() > 0) {
+		 * log.debug("attribute object is not null");
+		 * categoryBO.setUpdate(true);
+		 */
+		modelMap.addAttribute("category", categoryBO);
+		return new ModelAndView("addCategory", modelMap);
+		/*
+		 * } else { CategoryBO newCategoryBO = new CategoryBO();
+		 * newCategoryBO.setUpdate(false); modelMap.addAttribute("category",
+		 * newCategoryBO); return new ModelAndView("addCategory", modelMap); }
+		 */
 	}
 
 	@RequestMapping("/editCategories")
@@ -473,16 +474,16 @@ public class MenuController {
 		return new ModelAndView("bannerPage");
 	}
 
-	@RequestMapping("/addBannerPage")
+	@RequestMapping("/addBanner")
 	public ModelAndView showAddBannerPage(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("addBannerPage");
+		return new ModelAndView("addBanner");
 	}
 
-	@RequestMapping("/editBannerPage")
-	public ModelAndView showEditBannerPage(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("editBannerPage");
+	@RequestMapping("/editBanner")
+	public ModelAndView showEditBanner(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("editBanner");
 	}
-	
+
 	@RequestMapping("/mailListPage")
 	public ModelAndView showMailListPage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("mailListPage");
@@ -497,7 +498,7 @@ public class MenuController {
 	public ModelAndView showMailEditPage(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("mailEditPage");
 	}
-	
+
 	@RequestMapping("/couponList")
 	public ModelAndView showCouponList(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("couponList");
