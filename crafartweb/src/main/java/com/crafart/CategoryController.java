@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.crafart.inter.service.ManageCategoryService;
 import com.crafart.service.businessobjects.CategoryBO;
@@ -57,10 +57,11 @@ public class CategoryController {
 	@RequestMapping(value = { "/getAllSubCategories" }, method = RequestMethod.GET)
 	public @ResponseBody ModelMap getAllSubCategories(HttpSession session) {
 		ModelMap modelMap = new ModelMap();
-		List<CategoryBO> categoryBOs = new ArrayList<>();
+		Map<Long, CategoryBO> subCategoryBOs = new HashMap<>();
 		try {
-			categoryBOs = manageCategoryServiceImpl.getAllSubCategories();
-			modelMap.addAttribute("subCategoryBOs", categoryBOs);
+			subCategoryBOs = manageCategoryServiceImpl.getAllSubCategories();
+			session.setAttribute("subCategoryBOs", subCategoryBOs);
+			modelMap.addAttribute("subCategoryBOs", subCategoryBOs);
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application Error while retrieving all sub category details", crafartServiceException);
 		}
@@ -95,7 +96,7 @@ public class CategoryController {
 		return modelMap;
 
 	}
-	
+
 	@RequestMapping(value = { "/updateCategory" }, method = RequestMethod.POST)
 	public @ResponseBody ModelMap updateCategory(@RequestBody CategoryBO categoryBO) {
 		ModelMap modelMap = new ModelMap();
@@ -109,22 +110,38 @@ public class CategoryController {
 		return modelMap;
 
 	}
-	
+
 	/**
-	 * redirects to menu/addCategory controller passing {@link CategoryBO} object as a flash attribute to that controller.
-	 * <li> Method gets corresponding {@link CategoryBO} object for {@link Long} categoryId
+	 * redirects to edit category view
+	 * 
 	 * @param categoryId
 	 * @param redirectAttributes
 	 * @param session
 	 * @return String
 	 */
 	@RequestMapping(value = { "/editCategory" }, method = RequestMethod.GET)
-	public String editCategory(@RequestParam(value="categoryId") long categoryId, RedirectAttributes redirectAttributes, HttpSession session){
+	public ModelAndView editCategory(@RequestParam(value = "categoryId") long categoryId, HttpSession session) {
+		ModelMap modelMap = new ModelMap();
 		@SuppressWarnings("unchecked")
 		Map<Long, CategoryBO> categoryBOs = (Map<Long, CategoryBO>) session.getAttribute("categories");
 		CategoryBO categoryBO = categoryBOs.get(categoryId);
-		redirectAttributes.addFlashAttribute("categoryBO", categoryBO);
-		return "redirect:/menu/addCategory";
+		modelMap.addAttribute("category", categoryBO);
+		return new ModelAndView("editCategory", modelMap);
 	}
 
+	/**
+	 * redirect to edit sub category page for sub category id
+	 * @param subCategoryId
+	 * @param session
+	 * @return {@link ModelAndView}
+	 */
+	@RequestMapping(value = { "/editSubCategory" }, method = RequestMethod.GET)
+	public ModelAndView editSubCategory(@RequestParam(value = "subCategoryId") long subCategoryId, HttpSession session) {
+		ModelMap modelMap = new ModelMap();
+		@SuppressWarnings("unchecked")
+		Map<Long, CategoryBO> categoryBOs = (Map<Long, CategoryBO>) session.getAttribute("subCategoryBOs");
+		CategoryBO categoryBO = categoryBOs.get(subCategoryId);
+		modelMap.put("subCategoryBO", categoryBO);
+		return new ModelAndView("editSubCategory", modelMap);
+	}
 }
