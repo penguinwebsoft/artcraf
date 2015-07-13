@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,7 +39,7 @@ public class ManageInformationServiceTest {
 	public void testAddInformationDetail() {
 		InformationBO informationBO = getInformation();
 		try {
-			manageInformationServiceImpl.addInformationDetail(informationBO);
+			manageInformationServiceImpl.addInformation(informationBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -64,14 +64,14 @@ public class ManageInformationServiceTest {
 	public void testGetinformationDetail() {
 		InformationBO informationBO = getInformation();
 		try {
-			manageInformationServiceImpl.addInformationDetail(informationBO);
+			manageInformationServiceImpl.addInformation(informationBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
 		try {
 			@SuppressWarnings("unused")
-			List<InformationBO> informationBOs = manageInformationServiceImpl.getInformationDetail();
+			Map<Long, InformationBO> informationBOs = manageInformationServiceImpl.getInformations();
 			
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();

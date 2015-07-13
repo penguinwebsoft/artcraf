@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,8 +16,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crafart.inter.service.ManageBannerGroupService;
 import com.crafart.inter.service.ManageBannerService;
 import com.crafart.service.businessobjects.BannerBO;
+import com.crafart.service.businessobjects.BannerGroupBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
@@ -34,12 +36,51 @@ public class ManageBannerServiceTest {
 	@Autowired
 	public ManageBannerService manageBannerServiceImpl;
 
+	@Autowired
+	public ManageBannerGroupService manageBannerGroupServiceImpl;
+
 	@Test
 	@Rollback(true)
 	public void testAddBannerDetail() {
 		BannerBO bannerBO = getBanner();
 		try {
-			manageBannerServiceImpl.addBannerDetail(bannerBO);
+			bannerBO.setBannerGroupBO(getBannerGroupBO());
+			manageBannerServiceImpl.addBanner(bannerBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGtBanners() {
+		BannerBO bannerBO = getBanner();
+		try {
+			bannerBO.setBannerGroupBO(getBannerGroupBO());
+			manageBannerServiceImpl.addBanner(bannerBO);
+			Map<Long, BannerBO> bannerBOs = manageBannerServiceImpl.getBanners();
+			Assert.assertTrue(bannerBOs.size() >= 1);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	@Rollback(true)
+	public void testGetBannerDetail() {
+		BannerBO bannerBO = getBanner();
+		try {
+			bannerBO.setBannerGroupBO(getBannerGroupBO());
+			manageBannerServiceImpl.addBanner(bannerBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+		try {
+			@SuppressWarnings("unused")
+			Map<Long, BannerBO> bannerBOs = manageBannerServiceImpl.getBanners();
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -55,22 +96,14 @@ public class ManageBannerServiceTest {
 		return bannerBO;
 	}
 
-	@Test
-	@Rollback(true)
-	public void testGetBannerDetail() {
-		BannerBO bannerBO = getBanner();
+	private BannerGroupBO getBannerGroupBO() {
+		BannerGroupBO bannerGroupBO = new BannerGroupBO(0, "banner group", "size", 2);
 		try {
-			manageBannerServiceImpl.addBannerDetail(bannerBO);
-		} catch (CrafartServiceException csExp) {
-			csExp.printStackTrace();
+			manageBannerGroupServiceImpl.addBannerGroup(bannerGroupBO);
+		} catch (CrafartServiceException e) {
 			Assert.fail();
+			e.printStackTrace();
 		}
-		try {
-			@SuppressWarnings("unused")
-			List<BannerBO> bannerBOs = manageBannerServiceImpl.getBannerDetail();
-		} catch (CrafartServiceException csExp) {
-			csExp.printStackTrace();
-			Assert.fail();
-		}
+		return bannerGroupBO;
 	}
 }

@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,7 +39,7 @@ public class ManageBannerGroupServiceTest {
 	public void testAddBannerGroupDetail() {
 		BannerGroupBO bannerGroupBO = getBannerGroup();
 		try {
-			manageBannerGroupServiceImpl.addBannerGroupDetail(bannerGroupBO);
+			manageBannerGroupServiceImpl.addBannerGroup(bannerGroupBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -47,10 +47,7 @@ public class ManageBannerGroupServiceTest {
 	}
 
 	private BannerGroupBO getBannerGroup() {
-		BannerGroupBO bannerGroupBO = new BannerGroupBO();
-		bannerGroupBO.setBannerGroupName("ngfn");
-		bannerGroupBO.setBannerSize("gfbfgbf");
-		bannerGroupBO.setSortOrder(689);
+		BannerGroupBO bannerGroupBO = new BannerGroupBO(0, "group name", "size", 2);
 		return bannerGroupBO;
 	}
 
@@ -59,14 +56,14 @@ public class ManageBannerGroupServiceTest {
 	public void testGetBannerGroupDetail() {
 		BannerGroupBO bannerGroupBO = getBannerGroup();
 		try {
-			manageBannerGroupServiceImpl.addBannerGroupDetail(bannerGroupBO);
+			manageBannerGroupServiceImpl.addBannerGroup(bannerGroupBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
 		try {
 			@SuppressWarnings("unused")
-			List<BannerGroupBO> bannerGroupBOs = manageBannerGroupServiceImpl.getBannerGroupDetail();
+			Map<Long, BannerGroupBO> bannerGroupBOs = manageBannerGroupServiceImpl.getBannerGroups();
 			
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
