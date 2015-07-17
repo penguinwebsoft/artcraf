@@ -112,7 +112,8 @@ $(document).ready(function() {
 				}
 			});
 		});
-	});
-
-
+	}); 
+</script>
+<script>
+setPage("currenciesPageMenuId");
 </script>
