@@ -25,206 +25,269 @@ ul.wysihtml5-toolbar>li {
 	$(function() {
 		formInit();
 	});
-	
+
 	$(function() {
 		formWysiwyg();
 	});
-	
-	$(document).ready(function() {
-		
-		$("#dateOfBirthId").datepicker({
-			viewMode : 'years',
-			format : 'dd/mm/yyyy',
 
-		});
+	$(document)
+			.ready(
+					function() {
 
-		$('#dateOfBirthId').on('changeDate', function(ev) {
-			//close when viewMode='0' (days)
-			if (ev.viewMode === 'days') {
-				$('#dateOfBirthId').datepicker('hide');
-			}
-		});
+						$("#dateOfBirthId").datepicker({
+							viewMode : 'years',
+							format : 'dd/mm/yyyy',
 
-		$("#ProductTaxId").on('change', function(e) {
-			var valueSelected = this.value;
-			if (valueSelected == 0) {
-				$("#taxVatId").hide();
-				$("#taxCstId").hide();
-				$("#taxGstId").hide();
-			} else {
-				$("#taxVatId").show();
-				$("#taxCstId").show();
-				$("#taxGstId").show();
-			}
-		});
-		
-		$.ajax({
-			url : "../category/getCategory",
-			type : "post",
-			contentType : "application/json",
-			dataType : "json",
-			success : function(data) {
-				var categoryBOs = data.categoryBOs;
-				$.each(categoryBOs, function(key, value) {
-					$("#productCategory").append(
-							'<option value='+value.categoryId+'>'
-									+ value.categoryName
-									+ '</option>');
-				});
-			}
-
-		});
-	 	$.ajax({
-			url : "../geoZone/getGeoZone",
-			type : "post",
-			contentType : "application/json",
-			dataType : "json",
-			success : function(data){
-				geoZoneBOs = data.geoZoneBOs;
-			}
-		}); 
-	 	
-		$.ajax({
-			url : "../courier/getCourier",
-			type : "post",
-			contentType : "application/json",
-			dataType : "json",
-			success : function(data){
-				courierBOs = data.courierBOs;
-			}
-		});
-		
-		$.ajax({
-			url : "../attributegroupdesc/getAttributeGroupDesc",
-			type : "post",
-			contentType : "application/json",
-			dataType : "json",
-			success : function(data) {
-				attributeGroupDescBOs = data.attributeGroupDescBOs;
-			}
-		});
-	 	
-		$.ajax({
-			url : "../taxClass/getTaxClass",
-			type : "post",
-			contentType : "application/json",
-			dataType : "json",
-			success : function(data) {
-			}
-
-		});
-
-		$("#saveButton")
-				.click(
-						function() {
-							if (currentSelectedListId = "tabData") {
-								var productBO = {};
-								var weightClassBO = {};
-								var lengthClassBO = {};
-								var taxRateBO = {};
-								var productDescriptionBO = {};
-								var productDiscountBOs = new Array();
-								var productSpecialBOs = new Array();
-								var productShippingBOs = new Array();
-								var productAttributeBOs = new Array();
-								var taxRuleBOs = new Array();
-								var taxRuleBO = {};
-								taxRuleBO.value = $("#vatId").val();
-								taxRuleBO.value = $("#cstId").val();
-								taxRuleBO.value = $("#gstId").val();
-								taxRuleBOs.push(taxRuleBO);
-								taxRateBO.taxRuleBOs = taxRuleBOs;
-								for(var i =0;i<attribute_row;i++){
-									var productAttributeBO = {};
-									productAttributeBO.attributeGroupId = $("#productAttribute"+i).val();
-									productAttributeBO.text = $("#AttributeText"+i).val();
-									productAttributeBOs.push(productAttributeBO);
-								} 
-								for(var i =0;i<discount_row;i++){
-									var productDiscountBO = {};
-									productDiscountBO.quantity = $("#quantity"+i).val();
-									productDiscountBO.price = $("#value"+i).val();
-									productDiscountBO.startDate = $("#dp4"+i).val();
-									productDiscountBO.endDate = $("#dp5"+i).val();
-									productDiscountBOs.push(productDiscountBO);
-								}
-								for(var i=0;i<shipping_row;i++){
-									var productShippingBO = {};
-									productShippingBO.courierId = $("#productCourier"+i).val();
-									productShippingBO.geoZoneId = $("#productGeoZone"+i).val();
-									productShippingBO.shippingRate = $("#productShippingRate"+i).val();
-									productShippingBOs.push(productShippingBO);
-								}
-								for(var i =0;i<special_row;i++){
-									var productSpecialBO = {};
-									productSpecialBO.price = $("#prices"+i).val();
-									productSpecialBO.startDate = $("#dp2"+i).val();
-									productSpecialBO.endDate = $("#dp3"+i).val(); 
-									productSpecialBOs.push(productSpecialBO);
-								}
-								productBO.model = $("#input-model").val();
-								productBO.categoryId = $("#productCategory").val();
-								productBO.status = $("#input-status").val();
-								productBO.price = $("#input-price").val();
-								productBO.sku = $("#input-sku").val();
-								productBO.quantity = $("#input-quantity").val();
-								productBO.stockStatusId = $("#input-stock-status").val();
-								productBO.quantity = $("#input-quantity").val();
-								productBO.minimum = $("#input-minimum").val();
-								productBO.dateAvailable = $("#dateOfBirthId").val();
-								productBO.length = $("#input-length").val();
-								productBO.width = $("#input-width").val();
-								productBO.height = $("#input-height").val();
-								productBO.weight = $("#input-weight").val();
-								productBO.sortOrder = $("#input-sort-order").val();
-								weightClassBO.title = $("#input-weight-class").val();
-								weightClassBO.value = $("#input-weight").val();
-								lengthClassBO.title = $("#input-length-class").val();
-								lengthClassBO.value = $("#input-length").val();
-								productDescriptionBO.name = $("#productName").val();
-								//productDescriptionBO.description = $("#description").val();
-								productDescriptionBO.tag = $("#tagTitle").val();
-								productDescriptionBO.metaDescription = $("#metaDescription").val();
-								productDescriptionBO.metaKeyword = $("#metaTagAndSEOKeyword").val();
-								productBO.weightClassBO = weightClassBO;
-								productBO.lengthClassBO = lengthClassBO;
-								productBO.productDescriptionBO = productDescriptionBO;
-								productBO.productDiscountBOs = productDiscountBOs;
-								productBO.productSpecialBOs = productSpecialBOs; 
-								productBO.productShippingBOs = productShippingBOs;
-								productBO.productAttributeBOs = productAttributeBOs;
-								productBO.taxRateBO = taxRateBO;
-								postData = JSON.stringify(productBO);
-							}
-							$.ajax({
-										url : "../product/addProduct",
-										type : "post",
-										data : postData,
-										contentType : "application/json",
-										dataType : "json",
-										success : function(data) {
-											alert("Saved Successfully");
-										},
-										error : function(error) {
-											alert("Details failed to save");
-										}
-									});
 						});
-		
-		$("#productFieldsTabs li").click(function() {
-			currentSelectedListId = $(this).attr('id');
-		});
 
-	});
+						$('#dateOfBirthId').on('changeDate', function(ev) {
+							//close when viewMode='0' (days)
+							if (ev.viewMode === 'days') {
+								$('#dateOfBirthId').datepicker('hide');
+							}
+						});
+
+						$("#ProductTaxId").on('change', function(e) {
+							var valueSelected = this.value;
+							if (valueSelected == 0) {
+								$("#taxVatId").hide();
+								$("#taxCstId").hide();
+								$("#taxGstId").hide();
+							} else {
+								$("#taxVatId").show();
+								$("#taxCstId").show();
+								$("#taxGstId").show();
+							}
+						});
+
+						$.ajax({
+							url : "../category/getCategory",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								var categoryBOs = data.categoryBOs;
+								$.each(categoryBOs, function(key, value) {
+									$("#productCategory").append(
+											'<option value='+value.categoryId+'>'
+													+ value.categoryName
+													+ '</option>');
+								});
+							}
+
+						});
+						$.ajax({
+							url : "../geoZone/getGeoZone",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								geoZoneBOs = data.geoZoneBOs;
+							}
+						});
+
+						$.ajax({
+							url : "../courier/getCourier",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								courierBOs = data.courierBOs;
+							}
+						});
+
+						$
+								.ajax({
+									url : "../attributegroupdesc/getAttributeGroupDesc",
+									type : "post",
+									contentType : "application/json",
+									dataType : "json",
+									success : function(data) {
+										attributeGroupDescBOs = data.attributeGroupDescBOs;
+									}
+								});
+
+						$.ajax({
+							url : "../taxClass/getTaxClass",
+							type : "post",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+							}
+
+						});
+
+						$("#saveButton")
+								.click(
+										function() {
+											if (currentSelectedListId = "tabData") {
+												var productBO = {};
+												var weightClassBO = {};
+												var lengthClassBO = {};
+												var taxRateBO = {};
+												var productDescriptionBO = {};
+												var productDiscountBOs = new Array();
+												var productSpecialBOs = new Array();
+												var productShippingBOs = new Array();
+												var productAttributeBOs = new Array();
+												var taxRuleBOs = new Array();
+												var taxRuleBO = {};
+												taxRuleBO.value = $("#vatId")
+														.val();
+												taxRuleBO.value = $("#cstId")
+														.val();
+												taxRuleBO.value = $("#gstId")
+														.val();
+												taxRuleBOs.push(taxRuleBO);
+												taxRateBO.taxRuleBOs = taxRuleBOs;
+												for (var i = 0; i < attribute_row; i++) {
+													var productAttributeBO = {};
+													productAttributeBO.attributeGroupId = $(
+															"#productAttribute"
+																	+ i).val();
+													productAttributeBO.text = $(
+															"#AttributeText"
+																	+ i).val();
+													productAttributeBOs
+															.push(productAttributeBO);
+												}
+												for (var i = 0; i < discount_row; i++) {
+													var productDiscountBO = {};
+													productDiscountBO.quantity = $(
+															"#quantity" + i)
+															.val();
+													productDiscountBO.price = $(
+															"#value" + i).val();
+													productDiscountBO.startDate = $(
+															"#dp4" + i).val();
+													productDiscountBO.endDate = $(
+															"#dp5" + i).val();
+													productDiscountBOs
+															.push(productDiscountBO);
+												}
+												for (var i = 0; i < shipping_row; i++) {
+													var productShippingBO = {};
+													productShippingBO.courierId = $(
+															"#productCourier"
+																	+ i).val();
+													productShippingBO.geoZoneId = $(
+															"#productGeoZone"
+																	+ i).val();
+													productShippingBO.shippingRate = $(
+															"#productShippingRate"
+																	+ i).val();
+													productShippingBOs
+															.push(productShippingBO);
+												}
+												for (var i = 0; i < special_row; i++) {
+													var productSpecialBO = {};
+													productSpecialBO.price = $(
+															"#prices" + i)
+															.val();
+													productSpecialBO.startDate = $(
+															"#dp2" + i).val();
+													productSpecialBO.endDate = $(
+															"#dp3" + i).val();
+													productSpecialBOs
+															.push(productSpecialBO);
+												}
+												productBO.model = $(
+														"#input-model").val();
+												productBO.categoryId = $(
+														"#productCategory")
+														.val();
+												productBO.status = $(
+														"#input-status").val();
+												productBO.price = $(
+														"#input-price").val();
+												productBO.sku = $("#input-sku")
+														.val();
+												productBO.quantity = $(
+														"#input-quantity")
+														.val();
+												productBO.stockStatusId = $(
+														"#input-stock-status")
+														.val();
+												productBO.quantity = $(
+														"#input-quantity")
+														.val();
+												productBO.minimum = $(
+														"#input-minimum").val();
+												productBO.dateAvailable = $(
+														"#dateOfBirthId").val();
+												productBO.length = $(
+														"#input-length").val();
+												productBO.width = $(
+														"#input-width").val();
+												productBO.height = $(
+														"#input-height").val();
+												productBO.weight = $(
+														"#input-weight").val();
+												productBO.sortOrder = $(
+														"#input-sort-order")
+														.val();
+												weightClassBO.title = $(
+														"#input-weight-class")
+														.val();
+												weightClassBO.value = $(
+														"#input-weight").val();
+												lengthClassBO.title = $(
+														"#input-length-class")
+														.val();
+												lengthClassBO.value = $(
+														"#input-length").val();
+												productDescriptionBO.name = $(
+														"#productName").val();
+												//productDescriptionBO.description = $("#description").val();
+												productDescriptionBO.tag = $(
+														"#tagTitle").val();
+												productDescriptionBO.metaDescription = $(
+														"#metaDescription")
+														.val();
+												productDescriptionBO.metaKeyword = $(
+														"#metaTagAndSEOKeyword")
+														.val();
+												productBO.weightClassBO = weightClassBO;
+												productBO.lengthClassBO = lengthClassBO;
+												productBO.productDescriptionBO = productDescriptionBO;
+												productBO.productDiscountBOs = productDiscountBOs;
+												productBO.productSpecialBOs = productSpecialBOs;
+												productBO.productShippingBOs = productShippingBOs;
+												productBO.productAttributeBOs = productAttributeBOs;
+												productBO.taxRateBO = taxRateBO;
+												postData = JSON
+														.stringify(productBO);
+											}
+											$
+													.ajax({
+														url : "../product/addProduct",
+														type : "post",
+														data : postData,
+														contentType : "application/json",
+														dataType : "json",
+														success : function(data) {
+															alert("Saved Successfully");
+														},
+														error : function(error) {
+															alert("Details failed to save");
+														}
+													});
+										});
+
+						$("#productFieldsTabs li").click(function() {
+							currentSelectedListId = $(this).attr('id');
+						});
+
+					});
 
 	function addSpecial() {
 		html = '<tr id="special-row' + special_row + '">';
 		html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="Price" class="form-control" id="prices' + special_row + '"/></td>';
 		html += '  <td class="text-left" style="width: 25%;"><div class="input-group "><input type="text" name="product_special[' + special_row + '][date_start]" value="" placeholder="Date Start" data-date-format="YYYY-MM-DD" class="form-control" id="dp2' + special_row + '"/></div></td>';
 		html += '  <td class="text-left" style="width: 25%;"><div class="input-group "><input type="text" name="product_special[' + special_row + '][date_end]" value="" placeholder="Date End" data-date-format="YYYY-MM-DD" class="form-control" id="dp3' + special_row + '"/></div></td>';
-		html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row'
+		html += ' <td class="text-left"><button type="button" onclick="$(\'#special-row'
 				+ special_row
-				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i></button></td>';
+				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i>Delete</button></td>';
 		html += '</tr>';
 
 		$('#special tbody').append(html);
@@ -266,9 +329,9 @@ ul.wysihtml5-toolbar>li {
 		html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][values]" value="" placeholder="values" class="form-control" id="value' + discount_row + '"/></td>';
 		html += '  <td class="text-left" style="width: 20%;"><div class="input-group "><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" placeholder="Date Start" data-date-format="YYYY-MM-DD" class="form-control" id="dp4' + discount_row + '"/></div></td>';
 		html += '  <td class="text-left" style="width: 20%;"><div class="input-group ">   <input type="text" name="product_discount[' + discount_row + '][date_end]" value="" placeholder="Date End" data-date-format="YYYY-MM-DD" class="form-control" id="dp5' + discount_row + '"/></div></td>';
-		html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row'
+		html += ' <td class="text-left"><button type="button" onclick="$(\'#discount-row'
 				+ discount_row
-				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i></button></td>';
+				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i>Delete</button></td>';
 		html += '</tr>';
 
 		$('#discount tbody').append(html);
@@ -307,57 +370,54 @@ ul.wysihtml5-toolbar>li {
 		html += '  <td class="text-left">';
 		html += '<div class="input-group"><span class="input-group-addon"></span><textarea name="product_attribute[' + attribute_row + '][product_attribute_description][1][text]" rows="5" placeholder="Text" id="AttributeText'+attribute_row+'" class="form-control"></textarea></div>';
 		html += '  </td>';
-		html += '  <td class="text-left"><button type="button" onclick="$(\'#attribute-row'
+		html += ' <td class="text-left"><button type="button" onclick="$(\'#attribute-row'
 				+ attribute_row
-				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i></button></td>';
+				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i>Delete</button></td>';
 		html += '</tr>';
 
 		$('#attribute tbody').append(html);
-		
-			$.each(attributeGroupDescBOs, function(key, value) {
-			$("#productAttribute"+attribute_row).append(
+
+		$.each(attributeGroupDescBOs, function(key, value) {
+			$("#productAttribute" + attribute_row).append(
 					'<option value='+value.atrributeGroupDescId+'>'
-							+ value.attributeGroupName
-							+ '</option>');
+							+ value.attributeGroupName + '</option>');
 		});
-			attribute_row++;
+		attribute_row++;
 	}
 
 	function addShipping() {
 		html = '<tr id="shipping-row' + shipping_row + '">';
 		html += '  <td class="text-left"><select name="product_shipping[' + shipping_row + '][courier_id]" id="productCourier'+shipping_row+'" class="form-control">';
 		html += '  </select></td>';
-		html += '  <td class="text-right"><input type="text" name="product_shipping[' + shipping_row + '][shipping_rate]" value="" placeholder="Shipping Rate" class="form-control" id="productShippingRate'+shipping_row+'" /></td>';
+		html += '  <td class="text-left"><input type="text" name="product_shipping[' + shipping_row + '][shipping_rate]" class="textbox" type="text" placeholder="Shipping Rate" value="" name="product_shipping[0][shipping_rate]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="Blocked" onclick="myFunction(this)" />&nbsp;Click For Free Shipping</td>';
 		html += '  <td class="text-right"><select name="product_shipping[' + shipping_row + '][geo_zone_id]" id="productGeoZone'+shipping_row+'" class="form-control">';
 		html += '  </select></td>';
-		html += '  <td class="text-left"><button type="button" onclick="$(\'#shipping-row'
+		html += ' <td class="text-left"><button type="button" onclick="$(\'#shipping-row'
 				+ shipping_row
-				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i></button></td>';
+				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i>Delete</button></td>';
 		html += '</tr>';
 		$('#shipping tbody').append(html);
-		
-				$.each(geoZoneBOs, function(key, value) {
-				$("#productGeoZone"+shipping_row).append(
-						'<option value='+value.geoZoneId+'>'
-								+ value.name
-								+ '</option>');
-				});
-				$.each(courierBOs, function(key, value) {
-				$("#productCourier"+shipping_row).append(
-						'<option value='+value.courierId+'>'
-						+ value.name
-						+ '</option>');
-				});
-				shipping_row++;
+
+		$.each(geoZoneBOs, function(key, value) {
+			$("#productGeoZone" + shipping_row).append(
+					'<option value='+value.geoZoneId+'>' + value.name
+							+ '</option>');
+		});
+		$.each(courierBOs, function(key, value) {
+			$("#productCourier" + shipping_row).append(
+					'<option value='+value.courierId+'>' + value.name
+							+ '</option>');
+		});
+		shipping_row++;
 	}
 
 	function addImage() {
 		html = '<tr id="image-row' + image_row + '">';
 		html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="${context}/resources/img/no_image-100x100.png" alt="" title="" data-placeholder="${context}/resources/img/no_image-100x100.png" /><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
 		html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="Sort Order" class="form-control" /></td>';
-		html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row'
+		html += ' <td class="text-left"><button type="button" onclick="$(\'#image-row'
 				+ image_row
-				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i></button></td>';
+				+ '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="icon-minus-sign"></i>Delete</button></td>';
 		html += '</tr>';
 
 		$('#images tbody').append(html);
@@ -366,19 +426,25 @@ ul.wysihtml5-toolbar>li {
 	}
 </script>
 
-<div class="inner">
-	<div class="row">
-		<div class="col-lg-3">
-			<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Product</h1>
-		</div>
+<script>
+	$(document).ready(function() {
+		$("#cleditor").cleditor();
+	});
+</script>
 
-		<div class="pull-right" style="padding: 25px;">
-			<a class="btn btn-primary" title="" data-toggle="tooltip" data-original-title="Add New" id="saveButton"> &nbsp;&nbsp;&nbsp;SAVE&nbsp;&nbsp;&nbsp; </a> <a
-				class="btn btn-danger" style="font-size: 14px !important" title="" title="" data-toggle="tooltip" type="button" data-original-title="Delete"> CANCEL </a>
+<div class="col-lg-11">
+	<div class="container-fluid" style="background-color: white;">
+		<div class="row">
+			<div class="col-lg-3">
+				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Product</h1>
+			</div>
+
+			<div class="pull-right" style="padding: 25px;">
+				<a class="btn btn-primary" title="" data-toggle="tooltip" data-original-title="Add New" id="saveButton"> &nbsp;&nbsp;&nbsp;SAVE&nbsp;&nbsp;&nbsp; </a> <a class="btn btn-danger"
+					style="font-size: 14px !important" title="" title="" data-toggle="tooltip" type="button" data-original-title="Delete"> CANCEL </a>
+			</div>
 		</div>
-	</div>
-	<hr />
-	<div class="container-fluid">
+		<hr />
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
@@ -400,10 +466,18 @@ ul.wysihtml5-toolbar>li {
 								<li id="tabDiscount"><a data-toggle="tab" href="#tab-discount">Discount</a></li>
 								<li id="tabSpecial"><a data-toggle="tab" href="#tab-special">Special Price</a></li>
 								<li id="tabTax"><a data-toggle="tab" href="#tab-Tax"> Tax </a></li>
+								<li id="tabSetting"><a data-toggle="tab" href="#tab-setting"> Setting </a></li>
 							</ul>
-
+							<!-- General Page -->
 							<div class="tab-content" style="border: 0px; padding: 0px;">
 								<div class="tab-pane fade in active" id="tab-general">
+									<div class="form-group">
+										<label class="control-label col-sm-2">Choose Seller</label>
+										<div class="col-sm-10">
+											<span class="col-sm-5" style="margin-left: -15px"><input type="text" style="widows: 100%" placeholder="Search Seller" id="searchSeller" class="form-control" /></span> <span
+												class="col-sm-1"><button type="button" class="btn btn-success" style="margin-top: 1%">Search</button></span>
+										</div>
+									</div>
 
 									<div class="form-group">
 										<label class="control-label col-sm-2">Product Category</label>
@@ -419,14 +493,10 @@ ul.wysihtml5-toolbar>li {
 										<label class="control-label col-sm-2">Product Sub Category</label>
 
 										<div class="col-sm-10">
-											<select data-placeholder="Choose a Country" class="form-control chzn-select" multiple="multiple" tabindex="4" style="height: 25px;">
-												<option value="United States" selected="selected">United States</option>
-												<option value="United Kingdom">United Kingdom</option>
-												<option value="Afghanistan">Afghanistan</option>
-												<option value="Albania">Albania</option>
-												<option value="Algeria">Algeria</option>
-												<option value="American Samoa">American Samoa</option>
-												<option value="Andorra">Andorra</option>
+
+											<select id="productSubCategory" data-placeholder="Choose a Country" class="form-control" multiple="multiple" tabindex="4">
+
+												<select id="productSubCategory" data-placeholder="Choose a Country" class="form-control" multiple="multiple" tabindex="4">
 											</select>
 										</div>
 									</div>
@@ -439,7 +509,7 @@ ul.wysihtml5-toolbar>li {
 									</div>
 									<br>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="input-description1">Description</label>
+										<label class="col-sm-2 control-label" for="input-description1" style="margin-top: 20px">Description</label>
 										<div class="col-lg-10">
 											<div class="box">
 												<div id="cleditorDiv" class="body collapse in">
@@ -488,11 +558,23 @@ ul.wysihtml5-toolbar>li {
 											<input type="text" name="upc" value="" placeholder="UPC" id="input-upc" class="form-control" />
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-city">City</label>
+										<div class="col-sm-10">
+											<input type="text" name="city" value="" placeholder="city" id="input-city" class="form-control" />
+										</div>
+									</div>
 
 									<div class="form-group">
 										<label class="col-sm-2 control-label" for="input-location">State</label>
 										<div class="col-sm-10">
 											<input type="text" name="location" value="" placeholder="Enter State" id="input-location" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-pincode">Pincode</label>
+										<div class="col-sm-10">
+											<input type="text" name="pincode" value="" placeholder="Pincode" id="input-pincode" class="form-control" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -583,7 +665,7 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 								</div>
-
+								<!-- Start tab-SEO-->
 								<div class="tab-pane fade" id="tab-SEO">
 
 									<div class="form-group required">
@@ -611,9 +693,7 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 								</div>
-
-
-
+								<!-- Shipping Page -->
 								<div class="tab-pane" id="tab-shipping">
 									<div class="table-responsive">
 										<table id="shipping" class="table table-striped table-bordered table-hover">
@@ -626,19 +706,29 @@ ul.wysihtml5-toolbar>li {
 												</tr>
 											</thead>
 											<tbody>
+												<tr id="shipping-row0">
+													<td class="text-left"><select id="productCourier0" class="form-control" name="product_shipping[0][courier_id]">
+													</select></td>
+													<td class="text-left"><input id="productShippingRate0" class="textbox" type="text" placeholder="Shipping Rate" value="" name="product_shipping[0][shipping_rate]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+														type="checkbox" class="Blocked" onclick="myFunction(this)" />&nbsp;Click For Free Shipping</td>
+													<td class="text-right"><select id="productGeoZone0" class="form-control" name="product_shipping[0][geo_zone_id]">
+													</select></td>
+													<td class="text-left">
+														<button type="button" class="btn btn-danger" data-toggle="tooltip" onclick="$('#shipping-row0').remove();">Delete</button>
+													</td>
+												</tr>
 											</tbody>
 											<tfoot>
 												<tr>
 													<td colspan="3"></td>
-													<td class="text-left"><button type="button" id="addshippingBtnId" onclick="addShipping();" data-toggle="tooltip" title="Add Shipping" class="btn btn-primary">
-															<i class="icon-plus-sign"></i>
-														</button></td>
+													<td class="text-left"><button type="button" class="btn btn-primary" id="addshippingBtnId" onclick="addShipping();" data-toggle="tooltip" title="Add Shipping">Add</button> <i
+														class="icon-plus-sign"></i></td>
 												</tr>
 											</tfoot>
 										</table>
 									</div>
 								</div>
-
+								<!-- Attribute Page -->
 								<div class="tab-pane" id="tab-attribute">
 									<div class="table-responsive">
 										<table id="attribute" class="table table-striped table-bordered table-hover">
@@ -654,15 +744,14 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="2"></td>
-													<td class="text-left"><button type="button" onclick="addAttribute();" data-toggle="tooltip" title="Add Attribute" class="btn btn-primary">
-															<i class="icon-plus-sign"></i>
-														</button></td>
+													<td class="text-left"><button type="button" class="btn btn-primary" onclick="addAttribute();" data-toggle="tooltip" title="Add Attribute">Add</button> <i class="icon-plus-sign"></i></td>
+
 												</tr>
 											</tfoot>
 										</table>
 									</div>
 								</div>
-
+								<!--Image Page -->
 								<div class="tab-pane" id="tab-image">
 									<div class="table-responsive">
 										<table id="images" class="table table-striped table-bordered table-hover">
@@ -678,23 +767,23 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="2"></td>
-													<td class="text-left"><button type="button" onclick="addImage();" data-toggle="tooltip" title="Add Image" class="btn btn-primary">
-															<i class="icon-plus-sign"></i>
-														</button></td>
+													<td class="text-left"><button type="button" class="btn btn-primary" onclick="addImage();" data-toggle="tooltip" title="Add Image">Add</button> <i class="icon-plus-sign"></i></td>
 												</tr>
 											</tfoot>
 										</table>
 									</div>
 								</div>
 
+								<!-- Discount Page -->
 								<div class="tab-pane" id="tab-discount">
 									<div class="table-responsive">
 										<table id="discount" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
 													<td class="text-left">Discount Type</td>
-													<td class="text-right">Quantity</td>
-													<td class="text-right">values</td>
+													<td class="text-left">Discount Value</td>
+													<td class="text-left">Discount Code</td>
+													<td class="text-left">Quantity</td>
 													<td class="text-left">Date Start</td>
 													<td class="text-left">Date End</td>
 													<td></td>
@@ -705,14 +794,14 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="6"></td>
-													<td class="text-left"><button type="button" onclick="addDiscount();" data-toggle="tooltip" title="Add Discount" class="btn btn-primary">
-															<i class="icon-plus-sign"></i>
-														</button></td>
+													<td class="text-left"><button type="button" class="btn btn-primary" onclick="addDiscount();" data-toggle="tooltip" title="Add Discount">Add</button> <i class="icon-plus-sign"></i></td>
+
 												</tr>
 											</tfoot>
 										</table>
 									</div>
 								</div>
+								<!-- Special Page -->
 								<div class="tab-pane" id="tab-special">
 									<div class="table-responsive">
 										<table id="special" class="table table-striped table-bordered table-hover">
@@ -729,15 +818,13 @@ ul.wysihtml5-toolbar>li {
 											<tfoot>
 												<tr>
 													<td colspan="5"></td>
-													<td class="text-left"><button type="button" onclick="addSpecial();" data-toggle="tooltip" title="Add Special" class="btn btn-primary">
-															<i class="icon-plus-sign"></i>
-														</button></td>
+													<td class="text-left"><button type="button" class="btn btn-primary" onclick="addSpecial();" data-toggle="tooltip" title="Add Special">Add</button> <i class="icon-plus-sign"></i></td>
 												</tr>
 											</tfoot>
 										</table>
 									</div>
 								</div>
-
+								<!-- Tax Page -->
 								<div class="tab-pane fade" id="tab-Tax">
 									<div class="form-group">
 										<label class="col-sm-3 control-label" for="ProductTaxId">Product Tax Details</label>
@@ -767,6 +854,21 @@ ul.wysihtml5-toolbar>li {
 										</div>
 									</div>
 								</div>
+
+								<!-- Setting Page -->
+								<div class="tab-pane fade" id="tab-setting">
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-status">Status</label>
+										<div class="col-sm-10">
+											<select name="status" id="input-status" class="form-control">
+												<option value="11" selected="selected">Approved</option>
+												<option value="12">Pending Approval</option>
+												<option value="13">Rejected</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
 							</div>
 						</form>
 					</div>
@@ -779,5 +881,18 @@ ul.wysihtml5-toolbar>li {
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$('.Blocked').change(
+			function() {
+				var isChecked = this.checked;
 
+				if (isChecked) {
+					$(this).parents("tr:eq(0)").find(".textbox").prop(
+							"disabled", true);
+				} else {
+					$(this).parents("tr:eq(0)").find(".textbox").prop(
+							"disabled", false);
+				}
 
+			});
+</script>
