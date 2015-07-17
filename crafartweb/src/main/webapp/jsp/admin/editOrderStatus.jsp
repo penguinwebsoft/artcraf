@@ -82,3 +82,6 @@
 		$("#cleditor").cleditor();
 	});
 </script>
+<script type="text/javascript">
+	setPage("orderStatusMenuId");
+	</script>
