@@ -28,8 +28,6 @@ $(document).ready(function() {
 			});
 		});
 	});
-
-
 </script>
 <div class="col-lg-10">
 	<div class="container-fluid" style="background-color: white;">
@@ -79,3 +77,6 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+<script>
+setPage("geoZoneMenuId");
+</script>
