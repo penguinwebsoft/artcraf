@@ -111,3 +111,6 @@ $(document).ready(function() {
 
 
 </script>
+<script type="text/javascript">
+	setPage("orderStatusMenuId");
+	</script>
