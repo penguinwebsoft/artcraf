@@ -227,7 +227,7 @@
 															</td>
 														</tr>
 														<tr>
-															<td class="pull-right"><span>&middot;</span>&nbsp;Discount Coupon Code()&nbsp;</td>
+															<td class="pull-right"><span>&middot;</span>&nbsp;Discount From Coupon Code()&nbsp;</td>
 															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 															<td><span></span>
 															</td>
@@ -388,5 +388,7 @@
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	setPage("orderListMenuId");
+</script>
 
