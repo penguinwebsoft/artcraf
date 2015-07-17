@@ -185,3 +185,6 @@
 		</div>
 	</div>
 </form:form>
+<script>
+setPage("attributePageMenuId");
+</script>
