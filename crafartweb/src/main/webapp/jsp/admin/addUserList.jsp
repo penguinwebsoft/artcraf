@@ -105,6 +105,7 @@ $(document).ready(function() {
 			});
 		});
 	});
-
-
 </script>
+<script type="text/javascript">
+	setPage("userListPageMenuId");
+	</script>
