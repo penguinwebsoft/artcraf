@@ -136,4 +136,7 @@
 		})
 	});
 </script>
+<script type="text/javascript">
+	setPage("orderListMenuId");
+</script>
 
