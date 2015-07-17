@@ -853,5 +853,8 @@ ul.wysihtml5-toolbar>li {
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	setPage("productPageMenuId");
+</script>
 
 
