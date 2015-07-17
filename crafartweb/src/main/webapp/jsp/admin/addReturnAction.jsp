@@ -65,5 +65,8 @@
 <script>
 	$(document).ready(function() {
 		$("#cleditor").cleditor();
-	});
+	}); 
+</script>
+<script type="text/javascript">
+	setPage("returnActionMenuId");
 </script>
