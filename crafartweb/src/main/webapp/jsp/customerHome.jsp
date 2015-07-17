@@ -16,7 +16,7 @@
 				var clickEvent = false;
 				$('#myCarousel').on('click', '.nav a', function() {
 					clickEvent = true;
-					
+
 					$('.nav li').removeClass('active');
 					$('.nav li').removeClass('arrow_box');
 					$(this).parent().addClass('arrow_box');
@@ -40,21 +40,21 @@
 						});
 
 				/**********best seller and best sold products section*****************/
-				
+
 				$('#thumbCarousel').carousel({
-					interval : 10000
+					interval : false
 				})
 
 				$('#thumbCarousel1').carousel({
-					interval : 10000
+					interval : false
 				})
 
 				$('#thumbCarousel2').carousel({
-					interval : 10000
+					interval : false
 				})
 
 				$('#thumbCarousel3').carousel({
-					interval : 10000
+					interval : false
 				})
 
 				$('#categoryDropDownId').addClass('open');
@@ -197,25 +197,29 @@ document.getElementById('image').style.position="absolute";
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
+<<<<<<< HEAD
 				<div class="item active" id="image" position: absolute;>
+=======
+				<div class="item active">
+>>>>>>> 66f945a6b5c0d2189312b1cfd0d76fa14c14d541
 					<img src="${context}/resources/img/1.jpg" alt="..." class="img-responsive">
 				</div>
-				<div class="item" position: absolute;>
+				<div class="item">
 					<img src="${context}/resources/img/2.jpg" alt="..." class="img-responsive">
 				</div>
 
-				<div class="item" position: absolute;>
+				<div class="item">
 					<img src="${context}/resources/img/3.jpg" alt="..." class="img-responsive">
 				</div>
 
-				<div class="item" position: absolute;>
+				<div class="item">
 					<img src="${context}/resources/img/4.jpg" alt="..." class="img-responsive">
 				</div>
-				<div class="item" position: absolute;>
+				<div class="item">
 					<img src="${context}/resources/img/1.jpg" alt="..." class="img-responsive">
 				</div>
 
-				<div class="item" position: absolute;>
+				<div class="item">
 					<img src="${context}/resources/img/2.jpg" alt="..." class="img-responsive">
 				</div>
 
@@ -246,11 +250,11 @@ document.getElementById('image').style.position="absolute";
 	<div class="row-fluid">
 		<div class="col-sm-9">
 
-			<div class="row">
+			<div class="row-fluid">
 
 				<!--  first carousel starts here -->
 				<!-- header section  -->
-				<div class="col-sm-12">
+				<div>
 					<nav class="navbar breadcrumb_cust" role="navigation">
 						<div data-toggle="collapse">
 							<ul class="nav navbar-nav navbar-left">
@@ -268,7 +272,7 @@ document.getElementById('image').style.position="absolute";
 				<!-- header section  -->
 
 				<!-- multi items carousel container -->
-				<div id="thumbCarousel" class="carousel slide col-sm-12">
+				<div id="thumbCarousel" class="carousel slide article-slide" data-ride="carousel">
 
 					<!-- Carousel items -->
 					<div class="carousel-inner">
@@ -323,10 +327,8 @@ document.getElementById('image').style.position="absolute";
 					</div>
 					<!--/carousel-inner-->
 
-					<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
-						class="sr-only">Previous</span>
-					</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
-						class="sr-only">Next</span>
+					<a class="left carousel-control" href="#thumbCarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+					</a> <a class="right carousel-control" href="#thumbCarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span>
 					</a>
 				</div>
 				<!-- multi items carousel container -->
@@ -384,60 +386,248 @@ document.getElementById('image').style.position="absolute";
 					</div>
 				</div>
 
-				<!-- best seller and best sold products tabs section starts here -->
-				<div class="row">
-					<!-- Wrapper for slides -->
-					<div class="col-md-12" id="myCarousel">
-						<ul class="breadcrumb_cust nav nav-pills nav-tabs  nav_tabs_bottom_border" style="padding: 0px">
-							<li data-target="#myCarousel" data-toggle="tab" data-slide-to="0" class="active arrow_box"><a href="#" class="tab">BEST SELLERS</a></li>
-							<li data-target="#myCarousel" data-toggle="tab" data-slide-to="1"><a href="#" class="tab">BEST SOLD PRODUCTS</a></li>
+				<div class="category-tab row-fluid">
+					<!--category-tab-->
+					<div>
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#bestSellers" data-toggle="tab">BEST SELLERS</a></li>
+							<li><a href="#bestSoldProducts" data-toggle="tab">BEST SOLD PRODUCTS</a></li>
 						</ul>
 					</div>
-					<div id="thumbCarousel1" class="carousel slide tabsContainer">
-						<div class="carousel-inner">
-							<!-- start item 1 -->
-							<div class="item active  col-md-12">
-								<div class="row">
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+					<div class="tab-content row">
+						<div class="tab-pane fade active in" id="bestSellers">
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
 									</div>
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
-									</div>
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
-									</div>
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
-									</div>
+									<!-- </div> -->
 								</div>
 							</div>
-							<!-- End Item -->
-							<!-- Start Item 2 -->
-							<div class="item col-md-12">
-								<div class="row">
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/baking-dishes.jpg" alt="Image" class="img-responsive"></a>
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
 									</div>
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product1/lamp1.jpg" alt="Image" class="img-responsive"></a>
-									</div>
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/kitchen-accessories.jpg" alt="Image" class="img-responsive"></a>
-									</div>
-									<div class="col-sm-3 ">
-										<a href="#x" class="thumbnail"><img src="${context}/resources/img/product2/tea-bags.jpg" alt="Image" class="img-responsive"></a>
-									</div>
+									<!-- </div> -->
 								</div>
 							</div>
-							<!--  End Item -->
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<!-- </div> -->
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<!-- </div> -->
+								</div>
+							</div>
 						</div>
-						<!-- End Carousel Inner -->
 
+						<div class="tab-pane fade" id="bestSoldProducts">
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<!-- </div> -->
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<!-- </div> -->
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<!-- </div> -->
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<!-- <div class="product-image-wrapper"> -->
+								<div class="single-products">
+									<div class="thumbnail product-box text-center">
+										<img src="${context}/resources/img/home/product2.jpg" alt="" />
+										<div class="caption">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<!-- </div> -->
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane fade" id="sunglass">
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane fade" id="kids">
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="${context}/resources/img/home/product2.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<!-- End Carousel -->
 				</div>
-				<!-- best seller and best sold products tabs section ends here -->
+
+				<!--/category-tab-->
+
+
 
 				<!--  first carousel ends here -->
 
@@ -513,10 +703,8 @@ document.getElementById('image').style.position="absolute";
 						</div>
 						<!--/carousel-inner-->
 
-						<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
-							class="sr-only">Previous</span>
-						</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
-							class="sr-only">Next</span>
+						<a class="left carousel-control" href="#thumbCarousel2" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+						</a> <a class="right carousel-control" href="#thumbCarousel2" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span>
 						</a>
 					</div>
 					<!--/thumbCarousel-->
@@ -643,10 +831,8 @@ document.getElementById('image').style.position="absolute";
 
 							</div>
 							<!--/carousel-inner-->
-							<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
-								class="sr-only">Previous</span>
-							</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
-								class="sr-only">Next</span>
+							<a class="left carousel-control" href="#thumbCarousel3" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+							</a> <a class="right carousel-control" href="#thumbCarousel3" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span>
 							</a>
 
 						</div>
@@ -723,7 +909,7 @@ document.getElementById('image').style.position="absolute";
 							</nav>
 						</div>
 						<!-- CATEGORY HEADING ENDS -->
-						<div id="thumbCarousel2" class="carousel slide ">
+						<div id="thumbCarousel4" class="carousel slide ">
 
 							<!-- Carousel items -->
 							<div class="carousel-inner">
@@ -777,10 +963,8 @@ document.getElementById('image').style.position="absolute";
 
 							</div>
 							<!--/carousel-inner-->
-							<a class="left carousel-control" href="#carousel-example-product1" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
-								class="sr-only">Previous</span>
-							</a> <a class="right carousel-control" href="#carousel-example-product1" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
-								class="sr-only">Next</span>
+							<a class="left carousel-control" href="#thumbCarousel4" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+							</a> <a class="right carousel-control" href="#thumbCarousel4" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span>
 							</a>
 
 						</div>
@@ -874,4 +1058,3 @@ document.getElementById('image').style.position="absolute";
 	<!-- right side advertisement section ends here -->
 
 </div>
-

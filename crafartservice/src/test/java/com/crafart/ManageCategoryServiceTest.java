@@ -3,7 +3,6 @@
  */
 package com.crafart;
 
-import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
@@ -78,10 +77,10 @@ public class ManageCategoryServiceTest {
 	public void testGetAllSubCategories() {
 		try {
 			testaddCategoryBO();
-			List<CategoryBO> categoryBOs = manageCategoryServiceImpl.getAllSubCategories();
-			for (CategoryBO categoryBO : categoryBOs) {
-				System.out.println("sub category parent id = " + categoryBO.getParentId());
-				Assert.assertTrue(categoryBO.getParentId() > 0);
+			Map<Long, CategoryBO> categoryBOs = manageCategoryServiceImpl.getAllSubCategories();
+			for (Map.Entry<Long, CategoryBO> categoryBOMap : categoryBOs.entrySet()) {
+				System.out.println("sub category parent id = " + categoryBOMap.getValue().getParentId());
+				Assert.assertTrue(categoryBOMap.getValue().getParentId() > 0);
 			}
 			Assert.assertNotNull(categoryBOs);
 		} catch (CrafartServiceException e) {

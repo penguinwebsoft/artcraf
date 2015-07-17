@@ -156,6 +156,6 @@
 		</div>
 	</div>
 </div>
-<script>
+<script> 
 setPage("categoriesMenuId");
 </script>

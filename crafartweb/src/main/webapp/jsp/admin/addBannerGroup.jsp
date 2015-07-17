@@ -31,26 +31,26 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;"><span data-toggle="tooltip" title="bannergroupname">Banner Group Name</span></label>
 								<div class="col-sm-10">
-									<input type="text" id="bannergroupname"name="bannergroupname" value="" placeholder="bannergroupname" id="input-bannergroupname" class="form-control" />
+									<input type="text" id="bannerGroupName" name="bannergroupname" value="" placeholder="bannergroupname" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" ><span data-toggle="tooltip" title="bannertitle">Banner Group Title</span></label>
 								<div class="col-sm-10">
-									<input type="text" id="bannertitle"name="bannertitle" value="" placeholder="bannertitle" id="input-bannertitle" class="form-control" />
+									<input type="text" id="bannertitle" name="bannertitle" value="" placeholder="bannertitle" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" ><span data-toggle="tooltip" title="bannersize">Banner Size</span></label>
 								<div class="col-sm-10">
-									<input type="text" id="bannersize"name="bannersize" value="" placeholder="bannersize" id="input-bannersize" class="form-control" />
+									<input type="text" id="bannerSize" name="bannersize" value="" placeholder="bannersize" class="form-control" />
 								</div>
 							</div>
 						
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-sortorder"><span data-toggle="tooltip" title="Force a minimum ordered amount">SortOrder</span></label>
 								<div class="col-sm-10">
-									<input type="number" id="sortorder"name="sortorder" value="" placeholder="sortorder" id="input-sortorder" class="form-control" />
+									<input type="number" id="sortOrder" name="sortorder" value="" placeholder="sortorder" class="form-control" />
 								</div>
 							</div>
 					</div>
@@ -64,15 +64,14 @@
 $(document).ready(function() {
 		$("#saveBtn").click(function() {
 			var bannerGroupBO = {};
-			
-			bannerGroupBO.bannerGroupName = $("#bannergroupname").val();
-			bannerGroupBO.bannerSize= $("#bannersize").val();
-			bannerGroupBO.sortOrder = $("#sortorder").val();
+			bannerGroupBO.bannerGroupName = $("#bannerGroupName").val();
+			bannerGroupBO.bannerSize= $("#bannerSize").val();
+			bannerGroupBO.sortOrder = $("#sortOrder").val();
 			postData = JSON.stringify(bannerGroupBO);
 			alert("bannerGroup object" + postData);
 			$.ajax({
 				url : "../bannerGroup/addBannerGroup",
-				type : "post",
+				type : "POST",
 				data : postData,
 				contentType : "application/json",
 				dataType : "json",

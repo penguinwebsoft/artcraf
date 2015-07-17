@@ -25,12 +25,25 @@ public class BannerGroupDAOImpl extends CommonDAOImpl implements BannerGroupDAO 
 
 
 	/**
+	 * obtain banner group object which has identifier {@link Long} bannerGroupId
+	 * @param categoryId
+	 * @return
+	 * @throws CrafartDataException
+	 */
+	@Override
+	public BannerGroupDO getBannerGroupDO(long bannerGroupId) throws CrafartDataException {
+		Session session = this.getSessionFactory().getCurrentSession();
+		BannerGroupDO bannerGroupDO = (BannerGroupDO) session.get(BannerGroupDO.class, bannerGroupId);
+		return bannerGroupDO;
+	}
+	
+	/**
 	 * adding BannerGroupDetail details to banner_group table by addGeoZoneDetails
 	 */
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addBannerGroupDetail(BannerGroupDO bannerGroupDO) throws CrafartDataException {
+	public void addBannerGroup(BannerGroupDO bannerGroupDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
 			session.persist(bannerGroupDO);
@@ -38,11 +51,25 @@ public class BannerGroupDAOImpl extends CommonDAOImpl implements BannerGroupDAO 
 			throw new CrafartDataException("DB Error while adding  bannerGroup details in table", hExp);
 		}
 	}
-
+	
+	/**
+	 * updating BannerGroupDetail details to banner_group table 
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateBannerGroup(BannerGroupDO bannerGroupDO) throws CrafartDataException {
+		try {
+			Session session = this.getSessionFactory().getCurrentSession();
+			session.save(bannerGroupDO);
+		} catch (HibernateException hExp) {
+			throw new CrafartDataException("DB Error while adding  bannerGroup details in table", hExp);
+		}
+	}
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<BannerGroupDO> getBannerGroupDetail() throws CrafartDataException {
+	public List<BannerGroupDO> getBannerGroups() throws CrafartDataException {
 		List<BannerGroupDO> bannerGroupDOs = new ArrayList<>();
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();

@@ -17,7 +17,11 @@ import com.crafart.exception.CrafartDataException;
 @Repository("bannerDAO")
 public interface BannerDAO {
 
-	public void addBannerDetail(BannerDO bannerDO) throws CrafartDataException;
+	public void addBanner(BannerDO bannerDO) throws CrafartDataException;
 
 	public List<BannerDO> getBannerDetail() throws CrafartDataException;
+	
+	public void updateBanner(BannerDO bannerDO) throws CrafartDataException;
+
+	public BannerDO getBannerDO(long bannerId) throws CrafartDataException;
 }

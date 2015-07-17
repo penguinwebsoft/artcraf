@@ -38,7 +38,7 @@
 									<td>Action</td>
 								</tr>
 							</thead>
-							</table>
+						</table>
 						<nav>
 							<ul class="pagination">
 								<li class="disabled"><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -56,37 +56,45 @@
 	</div>
 </div>
 <script type="text/javascript">
-$(document)
-.ready(
-		function() {
-			$.ajax({
-				url : "../commission/getCommission",
-				type : "get",
-				contentType : "application/json",
-				dataType : "json",
-				success : function(data) {
-					commisionBOs = data.commisionBOs;
-					displayCommisionList(commisionBOs);
-				}
-			});
-			function displayCommisionList(commisionBOs) {
-				$
-						.each(commisionBOs,	function(key, value) {
-									var commisionBOs = value;
-									var html = '<tr>';
-									html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
-									html += '<td>'
-											+ categoryBO.name
-											+ '</td>';
-									html += '<td>'
-											+ categoryBO.sortOrder
-											+ '</td>';
-									html += "<td><a class='btn btn-warning' href='${baseURL}/category/editCategory?categoryId="+categoryBO.categoryId+"'>Edit</button></td>";
-									html += '</tr>';
-									$('#shipping').append(
-											html);
-								});
-			}
-		});
+	$(document)
+			.ready(
+					function() {
+						$.ajax({
+							url : "../commission/getCommission",
+							type : "get",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								commisionBOs = data.commisionBOs;
+								displayCommisionList(commisionBOs);
+							}
+						});
+						function displayCommisionList(commisionBOs) {
+							$
+									.each(
+											commisionBOs,
+											function(key, commisionBO) {
+												var html = '<tr>';
+												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+												html += '<td>'
+														+ commisionBO.name
+														+ '</td>';
+												html += '<td>'
+														+ commisionBO.type
+														+ '</td>';
+												html += '<td>'
+														+ commisionBO.value
+														+ '</td>';
+												html += '<td>'
+														+ commisionBO.sortOrder
+														+ '</td>';
+												html += "<td><a class='btn btn-warning' href='${baseURL}/category/editCategory?categoryId="
+														+ commisionBO.commisionId
+														+ "'>Edit</button></td>";
+												html += '</tr>';
+												$('#shipping').append(html);
+											});
+						}
+					});
 	setPage("commissionListMenuId");
 </script>

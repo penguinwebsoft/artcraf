@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.crafart.inter.service.ManageCommissionService;
+import com.crafart.inter.service.ManageCommisionService;
 import com.crafart.inter.service.ManageSellerService;
 import com.crafart.service.businessobjects.AddressBO;
 import com.crafart.service.businessobjects.CommisionBO;
@@ -34,7 +34,7 @@ public class ManageSellerTest {
 	private ManageSellerService manageSellerServiceImpl;
 
 	@Autowired
-	private ManageCommissionService manageCommissionServiceImpl;
+	private ManageCommisionService manageCommissionServiceImpl;
 
 	@Rollback(true)
 	public void testAddSeller() {

@@ -21,12 +21,12 @@ import com.crafart.inter.data.CommissionDAO;
  * 
  */
 @Repository("commissionDAOImpl")
-public class CommissionDAOImpl extends CommonDAOImpl implements CommissionDAO {
+public class CommisionDAOImpl extends CommonDAOImpl implements CommissionDAO {
 
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addCommission(CommisionDO commisionDO) throws CrafartDataException {
+	public void addCommision(CommisionDO commisionDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
 			session.save(commisionDO);
@@ -38,7 +38,7 @@ public class CommissionDAOImpl extends CommonDAOImpl implements CommissionDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<CommisionDO> getCommission() throws CrafartDataException {
+	public List<CommisionDO> getCommisions() throws CrafartDataException {
 		List<CommisionDO> commissionDOs = new ArrayList<>();
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();

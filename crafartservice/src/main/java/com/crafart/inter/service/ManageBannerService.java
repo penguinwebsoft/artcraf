@@ -3,7 +3,7 @@
  */
 package com.crafart.inter.service;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,9 @@ import com.crafart.service.exception.CrafartServiceException;
 @Service
 public interface ManageBannerService {
 
-	public void addBannerDetail(BannerBO bannerBO) throws CrafartServiceException;
+	public void addBanner(BannerBO bannerBO) throws CrafartServiceException;
 
-	public List<BannerBO> getBannerDetail() throws CrafartServiceException;
+	public void updateBanner(BannerBO bannerBO) throws CrafartServiceException;
+
+	public Map<Long, BannerBO> getBanners() throws CrafartServiceException;
 }

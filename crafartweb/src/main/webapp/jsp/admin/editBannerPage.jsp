@@ -68,5 +68,5 @@
 	</div>
 </div>
 <script>
-setPage("bannerPageMenuId");
+setPage("bannerPageMenuId"); 
 </script>

@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.inter.service.ManageAttributeGroupDescService;
 import com.crafart.inter.service.ManageCategoryService;
-import com.crafart.inter.service.ManageCommissionService;
+import com.crafart.inter.service.ManageCommisionService;
 import com.crafart.inter.service.ManageCourierService;
 import com.crafart.inter.service.ManageCustomerService;
 import com.crafart.inter.service.ManageGeoZoneService;
@@ -80,7 +80,7 @@ public class ManageProductRatingServiceTest {
 	private ManageGeoZoneService manageGeoZoneServiceImpl;
 
 	@Autowired
-	private ManageCommissionService manageCommissionServiceImpl;
+	private ManageCommisionService manageCommissionServiceImpl;
 	
 	@Autowired
 	private ManageCourierService manageCourierServiceImpl;

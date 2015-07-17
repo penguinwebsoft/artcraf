@@ -12,7 +12,7 @@
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/addBannerPage">Add</a>
+				<a class="btn btn-success" href="${baseURL}/menu/addBanner">Add</a>
 				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
@@ -26,21 +26,12 @@
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Banner Id</td>
+									<td>Banner Name</td>
 									<td>Banner Image</td>
-									<td>Banner Title</td>
+									<td>URL</td>
+									<td>Banner Group</td>
 									<td>Sort Order</td>
 									<td>Action</td>
-								</tr>
-							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>1</td>
-									<td><img id="image" class="image" src="${context}/resources/img/dhl2.jpg" title="" alt="" class="img-responsive" /></td>
-									<td>India Post Air Mail</td>
-									<td>1</td>
-									<td><a class="btn btn-warning" href="${baseURL}/menu/editBannerPage">Edit</a></td>
 								</tr>
 							</thead>
 						</table>
@@ -50,28 +41,27 @@
 		</div>
 	</div>
 </div>
-	</table>
-						<nav>
-							<ul class="pagination">
-								<li class="disabled"><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								</a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-								</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+</table>
+<nav>
+	<ul class="pagination">
+		<li class="disabled"><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+		</a></li>
+		<li class="active"><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+		</a></li>
+	</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <script type="text/javascript">
 	setPage("bannerPageMenuId");
 </script>
 <script type="text/javascript">
-	
 	$(document)
 			.ready(
 					function() {
@@ -87,26 +77,31 @@
 						});
 						function displayBannerList(bannerBOs) {
 							$
-									.each(bannerBOs,	function(key, value) {
-												var bannerBO = value;
+									.each(
+											bannerBOs,
+											function(key, bannerBO) {
 												var html = '<tr>';
 												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
 												html += '<td>'
-														+ bannerBO.BannerName
+														+ bannerBO.bannerName
 														+ '</td>';
 												html += '<td>'
-														+ bannerBO.BannerImage
+														+ bannerBO.bannerImage
 														+ '</td>';
 												html += '<td>'
 														+ bannerBO.bannerUrl
 														+ '</td>';
 												html += '<td>'
+														+ bannerBO.bannerGroupBO.bannerGroupName
+														+ '</td>';
+												html += '<td>'
 														+ bannerBO.sortOrder
-														+ '</td>';	
-			html += "<td><a class='btn btn-warning' href='${baseURL}/banner/editBanner?bannerId="+bannerBO.bannerId+"'>Edit</button></td>";
+														+ '</td>';
+												html += "<td><a class='btn btn-warning' href='${baseURL}/banner/editBanner?bannerId="
+														+ bannerBO.bannerId
+														+ "'>Edit</button></td>";
 												html += '</tr>';
-												$('#shipping').append(
-														html);
+												$('#shipping').append(html);
 											});
 						}
 					});

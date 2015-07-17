@@ -10,7 +10,7 @@
 			<div class="col-lg-3">
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp;Commission Page</h1>
 			</div>
-			<div class="pull-right" style="padding: 25px;"> 
+			<div class="pull-right" style="padding: 25px;">
 				<button type="button" class="btn btn-success">Save</button>
 				<button type="button" class="btn">Cancel</button>
 			</div>
@@ -21,7 +21,7 @@
 				<h3 class="panel-title">
 					<i class="icon-th-list"></i> &nbsp; Add Commission
 				</h3>
-			</div> 
+			</div>
 			<div class="panel-body">
 				<br>
 				<div class="row">
@@ -31,13 +31,13 @@
 							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-model">Commission Name</label>
 								<div class="col-sm-10">
-									<input type="text" name="name" value="" placeholder="name" id="input-Name" class="form-control" />
+									<input type="text" name="name" value="" placeholder="name" id="commisionName" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group required" id="percentage">
 								<label class="col-sm-3 control-label" for="percentage">Percentage</label>
 								<div class="col-sm-3">
-									<select name="status" id="input-percentage" class="form-control">
+									<select name="status" id="type" class="form-control">
 										<option value="1" selected="selected">Percentage</option>
 										<option value="0">Fixed Rate</option>
 									</select>
@@ -46,13 +46,13 @@
 							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-model">Commission Rate</label>
 								<div class="col-sm-10">
-									<input type="number" name="rate" value="" placeholder="rate" id="input-rate" class="form-control" />
+									<input type="number" name="rate" value="" placeholder="rate" id="rate" class="form-control" />
 								</div>
 							</div>
 							<div class="form-group required">
 								<label class="col-sm-2 control-label" for="input-model">Sort Order</label>
 								<div class="col-sm-10">
-									<input type="number" name="sortorder" value="" placeholder="sortorder" id="input-Name" class="form-control" />
+									<input type="number" name="sortorder" value="" placeholder="sortorder" id="sortOrder" class="form-control" />
 								</div>
 							</div>
 						</form>
@@ -62,7 +62,37 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 <script>
 setPage("commissionListMenuId");
+</script>
+
+=======
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var commisionBO = {};
+
+			commisionBO.name = $("#commisionName").val();
+			commisionBO.type = $("#type").val();
+			commisionBO.value = $("#rate").val();
+			commisionBO.sortOrder = $("#sortOrder").val();
+
+			postData = JSON.stringify(commisionBO);
+			$.ajax({
+				url : "../commision/addCommision",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if (data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
 </script>
 

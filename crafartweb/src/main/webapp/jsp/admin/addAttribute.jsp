@@ -121,12 +121,12 @@
 				});
 			});
 </script>
-<form:form id="addUpdateAttribute" name="addUpdateAttributeForm" commandName="attribute">
+<form:form id="addUpdateAttribute" name="addUpdateAttributeForm" cssClass="form-horizontal" commandName="attribute">
 	<form:hidden path="update" id="update" />
 	<form:hidden path="attributeId" id="attributeId"/>
 	<form:hidden path="categoryBO.categoryId" id="categoryId" />
 	<form:hidden path="subCategoryBO.categoryId" id="subCategoryId" />
-	<div class="col-lg-10">
+	<div class="col-lg-10 form-group">
 		<div class="container-fluid" style="background-color: white;">
 			<div class="row">
 				<div class="col-lg-3">

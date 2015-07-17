@@ -14,7 +14,7 @@ import com.crafart.exception.CrafartDataException;
  */
 public interface CommissionDAO {
 
-	public void addCommission(CommisionDO commissionDO) throws CrafartDataException;
+	public void addCommision(CommisionDO commissionDO) throws CrafartDataException;
 	
-	public List<CommisionDO> getCommission() throws CrafartDataException;
+	public List<CommisionDO> getCommisions() throws CrafartDataException;
 }
