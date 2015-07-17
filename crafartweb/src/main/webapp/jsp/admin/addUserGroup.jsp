@@ -88,6 +88,7 @@ $(document).ready(function() {
 			});
 		});
 	});
-
-
 </script>
+<script type="text/javascript">
+	setPage("userGroupListMenuId");
+	</script>
