@@ -313,7 +313,7 @@
 															</td>
 														</tr>
 														<tr>
-															<td class="pull-right"><span>&middot;</span>&nbsp;Discount Coupon Code()&nbsp;</td>
+															<td class="pull-right"><span>&middot;</span>&nbsp;Discount From Coupon Code()&nbsp;</td>
 															<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 															<td><span></span></td>
 														</tr>
@@ -329,7 +329,7 @@
 											<div class="form-group required">
 												<label class="col-sm-2 control-label">Comment</label>
 												<div class="col-sm-10">
-													<input type="text" name="comment" value="" placeholder="comment" id="comment" class="form-control" aria-hidden="false" />
+													
 													<textarea id="comment" class="form-control"></textarea>
 												</div>
 											</div>
@@ -344,7 +344,6 @@
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 	function yesnoCheck() {
 		if (document.getElementById('noCheck').checked) {
@@ -352,6 +351,9 @@
 		} else
 			document.getElementById('ifNo').style.display = 'none';
 	}
+</script>
+<script type="text/javascript">
+	setPage("orderListMenuId");
 </script>
 <!-- <script type="text/javascript">
 	$('#input-address').on('change', function() {
