@@ -67,3 +67,6 @@
 		$("#cleditor").cleditor();
 	});
 </script>
+<script type="text/javascript">
+	setPage("returnReasonMenuId");
+</script>
