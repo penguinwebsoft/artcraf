@@ -100,7 +100,7 @@
 											});
 						}
 					});
-	setPage("CourierMenuId");
+	setPage("manageCouriersMenuId"); 
 </script>
 
 
