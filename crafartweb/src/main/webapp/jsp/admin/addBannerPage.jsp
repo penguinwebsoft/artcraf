@@ -95,3 +95,7 @@ $(document).ready(function() {
 
 
 </script>
+
+<script>
+setPage("bannerPageMenuId");
+</script>
