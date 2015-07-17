@@ -96,5 +96,7 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+<script type="text/javascript">
+	setPage("manageSellersMenuId");
+</script>
