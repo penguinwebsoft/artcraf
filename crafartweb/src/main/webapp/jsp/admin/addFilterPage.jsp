@@ -64,4 +64,6 @@
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	setPage("filterPageMenuId");
+</script>
