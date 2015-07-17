@@ -188,3 +188,6 @@
 		</div>
 	</div>
 </div>
+<script>
+setPage("subCategoriesMenuId");
+</script>
