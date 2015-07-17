@@ -164,3 +164,6 @@
 		</div>
 	</div>
 </form:form>
+<script>
+setPage("categoriesMenuId");
+</script>
