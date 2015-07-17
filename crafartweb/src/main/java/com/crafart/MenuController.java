@@ -39,7 +39,7 @@ public class MenuController {
 	public ModelAndView showProductList(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("productList");
 	}
-
+	
 	@RequestMapping("/cartSection")
 	public ModelAndView showcartSection(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("cartSection");
