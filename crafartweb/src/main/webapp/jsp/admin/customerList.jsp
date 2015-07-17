@@ -125,4 +125,7 @@
 
 	});
 </script>
+<script type="text/javascript">
+	setPage("customerListMenuId");
+</script>
 
