@@ -103,8 +103,6 @@
 </div>
 
 <script type="text/javascript">
-	setPage("mailPageMenuId");
-	
 	$('#input-to').on('change', function() {
 		var toType = this.value;
 		if (toType == 2) {
@@ -130,6 +128,7 @@
 
 		//$('select[name=input-to]').trigger('change');
 	});
-
-	
+</script>
+<script type="text/javascript">
+	setPage("mailListPageMenuId");
 </script>
