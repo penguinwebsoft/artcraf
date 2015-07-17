@@ -843,7 +843,7 @@ ol,ul {
 		position: absolute;
 		right: 10px;
 		top: 10px;
-		z-index: 10 !important;
+		z-index: -1 !important;
 		padding: 3px;
 		background-color: #ffffff;
 		color: #000;
@@ -979,7 +979,7 @@ ol,ul {
 	font-size: 2.5em;
 }
 
-/**************************************product box styles***********************************/
+/**************************************product box styles start***********************************/
 .product-box h2 {
 	color: #DE8A03;
 	font-size: 24px;
@@ -989,189 +989,8 @@ ol,ul {
 .product-box h2 i {
 	padding-right: 2px;
 }
-/**************************************product box styles***********************************/
+/**************************************product box styles end***********************************/
 
-/**************************************Rating Star Styles**********************************/
-.rating-loading {
-	width: 25px;
-	height: 25px;
-	font-size: 0px;
-	color: #fff;
-	background: transparent url('../img/loading.gif') top left no-repeat;
-	border: none;
-}
-/*
- * Stars
- */
-.rating-fa {
-	font-family: 'FontAwesome';
-	padding-left: 1px;
-}
-
-.rating-fa .rating-stars:before {
-	padding-left: 1px;
-}
-
-.rating-gly {
-	font-family: 'Glyphicons Halflings';
-}
-
-.rating-gly-star {
-	font-family: 'Glyphicons Halflings';
-	padding-left: 2px;
-}
-
-.rating-gly-star .rating-stars:before {
-	padding-left: 2px;
-}
-
-.rating-lg .rating-gly-star,.rating-lg .rating-gly-star .rating-stars:before
-	{
-	padding-left: 4px;
-}
-
-.rating-xl .rating-gly-star,.rating-xl .rating-gly-star .rating-stars:before
-	{
-	padding-left: 2px;
-}
-
-.rating-active {
-	cursor: default;
-}
-
-.rating-disabled {
-	cursor: not-allowed;
-}
-
-.rating-uni {
-	font-size: 1.2em;
-	margin-top: -5px;
-}
-
-.rating-container {
-	position: relative;
-	vertical-align: middle;
-	display: inline-block;
-	color: #e3e3e3;
-	overflow: hidden;
-}
-
-.rating-container:before {
-	content: attr(data-content);
-}
-
-.rating-container .rating-stars {
-	position: absolute;
-	left: 0;
-	top: 0;
-	white-space: nowrap;
-	overflow: hidden;
-	color: #fde16d;
-	transition: all 0.25s ease-out;
-	-o-transition: all 0.25s ease-out;
-	-moz-transition: all 0.25s ease-out;
-	-webkit-transition: all 0.25s ease-out;
-}
-
-.rating-container .rating-stars:before {
-	content: attr(data-content);
-	text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
-}
-
-.rating-container-rtl {
-	position: relative;
-	vertical-align: middle;
-	display: inline-block;
-	overflow: hidden;
-	color: #fde16d;
-}
-
-.rating-container-rtl:before {
-	content: attr(data-content);
-	text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
-}
-
-.rating-container-rtl .rating-stars {
-	position: absolute;
-	left: 0;
-	top: 0;
-	white-space: nowrap;
-	overflow: hidden;
-	color: #e3e3e3;
-	transition: all 0.25s ease-out;
-	-o-transition: all 0.25s ease-out;
-	-moz-transition: all 0.25s ease-out;
-	-webkit-transition: all 0.25s ease-out;
-}
-
-.rating-container-rtl .rating-stars:before {
-	content: attr(data-content);
-}
-
-/**
- * Rating sizes
- */
-.rating-xl {
-	font-size: 4.89em;
-}
-
-.rating-lg {
-	font-size: 3.91em;
-}
-
-.rating-md {
-	font-size: 3.13em;
-}
-
-.rating-sm {
-	font-size: 2.5em;
-}
-
-.rating-xs {
-	font-size: 2em;
-}
-
-/**
- * Clear rating button
- */
-.star-rating .clear-rating,.star-rating-rtl .clear-rating {
-	color: #aaa;
-	cursor: not-allowed;
-	display: inline-block;
-	vertical-align: middle;
-	font-size: 60%;
-}
-
-.clear-rating-active {
-	cursor: pointer !important;
-}
-
-.clear-rating-active:hover {
-	color: #843534;
-}
-
-.star-rating .clear-rating {
-	padding-right: 5px;
-}
-
-/**
- * Caption
- */
-.star-rating .caption,.star-rating-rtl .caption {
-	color: #999;
-	display: inline-block;
-	vertical-align: middle;
-	font-size: 55%;
-}
-
-.star-rating .caption {
-	padding-left: 5px;
-}
-
-.star-rating-rtl .caption {
-	padding-right: 5px;
-}
-/**************************************Rating Star Styles End**********************************/
 
 /**************************************Product List Styles**********************************/
 .style {
@@ -1199,7 +1018,7 @@ ol,ul {
 	color: #e1ffff;
 }
 
-.nav-side-menu1 .brand1 {
+.nav-side-menu1 .1 {
 	background-color: #404040;
 	line-height: 50px;
 	display: block;
@@ -1215,26 +1034,7 @@ ol,ul {
 
 /**************************************check out section End**********************************/
 
-/**************************************product details section End**********************************/
-.starrating {
-	width: 200px;
-	margin: 10px auto;
-}
-
-.star {
-	font-size: 40px;
-	color: orange;
-	cursor: pointer;
-	
-}
-
-.star:hover:before {
-	content: "\2605";
-	position: absolute;
-	color: yellow;
-}
-
-
+/**************************************product details image section Start**********************************/
 .image {
 	width: 300px;
 }
@@ -1249,30 +1049,38 @@ ol,ul {
 	width: 400px;
 }
 
-/**************************************product details section End**********************************/
+/**************************************product details image section End**********************************/
 
-/**************************************Review section**********************************/
-.starcolor1 {
-	width: 200px;
-	margin: 10px auto;
-}
-
-.star1 {
-	font-size: 20px;
-	color: orange;
-	cursor: pointer;
-	
-}
-
-.star1:hover:before {
-	content: "\2605";
-	position: absolute;
-	color: yellow;
-}
-/**************************************Review section end**********************************/
 /**************************************product list page hover**********************************/
 .productBox:hover {
 	border:2px solid #428bca;
 }
 /**************ends here *********************/
 
+
+/**************admin panel addsmslist text area start here *********************/
+textarea {
+    resize: none;
+}
+
+/**************admin panel addsmslist text area end here *********************/
+
+/**************Product List page start here *********************/
+
+span {
+    cursor:pointer;
+}
+#dl_sub_dd, #dl_sub_dd1,#dl_sub_dd2,#dl_sub_dd3,#dl_sub_dd4,#dl_sub_dd5,#dl_sub_dd6,
+#dl_sub_dd7,#dl_sub_dd8,#dl_sub_dd9,#dl_sub_dd10,#dl_sub_dd11,#dl_sub_dd12,#dl_sub_dd13,
+#dl_sub_dd14,#dl_sub_dd15 
+{
+    display:none;
+}
+
+/**************Product List Page end here *********************/
+
+/**************Product List checkbox start here *********************/
+label, input[type="radio"], input[type="checkbox"] {
+   line-height: 2.1ex;
+}
+/**************Product List Page end here *********************/
