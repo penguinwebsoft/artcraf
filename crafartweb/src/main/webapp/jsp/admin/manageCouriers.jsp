@@ -11,7 +11,7 @@
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/addNewCouriers">Add</a>
+				<a class="btn btn-success" href="${baseURL}/menu/addCourier">Add</a>
 				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
@@ -27,12 +27,12 @@
 			<div class="container">
 				<div class="tab-pane" id="tab-shipping">
 					<div class="table-responsive">
-						<table id="shipping" class="table table-striped table-bordered table-hover pull-left">
+						<table id="couriers" class="table table-striped table-bordered table-hover pull-left">
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
+									<td>Name</td>
 									<td>Image</td>
-									<td>Courier Name</td>
 									<td>Estimated Delivery Time</td>
 									<td>Sort Order</td>
 									<td>Action</td>
@@ -63,7 +63,7 @@
 					function() {
 						$.ajax({
 							url : "../courier/getCourier",
-							type : "get",
+							type : "GET",
 							contentType : "application/json",
 							dataType : "json",
 							success : function(data) {
@@ -84,9 +84,6 @@
 														+ courierBO.image
 														+ '</td>';
 												html += '<td>'
-														+ courierBO.productLimit
-														+ '</td>';
-												html += '<td>'
 														+ courierBO.estimatedDeliveryTime
 													    + '</td>';
 												html += '<td>'
@@ -95,12 +92,12 @@
 												
 												html += "<td><a class='btn btn-warning' href='${baseURL}/courier/editCourier?courierId="+courierBO.courierId+"'>Edit</button></td>";
 												html += '</tr>';
-												$('#shipping').append(
+												$('#couriers').append(
 														html);
 											});
 						}
 					});
-	setPage("CourierMenuId");
+	setPage("manageCouriersMenuId");
 </script>
 
 
