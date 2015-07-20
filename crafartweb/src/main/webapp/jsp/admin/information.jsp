@@ -12,7 +12,7 @@
 			</div>
 
 			<div class="pull-right" style="padding: 25px;">
-				<a class="btn btn-success" href="${baseURL}/menu/addInformationPage">Add</a>
+				<a class="btn btn-success" href="${baseURL}/menu/addInformation">Add</a>
 				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
@@ -22,32 +22,62 @@
 			<div class="container">
 				<div class="tab-pane" id="tab-shipping">
 					<div class="table-responsive">
-						<table id="shipping" class="table table-striped table-bordered table-hover pull-left">
+						<table id="informations" class="table table-striped table-bordered table-hover pull-left">
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Information Title</td>
+									<td>Title</td>
+									<td>Active</td>
 									<td>Sort Order</td>
 									<td>Action</td>
 								</tr>
 							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>About Us</td>
-									<td>0</td>
-									<td>
-										<a class="btn btn-warning" href="${baseURL}/menu/editInformationPage">Edit</a>
-									</td>
-								</tr>
-							</thead>
-						</table> 
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	setPage("informationPageMenuId");
+	$(document)
+			.ready(
+					function() {
+						$.ajax({
+							url : "../information/getInformations",
+							type : "get",
+							contentType : "application/json",
+							dataType : "json",
+							success : function(data) {
+								displayInformationList(data.informationBOs);
+							}
+						});
+						function displayInformationList(informationBOs) {
+							$
+									.each(
+											informationBOs,
+											function(key, informationBO) {
+												var html = '<tr>';
+												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
+												html += '<td>'
+														+ informationBO.informationTitle
+														+ '</td>';
+												html += '<td>'
+														+ informationBO.isActive
+														+ '</td>';
+												html += '<td>'
+														+ informationBO.sortOrder
+														+ '</td>';
+												html += "<td><a class='btn btn-warning' href='${baseURL}/information/editInformation?informationId="
+														+ informationBO.informationId
+														+ "'>Edit</button></td>";
+												html += '</tr>';
+												$('#informations').append(html);
+											});
+						}
+					});
+</script>
 <script type="text/javascript">
 	setPage("informationPageMenuId");
 </script>
