@@ -19,5 +19,7 @@ public interface ManageCommisionService {
 
 	public void addCommission(CommisionBO commissionBO) throws CrafartServiceException;
 
+	public void updateCommission(CommisionBO commissionBO) throws CrafartServiceException;
+		
 	public Map<Long, CommisionBO> getCommisions()throws CrafartServiceException;
 }

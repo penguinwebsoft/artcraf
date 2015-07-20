@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,10 +36,27 @@ public class ManageLengthClassServiceTest {
 
 	@Test
 	@Rollback(true)
-	public void testAddLengthClassDetail() {
+	public void testUpdateLengthClass() {
 		LengthClassBO lengthClassBO = getLengthClass();
 		try {
-			manageLengthClassServiceImpl.addLengthClassDetail(lengthClassBO);
+			manageLengthClassServiceImpl.addLengthClass(lengthClassBO);
+			lengthClassBO.setTitle("Updated Title");
+			// since got new identifier , calling addLengthClass will actually
+			// update the lengthclass data
+			manageLengthClassServiceImpl.addLengthClass(lengthClassBO);
+			Assert.assertEquals("Updated Title", lengthClassBO.getTitle());
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testAddLengthClass() {
+		LengthClassBO lengthClassBO = getLengthClass();
+		try {
+			manageLengthClassServiceImpl.addLengthClass(lengthClassBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -51,24 +68,29 @@ public class ManageLengthClassServiceTest {
 		lengthClassBO.setTitle("kjh");
 		lengthClassBO.setUnit("jhh");
 		lengthClassBO.setIsActive(88);
-		lengthClassBO.setSortorder(9);
+		lengthClassBO.setSortOrder(9);
 		return lengthClassBO;
 	}
 
 	@Test
 	@Rollback(true)
-	public void testGetLengthClassDetail() {
+	public void testGetLengthClass() {
 		LengthClassBO lengthClassBO = getLengthClass();
 		try {
-			manageLengthClassServiceImpl.addLengthClassDetail(lengthClassBO);
+			manageLengthClassServiceImpl.addLengthClass(lengthClassBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
 		try {
-			@SuppressWarnings("unused")
-			List<LengthClassBO> lengthClassBOs = manageLengthClassServiceImpl.getLengthClassDetail();
-			
+			Map<Long, LengthClassBO> lengthClassBOs = manageLengthClassServiceImpl.getLengthClass();
+			int count = 0;
+			for (Map.Entry<Long, LengthClassBO> lengthClassEntry : lengthClassBOs.entrySet()) {
+				if ((lengthClassBO.getLengthClassId() == lengthClassEntry.getValue().getLengthClassId())) {
+					count = count + 1;
+				}
+			}
+			Assert.assertEquals(1, count);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

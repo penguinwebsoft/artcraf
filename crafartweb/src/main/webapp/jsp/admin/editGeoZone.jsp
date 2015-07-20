@@ -54,6 +54,7 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 </form:form>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -84,3 +85,8 @@
 <script>
 setPage("geoZoneMenuId");
 </script>
+=======
+<script>
+setPage("geoZoneMenuId");
+</script>
+>>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git

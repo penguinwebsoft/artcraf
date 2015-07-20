@@ -91,8 +91,16 @@ $(document).ready(function() {
 					}
 			});
 		});
+<<<<<<< HEAD
 	});
 </script>
 <script type="text/javascript">
 	setPage("lengthDetailsMenuId");
 	</script> 
+=======
+	}); 
+</script>
+<script type="text/javascript">
+	setPage("lengthDetailsMenuId");
+	</script>
+>>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git

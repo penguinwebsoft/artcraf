@@ -54,7 +54,8 @@
 <script src="${context}/resources/plugins/wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
 <script src="${context}/resources/plugins/bootstrap-wysihtml5-hack.js"></script>
 <script src="${context}/resources/plugins/CLEditor1_4_3/jquery.cleditor.min.js"></script>
-
+<script src="${context}/resources/plugins/jquery.com-11.1></script>
+<script src="${context}/resources/plugins/jquery.mobile-1.4.5"></script>
 
 <!-- END SCRIPTS -->
 

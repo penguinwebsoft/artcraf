@@ -132,8 +132,9 @@ $(document).ready(function() {
 						alert("Details failed to save");
 				}
 			});
-		});
+		}); 
 	});
-
-
+</script>
+<script type="text/javascript">
+	setPage("mailListPageMenuId");
 </script>

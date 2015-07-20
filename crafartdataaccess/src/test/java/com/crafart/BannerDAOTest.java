@@ -13,8 +13,10 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.BannerDO;
+import com.crafart.dataobjects.BannerGroupDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.BannerDAO;
+import com.crafart.inter.data.BannerGroupDAO;
 
 /**
  * 
@@ -30,6 +32,9 @@ public class BannerDAOTest {
 	@Autowired
 	private BannerDAO bannerDAOImpl;
 
+	@Autowired
+	private BannerGroupDAO bannerGroupDAOImpl;
+
 	/*
 	 * Test case to add data in banner table
 	 */
@@ -38,11 +43,64 @@ public class BannerDAOTest {
 	public void testAddBannerDetail() {
 		BannerDO bannerDO = getBanner();
 		try {
-			bannerDAOImpl.addBannerDetail(bannerDO);
+			BannerGroupDO bannerGroupDO = getBannerGroupDO();
+			bannerGroupDAOImpl.addBannerGroup(bannerGroupDO);
+			bannerDO.setBannerGroupDO(bannerGroupDO);
+			bannerDAOImpl.addBanner(bannerDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testGetBanners() {
+		BannerDO bannerDO = getBanner();
+		try {
+			BannerGroupDO bannerGroupDO = getBannerGroupDO();
+			bannerGroupDAOImpl.addBannerGroup(bannerGroupDO);
+			bannerDO.setBannerGroupDO(bannerGroupDO);
+			bannerDAOImpl.addBanner(bannerDO);
+			List<BannerDO> bannerDOs = bannerDAOImpl.getBannerDetail();
+			Assert.assertTrue(bannerDOs.size() >= 1);
+			for (BannerDO collectBannerDO : bannerDOs) {
+				if (collectBannerDO.getBannerId() == bannerDO.getBannerId()) {
+					Assert.assertNotNull(collectBannerDO.getBannerGroupDO());
+				}
+			}
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testUpdateBanner() {
+		BannerDO bannerDO = getBanner();
+
+		try {
+			BannerGroupDO bannerGroupDO = getBannerGroupDO();
+			bannerGroupDAOImpl.addBannerGroup(bannerGroupDO);
+			bannerDO.setBannerGroupDO(bannerGroupDO);
+			bannerDAOImpl.addBanner(bannerDO);
+			bannerDO.setBannerName("Banner name update");
+			bannerDAOImpl.updateBanner(bannerDO);
+			BannerDO updateBannerDO = bannerDAOImpl.getBannerDO(bannerDO.getBannerId());
+			Assert.assertEquals("Banner name update", updateBannerDO.getBannerName());
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	private BannerGroupDO getBannerGroupDO() {
+		BannerGroupDO bannerGroupDO = new BannerGroupDO();
+		bannerGroupDO.setBannerGroupName("BannerGroup");
+		bannerGroupDO.setBannerSize("2");
+		bannerGroupDO.setSortOrder(1);
+		return bannerGroupDO;
 	}
 
 	private BannerDO getBanner() {
@@ -53,6 +111,7 @@ public class BannerDAOTest {
 		bannerDO.setSortOrder(1);
 		return bannerDO;
 	}
+
 	/*
 	 * Test case is to retrieve details from banner table
 	 */
@@ -61,13 +120,15 @@ public class BannerDAOTest {
 	public void testGetBannerDetail() {
 		BannerDO bannerDO = getBanner();
 		try {
-			
-			bannerDAOImpl.addBannerDetail(bannerDO);
+			BannerGroupDO bannerGroupDO = getBannerGroupDO();
+			bannerGroupDAOImpl.addBannerGroup(bannerGroupDO);
+			bannerDO.setBannerGroupDO(bannerGroupDO);
+			bannerDAOImpl.addBanner(bannerDO);
 			List<BannerDO> bannerDOs = bannerDAOImpl.getBannerDetail();
 			Assert.assertNotNull(bannerDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
-}
+	}
 }

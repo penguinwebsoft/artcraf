@@ -21,8 +21,8 @@ public class GeoZoneBO implements Serializable {
 	private String name;
 
 	private String description;
-	
-	private int sortOrder;
+
+	private Integer sortOrder;
 
 	public long getGeoZoneId() {
 		return geoZoneId;
@@ -48,12 +48,12 @@ public class GeoZoneBO implements Serializable {
 		this.description = description;
 	}
 
-	public int getSortOrder() {
+	public Integer getSortOrder() {
 		return sortOrder;
 	}
 
-	public void setSortOrder(int SortOrder) {
-		this.sortOrder = SortOrder;
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
 	}
-	}
-	
+
+}

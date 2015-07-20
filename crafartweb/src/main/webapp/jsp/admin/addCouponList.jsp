@@ -123,6 +123,9 @@
 			if (ev.viewMode === 'days') {
 				$('#dateEnd').datepicker('hide');
 			}
-		})
+		}) 
 	});
+</script>
+<script>
+setPage("couponListMenuId");
 </script>

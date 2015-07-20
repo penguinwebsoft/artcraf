@@ -52,8 +52,16 @@ public class TaxClassDAOImpl extends CommonDAOImpl implements TaxClassDAO {
 			taxClassDOs = session.createQuery("from TaxClassDO").list();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while reteriving taxclassdetail from taxclass table", hExp);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return taxClassDOs;
+	}
+
+	@Override
+	public TaxClassDO getTaxClass(long taxClassId) throws CrafartDataException {
+		TaxClassDO taxClassDO = (TaxClassDO) this.getSessionFactory().getCurrentSession().get(TaxClassDO.class, taxClassId);
+		return taxClassDO;
 	}
 
 }

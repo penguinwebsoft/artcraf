@@ -5,11 +5,14 @@ package com.crafart.dataobjects;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -35,24 +38,17 @@ public class InformationDO implements Serializable, Cloneable {
 	@Column(name = "information_title")
 	private String informationTitle;
 
-	@Column(name = "description")   
+	@Column(name = "description")
 	private String description;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "seo_id", nullable = true)
+	private SeoDO seoDO;
 
-	
-	@Column(name = "meta_title")   
-	private String metaTitle;
-	
-	@Column(name = "meta_description")   
-	private String metaDescription;
-	
-	@Column(name = "meta_keyword")   
-	private String metaKeyword;
-	
-	@Column(name = "is_active")   
-	private String isActive;
-	
-	@Column(name = "sort_order")    
+	@Column(name = "is_active")
+	private int isActive;
+
+	@Column(name = "sort_order")
 	private Integer sortOrder;
 
 	public long getInformationId() {
@@ -79,37 +75,19 @@ public class InformationDO implements Serializable, Cloneable {
 		this.description = description;
 	}
 
-	
-
-	public String getMetaTitle() {
-		return metaTitle;
+	public SeoDO getSeoDO() {
+		return seoDO;
 	}
 
-	public void setMetaTitle(String metaTitle) {
-		this.metaTitle = metaTitle;
+	public void setSeoDO(SeoDO seoDO) {
+		this.seoDO = seoDO;
 	}
 
-	public String getMetaDescription() {
-		return metaDescription;
-	}
-
-	public void setMetaDescription(String metaDescription) {
-		this.metaDescription = metaDescription;
-	}
-
-	public String getMetaKeyword() {
-		return metaKeyword;
-	}
-
-	public void setMetaKeyword(String metaKeyword) {
-		this.metaKeyword = metaKeyword;
-	}
-
-	public String getIsActive() {
+	public int getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(String isActive) {
+	public void setIsActive(int isActive) {
 		this.isActive = isActive;
 	}
 
@@ -120,6 +98,5 @@ public class InformationDO implements Serializable, Cloneable {
 	public void setSortOrder(Integer sortOrder) {
 		this.sortOrder = sortOrder;
 	}
-	
 
-	}
+}

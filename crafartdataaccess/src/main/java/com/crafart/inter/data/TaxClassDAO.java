@@ -17,4 +17,6 @@ public interface TaxClassDAO {
 	public void addTaxClassDetail(TaxClassDO taxClassDO) throws CrafartDataException;
 	
 	public List<TaxClassDO> getTaxClassDetail()throws CrafartDataException;
+	
+	public TaxClassDO getTaxClass(long taxClassId) throws CrafartDataException;
 }

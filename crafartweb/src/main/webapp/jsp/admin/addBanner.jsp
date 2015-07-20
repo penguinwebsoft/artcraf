@@ -23,7 +23,7 @@
 				</h3>
 			</div>
 			<div class="panel-body">
-				<br>
+				<br> 
 				<div class="row">
 					<div class="col-lg-12">
 						<form id="form-product" class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
@@ -84,6 +84,12 @@
 						});
 					}
 
+<<<<<<< HEAD:crafartweb/src/main/webapp/jsp/admin/addBannerPage.jsp
+</script>
+
+<script>
+setPage("bannerPageMenuId");
+=======
 				});
 				$("#saveBtn").click(function() {
 					var bannerBO = {};
@@ -110,4 +116,5 @@
 					});
 				});
 			});
+>>>>>>> 66f945a6b5c0d2189312b1cfd0d76fa14c14d541:crafartweb/src/main/webapp/jsp/admin/addBanner.jsp
 </script>

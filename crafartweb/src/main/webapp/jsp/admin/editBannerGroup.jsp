@@ -26,7 +26,7 @@
 					<h3 class="panel-title">
 						<i class="icon-th-list"></i> &nbsp;Edit Banner Group
 					</h3>
-				</div>
+				</div> 
 				<div class="panel-body">
 					<br>
 					<div class="row">
@@ -63,9 +63,16 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
+</div>
+<script>
+setPage("bannerGroupMenuId");
+</script>
+=======
 </form:form>
 <script type="text/javascript">
 	$(document).ready(function() {
+>>>>>>> 66f945a6b5c0d2189312b1cfd0d76fa14c14d541
 
 		$("#saveButton").click(function() {
 			var bannerGroup = {};

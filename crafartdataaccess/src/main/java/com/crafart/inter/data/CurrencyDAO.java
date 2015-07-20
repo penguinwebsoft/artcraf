@@ -14,6 +14,8 @@ import com.crafart.exception.CrafartDataException;
  */
 public interface CurrencyDAO {
 
+	public CurrencyDO getCurrency(long currenyId)throws CrafartDataException;
+	
 	public void addCurrency(CurrencyDO currencyDO) throws CrafartDataException;
 	
 	public List<CurrencyDO> getCurrencyDetail() throws CrafartDataException;

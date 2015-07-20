@@ -76,4 +76,6 @@
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	setPage("userListPageMenuId");
+	</script>

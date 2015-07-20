@@ -14,7 +14,9 @@ import com.crafart.exception.CrafartDataException;
  */
 public interface CourierDAO {
 
-	public void addCourierDetail(CourierDO courierDO) throws CrafartDataException;
+	public void addCourier(CourierDO courierDO) throws CrafartDataException;
 
-	public List<CourierDO> getCourierDetail() throws CrafartDataException;
+	public CourierDO getCourier(long courierId) throws CrafartDataException;
+
+	public List<CourierDO> getCouriers() throws CrafartDataException;
 }

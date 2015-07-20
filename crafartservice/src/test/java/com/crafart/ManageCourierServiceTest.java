@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,8 +24,7 @@ import com.crafart.service.exception.CrafartServiceException;
  * @author karthi
  * 
  */
-@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml",
-		"classpath:crafartservice-context-test.xml" })
+@ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
@@ -40,7 +39,7 @@ public class ManageCourierServiceTest {
 	public void testAddCourierDetail() {
 		CourierBO courierBO = getCourier();
 		try {
-			manageCourierServiceImpl.addCourierDetail(courierBO);
+			manageCourierServiceImpl.addCourier(courierBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -51,8 +50,16 @@ public class ManageCourierServiceTest {
 	@Rollback(true)
 	public void testGetCourierDetail() {
 		try {
-			List<CourierBO> courierBOs = manageCourierServiceImpl
-					.getCourierDetail();
+			CourierBO courierBO = getCourier();
+			manageCourierServiceImpl.addCourier(courierBO);
+			Map<Long, CourierBO> courierBOs = manageCourierServiceImpl.getCouriers();
+			int count = 0;
+			for (Map.Entry<Long, CourierBO> courierBOEntries : courierBOs.entrySet()) {
+				if (courierBO.getCourierId() == courierBOEntries.getValue().getCourierId()) {
+					count = count + 1;
+				}
+			}
+			Assert.assertTrue(count == 1);
 			Assert.assertNotNull(courierBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();

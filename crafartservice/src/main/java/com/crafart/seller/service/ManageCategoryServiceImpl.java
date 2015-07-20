@@ -109,7 +109,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 			log.debug("Getting category details for cateogry id =" + categoryId);
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getSubCategory(categoryId);
 			for (CategoryDO categoryDO : categoryDOs) {
-				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), null);
+				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), new SeoBO());
 				categoryBOs.add(categoryBO);
 			}
 
@@ -139,13 +139,13 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<CategoryBO> getAllSubCategories() throws CrafartServiceException {
-		List<CategoryBO> categoryBOs = new ArrayList<>();
+	public Map<Long, CategoryBO> getAllSubCategories() throws CrafartServiceException {
+		Map<Long, CategoryBO> categoryBOs = new HashMap<>();
 		try {
 			List<CategoryDO> categoryDOs = categoryDAOImpl.getAllSubCategories();
 			for (CategoryDO categoryDO : categoryDOs) {
 				CategoryBO categoryBO = beanMapper.mapCategoryDOToBO(categoryDO, new CategoryBO(), new SeoBO());
-				categoryBOs.add(categoryBO);
+				categoryBOs.put(categoryBO.getCategoryId(), categoryBO);
 			}
 		} catch (CrafartDataException cExp) {
 			throw new CrafartServiceException("Sevice Error while retrieving all sub categories", cExp);

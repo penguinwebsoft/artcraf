@@ -57,7 +57,6 @@ public class BannerControllerTest {
 		}
 	}
 	
-	@SuppressWarnings("unused")
 	private BannerBO getBanner() {
 		BannerBO bannerBO = new BannerBO();
 		bannerBO.setBannerName("banner name");
@@ -67,7 +66,6 @@ public class BannerControllerTest {
 		return bannerBO;
 	}
 	
-	@SuppressWarnings("unused")
 	private BannerGroupBO getBannerGroup() {
 		BannerGroupBO bannerGroupBO = new BannerGroupBO(0, "banner group name", "banner size", 2);
 		return bannerGroupBO;

@@ -88,3 +88,6 @@
 		</div>
 	</div>
 </div>
+<script>
+setPage("commissionListMenuId");
+</script>

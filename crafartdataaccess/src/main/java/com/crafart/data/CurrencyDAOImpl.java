@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.dataobjects.CurrencyDO;
+import com.crafart.dataobjects.GeoZoneDO;
 import com.crafart.exception.CrafartDataException;
 import com.crafart.inter.data.CurrencyDAO;
 
@@ -22,7 +23,6 @@ import com.crafart.inter.data.CurrencyDAO;
  */
 @Repository("currencyDAOImpl")
 public class CurrencyDAOImpl extends CommonDAOImpl implements CurrencyDAO {
-
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -47,6 +47,18 @@ public class CurrencyDAOImpl extends CommonDAOImpl implements CurrencyDAO {
 			throw new CrafartDataException("Error while retriving detail from DB", hExp);
 		}
 		return currencyDOs;
+	}
+
+	/**
+	 * get geozone data object for identifier id {@link Long} geoZoneId
+	 * 
+	 * @param geoZoneId
+	 * @return {@link GeoZoneDO}
+	 */
+	@Override
+	public CurrencyDO getCurrency(long currenyId) throws CrafartDataException {
+		CurrencyDO currencyDO = (CurrencyDO) this.getSessionFactory().getCurrentSession().get(CurrencyDO.class, currenyId);
+		return currencyDO;
 	}
 
 }

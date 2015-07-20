@@ -265,7 +265,7 @@ public class ManageProductReviewServiceTest {
 		geoZoneBO.setDescription("jlk");
 		geoZoneBO.setName("Kerala");
 		try {
-			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
+			manageGeoZoneServiceImpl.addGeoZone(geoZoneBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -280,7 +280,7 @@ public class ManageProductReviewServiceTest {
 		courierBO.setEstimatedDeliveryTime("e");
 		courierBO.setSortOrder(9);
 		try {
-			manageCourierServiceImpl.addCourierDetail(courierBO);
+			manageCourierServiceImpl.addCourier(courierBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

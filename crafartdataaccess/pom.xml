@@ -92,11 +92,6 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-		<dependency>
-		    <groupId>com.crafart</groupId>
-		    <artifactId>commons-util</artifactId>
-		    <version>1.0-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 	<parent>
 		<groupId>com.crafart</groupId>

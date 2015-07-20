@@ -146,4 +146,7 @@
 
 	});
 </script>
+<script type="text/javascript">
+	setPage("returnPageMenuId");
+</script>
 

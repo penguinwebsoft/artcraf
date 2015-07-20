@@ -23,7 +23,6 @@ import com.crafart.inter.data.CommissionDAO;
 @Repository("commissionDAOImpl")
 public class CommisionDAOImpl extends CommonDAOImpl implements CommissionDAO {
 
-
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addCommision(CommisionDO commisionDO) throws CrafartDataException {
@@ -42,11 +41,22 @@ public class CommisionDAOImpl extends CommonDAOImpl implements CommissionDAO {
 		List<CommisionDO> commissionDOs = new ArrayList<>();
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
-			commissionDOs = session.createQuery("from CommissionDO").list();
+			commissionDOs = session.createQuery("from CommisionDO").list();
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("Error while retriving details from commission table", hExp);
 		}
 		return commissionDOs;
+	}
+
+	/**
+	 * Retrieve commission data for identifier {@link Long} commisionId
+	 * @return {@link CommisionDO}
+	 * @throws CrafartDataException
+	 */
+	@Override
+	public CommisionDO getCommision(long commisionId) throws CrafartDataException {
+		CommisionDO commisionDO = (CommisionDO) this.getSessionFactory().getCurrentSession().get(CommisionDO.class, commisionId);
+		return commisionDO;
 	}
 
 }

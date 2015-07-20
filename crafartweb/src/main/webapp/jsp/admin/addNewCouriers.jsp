@@ -91,4 +91,7 @@ $(document).ready(function() {
 		});
 	});
 });
+</script> 
+<script>
+setPage("manageCouriersMenuId");
 </script>

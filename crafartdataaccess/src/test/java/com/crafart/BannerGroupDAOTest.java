@@ -38,7 +38,7 @@ public class BannerGroupDAOTest {
 	public void testAddBannerGroupDetail() {
 		BannerGroupDO bannerGroupDO = getBannerGroup();
 		try {
-			bannerGroupDAOImpl.addBannerGroupDetail(bannerGroupDO);
+			bannerGroupDAOImpl.addBannerGroup(bannerGroupDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
@@ -60,13 +60,13 @@ public class BannerGroupDAOTest {
 	public void testGetBannerGroupDetail() {
 		BannerGroupDO bannerGroupDO = getBannerGroup();
 		try {
-			bannerGroupDAOImpl.addBannerGroupDetail(bannerGroupDO);
+			bannerGroupDAOImpl.addBannerGroup(bannerGroupDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
 		try {
-			List<BannerGroupDO> bannerGroupDOs = bannerGroupDAOImpl.getBannerGroupDetail();
+			List<BannerGroupDO> bannerGroupDOs = bannerGroupDAOImpl.getBannerGroups();
 			Assert.assertNotNull(bannerGroupDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();

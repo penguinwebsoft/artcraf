@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,14 +39,28 @@ public class ManageCurrencyServiceTest {
 	public void testAddCurrencyDetail() {
 		CurrencyBO currencyBO = getCurrencyDetail();
 		try {
-			manageCurrencyServiceImpl.addCurrencyDetail(currencyBO);
+			manageCurrencyServiceImpl.addCurrency(currencyBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
 	}
 
-	
+	@Test
+	@Rollback(true)
+	public void testUpdateCurrencyDetail() {
+		CurrencyBO currencyBO = getCurrencyDetail();
+		try {
+			manageCurrencyServiceImpl.addCurrency(currencyBO);
+			currencyBO.setTitle("currency update");
+			manageCurrencyServiceImpl.updateCurrency(currencyBO);
+			Assert.assertEquals("currency update", currencyBO.getTitle());
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
 	private CurrencyBO getCurrencyDetail() {
 		CurrencyBO currencyBO = new CurrencyBO();
 		currencyBO.setTitle("knj");
@@ -57,16 +71,23 @@ public class ManageCurrencyServiceTest {
 		currencyBO.setValue(9);
 		currencyBO.setDecimalPlace(222);
 		return currencyBO;
-		}
+	}
 
 	@Test
 	@Rollback(true)
 	public void testGetCurrencyDetail() {
 		CurrencyBO currencyBO = getCurrencyDetail();
-		
+
 		try {
-			manageCurrencyServiceImpl.addCurrencyDetail(currencyBO);
-			List<CurrencyBO> currencyBOs = manageCurrencyServiceImpl.getCurrencyDetail();
+			manageCurrencyServiceImpl.addCurrency(currencyBO);
+			Map<Long, CurrencyBO> currencyBOs = manageCurrencyServiceImpl.getCurrencys();
+			int count = 0;
+			for (Map.Entry<Long, CurrencyBO> currencyBOEntries : currencyBOs.entrySet()) {
+				if (currencyBO.getCurrencyId() == currencyBOEntries.getValue().getCurrencyId()) {
+					count = count + 1;
+				}
+			}
+			Assert.assertTrue(count == 1);
 			Assert.assertNotNull(currencyBOs);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();

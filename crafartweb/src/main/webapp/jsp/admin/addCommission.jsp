@@ -62,6 +62,12 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
+<script>
+setPage("commissionListMenuId");
+</script>
+
+=======
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#saveBtn").click(function() {
@@ -89,3 +95,4 @@
 		});
 	});
 </script>
+

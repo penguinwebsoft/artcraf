@@ -3,7 +3,7 @@
  */
 package com.crafart.inter.service;
 
-import java.util.List;
+import java.util.Map;
 
 import com.crafart.service.businessobjects.TaxClassBO;
 import com.crafart.service.exception.CrafartServiceException;
@@ -14,9 +14,10 @@ import com.crafart.service.exception.CrafartServiceException;
  */
 public interface ManageTaxClassService {
 
-	public List<TaxClassBO> getTaxClassDetail() throws CrafartServiceException;
+	public Map<Long, TaxClassBO> getTaxClasses() throws CrafartServiceException;
 	
-	public void addTaxClassDetail(TaxClassBO taxClassBO) throws CrafartServiceException;
+	public void addTaxClass(TaxClassBO taxClassBO) throws CrafartServiceException;
 	
+	public void updateTaxClass(TaxClassBO taxClassBO) throws CrafartServiceException;
 
 }

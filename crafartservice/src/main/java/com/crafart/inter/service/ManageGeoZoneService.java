@@ -3,7 +3,7 @@
  */
 package com.crafart.inter.service;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,9 @@ import com.crafart.service.exception.CrafartServiceException;
 @Service
 public interface ManageGeoZoneService {
 
-	public void addGeoZoneDetail(GeoZoneBO geoZoneBO) throws CrafartServiceException;
+	public void addGeoZone(GeoZoneBO geoZoneBO) throws CrafartServiceException;
 
-	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartServiceException;
+	public void updateGeoZone(GeoZoneBO geoZoneBO) throws CrafartServiceException;
+
+	public Map<Long, GeoZoneBO> getGeoZones() throws CrafartServiceException;
 }

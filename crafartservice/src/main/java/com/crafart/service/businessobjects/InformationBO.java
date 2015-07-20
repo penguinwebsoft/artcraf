@@ -6,7 +6,7 @@ package com.crafart.service.businessobjects;
 import java.io.Serializable;
 
 /**
- * @author 
+ * @author
  * 
  */
 public class InformationBO implements Serializable {
@@ -17,13 +17,14 @@ public class InformationBO implements Serializable {
 	private static final long serialVersionUID = 2647978542496012178L;
 
 	private long informationId;
-
+	
 	private String informationTitle;
+	
 	private String description;
-	private String metaTitle;
-	private String metaDescription;
-	private String metaKeyword;
-	private String isActive;
+	
+	private SeoBO seoBO;
+	
+	private int isActive;
 	
 	private Integer sortOrder;
 
@@ -51,37 +52,19 @@ public class InformationBO implements Serializable {
 		this.description = description;
 	}
 
-	
-
-	public String getMetaTitle() {
-		return metaTitle;
+	public SeoBO getSeoBO() {
+		return seoBO;
 	}
 
-	public void setMetaTitle(String metaTitle) {
-		this.metaTitle = metaTitle;
+	public void setSeoBO(SeoBO seoBO) {
+		this.seoBO = seoBO;
 	}
 
-	public String getMetaDescription() {
-		return metaDescription;
-	}
-
-	public void setMetaDescription(String metaDescription) {
-		this.metaDescription = metaDescription;
-	}
-
-	public String getMetaKeyword() {
-		return metaKeyword;
-	}
-
-	public void setMetaKeyword(String metaKeyword) {
-		this.metaKeyword = metaKeyword;
-	}
-
-	public String getIsActive() {
+	public int getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(String isActive) {
+	public void setIsActive(int isActive) {
 		this.isActive = isActive;
 	}
 
@@ -93,6 +76,4 @@ public class InformationBO implements Serializable {
 		this.sortOrder = sortOrder;
 	}
 
-	
-	}
-	
+}

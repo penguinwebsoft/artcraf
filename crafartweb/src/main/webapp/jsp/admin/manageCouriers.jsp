@@ -97,7 +97,11 @@
 											});
 						}
 					});
+<<<<<<< HEAD
 	setPage("manageCouriersMenuId");
+=======
+	setPage("manageCouriersMenuId"); 
+>>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git
 </script>
 
 

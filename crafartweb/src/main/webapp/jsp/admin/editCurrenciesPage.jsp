@@ -86,6 +86,7 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 </form:form>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -121,3 +122,9 @@
 <script type="text/javascript">
 	setPage("currenciesPageMenuId");
 </script>
+=======
+</div>
+<script type="text/javascript">
+	setPage("currenciesPageMenuId");
+</script>
+>>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git

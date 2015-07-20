@@ -158,7 +158,7 @@ public class ProductRatingDAOTest {
 		commissionDO.setType("comm");
 		commissionDO.setValue(3.5f);
 		try {
-			commissionDAOImpl.addCommission(commissionDO);
+			commissionDAOImpl.addCommision(commissionDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

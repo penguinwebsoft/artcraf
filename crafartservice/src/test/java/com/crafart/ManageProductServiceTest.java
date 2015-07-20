@@ -366,7 +366,7 @@ public class ManageProductServiceTest {
 		geoZoneBO.setDescription("jlk");
 		geoZoneBO.setName("Kerala");
 		try {
-			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
+			manageGeoZoneServiceImpl.addGeoZone(geoZoneBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

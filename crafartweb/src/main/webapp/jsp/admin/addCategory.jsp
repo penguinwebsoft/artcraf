@@ -159,4 +159,11 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
+</form:form>
+<script>
+setPage("categoriesMenuId");
+</script>
 </div>
+
+ 

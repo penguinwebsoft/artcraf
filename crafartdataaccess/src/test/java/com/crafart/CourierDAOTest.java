@@ -41,13 +41,28 @@ public class CourierDAOTest {
 	public void testAddCourierDetail() {
 		CourierDO courierDO = getCourierDetail();
 		try {
-			courierDAOImpl.addCourierDetail(courierDO);
+			courierDAOImpl.addCourier(courierDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testUpdateCourierDetail() {
+		CourierDO courierDO = getCourierDetail();
+		try {
+			courierDAOImpl.addCourier(courierDO);
+			courierDO.setCourierName("ekart");
+			courierDAOImpl.addCourier(courierDO);
+			Assert.assertEquals("ekart", courierDO.getCourierName());
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
 	private CourierDO getCourierDetail() {
 		CourierDO courierDO = new CourierDO();
 		courierDO.setImage("asdfgh");
@@ -65,13 +80,13 @@ public class CourierDAOTest {
 	public void testGetCourierDetail() {
 		CourierDO courierDO = getCourierDetail();
 		try {
-			courierDAOImpl.addCourierDetail(courierDO);
+			courierDAOImpl.addCourier(courierDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
 		try {
-			List<CourierDO> courierDOs = courierDAOImpl.getCourierDetail();
+			List<CourierDO> courierDOs = courierDAOImpl.getCouriers();
 			Assert.assertNotNull(courierDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();

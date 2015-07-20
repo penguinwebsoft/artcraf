@@ -353,6 +353,9 @@
 			document.getElementById('ifNo').style.display = 'none';
 	}
 </script>
+<script type="text/javascript">
+	setPage("orderListMenuId");
+</script>
 <!-- <script type="text/javascript">
 	$('#input-address').on('change', function() {
 		var toType = this.value;

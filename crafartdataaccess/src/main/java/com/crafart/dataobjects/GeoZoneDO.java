@@ -38,7 +38,7 @@ public class GeoZoneDO implements Serializable, Cloneable {
 	@Column(name = "description")   
 	private String description;
 	
-	@Column(name = "sortOrder")    
+	@Column(name = "sort_order")    
 	private Integer sortOrder;
 	
 

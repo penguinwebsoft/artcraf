@@ -214,7 +214,7 @@ public class CrafartOrderDAOTest {
 		courierDO.setEstimatedDeliveryTime("gjtr");
 		courierDO.setSortOrder(1);
 		try {
-			courierDAOImpl.addCourierDetail(courierDO);
+			courierDAOImpl.addCourier(courierDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();
@@ -357,7 +357,7 @@ public class CrafartOrderDAOTest {
 		commissionDO.setType("comm");
 		commissionDO.setValue(3.5f);
 		try {
-			commissionDAOImpl.addCommission(commissionDO);
+			commissionDAOImpl.addCommision(commissionDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

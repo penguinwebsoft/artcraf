@@ -29,7 +29,7 @@ public class CourierDAOImpl extends CommonDAOImpl implements CourierDAO {
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addCourierDetail(CourierDO courierDO) throws CrafartDataException {
+	public void addCourier(CourierDO courierDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
 			session.save(courierDO);
@@ -47,7 +47,7 @@ public class CourierDAOImpl extends CommonDAOImpl implements CourierDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<CourierDO> getCourierDetail() throws CrafartDataException {
+	public List<CourierDO> getCouriers() throws CrafartDataException {
 		List<CourierDO> courierDOs = new ArrayList<>();
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
@@ -56,6 +56,15 @@ public class CourierDAOImpl extends CommonDAOImpl implements CourierDAO {
 			throw new CrafartDataException("DB Error while reteriving courier details", hExp);
 		}
 		return courierDOs;
+	}
+
+	/**
+	 * retrieve courier data object from persistence for the identifier {@link Long} courierId
+	 */
+	@Override
+	public CourierDO getCourier(long courierId) throws CrafartDataException {
+		CourierDO courierDO = (CourierDO) this.getSessionFactory().getCurrentSession().get(CourierDO.class, courierId);
+		return courierDO;
 	}
 
 }

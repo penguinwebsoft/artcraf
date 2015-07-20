@@ -131,7 +131,7 @@ public class ProductShippingDAOTest {
 		courierDO.setEstimatedDeliveryTime("kjkk");
 		courierDO.setSortOrder(1);
 		try {
-			courierDAOImpl.addCourierDetail(courierDO);
+			courierDAOImpl.addCourier(courierDO);
 			courierDO.setCourierId(courierDO.getCourierId());
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
@@ -241,7 +241,7 @@ public class ProductShippingDAOTest {
 		commissionDO.setType("comm");
 		commissionDO.setValue(3.5f);
 		try {
-			commissionDAOImpl.addCommission(commissionDO);
+			commissionDAOImpl.addCommision(commissionDO);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();
 			Assert.fail();

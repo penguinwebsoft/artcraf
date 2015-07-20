@@ -3,7 +3,7 @@
  */
 package com.crafart.inter.service;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,9 @@ import com.crafart.service.exception.CrafartServiceException;
 @Service
 public interface ManageCurrencyService {
 
-	public void addCurrencyDetail(CurrencyBO currencyBO)throws CrafartServiceException;
+	public void addCurrency(CurrencyBO currencyBO)throws CrafartServiceException;
 
-	public List<CurrencyBO> getCurrencyDetail() throws CrafartServiceException;
+	public void updateCurrency(CurrencyBO currencyBO)throws CrafartServiceException;
+
+	public Map<Long, CurrencyBO> getCurrencys() throws CrafartServiceException;
 }

@@ -60,4 +60,6 @@
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	setPage("userGroupListMenuId");
+	</script>

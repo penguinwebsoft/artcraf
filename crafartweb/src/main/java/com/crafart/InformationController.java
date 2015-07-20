@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.crafart.inter.service.ManageInformationService;
 import com.crafart.service.businessobjects.InformationBO;
@@ -27,7 +28,7 @@ import com.crafart.service.exception.CrafartServiceException;
  * 
  */
 @Controller("InformationController")
-@RequestMapping("Information")
+@RequestMapping("information")
 public class InformationController {
 
 	private static final Logger log = Logger.getLogger(InformationController.class);
@@ -35,7 +36,7 @@ public class InformationController {
 	@Autowired
 	private ManageInformationService manageInformationServiceImpl;
 
-	@RequestMapping(value = { "/getInformation" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/getInformations" }, method = RequestMethod.GET)
 	public @ResponseBody ModelMap getInformation(HttpSession session) throws CrafartServiceException {
 		ModelMap modelMap = new ModelMap();
 		Map<Long, InformationBO> informationBOs = new HashMap<>();
@@ -51,11 +52,12 @@ public class InformationController {
 	}
 
 	@RequestMapping(value = { "/addInformation" }, method = RequestMethod.POST)
-	public @ResponseBody ModelMap addInformation(@RequestBody InformationBO InformationBO, HttpSession session) {
+	public @ResponseBody ModelMap addInformation(@RequestBody InformationBO informationBO, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
 		try {
-			manageInformationServiceImpl.addInformation(InformationBO);
+			manageInformationServiceImpl.addInformation(informationBO);
 			modelMap.addAttribute("result", true);
+			modelMap.addAttribute("informationBO", informationBO);
 		} catch (CrafartServiceException crafartServiceException) {
 			log.error("Application-error while adding to DB", crafartServiceException);
 			modelMap.addAttribute("result", false);
@@ -77,12 +79,12 @@ public class InformationController {
 	}
 
 	@RequestMapping(value = { "/editInformation" }, method = RequestMethod.GET)
-	public @ResponseBody ModelMap editInformation(@RequestParam(value = "informationId") long informationId, HttpSession session) {
+	public @ResponseBody ModelAndView editInformation(@RequestParam(value = "informationId") long informationId, HttpSession session) {
 		ModelMap modelMap = new ModelMap();
 		@SuppressWarnings("unchecked")
 		Map<Long, InformationBO> informationBOs = (Map<Long, InformationBO>) session.getAttribute("informationBOs");
 		InformationBO informationBO = informationBOs.get(informationId);
-		modelMap.addAttribute("inforatmionBO", informationBO);
-		return modelMap;
+		modelMap.addAttribute("informationBO", informationBO);
+		return new ModelAndView("editInformation", modelMap);
 	}
 }

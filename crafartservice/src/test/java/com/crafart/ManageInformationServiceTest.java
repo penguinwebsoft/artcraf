@@ -18,10 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.inter.service.ManageInformationService;
 import com.crafart.service.businessobjects.InformationBO;
+import com.crafart.service.businessobjects.SeoBO;
 import com.crafart.service.exception.CrafartServiceException;
 
 /**
- * @author 
+ * @author
  * 
  */
 @ContextConfiguration({ "classpath:crafartdatasource-context-test.xml", "classpath:crafartservice-context-test.xml" })
@@ -46,19 +47,6 @@ public class ManageInformationServiceTest {
 		}
 	}
 
-	private InformationBO getInformation() {
-		InformationBO informationBO = new InformationBO();
-		informationBO.setDescription("jlk");
-		informationBO.setInformationTitle("h");
-		informationBO.setDescription("rthy");
-		informationBO.setMetaTitle("h");
-		informationBO.setMetaDescription("fghf");
-		informationBO.setMetaKeyword("hrt");
-		informationBO.setIsActive("fgh");
-		informationBO.setSortOrder(889);
-		return informationBO;
-	}
-
 	@Test
 	@Rollback(true)
 	public void testGetinformationDetail() {
@@ -70,12 +58,38 @@ public class ManageInformationServiceTest {
 			Assert.fail();
 		}
 		try {
-			@SuppressWarnings("unused")
 			Map<Long, InformationBO> informationBOs = manageInformationServiceImpl.getInformations();
-			
+			int count = 0;
+			for (Map.Entry<Long, InformationBO> informationBOEntrySet : informationBOs.entrySet()) {
+				System.out.println(" is active value = "+ informationBOEntrySet.getValue().getIsActive());
+				if (informationBOEntrySet.getKey() == informationBO.getInformationId()) {
+					count = count + 1;
+				}
+			}
+			Assert.assertTrue(count == 1);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
 	}
+
+	private InformationBO getInformation() {
+		InformationBO informationBO = new InformationBO();
+		informationBO.setDescription("jlk");
+		informationBO.setInformationTitle("h");
+		informationBO.setDescription("rthy");
+		informationBO.setSeoBO(getSeo());
+		informationBO.setIsActive(1);
+		informationBO.setSortOrder(889);
+		return informationBO;
+	}
+
+	private SeoBO getSeo() {
+		SeoBO seoBO = new SeoBO();
+		seoBO.setMetaDesc("asdf");
+		seoBO.setMetaKeyword("qwert");
+		seoBO.setMetaTitle("zxcvbn");
+		return seoBO;
+	}
+
 }

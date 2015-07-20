@@ -24,7 +24,7 @@ public class LengthClassBO implements Serializable {
 
 	private Integer isActive;
 	
-	private Integer sortorder;
+	private Integer sortOrder;
 	
 	
 
@@ -44,9 +44,6 @@ public class LengthClassBO implements Serializable {
 		this.title = title;
 	}
 
-	
-	
-
 	public String getUnit() {
 		return unit;
 	}
@@ -63,12 +60,12 @@ public class LengthClassBO implements Serializable {
 		this.isActive = isActive;
 	}
 
-	public Integer getSortorder() {
-		return sortorder;
+	public Integer getSortOrder() {
+		return sortOrder;
 	}
 
-	public void setSortorder(Integer sortorder) {
-		this.sortorder = sortorder;
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
 	}
 
 }

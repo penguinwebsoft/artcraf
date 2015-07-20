@@ -63,4 +63,6 @@
 		</div>
 	</div>
 </div>
-
+<script>
+setPage("attributePageMenuId");
+</script>

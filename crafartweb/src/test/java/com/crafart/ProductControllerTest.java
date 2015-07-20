@@ -77,7 +77,7 @@ public class ProductControllerTest {
 			HttpSession httpSession = new MockHttpSession();
 			httpSession.putValue("sellerprofile", getSellerBO());
 			TaxClassBO taxClassBO = new TaxClassBO();
-			taxClassBO.setTaxClassId(1);
+			taxClassBO.setTaxClassId(new Long(1));
 			httpSession.putValue("taxClass", taxClassBO);
 			productController.addProduct(productBO, new MockHttpServletRequest(), httpSession);
 		} catch (Exception e) {

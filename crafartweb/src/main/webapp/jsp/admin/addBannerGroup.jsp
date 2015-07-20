@@ -87,3 +87,7 @@ $(document).ready(function() {
 
 
 </script>
+
+<script>
+setPage("bannerGroupMenuId");
+</script>

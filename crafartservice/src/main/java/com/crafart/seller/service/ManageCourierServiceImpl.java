@@ -3,8 +3,9 @@
  */
 package com.crafart.seller.service;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,12 +33,51 @@ public class ManageCourierServiceImpl implements ManageCourierService {
 	@Autowired
 	private CourierDAO courierDAOImpl;
 
+	/**
+	 * add courier data to persistence, map business object to data object with
+	 * identifier as empty or 0 incase of adding new courier data. <li>
+	 * incase of update, check whether {@link Long} courierId is greater than 0,
+	 * if so call update method to update courier for identifier {@link Long}
+	 * courierId
+	 * 
+	 * @param courierBO
+	 * @throws CrafartServiceException
+	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addCourierDetail(CourierBO courierBO) throws CrafartServiceException {
-		CourierDO courierDO = beanMapper.mapCourierBOToDO(courierBO, new CourierDO());
+	public void addCourier(CourierBO courierBO) throws CrafartServiceException {
+		if (courierBO.getCourierId() > 0) {
+			updateCourier(courierBO);
+		} else {
+			CourierDO courierDO = beanMapper.mapCourierBOToDO(courierBO, new CourierDO());
+			try {
+				courierDAOImpl.addCourier(courierDO);
+				courierBO.setCourierId(courierDO.getCourierId());
+			} catch (CrafartDataException crafartDataException) {
+				throw new CrafartServiceException("Error while adding courier detail", crafartDataException);
+			}
+		}
+
+	}
+
+	/**
+	 * update courier data for {@link Long} identifier courierId
+	 * 
+	 * @param courierBO
+	 * @throws CrafartServiceException
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateCourier(CourierBO courierBO) throws CrafartServiceException {
+		CourierDO courierDO;
 		try {
-			courierDAOImpl.addCourierDetail(courierDO);
+			courierDO = courierDAOImpl.getCourier(courierBO.getCourierId());
+		} catch (CrafartDataException cDExp) {
+			throw new CrafartServiceException("Error while getting courier data for id = " + courierBO.getCourierId(), cDExp);
+		}
+		courierDO = beanMapper.mapCourierBOToDO(courierBO, courierDO);
+		try {
+			courierDAOImpl.addCourier(courierDO);
 			courierBO.setCourierId(courierDO.getCourierId());
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("Error while adding courier detail", crafartDataException);
@@ -46,13 +86,13 @@ public class ManageCourierServiceImpl implements ManageCourierService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<CourierBO> getCourierDetail() throws CrafartServiceException {
-		List<CourierBO> courierBOs = new ArrayList<>();
+	public Map<Long, CourierBO> getCouriers() throws CrafartServiceException {
+		Map<Long, CourierBO> courierBOs = new HashMap<>();
 		try {
-			List<CourierDO> courierDOs = courierDAOImpl.getCourierDetail();
+			List<CourierDO> courierDOs = courierDAOImpl.getCouriers();
 			for (CourierDO courierDO : courierDOs) {
 				CourierBO courierBO = beanMapper.mapCourierDOToBO(courierDO, new CourierBO());
-				courierBOs.add(courierBO);
+				courierBOs.put(courierBO.getCourierId(), courierBO);
 			}
 		} catch (CrafartDataException crafartDataException) {
 			throw new CrafartServiceException("Error while reteriving courier details", crafartDataException);

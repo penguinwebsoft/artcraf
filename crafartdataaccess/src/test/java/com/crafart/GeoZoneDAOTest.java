@@ -45,13 +45,22 @@ public class GeoZoneDAOTest {
 		}
 	}
 
-	private GeoZoneDO getGeoZone() {
-		GeoZoneDO geoZoneDO = new GeoZoneDO();
-		geoZoneDO.setDescription("qwerty");
-		geoZoneDO.setName("Delhi");
-		geoZoneDO.setSortOrder(1);
-		return geoZoneDO;
+	@Test
+	@Rollback(true)
+	public void testUpdateGeoZone() {
+		GeoZoneDO geoZoneDO = getGeoZone();
+		try {
+			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
+			geoZoneDO.setName("Geozone updated");
+			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
+			geoZoneDAOImpl.getGeoZone(geoZoneDO.getGeoZoneId());
+			Assert.assertEquals("Geozone updated", geoZoneDO.getName());
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
 	}
+
 	/*
 	 * Test case is to retrieve details from geozone table
 	 */
@@ -72,5 +81,13 @@ public class GeoZoneDAOTest {
 			cdExp.printStackTrace();
 			Assert.fail();
 		}
+	}
+
+	private GeoZoneDO getGeoZone() {
+		GeoZoneDO geoZoneDO = new GeoZoneDO();
+		geoZoneDO.setDescription("qwerty");
+		geoZoneDO.setName("Delhi");
+		geoZoneDO.setSortOrder(1);
+		return geoZoneDO;
 	}
 }

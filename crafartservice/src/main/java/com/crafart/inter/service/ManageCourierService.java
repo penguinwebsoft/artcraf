@@ -3,7 +3,7 @@
  */
 package com.crafart.inter.service;
 
-import java.util.List;
+import java.util.Map;
 
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.exception.CrafartServiceException;
@@ -14,10 +14,10 @@ import com.crafart.service.exception.CrafartServiceException;
  */
 public interface ManageCourierService {
 
-	public void addCourierDetail(CourierBO courierBO) throws CrafartServiceException;
+	public void addCourier(CourierBO courierBO) throws CrafartServiceException;
 
-	public List<CourierBO> getCourierDetail() throws CrafartServiceException;
+	public Map<Long, CourierBO> getCouriers() throws CrafartServiceException; 
 	
-
+	public void updateCourier(CourierBO courierBO) throws CrafartServiceException;
 
 }

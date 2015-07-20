@@ -8,3 +8,16 @@ CREATE TABLE INFORMATION (
 	IS_ACTIVE CHARACTER VARYING(20),
 	SORT_ORDER INTEGER
 	)
+	
+	
+alter table information drop column META_TITLE;
+alter table information drop column META_DESCRIPTION;
+alter table information drop column META_KEYWORD;
+
+/*************add seo************/
+alter table information add column seo_id BIGINT;
+
+/************alter information adding seo_id*******************/
+ALTER TABLE information
+  ADD CONSTRAINT information_seo_id_fkey FOREIGN KEY (seo_id)
+      REFERENCES seo (seo_id) ON UPDATE NO ACTION ON DELETE NO ACTION;

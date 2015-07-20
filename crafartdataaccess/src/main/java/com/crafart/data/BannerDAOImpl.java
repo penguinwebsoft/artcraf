@@ -50,7 +50,7 @@ public class BannerDAOImpl extends CommonDAOImpl implements BannerDAO {
 	public void addBanner(BannerDO bannerDO) throws CrafartDataException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
-			session.persist(bannerDO);
+			session.save(bannerDO);
 		} catch (HibernateException hExp) {
 			throw new CrafartDataException("DB error while adding banner detail", hExp);
 		}

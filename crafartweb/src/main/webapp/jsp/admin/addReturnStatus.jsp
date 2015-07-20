@@ -67,3 +67,7 @@
 		$("#cleditor").cleditor();
 	});
 </script>
+<script type="text/javascript">
+	setPage("returnStatusMenuId");
+</script>
+

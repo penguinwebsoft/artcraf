@@ -3,7 +3,36 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 <c:set var="context" value="${pageContext.request.contextPath}" />
+<<<<<<< HEAD
 
+=======
+<script type="text/javascript">
+$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var geoZoneBO = {};
+			
+			geoZoneBO. name= $("#geozonetitle").val();
+			geoZoneBO.description= $("#geozonedescription").val();
+			geoZoneBO.sortOrder = $("#sortorder").val();
+			postData = JSON.stringify(geoZoneBO);
+			alert("geoZone object" + postData);
+			$.ajax({
+				url : "../geoZone/addGeoZone",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if(data.result == true)
+						alert("saved succefully");
+					else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+</script>
+>>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git
 <div class="col-lg-10">
 <input type="hidden" id="geoZoneId">
 	<div class="container-fluid" style="background-color: white;">
@@ -53,6 +82,7 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 <script type="text/javascript">
 $(document).ready(function() {
 		$("#saveBtn").click(function() {
@@ -82,6 +112,8 @@ $(document).ready(function() {
 		});
 	}); 
 </script>
+=======
+>>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git
 <script>
 setPage("geoZoneMenuId");
 </script>

@@ -168,5 +168,7 @@
 		}
 
 	});
-
+</script>
+<script type="text/javascript">
+	setPage("smsListMenuId");
 </script>

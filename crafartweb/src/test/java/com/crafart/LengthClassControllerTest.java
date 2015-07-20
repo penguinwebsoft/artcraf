@@ -29,7 +29,7 @@ import com.crafart.service.businessobjects.LengthClassBO;
 public class LengthClassControllerTest {
 
 	@Autowired
-	private LengthController lengthController;
+	private LengthClassController lengthController;
 
 	@Test
 	@Rollback(true)
@@ -42,13 +42,39 @@ public class LengthClassControllerTest {
 		}
 	}
 	
-	@SuppressWarnings("unused")
+	@Test
+	@Rollback(true)
+	public void testAddLengthClass() {
+		try {
+			LengthClassBO lengthClassBO = getLengthClassdetail();
+			lengthController.addLengthClass(lengthClassBO, new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
+	
+	@Test
+	@Rollback(true)
+	public void testUpdateLengthClass() {
+		try {
+			LengthClassBO lengthClassBO = getLengthClassdetail();
+			lengthController.addLengthClass(lengthClassBO, new MockHttpSession());
+			lengthController.updateLengthClass(lengthClassBO, new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
+	
 	private LengthClassBO getLengthClassdetail() {
 		LengthClassBO lengthClassBO = new LengthClassBO();
 		lengthClassBO.setTitle("jj");
 		lengthClassBO.setUnit("jnn");
 		lengthClassBO.setIsActive(9);
-		lengthClassBO.setSortorder(9);
+		lengthClassBO.setSortOrder(9);
 		
 		return lengthClassBO;
 	}

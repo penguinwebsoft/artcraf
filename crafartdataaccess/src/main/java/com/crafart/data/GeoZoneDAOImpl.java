@@ -24,6 +24,7 @@ import com.crafart.inter.data.GeoZoneDAO;
 public class GeoZoneDAOImpl extends CommonDAOImpl implements GeoZoneDAO {
 
 
+	
 	/**
 	 * adding GeoZoneDetail details to geo_zone table by addGeoZoneDetails
 	 */
@@ -50,6 +51,16 @@ public class GeoZoneDAOImpl extends CommonDAOImpl implements GeoZoneDAO {
 			throw new CrafartDataException("DB Error while reteriving GeoZone details", hExp);
 		}
 		return geoZoneDOs;
+	}
+
+	/**
+	 * retrieve geo zone data object for identifier {@link Long} getZoneId
+	 * @param geoZoneId
+	 */
+	@Override
+	public GeoZoneDO getGeoZone(long geoZoneId) throws CrafartDataException {
+		GeoZoneDO geoZoneDO = (GeoZoneDO) this.getSessionFactory().getCurrentSession().get(GeoZoneDO.class, geoZoneId);
+		return geoZoneDO;
 	}
 
 }

@@ -334,4 +334,7 @@
 
 	});
 </script>
+<script type="text/javascript">
+	setPage("manageSellersMenuId");
+</script>
 

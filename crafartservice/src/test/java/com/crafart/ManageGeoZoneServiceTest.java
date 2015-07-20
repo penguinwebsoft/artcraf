@@ -3,7 +3,7 @@
  */
 package com.crafart;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,10 +36,25 @@ public class ManageGeoZoneServiceTest {
 
 	@Test
 	@Rollback(true)
-	public void testAddGeozoneDetail() {
+	public void testAddGeozone() {
 		GeoZoneBO geoZoneBO = getGeoZone();
 		try {
-			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
+			manageGeoZoneServiceImpl.addGeoZone(geoZoneBO);
+		} catch (CrafartServiceException csExp) {
+			csExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testUpdateGeozone() {
+		GeoZoneBO geoZoneBO = getGeoZone();
+		try {
+			manageGeoZoneServiceImpl.addGeoZone(geoZoneBO);
+			geoZoneBO.setName("geozone update");
+			manageGeoZoneServiceImpl.updateGeoZone(geoZoneBO);
+			Assert.assertEquals("geozone update", geoZoneBO.getName());
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
@@ -58,18 +73,20 @@ public class ManageGeoZoneServiceTest {
 	public void testGetGeoZoneDetail() {
 		GeoZoneBO geoZoneBO = getGeoZone();
 		try {
-			manageGeoZoneServiceImpl.addGeoZoneDetail(geoZoneBO);
+			manageGeoZoneServiceImpl.addGeoZone(geoZoneBO);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();
 		}
 		try {
-			@SuppressWarnings("unused")
-			List<GeoZoneBO> geoZoneBOs = manageGeoZoneServiceImpl.getGeoZoneDetail();
-			/*
-			 * for (GeoZoneBO geoZoneBO2 : geoZoneBOs) {
-			 * System.out.print("\n"+geoZoneBO2.getGeoZoneId()); }
-			 */
+			Map<Long, GeoZoneBO> geoZoneBOs = manageGeoZoneServiceImpl.getGeoZones();
+			int count = 0;
+			for (Map.Entry<Long, GeoZoneBO> geoZoneBOEntries : geoZoneBOs.entrySet()) {
+				if (geoZoneBO.getGeoZoneId() == geoZoneBOEntries.getValue().getGeoZoneId()) {
+					count = count + 1;
+				}
+			}
+			Assert.assertTrue(count == 1);
 		} catch (CrafartServiceException csExp) {
 			csExp.printStackTrace();
 			Assert.fail();

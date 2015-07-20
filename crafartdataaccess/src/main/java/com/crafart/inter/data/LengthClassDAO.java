@@ -19,6 +19,7 @@ public interface LengthClassDAO {
 
 	public void addLengthClass(LengthClassDO lengthClassDO) throws CrafartDataException;
 
-
-	public List<LengthClassDO> getLengthClass() throws CrafartDataException;
+	public List<LengthClassDO> getLengthClasses() throws CrafartDataException;
+	
+	public LengthClassDO getLengthClass(long lengthClassId) throws CrafartDataException;
 }

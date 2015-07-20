@@ -154,8 +154,12 @@
 			//close when viewMode='0' (days)
 			if (ev.viewMode === 'days') {
 				$('#orderDate').datepicker('hide');
-			}
+			} 
 		})
 		
 	});
+</script>
+
+<script type="text/javascript">
+	setPage("returnPageMenuId");
 </script>

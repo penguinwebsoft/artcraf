@@ -16,9 +16,10 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crafart.service.businessobjects.InformationBO;
+import com.crafart.service.businessobjects.SeoBO;
 
 /**
- * @author 
+ * @author
  * 
  */
 @ContextConfiguration({ "classpath:crafart-context-test.xml", "classpath:crafart-datasource-config.xml" })
@@ -41,18 +42,46 @@ public class InformationControllerTest {
 			Assert.fail();
 		}
 	}
+
+	@Test
+	@Rollback(true)
+	public void testAddInformation() {
+		try {
+			informationController.addInformation(getInformationdetail(), new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+
+	@Test
+	@Rollback(true)
+	public void testUpdateInformation() {
+		try {
+			InformationBO informationBO = getInformationdetail();
+			informationController.addInformation(informationBO, new MockHttpSession());
+			informationController.updateInformation(informationBO, new MockHttpSession());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
 	
-	@SuppressWarnings("unused")
 	private InformationBO getInformationdetail() {
 		InformationBO informationBO = new InformationBO();
 		informationBO.setInformationTitle("yjtyh");
 		informationBO.setDescription("fgbf");
 		informationBO.setSortOrder(99);
-		informationBO.setMetaTitle("fgb");
-		informationBO.setMetaDescription("fhdb");
-		informationBO.setMetaKeyword("bhbh");
-		informationBO.setIsActive("fds");
+		informationBO.setSeoBO(getSeo());
+		informationBO.setIsActive(0);
 		return informationBO;
 	}
-}
 
+	private SeoBO getSeo() {
+		SeoBO seoBO = new SeoBO();
+		seoBO.setMetaDesc("asdf");
+		seoBO.setMetaKeyword("qwert");
+		seoBO.setMetaTitle("zxcvbn");
+		return seoBO;
+	}
+}

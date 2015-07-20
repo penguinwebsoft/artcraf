@@ -843,7 +843,7 @@ ol, ul {
 		position: absolute;
 		right: 10px;
 		top: 10px;
-		z-index: 10 !important;
+		z-index: -1 !important;
 		padding: 3px;
 		background-color: #ffffff;
 		color: #000;
@@ -979,7 +979,7 @@ ol, ul {
 	font-size: 2.5em;
 }
 
-/**************************************product box styles***********************************/
+/**************************************product box styles start***********************************/
 .product-box h2 {
 	color: #DE8A03;
 	font-size: 24px;
@@ -989,8 +989,10 @@ ol, ul {
 .product-box h2 i {
 	padding-right: 2px;
 }
-/**************************************product box styles***********************************/
+/**************************************product box styles end***********************************/
 
+<<<<<<< HEAD
+=======
 /**************************************Rating Star Styles**********************************/
 .rating-loading {
 	width: 25px;
@@ -1172,6 +1174,7 @@ ol, ul {
 	padding-right: 5px;
 }
 /**************************************Rating Star Styles End**********************************/
+>>>>>>> 66f945a6b5c0d2189312b1cfd0d76fa14c14d541
 
 /**************************************Product List Styles**********************************/
 .style {
@@ -1199,7 +1202,7 @@ ol, ul {
 	color: #e1ffff;
 }
 
-.nav-side-menu1 .brand1 {
+.nav-side-menu1 .1 {
 	background-color: #404040;
 	line-height: 50px;
 	display: block;
@@ -1215,6 +1218,9 @@ ol, ul {
 
 /**************************************check out section End**********************************/
 
+<<<<<<< HEAD
+/**************************************product details image section Start**********************************/
+=======
 /**************************************product details section End**********************************/
 .starrating {
 	width: 200px;
@@ -1233,6 +1239,7 @@ ol, ul {
 	color: yellow;
 }
 
+>>>>>>> 66f945a6b5c0d2189312b1cfd0d76fa14c14d541
 .image {
 	width: 300px;
 }
@@ -1247,32 +1254,52 @@ ol, ul {
 	width: 400px;
 }
 
-/**************************************product details section End**********************************/
+/**************************************product details image section End**********************************/
 
-/**************************************Review section**********************************/
-.starcolor1 {
-	width: 200px;
-	margin: 10px auto;
+/**************************************product list page hover**********************************/
+.productBox:hover {
+	border:2px solid #428bca;
 }
+/**************ends here *********************/
 
+
+/**************admin panel addsmslist text area start here *********************/
+textarea {
+    resize: none;
+}
 .star1 {
 	font-size: 20px;
 	color: orange;
 	cursor: pointer;
 }
 
-.star1:hover:before {
-	content: "\2605";
-	position: absolute;
-	color: yellow;
+/**************admin panel addsmslist text area end here *********************/
+
+/**************Product List page start here *********************/
+
+span {
+    cursor:pointer;
+}
+
+#dl_sub_dd, #dl_sub_dd1,#dl_sub_dd2,#dl_sub_dd3,#dl_sub_dd4,#dl_sub_dd5,#dl_sub_dd6,
+#dl_sub_dd7,#dl_sub_dd8,#dl_sub_dd9,#dl_sub_dd10,#dl_sub_dd11,#dl_sub_dd12,#dl_sub_dd13,
+#dl_sub_dd14,#dl_sub_dd15 
+{
+    display:none;
 }
 /**************************************Review section end**********************************/
 /**************************************product list page hover**********************************/
 .productBox:hover {
 	border: 2px solid #428bca;
 }
-/**************ends here *********************/
 
+/**************Product List Page end here *********************/
+
+/**************Product List checkbox start here *********************/
+label, input[type="radio"], input[type="checkbox"] {
+   line-height: 2.1ex;
+}
+/**************Product List Page end here *********************/
 /*******carousel slide alginment*************************/
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right
 	{
@@ -1373,3 +1400,4 @@ a {
 	font-size: 15px;
 	margin-bottom: 25px;
 }
+

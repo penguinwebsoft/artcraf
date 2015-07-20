@@ -19,7 +19,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="icon-th-list"></i> &nbsp; Edit Information Page
+					<i class="icon-th-list"></i> &nbsp; Edit Information page
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -134,6 +134,7 @@ $(document).ready(function() {
 			});
 		});
 	});
-
-
+</script>
+<script type="text/javascript">
+	setPage("informationPageMenuId");
 </script>

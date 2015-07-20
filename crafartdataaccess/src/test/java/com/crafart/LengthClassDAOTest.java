@@ -45,12 +45,27 @@ public class LengthClassDAOTest {
 		}
 	}
 
+	@Test
+	@Rollback(true)
+	public void testUpdateLengthClass() {
+		LengthClassDO lengthClassDO = getLengthClass();
+		try {
+			lengthClassDAOImpl.addLengthClass(lengthClassDO);
+			lengthClassDO.setTitle("length class title updated");
+			lengthClassDAOImpl.addLengthClass(lengthClassDO);
+			Assert.assertEquals("length class title updated", lengthClassDO.getTitle());
+		} catch (CrafartDataException cdExp) {
+			cdExp.printStackTrace();
+			Assert.fail();
+		}
+	}
+
 	private LengthClassDO getLengthClass() {
 		LengthClassDO lengthClassDO = new LengthClassDO();
 		lengthClassDO.setTitle("jj");
 		lengthClassDO.setUnit("cm");
 		lengthClassDO.setIsActive(1);
-		lengthClassDO.setSortorder(1);
+		lengthClassDO.setSortOrder(1);
 		return lengthClassDO;
 	}
 
@@ -68,7 +83,7 @@ public class LengthClassDAOTest {
 			Assert.fail();
 		}
 		try {
-			List<LengthClassDO> lengthClassDOs = lengthClassDAOImpl.getLengthClass();
+			List<LengthClassDO> lengthClassDOs = lengthClassDAOImpl.getLengthClasses();
 			Assert.assertNotNull(lengthClassDOs);
 		} catch (CrafartDataException cdExp) {
 			cdExp.printStackTrace();

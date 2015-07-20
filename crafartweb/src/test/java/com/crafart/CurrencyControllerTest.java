@@ -35,7 +35,7 @@ public class CurrencyControllerTest {
 	@Rollback(true)
 	public void testGetCurrency() {
 		try {
-			currencyController.getCurrency(new MockHttpSession());
+			currencyController.getCurrencies(new MockHttpSession());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();

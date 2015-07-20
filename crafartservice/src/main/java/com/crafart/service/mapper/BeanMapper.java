@@ -288,6 +288,8 @@ public class BeanMapper {
 		lengthClassDO.setLengthClassId(lengthClassBO.getLengthClassId());
 		lengthClassDO.setTitle(lengthClassBO.getTitle());
 		lengthClassDO.setIsActive(lengthClassBO.getIsActive());
+		lengthClassDO.setUnit(lengthClassBO.getUnit());
+		lengthClassDO.setSortOrder(lengthClassBO.getSortOrder());
 		return lengthClassDO;
 
 	}
@@ -297,8 +299,7 @@ public class BeanMapper {
 		lengthClassBO.setTitle(lengthClassDO.getTitle());
 		lengthClassBO.setUnit(lengthClassDO.getUnit());
 		lengthClassBO.setIsActive(lengthClassDO.getIsActive());
-		lengthClassBO.setSortorder(lengthClassDO.getSortorder());
-
+		lengthClassBO.setSortOrder(lengthClassDO.getSortOrder());
 		return lengthClassBO;
 
 	}
@@ -401,6 +402,7 @@ public class BeanMapper {
 	public GeoZoneDO mapGeoZoneBOToDO(GeoZoneBO geoZoneBO, GeoZoneDO geoZoneDO) {
 		geoZoneDO.setDescription(geoZoneBO.getDescription());
 		geoZoneDO.setGeoZoneId(geoZoneBO.getGeoZoneId());
+		geoZoneDO.setSortOrder(geoZoneBO.getSortOrder());
 		geoZoneDO.setName(geoZoneBO.getName());
 		return geoZoneDO;
 
@@ -409,6 +411,7 @@ public class BeanMapper {
 	public GeoZoneBO mapGeoZoneDOToBO(GeoZoneDO geoZoneDO, GeoZoneBO geoZoneBO) {
 		geoZoneBO.setDescription(geoZoneDO.getDescription());
 		geoZoneBO.setGeoZoneId(geoZoneDO.getGeoZoneId());
+		geoZoneBO.setSortOrder(geoZoneDO.getSortOrder());
 		geoZoneBO.setName(geoZoneDO.getName());
 		return geoZoneBO;
 
@@ -438,6 +441,8 @@ public class BeanMapper {
 		taxClassDO.setDescription(taxClassBO.getDescription());
 		taxClassDO.setTaxClassId(taxClassBO.getTaxClassId());
 		taxClassDO.setTitle(taxClassBO.getTitle());
+		taxClassDO.setSortOrder(taxClassBO.getSortOrder());
+		taxClassDO.setIsActive(taxClassBO.getIsActive());
 		return taxClassDO;
 
 	}
@@ -446,6 +451,8 @@ public class BeanMapper {
 		taxClassBO.setDescription(taxClassDO.getDescription());
 		taxClassBO.setTaxClassId(taxClassDO.getTaxClassId());
 		taxClassBO.setTitle(taxClassDO.getTitle());
+		taxClassBO.setSortOrder(taxClassDO.getSortOrder());
+		taxClassBO.setIsActive(taxClassDO.getIsActive());
 		return taxClassBO;
 
 	}
@@ -798,14 +805,10 @@ public class BeanMapper {
 		return bannerGroupDO;
 	}
 
-
 	public InformationDO mapInformationBOToDO(InformationBO informationBO, InformationDO informationDO) {
 		informationDO.setInformationId(informationBO.getInformationId());
 		informationDO.setInformationTitle(informationBO.getInformationTitle());
-		informationDO.setMetaDescription(informationBO.getMetaDescription());
 		informationDO.setDescription(informationBO.getDescription());
-		informationDO.setMetaTitle(informationBO.getMetaTitle());
-		informationDO.setMetaKeyword(informationBO.getMetaKeyword());
 		informationDO.setSortOrder(informationBO.getSortOrder());
 		informationDO.setIsActive(informationBO.getIsActive());
 		return informationDO;
@@ -814,12 +817,13 @@ public class BeanMapper {
 	public InformationBO mapInformationDOToBO(InformationDO informationDO, InformationBO informationBO) {
 		informationBO.setInformationId(informationDO.getInformationId());
 		informationBO.setInformationTitle(informationDO.getInformationTitle());
-		informationBO.setMetaDescription(informationDO.getMetaDescription());
 		informationBO.setDescription(informationDO.getDescription());
-		informationBO.setMetaTitle(informationDO.getMetaTitle());
-		informationBO.setMetaKeyword(informationDO.getMetaKeyword());
 		informationBO.setSortOrder(informationDO.getSortOrder());
 		informationBO.setIsActive(informationDO.getIsActive());
+		SeoDO seoDO = informationDO.getSeoDO();
+		if (null != seoDO) {
+			informationBO.setSeoBO(mapSeoDOToBO(informationDO.getSeoDO(), new SeoBO()));
+		}
 		return informationBO;
 	}
 

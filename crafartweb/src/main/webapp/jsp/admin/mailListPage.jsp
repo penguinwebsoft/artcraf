@@ -48,9 +48,8 @@
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
-	setPage("geoZoneMenuId");
+	setPage("mailListPageMenuId");
 </script>
 
 

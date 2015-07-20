@@ -92,8 +92,18 @@
 		});
 	}
 </script>
+<script type="text/javascript">
 
-
+function moveNext()
+{
+document.getElementById('image').style.position="absolute";
+document.getElementById('image').style.left="0";
+}
+function movePrevious()
+{
+document.getElementById('image').style.position="absolute";
+}
+</script>
 <!-- slider banner starts here -->
 <div class="row-fluid">
 	<nav class="navbar navbar-inverse navbar-static-top marginBottom-0" role="navigation" style="background-color: #332619; min-height: 40px; z-index: 1">
@@ -187,7 +197,11 @@
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
+<<<<<<< HEAD
+				<div class="item active" id="image" position: absolute;>
+=======
 				<div class="item active">
+>>>>>>> 66f945a6b5c0d2189312b1cfd0d76fa14c14d541
 					<img src="${context}/resources/img/1.jpg" alt="..." class="img-responsive">
 				</div>
 				<div class="item">

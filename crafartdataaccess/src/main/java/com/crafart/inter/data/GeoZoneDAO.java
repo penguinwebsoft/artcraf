@@ -14,6 +14,8 @@ import com.crafart.exception.CrafartDataException;
  */
 public interface GeoZoneDAO {
 
+	public GeoZoneDO getGeoZone(long geoZoneId) throws CrafartDataException;
+	
 	public void addGeoZoneDetail(GeoZoneDO geoZoneDO) throws CrafartDataException;
 
 	public List<GeoZoneDO> getGeoZoneDetail() throws CrafartDataException;

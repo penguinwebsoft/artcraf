@@ -3,8 +3,9 @@
  */
 package com.crafart.seller.service;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,34 +34,67 @@ public class ManageGeoZoneServiceImpl implements ManageGeoZoneService {
 	private GeoZoneDAO geoZoneDAOImpl;
 
 	/**
-	 * addGeoZoneDetail() will add details to the database by using
-	 * {@link GeoZoneDAO} addGeoZoneDetail()
+	 * add geozone data to persistence, map business object to data object with
+	 * identifier as empty or 0 incase of adding new geozone data. <li>
+	 * incase of update, check whether {@link Long} geoZoneId is greater than 0,
+	 * if so call update method to update geoZone for identifier {@link Long}
+	 * geoZoneId
+	 * 
+	 * @param geoZoneBO
+	 * @throws CrafartServiceException
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addGeoZoneDetail(GeoZoneBO geoZoneBO) throws CrafartServiceException {
-		GeoZoneDO geoZoneDO = beanMapper.mapGeoZoneBOToDO(geoZoneBO, new GeoZoneDO());
+	public void addGeoZone(GeoZoneBO geoZoneBO) throws CrafartServiceException {
+		if (geoZoneBO.getGeoZoneId() > 0) {
+			updateGeoZone(geoZoneBO);
+		} else {
+			GeoZoneDO geoZoneDO = beanMapper.mapGeoZoneBOToDO(geoZoneBO, new GeoZoneDO());
+			try {
+				geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
+				geoZoneBO.setGeoZoneId(geoZoneDO.getGeoZoneId());
+			} catch (CrafartDataException e) {
+				throw new CrafartServiceException("Error while adding geo zone", e);
+			}
+		}
+	}
+
+	/**
+	 * update geozone data for {@link Long} identifier geoZoneId
+	 * 
+	 * @param geoZoneBO
+	 * @throws CrafartServiceException
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updateGeoZone(GeoZoneBO geoZoneBO) throws CrafartServiceException {
+		GeoZoneDO geoZoneDO;
+		try {
+			geoZoneDO = geoZoneDAOImpl.getGeoZone(geoZoneBO.getGeoZoneId());
+		} catch (CrafartDataException cDExp) {
+			throw new CrafartServiceException("Geozone Update - Error while retrieving geozone data object for geozone id =  " + geoZoneBO.getGeoZoneId(), cDExp);
+		}
+		geoZoneDO = beanMapper.mapGeoZoneBOToDO(geoZoneBO, geoZoneDO);
 		try {
 			geoZoneDAOImpl.addGeoZoneDetail(geoZoneDO);
-			geoZoneBO.setGeoZoneId(geoZoneDO.getGeoZoneId());
 		} catch (CrafartDataException e) {
 			throw new CrafartServiceException("Error while adding geo zone", e);
 		}
 	}
 
 	/**
-	 * getGeoZoneDetail() will get all information from table using
+	 * getGeoZones() will get all information from table using
 	 * {@link GeoZoneDAO} getGeoZoneDetail()
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<GeoZoneBO> getGeoZoneDetail() throws CrafartServiceException {
-		List<GeoZoneBO> geoZoneBOs = new ArrayList<>();
+	public Map<Long, GeoZoneBO> getGeoZones() throws CrafartServiceException {
+		Map<Long, GeoZoneBO> geoZoneBOs = new HashMap<>();
 		try {
 			List<GeoZoneDO> geoZoneDOs = geoZoneDAOImpl.getGeoZoneDetail();
 			for (GeoZoneDO geoZoneDO : geoZoneDOs) {
 				GeoZoneBO geoZoneBO = beanMapper.mapGeoZoneDOToBO(geoZoneDO, new GeoZoneBO());
-				geoZoneBOs.add(geoZoneBO);
+				geoZoneBOs.put(geoZoneBO.getGeoZoneId(), geoZoneBO);
 			}
 		} catch (CrafartDataException e) {
 			throw new CrafartServiceException("Error while retriveing from DB", e);

@@ -118,3 +118,6 @@
 		$('#count_message').html(text_remaining + ' remaining');
 	});
 </script>
+<script type="text/javascript">
+	setPage("smsListMenuId");
+</script>

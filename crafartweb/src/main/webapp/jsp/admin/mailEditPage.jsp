@@ -130,6 +130,7 @@
 
 		//$('select[name=input-to]').trigger('change');
 	});
-
-	
+</script>
+<script type="text/javascript">
+	setPage("mailListPageMenuId");
 </script>

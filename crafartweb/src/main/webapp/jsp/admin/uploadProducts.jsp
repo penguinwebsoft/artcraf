@@ -898,3 +898,7 @@ ul.wysihtml5-toolbar>li {
 
 			});
 </script>
+
+<script type="text/javascript">
+	setPage("productPageMenuId");
+</script>
