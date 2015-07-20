@@ -86,11 +86,11 @@
 			</a></li>
 			<li><a id="commissionListMenuId" href="${baseURL}/menu/commissionList"> <i class="icon-angle-right"></i>Commission
 			</a></li>
-			<li><a id="taxDetailsMenuId" href="${baseURL}/menu/taxDetails"> <i class="icon-angle-right"></i>Tax Details
+			<li><a id="taxDetailsMenuId" href="${baseURL}/menu/taxClassDetails"> <i class="icon-angle-right"></i>Tax Details
 			</a></li>
 			<li><a id="manageCouriersMenuId" href="${baseURL}/menu/manageCouriers"> <i class="icon-angle-right"></i>Manage couriers
 			</a></li>
-			<li><a id="lengthDetailsMenuId" href="${baseURL}/menu/lengthDetails"> <i class="icon-angle-right"></i>Length Details
+			<li><a id="lengthDetailsMenuId" href="${baseURL}/menu/lengthClassList"> <i class="icon-angle-right"></i>Length Details
 			</a></li>
 			<li><a id="geoZoneMenuId" href="${baseURL}/menu/geoZone"> <i class="icon-angle-right"></i>Geo_Zone
 			</a></li>
