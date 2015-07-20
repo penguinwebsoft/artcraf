@@ -62,7 +62,7 @@
 					function() {
 						$.ajax({
 							url : "../geoZone/getGeoZone",
-							type : "get",
+							type : "GET",
 							contentType : "application/json",
 							dataType : "json",
 							success : function(data) {
