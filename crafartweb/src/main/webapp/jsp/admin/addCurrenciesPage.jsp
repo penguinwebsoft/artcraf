@@ -5,6 +5,7 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 
 <div class="col-lg-10">
+	<input type="hidden" id="currencyId">
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
@@ -32,7 +33,7 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="currencytitle"><span data-toggle="tooltip" title="currencytitle">Currency Title</span></label>
 									<div class="col-sm-10">
-										<input type="text" id="currencytitle"name="currencytitle" value="" placeholder="currencytitle" id="currencytitle" class="form-control" />
+										<input type="text" id="currencytitle" name="currencytitle" value="" placeholder="currencytitle" id="currencytitle" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -44,19 +45,19 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="symbolleft"><span data-toggle="tooltip" title="symbolleft">Symbol Left</span></label>
 									<div class="col-sm-10">
-										<input type="text" id="symbolleft"name="symbolleft" value="" placeholder="symbolleft" id="symbolleft" class="form-control" />
+										<input type="text" id="symbolleft" name="symbolleft" value="" placeholder="symbolleft" id="symbolleft" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="symbolright"><span data-toggle="tooltip" title="symbolright">Symbol Right</span></label>
 									<div class="col-sm-10">
-										<input type="text" id="symbolright"name="symbolright" value="" placeholder="symbolright" id="symbolright" class="form-control" />
+										<input type="text" id="symbolright" name="symbolright" value="" placeholder="symbolright" id="symbolright" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" style="padding-top: 1px;" for="decimalplaces"><span data-toggle="tooltip" title="decimalvalues">Decimal Values</span></label>
 									<div class="col-sm-10">
-										<input type="text" id="decimalplaces"name="decimalplaces" value="" placeholder="decimalplaces" id="decimalplaces" class="form-control" />
+										<input type="text" id="decimalplaces" name="decimalplaces" value="" placeholder="decimalplaces" id="decimalplaces" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -84,18 +85,18 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function() {
+	$(document).ready(function() {
 		$("#saveBtn").click(function() {
 			var currencyBO = {};
-			
+
 			currencyBO.title = $("#currencytitle").val();
-			currencyBO.code= $("#code").val();
+			currencyBO.code = $("#code").val();
 			currencyBO.symbolLeft = $("#symbolleft").val();
 			currencyBO.symbolRight = $("#symbolright").val();
 			currencyBO.decimalPlace = $("#decimalplaces").val();
 			currencyBO.value = $("#values").val();
 			currencyBO.status = $("#status").val();
-			
+
 			postData = JSON.stringify(currencyBO);
 			alert("currencies object" + postData);
 			$.ajax({
@@ -105,14 +106,18 @@ $(document).ready(function() {
 				contentType : "application/json",
 				dataType : "json",
 				success : function(data) {
-					if(data.result == true)
+					if (data.result == true) {
+						var currencyBO = data.currencyBO;
+						$("input[id=currencyId]").val(currencyBO.currencyId);
 						alert("saved succefully");
+					}
 					else
 						alert("Details failed to save");
 				}
 			});
 		});
 	});
-
-
+</script>
+<script>
+setPage("currenciesPageMenuId");
 </script>
