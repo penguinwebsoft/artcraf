@@ -8,30 +8,27 @@ var currenciesBOs = {};
 $(document).ready(function() {
 	
 	$.ajax({
-		url : "../currencies/getCurrencies",
-		type : "post",
+		url : "../currency/getCurrencies",
+		type : "GET",
 		contentType : "application/json",
 		dataType : "json",
 		success : function(data){
-			currenciesBOsn= data.currenciesBOs;
-			displayCurrenciesList();
+			currenciesBOs= data.currencyBOs;
+			displayCurrenciesList(currenciesBOs);
 		}
 	});
-	function displayCurrenciesList(){
-		 $.each(currenciesBOs, function(key, value) {
-			 var currenciesBO = value;
+	function displayCurrenciesList(currenciesBOs){
+		 $.each(currenciesBOs, function(key, currenciesBO) {
 				html = '<tr>';
 				html +='<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
-				html +='<td>'+currenciesBO.currenciesTitle+'</td>';
+				html +='<td>'+currenciesBO.title+'</td>';
 				html +='<td>'+currenciesBO.code+'</td>';
 				html +='<td>'+currenciesBO.value+'</td>';
-				html +='<td>'+currenciesBO.created_dttm+'</td>';
-				html +='<td>'+currenciesBO.modified_dttm+'</td>';
-				html +='<td>'+currenciesBO.action+'</td>';
+				html +='<td>'+currenciesBO.status+'</td>';
 				
-				html +='<td><button type="button" class="btn btn-warning">Edit</button></td>';
+				html +="<td><a class='btn btn-warning' href='${baseURL}/currency/editCurrency?currencyId="+currenciesBO.currencyId+"'>Edit</button></td>";
 				html +='</tr>';
-				$('#shipping tbody').append(html);
+				$('#currencies').append(html);
 			}); 
 		}
 });
@@ -54,7 +51,7 @@ $(document).ready(function() {
 			<div class="container">
 				<div class="tab-pane" id="tab-shipping">
 					<div class="table-responsive">
-						<table id="shipping" class="table table-striped table-bordered table-hover pull-left">
+						<table id="currencies" class="table table-striped table-bordered table-hover pull-left">
 							<thead>
 								<tr>
 									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
@@ -65,19 +62,7 @@ $(document).ready(function() {
 									<td>Action</td>
 								</tr>
 							</thead>
-							<thead>
-								<tr>
-									<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>
-									<td>Rupees</td>
-									<td>Rs</td>
-									<td>$1.00</td>
-									<td>11/2/12</td>
-									<td>
-										<a class="btn btn-warning" href="${baseURL}/menu/editCurrenciesPage">Edit</a>
-									</td>
-								</tr>
-							</thead>
-						</table>
+							</table>
 					</div>
 				</div>
 			</div>
