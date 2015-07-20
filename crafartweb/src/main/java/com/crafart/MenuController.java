@@ -39,13 +39,13 @@ public class MenuController {
 	public ModelAndView showProductList(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("productList");
 	}
-
+	
 	@RequestMapping("/cartSection")
 	public ModelAndView showcartSection(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("cartSection");
 	}
 
-	@RequestMapping("/checkoutSection")
+	@RequestMapping("/checkoutSection") 
 	public ModelAndView showcheckoutSection(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("checkoutSection");
 	}
@@ -215,14 +215,14 @@ public class MenuController {
 		return new ModelAndView("manageCouriers");
 	}
 
-	@RequestMapping("/addNewCouriers")
+	@RequestMapping("/addCourier")
 	public ModelAndView showAddNewCouriers(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("addNewCouriers");
+		return new ModelAndView("addCourier");
 	}
 
-	@RequestMapping("/editCouriers")
+	@RequestMapping("/editCourier")
 	public ModelAndView showEditCouriers(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("editCouriers");
+		return new ModelAndView("editCourier");
 	}
 
 	@RequestMapping("/categories")
@@ -339,14 +339,14 @@ public class MenuController {
 		return new ModelAndView("editAttribute");
 	}
 
-	@RequestMapping("/taxDetails")
-	public ModelAndView showTaxDetails(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("taxDetails");
+	@RequestMapping("/taxClassDetails")
+	public ModelAndView showTaxClassDetails(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("taxClassDetails");
 	}
 
-	@RequestMapping("/addTaxDetails")
+	@RequestMapping("/addTaxClass")
 	public ModelAndView showAddTaxDetails(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("addTaxDetails");
+		return new ModelAndView("addTaxClass");
 	}
 
 	@RequestMapping("/editTaxDetails")
@@ -354,9 +354,9 @@ public class MenuController {
 		return new ModelAndView("editTaxDetails");
 	}
 
-	@RequestMapping("/lengthDetails")
+	@RequestMapping("/lengthClassList")
 	public ModelAndView showLengthDetails(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("lengthDetails");
+		return new ModelAndView("lengthClassList");
 	}
 
 	@RequestMapping("/addLengthDetails")
@@ -386,12 +386,12 @@ public class MenuController {
 
 	@RequestMapping("/informationPage")
 	public ModelAndView showInformationPage(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("informationPage");
+		return new ModelAndView("information");
 	}
 
-	@RequestMapping("/addInformationPage")
+	@RequestMapping("/addInformation")
 	public ModelAndView showAddInformationPage(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("addInformationPage");
+		return new ModelAndView("addInformation");
 	}
 
 	@RequestMapping("/editInformationPage")
