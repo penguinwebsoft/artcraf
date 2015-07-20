@@ -5,6 +5,8 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 
 <div class="col-lg-10">
+	<input type="hidden" id="lengthClassId">
+
 	<div class="container-fluid" style="background-color: white;">
 		<div class="row">
 			<div class="col-lg-3">
@@ -66,10 +68,10 @@
 $(document).ready(function() {
 		$("#saveBtn").click(function() {
 			var lengthClassBO = {};
-			
+			lengthClassBO.lengthClassId = $("#lengthClassId").val();
 			lengthClassBO.title = $("#lengthclasstitle").val();
 			lengthClassBO.unit= $("#lengthclassunit").val();
-			lengthClassBO.sortorder = $("#sortorder").val();
+			lengthClassBO.sortOrder = $("#sortorder").val();
 			lengthClassBO.isActive = $("status").val();
 			postData = JSON.stringify(lengthClassBO);
 			alert("lengthClass object" + postData);
@@ -80,14 +82,17 @@ $(document).ready(function() {
 				contentType : "application/json",
 				dataType : "json",
 				success : function(data) {
-					if(data.result == true)
+					if(data.result == true){
+						$("input[id=lengthClassId]").val(data.lengthClassBO.lengthClassId);
 						alert("saved succefully");
+					}
 					else
 						alert("Details failed to save");
-				}
+					}
 			});
 		});
 	});
-
-
 </script>
+<script type="text/javascript">
+	setPage("lengthDetailsMenuId");
+	</script> 
