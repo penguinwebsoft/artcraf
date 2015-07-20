@@ -60,8 +60,6 @@
 </div>
 <script type="text/javascript">
 	setPage("bannerPageMenuId");
-</script>
-<script type="text/javascript">
 	$(document)
 			.ready(
 					function() {
@@ -105,5 +103,7 @@
 											});
 						}
 					});
-	setPage("bannerPageMenuId");
+</script>
+<script>
+setPage("bannerPageMenuId");
 </script>
