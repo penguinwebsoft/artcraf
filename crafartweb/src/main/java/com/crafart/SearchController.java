@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,8 @@ public class SearchController {
 
 	private static final Logger log = Logger.getLogger(SearchController.class);
 
-	@Autowired(required = false)
+	@Autowired
+	@Qualifier("solrSearch")
 	private Search SolrSearchServiceImpl;
 
 	@RequestMapping(value = "/products", method = RequestMethod.POST)
