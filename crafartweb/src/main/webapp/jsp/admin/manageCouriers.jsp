@@ -15,7 +15,7 @@
 				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
-<hr />
+		<hr />
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
@@ -23,7 +23,7 @@
 				</h3>
 			</div>
 			<br>
-		<!-- Table Section-->
+			<!-- Table Section-->
 			<div class="container">
 				<div class="tab-pane" id="tab-shipping">
 					<div class="table-responsive">
@@ -38,8 +38,8 @@
 									<td>Action</td>
 								</tr>
 							</thead>
-							
-</table>
+
+						</table>
 						<nav>
 							<ul class="pagination">
 								<li class="disabled"><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -57,7 +57,6 @@
 	</div>
 </div>
 <script type="text/javascript">
-	
 	$(document)
 			.ready(
 					function() {
@@ -73,7 +72,9 @@
 						});
 						function displayCourierList(courierBOs) {
 							$
-									.each(courierBOs,	function(key, value) {
+									.each(
+											courierBOs,
+											function(key, value) {
 												var courierBO = value;
 												var html = '<tr>';
 												html += '<td><input type="checkbox" name="myTextEditBox" value="checked" /></td>';
@@ -85,23 +86,20 @@
 														+ '</td>';
 												html += '<td>'
 														+ courierBO.estimatedDeliveryTime
-													    + '</td>';
+														+ '</td>';
 												html += '<td>'
-													+ courierBO.sortOrder
-													+ '</td>';
-												
-												html += "<td><a class='btn btn-warning' href='${baseURL}/courier/editCourier?courierId="+courierBO.courierId+"'>Edit</button></td>";
+														+ courierBO.sortOrder
+														+ '</td>';
+
+												html += "<td><a class='btn btn-warning' href='${baseURL}/courier/editCourier?courierId="
+														+ courierBO.courierId
+														+ "'>Edit</button></td>";
 												html += '</tr>';
-												$('#couriers').append(
-														html);
+												$('#couriers').append(html);
 											});
 						}
 					});
-<<<<<<< HEAD
 	setPage("manageCouriersMenuId");
-=======
-	setPage("manageCouriersMenuId"); 
->>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git
 </script>
 
 
