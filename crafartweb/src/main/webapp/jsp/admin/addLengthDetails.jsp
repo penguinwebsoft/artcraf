@@ -13,7 +13,7 @@
 				<h1 style="color: #333; font-size: 25px; margin-top: 20px;">&nbsp; Add Length Details</h1>
 			</div>
 			<div class="pull-right" style="padding: 25px;">
-			<button type="button" name="saveBtn" id="saveBtn" class="btn btn-success">Save</button>
+				<button type="button" name="saveBtn" id="saveBtn" class="btn btn-success">Save</button>
 				<button type="button" class="btn">Return</button>
 			</div>
 		</div>
@@ -65,42 +65,46 @@
 	</div>
 </div>
 <script type="text/javascript">
-$(document).ready(function() {
-		$("#saveBtn").click(function() {
-			var lengthClassBO = {};
-			lengthClassBO.lengthClassId = $("#lengthClassId").val();
-			lengthClassBO.title = $("#lengthclasstitle").val();
-			lengthClassBO.unit= $("#lengthclassunit").val();
-			lengthClassBO.sortOrder = $("#sortorder").val();
-			lengthClassBO.isActive = $("status").val();
-			postData = JSON.stringify(lengthClassBO);
-			alert("lengthClass object" + postData);
-			$.ajax({
-				url : "../lengthClass/addLengthClass",
-				type : "post",
-				data : postData,
-				contentType : "application/json",
-				dataType : "json",
-				success : function(data) {
-					if(data.result == true){
-						$("input[id=lengthClassId]").val(data.lengthClassBO.lengthClassId);
-						alert("saved succefully");
-					}
-					else
-						alert("Details failed to save");
-					}
-			});
-		});
-<<<<<<< HEAD
-	});
-</script>
-<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$("#saveBtn")
+								.click(
+										function() {
+											var lengthClassBO = {};
+											lengthClassBO.lengthClassId = $(
+													"#lengthClassId").val();
+											lengthClassBO.title = $(
+													"#lengthclasstitle").val();
+											lengthClassBO.unit = $(
+													"#lengthclassunit").val();
+											lengthClassBO.sortOrder = $(
+													"#sortorder").val();
+											lengthClassBO.isActive = $("status")
+													.val();
+											postData = JSON
+													.stringify(lengthClassBO);
+											alert("lengthClass object"
+													+ postData);
+											$
+													.ajax({
+														url : "../lengthClass/addLengthClass",
+														type : "post",
+														data : postData,
+														contentType : "application/json",
+														dataType : "json",
+														success : function(data) {
+															if (data.result == true) {
+																$(
+																		"input[id=lengthClassId]")
+																		.val(
+																				data.lengthClassBO.lengthClassId);
+																alert("saved succefully");
+															} else
+																alert("Details failed to save");
+														}
+													});
+										});
+					});
 	setPage("lengthDetailsMenuId");
-	</script> 
-=======
-	}); 
 </script>
-<script type="text/javascript">
-	setPage("lengthDetailsMenuId");
-	</script>
->>>>>>> branch 'crafart_dev' of https://prabaharanit@bitbucket.org/crafart/crafartbundle.git

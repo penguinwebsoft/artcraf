@@ -34,7 +34,7 @@
 									<input type="text" id="name" name="name" value="" placeholder="name" id="input-Name" class="form-control" />
 								</div>
 							</div>
-					
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="padding-top: 1px;" for="input-sku"><span data-toggle="tooltip" title="companyname">Estimated Delivery Time</span></label>
 								<div class="col-sm-10">
@@ -65,33 +65,35 @@
 		</div>
 	</div>
 </div>
-<<script type="text/javascript">
-$(document).ready(function() {
-	$("#saveBtn").click(function() {
-		var courierBO = {};
-		
-		courierBO.courierName = $("#name").val();
-		courierBO.image = $("#image").val();
-		courierBO.estimatedDeliveryTime = $("#estimatedDeliveryTime").val();
-		courierBO.sortOrder = $("#sortOrder").val();
-		postData = JSON.stringify(courierBO);
-		alert("courier object " + postData);
-		$.ajax({
-			url : "../courier/addCourier",
-			type : "post",
-			data : postData,
-			contentType : "application/json",
-			dataType : "json",
-			success : function(data) {
-				if(data.result == true)
-					alert("saved succefully");
-				else
-					alert("Details failed to save");
-			}
-		});
-	});
-});
-</script> 
-<script>
-setPage("manageCouriersMenuId");
+<
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$("#saveBtn").click(
+						function() {
+							var courierBO = {};
+
+							courierBO.courierName = $("#name").val();
+							courierBO.image = $("#image").val();
+							courierBO.estimatedDeliveryTime = $(
+									"#estimatedDeliveryTime").val();
+							courierBO.sortOrder = $("#sortOrder").val();
+							postData = JSON.stringify(courierBO);
+							alert("courier object " + postData);
+							$.ajax({
+								url : "../courier/addCourier",
+								type : "post",
+								data : postData,
+								contentType : "application/json",
+								dataType : "json",
+								success : function(data) {
+									if (data.result == true)
+										alert("saved succefully");
+									else
+										alert("Details failed to save");
+								}
+							});
+						});
+			});
+	setPage("manageCouriersMenuId");
 </script>
