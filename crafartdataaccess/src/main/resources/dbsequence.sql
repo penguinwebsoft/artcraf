@@ -290,3 +290,10 @@ CREATE SEQUENCE seq_taxrate
   START 1
   CACHE 20
  owned by banner_group.banner_group_id;
+ CREATE SEQUENCE seq_discount
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 91
+  CACHE 1;
+  owned by discount.discount_id;
