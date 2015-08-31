@@ -129,3 +129,38 @@
 <script>
 setPage("couponListMenuId");
 </script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#saveBtn").click(function() {
+			var couponBO = {};
+			couponBO.discountId = $("#discontId").val();
+			couponBO.code = $("#code").val();
+			couponBO.type = $("#type").val();
+			couponBO.usesPerCoupon = $("#usesPerCoupon").val();
+			couponBO.usesPerCustomer = $("#usesPerCustomer").val();
+			couponBO.startDate = $("#startDate").val();
+			couponBO.endDate = $("#endDate").val();
+			couponBO.status = $("#status").val();
+			
+			postData = JSON.stringify(couponBO);
+			alert("coupon object" + postData);
+			$.ajax({
+				url : "../coupon/addCoupon",
+				type : "post",
+				data : postData,
+				contentType : "application/json",
+				dataType : "json",
+				success : function(data) {
+					if (data.result == true) {
+						var couponBO = data.couponBO;
+						$("input[id=discountId]").val(couponBO.discountId);
+						alert("saved succefully");
+					} else
+						alert("Details failed to save");
+				}
+			});
+		});
+	});
+	setPage("couponListMenuId");
+</script>
+
