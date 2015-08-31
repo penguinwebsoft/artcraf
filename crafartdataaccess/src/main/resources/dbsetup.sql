@@ -616,3 +616,16 @@ PERMISSION VARCHAR(45)
 );
 ALTER TABLE user_group ADD COLUMN group_name character varying(45);
 ALTER TABLE user_group ADD COLUMN sort_order integer;
+CREATE TABLE discount
+(
+  discount_id bigint NOT NULL,
+  code integer,
+  type smallint,
+  value integer,
+  uses_per_coupon integer,
+  uses_per_customer integer,
+  start_date character varying(20),
+  end_date character varying(20),
+  status smallint,
+  CONSTRAINT discount_pkey PRIMARY KEY (discount_id)
+);
