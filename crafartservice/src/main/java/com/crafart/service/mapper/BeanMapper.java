@@ -17,6 +17,7 @@ import com.crafart.dataobjects.BannerGroupDO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.ContactDO;
+import com.crafart.dataobjects.CouponDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.CrafartOrderDO;
 import com.crafart.dataobjects.CrafartUserDO;
@@ -53,6 +54,7 @@ import com.crafart.service.businessobjects.BannerGroupBO;
 import com.crafart.service.businessobjects.CategoryBO;
 import com.crafart.service.businessobjects.CommisionBO;
 import com.crafart.service.businessobjects.ContactBO;
+import com.crafart.service.businessobjects.CouponBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CrafartOrderBO;
 import com.crafart.service.businessobjects.CrafartUserBO;
@@ -881,6 +883,34 @@ public class BeanMapper {
 		orderStatusBO.setOrderStatusSubject(orderStatusDO.getOrderStatusSubject());
 		orderStatusBO.setSortOrder(orderStatusDO.getSortOrder());
 		return orderStatusBO;
+	}
+
+	public CouponDO mapCouponBOToDO(CouponBO couponBO, CouponDO couponDO) {
+		couponDO.setType(couponBO. getType());
+		couponDO.setDiscountId(couponBO.getDiscountId());
+		couponDO.setValue(couponBO.getValue());
+		couponDO.setUsesPerCoupon(couponBO.getUsesPerCoupon());
+		couponDO.setUsesPerCustomer(couponBO.getUsesPerCustomer());
+		couponDO.setStartDate(couponBO.getStartDate());
+		couponDO.setEndDate(couponBO.getEndDate());
+		couponDO.setStatus(couponBO.getStatus());
+		return couponDO;
+
+		
+	}
+
+	public CouponBO mapCouponDOToBO(CouponDO couponDO, CouponBO couponBO) {
+		
+		couponBO.setType(couponDO. getType());
+		couponBO.setDiscountId(couponDO.getDiscountId());
+		couponBO.setValue(couponDO.getValue());
+		couponBO.setUsesPerCoupon(couponDO.getUsesPerCoupon());
+		couponBO.setUsesPerCustomer(couponDO.getUsesPerCustomer());
+		couponBO.setStartDate(couponDO.getStartDate());
+		couponBO.setEndDate(couponDO.getEndDate());
+		couponBO.setStatus(couponDO.getStatus());
+		return couponBO;
+
 	}
 
 }
