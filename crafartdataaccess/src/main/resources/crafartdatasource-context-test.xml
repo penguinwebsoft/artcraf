@@ -47,6 +47,7 @@
 				<value>com.crafart.dataobjects.WeightClassDO</value>
 				<value>com.crafart.dataobjects.LengthClassDO</value>
 				<value>com.crafart.dataobjects.CategoryDO</value>
+				<value>com.crafart.dataobjetcs.CouponDO</value>
 				<value>com.crafart.dataobjects.CourierDO</value>
 				<value>com.crafart.dataobjects.GeoZoneDO</value>
 				<value>com.crafart.dataobjects.TaxClassDO</value>

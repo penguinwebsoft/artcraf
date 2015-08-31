@@ -17,6 +17,7 @@ import com.crafart.dataobjects.BannerGroupDO;
 import com.crafart.dataobjects.CategoryDO;
 import com.crafart.dataobjects.CommisionDO;
 import com.crafart.dataobjects.ContactDO;
+import com.crafart.dataobjects.CouponDO;
 import com.crafart.dataobjects.CourierDO;
 import com.crafart.dataobjects.CrafartOrderDO;
 import com.crafart.dataobjects.CrafartUserDO;
