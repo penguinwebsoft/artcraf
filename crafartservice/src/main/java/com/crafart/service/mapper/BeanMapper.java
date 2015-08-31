@@ -51,8 +51,9 @@ import com.crafart.service.businessobjects.AttributeGroupDescBO;
 import com.crafart.service.businessobjects.BannerBO;
 import com.crafart.service.businessobjects.BannerGroupBO;
 import com.crafart.service.businessobjects.CategoryBO;
-import com.crafart.service.businessobjects.CommisionBO;
+import com.crafart.service.businessobjects.CommissionBO;
 import com.crafart.service.businessobjects.ContactBO;
+import com.crafart.service.businessobjects.CouponBO;
 import com.crafart.service.businessobjects.CourierBO;
 import com.crafart.service.businessobjects.CrafartOrderBO;
 import com.crafart.service.businessobjects.CrafartUserBO;
@@ -111,7 +112,7 @@ public class BeanMapper {
 
 	}
 
-	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO, AddressBO addressBO, StoreBO storeBO, CommisionBO commissionBO) {
+	public SellerBO mapSellerDOToBO(SellerDO sellerDO, SellerBO sellerBO, AddressBO addressBO, StoreBO storeBO, CommissionBO commissionBO) {
 		sellerBO.setApproved(sellerDO.getApproved());
 		sellerBO.setCommissionBO(commissionBO);
 		sellerBO.setCompanyLogo(sellerDO.getCompanyLogo());
@@ -545,7 +546,7 @@ public class BeanMapper {
 
 	}
 
-	public CommisionDO mapCommissionBOToDO(CommisionBO commissionBO, CommisionDO commissionDO) {
+	public CommisionDO mapCommissionBOToDO(CommissionBO commissionBO, CommisionDO commissionDO) {
 		commissionDO.setCommissionId(commissionBO.getCommissionId());
 		commissionDO.setName(commissionBO.getName());
 		commissionDO.setSortOrder(commissionBO.getSortOrder());
@@ -555,7 +556,7 @@ public class BeanMapper {
 
 	}
 
-	public CommisionBO mapCommissionDOToBO(CommisionDO commissionDO, CommisionBO commissionBO) {
+	public CommissionBO mapCommissionDOToBO(CommisionDO commissionDO, CommissionBO commissionBO) {
 		commissionBO.setCommissionId(commissionDO.getCommissionId());
 		commissionBO.setName(commissionDO.getName());
 		commissionBO.setSortOrder(commissionDO.getSortOrder());
@@ -689,7 +690,7 @@ public class BeanMapper {
 
 	}
 
-	public CrafartOrderBO mapCrafartOrderDOToBO(CrafartOrderDO crafartOrderDO, CrafartOrderBO crafartOrderBO, CommisionBO commissionBO, CourierBO courierBO, CrafartUserBO crafartUserBO,
+	public CrafartOrderBO mapCrafartOrderDOToBO(CrafartOrderDO crafartOrderDO, CrafartOrderBO crafartOrderBO, CommissionBO commissionBO, CourierBO courierBO, CrafartUserBO crafartUserBO,
 			CurrencyBO currencyBO, CustomerBO customerBO, InvoiceBO invoiceBO, ProductBO productBO, StoreBO storeBO, TaxRateBO taxRateBO) {
 		crafartOrderBO.setComment(crafartOrderDO.getComment());
 		crafartOrderBO.setCommissionBO(commissionBO);
@@ -881,6 +882,34 @@ public class BeanMapper {
 		orderStatusBO.setOrderStatusSubject(orderStatusDO.getOrderStatusSubject());
 		orderStatusBO.setSortOrder(orderStatusDO.getSortOrder());
 		return orderStatusBO;
+	}
+
+	public CouponDO mapCouponBOToDO(CouponBO couponBO, CouponDO couponDO) {
+		couponDO.setType(couponBO. getType());
+		couponDO.setDiscountId(couponBO.getDiscountId());
+		couponDO.setValue(couponBO.getValue());
+		couponDO.setUsesPerCoupon(couponBO.getUsesPerCoupon());
+		couponDO.setUsesPerCustomer(couponBO.getUsesPerCustomer());
+		couponDO.setStartDate(couponBO.getStartDate());
+		couponDO.setEndDate(couponBO.getEndDate());
+		couponDO.setStatus(couponBO.getStatus());
+		return couponDO;
+
+		
+	}
+
+	public CouponBO mapCouponDOToBO(CouponDO couponDO, CouponBO couponBO) {
+		
+		couponBO.setType(couponDO. getType());
+		couponBO.setDiscountId(couponDO.getDiscountId());
+		couponBO.setValue(couponDO.getValue());
+		couponBO.setUsesPerCoupon(couponDO.getUsesPerCoupon());
+		couponBO.setUsesPerCustomer(couponDO.getUsesPerCustomer());
+		couponBO.setStartDate(couponDO.getStartDate());
+		couponBO.setEndDate(couponDO.getEndDate());
+		couponBO.setStatus(couponDO.getStatus());
+		return couponBO;
+
 	}
 
 }
