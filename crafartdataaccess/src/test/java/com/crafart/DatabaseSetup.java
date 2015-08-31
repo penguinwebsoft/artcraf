@@ -23,8 +23,9 @@ import com.crafart.data.CommonDAOImpl;
 @Transactional
 public class DatabaseSetup extends CommonDAOImpl {
 
-	@Ignore
-	public void testDummy() {
+	
+	@Ignore 
+	public void testCreateTables() {
 		try {
 			// read db scripts from the sql file
 			InputStream inputStream = this.getClass().getResourceAsStream("/dbsetup.sql");
