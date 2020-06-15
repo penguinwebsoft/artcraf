@@ -8,7 +8,7 @@
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
-		<spring.version>4.1.4.RELEASE</spring.version>
+		<spring.version>5.2.7.RELEASE</spring.version>
 		<security.version>4.0.0.RELEASE</security.version>
 		<tiles.version>2.2.1</tiles.version>
 	</properties>
