@@ -6,7 +6,7 @@
 	<name>crafartdataaccess</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<spring.version>4.1.4.RELEASE</spring.version>
+		<spring.version>5.2.22.RELEASE</spring.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<hibernate.version>4.2.8.Final</hibernate.version>
